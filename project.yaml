@@ -1,17 +1,19 @@
 {
   "project_id": "AX309-RDSP-001",
   "mode": "Standalone",
-  "stage": "S01",
+  "stage": "S02",
   "gate_status": "open",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "provenance": "current conversation; engineer-supplied specifications unverified against board manual",
   "progress": {
-    "stage_percent": 75.0,
-    "overall_percent": 6.25,
+    "stage_percent": 0,
+    "overall_percent": 8.333333333333334,
     "stage_weighting": "12 equal weights",
-    "s01_completed_criteria": 6,
+    "s01_completed_criteria": 8,
     "s01_total_criteria": 8,
-    "basis": "S01 scenario, board-manual review, and preliminary feasibility screen completed; no gate approval"
+    "s02_completed_criteria": 0,
+    "s02_total_criteria": 8,
+    "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria"
   },
   "hardware": {
     "board": "ALINX AX309",
@@ -27,5 +29,10 @@
     "hardware_test": "not_executed"
   },
   "note": "This JSON-compatible YAML is deliberately serialized as JSON, which YAML 1.2 accepts.",
-  "last_review_at_utc": "2026-11-08T23:16:28.457292+00:00"
+  "last_review_at_utc": "2026-11-08T23:25:38.556413+00:00",
+  "s01_approved_baseline": {
+    "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
+    "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a",
+    "approval_record": "decisions/GATE-S01-approved-baseline.json"
+  }
 }

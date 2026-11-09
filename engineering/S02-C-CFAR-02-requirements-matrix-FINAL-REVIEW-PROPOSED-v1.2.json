@@ -1,0 +1,1238 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "stage": "S02",
+  "version": "v1.2-ready-for-final-engineer-approval-NOT_APPROVED",
+  "gate_s02": "historical_approved_S02_v10_preserved",
+  "created_at_utc": "2026-11-09T03:49:10.657859+00:00",
+  "status": "PROPOSED_NOT_NORMATIVE",
+  "rows": [
+    {
+      "id": "REQ-IO-01",
+      "classification": "binding",
+      "metric": "33x128 complex IQ, fs=1MS/s, 16-bit signed I/Q candidate",
+      "verification": "Reproducible source vector manifest; upload/download byte comparison",
+      "acceptance_rule": "Identical vector bytes and no undetected corruption",
+      "open_items": [
+        "byte_order",
+        "vector encoding",
+        "generator manifest"
+      ],
+      "owner_stage": "S02 specification/S03 generator/S11 test",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DAT-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-DAT-01",
+      "dependency_stage_owners": [
+        "S03",
+        "S05",
+        "S11"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "byte_order",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "vector encoding",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "generator manifest",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-LFM-01",
+      "classification": "binding",
+      "metric": "B=250kHz centered, 16us, 16 active samples, rectangular time window",
+      "verification": "Generate analytical discrete LFM and matched-filter reference coefficients",
+      "acceptance_rule": "Document precise chirp phase, index, time support and quantization; bit-true numerical equality later",
+      "open_items": [
+        "phase_formula",
+        "MF filter correlation convention"
+      ],
+      "owner_stage": "S02 freeze/S03 reference",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-SIG-01",
+      "dependency_stage_owners": [
+        "S03",
+        "S04"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "phase_formula",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "MF filter correlation convention",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S04",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-SNR-01",
+      "classification": "binding",
+      "metric": "P_echo mean on active samples; E|w|²=sigma²",
+      "verification": "Power measurement from generator and independent seeded Gaussian trials",
+      "acceptance_rule": "Exact theoretical sigma² convention and stage reference; empirical tolerance/test length specified",
+      "open_items": [
+        "noise_generator_statistical_test_rule"
+      ],
+      "owner_stage": "S02 freeze/S03 statistical reference",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DAT-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-DAT-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "noise_generator_statistical_test_rule",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-RNG-01",
+      "classification": "binding",
+      "metric": "Full 16-sample echo in 128 samples, n0=TX origin",
+      "verification": "Support index audit, tests at delays 0,112,113",
+      "acceptance_rule": "For integer delay k and 16-sample echo, full containment iff 0<=k<=112; not equivalent to CFAR valid domain",
+      "open_items": [],
+      "owner_stage": "S02 proof/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-SIG-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-MF-01",
+      "classification": "binding",
+      "metric": "Noise-free integer-aligned target peak after matched-filter delay compensation",
+      "verification": "Check matched filter versus reference at interior and edges",
+      "acceptance_rule": "Zero peak-index error in declared valid MF bin set",
+      "open_items": [
+        "exact matched-filter delay",
+        "valid MF output indices"
+      ],
+      "owner_stage": "S02 convention/S03 proof",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-SIG-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "exact matched-filter delay",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "valid MF output indices",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-RNG-02",
+      "classification": "design_target",
+      "metric": "20dB SNR range error <=1 sample=150m",
+      "verification": "Independent seeded single-target trials; error distribution",
+      "acceptance_rule": "Define pass fraction and confidence criterion before stochastic tests",
+      "open_items": [
+        "statistical pass fraction",
+        "trial count"
+      ],
+      "owner_stage": "S02 protocol/S03 feasibility",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "assignment_gate_not_estimator_acceptance": true,
+      "estimator_error_acceptance_ref": "REQ-MATCH-01.estimator_error_acceptance",
+      "contract_id_v10": "C-SIG-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "statistical pass fraction",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "trial count",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "DESIGN_TARGET_NOT_BINDING_YET",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-RNG-03",
+      "classification": "binding_test",
+      "metric": "Theoretical two-target range resolution ~600m separate from single target accuracy",
+      "verification": "Sweep paired targets around 600m separations; measure resolved clusters",
+      "acceptance_rule": "Freeze resolved-pair definition, equal received power, success criterion",
+      "open_items": [
+        "separability metric"
+      ],
+      "owner_stage": "S02 protocol/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-SIG-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "separability metric",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "CHARACTERIZATION_NO_NUMERIC_PASS",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-MTI-01",
+      "classification": "binding",
+      "metric": "Stationary clutter notch, moving-target response",
+      "verification": "Isolated fd=0 and nonzero sinusoid tests, compare frequency response",
+      "acceptance_rule": "Bit-true outputs exact; numeric dB suppression tolerance derived from architecture",
+      "open_items": [
+        "MTI implementation/fixed-point dB threshold"
+      ],
+      "owner_stage": "S03/S04/S05",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-DOP-01",
+      "dependency_stage_owners": [
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "MTI implementation/fixed-point dB threshold",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S04",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-DOP-01",
+      "classification": "binding",
+      "metric": "Rectangular 32-point FFT, positive velocity toward radar, bin spacing 0.46875m/s at fc=10GHz",
+      "verification": "On-bin and off-bin tests, leakage, signed index and velocity error",
+      "acceptance_rule": "For eligible isolated-dominant targets only, |estimated_velocity - nearest_true_bin_velocity| <=0.234375 m/s using agreed nominal c_ref; output tie and zero-power states always deterministic bit-exact with flags; ineligible separately logged.",
+      "open_items": [
+        "numerical sentinel encoding in S05",
+        "minimum eligibility fraction if later statistical certification requires it"
+      ],
+      "owner_stage": "S02 freeze/S03/S04",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "deterministic_peak_tie_policy": {
+        "applies_to": "all inputs incl exact ties and zero output regardless of half-bin eligibility",
+        "max_power": "select largest representable quantized power",
+        "tie": "select minimum signed FFT bin index; if necessary minimum unshifted bin",
+        "zero_power": "NO_VALID_PEAK status and deterministic sentinel defined in S05 output schema",
+        "nonzero_tie": "PEAK_TIE status",
+        "acceptance": "FPGA and bit-true output including status match exactly; 0 bit mismatches"
+      },
+      "half_bin_test_eligibility": {
+        "separate_from_output_rule": true,
+        "conditions": [
+          "isolated dominant target",
+          "unambiguous true velocity",
+          "not DC nulled",
+          "strictly positive max power",
+          "unique maximum with no exact tie",
+          "max power strictly greater than adjacent circular bins"
+        ],
+        "bound_m_per_s_nominal": 0.234375,
+        "on_ineligible": "record NOT_ELIGIBLE with reason; report attempted/eligible/ineligible counts, never silently discard or claim success on 0 eligible trials",
+        "separate_boundary_test": "must verify deterministic output/status for ties, DC-null and near-bin boundaries",
+        "minimum_eligibility_fraction": "not yet specified for stochastic runs; numerical pass/fail cannot claim full suite success solely from eligible subset"
+      },
+      "assignment_gate_not_estimator_acceptance": true,
+      "contract_id_v10": "C-DOP-01",
+      "dependency_stage_owners": [
+        "S03",
+        "S05"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "numerical sentinel encoding in S05",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "minimum eligibility fraction if later statistical certification requires it",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-CFAR-01",
+      "classification": "binding",
+      "metric": "2D CA-CFAR on valid range-Doppler CUTs; OS optional",
+      "verification": "Reference neighborhood averaging and threshold check per valid CUT",
+      "acceptance_rule": "7x7 CA-CFAR excluding central 3x3, 40 training cells, CUT k=3..109 and b=3..28, linear power threshold strict greater-than; bittrue match; alpha calibration on disjoint S03 data and quantization in S04.",
+      "open_items": [
+        "S03 disjoint alpha calibration result",
+        "S04 numeric alpha quantization"
+      ],
+      "owner_stage": "S02 freeze/S03 reference",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-CFAR-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-CFAR-01",
+      "dependency_stage_owners": [
+        "S03",
+        "S04"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "S03 disjoint alpha calibration result",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "S04 numeric alpha quantization",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S04",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-CFAR-02",
+      "classification": "binding_statistical_method_with_deferred_execution",
+      "metric": "Pfa target 1e-3 per valid CUT noise-only Gaussian",
+      "verification": "Many independently seeded CPI trials with correlation-aware 95% one-sided CI",
+      "acceptance_rule": "PROPOSED ONLY: after formal S02 v1.2 approval, independent reproducibility and iid-CPI preflight, AND separately granted final GO, exactly 20000 fresh independent noise-only CPI; PASS if valid EB U<=.0015, FAIL if valid U>.0015, INCONCLUSIVE/BLOCKED for missing CPI/nonfinite/integrity/independence failures, no top-up.",
+      "open_items": [
+        "Formal engineer approval of limited v1.2",
+        "Independent preflight/seed checks pending execution",
+        "Separate explicit engineer GO required before final Pfa"
+      ],
+      "owner_stage": "S02 statistical protocol/S03 and S11 measurements",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-CFAR-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_AWAITING_FINAL_ENGINEER_APPROVAL",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "active_statistical_method": {
+        "status": "PROPOSED_NOT_APPROVED",
+        "exclusive_method_if_approved": "one-sided Empirical Bernstein whole-CPI independent bounded mean",
+        "N": 20000,
+        "M_CUT": 2782,
+        "Xi": "F_i/2782 bounded [0,1]",
+        "variance": "sample ddof=1",
+        "formula": "U=min(1, mean(X)+sqrt(2*s2*ln(40)/20000)+7*ln(40)/(3*19999))",
+        "alpha_fixed": 7.476912055027923,
+        "Delta_star_historical_fixed_not_used": 0.28734133322686817,
+        "target_Pfa": 0.001,
+        "upper_limit": 0.0015,
+        "coverage_at_least": 0.95,
+        "CI_iid_CPI_requirement": "prove independent CPI generation and identically distributed unchanged full-chain pipeline; spatial intra-CPI dependence allowed",
+        "seed_reference": 411091701,
+        "seed_implementation": 411091702,
+        "seed_final_reserved_unused": 411091703,
+        "preflight_sample_counts": {
+          "reference": 4096,
+          "implementation": 4096,
+          "final_after_separate_engineer_authorization": 20000
+        },
+        "no_early_stopping": true,
+        "new_final_Pfa_execution_authorized": false
+      },
+      "contract_id_v10": "C-CFAR-02",
+      "dependency_stage_owners": [
+        "S03",
+        "S11"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "S03 coverage qualification NOT_RUN",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "S03 spatial analysis and disjoint alpha calibration NOT_RUN",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "S03 full Pfa trial NOT_RUN",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED",
+      "prior_statistical_method_v10_superseded": "Student-t on CPI rates; 7/15 formal qualification FAILED, archived, NOT active",
+      "historical_v11_method_preserved_non_normative_in_proposed_v12": {
+        "unique_normative_contract": "C-CFAR-02 v1.1",
+        "technique": "one-sided skewness-corrected Studentized upper bound plus independently calibrated global Delta_star",
+        "G_main_CPI": 4096,
+        "CUT_per_CPI": 2782,
+        "formula": "U=clip(mean(X)+(t_ppf(.95,4095)+Delta_star)*std_ddof1(X)/sqrt(4096)+gamma_hat*std_ddof1(X)*(2*z_ppf(.95)^2+1)/(6*4096),0,1)",
+        "gamma_hat": "m3/m2^(3/2); mj=sum((X-mean(X))^j)/4096",
+        "Delta_star": "max(0,max_i(order_stat_{r(m_i)}(adverse_score_i))-tcrit); adverse_score=(p_true-xbar)/(s/sqrt(G))-gamma*(2*z^2+1)/(6*sqrt(G)); rank=1+binom_ppf(1-0.05/15,m_i,0.95)",
+        "CI_calibration": {
+          "models": 15,
+          "outer_studies_each": 5000,
+          "CPI_each": 4096,
+          "minimum_valid_each": 4750,
+          "planned_CPI_count_draws": 307200000,
+          "seed_master": 311091601,
+          "not_yet_executed": true
+        },
+        "CI_qualification": {
+          "models": 15,
+          "outer_studies_each": 3000,
+          "CPI_each": 4096,
+          "planned_CPI_count_draws": 184320000,
+          "Wilson_lower_conditional_min": 0.93,
+          "Wilson_lower_valid_cover_unconditional_min": 0.9,
+          "Wilson_upper_inconclusive_max": 0.05,
+          "seed_master": 311091602,
+          "all_15_required": true
+        },
+        "unchanged_validity_checks": [
+          ">=100 CPI with alarms",
+          ">=100 total alarms",
+          "finite positive variance and skewness"
+        ],
+        "main_Pfa_target": 0.001,
+        "main_one_sided_upper_limit": 0.0015,
+        "statistical_nominal_coverage": 0.95,
+        "must_verify_real_chain_spatial_dependence": true,
+        "separate_disjoint_alpha_calibration": true,
+        "do_not_execute_main_Pfa_before_success": true,
+        "status": "ENGINEER_APPROVED_METHOD_NOT_YET_QUALIFIED",
+        "original_failed_evidence_sha256": "b4728d6d93a02e3324f0390dc639add2780dc46aaf9b2d5afba07738480c3ef9"
+      }
+    },
+    {
+      "id": "REQ-PD-01",
+      "classification": "design_target",
+      "metric": "Pd >=0.9 goal at input SNR=20dB isolated target, no clutter",
+      "verification": "Independent seeded target trials, unique truth matching",
+      "acceptance_rule": "Design target only until model reference feasibility and confidence/test definition; report 0/10dB without minima",
+      "open_items": [
+        "Pd CI lower bound",
+        "feasibility after reference"
+      ],
+      "owner_stage": "S03 analysis/S02 review if binding",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-CFAR-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-CFAR-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "Pd CI lower bound",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "feasibility after reference",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "DESIGN_TARGET_NOT_BINDING_YET",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-SCR-01",
+      "classification": "binding",
+      "metric": "SCR +10dB,-10dB and no clutter",
+      "verification": "Compare target and clutter power at designated input region",
+      "acceptance_rule": "Declared SCR relative to specified region, numerical generator tolerance fixed",
+      "open_items": [
+        "measurement region",
+        "SCR tolerance"
+      ],
+      "owner_stage": "S02 specification/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DAT-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-DAT-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "measurement region",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "SCR tolerance",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-DET-01",
+      "classification": "binding",
+      "metric": "Clustering and target list bit equality and radar target counts/errors",
+      "verification": "Independent bit-true outputs and truth comparison",
+      "acceptance_rule": "Zero deterministic bit mismatches, no many-to-one truth association",
+      "open_items": [
+        "mapping rule",
+        "numeric range/velocity/power error"
+      ],
+      "owner_stage": "S02 spec/S04 bittrue",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "assignment_gate_not_estimator_acceptance": true,
+      "estimator_error_acceptance_ref": "REQ-MATCH-01.estimator_error_acceptance",
+      "contract_id_v10": "C-DOP-01",
+      "dependency_stage_owners": [
+        "S03",
+        "S04"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "mapping rule",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "numeric range/velocity/power error",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S04",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-MATCH-01",
+      "classification": "binding",
+      "metric": "Global minimum cost one-to-one assignment based on normalized range/velocity errors",
+      "verification": "Compare with independently solved assignment on tie/false/missed scenarios",
+      "acceptance_rule": "Association gate 2 range samples and 1 velocity bin is for one-to-one attribution only; clean range tolerance zero and conditional velocity <=half-bin are independent performance criteria. A detected target may be matched but fail estimator tolerance.",
+      "open_items": [
+        "normalization scales",
+        "gating thresholds",
+        "tie-break policy"
+      ],
+      "owner_stage": "S02 freeze/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "assignment_gate_not_estimator_acceptance": true,
+      "truth_association_gate": {
+        "purpose": "candidate matching for scoring only, not hardware estimator performance PASS",
+        "range_gate_samples": 2,
+        "range_gate_m_nominal": 300.0,
+        "velocity_gate_bins": 1,
+        "velocity_gate_m_per_s_nominal": 0.46875,
+        "pair_cost": "(abs(delta_range)/range_gate)^2 + (abs(delta_velocity)/velocity_gate)^2",
+        "optimization_priority": [
+          "maximum number of feasible matches",
+          "minimum total normalized cost",
+          "lexicographically smallest ordered truth ID and detection ID pairs"
+        ],
+        "uniqueness": "one-to-one, no duplicate detection/truth"
+      },
+      "estimator_error_acceptance": {
+        "range_clean_sample_index_error": 0,
+        "range_noisy_20db_goal_sample_error": 1,
+        "range_noisy_20db_binding": false,
+        "velocity_conditional_half_bin_m_per_s": 0.234375,
+        "power_numeric_tolerance": "deferred S04: bit-true exact match binding",
+        "purpose": "evaluate parameter error independently of truth matching gate"
+      },
+      "contract_id_v10": "C-DOP-01",
+      "dependency_stage_owners": [
+        "S03"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "normalization scales",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "gating thresholds",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "tie-break policy",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S03",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-POWER-01",
+      "classification": "binding",
+      "metric": "Linear selected RD-map cell power with explicit scaling",
+      "verification": "Inject known reference RD map, compare selected cell values",
+      "acceptance_rule": "Exact bit-true output and documented sample extraction point",
+      "open_items": [
+        "numeric power scaling"
+      ],
+      "owner_stage": "S02 interface/S04",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-TRACE-01",
+      "dependency_stage_owners": [
+        "S04",
+        "S05"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "numeric power scaling",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S04",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-LIST-01",
+      "classification": "binding",
+      "metric": "Variable-length record count/IDs and explicit overflow",
+      "verification": "Exceed configured list capacity, check overflow and record output",
+      "acceptance_rule": "No silent discard, explicit overflow signal, deterministic record selection",
+      "open_items": [
+        "capacity",
+        "overflow selection"
+      ],
+      "owner_stage": "S02 behavior/S05 capacity",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-TRACE-01",
+      "dependency_stage_owners": [
+        "S05"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "capacity",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "overflow selection",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-OBS-01",
+      "classification": "binding",
+      "metric": "Complete intermediate outputs of all seven FPGA processing functions",
+      "verification": "Deterministic same-input repeated runs and staged UART capture",
+      "acceptance_rule": "Full stage output recoverable and bitwise equal across equivalent runs",
+      "open_items": [
+        "stage output schema"
+      ],
+      "owner_stage": "S02 interface/S05 design",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-UART-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-UART-01",
+      "dependency_stage_owners": [
+        "S05",
+        "S11"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "stage output schema",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-UART-01",
+      "classification": "binding",
+      "metric": "Length, sequence, CRC-32, bounded recovery",
+      "verification": "Fault injection corruption/truncation/duplication/reorder; full CPI and stage readback",
+      "acceptance_rule": "Tested faults detected, no silently accepted injected error, recover or explicit failure",
+      "open_items": [
+        "CRC variant",
+        "endianness",
+        "framing",
+        "retry limit"
+      ],
+      "owner_stage": "S02 protocol/S05/S11",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-UART-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-UART-01",
+      "dependency_stage_owners": [
+        "S05",
+        "S11"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "CRC variant",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "endianness",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "framing",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "retry limit",
+          "state": "RESOLVED_SPECIFICATION",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-RES-01",
+      "classification": "binding",
+      "metric": "XC6SLX9 full FPGA processing resource/timing acceptance",
+      "verification": "ISE utilization, memory access plan, P&R and STA reports",
+      "acceptance_rule": "No physical overuse in DSP/BRAM/LUT/FF and all timing constraints pass; per-resource margin after architecture",
+      "open_items": [
+        "budget margin",
+        "BRAM bank ports",
+        "SDRAM decision"
+      ],
+      "owner_stage": "S05 budget/S08 synthesis/S09 STA",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "s02_acceptance_method_v08": {
+        "hard_device_limits": "DSP<=16, BRAM allocated <=576 Kbit, actual FPGA logic/slice/LUT/FF/package limits per XC6SLX9-2FTG256C device and ISE report, no resource category exceeds capacity",
+        "pre_architecture": "S05 determine allocations, memory lifetime/port/banking plan and optional SDRAM tradeoff; no fixed uniform 90 percent headroom",
+        "timing": "S05 declare clock topology and constraints, 50MHz oscillator (nominal period 20ns) and derived clocks; S09 P&R + STA nonnegative worst negative slack, no unconstrained functional clocks or critical paths",
+        "processing": "batch CPI cycle counter with overflow detection, actual clock and ms, separate UART transfer; no real time deadline",
+        "verification": "S05 resource budget review; S08 ISE synthesis/MAP; S09 place-and-route/STA; S11 board cycle and transfer time measurements",
+        "gate_S02_interpretation": "Specification acceptance only; do not require real utilization and STA measured before S02 Gate",
+        "status": "METHOD_APPROVED_FROM_PRIOR_POLICY_AND_REVIEWED_IN_S02"
+      },
+      "contract_id_v10": "C-TRACE-01",
+      "dependency_stage_owners": [
+        "S05",
+        "S08",
+        "S09"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "budget margin",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "BRAM bank ports",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        },
+        {
+          "original_item": "SDRAM decision",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-TIME-01",
+      "classification": "binding",
+      "metric": "Batch processing FPGA cycles and milliseconds separate from UART time",
+      "verification": "Measure board cycle counter, actual clock, serial elapsed time",
+      "acceptance_rule": "No silent cycle counter rollover; separately reported FPGA processing and host transport; no real-time deadline",
+      "open_items": [
+        "counter architecture"
+      ],
+      "owner_stage": "S05/S11",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-TRACE-01",
+      "dependency_stage_owners": [
+        "S05",
+        "S11"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "counter architecture",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S05",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "REQ-EVID-01",
+      "classification": "binding",
+      "metric": "Seven mandatory FPGA functions and full chain real board validation",
+      "verification": "Per-function output hashes, hardware log, image build hash, Python comparator",
+      "acceptance_rule": "Stage & integrated evidence from physical AX309; Python reference not substitute for RTL",
+      "open_items": [
+        "artifact schema"
+      ],
+      "owner_stage": "S06-S12",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "contract_id_v10": "C-TRACE-01",
+      "dependency_stage_owners": [
+        "S06",
+        "S11",
+        "S12"
+      ],
+      "open_item_disposition": [
+        {
+          "original_item": "artifact schema",
+          "state": "DEFERRED_WITH_OWNER",
+          "owner_stage": "S06",
+          "resolution_or_test": "See normative contract and this requirement; if still dependent, owner records calculation and evidence before their stage test"
+        }
+      ],
+      "test_classification": "BINDING_OR_SPECIFIED_CONDITIONAL_TEST",
+      "evidence_obligation": [
+        "test vector/seed/hash",
+        "independent reference hash",
+        "measurement and PASS/FAIL/INCONCLUSIVE",
+        "owner report and version",
+        "board/test artifact when applicable"
+      ],
+      "result_status": "NOT_EXECUTED"
+    }
+  ],
+  "updated_at_utc": "2026-11-09T05:43:41.493868+00:00",
+  "contract_document": "engineering/S02-C-CFAR-02-CPI-bounded-CONTRACT-FINAL-REVIEW-v1.2.md",
+  "active_statistical_method": "skew-Studentized with independent calibrated Delta_star as C-CFAR-02 v1.1",
+  "audit_rows_pass": 22,
+  "amendment_base_commit": "46ccfb5de1b3b588d169a08540fed416b39d6bc1",
+  "source_approved_v10_commit": "58b545fd7afb552825efb15b3f871317beff29d9"
+}

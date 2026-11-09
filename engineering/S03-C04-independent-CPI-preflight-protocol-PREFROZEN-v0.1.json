@@ -1,0 +1,43 @@
+{
+  "status": "PRE-FROZEN_BEFORE_NEW_REFERENCE_OR_IMPLEMENTATION_CPI",
+  "classification": "S03_PREFLIGHT_UNDER_SELECTED_ROUTE_NOT_FINAL_PFA",
+  "S02_v12": "PROPOSED_NOT_APPROVED",
+  "method": "one-sided empirical Bernstein whole independent CPI counts",
+  "n_reference": 4096,
+  "n_implementation": 4096,
+  "n_final_reserved_not_generated": 20000,
+  "seed_masters": {
+    "reference": 411091701,
+    "implementation": 411091702,
+    "final_reserved": 411091703,
+    "Pd_reserved": 411091704
+  },
+  "seed_derivation": "np.random.Generator(np.random.PCG64(np.random.SeedSequence([master,i,191]))) per CPI, i 0..4095",
+  "source_unit": "circular complex Gaussian 33x128 sigma2=1, independent real+imag standard_normal, divided by sqrt(2), float64",
+  "pipeline": "matched_filter -> MTI first-diff -> 32FFT -> linear squared abs -> strict CA-CFAR",
+  "alpha_frozen": 7.476912055027923,
+  "delta_star_historical_frozen": 0.28734133322686817,
+  "M": 2782,
+  "Pfa_target": 0.001,
+  "U_limit": 0.0015,
+  "final_N": 20000,
+  "preflight_checks_mandatory": [
+    "all generated CPI 33x128 finite and separate per-CPI PCG64 SeedSequence child sources; no common state except frozen code/config",
+    "seeds and first/last CPI independently reproduce bit-identically without shared global RNG or pulse overlap",
+    "different corpus source IQ bit hashes; zero overlap of selected input signatures and seed namespace",
+    "reference CA-CFAR count via model.cfar_2d == independent explicit 40-training-offset CA-CFAR count on each of 8192 identical source CPI",
+    "all CPI alarm counts integers between 0 and 2782; alpha fixed and geometry 7x7 minus 3x3, CUT valid mask 3:110,3:29",
+    "sample mean, unbiased sample variance and EB bound via two independent implementations (NumPy vs scalar Welford) agree on both corpora",
+    "separate datasets never used as final acceptance and final seed 411091703 not consumed",
+    "source hashes of model / preflight implementation / frozen protocol fixed before any dataset generation"
+  ],
+  "supplemental_non_decisive": [
+    "lag-1 and lag-1..20 count autocorrelation, Ljung-Box p, zero and upper-tail count frequencies; finite sample tests do not establish statistical independence",
+    "count rates and candidate upper bounds on these preflight corpora are diagnostic only, never final Pfa PASS"
+  ],
+  "failure_rule": "FAIL any mandatory integrity test => stop; record and retain failure, no tuning, main Pfa remains blocked",
+  "success_rule": "all mandatory integrity checks PASS => PRE-FLIGHT PASS, still NO-GO for main final Pfa until formal S02 v1.2 and separate engineer GO",
+  "no_optional_stopping": true,
+  "no_alpha_or_delta_retuning": true,
+  "no_final_Pfa_or_Pd": true
+}

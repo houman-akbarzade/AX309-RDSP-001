@@ -1,0 +1,34 @@
+{
+  "stage": "S02",
+  "gate": "open",
+  "as_of_utc": "2026-11-09T03:59:46.148962+00:00",
+  "matrix_version": "v0.6-working",
+  "requirements": 22,
+  "contract_count": 6,
+  "independent_engineer_questions": 0,
+  "technical_criteria_drafted_for_review": 7,
+  "criteria_formally_approved": 0,
+  "criteria_total": 8,
+  "stage_percent": 0,
+  "project_percent": 8.333333333333334,
+  "pre_gate_blockers": [
+    "Engineer review and explicit approval of six technical contracts and statistical qualification proviso",
+    "Engineer explicit Gate-S02 approval after baseline hash is recorded"
+  ],
+  "deferred_s03": [
+    "Actual range valid-peak behavior and CFAR rate, statistical CI coverage qualification, Pd feasibility, two-target separability, leakage",
+    "Noise/SCR empirical generator tests"
+  ],
+  "deferred_s04": [
+    "Bit-true arithmetic and floating numerical discrepancy budgets"
+  ],
+  "deferred_s05": [
+    "Resource and memory allocations, SDRAM choice, exact RTL partition, list capacity, UART implementation budget"
+  ],
+  "later": [
+    "S08 synthesis utilization",
+    "S09 P&R STA",
+    "S11 board runs"
+  ],
+  "method_warning": "CPI bootstrap rare-event upper bound may under-cover; mandatory independent coverage qualification, no post hoc respecification"
+}

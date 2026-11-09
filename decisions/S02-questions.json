@@ -175,5 +175,135 @@
     ],
     "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
     "historical_question_time_utc": null
+  },
+  {
+    "question_id": "S02-Q15",
+    "stage": "S02",
+    "topic": "LFM",
+    "state": "answered",
+    "answer": "Complex baseband centered LFM frequency sweep nominal -125 to +125 kHz over 16us, rectangular 16-sample time window at 1MS/s. Phase, sample convention and MF taps specified in reference.",
+    "decision_ref": "S02-D15",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q16",
+    "stage": "S02",
+    "topic": "SNR",
+    "state": "answered",
+    "answer": "Isolated target received power averaged on its own active echo samples. Circular complex noise E|w|²=sigma², independent real/imag variances sigma²/2. SNR before DSP.",
+    "decision_ref": "S02-D16",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q17",
+    "stage": "S02",
+    "topic": "CFAR algorithm",
+    "state": "answered",
+    "answer": "2D CA-CFAR required in phase one. OS-CFAR optional only.",
+    "decision_ref": "S02-D17",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q18",
+    "stage": "S02",
+    "topic": "Doppler window",
+    "state": "answered",
+    "answer": "Rectangular Doppler FFT window required baseline, measure MTI effect, off-bin leakage; Hann optional and not mandatory on FPGA.",
+    "decision_ref": "S02-D18",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q19",
+    "stage": "S02",
+    "topic": "Pfa CI",
+    "state": "answered",
+    "answer": "Noise-only baseline Pfa design target 1e-3 per valid CUT, one-sided 95% upper CI <=1.5e-3, using declared correlation-aware method and independently seeded CPI experiments.",
+    "decision_ref": "S02-D19",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q20",
+    "stage": "S02",
+    "topic": "SCR",
+    "state": "answered",
+    "answer": "No-clutter plus SCR=+10dB and -10dB at receiver input based on target echo power divided by clutter power over specified region.",
+    "decision_ref": "S02-D20",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q21",
+    "stage": "S02",
+    "topic": "Full echo",
+    "state": "answered",
+    "answer": "Initial 128-sample receive window includes all 16 samples of echo. Valid matched-filter output and CFAR CUT subsets defined separately.",
+    "decision_ref": "S02-D21",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q22",
+    "stage": "S02",
+    "topic": "Overflow",
+    "state": "answered",
+    "answer": "Variable-length target list has count and record IDs; detect and explicitly report overflow; never silently drop records. Buffer capacity and overflow selection algorithm deferred to architecture.",
+    "decision_ref": "S02-D22",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q23",
+    "stage": "S02",
+    "topic": "Intermediate readback",
+    "state": "answered",
+    "answer": "Full output of each FPGA processing function available for independent reference comparison, possibly via deterministic rerun and staged UART dump; simultaneous retention not mandatory.",
+    "decision_ref": "S02-D23",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
+  },
+  {
+    "question_id": "S02-Q24",
+    "stage": "S02",
+    "topic": "Power",
+    "state": "answered",
+    "answer": "Reported target power is linear selected range-Doppler cell power with explicit scale, numeric format and extraction point. Input echo power calibration/de-embedding not mandatory.",
+    "decision_ref": "S02-D24",
+    "evidence_refs": [
+      "engineer_message_15"
+    ],
+    "historical_question_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00"
   }
 ]

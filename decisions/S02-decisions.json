@@ -180,5 +180,135 @@
     ],
     "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
     "historical_decision_time_utc": null
+  },
+  {
+    "decision_id": "S02-D15",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Complex baseband centered LFM frequency sweep nominal -125 to +125 kHz over 16us, rectangular 16-sample time window at 1MS/s. Phase, sample convention and MF taps specified in reference.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D16",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Isolated target received power averaged on its own active echo samples. Circular complex noise E|w|²=sigma², independent real/imag variances sigma²/2. SNR before DSP.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D17",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "2D CA-CFAR required in phase one. OS-CFAR optional only.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D18",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Rectangular Doppler FFT window required baseline, measure MTI effect, off-bin leakage; Hann optional and not mandatory on FPGA.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D19",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding_statistical",
+    "summary": "Noise-only baseline Pfa design target 1e-3 per valid CUT, one-sided 95% upper CI <=1.5e-3, using declared correlation-aware method and independently seeded CPI experiments.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D20",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "No-clutter plus SCR=+10dB and -10dB at receiver input based on target echo power divided by clutter power over specified region.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D21",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Initial 128-sample receive window includes all 16 samples of echo. Valid matched-filter output and CFAR CUT subsets defined separately.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D22",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Variable-length target list has count and record IDs; detect and explicitly report overflow; never silently drop records. Buffer capacity and overflow selection algorithm deferred to architecture.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D23",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Full output of each FPGA processing function available for independent reference comparison, possibly via deterministic rerun and staged UART dump; simultaneous retention not mandatory.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
+  },
+  {
+    "decision_id": "S02-D24",
+    "stage": "S02",
+    "status": "approved_as_stated",
+    "classification": "binding",
+    "summary": "Reported target power is linear selected range-Doppler cell power with explicit scale, numeric format and extraction point. Input echo power calibration/de-embedding not mandatory.",
+    "approved_by": "engineer in visible message",
+    "historical_decision_time_utc": null,
+    "recorded_at_utc": "2026-11-09T03:49:10.657859+00:00",
+    "evidence_refs": [
+      "engineer_message_15"
+    ]
   }
 ]

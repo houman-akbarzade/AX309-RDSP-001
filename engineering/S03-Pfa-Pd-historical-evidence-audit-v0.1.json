@@ -1,0 +1,904 @@
+{
+  "S03": {
+    "gate": "OPEN",
+    "main_Pd": "NOT_RUN",
+    "main_Pfa": "BLOCKED",
+    "new_final_tests_executed": false,
+    "project_percent": 22.916666666666668,
+    "spatial_method_validity": "FAIL_UNRESOLVED",
+    "stage_percent": 75
+  },
+  "audit_id": "AX309-S03-PFA-PD-HISTORICAL-AUDIT-v0.1",
+  "binding_values": {
+    "Pd_binding_acceptance_threshold_formalized": false,
+    "Pd_design_goal_at_SNR20_isolated_no_clutter": 0.9,
+    "Pfa_cut_per_CPI": 2782,
+    "Pfa_design_target": 0.001,
+    "Pfa_final_independent_CPI": 4096,
+    "Pfa_valid_one_sided_upper_acceptance_max": 0.0015
+  },
+  "code_file_inventory": [
+    {
+      "path": "s03_reference/__init__.py",
+      "sha256": "b440f993707e67926e1a09b9282b0e0f90bf6e5d8397ce821c7299b2f84194ea",
+      "size_bytes": 82
+    },
+    {
+      "path": "s03_reference/ablation_extra_clusters.py",
+      "sha256": "0944949771878d8d3acc73e860a076f896e109b640b0f6f77ec13c011b4817b8",
+      "size_bytes": 3056
+    },
+    {
+      "path": "s03_reference/alternative_ci_pilot.py",
+      "sha256": "96588083ef353d35635680c2beac3d2178989c7a91b165dce1ddb9916d0961f8",
+      "size_bytes": 5120
+    },
+    {
+      "path": "s03_reference/bootstrap_t_independent_development.py",
+      "sha256": "290639d4198fe07b99c22fec80e70a7e4b039f0c01c822b7d63746f8fea9a5e2",
+      "size_bytes": 2670
+    },
+    {
+      "path": "s03_reference/c04_alpha_frozen.py",
+      "sha256": "a57c69ee2de4cd10783995af9146fd21de881e7ce0f72f97dca5849054cd9372",
+      "size_bytes": 12552
+    },
+    {
+      "path": "s03_reference/c04_v11_execution.py",
+      "sha256": "68d5a6ea8a8143ea1a002abc8625c688c96a3289ae4a6d01f9ab0f06a6805b00",
+      "size_bytes": 13328
+    },
+    {
+      "path": "s03_reference/c04_v11_spatial_and_cluster_diagnostic.py",
+      "sha256": "f9626858af3d8c73c100edefa6a0a877f53bae19c395c6871a67b61106a5eda5",
+      "size_bytes": 6075
+    },
+    {
+      "path": "s03_reference/calibrated_critical_candidate.py",
+      "sha256": "e79289c3fc1868b1ef47b7a9d5760afd5b9ff74df1c781aeb744966aa6fdcd68",
+      "size_bytes": 3988
+    },
+    {
+      "path": "s03_reference/cfar_qualification.py",
+      "sha256": "c761a7a98500d3cd9244c39a68df5575aaae89b70b9e21dd8b9b36d89d47e1e4",
+      "size_bytes": 4497
+    },
+    {
+      "path": "s03_reference/empirical_likelihood_development.py",
+      "sha256": "aecf35ef5d95207cd2ec083961470ad671fd72a00f8d99280fd371fececbbbfb",
+      "size_bytes": 3807
+    },
+    {
+      "path": "s03_reference/extended_scenarios.py",
+      "sha256": "7861702e93798a22675ab92c8a0e6b768b803a138051e1a15dee2c5a8e7b5ef4",
+      "size_bytes": 4234
+    },
+    {
+      "path": "s03_reference/independent_ci_development.py",
+      "sha256": "4c6f8ef04863b38021a5e0eed1b9ac29a1bd6bb5adaad3866ccb457c8d324ccf",
+      "size_bytes": 3868
+    },
+    {
+      "path": "s03_reference/larger_cpi_development.py",
+      "sha256": "e30015f6bff9c15c38a0f6bf774672a927fb54294bfd1e8076c220e5291a0bca",
+      "size_bytes": 2361
+    },
+    {
+      "path": "s03_reference/model.py",
+      "sha256": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+      "size_bytes": 8590
+    },
+    {
+      "path": "s03_reference/run_scenarios.py",
+      "sha256": "eff13fd06934e44a373a93b1958433a2cc72556dfeb5699fd2fa14f7b7e331c3",
+      "size_bytes": 2762
+    },
+    {
+      "path": "s03_reference/second_order_edgeworth_development.py",
+      "sha256": "9ba36372a30385b1e3df7b4b38b74c134c50745d3ede647839bc21e6afb8129b",
+      "size_bytes": 3853
+    },
+    {
+      "path": "s03_reference/skew_ci_candidate.py",
+      "sha256": "5368ebf379e4a64a4f6369e2e608b6a691eaa5fb42d3fb0866eaa4922263383c",
+      "size_bytes": 1956
+    },
+    {
+      "path": "s03_reference/skew_formula_audit.py",
+      "sha256": "d15db4e3613851ee270f9be941d098b68a1973fc13eb6b0878379c154e20f18a",
+      "size_bytes": 3010
+    },
+    {
+      "path": "s03_reference/spatial_diagnostic.py",
+      "sha256": "f98214e628198c8f35c528dc44f4e4043a9002b059e8808b664a67b39c2fbdd0",
+      "size_bytes": 2156
+    },
+    {
+      "path": "s03_reference/spatial_diagnostic_extended.py",
+      "sha256": "1d93acfb11c75e3cb75761118a1d6f9f2be498db9fcad162a0c9a7078356d252",
+      "size_bytes": 3690
+    },
+    {
+      "path": "tests/test_s03_alpha_predeclared.py",
+      "sha256": "8455ac0c8f02ef317f2efd5b1298d9e639842b4e1c59433813a1f4c58389b408",
+      "size_bytes": 1907
+    },
+    {
+      "path": "tests/test_s03_calibrated_candidate.py",
+      "sha256": "e692215c0ba7fa5d146e1b7e4758d4efa4d1595efec9437379f09432ca495e3e",
+      "size_bytes": 1551
+    },
+    {
+      "path": "tests/test_s03_ci_development.py",
+      "sha256": "3f5565b791004b09812d1d7242cc063f9782002dea8d214dfb1754acaec4000e",
+      "size_bytes": 2148
+    },
+    {
+      "path": "tests/test_s03_extended.py",
+      "sha256": "0a4a74b1bcb5bfb94bfa831a61acd537488149cfd13f6184542abd4f39cecbd9",
+      "size_bytes": 2111
+    },
+    {
+      "path": "tests/test_s03_model.py",
+      "sha256": "36bdb0ba7e714f6ba38d91d9c885e1c8e57a0572b0681665a4c1337baf4c987c",
+      "size_bytes": 5960
+    },
+    {
+      "path": "tests/test_s03_qualification_and_clutter.py",
+      "sha256": "4553e5c0cbd68b22ae257bf73a94d6d5ee1b6ae7a055df178081523cb34b2992",
+      "size_bytes": 1667
+    }
+  ],
+  "created_at_utc": "2026-11-09T06:17:37.783774+00:00",
+  "engineering_evidence_inventory": [
+    {
+      "category": "other engineering",
+      "path": "engineering/README.md",
+      "sha256": "de3b72f281fe92a9ace8a8e9fd9cb44c6280adb0a0786d0dc7f94b00a4383202",
+      "size_bytes": 128
+    },
+    {
+      "category": "other engineering",
+      "path": "engineering/S01-problem-definition-DRAFT-v0.1.md",
+      "sha256": "ac9f8e296040b2761299def0ddd6ea27583291727052b966f43b4e83e1f38568",
+      "size_bytes": 5954
+    },
+    {
+      "category": "other engineering",
+      "path": "engineering/S01-problem-definition-DRAFT-v0.2.md",
+      "sha256": "e74c98cbdfd9ad80d1c8e1712b11fff35f137578906170376c8513d0a6fb4e1c",
+      "size_bytes": 8174
+    },
+    {
+      "category": "other engineering",
+      "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
+      "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a",
+      "size_bytes": 10341
+    },
+    {
+      "category": "other engineering",
+      "path": "engineering/S01-progress.json",
+      "sha256": "c013b5978f67f7b9793fc600f2a06a82c784a24904a962a25cd2d95b22efa649",
+      "size_bytes": 838
+    },
+    {
+      "category": "other engineering",
+      "path": "engineering/S01-v0.2-to-v0.3-change-log.md",
+      "sha256": "0b89b8f6cf90ba4697acfd605e14a5c616ae4c0b1da1e93d25012d0b0fa23bad",
+      "size_bytes": 1053
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-22-requirement-audit-FINAL-v1.0.json",
+      "sha256": "b86826a42e6dc685b315aff1450740bfb4f8974c1a9c3d881c8534a356b0b70c",
+      "size_bytes": 6611
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-Gate-readiness-FINAL-PROPOSED-v0.8.md",
+      "sha256": "dee13913a7f4b3be9614627aef8b82714e9681feece9536a0083530115d49c72",
+      "size_bytes": 4299
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-Gate-readiness-FINAL-PROPOSED-v0.9.md",
+      "sha256": "f9dc9d576f844c779a467c7ea8c59ce510b82e8f0df8e2e07290a60185e156e4",
+      "size_bytes": 3313
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md",
+      "sha256": "e85cce3c8a988b79ac633ff9cbe775d9382d415dc6962c866b9c866d56f603f6",
+      "size_bytes": 1384
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-engineering-contracts-APPROVED-AMENDMENT-v1.1.md",
+      "sha256": "76e35f0b120cd550dded79a3ba8fa80a0b1263590bdbef30986570bec12dbd44",
+      "size_bytes": 21033
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-engineering-contracts-FINAL-PROPOSED-v0.7.md",
+      "sha256": "dc75561a476e44a8716810e179dff9faf291c88f83554bf1793cdfc25eabafde",
+      "size_bytes": 16083
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-engineering-contracts-FINAL-PROPOSED-v0.8.md",
+      "sha256": "c5f4f1b3f7444409c35df894098843283ceef04e12a46ccba1799859744293c3",
+      "size_bytes": 21405
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-engineering-contracts-FINAL-PROPOSED-v0.9.md",
+      "sha256": "c3902cf724c82f787348df9ccb6adab909bbf4ccd02d894566b53a2d0d6ba5d4",
+      "size_bytes": 24247
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-engineering-contracts-FINAL-PROPOSED-v1.0.md",
+      "sha256": "8faccf7f89d03a9885fbde43dd7e42577ca4092f4202c2107f927e8da81be13e",
+      "size_bytes": 21021
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-engineering-contracts-WORKING-v0.6.md",
+      "sha256": "5a8ced625b9f1f46966db18a9a47cc0e612b0825d12c43263bdd2088d9caa9aa",
+      "size_bytes": 11926
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-final-proposed-Gate-readiness-v0.7.md",
+      "sha256": "7b57291eef8616442d68f3cc3dddbdae6f60ffeadaccf5b885cdcabd79201fd2",
+      "size_bytes": 3626
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-gate-readiness-WORKING-v0.1.json",
+      "sha256": "c134088e6ca0837f19af1eefd7c12283dedfa69fb6f82ee6557cb1b3dbe34f6e",
+      "size_bytes": 1276
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-gate-readiness-WORKING-v0.2.json",
+      "sha256": "ee91f49f67f7009db8f150a0e6b5499a020b5984fd661b969e0d8bd4469b5d63",
+      "size_bytes": 1277
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-gate-readiness-WORKING-v0.3.json",
+      "sha256": "88dd1d5b3f13fbeed14152d192b103fa568aa5b51016bbed88b4d1eec8f0de9b",
+      "size_bytes": 2721
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-gate-readiness-WORKING-v0.4.json",
+      "sha256": "cc35eb416fce07b93e488febf998e479f069f6b34c5bb3939788fa3003ffaf87",
+      "size_bytes": 3092
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-gate-readiness-WORKING-v0.5.json",
+      "sha256": "903817d579808d49f076437380ed80349b3fcd37e5d8e24a6c029712037435c9",
+      "size_bytes": 6155
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-gate-readiness-WORKING-v0.6.json",
+      "sha256": "0a3ddbcfc1e6a89cdfc555132919eab3a9b708a11e8f62d98b97e4852df25789",
+      "size_bytes": 6119
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-integrated-requirements-WORKING-v0.5.md",
+      "sha256": "49ba8f0985d64dc0647c53cbe64169185ffe9e8f6524aae658257c48c023a612",
+      "size_bytes": 6067
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-integrated-requirements-WORKING-v0.6.md",
+      "sha256": "8b1858136842d4a359b9559ece224429ac4caa4534cdca74ab184faf3865af2c",
+      "size_bytes": 2312
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-progress.json",
+      "sha256": "55796c14f3edd64371f942f0e6120753b75b1cd48eb39c2d947d4d401e75fba3",
+      "size_bytes": 1812
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-WORKING-v0.1.md",
+      "sha256": "05cce346dede44f2f8b9c2722b85c2253a5c9947e14dba3181ba44fdad45b918",
+      "size_bytes": 4101
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-WORKING-v0.2.md",
+      "sha256": "ce697bc706a18ecfdb65ec07da1bb6624e69b53126b27fc23e9bc062ca3da4fb",
+      "size_bytes": 2866
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-WORKING-v0.3.md",
+      "sha256": "e9929dc7747d826d44ced1acc0e7e09f612d22e477fe838580ab04684839f746",
+      "size_bytes": 5738
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-WORKING-v0.4.md",
+      "sha256": "d68c3dc16b244774cd2e70668f4af373713704cde9790ca8ccd12dd5548d7770",
+      "size_bytes": 4673
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-APPROVED-AMENDMENT-v1.1.json",
+      "sha256": "d40fd79fa9bb6ff196b587304448adf5e7bc1239a102453a5febc16500a0e7c3",
+      "size_bytes": 51707
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-FINAL-PROPOSED-v0.7.json",
+      "sha256": "36131812f1e65de348130f5291de6cb46b38a7a453311968fd1a3592d8c6687c",
+      "size_bytes": 25409
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-FINAL-PROPOSED-v0.8.json",
+      "sha256": "020310f7dbe1df2ec9537127469994a6df1b8a70969f1b82d8573824a6bdd981",
+      "size_bytes": 30276
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-FINAL-PROPOSED-v0.9.json",
+      "sha256": "4d89cab0f8861e9bafdc7635d9447500a6f9b2b08bcf00267d5a8014c241b25a",
+      "size_bytes": 38325
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json",
+      "sha256": "06141a707a24ffcf08aa21dfa3a6e3f48d699b5234bb025b217f10abcd921da9",
+      "size_bytes": 50949
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-WORKING-v0.5.json",
+      "sha256": "dc92417cb1e1e751712784879dbccafbccb55ba61c94babd593b4ebc3a6e893c",
+      "size_bytes": 12034
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-requirements-matrix-WORKING-v0.6.json",
+      "sha256": "22c9df2079488318e786be4ba21da4a6baf61605928d73043d7c698fad8b3097",
+      "size_bytes": 20505
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-v0.6-to-v0.7-change-log.md",
+      "sha256": "a10bf0eb7308c6df93d552e362b28cdd7126a5cdb0edec3af9c85215da4f71fa",
+      "size_bytes": 1627
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-v0.7-to-v0.8-change-log.md",
+      "sha256": "c03b1d7c7d0c248971c917993fe96f0874636c0e6601d854b347592fae21b750",
+      "size_bytes": 2208
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-v0.8-to-v0.9-change-log.md",
+      "sha256": "7ea621f2ef389298a9fbbe74df2aff5f46b50899c798f65222954928e932163b",
+      "size_bytes": 1473
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-v0.9-to-v1.0-change-log.md",
+      "sha256": "daa6e7177c79655fcdf0bb15315b9941c60181ac5a18d45d1153652a4ddf8e79",
+      "size_bytes": 937
+    },
+    {
+      "category": "S02 version/working/audit",
+      "path": "engineering/S02-v1.1-C04-calibrated-Studentized-PROPOSED-ONLY.md",
+      "sha256": "708551e8c37e87d43af75a56f5fb2515292fe46d02eada4a6094a92b3aafc854",
+      "size_bytes": 8793
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-alpha-and-real-chain-predeclared-protocol-v0.1.json",
+      "sha256": "e29ff54a0b324e035e61556b75e913cb4838fd7ded64e4e4c8861728aa88d5d7",
+      "size_bytes": 4534
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-alpha-spatial-44-tests-v0.1.log",
+      "sha256": "8648524d445df68824a0e2bc86597b87b2662ee2ed5d43d29736e77fcede5a2d",
+      "size_bytes": 5352
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-alpha-spatial-failure-manifest-v0.1.json",
+      "sha256": "4e704a1d074263fa6b5cd388d3f82a902809a6c0fb752418739cbbe5be8a1a15",
+      "size_bytes": 2293
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-alpha-spatial-failure-report-v0.1.md",
+      "sha256": "2ec6ead7526226034cc1eeef07cb8b8aababd006f305eae81f48ed1b0d628a00",
+      "size_bytes": 4361
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-engineering-decision-package-v0.1.md",
+      "sha256": "02b5c17417a8fc347d23611201c4e75125318a3aaecbfb6665c52c57a5615a57",
+      "size_bytes": 6854
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-final-decision-cycle3-v0.3.json",
+      "sha256": "fb5edcf5ba8086a814816f94aeede39ebc6e7aceef9d92235501714a67b41ecd",
+      "size_bytes": 1780
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-final-engineering-decision-cycle3-v0.3.md",
+      "sha256": "bf791fff91ab7d3005d83ef7ba357053c20911b6a8924f676b67ca5d706b256c",
+      "size_bytes": 11817
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-independent-alpha-calibration-v0.1.json",
+      "sha256": "1a4540f97b38da8739ccf63f3eb68555a6671c50d9c8bc9f25829a03a0cee2fe",
+      "size_bytes": 1113
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-method-comparison-v0.1.json",
+      "sha256": "8f511dea931a4ffa3614feab3badcc5bd74d39efff1a9ba4d03c69371638dc58",
+      "size_bytes": 2297
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-post-alpha-cluster-numeric-diagnostic-v0.1.json",
+      "sha256": "d46469abfb1e59561ba45d1a7e9d7939eea4414247841ef29dad927937b62403",
+      "size_bytes": 7584
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-post-alpha-spatial-diagnostic-v0.1.json",
+      "sha256": "3370d100ff697fd3a5f6848e56450a53d22b8ee95ce4e31d3eb056982650d37a",
+      "size_bytes": 31540
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-C04-spatial-seed-overlap-audit-ADDENDUM-v0.1.md",
+      "sha256": "e306e202843f94e7037c2a6f916da3474525c4e20fb9606ebeafef5d513e5dc2",
+      "size_bytes": 2039
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-cycle2-evidence-manifest-v0.2.json",
+      "sha256": "a7b0accbb45c40b062fbd459bce28e77890444a2403ab36dfd5fd9a7bffa15f7",
+      "size_bytes": 2579
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-cycle2-evidence-report-v0.2.md",
+      "sha256": "435cfa3d6d5375839406c9decf414bb239c57a5f7c3c383cd44f937a1ea371dd",
+      "size_bytes": 1719
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-cycle3-evidence-manifest-v0.3.json",
+      "sha256": "0962165158855f9a4122680795c52becfd88fb590410082db24dfb8a4c629502",
+      "size_bytes": 5746
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-cycle3-evidence-report-v0.3.md",
+      "sha256": "1c017879686190b6f25c7215a85bcdb68f2af15b80eaeb713d93d5837ca6d149",
+      "size_bytes": 3434
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-execution-manifest-v0.1.json",
+      "sha256": "630734f64602357dc4af9ee97d1dcedf340ec12eed62561a8178675b39792f55",
+      "size_bytes": 2870
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-initial-execution-report-v0.1.md",
+      "sha256": "14afc789fcbc692c85e6f11dedd591c75510030f4ceb2a1fe24fed30451e01b5",
+      "size_bytes": 4063
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-progress.json",
+      "sha256": "5e2eabb499c6592cb0ad550e66c63eb3a2cdd227367786c9ae25e444447a5eb3",
+      "size_bytes": 2128
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-unit-tests-v0.1.log",
+      "sha256": "dd0160a2a2abcc658665e22328224e63f18cb3bfbb78cba8c2d8d7a8861c05c1",
+      "size_bytes": 2306
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-unit-tests-v0.2.log",
+      "sha256": "a5cd509611896fee0a8f160b91d7507ccb7fa1f23c59b0a46f84b147993ec4b1",
+      "size_bytes": 2944
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-unit-tests-v0.3.log",
+      "sha256": "8c17b69f11d76b385030769a8db844cb2adde45b9fac900355e1653eb11ca25f",
+      "size_bytes": 3744
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-unit-tests-v0.4.log",
+      "sha256": "f477bc959472ca8500a25b823b4a48049af64a894b12f9171e8869e5536c4303",
+      "size_bytes": 4626
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-unit-tests-v0.5.log",
+      "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6",
+      "size_bytes": 4626
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-v11-C04-evidence-manifest-v0.1.json",
+      "sha256": "e2635a191cfb0acd88a8e5348f68ea22dcd224839572c43945831e79e1c0a6dd",
+      "size_bytes": 3175
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03-v11-C04-execution-evidence-report-v0.1.md",
+      "sha256": "9f8a8914e15f2241426d1a9b72c9ce522ddc9b26677093d6450e99c3deec80bb",
+      "size_bytes": 4067
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_C04_v11_independent_15x3000_qualification.json",
+      "sha256": "2aa1e4614b3d3b80ded3b6f7c47a15dd92184635f54619d90f1df8501b2d0ed5",
+      "size_bytes": 10989
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_C04_v11_independent_15x5000_CI_calibration.json",
+      "sha256": "c6f64522a9fa878474c3431177159f43e3f9e8c42a31b322fb95fed8cd5ccbf9",
+      "size_bytes": 5588
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_C04_v11_power_spatial_sensitivity_ANALYSIS.json",
+      "sha256": "cd2d990c8dacbe5b4e67dd6597d970e6c5d64a8e18c9f4217e97b22ce56408ca",
+      "size_bytes": 3306
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_C04_v11_preflight.json",
+      "sha256": "9dd5c49e3093948061aa2d1892e2ccd9deef5cbe0f38d7c412f82bbf5bb09ebe",
+      "size_bytes": 1360
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_alternative_CI_development_pilot.json",
+      "sha256": "2dcfe990d707f6bb7d0bfd7dfbc6c58c505a7e202678f34598c168de16a0892b",
+      "size_bytes": 7134
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_bootstrap_t_independent_120x15_DEVELOPMENT.json",
+      "sha256": "65a30bc63989aa5e63359dad4a82f071c2bfe4bbca82275f44420541a12f39a1",
+      "size_bytes": 5345
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_empirical_likelihood_independent_DEVELOPMENT.json",
+      "sha256": "c503d6668f5c848a93d7364f2b6649bb30c8dc9d57f569f8b07c8f73e1e080e9",
+      "size_bytes": 3650
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_exploratory_spatial_diagnostic_128CPI.json",
+      "sha256": "55ba64b5076d70ecd5790504b443afef4f2da412c403b1b8599bffb18a4401e4",
+      "size_bytes": 1670
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_extended_boundary_multitarget_cases.json",
+      "sha256": "76ad7e1cd98cfc8992963018422731045c4f9e01b55671501d91b3bed0bfad7e",
+      "size_bytes": 14358
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_extra_cluster_ablation_software.json",
+      "sha256": "98baf2272506ef220d2b4c6480609a8ba6f196aa5cfbb1ae89a0a1c837fc2901",
+      "size_bytes": 12282
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_independent_skew_G16384_800x15_DEVELOPMENT.json",
+      "sha256": "80065ed06ca9d9901f9541fa647ab6828e4207dee65c33c8f2e04d81b6669ed6",
+      "size_bytes": 4244
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_independent_skew_method_development_1200x15.json",
+      "sha256": "6dfeeb06ac26e24e21b99da93ecd45728e7a48d2024fd980473b5ca6784518d6",
+      "size_bytes": 8936
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_second_order_edgeworth_independent_DEVELOPMENT.json",
+      "sha256": "b95ce67b17196cfe50f500903ccb479c3908b857cb180455ca8d974613b7d7b6",
+      "size_bytes": 6345
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_six_case_reference_smoke.json",
+      "sha256": "a3c97fd8002c3da7d4a2a60e68c8a73bf7d2079e332fc1e9cd4f475c076771ab",
+      "size_bytes": 20007
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_skew_studentized_formula_audit.json",
+      "sha256": "013ac7d1a8abeb4d5697c473911c0fbcd7c79e640b0c52365e3fb6b533d4b9d9",
+      "size_bytes": 1123
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_spatial_extended_1024CPI_DIAGNOSTIC.json",
+      "sha256": "bdbecc7e44c0dbae6dcadac2d3c5d1d1c433795f27d940a0726968251807504b",
+      "size_bytes": 9310
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_v11_2048CPI_radar_chain_spatial_DIAGNOSTIC.json",
+      "sha256": "e76e26ff67300c3ebcb66504b43a254b5e1c7bb00238e8f17616b98395654254",
+      "size_bytes": 16374
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/S03_v11_extra_clusters_CUT_training_thresholds_DIAGNOSTIC.json",
+      "sha256": "918969e0909145e1ac04aa642acdd36a0d64badfca959dec81a3f47f86bb6beb",
+      "size_bytes": 11170
+    },
+    {
+      "category": "S03 model/statistical evidence",
+      "path": "engineering/s03_C04_count_qualification.json",
+      "sha256": "b4728d6d93a02e3324f0390dc639add2780dc46aaf9b2d5afba07738480c3ef9",
+      "size_bytes": 10974
+    }
+  ],
+  "historical_results": {
+    "Pd_development_scenarios": {
+      "cases": [
+        {
+          "false": 4,
+          "matched": 0,
+          "missed": 1,
+          "name": "single_valid_start_0",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 5,
+          "matched": 0,
+          "missed": 1,
+          "name": "single_valid_end_112",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 3,
+          "matched": 1,
+          "missed": 0,
+          "name": "single_cut_start_3",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 4,
+          "matched": 1,
+          "missed": 0,
+          "name": "single_cut_end_109",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 3,
+          "matched": 1,
+          "missed": 0,
+          "name": "excluded_cut_2",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 2,
+          "matched": 1,
+          "missed": 0,
+          "name": "excluded_cut_110",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 0,
+          "matched": 0,
+          "missed": 1,
+          "name": "stationary_target",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 1
+        },
+        {
+          "false": 5,
+          "matched": 2,
+          "missed": 0,
+          "name": "same_range_two_doppler",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 2
+        },
+        {
+          "false": 3,
+          "matched": 2,
+          "missed": 0,
+          "name": "same_speed_two_ranges",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 2
+        },
+        {
+          "false": 2,
+          "matched": 1,
+          "missed": 1,
+          "name": "two_ranges_1bin",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 2
+        },
+        {
+          "false": 2,
+          "matched": 1,
+          "missed": 1,
+          "name": "two_ranges_2bin",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 2
+        },
+        {
+          "false": 4,
+          "matched": 1,
+          "missed": 1,
+          "name": "two_ranges_4bin",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 2
+        },
+        {
+          "false": 4,
+          "matched": 1,
+          "missed": 1,
+          "name": "two_ranges_5bin",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 2
+        },
+        {
+          "false": 6,
+          "matched": 3,
+          "missed": 0,
+          "name": "three_targets_quiet",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 3
+        },
+        {
+          "false": 7,
+          "matched": 3,
+          "missed": 0,
+          "name": "three_targets_snr20",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 3
+        },
+        {
+          "false": 6,
+          "matched": 3,
+          "missed": 0,
+          "name": "three_targets_snr10",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 3
+        },
+        {
+          "false": 2,
+          "matched": 3,
+          "missed": 0,
+          "name": "three_targets_snr0",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 3
+        },
+        {
+          "false": 6,
+          "matched": 3,
+          "missed": 0,
+          "name": "three_targets_snr20_clutter_plus10",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 3
+        },
+        {
+          "false": 6,
+          "matched": 3,
+          "missed": 0,
+          "name": "three_targets_snr20_clutter_minus10",
+          "status": "DEVELOPMENT_ONE_SCENE_NOT_Pd_ESTIMATE",
+          "truth": 3
+        }
+      ],
+      "no_Pd_confidence_bound": true,
+      "no_prespecified_population_Pd_experiment": true,
+      "source": "engineering/S03_extended_boundary_multitarget_cases.json",
+      "source_sha256": "76ad7e1cd98cfc8992963018422731045c4f9e01b55671501d91b3bed0bfad7e",
+      "total_scenarios": 19
+    },
+    "Student_t_v10": {
+      "failed": 7,
+      "meaning": "CI_METHOD_FAILURE_NOT_RADAR_PFA",
+      "method_coverage_qualification_passed": 8,
+      "models_total": 15,
+      "sha256": "b4728d6d93a02e3324f0390dc639add2780dc46aaf9b2d5afba07738480c3ef9"
+    },
+    "alpha_calibration": {
+      "G_CPI": 4096,
+      "alpha": 7.476912055027923,
+      "meaning": "IN_SAMPLE_THRESHOLD_CALIBRATION_NOT_INDEPENDENT_PFA_PERFORMANCE",
+      "same_corpus_calibration_alarm_rate": 0.0009999936814791518,
+      "sha256": "1a4540f97b38da8739ccf63f3eb68555a6671c50d9c8bc9f25829a03a0cee2fe",
+      "total_calibration_CUT": 11395072
+    },
+    "post_alpha_4096CPI": {
+      "CUT_each": 2782,
+      "N_CPI": 4096,
+      "alpha_frozen": 7.476912055027923,
+      "alpha_source": "engineering/S03-C04-independent-alpha-calibration-v0.1.json",
+      "classification": "DESCRIPTIVE_POST_ALPHA_SPATIAL_DIAGNOSTIC_NOT_VALID_FINAL_PFA",
+      "data_overlap_limit": "first 2048 CPI shared input seed with earlier exploratory 2048 CPI",
+      "do_not_calculate_retrospective_final_U": true,
+      "duration_seconds": 1.609089845995186,
+      "limit_abs_z": 2.5758293035489004,
+      "main_pfa_test_executed": false,
+      "predeclared_spatial_gate": "FAIL",
+      "raw_rate": 0.0010033284563713157,
+      "raw_total_alarm_count": 11433,
+      "seed_master": 311091603,
+      "source": "engineering/S03-C04-post-alpha-spatial-diagnostic-v0.1.json",
+      "spatial_paired_anisotropy_z": 43.5754456676879,
+      "valid_pfa_performance_acceptance": false
+    },
+    "skew_studentized_v11": {
+      "G": 4096,
+      "meaning": "SYNTHETIC_MODEL_CI_METHOD_QUALIFICATION_NOT_RADAR_PFA",
+      "method_coverage_qualification_passed": 15,
+      "minimum_Wilson_one_sided_lower_conditional_coverage": 0.9515520667104338,
+      "models_total": 15,
+      "outer_per_model": 3000,
+      "sha256": "2aa1e4614b3d3b80ded3b6f7c47a15dd92184635f54619d90f1df8501b2d0ed5"
+    }
+  },
+  "single_criterion_change_recommendation": {
+    "Pd": "UNCHANGED: >=0.90 design goal SNR20 isolated target/no clutter, not binding until preapproved confidence/test",
+    "Pfa": "UNCHANGED: target 0.001, independent valid U_0.95 <=0.0015",
+    "criterion_to_relax": null,
+    "new_limit": null,
+    "prohibited": "Do not elevate diagnostic or synthetic CI qualification to final Pfa/Pd performance test",
+    "reason": "No independent eligible final Pfa or statistically powered single-target Pd study failed a performance threshold."
+  },
+  "source_git_commit": "2267161f3e93f490c7a36cd596f572aa959b78c2",
+  "sources_approved_sha256": {
+    "engineering/S02-22-requirement-audit-FINAL-v1.0.json": "b86826a42e6dc685b315aff1450740bfb4f8974c1a9c3d881c8534a356b0b70c",
+    "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md": "e85cce3c8a988b79ac633ff9cbe775d9382d415dc6962c866b9c866d56f603f6",
+    "engineering/S02-engineering-contracts-FINAL-PROPOSED-v1.0.md": "8faccf7f89d03a9885fbde43dd7e42577ca4092f4202c2107f927e8da81be13e",
+    "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json": "06141a707a24ffcf08aa21dfa3a6e3f48d699b5234bb025b217f10abcd921da9"
+  },
+  "sources_v11_approved_sha256": {
+    "engineering/S02-engineering-contracts-APPROVED-AMENDMENT-v1.1.md": "76e35f0b120cd550dded79a3ba8fa80a0b1263590bdbef30986570bec12dbd44",
+    "engineering/S02-requirements-matrix-APPROVED-AMENDMENT-v1.1.json": "d40fd79fa9bb6ff196b587304448adf5e7bc1239a102453a5febc16500a0e7c3"
+  },
+  "status": "NO_PERFORMANCE_THRESHOLD_RELAXATION_JUSTIFIED",
+  "user_instruction": "engineer_message_26"
+}

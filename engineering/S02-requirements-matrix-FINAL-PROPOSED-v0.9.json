@@ -1,0 +1,872 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "stage": "S02",
+  "version": "v0.9-final-proposed",
+  "gate_s02": "open",
+  "created_at_utc": "2026-11-09T03:49:10.657859+00:00",
+  "status": "engineer_review_pending_gate_open",
+  "rows": [
+    {
+      "id": "REQ-IO-01",
+      "classification": "binding",
+      "metric": "33x128 complex IQ, fs=1MS/s, 16-bit signed I/Q candidate",
+      "verification": "Reproducible source vector manifest; upload/download byte comparison",
+      "acceptance_rule": "Identical vector bytes and no undetected corruption",
+      "open_items": [
+        "byte_order",
+        "vector encoding",
+        "generator manifest"
+      ],
+      "owner_stage": "S02 specification/S03 generator/S11 test",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DAT-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-LFM-01",
+      "classification": "binding",
+      "metric": "B=250kHz centered, 16us, 16 active samples, rectangular time window",
+      "verification": "Generate analytical discrete LFM and matched-filter reference coefficients",
+      "acceptance_rule": "Document precise chirp phase, index, time support and quantization; bit-true numerical equality later",
+      "open_items": [
+        "phase_formula",
+        "MF filter correlation convention"
+      ],
+      "owner_stage": "S02 freeze/S03 reference",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-SNR-01",
+      "classification": "binding",
+      "metric": "P_echo mean on active samples; E|w|²=sigma²",
+      "verification": "Power measurement from generator and independent seeded Gaussian trials",
+      "acceptance_rule": "Exact theoretical sigma² convention and stage reference; empirical tolerance/test length specified",
+      "open_items": [
+        "noise_generator_statistical_test_rule"
+      ],
+      "owner_stage": "S02 freeze/S03 statistical reference",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DAT-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-RNG-01",
+      "classification": "binding",
+      "metric": "Full 16-sample echo in 128 samples, n0=TX origin",
+      "verification": "Support index audit, tests at delays 0,112,113",
+      "acceptance_rule": "For integer delay k and 16-sample echo, full containment iff 0<=k<=112; not equivalent to CFAR valid domain",
+      "open_items": [],
+      "owner_stage": "S02 proof/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-MF-01",
+      "classification": "binding",
+      "metric": "Noise-free integer-aligned target peak after matched-filter delay compensation",
+      "verification": "Check matched filter versus reference at interior and edges",
+      "acceptance_rule": "Zero peak-index error in declared valid MF bin set",
+      "open_items": [
+        "exact matched-filter delay",
+        "valid MF output indices"
+      ],
+      "owner_stage": "S02 convention/S03 proof",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-RNG-02",
+      "classification": "design_target",
+      "metric": "20dB SNR range error <=1 sample=150m",
+      "verification": "Independent seeded single-target trials; error distribution",
+      "acceptance_rule": "Define pass fraction and confidence criterion before stochastic tests",
+      "open_items": [
+        "statistical pass fraction",
+        "trial count"
+      ],
+      "owner_stage": "S02 protocol/S03 feasibility",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "assignment_gate_not_estimator_acceptance": true,
+      "estimator_error_acceptance_ref": "REQ-MATCH-01.estimator_error_acceptance"
+    },
+    {
+      "id": "REQ-RNG-03",
+      "classification": "binding_test",
+      "metric": "Theoretical two-target range resolution ~600m separate from single target accuracy",
+      "verification": "Sweep paired targets around 600m separations; measure resolved clusters",
+      "acceptance_rule": "Freeze resolved-pair definition, equal received power, success criterion",
+      "open_items": [
+        "separability metric"
+      ],
+      "owner_stage": "S02 protocol/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-SIG-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-MTI-01",
+      "classification": "binding",
+      "metric": "Stationary clutter notch, moving-target response",
+      "verification": "Isolated fd=0 and nonzero sinusoid tests, compare frequency response",
+      "acceptance_rule": "Bit-true outputs exact; numeric dB suppression tolerance derived from architecture",
+      "open_items": [
+        "MTI implementation/fixed-point dB threshold"
+      ],
+      "owner_stage": "S03/S04/S05",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-DOP-01",
+      "classification": "binding",
+      "metric": "Rectangular 32-point FFT, positive velocity toward radar, bin spacing 0.46875m/s at fc=10GHz",
+      "verification": "On-bin and off-bin tests, leakage, signed index and velocity error",
+      "acceptance_rule": "For eligible isolated-dominant targets only, |estimated_velocity - nearest_true_bin_velocity| <=0.234375 m/s using agreed nominal c_ref; output tie and zero-power states always deterministic bit-exact with flags; ineligible separately logged.",
+      "open_items": [
+        "numerical sentinel encoding in S05",
+        "minimum eligibility fraction if later statistical certification requires it"
+      ],
+      "owner_stage": "S02 freeze/S03/S04",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "deterministic_peak_tie_policy": {
+        "applies_to": "all inputs incl exact ties and zero output regardless of half-bin eligibility",
+        "max_power": "select largest representable quantized power",
+        "tie": "select minimum signed FFT bin index; if necessary minimum unshifted bin",
+        "zero_power": "NO_VALID_PEAK status and deterministic sentinel defined in S05 output schema",
+        "nonzero_tie": "PEAK_TIE status",
+        "acceptance": "FPGA and bit-true output including status match exactly; 0 bit mismatches"
+      },
+      "half_bin_test_eligibility": {
+        "separate_from_output_rule": true,
+        "conditions": [
+          "isolated dominant target",
+          "unambiguous true velocity",
+          "not DC nulled",
+          "strictly positive max power",
+          "unique maximum with no exact tie",
+          "max power strictly greater than adjacent circular bins"
+        ],
+        "bound_m_per_s_nominal": 0.234375,
+        "on_ineligible": "record NOT_ELIGIBLE with reason; report attempted/eligible/ineligible counts, never silently discard or claim success on 0 eligible trials",
+        "separate_boundary_test": "must verify deterministic output/status for ties, DC-null and near-bin boundaries",
+        "minimum_eligibility_fraction": "not yet specified for stochastic runs; numerical pass/fail cannot claim full suite success solely from eligible subset"
+      },
+      "assignment_gate_not_estimator_acceptance": true
+    },
+    {
+      "id": "REQ-CFAR-01",
+      "classification": "binding",
+      "metric": "2D CA-CFAR on valid range-Doppler CUTs; OS optional",
+      "verification": "Reference neighborhood averaging and threshold check per valid CUT",
+      "acceptance_rule": "Bit-exact decisions; guard/training dimensions, edge/CUT and alpha frozen pretest",
+      "open_items": [
+        "guard/train configuration",
+        "edge behavior",
+        "CFAR alpha calculation"
+      ],
+      "owner_stage": "S02 freeze/S03 reference",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-CFAR-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-CFAR-02",
+      "classification": "design_target_with_binding_bound",
+      "metric": "Pfa target 1e-3 per valid CUT noise-only Gaussian",
+      "verification": "Many independently seeded CPI trials with correlation-aware 95% one-sided CI",
+      "acceptance_rule": "Upper one-sided 95% CI <=1.5e-3; predeclared method, stopping/sample size, valid CUT definition",
+      "open_items": [
+        "engineer approval of v0.9 statistical method",
+        "S03 coverage qualification and spatial diagnostics",
+        "main Pfa tests only after qualification and separate calibration"
+      ],
+      "owner_stage": "S02 statistical protocol/S03 and S11 measurements",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-CFAR-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "C04_REVIEW_PENDING_ENGINEER",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "bootstrap_qualification_protocol": {
+        "outer_repetitions_per_condition": 1000,
+        "models": [
+          "iid Bernoulli(p) all CUTs",
+          "within-CPI beta-binomial rho=0.01",
+          "within-CPI beta-binomial rho=0.05",
+          "spatial Gaussian copula rho_r=0.4 rho_d=0.25",
+          "spatial Gaussian copula rho_r=0.8 rho_d=0.6"
+        ],
+        "true_marginal_p": [
+          0.0005,
+          0.001,
+          0.0015
+        ],
+        "condition_count": 15,
+        "independent_cpi_per_outer_repetition": 4096,
+        "CUT_per_CPI": 2782,
+        "bootstrap_whole_cpi_replicates": 10000,
+        "bootstrap_seed_master": 20261109,
+        "CI_upper": "nearest-rank 95th percentile of 10000 bootstrap CPI-resample fractions",
+        "coverage_event": "U >= true marginal p",
+        "coverage_estimate": "covered/1000",
+        "coverage_uncertainty": "one-sided lower 95% Wilson score with z=1.6448536269514722",
+        "qualification_pass": "All 15 conditions Wilson one-sided 95% lower >=0.95 (at least 962 successes each)",
+        "uncertainty_warning": "not a simultaneous coverage confidence claim across conditions",
+        "qualification_failure": "BLOCKED/INCONCLUSIVE; revise only with prior engineer approval, no posthoc data tuning",
+        "status": "SPECIFIED_NOT_EXECUTED",
+        "model_details": "Beta q~Beta(p*(1/rho-1),(1-p)*(1/rho-1)); Gaussian marginal standard normal separable AR(1)-like covariance and threshold Phi^-1(1-p); CPI independent"
+      },
+      "bootstrap_qualification_protocol_v07_superseded_for_review": {
+        "outer_repetitions_per_condition": 1000,
+        "models": [
+          "iid Bernoulli(p) all CUTs",
+          "within-CPI beta-binomial rho=0.01",
+          "within-CPI beta-binomial rho=0.05",
+          "spatial Gaussian copula rho_r=0.4 rho_d=0.25",
+          "spatial Gaussian copula rho_r=0.8 rho_d=0.6"
+        ],
+        "true_marginal_p": [
+          0.0005,
+          0.001,
+          0.0015
+        ],
+        "condition_count": 15,
+        "independent_cpi_per_outer_repetition": 4096,
+        "CUT_per_CPI": 2782,
+        "bootstrap_whole_cpi_replicates": 10000,
+        "bootstrap_seed_master": 20261109,
+        "CI_upper": "nearest-rank 95th percentile of 10000 bootstrap CPI-resample fractions",
+        "coverage_event": "U >= true marginal p",
+        "coverage_estimate": "covered/1000",
+        "coverage_uncertainty": "one-sided lower 95% Wilson score with z=1.6448536269514722",
+        "qualification_pass": "All 15 conditions Wilson one-sided 95% lower >=0.95 (at least 962 successes each)",
+        "uncertainty_warning": "not a simultaneous coverage confidence claim across conditions",
+        "qualification_failure": "BLOCKED/INCONCLUSIVE; revise only with prior engineer approval, no posthoc data tuning",
+        "status": "SPECIFIED_NOT_EXECUTED",
+        "model_details": "Beta q~Beta(p*(1/rho-1),(1-p)*(1/rho-1)); Gaussian marginal standard normal separable AR(1)-like covariance and threshold Phi^-1(1-p); CPI independent"
+      },
+      "proposed_primary_method_v08": {
+        "method": "one-sided cluster-level student t CI on independent CPI alarm fractions",
+        "n_CPI": 4096,
+        "cut_per_CPI": 2782,
+        "estimate": "X_i=F_i/2782; p_hat=average(X_i)",
+        "standard_error": "sample_std(X_i, ddof=1)/sqrt(4096)",
+        "upper_ci": "min(1, max(0, mean(X_i)+t.ppf(0.95,4095)*SE))",
+        "rare_event_guards": {
+          "min_nonzero_CPI": 100,
+          "min_total_alarms": 100,
+          "require_positive_sample_variance": true,
+          "failure": "INCONCLUSIVE/never PASS"
+        },
+        "Pfa_limit_one_sided_upper": 0.0015,
+        "mandatory_prior_qualification": {
+          "models": [
+            {
+              "name": "IID",
+              "rho": 0
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.001
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.01
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.03
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.05
+            }
+          ],
+          "true_p": [
+            0.0005,
+            0.001,
+            0.0015
+          ],
+          "n_conditions": 15,
+          "outer_repetitions_per_condition": 1000,
+          "outer_CPI_per_rep": 4096,
+          "coverage_condition": "one-sided Wilson 95 percent lower bound of coverage >=0.95 in every condition",
+          "inconclusive_condition": "one-sided Wilson 95 percent upper bound of inconclusive rate <=0.05 in every condition",
+          "inconclusive_coverage_handling": "inconclusive conservatively U=1 for coverage accounting, separately constrained by inconclusive-rate test",
+          "fixed_before_results": true,
+          "status": "NOT_RUN"
+        },
+        "limitations": "Asymptotic normal/t is unreliable with very skewed rare events; count-only Beta-Binomial surrogates lack spatial dependence; require additional S03 spatial diagnostic and explicit revision if model mismatch",
+        "status": "proposed_for_engineer_review_not_approved",
+        "replaces": "v0.7 nested percentile bootstrap only if engineer explicitly approves v0.8"
+      },
+      "superseded_candidate_v08": {
+        "method": "one-sided cluster-level student t CI on independent CPI alarm fractions",
+        "n_CPI": 4096,
+        "cut_per_CPI": 2782,
+        "estimate": "X_i=F_i/2782; p_hat=average(X_i)",
+        "standard_error": "sample_std(X_i, ddof=1)/sqrt(4096)",
+        "upper_ci": "min(1, max(0, mean(X_i)+t.ppf(0.95,4095)*SE))",
+        "rare_event_guards": {
+          "min_nonzero_CPI": 100,
+          "min_total_alarms": 100,
+          "require_positive_sample_variance": true,
+          "failure": "INCONCLUSIVE/never PASS"
+        },
+        "Pfa_limit_one_sided_upper": 0.0015,
+        "mandatory_prior_qualification": {
+          "models": [
+            {
+              "name": "IID",
+              "rho": 0
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.001
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.01
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.03
+            },
+            {
+              "name": "Beta-Binomial",
+              "rho": 0.05
+            }
+          ],
+          "true_p": [
+            0.0005,
+            0.001,
+            0.0015
+          ],
+          "n_conditions": 15,
+          "outer_repetitions_per_condition": 1000,
+          "outer_CPI_per_rep": 4096,
+          "coverage_condition": "one-sided Wilson 95 percent lower bound of coverage >=0.95 in every condition",
+          "inconclusive_condition": "one-sided Wilson 95 percent upper bound of inconclusive rate <=0.05 in every condition",
+          "inconclusive_coverage_handling": "inconclusive conservatively U=1 for coverage accounting, separately constrained by inconclusive-rate test",
+          "fixed_before_results": true,
+          "status": "NOT_RUN"
+        },
+        "limitations": "Asymptotic normal/t is unreliable with very skewed rare events; count-only Beta-Binomial surrogates lack spatial dependence; require additional S03 spatial diagnostic and explicit revision if model mismatch",
+        "status": "proposed_for_engineer_review_not_approved",
+        "replaces": "v0.7 nested percentile bootstrap only if engineer explicitly approves v0.8"
+      },
+      "proposed_primary_method_v09": {
+        "method": "one-sided Student-t CI on CPI alarm fractions with prequalification",
+        "CPI_count_main_test": 4096,
+        "CUT_per_CPI": 2782,
+        "Pfa_design": 0.001,
+        "upper_CI_pass_max": 0.0015,
+        "qualification_status": "PROPOSED_NOT_EXECUTED_NOT_APPROVED",
+        "qualification": {
+          "N_studies_per_condition": 3000,
+          "models": [
+            "IID Binomial",
+            "Beta-Binomial rho 0.001",
+            "Beta-Binomial rho 0.01",
+            "Beta-Binomial rho 0.03",
+            "Beta-Binomial rho 0.05"
+          ],
+          "true_p": [
+            0.0005,
+            0.001,
+            0.0015
+          ],
+          "conditions_total": 15,
+          "N_CPI_per_study": 4096,
+          "overall_studies": 45000,
+          "CPI_count_draws": 184320000,
+          "definitions": {
+            "conditional_coverage": "N_valid_covered/N_valid",
+            "unconditional_valid_and_cover": "N_valid_covered/3000; inconclusive counts as no valid coverage, not covered",
+            "inconclusive_rate": "N_inconclusive/3000"
+          },
+          "criteria": {
+            "one_sided_wilson_lower_conditional_coverage_min": 0.93,
+            "one_sided_wilson_lower_unconditional_valid_and_cover_min": 0.9,
+            "one_sided_wilson_upper_inconclusive_rate_max": 0.05,
+            "per_condition_all_must_pass": true
+          },
+          "design_points": {
+            "target_coverage": 0.95,
+            "acceptable_coverage_floor": 0.93,
+            "target_inconclusive_rate": 0.02,
+            "max_inconclusive_rate": 0.05
+          },
+          "exact_binomial_power": [
+            {
+              "true_inconclusive_rate": 0.0,
+              "true_conditional_coverage": 0.9,
+              "probability_all_three_single_condition_acceptance_rules_pass": 1.4740280156491983e-13
+            },
+            {
+              "true_inconclusive_rate": 0.0,
+              "true_conditional_coverage": 0.93,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.05182505814471736
+            },
+            {
+              "true_inconclusive_rate": 0.0,
+              "true_conditional_coverage": 0.95,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.9988209417589542
+            },
+            {
+              "true_inconclusive_rate": 0.0,
+              "true_conditional_coverage": 0.97,
+              "probability_all_three_single_condition_acceptance_rules_pass": 1.0
+            },
+            {
+              "true_inconclusive_rate": 0.02,
+              "true_conditional_coverage": 0.9,
+              "probability_all_three_single_condition_acceptance_rules_pass": 1.7697876858543742e-13
+            },
+            {
+              "true_inconclusive_rate": 0.02,
+              "true_conditional_coverage": 0.93,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.048054685209079795
+            },
+            {
+              "true_inconclusive_rate": 0.02,
+              "true_conditional_coverage": 0.95,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.9984284765554757
+            },
+            {
+              "true_inconclusive_rate": 0.02,
+              "true_conditional_coverage": 0.97,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.9999999999999988
+            },
+            {
+              "true_inconclusive_rate": 0.03,
+              "true_conditional_coverage": 0.9,
+              "probability_all_three_single_condition_acceptance_rules_pass": 1.4013674080962456e-13
+            },
+            {
+              "true_inconclusive_rate": 0.03,
+              "true_conditional_coverage": 0.93,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.03652914805253845
+            },
+            {
+              "true_inconclusive_rate": 0.03,
+              "true_conditional_coverage": 0.95,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.9924486045396963
+            },
+            {
+              "true_inconclusive_rate": 0.03,
+              "true_conditional_coverage": 0.97,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.999977783377812
+            },
+            {
+              "true_inconclusive_rate": 0.05,
+              "true_conditional_coverage": 0.9,
+              "probability_all_three_single_condition_acceptance_rules_pass": 1.2350488701838512e-19
+            },
+            {
+              "true_inconclusive_rate": 0.05,
+              "true_conditional_coverage": 0.93,
+              "probability_all_three_single_condition_acceptance_rules_pass": 2.8547373177843336e-06
+            },
+            {
+              "true_inconclusive_rate": 0.05,
+              "true_conditional_coverage": 0.95,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.029213705906739017
+            },
+            {
+              "true_inconclusive_rate": 0.05,
+              "true_conditional_coverage": 0.97,
+              "probability_all_three_single_condition_acceptance_rules_pass": 0.04884597413867431
+            }
+          ],
+          "no_empirical_results_generated": true
+        },
+        "spatial_model_dependency": "S03 radar-chain spatial correlation and count tail diagnostic mandatory before main test; Beta-binomial count-only models insufficient to guarantee coverage in operational RD map",
+        "changes_from_v08": "3000 instead of 1000 repeats; 93% conditional acceptance floor vs 95% nominal target; unconditional valid-cover and separate inconclusive; exact binomial prospective power for all 3 simultaneous rules"
+      }
+    },
+    {
+      "id": "REQ-PD-01",
+      "classification": "design_target",
+      "metric": "Pd >=0.9 goal at input SNR=20dB isolated target, no clutter",
+      "verification": "Independent seeded target trials, unique truth matching",
+      "acceptance_rule": "Design target only until model reference feasibility and confidence/test definition; report 0/10dB without minima",
+      "open_items": [
+        "Pd CI lower bound",
+        "feasibility after reference"
+      ],
+      "owner_stage": "S03 analysis/S02 review if binding",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-CFAR-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-SCR-01",
+      "classification": "binding",
+      "metric": "SCR +10dB,-10dB and no clutter",
+      "verification": "Compare target and clutter power at designated input region",
+      "acceptance_rule": "Declared SCR relative to specified region, numerical generator tolerance fixed",
+      "open_items": [
+        "measurement region",
+        "SCR tolerance"
+      ],
+      "owner_stage": "S02 specification/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DAT-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-DET-01",
+      "classification": "binding",
+      "metric": "Clustering and target list bit equality and radar target counts/errors",
+      "verification": "Independent bit-true outputs and truth comparison",
+      "acceptance_rule": "Zero deterministic bit mismatches, no many-to-one truth association",
+      "open_items": [
+        "mapping rule",
+        "numeric range/velocity/power error"
+      ],
+      "owner_stage": "S02 spec/S04 bittrue",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "assignment_gate_not_estimator_acceptance": true,
+      "estimator_error_acceptance_ref": "REQ-MATCH-01.estimator_error_acceptance"
+    },
+    {
+      "id": "REQ-MATCH-01",
+      "classification": "binding",
+      "metric": "Global minimum cost one-to-one assignment based on normalized range/velocity errors",
+      "verification": "Compare with independently solved assignment on tie/false/missed scenarios",
+      "acceptance_rule": "Association gate 2 range samples and 1 velocity bin is for one-to-one attribution only; clean range tolerance zero and conditional velocity <=half-bin are independent performance criteria. A detected target may be matched but fail estimator tolerance.",
+      "open_items": [
+        "normalization scales",
+        "gating thresholds",
+        "tie-break policy"
+      ],
+      "owner_stage": "S02 freeze/S03",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-DOP-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "assignment_gate_not_estimator_acceptance": true,
+      "truth_association_gate": {
+        "purpose": "candidate matching for scoring only, not hardware estimator performance PASS",
+        "range_gate_samples": 2,
+        "range_gate_m_nominal": 300.0,
+        "velocity_gate_bins": 1,
+        "velocity_gate_m_per_s_nominal": 0.46875,
+        "pair_cost": "(abs(delta_range)/range_gate)^2 + (abs(delta_velocity)/velocity_gate)^2",
+        "optimization_priority": [
+          "maximum number of feasible matches",
+          "minimum total normalized cost",
+          "lexicographically smallest ordered truth ID and detection ID pairs"
+        ],
+        "uniqueness": "one-to-one, no duplicate detection/truth"
+      },
+      "estimator_error_acceptance": {
+        "range_clean_sample_index_error": 0,
+        "range_noisy_20db_goal_sample_error": 1,
+        "range_noisy_20db_binding": false,
+        "velocity_conditional_half_bin_m_per_s": 0.234375,
+        "power_numeric_tolerance": "deferred S04: bit-true exact match binding",
+        "purpose": "evaluate parameter error independently of truth matching gate"
+      }
+    },
+    {
+      "id": "REQ-POWER-01",
+      "classification": "binding",
+      "metric": "Linear selected RD-map cell power with explicit scaling",
+      "verification": "Inject known reference RD map, compare selected cell values",
+      "acceptance_rule": "Exact bit-true output and documented sample extraction point",
+      "open_items": [
+        "numeric power scaling"
+      ],
+      "owner_stage": "S02 interface/S04",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-LIST-01",
+      "classification": "binding",
+      "metric": "Variable-length record count/IDs and explicit overflow",
+      "verification": "Exceed configured list capacity, check overflow and record output",
+      "acceptance_rule": "No silent discard, explicit overflow signal, deterministic record selection",
+      "open_items": [
+        "capacity",
+        "overflow selection"
+      ],
+      "owner_stage": "S02 behavior/S05 capacity",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-OBS-01",
+      "classification": "binding",
+      "metric": "Complete intermediate outputs of all seven FPGA processing functions",
+      "verification": "Deterministic same-input repeated runs and staged UART capture",
+      "acceptance_rule": "Full stage output recoverable and bitwise equal across equivalent runs",
+      "open_items": [
+        "stage output schema"
+      ],
+      "owner_stage": "S02 interface/S05 design",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-UART-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-UART-01",
+      "classification": "binding",
+      "metric": "Length, sequence, CRC-32, bounded recovery",
+      "verification": "Fault injection corruption/truncation/duplication/reorder; full CPI and stage readback",
+      "acceptance_rule": "Tested faults detected, no silently accepted injected error, recover or explicit failure",
+      "open_items": [
+        "CRC variant",
+        "endianness",
+        "framing",
+        "retry limit"
+      ],
+      "owner_stage": "S02 protocol/S05/S11",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-UART-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-RES-01",
+      "classification": "binding",
+      "metric": "XC6SLX9 full FPGA processing resource/timing acceptance",
+      "verification": "ISE utilization, memory access plan, P&R and STA reports",
+      "acceptance_rule": "No physical overuse in DSP/BRAM/LUT/FF and all timing constraints pass; per-resource margin after architecture",
+      "open_items": [
+        "budget margin",
+        "BRAM bank ports",
+        "SDRAM decision"
+      ],
+      "owner_stage": "S05 budget/S08 synthesis/S09 STA",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ],
+      "s02_acceptance_method_v08": {
+        "hard_device_limits": "DSP<=16, BRAM allocated <=576 Kbit, actual FPGA logic/slice/LUT/FF/package limits per XC6SLX9-2FTG256C device and ISE report, no resource category exceeds capacity",
+        "pre_architecture": "S05 determine allocations, memory lifetime/port/banking plan and optional SDRAM tradeoff; no fixed uniform 90 percent headroom",
+        "timing": "S05 declare clock topology and constraints, 50MHz oscillator (nominal period 20ns) and derived clocks; S09 P&R + STA nonnegative worst negative slack, no unconstrained functional clocks or critical paths",
+        "processing": "batch CPI cycle counter with overflow detection, actual clock and ms, separate UART transfer; no real time deadline",
+        "verification": "S05 resource budget review; S08 ISE synthesis/MAP; S09 place-and-route/STA; S11 board cycle and transfer time measurements",
+        "gate_S02_interpretation": "Specification acceptance only; do not require real utilization and STA measured before S02 Gate",
+        "status": "METHOD_APPROVED_FROM_PRIOR_POLICY_AND_REVIEWED_IN_S02"
+      }
+    },
+    {
+      "id": "REQ-TIME-01",
+      "classification": "binding",
+      "metric": "Batch processing FPGA cycles and milliseconds separate from UART time",
+      "verification": "Measure board cycle counter, actual clock, serial elapsed time",
+      "acceptance_rule": "No silent cycle counter rollover; separately reported FPGA processing and host transport; no real-time deadline",
+      "open_items": [
+        "counter architecture"
+      ],
+      "owner_stage": "S05/S11",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    },
+    {
+      "id": "REQ-EVID-01",
+      "classification": "binding",
+      "metric": "Seven mandatory FPGA functions and full chain real board validation",
+      "verification": "Per-function output hashes, hardware log, image build hash, Python comparator",
+      "acceptance_rule": "Stage & integrated evidence from physical AX309; Python reference not substitute for RTL",
+      "open_items": [
+        "artifact schema"
+      ],
+      "owner_stage": "S06-S12",
+      "execution_status": "not_executed",
+      "contract_id_v06": "C-TRACE-01",
+      "verification_status": "NOT_EXECUTED",
+      "s02_specification_state": "PROPOSED_FOR_ENGINEER_REVIEW",
+      "required_evidence_fields": [
+        "test case",
+        "seed and source hash",
+        "reference version",
+        "measured metric and PASS/FAIL",
+        "board build and output hash when hardware applicable"
+      ]
+    }
+  ],
+  "updated_at_utc": "2026-11-09T04:21:36.931992+00:00",
+  "contract_document": "engineering/S02-engineering-contracts-FINAL-PROPOSED-v0.9.md"
+}

@@ -1,0 +1,66 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S03",
+  "status": "PREDECLARED_FROZEN_BEFORE_NEW_ALPHA_OR_POST_ALPHA_DIAGNOSTIC_RESULTS",
+  "approval_source": "engineer_message_25",
+  "current_approved_contract": "engineering/S02-engineering-contracts-APPROVED-AMENDMENT-v1.1.md",
+  "CI_delta_star_fixed": 0.28734133322686817,
+  "no_change_to_statistical_C04": true,
+  "independent_seed_streams": {
+    "CI_CAL": 311091601,
+    "CI_QUAL": 311091602,
+    "RADAR_SPATIAL_POST_ALPHA": 311091603,
+    "CFAR_ALPHA": 311091604,
+    "PFA_MAIN_RESERVED_NOT_USED": 311091605
+  },
+  "alpha_calibration": {
+    "CPI": 4096,
+    "CUT_per_CPI": 2782,
+    "input": "noise-only circular complex Gaussian sigma2=1.0; complete frozen 33x128 Python MF->first-diff MTI->32 Doppler FFT->linear power; 7x7 CA-CFAR window, 3x3 excluded and 40 training; valid range 3..109 and Doppler 3..28",
+    "seed_algorithm": "PCG64 SeedSequence([311091604, i, 191]) for i=0,...,4095; fresh independent CPI",
+    "method": "For each valid CUT compute ratio R=P_CUT/(mean 40 training powers); if ANY nonfinite or mean <=0 then FAIL. Aggregate all N=4096*2782 ratios; target number alarms K=round(0.001*N); choose alpha=sorted(R)[N-K-1] using stable float64 rank. Strict alarm R>alpha; never read prospective validation outputs to set alpha. No optional stopping.",
+    "pass_conditions": [
+      "ALL 4096 CPI processed and all 4096*2782 ratios finite with strictly positive training mean",
+      "alpha finite in [0,100]",
+      "actual strict alarm fraction on calibration corpus differs from 0.001 by <=0.00001 (ties yield fewer alarms; otherwise predeclared quantile gives near exact target)",
+      "independent locked source/seed/hash/time and software versions recorded"
+    ],
+    "failure_action": "FAIL and stop any dependent post-alpha validation, no retuning or alternate alpha without engineer approval",
+    "not_statistical_Pfa_acceptance": true
+  },
+  "post_alpha_real_chain_diagnostic": {
+    "CPI": 4096,
+    "CUT_per_CPI": 2782,
+    "seed_algorithm": "PCG64 SeedSequence([311091603, i, 191]) for i=0,...,4095, independent of all alpha and CI data",
+    "must_have_locked_alpha": true,
+    "count_metrics": [
+      "mean",
+      "variance",
+      "zero fraction",
+      "tail F>=8",
+      "quantiles 50%,90%,95%,99%,100%",
+      "sample lag 1 and 1..20 Ljung-Box Q at one-sided 1%"
+    ],
+    "spatial_metrics": [
+      "range nearest neighbor positive-positive pair rates normalized by 106*26 opportunities",
+      "Doppler nearest neighbor positive-positive pair rates normalized by 107*25 opportunities",
+      "paired CPI-level difference of pair rates and z score for equal expectation under exchangeable-CUT Beta-binomial hypothesis"
+    ],
+    "statistical_spatial_acceptance_rule": "For transport from exchangeable Binomial/Beta-binomial count-surrogates to real range-Doppler map, require (A) Ljung-Box Q(20) p>=0.01 for independent CPI-count model, (B) absolute paired spatial-neighbor anisotropy z<=2.5758293035489004 (99% two-sided) under exchangeable CUT null, (C) exact observed zero and F>=8 rates with 99% Wilson CI overlap the envelope from 5 frozen models {Binomial rho0, Beta-Binomial rho .001,.01,.03,.05} at p=.001, and (D) all diagnostic inputs independent, finite, 2782 valid CUT. All requirements mandatory. Failure => real-chain sufficiency NOT ESTABLISHED; BLOCK main Pfa and refer engineer; never tune alpha or CI.",
+    "conservatism": "These are necessary diagnostics, not sufficient to prove operational 95% coverage. Even if all pass, an independent 4096-CPI count-level coverage validation at multiple known p or a proven stationary generating model may be needed before declaring readiness; engineer must review readiness before main Pfa.",
+    "failure_action": "BLOCK and stop dependent acceptance testing; preserve all failures and report engineering options",
+    "not_main_Pfa_acceptance": true
+  },
+  "separate_cluster_diagnostic": {
+    "source": "noise-free deterministic 3 targets, with fixed alpha only for diagnostic not acceptance",
+    "outputs": [
+      "selected CUT power",
+      "40 training powers mean",
+      "threshold alpha*mean",
+      "range sidelobe offset and matched filter response",
+      "cluster list"
+    ],
+    "no_threshold_or_processing_change": true
+  },
+  "stopping_rule": "one fixed calibration corpus and one fixed independent spatial diagnostic corpus; no adaptive sample count, thresholds or model choice. Do not run main Pfa even on success until user reviews gate-readiness."
+}

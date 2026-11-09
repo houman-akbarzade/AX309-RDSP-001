@@ -110,5 +110,70 @@
     ],
     "recorded_at_utc": "2026-11-09T03:32:56.000972+00:00",
     "historical_question_time_utc": null
+  },
+  {
+    "question_id": "S02-Q10",
+    "stage": "S02",
+    "topic": "Quantitative acceptance and test methodology",
+    "state": "answered",
+    "answer": "Range localization acceptance: for a single target with no noise/clutter, sample-grid-aligned delay and inside valid range, the compensated range-peak index must exactly equal expected index. At 20 dB input SNR, <=1 sample (150m) is a DESIGN TARGET only; statistical pass criterion pending reference-model evaluation. No subsample estimation required.",
+    "decision_ref": "S02-D10",
+    "evidence_refs": [
+      "engineer_message_14"
+    ],
+    "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
+    "historical_question_time_utc": null
+  },
+  {
+    "question_id": "S02-Q11",
+    "stage": "S02",
+    "topic": "Quantitative acceptance and test methodology",
+    "state": "answered",
+    "answer": "Dominant isolated target with identifiable spectral peak: nearest-bin velocity error <=0.234375 m/s, half of 0.46875m/s Doppler-bin spacing. Independently test on-bin/off-bin, near two-bin boundaries, MTI response and leakage; positive radial velocity approaching.",
+    "decision_ref": "S02-D11",
+    "evidence_refs": [
+      "engineer_message_14"
+    ],
+    "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
+    "historical_question_time_utc": null
+  },
+  {
+    "question_id": "S02-Q12",
+    "stage": "S02",
+    "topic": "Quantitative acceptance and test methodology",
+    "state": "answered",
+    "answer": "Evaluate baseline Pfa=1e-3 per valid CUT using independent seeded CPIs with 95 percent confidence interval. Treat correlated range-Doppler CUTs with appropriate uncertainty estimation. Decide quantitative acceptance tolerance prior to test; do not assume all CUTs independent.",
+    "decision_ref": "S02-D12",
+    "evidence_refs": [
+      "engineer_message_14"
+    ],
+    "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
+    "historical_question_time_utc": null
+  },
+  {
+    "question_id": "S02-Q13",
+    "stage": "S02",
+    "topic": "Quantitative acceptance and test methodology",
+    "state": "answered",
+    "answer": "Initial DESIGN TARGET Pd >=0.9 for single target without clutter at input SNR 20 dB, subject to checking reference model, SNR contract, CFAR and trial conditions. Measure/report Pd at SNR 0 and 10 dB with no minimum approved.",
+    "decision_ref": "S02-D13",
+    "evidence_refs": [
+      "engineer_message_14"
+    ],
+    "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
+    "historical_question_time_utc": null
+  },
+  {
+    "question_id": "S02-Q14",
+    "stage": "S02",
+    "topic": "Quantitative acceptance and test methodology",
+    "state": "answered",
+    "answer": "Use deterministic global minimum-cost one-to-one detection-to-truth assignment based on normalized range and velocity errors. Before tests freeze normalization, match gating and tie-breaking; each detection and truth may participate in at most one true assignment.",
+    "decision_ref": "S02-D14",
+    "evidence_refs": [
+      "engineer_message_14"
+    ],
+    "recorded_at_utc": "2026-11-09T03:38:02.173364+00:00",
+    "historical_question_time_utc": null
   }
 ]

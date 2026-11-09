@@ -1,0 +1,41 @@
+{
+  "stage": "S03",
+  "timestamp_utc": "2026-11-09T06:05:33.685458+00:00",
+  "gate_S03": "OPEN",
+  "progress_S03_percent": 75,
+  "progress_project_percent": 22.916666666666668,
+  "predeclared_policy_commit": "3336c938c1e7700eb8782808527c581f4ca58223",
+  "frozen_source_commit": "8db6bac43fb4eb8652f668451d67952150ed8a54",
+  "calibration_commit": "c4d48adfb996b08c1cff9832c87229de609a5f92",
+  "alpha_calibration": "PASS",
+  "alpha_frozen": 7.476912055027923,
+  "delta_star_frozen": 0.28734133322686817,
+  "post_alpha_spatial_diagnostic": "FAIL_SPATIAL_TRANSFER_GATE",
+  "failed_diagnostic_checks": [
+    "exchangeable_pair_anisotropy_abs_z_at_most_2_5758293"
+  ],
+  "passed_diagnostic_checks": [
+    "all_CPI_valid",
+    "independent_CPI_Ljung_Box_p_at_least_0_01",
+    "tail_ge8_99CI_overlaps_5_count_models",
+    "zero_99CI_overlaps_5_count_models"
+  ],
+  "historical_student_t_failed_sha256": "b4728d6d93a02e3324f0390dc639add2780dc46aaf9b2d5afba07738480c3ef9",
+  "surrogate_qualification_v11_sha256": "2aa1e4614b3d3b80ded3b6f7c47a15dd92184635f54619d90f1df8501b2d0ed5",
+  "no_main_Pfa": true,
+  "tests_passed": 44,
+  "runtime_seconds": {
+    "alpha_calibration": 1.8652114720025565,
+    "post_alpha": 1.609089845995186
+  },
+  "all_files_sha256": {
+    "engineering/S03-C04-alpha-and-real-chain-predeclared-protocol-v0.1.json": "e29ff54a0b324e035e61556b75e913cb4838fd7ded64e4e4c8861728aa88d5d7",
+    "s03_reference/c04_alpha_frozen.py": "a57c69ee2de4cd10783995af9146fd21de881e7ce0f72f97dca5849054cd9372",
+    "tests/test_s03_alpha_predeclared.py": "8455ac0c8f02ef317f2efd5b1298d9e639842b4e1c59433813a1f4c58389b408",
+    "engineering/S03-C04-independent-alpha-calibration-v0.1.json": "1a4540f97b38da8739ccf63f3eb68555a6671c50d9c8bc9f25829a03a0cee2fe",
+    "engineering/S03-C04-post-alpha-spatial-diagnostic-v0.1.json": "3370d100ff697fd3a5f6848e56450a53d22b8ee95ce4e31d3eb056982650d37a",
+    "engineering/S03-C04-post-alpha-cluster-numeric-diagnostic-v0.1.json": "d46469abfb1e59561ba45d1a7e9d7939eea4414247841ef29dad927937b62403",
+    "engineering/S03-C04-alpha-spatial-44-tests-v0.1.log": "8648524d445df68824a0e2bc86597b87b2662ee2ed5d43d29736e77fcede5a2d",
+    "engineering/S03-C04-alpha-spatial-failure-report-v0.1.md": "2ec6ead7526226034cc1eeef07cb8b8aababd006f305eae81f48ed1b0d628a00"
+  }
+}

@@ -1,0 +1,58 @@
+# AX309-RDSP-001 — S03 C04 | Proposed independent-CPI bounded-mean protocol v0.1
+
+**Status: ANALYSIS AND CHANGE PROPOSAL ONLY, NOT AN APPROVED S02 CONTRACT.**
+No new CPI, CI qualification or final Pfa/Pd test performed. Gate-S03 OPEN; S03 75%; overall 22.9167%. S02 v1.0 and v1.1 approved contracts, earlier Student-t 7/15 FAIL, C04 v1.1 surrogate 15/15 PASS, and post-alpha spatial FAIL remain immutable. Frozen alpha=7.476912055027923 and Delta-star=0.28734133322686817.
+
+## A. Independent CPI rather than independent CUT
+M=2782 valid CFAR CUT per CPI. For each complete independent identically distributed noise-only CPI, define F_i=number of strict alarms in the valid mask and X_i=F_i/M in [0,1]. The operational mean false alarm rate per valid CUT is mu=E(X_i). Independence/exchangeability of the 2782 individual CUTs and isotropic spatial correlation are NOT needed. However, each CPI MUST be a separate independent noise generation with identical frozen waveform, MTI/FFT/CFAR chain, alpha, no shared state or pulse overlap. Statistical tests cannot prove full independence: require both procedural source proof and diagnostic independence checks. Do NOT treat N*2782 as independent Bernoulli trials.
+
+## B. Recommended finite-sample method: empirical Bernstein, fixed N=20000
+With mean Xbar and sample variance S2=SUM((X_i-Xbar)^2)/(N-1), fixed n=20000 and confidence error delta=.05:
+
+U_EB=min(1, Xbar + sqrt(2*S2*ln(2/delta)/N) + 7*ln(2/delta)/(3*(N-1))).
+
+For i.i.d. CPI observations Xi in [0,1], the empirical Bernstein theorem ensures Pr(mu <= U_EB)>=.95 in finite samples. It handles arbitrary within-CPI dependence and skewness, and does not rely on Gaussian count approximations, beta-binomial exchangeability, or Monte-Carlo-calibrated Delta-star. This bound is for ONE pre-fixed N; optional stopping, post hoc N increases, alpha changes, or switching bound after observing final data are forbidden. This must not be confused with power to PASS: coverage >=95% is mathematically guaranteed given assumptions, but the chance U_EB<=0.0015 depends on unknown true distribution.
+
+Citation: Maurer and Pontil (2009), Empirical Bernstein Bounds and Sample Variance Penalization, arXiv:0907.3740; Bottou et al., JMLR 14 (2013), Theorem 1 empirical Bernstein.
+
+### Strict proposed future PASS/FAIL/INCONCLUSIVE rules
+- Before generating any new vector, engineer approves a NEW separately versioned S02 C-CFAR-02 amendment replacing the distributional transport verification method and changing the fixed final sample size **only** from 4096 to 20000 CPI. The performance Pfa target=.001 and upper acceptance limit U<=.0015 DO NOT CHANGE; Pd target>=.9, alpha, prior Delta-star and 7x7/3x3/40 geometry stay unchanged.
+- Pin approved source and numerical software version/SHA, PCG64 seed derivation and five disjoint datasets. Proposed prospective seeds (NONE used): reference=411091701, independent method implementation qualification=411091702, final acceptance=411091703. Existing frozen alpha seed=311091604, old CI calibration=311091601, old CI qualification=311091602, old post-alpha diagnostic=311091603; old reserved 311091605 remains unused. Derive fresh independent SeedSequence([master,i,191]), i=0,...,N-1. Verify no prior stream or data reuse, and no inter-CPI state carried forward. All CPI distributions must remain identical across independent runs.
+- Preflight verification: check source/alignment with frozen full Python reference, 33x128 complex IQ, MF/MTI/32-FFT RD map, 2782 valid CUT, strict P>alpha*mean40, bounded integer F in [0,2782], sample variance ddof=1, log(40) and inequality implementation verified against independent reference code; no downstream selection.
+- Proposed reference dataset (n=4096 CPI) is for frozen alpha chain health, count variance/tail diagnostic and model inspection **not** threshold selection; separate independent code/implementation verification dataset (n=4096) checks counts and boundary handling and records negative/provenance results. These two new datasets MUST NOT be reused in final sample, and failures are recorded but no retuning permitted. A completed mathematical proof/theorem audit is the statistical validity criterion, NOT success on cherry-picked synthetic coverage models.
+- Predefine necessary upstream independence/provenance guards (independent and identically distributed generated CPI, full valid mask and same alpha, no corrupted samples, no shared CPI filter state, no reused seeds, no missing samples). Reject gate if any guard fails. Spatial anisotropy is reported but NOT assumed isotropic or exchangeable in the new theorem; CURRENT old spatial anisotropy requirement is historical FAIL until a new amendment formally supersedes that prerequisite.
+- Future final corpus: EXACTLY 20000 fresh independent noise-only CPI, each 2782 valid CUT. One fixed test, no optional stopping. If any invalid CPI, nonfinite state, provenance mismatch, or unproven required independence: INCONCLUSIVE/BLOCKED (not PASS). With valid sample: calculate U_EB once and declare PASS iff U_EB<=0.0015; else FAIL. No new alpha, no new Delta-star and no second sample after failure without explicit engineer approval. After proposed prerequisites pass, present readiness report and obtain separate engineer decision BEFORE executing final main Pfa.
+
+## C. Mathematical comparisons
+- Hoeffding for independent bounded CPI observations: U_H=Xbar+sqrt(ln20/(2N)). At N=4096 additive half-width=0.0191230 and at 20000 it is 0.0086541. It is valid but has effectively zero acceptance power near Pfa=.001 at that budget. At mean exactly .001 and additive allowance .0005, it would need at least 5,991,465 CPI.
+- Bernoulli-KL Chernoff inversion for independent Xi in [0,1]: kl(Xbar,U_KL)=ln20/N, U_KL>Xbar, where kl(a,b)=a ln(a/b)+(1-a)ln((1-a)/(1-b)). Convexity of exp(t Xi) and independent CPI mgfs make this a conservative Bernoulli-extremal bound, without CUT independence. At Xbar=.001, minimal N for U_KL<=.0015 is 31648; at N=32768 U_KL=.001490238. At N20000 U_KL=.001650888 and cannot meet the bound when the observed mean is exactly .001. KL is an independent fallback if one wishes not to estimate CPI variance.
+- Existing v1.1 skew Studentized method at N4096: C04 15/15 synthetic count qualification PASS with independent calibration Delta*=.28734133322686817, but prior source-realistic anisotropy check failed z~43.575 and prevents main Pfa execution under current contract. The new EB theorem is valid for any within-map geometry given iid CPI, so does not need to reconstruct isotropic/exchangeable 2D spatial correlations. Existing failure and all approved source conditions remain historical until explicit amended authorization.
+
+## D. Prospective sample size and cost, analytical only
+Historical source: engineering/S03-C04-post-alpha-spatial-diagnostic-v0.1.json (SHA256 3370d100ff697fd3a5f6848e56450a53d22b8ee95ce4e31d3eb056982650d37a), post-alpha 4096 CPI full Python chain; sample count variance = 3.9913375090621184, raw mean count 2.791259765625. That dataset FAILED the prior spatial transfer requirement and the first 2048 CPI overlap an earlier exploration. It is used **ONLY to plan cost and power**, NEVER to confirm the new test or tune the eventual bound.
+
+For approximate power planning ONLY, posit true mu=.001, replace future S2 by historical s2=3.9913375090621184/2782^2, and use normal approximation for mean across independent CPI. This is an approximation, not a finite-sample guarantee of PASS power.
+
+| N CPI | EB U at mu=.001 (historic variance) | EB U with 4x variance | KL U at Xbar=.001 | model Python time extrapolated | minimum one-way 115200-8N1 full IQ transfer |
+|---:|---:|---:|---:|---:|---:|
+| 4,096 | 0.00313240 | 0.00316288 | 0.00273658 | 1.61 s | 1.67 h |
+| 12,000 | 0.00173515 | 0.00175295 | 0.00188113 | 4.71 s | 4.89 h |
+| 16,000 | 0.00155342 | 0.00156884 | 0.00174198 | 6.29 s | 6.52 h |
+| 18,000 | 0.00149275 | 0.00150729 | 0.00169225 | 7.07 s | 7.33 h |
+| 20,000 | 0.00144418 | 0.00145798 | 0.00165089 | 7.86 s | 8.15 h |
+| 24,000 | 0.00137125 | 0.00138384 | 0.00158564 | 9.43 s | 9.78 h |
+| 32,768 | 0.00127346 | 0.00128424 | 0.00149024 | 12.87 s | 13.35 h |
+| 50,000 | 0.00118087 | 0.00118960 | 0.00138694 | 19.64 s | 20.37 h |
+
+At historical variance the deterministic EB U-at-mean crossing happens near N=17,736; ~95% approximate acceptance power requires N~18,058. With 4x historical variance, the same heuristic 95% crossing is ~18,940. Therefore propose fixed **N=20,000**, beyond these planning points; this is NOT guaranteed 95% acceptance power under all possible bounded CPI laws. N=20,000 requires 337,920,000 raw input IQ bytes (~322 MiB), min 8.15 hours via initial UART 115200-8N1 if all raw bytes transported over the CP2102GM; protocol/frame overhead, retries and readback make reality longer. Existing full Python 4096-CPI diagnostic took 1.60909 s, suggesting ~7.86 s for pure 20000-CPI processing on same laptop by linear extrapolation ONLY; file writing, CI/readback, other workload and hardware not benchmarked. Storage for one float64 CPI-count vector is ~160 kB. Future FPGA test transport throughput could be serious and needs S05 engineering design.
+
+## E. Alternative if engineer rejects the 20k CPI bound/transport budget
+Prospective, non-normative direct full-chain count-based empirical coverage qualification at 4096 CPI (current budget) could use three NEW, disjoint source streams: (1) reference with an independently valid uncertainty interval for its unknown mu, (2) many whole-chain independent Monte Carlo studies to evaluate coverage of a frozen CPI CI, (3) reserved main acceptance CPI sample. If reference interval is [L_ref,U_ref], count CI coverage definitely SUCCESS only when each study U_j>=U_ref; definitely FAIL when U_j<L_ref; between L_ref and U_ref classify INCONCLUSIVE, never count as covered. To claim unconditional coverage >=95%, allocate reference uncertainty probability separately from Monte Carlo Wilson uncertainty and account for it by union bound. Freeze all sample counts, seeds, success/uncertainty/indeterminate thresholds and acceptance power criterion BEFORE producing any data. This may be computationally costlier and is not guaranteed to qualify; do not silently reuse the earlier synthetic Beta-Binomial approval as source-realistic coverage.
+No such alternate three-dataset trial is authorized or run now.
+
+## F. Risk and control-change decision
+- Most important residual risk: input CPIs may not be independently identically distributed in real hardware due to phase-continuity, shared clutter, state retained across blocks, PRNG stream reuse or systematic drift. The concentration theorem cannot fix an invalid independence model.
+- EB can be conservative if future within-CPI correlation gives much higher variance than the diagnostic. An observed spatial pattern differing by direction is NOT in itself an invalidity under EB.
+- Increasing CPI count (4096 to 20000) and retiring old isotropic spatial-transfer test are **scope changes** to C-CFAR-02, requiring explicit engineer approval. Do not retroactively mark old failure PASS. None of the performance limits, alpha, Delta-star, Pd design goal or processing architecture changes.
+- For project focus, recommend **EB with 20000 fresh CPI, fixed n, i.i.d.-CPI provenance proof and direct code/theorem audit** as the PRIMARY option. Lower bound proof and operational CPU feasibility, minimal model-shape dependence; higher future serial transfer cost is explicit.
+- Do NOT run the final Pfa at this turn. Gate-S03 OPEN, S03 75%, whole project 22.9167%. Approval of an S02 amendment and a separate future readiness review are required.

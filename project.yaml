@@ -14,7 +14,7 @@
     "s02_completed_criteria": 8,
     "s02_total_criteria": 8,
     "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria",
-    "basis": "S03 6/8; 38 unit tests and independent development analysis, original C04 Student-t qualification FAILED 7/15; v1.1 C04 proposal unapproved, main Pfa blocked",
+    "basis": "S01/S02 approved, 6/8 S03 criteria. S02 v1.1 C04 method synthetic calibration and 15/15 qualification PASS, but real-chain spatial validity/alpha calibration and main Pfa BLOCKED, S03 Gate OPEN.",
     "s03_completed_criteria": 6,
     "s03_total_criteria": 8
   },
@@ -25,14 +25,14 @@
   },
   "execution_status": {
     "design": "S03 floating reference implemented and tested, no RTL",
-    "python_simulation": "floating reference and 38 unit tests; software ablations and new independent development-only coverage studies executed; no prospective CI calibration, formal replacement qualification, final Pfa, or RTL/hardware tests",
+    "python_simulation": "S03 floating reference; 38/38 unit tests pass. v1.1 independent CI calibration PASS, 15/15 synthetic count qualification PASS. 2048 CPI uncalibrated full-chain spatial diagnostic, numeric CUT/train/CFAR threshold ablation. No main Pfa or alpha calibration.",
     "rtl_simulation": "not_executed",
     "synthesis": "not_executed",
     "implementation": "not_executed",
     "hardware_test": "not_executed"
   },
   "note": "This JSON-compatible YAML is deliberately serialized as JSON, which YAML 1.2 accepts.",
-  "last_review_at_utc": "2026-11-09T05:32:44.882224+00:00",
+  "last_review_at_utc": "2026-11-09T05:53:25.802408+00:00",
   "s01_approved_baseline": {
     "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
     "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a",

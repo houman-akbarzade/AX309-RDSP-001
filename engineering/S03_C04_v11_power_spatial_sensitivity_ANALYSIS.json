@@ -1,0 +1,84 @@
+{
+  "calibrated_delta_star": 0.28734133322686817,
+  "calibration_sha256": "c6f64522a9fa878474c3431177159f43e3f9e8c42a31b322fb95fed8cd5ccbf9",
+  "caveats": [
+    "Observed pass fractions are simulations of synthetic Gaussian/Beta-Binomial count models. They are NOT actual measured radar Pfa or Pd.",
+    "The full chain uses alpha0 uncalibrated; its observed empirical rate only sets a comparison reference, not a Pfa acceptance verdict.",
+    "Matching selected two tail metrics does not prove matched spatial dependence or transport of CI coverage to radar chain.",
+    "No main Pfa validation generated; no CFAR-alpha calibration dataset generated."
+  ],
+  "independent_CPI_spatial_seed": 311091603,
+  "model_vs_full_chain_count_tails_at_empirical_p": {
+    "beta_binomial_rho_0_001": {
+      "prob_zero": 0.2753731361968449,
+      "tail_ge8": 0.08146217227775221
+    },
+    "full_chain_uncalibrated_empirical": {
+      "prob_zero": 0.11767578125,
+      "tail_ge8": 0.01806640625
+    },
+    "independent_binomial": {
+      "prob_zero": 0.06733431630670794,
+      "tail_ge8": 0.0065474150420728
+    }
+  },
+  "power_p001_by_rho": [
+    {
+      "N_outer": 3000,
+      "Wilson_lower_95_one_sided": 0.9990989647786165,
+      "Wilson_upper_95_one_sided": 0.9999999999999998,
+      "interpretation": "synthetic count-based ability to satisfy criterion, not measured Pfa nor actual FPGA",
+      "observed_fraction": 1.0,
+      "rho": 0.0,
+      "true_p": 0.001,
+      "valid_bound_le_limit": 3000
+    },
+    {
+      "N_outer": 3000,
+      "Wilson_lower_95_one_sided": 0.9990989647786165,
+      "Wilson_upper_95_one_sided": 0.9999999999999998,
+      "interpretation": "synthetic count-based ability to satisfy criterion, not measured Pfa nor actual FPGA",
+      "observed_fraction": 1.0,
+      "rho": 0.001,
+      "true_p": 0.001,
+      "valid_bound_le_limit": 3000
+    },
+    {
+      "N_outer": 3000,
+      "Wilson_lower_95_one_sided": 0.9990989647786165,
+      "Wilson_upper_95_one_sided": 0.9999999999999998,
+      "interpretation": "synthetic count-based ability to satisfy criterion, not measured Pfa nor actual FPGA",
+      "observed_fraction": 1.0,
+      "rho": 0.01,
+      "true_p": 0.001,
+      "valid_bound_le_limit": 3000
+    },
+    {
+      "N_outer": 3000,
+      "Wilson_lower_95_one_sided": 0.9979874728192061,
+      "Wilson_upper_95_one_sided": 0.9997793600063722,
+      "interpretation": "synthetic count-based ability to satisfy criterion, not measured Pfa nor actual FPGA",
+      "observed_fraction": 0.9993333333333333,
+      "rho": 0.03,
+      "true_p": 0.001,
+      "valid_bound_le_limit": 2998
+    },
+    {
+      "N_outer": 3000,
+      "Wilson_lower_95_one_sided": 0.9644384723986518,
+      "Wilson_upper_95_one_sided": 0.9747145544932477,
+      "interpretation": "synthetic count-based ability to satisfy criterion, not measured Pfa nor actual FPGA",
+      "observed_fraction": 0.97,
+      "rho": 0.05,
+      "true_p": 0.001,
+      "valid_bound_le_limit": 2910
+    }
+  ],
+  "qualification_sha256": "2aa1e4614b3d3b80ded3b6f7c47a15dd92184635f54619d90f1df8501b2d0ed5",
+  "qualification_status": "PASS",
+  "separate_CI_cal_and_qual_seed_masters": [
+    311091601,
+    311091602
+  ],
+  "source_scope": "S03 v1.1 supplemental independent model qualification and full-chain diagnostic analysis"
+}

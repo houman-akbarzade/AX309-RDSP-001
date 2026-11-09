@@ -1,0 +1,81 @@
+{
+  "stage": "S02",
+  "gate": "open",
+  "review_status": "v0.7 awaiting engineer acceptance; Gate-S02 authorization withheld",
+  "assessment_time_utc": "2026-11-09T04:07:15.270623+00:00",
+  "approved_v06_contract_areas": [
+    "signal",
+    "data",
+    "doppler policy",
+    "UART",
+    "traceability",
+    "CA-CFAR 7x7 guard3x3 train40 geometry"
+  ],
+  "proposed_v07_corrections": [
+    "coverage-method Wilson lower-bound qualification",
+    "deterministic Doppler ties vs conditional half-bin eligibility",
+    "explicit independent matching gate vs estimator acceptance JSON fields"
+  ],
+  "criteria": [
+    {
+      "id": "S02-C01",
+      "completed": true,
+      "evidence_basis": "Input data generation and measurable I/O definition approved by engineer for v0.6; no executable result required for this specification criterion"
+    },
+    {
+      "id": "S02-C02",
+      "completed": true,
+      "evidence_basis": "Engineer approves signal contract; MF reference indexing/valid-domain policy specified for S03 verification"
+    },
+    {
+      "id": "S02-C03",
+      "completed": false,
+      "evidence_basis": "Doppler tie/eligibility revision v0.7 not yet engineer accepted and MTI quantitative test oracle remains architectural"
+    },
+    {
+      "id": "S02-C04",
+      "completed": false,
+      "evidence_basis": "Corrected coverage qualification protocol v0.7 not yet engineer reviewed/accepted; future study not run"
+    },
+    {
+      "id": "S02-C05",
+      "completed": false,
+      "evidence_basis": "Separate association and estimator-error JSON clauses newly corrected, not yet engineer accepted"
+    },
+    {
+      "id": "S02-C06",
+      "completed": false,
+      "evidence_basis": "Per-class resource margins are S05, complete resource/timing budget review not engineer approved"
+    },
+    {
+      "id": "S02-C07",
+      "completed": true,
+      "evidence_basis": "Engineer accepted UART/data repeatability contract from v0.6; no test claimed"
+    },
+    {
+      "id": "S02-C08",
+      "completed": false,
+      "evidence_basis": "Explicit integrated baseline and Gate approval withheld"
+    }
+  ],
+  "completed_count": 3,
+  "total_count": 8,
+  "stage_progress_percent": 37.5,
+  "project_progress_percent": 11.458333333333332,
+  "new_experiments_performed": false,
+  "S03_started": false,
+  "prior_approved_baseline": "S01 v0.3",
+  "needs_before_gate": [
+    "engineer acceptance of v0.7 three fixes",
+    "C03-C06 criteria review/closure as applicable",
+    "explicit engineer Gate-S02 authorization"
+  ],
+  "dependent_work_not_executed": [
+    "S03 qualification of CI and reference model",
+    "S04 bit-true",
+    "S05 architecture budget",
+    "S08 synthesis",
+    "S09 STA",
+    "S11 board"
+  ]
+}

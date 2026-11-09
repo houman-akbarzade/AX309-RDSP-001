@@ -1,0 +1,234 @@
+{
+  "bootstrap_t_exploratory_B": 256,
+  "caveats": [
+    "250 per condition and 80 bootstrap-t outer reps too small to certify coverage",
+    "Candidate comparison data cannot be reused as independent final qualification",
+    "Empirical Bernstein inequality is distribution free for IID bounded CPI rates but very conservative at G=4096",
+    "Future new approved S02 protocol must preregister all 15 conditions and definitive settings before confirmatory study"
+  ],
+  "master_seed": 370091001,
+  "model_p_values": [
+    0.0005,
+    0.001,
+    0.0015
+  ],
+  "n_outer_per_condition": 250,
+  "pilot_bootstrap_t": [
+    {
+      "B_bootstrap": 256,
+      "N_outer": 80,
+      "covered_count": 76,
+      "estimated_coverage": 0.95,
+      "fraction_bound_le_0_0015": 1.0,
+      "note": "very small exploratory pilot; no inferential qualification",
+      "p_true": 0.001,
+      "rho": 0.0
+    },
+    {
+      "B_bootstrap": 256,
+      "N_outer": 80,
+      "covered_count": 75,
+      "estimated_coverage": 0.9375,
+      "fraction_bound_le_0_0015": 1.0,
+      "note": "very small exploratory pilot; no inferential qualification",
+      "p_true": 0.001,
+      "rho": 0.01
+    },
+    {
+      "B_bootstrap": 256,
+      "N_outer": 80,
+      "covered_count": 75,
+      "estimated_coverage": 0.9375,
+      "fraction_bound_le_0_0015": 1.0,
+      "note": "very small exploratory pilot; no inferential qualification",
+      "p_true": 0.001,
+      "rho": 0.03
+    },
+    {
+      "B_bootstrap": 256,
+      "N_outer": 80,
+      "covered_count": 74,
+      "estimated_coverage": 0.925,
+      "fraction_bound_le_0_0015": 0.9875,
+      "note": "very small exploratory pilot; no inferential qualification",
+      "p_true": 0.001,
+      "rho": 0.05
+    }
+  ],
+  "pilot_t_and_skew_correction": [
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0005001484852399353,
+      "avg_empirical_Bernstein_halfwidth": 0.0021198997662722264,
+      "p": 0.0005,
+      "rho": 0.0,
+      "skew_corrected_coverage": 0.968,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.968,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0010004998652048886,
+      "avg_empirical_Bernstein_halfwidth": 0.0021273665834716303,
+      "p": 0.001,
+      "rho": 0.0,
+      "skew_corrected_coverage": 0.952,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.952,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0014994246635738678,
+      "avg_empirical_Bernstein_halfwidth": 0.002133056965673763,
+      "p": 0.0015,
+      "rho": 0.0,
+      "skew_corrected_coverage": 0.94,
+      "skew_probability_pass_bound": 0.06,
+      "t_coverage": 0.94,
+      "t_probability_pass_bound": 0.06
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0005007459364890367,
+      "avg_empirical_Bernstein_halfwidth": 0.002136901099330958,
+      "p": 0.0005,
+      "rho": 0.001,
+      "skew_corrected_coverage": 0.944,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.94,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0009992775824496766,
+      "avg_empirical_Bernstein_halfwidth": 0.002151281123049158,
+      "p": 0.001,
+      "rho": 0.001,
+      "skew_corrected_coverage": 0.932,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.932,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0014996903924784327,
+      "avg_empirical_Bernstein_halfwidth": 0.0021624862223888065,
+      "p": 0.0015,
+      "rho": 0.001,
+      "skew_corrected_coverage": 0.944,
+      "skew_probability_pass_bound": 0.056,
+      "t_coverage": 0.944,
+      "t_probability_pass_bound": 0.056
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0005004823137580877,
+      "avg_empirical_Bernstein_halfwidth": 0.002198127497116877,
+      "p": 0.0005,
+      "rho": 0.01,
+      "skew_corrected_coverage": 0.948,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.924,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0009974395949406902,
+      "avg_empirical_Bernstein_halfwidth": 0.0022374579389564026,
+      "p": 0.001,
+      "rho": 0.01,
+      "skew_corrected_coverage": 0.928,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.92,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0014976635514018692,
+      "avg_empirical_Bernstein_halfwidth": 0.0022686104189955703,
+      "p": 0.0015,
+      "rho": 0.01,
+      "skew_corrected_coverage": 0.952,
+      "skew_probability_pass_bound": 0.048,
+      "t_coverage": 0.936,
+      "t_probability_pass_bound": 0.064
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0005015673441993171,
+      "avg_empirical_Bernstein_halfwidth": 0.0022663098648062104,
+      "p": 0.0005,
+      "rho": 0.03,
+      "skew_corrected_coverage": 0.948,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.928,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0009962067813173974,
+      "avg_empirical_Bernstein_halfwidth": 0.0023327571530805343,
+      "p": 0.001,
+      "rho": 0.03,
+      "skew_corrected_coverage": 0.928,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.9,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.001501811309309849,
+      "avg_empirical_Bernstein_halfwidth": 0.0023891678056032688,
+      "p": 0.0015,
+      "rho": 0.03,
+      "skew_corrected_coverage": 0.944,
+      "skew_probability_pass_bound": 0.056,
+      "t_coverage": 0.932,
+      "t_probability_pass_bound": 0.068
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0004943386053199136,
+      "avg_empirical_Bernstein_halfwidth": 0.002309648717560268,
+      "p": 0.0005,
+      "rho": 0.05,
+      "skew_corrected_coverage": 0.944,
+      "skew_probability_pass_bound": 1.0,
+      "t_coverage": 0.92,
+      "t_probability_pass_bound": 1.0
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0009978797852264556,
+      "avg_empirical_Bernstein_halfwidth": 0.00240168191541083,
+      "p": 0.001,
+      "rho": 0.05,
+      "skew_corrected_coverage": 0.952,
+      "skew_probability_pass_bound": 0.992,
+      "t_coverage": 0.928,
+      "t_probability_pass_bound": 0.992
+    },
+    {
+      "N_pilot": 250,
+      "average_observed_rate": 0.0015083253532755213,
+      "avg_empirical_Bernstein_halfwidth": 0.0024691019879807905,
+      "p": 0.0015,
+      "rho": 0.05,
+      "skew_corrected_coverage": 0.948,
+      "skew_probability_pass_bound": 0.052,
+      "t_coverage": 0.936,
+      "t_probability_pass_bound": 0.064
+    }
+  ],
+  "purpose": "development-only qualitative comparison; not formal qualification or main Pfa test",
+  "rho_values": [
+    0.0,
+    0.001,
+    0.01,
+    0.03,
+    0.05
+  ],
+  "source_sha256": "96588083ef353d35635680c2beac3d2178989c7a91b165dce1ddb9916d0961f8"
+}

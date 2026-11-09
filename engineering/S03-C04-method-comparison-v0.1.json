@@ -1,0 +1,44 @@
+{
+  "stage": "S03",
+  "project": "AX309-RDSP-001",
+  "purpose": "C04 alternative method development and decision, NOT approved qualification",
+  "original_C04_qualification": {
+    "passed": 8,
+    "failed": 7,
+    "total": 15,
+    "source": "engineering/s03_C04_count_qualification.json",
+    "sha256": "b4728d6d93a02e3324f0390dc639add2780dc46aaf9b2d5afba07738480c3ef9",
+    "status": "FAILED_UNCHANGED"
+  },
+  "alternatives": [
+    {
+      "name": "Skewness-corrected Studentized CPI upper CI",
+      "preferred": true,
+      "formula": "U=clip(mean(X)+t.ppf(.95,G-1)*s/sqrt(G)+gamma*s*(1+2*z_.95^2)/(6*G),0,1)",
+      "cost": "O(G) statistics per independent trial; 184320000 CPI-count samples for 15x3000x4096 qualification",
+      "theory": "First-order Studentized Edgeworth/Cornish-Fisher correction; asymptotic, NOT finite-sample guaranteed",
+      "risk": "rare event extreme skew, unstable gamma, must prospectively re-qualify across all original 15 conditions",
+      "pilot": "250 outer runs each of 15 conditions, exploratory and not a coverage qualification"
+    },
+    {
+      "name": "Whole-CPI bootstrap-t",
+      "preferred": false,
+      "cost": "O(B*G) per CI; B=2000 yields 368640000000 resampled CPI indices in 15x3000 formal qualification",
+      "theory": "Studentized bootstrap often second-order accurate for smooth statistics given regularity; not exact in sparse or degenerate counts",
+      "pilot": "80 outer runs x256 bootstrap each in 4 scenarios only; too small for qualification",
+      "risk": "CPU cost, zero bootstrap variance and large right tail"
+    },
+    {
+      "name": "Distribution-free bounded CPI empirical Bernstein/Hoeffding",
+      "preferred": false,
+      "cost": "O(G) per CI",
+      "theory": "Independence across CPI plus Xi in [0,1] sufficient, arbitrary dependence within CPI; conservative finite-sample confidence",
+      "empirical_Bernstein_additive_penalty": 0.002101925614879736,
+      "Hoeffding_95_half_width": 0.01912302211469388,
+      "risk": "At 4096 CPI empirical Bernstein penalty alone >0.0015 so Pfa upper acceptance cannot PASS even with zero counts"
+    }
+  ],
+  "next_action_requires_engineer_approval": true,
+  "main_Pfa_remains_blocked": true,
+  "pilot_source": "engineering/S03_alternative_CI_development_pilot.json"
+}

@@ -1,0 +1,89 @@
+{
+  "stage": "S02",
+  "gate": "open",
+  "review_status": "conditional method revision proposed; Gate OPEN",
+  "assessment_time_utc": "2026-11-09T04:14:39.061982+00:00",
+  "approved_v06_contract_areas": [
+    "signal",
+    "data",
+    "doppler policy",
+    "UART",
+    "traceability",
+    "CA-CFAR 7x7 guard3x3 train40 geometry"
+  ],
+  "proposed_v07_corrections": [
+    "coverage-method Wilson lower-bound qualification",
+    "deterministic Doppler ties vs conditional half-bin eligibility",
+    "explicit independent matching gate vs estimator acceptance JSON fields"
+  ],
+  "criteria": [
+    {
+      "id": "S02-C01",
+      "completed": true,
+      "evidence_basis": "Engineer approved input/data specification in v0.6"
+    },
+    {
+      "id": "S02-C02",
+      "completed": true,
+      "evidence_basis": "Engineer approved signal/MF specification in v0.6"
+    },
+    {
+      "id": "S02-C03",
+      "completed": true,
+      "evidence_basis": "Engineer explicitly approved v0.7 deterministic Doppler tie and half-bin qualification separation"
+    },
+    {
+      "id": "S02-C04",
+      "completed": false,
+      "evidence_basis": "OPEN: practical alternative confidence interval validity and formal acceptance protocol pending engineer approval; no coverage experiment run"
+    },
+    {
+      "id": "S02-C05",
+      "completed": true,
+      "evidence_basis": "Engineer explicitly approved v0.7 structured separation of assignment gate and estimator acceptance"
+    },
+    {
+      "id": "S02-C06",
+      "completed": true,
+      "evidence_basis": "Approved binding capacity/STA/cycle measurement policy and documented S05, S08, S09, S11 verification responsibilities; no actual resource claim"
+    },
+    {
+      "id": "S02-C07",
+      "completed": true,
+      "evidence_basis": "Engineer approved UART/reproducibility specification in v0.6"
+    },
+    {
+      "id": "S02-C08",
+      "completed": false,
+      "evidence_basis": "OPEN: engineer explicit final Gate approval not provided"
+    }
+  ],
+  "completed_count": 6,
+  "total_count": 8,
+  "stage_progress_percent": 75.0,
+  "project_progress_percent": 14.583333333333334,
+  "new_experiments_performed": false,
+  "S03_started": false,
+  "prior_approved_baseline": "S01 v0.3",
+  "needs_before_gate": [
+    "engineer acceptance of v0.7 three fixes",
+    "C03-C06 criteria review/closure as applicable",
+    "explicit engineer Gate-S02 authorization"
+  ],
+  "dependent_work_not_executed": [
+    "S03 qualification of CI and reference model",
+    "S04 bit-true",
+    "S05 architecture budget",
+    "S08 synthesis",
+    "S09 STA",
+    "S11 board"
+  ],
+  "matrix_version": "v0.8-final-proposed",
+  "new_simulation_executed": false,
+  "remaining_gate_blockers": [
+    "engineer approval of replacement statistical method v0.8 and acceptance of its qualification caveats",
+    "explicit engineer Gate-S02 approval"
+  ],
+  "remaining_independent_technical_decisions": 0,
+  "method_uncertainty": "Cluster Student-t may undercover for skewed rare CPI alarm counts. 15 count-only simulation models do not guarantee arbitrary physical CFAR dependence."
+}

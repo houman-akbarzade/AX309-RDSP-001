@@ -1,0 +1,381 @@
+{
+  "N": 20000,
+  "Pfa_limit": 0.0015,
+  "Pfa_target": 0.001,
+  "S02_v12_not_approved": true,
+  "S02_v12_proposal": "engineering/S02-C-CFAR-02-CPI-bounded-PROPOSED-v1.2.md",
+  "comparison_previous_model_sha256": "6aa616a6884c894e1643f71d0de9f046ea1814cbf5fda4602cccc3425c419de2",
+  "constant_7log40_over_3Nminus1_at_N20000": 0.0004303907891860852,
+  "constant_log_40": 3.6888794541139363,
+  "date_utc": "2026-11-09T06:46:52.221557+00:00",
+  "definition": "Xi=F_i/2782, 0<=Fi<=2782, iid across CPI, arbitrary within-CPI dependence",
+  "estimated_only_laptop_CPU_seconds": 7.856884013648369,
+  "estimated_raw_UART_transfer_min_hours": 8.148148148148149,
+  "expected_bound_at_true_p001_4x_historical_variance": 0.0014579761918976594,
+  "expected_bound_at_true_p001_historical_variance": 0.0014441834905418722,
+  "formula": "U=clip_0_1[mean(X)+sqrt(2*S2*ln(40)/N)+7*ln(40)/(3*(N-1))], S2 ddof=1, N fixed",
+  "frozen_alpha": 7.476912055027923,
+  "frozen_delta": 0.28734133322686817,
+  "full_input_bytes": 337920000,
+  "historical_spatial_diagnostic_4096CPI_status": "FAIL_SPATIAL_TRANSFER_GATE",
+  "historical_variance_X": 5.157083961574534e-07,
+  "historical_variance_count": 3.9913375090621184,
+  "independent_implementation_scalar_welford_test": {
+    "PASS": true,
+    "mean_second_method": 0.16756530074287082,
+    "mean_welford": 0.16756530074287085,
+    "values": [
+      0.0,
+      0.0003594536304816679,
+      0.0010783608914450035,
+      0.003235082674335011,
+      1.0,
+      0.0007189072609633358
+    ],
+    "variance_second_method": 0.16630869891567837,
+    "variance_welford": 0.1663086989156784
+  },
+  "no_new_random_data": true,
+  "no_pfa_or_pd_final_tests": true,
+  "normal_power_proxy_NOT_GUARANTEED": true,
+  "pd_candidate_one_sided_exact_binomial_CI": [
+    {
+      "independent_target_CPIs": 500,
+      "minimum_successes_for_one_sided_95pct_lower_ge_0p9": 462,
+      "power_if_true_Pd_0p92": 0.4108452608520783,
+      "power_if_true_Pd_0p95": 0.995394256269072,
+      "success_fraction_needed": 0.924
+    },
+    {
+      "independent_target_CPIs": 1000,
+      "minimum_successes_for_one_sided_95pct_lower_ge_0p9": 916,
+      "power_if_true_Pd_0p92": 0.704128737114214,
+      "power_if_true_Pd_0p95": 0.9999978511503868,
+      "success_fraction_needed": 0.916
+    },
+    {
+      "independent_target_CPIs": 2000,
+      "minimum_successes_for_one_sided_95pct_lower_ge_0p9": 1823,
+      "power_if_true_Pd_0p92": 0.9237495976481545,
+      "power_if_true_Pd_0p95": 0.9999999999997365,
+      "success_fraction_needed": 0.9115
+    }
+  ],
+  "pd_target": 0.9,
+  "pd_target_is_design_goal_not_binding": true,
+  "pd_trial_method_not_approved_or_executed": true,
+  "project": "AX309-RDSP-001",
+  "sensitivity_matrix": [
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0012441834905418721,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0008,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.001249896614505201,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0008,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0012579761918976593,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0008,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0012694024398243167,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0008,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0013441834905418722,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0009,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0013498966145052008,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0009,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0013579761918976591,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0009,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0013694024398243168,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0009,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0,
+      "model_bound_at_mean": 0.0014441834905418722,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.001,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.9999999999984917,
+      "model_bound_at_mean": 0.001449896614505201,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.001,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.9999824738208718,
+      "model_bound_at_mean": 0.0014579761918976594,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.001,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.9834293925663931,
+      "model_bound_at_mean": 0.0014694024398243166,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.001,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.8739881644119166,
+      "model_bound_at_mean": 0.001494183490541872,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00105,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.5057431819262683,
+      "model_bound_at_mean": 0.0014998966145052008,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00105,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.21611611319297858,
+      "model_bound_at_mean": 0.001507976191897659,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00105,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0883632125444252,
+      "model_bound_at_mean": 0.0015194024398243167,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00105,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.6437723649790886e-18,
+      "model_bound_at_mean": 0.001544183490541872,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0011,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.8505803213802053e-12,
+      "model_bound_at_mean": 0.0015498966145052009,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0011,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 5.694154574742946e-09,
+      "model_bound_at_mean": 0.0015579761918976592,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0011,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 6.752477855110044e-07,
+      "model_bound_at_mean": 0.0015694024398243168,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0011,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 4.263916984628741e-77,
+      "model_bound_at_mean": 0.0015941834905418722,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00115,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 2.7275360137717993e-44,
+      "model_bound_at_mean": 0.001599896614505201,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00115,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.0587623839815961e-26,
+      "model_bound_at_mean": 0.0016079761918976593,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00115,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 4.6480984735322394e-17,
+      "model_bound_at_mean": 0.0016194024398243165,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00115,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.1949981718240895e-177,
+      "model_bound_at_mean": 0.001644183490541872,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0012,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 4.688607476591833e-97,
+      "model_bound_at_mean": 0.0016498966145052007,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0012,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 7.33915509758754e-55,
+      "model_bound_at_mean": 0.001657976191897659,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0012,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 2.0779504301460155e-32,
+      "model_bound_at_mean": 0.0016694024398243167,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0012,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.001694183490541872,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00125,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 8.006729963058054e-171,
+      "model_bound_at_mean": 0.0016998966145052009,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00125,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.6766797035488901e-93,
+      "model_bound_at_mean": 0.0017079761918976592,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00125,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 5.526852957222084e-53,
+      "model_bound_at_mean": 0.0017194024398243168,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.00125,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.0017441834905418722,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0013,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.2894262226071351e-265,
+      "model_bound_at_mean": 0.001749896614505201,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0013,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.2080180310357805e-142,
+      "model_bound_at_mean": 0.0017579761918976593,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0013,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 8.443992982212183e-79,
+      "model_bound_at_mean": 0.0017694024398243165,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0013,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.001844183490541872,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0014,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.0018498966145052008,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0014,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.8274082371322543e-272,
+      "model_bound_at_mean": 0.0018579761918976591,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0014,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 3.509755777915382e-146,
+      "model_bound_at_mean": 0.0018694024398243168,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0014,
+      "variance_multiplier_vs_historical": 8.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.0019441834905418722,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0015,
+      "variance_multiplier_vs_historical": 1.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.001949896614505201,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0015,
+      "variance_multiplier_vs_historical": 2.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 0.0,
+      "model_bound_at_mean": 0.0019579761918976594,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0015,
+      "variance_multiplier_vs_historical": 4.0
+    },
+    {
+      "fixed_variance_normal_power_proxy": 1.391356119861388e-234,
+      "model_bound_at_mean": 0.0019694024398243166,
+      "model_variance_exceeds_Bernoulli_max_for_mean": false,
+      "true_rate_assumed": 0.0015,
+      "variance_multiplier_vs_historical": 8.0
+    }
+  ],
+  "source_theorem": "https://www.cs.mcgill.ca/~colt2009/papers/012.pdf",
+  "status": "MATH_AND_PRE-FLIGHT_READINESS_AUDIT_ONLY_NO_FINAL_TEST",
+  "theorem": "Maurer and Pontil 2009 Theorem 4/11 95pct mean upper for iid bounded X, apply to 1-X for original lower-tail statement"
+}

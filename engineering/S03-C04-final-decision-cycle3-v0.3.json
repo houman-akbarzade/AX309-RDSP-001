@@ -1,0 +1,50 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S03",
+  "proposal_status": "AWAITING_ENGINEER_APPROVAL",
+  "single_engineering_exception": "prospective S02 v1.1 C-CFAR-02 critical calibration and CI formula revision ONLY",
+  "requested_action": "approve the specified amendment, not a statistical or hardware PASS",
+  "current_approved_baseline": "S02 v1.0 hash pinned",
+  "old_method_formal_qualification": "FAIL 7 of 15, preserved",
+  "recommended_candidate": "G4096 first-order skew-Studentized with independently model-calibrated global nonnegative critical adjustment",
+  "uncalibrated_A1_development_min_coverage": 0.9341666666666667,
+  "calibration_plan": {
+    "model_conditions": 15,
+    "outer_studies_each": 5000,
+    "CPI_per_study": 4096,
+    "confidence": "95% Bonferroni-protected family upper quantile for conditional coverage 95%",
+    "rank_for_all_5000_valid": 4792,
+    "not_executed": true
+  },
+  "qualification_plan": {
+    "conditions": 15,
+    "outer_each": 3000,
+    "G": 4096,
+    "Wilson_lower_conditional": 0.93,
+    "Wilson_lower_unconditional_valid_cover": 0.9,
+    "Wilson_upper_inconclusive": 0.05,
+    "not_executed": true
+  },
+  "unchanged_final_acceptance": {
+    "G": 4096,
+    "CUT_each": 2782,
+    "Pfa_design": 0.001,
+    "U_one_sided_limit": 0.0015,
+    "validity_guards": "unchanged"
+  },
+  "required_separate_streams": [
+    "CI_CAL",
+    "CI_QUAL",
+    "RADAR_SPATIAL",
+    "CFAR_ALPHA",
+    "PFA_MAIN"
+  ],
+  "no_S02_change_performed": true,
+  "Gate_S03": "open",
+  "artifacts": [
+    "engineering/S03-cycle3-evidence-manifest-v0.3.json",
+    "engineering/S03-cycle3-evidence-report-v0.3.md",
+    "engineering/S03-C04-final-engineering-decision-cycle3-v0.3.md",
+    "engineering/S02-v1.1-C04-calibrated-Studentized-PROPOSED-ONLY.md"
+  ]
+}

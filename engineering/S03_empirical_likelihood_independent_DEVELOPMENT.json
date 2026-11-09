@@ -1,0 +1,137 @@
+{
+  "N_dev_outer_each": 300,
+  "assumptions": "IID CPI clusters with nondegenerate mean and empirical likelihood Wilks approximation; NOT exact finite sample",
+  "citations": [
+    "https://doi.org/10.1214/aos/1176347494",
+    "https://doi.org/10.1093/biomet/75.2.237"
+  ],
+  "formula": "signed root r(mu)=sign(xbar-mu)*sqrt(2 sum ln(1+lambda*(xi-mu))); sum (xi-mu)/(1+lambda*(xi-mu))=0; upper 95% CI U is mu solving r(mu)=-z_95",
+  "independent_CPI_count": 4096,
+  "no_main_Pfa": true,
+  "not_selected_for_normative_contract": true,
+  "results": [
+    {
+      "conditional_coverage": 0.9466666666666667,
+      "outer_reps": 300,
+      "p_true": 0.0005,
+      "rho": 0.0,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.94,
+      "outer_reps": 300,
+      "p_true": 0.001,
+      "rho": 0.0,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.9566666666666667,
+      "outer_reps": 300,
+      "p_true": 0.0015,
+      "rho": 0.0,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 0.043333333333333335
+    },
+    {
+      "conditional_coverage": 0.9266666666666666,
+      "outer_reps": 300,
+      "p_true": 0.0005,
+      "rho": 0.001,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.9533333333333334,
+      "outer_reps": 300,
+      "p_true": 0.001,
+      "rho": 0.001,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.9466666666666667,
+      "outer_reps": 300,
+      "p_true": 0.0015,
+      "rho": 0.001,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 0.05333333333333334
+    },
+    {
+      "conditional_coverage": 0.9266666666666666,
+      "outer_reps": 300,
+      "p_true": 0.0005,
+      "rho": 0.01,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.9566666666666667,
+      "outer_reps": 300,
+      "p_true": 0.001,
+      "rho": 0.01,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.9433333333333334,
+      "outer_reps": 300,
+      "p_true": 0.0015,
+      "rho": 0.01,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 0.056666666666666664
+    },
+    {
+      "conditional_coverage": 0.9366666666666666,
+      "outer_reps": 300,
+      "p_true": 0.0005,
+      "rho": 0.03,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.9333333333333333,
+      "outer_reps": 300,
+      "p_true": 0.001,
+      "rho": 0.03,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.92,
+      "outer_reps": 300,
+      "p_true": 0.0015,
+      "rho": 0.03,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 0.08
+    },
+    {
+      "conditional_coverage": 0.9333333333333333,
+      "outer_reps": 300,
+      "p_true": 0.0005,
+      "rho": 0.05,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 1.0
+    },
+    {
+      "conditional_coverage": 0.93,
+      "outer_reps": 300,
+      "p_true": 0.001,
+      "rho": 0.05,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 0.98
+    },
+    {
+      "conditional_coverage": 0.95,
+      "outer_reps": 300,
+      "p_true": 0.0015,
+      "rho": 0.05,
+      "valid": 300,
+      "valid_and_bound_pass_fraction": 0.05
+    }
+  ],
+  "scope": "independent development only not approved method or qualification",
+  "seed_master": 11920717,
+  "source_sha256": "aecf35ef5d95207cd2ec083961470ad671fd72a00f8d99280fd371fececbbbfb"
+}

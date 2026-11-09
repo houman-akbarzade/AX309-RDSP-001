@@ -1,0 +1,94 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "stage": "S03",
+  "cycle": "C04-theory-and-alternatives-v0.3",
+  "recorded_at_utc": "2026-11-09T05:31:38.954360+00:00",
+  "source_git_parent": "a538f7591ab0ceedc5a118aa23a63af5c01cc6a4",
+  "approved_S02_version": "v1.0",
+  "approved_S02_baseline_commit": "58b545fd7afb552825efb15b3f871317beff29d9",
+  "approved_S02_sha256_unchanged": {
+    "engineering/S02-engineering-contracts-FINAL-PROPOSED-v1.0.md": "8faccf7f89d03a9885fbde43dd7e42577ca4092f4202c2107f927e8da81be13e",
+    "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json": "06141a707a24ffcf08aa21dfa3a6e3f48d699b5234bb025b217f10abcd921da9",
+    "engineering/S02-22-requirement-audit-FINAL-v1.0.json": "b86826a42e6dc685b315aff1450740bfb4f8974c1a9c3d881c8534a356b0b70c",
+    "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md": "e85cce3c8a988b79ac633ff9cbe775d9382d415dc6962c866b9c866d56f603f6"
+  },
+  "original_failed_qualification_artifact": "engineering/s03_C04_count_qualification.json",
+  "original_failed_qualification_sha256_unchanged": "b4728d6d93a02e3324f0390dc639add2780dc46aaf9b2d5afba07738480c3ef9",
+  "original_qualification_passed": 8,
+  "original_qualification_failed": 7,
+  "new_main_Pfa": false,
+  "new_official_C04_qualification": false,
+  "CI_critical_calibration_executed": false,
+  "CA_CFAR_alpha_calibration_executed": false,
+  "experimental_types": [
+    "mathematical formula audit",
+    "development-only independent CPI count simulations",
+    "software-only additional range/doppler/CFAR ablation",
+    "unit tests"
+  ],
+  "candidate_development_method_coverage_summary": {
+    "first_order_G4096": {
+      "min_coverage": 0.9341666666666667,
+      "max_coverage": 0.9591666666666666,
+      "condition_count": 15,
+      "data_path": "engineering/S03_independent_skew_method_development_1200x15.json"
+    },
+    "second_order_G4096": {
+      "min_coverage": 0.9333333333333333,
+      "max_coverage": 0.9608333333333333,
+      "condition_count": 15,
+      "data_path": "engineering/S03_second_order_edgeworth_independent_DEVELOPMENT.json"
+    },
+    "first_order_G16384": {
+      "min_coverage": 0.9375,
+      "max_coverage": 0.9575,
+      "condition_count": 15,
+      "data_path": "engineering/S03_independent_skew_G16384_800x15_DEVELOPMENT.json"
+    },
+    "bootstrap_t_B199": {
+      "min_coverage": 0.9166666666666666,
+      "max_coverage": 0.975,
+      "condition_count": 15,
+      "data_path": "engineering/S03_bootstrap_t_independent_120x15_DEVELOPMENT.json"
+    },
+    "empirical_likelihood": {
+      "min_coverage": 0.92,
+      "max_coverage": 0.9566666666666667,
+      "condition_count": 15,
+      "data_path": "engineering/S03_empirical_likelihood_independent_DEVELOPMENT.json"
+    }
+  },
+  "unit_tests_passed": 38,
+  "unit_tests_failed": 0,
+  "formal_progress_criteria_completed": 6,
+  "formal_progress_criteria_total": 8,
+  "S03_gate": "open",
+  "RTL_FPGA_synthesis_STA_board_testing": false,
+  "software_stack": {
+    "python": "3.14.4"
+  },
+  "files_sha256": {
+    "s03_reference/skew_formula_audit.py": "d15db4e3613851ee270f9be941d098b68a1973fc13eb6b0878379c154e20f18a",
+    "s03_reference/independent_ci_development.py": "4c6f8ef04863b38021a5e0eed1b9ac29a1bd6bb5adaad3866ccb457c8d324ccf",
+    "s03_reference/second_order_edgeworth_development.py": "9ba36372a30385b1e3df7b4b38b74c134c50745d3ede647839bc21e6afb8129b",
+    "s03_reference/bootstrap_t_independent_development.py": "290639d4198fe07b99c22fec80e70a7e4b039f0c01c822b7d63746f8fea9a5e2",
+    "s03_reference/empirical_likelihood_development.py": "aecf35ef5d95207cd2ec083961470ad671fd72a00f8d99280fd371fececbbbfb",
+    "s03_reference/larger_cpi_development.py": "e30015f6bff9c15c38a0f6bf774672a927fb54294bfd1e8076c220e5291a0bca",
+    "s03_reference/ablation_extra_clusters.py": "0944949771878d8d3acc73e860a076f896e109b640b0f6f77ec13c011b4817b8",
+    "s03_reference/skew_ci_candidate.py": "5368ebf379e4a64a4f6369e2e608b6a691eaa5fb42d3fb0866eaa4922263383c",
+    "s03_reference/calibrated_critical_candidate.py": "e79289c3fc1868b1ef47b7a9d5760afd5b9ff74df1c781aeb744966aa6fdcd68",
+    "tests/test_s03_ci_development.py": "3f5565b791004b09812d1d7242cc063f9782002dea8d214dfb1754acaec4000e",
+    "tests/test_s03_calibrated_candidate.py": "e692215c0ba7fa5d146e1b7e4758d4efa4d1595efec9437379f09432ca495e3e",
+    "engineering/S03_skew_studentized_formula_audit.json": "013ac7d1a8abeb4d5697c473911c0fbcd7c79e640b0c52365e3fb6b533d4b9d9",
+    "engineering/S03_independent_skew_method_development_1200x15.json": "6dfeeb06ac26e24e21b99da93ecd45728e7a48d2024fd980473b5ca6784518d6",
+    "engineering/S03_second_order_edgeworth_independent_DEVELOPMENT.json": "b95ce67b17196cfe50f500903ccb479c3908b857cb180455ca8d974613b7d7b6",
+    "engineering/S03_bootstrap_t_independent_120x15_DEVELOPMENT.json": "65a30bc63989aa5e63359dad4a82f071c2bfe4bbca82275f44420541a12f39a1",
+    "engineering/S03_empirical_likelihood_independent_DEVELOPMENT.json": "c503d6668f5c848a93d7364f2b6649bb30c8dc9d57f569f8b07c8f73e1e080e9",
+    "engineering/S03_independent_skew_G16384_800x15_DEVELOPMENT.json": "80065ed06ca9d9901f9541fa647ab6828e4207dee65c33c8f2e04d81b6669ed6",
+    "engineering/S03_extra_cluster_ablation_software.json": "98baf2272506ef220d2b4c6480609a8ba6f196aa5cfbb1ae89a0a1c837fc2901",
+    "engineering/S03-unit-tests-v0.4.log": "f477bc959472ca8500a25b823b4a48049af64a894b12f9171e8869e5536c4303",
+    "engineering/S02-v1.1-C04-calibrated-Studentized-PROPOSED-ONLY.md": "708551e8c37e87d43af75a56f5fb2515292fe46d02eada4a6094a92b3aafc854",
+    "engineering/S03-C04-final-engineering-decision-cycle3-v0.3.md": "bf791fff91ab7d3005d83ef7ba357053c20911b6a8924f676b67ca5d706b256c"
+  },
+  "change_request_only": "engineering/S02-v1.1-C04-calibrated-Studentized-PROPOSED-ONLY.md"
+}

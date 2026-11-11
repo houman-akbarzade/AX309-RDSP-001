@@ -24,3 +24,8 @@ The original S02 ownership of REQ-SCR-01 and REQ-RNG-03 remains S03. The approve
 ## Decision
 
 C08 is reviewed and dispositioned NO-GO. C08 is not complete, S04 is not PASS, and Gate-S04 is not closed. C01–C05 remain PASS in their approved scopes. C06 remains PASS_PENDING_INDEPENDENT_SIGNOFF for A–E.
+
+
+## Updated disposition after explicit engineer-owner C06/C07 approval — 2026-11-12
+
+C06 A–E and C07 are officially accepted by the project owner acting as system engineer, using the documented scoped ChatGPT AI technical review for C06 and pre-existing reviewed corpus for C07. No independent human signature or repeat qualification is claimed. Earlier C06/C07 pending-status text is historical. **Current blocking Gate-S04 requirements are only REQ-SCR-01, REQ-RNG-03 and S04-C02-RISK-PERFORMANCE**; all remain binding. Gate-S04 stays OPEN / NO-GO, C08 stays incomplete. No statistical, clutter or paired-target tests are authorized by this update.

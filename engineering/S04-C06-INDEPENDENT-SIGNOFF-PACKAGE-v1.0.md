@@ -65,3 +65,10 @@ Until completed by an actual independent reviewer, this section is not a signatu
 - **Excluded:** REQ-SCR-01, REQ-RNG-03, statistical Fixed-Point Pfa/Pd, RTL, hardware and Gate-S04.
 - **Owner identity clarification (2026-11-12):** The user explicitly confirms that the project owner and project system engineer are the same person, and that prior owner approvals were personally issued in the system-engineer role. The owner's acceptance of the AI technical assessment is therefore an engineer-owner ratification, not an independent human reviewer signature. Whether this authority permits replacing the separately required independent sign-off remains an approval-mechanism question; no external legal barrier is asserted.
 - **Minimum unresolved decision:** establish the applicable approval-mechanism amendment/delegation authority for this scoped AI review, or obtain a valid independent sign-off. No replacement CPI execution is needed.
+
+
+## Superseding engineer-owner acceptance — 2026-11-12
+
+The project owner, who expressly identifies as the project system engineer, directly approved C06 and C07 in the current conversation. For this Standalone project's C06 A–E scope, the engineer-owner adopts the existing ChatGPT AI technical acceptance as the approved technical-review mechanism and authorizes C06 closure. This owner authorization is distinct from an independently authenticated human reviewer signature, which is not asserted. Earlier pending-authority statements above are preserved as historical context and superseded for internal project disposition. No evidence of a contrary upstream project authority was identified; this record does not certify unknown external obligations.
+
+**Official C06 decision: PASS_BOUNDED_A_TO_E_OWNER_APPROVED_AI_REVIEW.** The 16/16 locked CPI are not rerun; approved numeric limits and scenario populations are unchanged. F, REQ-SCR-01, REQ-RNG-03, fixed-point statistical performance and Gate-S04 remain open.

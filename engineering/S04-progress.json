@@ -3,8 +3,8 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "AI technical acceptance for C06R2 A–E recorded 2026-11-12 from owner-supplied decision, separate from authorized independent engineer sign-off. C06 official OPEN pending approval authority decision; C07 reviewed, pending independent approval; C08 NO-GO. REQ-SCR-01, REQ-RNG-03 and S04-C02-RISK-PERFORMANCE remain binding. No new tests.",
-  "completed_count": 5,
+  "basis": "Owner/system engineer explicitly approved bounded C06 A–E with documented AI technical review and C07 existing evidence review on 2026-11-12. No independent human signature claimed. Three binding Gate-S04 blockers unchanged; C08 NO-GO. No tests rerun.",
+  "completed_count": 7,
   "criteria": [
     {
       "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
@@ -138,12 +138,12 @@
       "RTL_synthesis_FPGA_authorized": false,
       "acceptance_cpi_run": 16,
       "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
-      "acceptance_evidence_review_status": "PENDING_INDEPENDENT_SIGNOFF",
+      "acceptance_evidence_review_status": "ACCEPTED_BY_PROJECT_OWNER_SYSTEM_ENGINEER",
       "acceptance_tests_run": 16,
       "accepted_S03_seed_reuse_authorized": false,
       "approved_numeric_thresholds": true,
       "approved_scope": "A-E conditional only; C01 NOISE_ONLY_UNIT/g5 and SINGLE_TARGET_REFERENCE_LIKE_LAB/g1",
-      "completed": false,
+      "completed": true,
       "current_order_execution_authorized": true,
       "description": "Float-to-bittrue numeric error-budget acceptance",
       "execution_campaign": "C06-REPLACEMENT-2026-11-11",
@@ -292,29 +292,34 @@
       "remaining_gate_dependency": "S04_C02_RISK_PERFORMANCE_STATISTICAL_QUALIFICATION_SEPARATE_FROM_C06R2",
       "separate_explicit_execution_authorization_required": true,
       "signoff_handoff": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md",
-      "status": "PASS_PENDING_AUTHORIZED_SIGNOFF",
+      "status": "PASS_BOUNDED_A_TO_E_OWNER_APPROVED_AI_REVIEW",
       "ai_technical_decision": "TECHNICAL_ACCEPTANCE_A_TO_E_PASS",
       "ai_technical_decision_date": "2026-11-12",
       "ai_reviewer_identity": "ChatGPT — AI-based independent technical reviewer (declared in user-supplied decision)",
       "ai_decision_provenance": "User-supplied decision dated 2026-11-12; not an authenticated human engineering signature",
       "ai_decision_record": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md",
-      "authority_condition": "PENDING_OWNER_DETERMINATION_AI_SIGNOFF_ELIGIBILITY_OR_AUTHORIZED_HUMAN_SIGNOFF"
+      "authority_condition": "PENDING_OWNER_DETERMINATION_AI_SIGNOFF_ELIGIBILITY_OR_AUTHORIZED_HUMAN_SIGNOFF",
+      "owner_approval_date": "2026-11-12",
+      "owner_approval_role": "Project owner and system engineer (explicit user statement)",
+      "signoff_mechanism": "Owner-authorized adoption of documented AI technical acceptance; no independent human signature",
+      "official_decision_document": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md"
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
-      "completed": false,
+      "completed": true,
       "description": "Reproducible corpus and independent evidence review",
       "evidence_reuse": "NO_NEW_TESTS_C06R2_AND_C01_C05_LOCKED_EVIDENCE",
       "id": "S04-C07",
-      "remaining_condition": "FINAL_INDEPENDENT_REVIEW_OF_FROZEN_CORPUS_SEED_PROVENANCE_AND_C06_SIGNOFF",
+      "remaining_condition": "NONE_FOR_C07_APPROVED_SCOPE",
       "review_record": "engineering/S04-C07-EVIDENCE-REVIEW-v1.0.md",
-      "status": "EVIDENCE_REVIEW_COMPLETE_PENDING_INDEPENDENT_APPROVAL"
+      "status": "PASS_OWNER_ENGINEER_EXISTING_EVIDENCE_REVIEW",
+      "owner_approval_date": "2026-11-12",
+      "owner_approval_role": "Project owner and system engineer"
     },
     {
       "acceptance_evidence": "All preceding criteria evidenced; engineer issues explicit approval and preserves unresolved risks",
       "acceptance_gate": "NO_GO_UNTIL_APPROVED_EVIDENCE_AND_ENGINEER_DISPOSITION",
       "blocking_open_ids": [
-        "S04-C06-INDEPENDENT-SIGNOFF",
         "REQ-SCR-01",
         "REQ-RNG-03",
         "S04-C02-RISK-PERFORMANCE"
@@ -334,11 +339,11 @@
     "No statistical main CPI, RTL, synthesis or FPGA/hardware testing without separate explicit authorization",
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
-  "project_percent": 30.208333333333332,
-  "recorded_at_utc": "2026-11-11T21:05:04.049772+00:00",
+  "project_percent": 32.29166666666667,
+  "recorded_at_utc": "2026-11-11T21:14:51.969949+00:00",
   "stage": "S04",
-  "stage_percent": 62.5,
-  "status": "C01_C05_PASS_C06R2_TECHNICALLY_ACCEPTED_PENDING_AUTHORIZED_SIGNOFF_C07_REVIEW_PENDING_C08_NO_GO",
+  "stage_percent": 87.5,
+  "status": "C01_C07_PASS_C08_NO_GO_BINDING_SCR_RNG_FIXED_STATISTICS",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

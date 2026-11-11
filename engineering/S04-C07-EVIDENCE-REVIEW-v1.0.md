@@ -10,3 +10,8 @@
 - No new numeric evidence, algorithm changes or qualification claims are introduced.
 
 See engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md and engineering/S04-C08-GATE-DISPOSITION-v1.0.md.
+
+
+## Superseding engineer-owner acceptance — 2026-11-12
+
+The project owner and system engineer explicitly approved C07 using the existing reviewed frozen-code/corpus, source/seed provenance, execution and trace evidence. This is an **engineer-owner final acceptance of the existing evidence review**, not a newly performed audit or a separate human-independent signature. No retest, parallel report, source change or new hash validation is claimed. **Official C07 decision: PASS_OWNER_ENGINEER_EXISTING_EVIDENCE_REVIEW.** Any earlier pending-approval wording is historical and superseded for internal project disposition. C07 does not waive SCR, paired-target, statistical Fixed-Point or Gate-S04 requirements.

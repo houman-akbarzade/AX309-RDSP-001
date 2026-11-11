@@ -1,0 +1,111 @@
+{
+  "architecture": "C",
+  "criterion": "S04-C06",
+  "fft_shifts": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "method": "Re-executed the existing deterministic C05 phase_interference vectors through the C02 fixed candidate, S03 original-input Float reference, C05 native power/CFAR/grouping and C05 independent union-find checks; compared both candidate masks and component membership.",
+  "no_RTL_synthesis_FPGA": true,
+  "no_new_CPI_generated": true,
+  "no_statistical_Pfa_Pd": true,
+  "project": "AX309-RDSP-001",
+  "replay_count": 2,
+  "replayed_vectors": [
+    {
+      "CFAR": {
+        "Fixed_alarm_count": 214,
+        "Float_alarm_count": 214,
+        "both_competitor_cells_alarm_in_both_masks": true,
+        "mask_identical": true
+      },
+      "D_conditions_all_satisfied": true,
+      "Fixed_integer_peak_competitors": {
+        "difference_r4_minus_r3": 54948,
+        "range3_doppler20_power": 33612372401,
+        "range4_doppler20_power": 33612427349,
+        "selected_peak": [
+          4,
+          20
+        ]
+      },
+      "Float_original_input_peak_competitors": {
+        "exact_difference": 0.0,
+        "exact_tie": true,
+        "range3_doppler20_power": 2003.740740417848,
+        "range4_doppler20_power": 2003.740740417848
+      },
+      "Float_selected_peak": [
+        3,
+        20
+      ],
+      "classification": "FLOAT_REFERENCE_EXACT_TIE_SPLIT_BY_QUANTIZATION",
+      "component": {
+        "Fixed_cluster_count": 2,
+        "Float_cluster_count": 2,
+        "candidate_component_cells": 107,
+        "component_membership_replayed": true,
+        "same_component_cell_set": true
+      },
+      "g": 1,
+      "independent_integer_grouping_and_target_records": "PASS",
+      "source_evidence_vector_id": "g1:phase_interference",
+      "vector_id": "g1:phase_interference"
+    },
+    {
+      "CFAR": {
+        "Fixed_alarm_count": 214,
+        "Float_alarm_count": 214,
+        "both_competitor_cells_alarm_in_both_masks": true,
+        "mask_identical": true
+      },
+      "D_conditions_all_satisfied": true,
+      "Fixed_integer_peak_competitors": {
+        "difference_r4_minus_r3": 54948,
+        "range3_doppler20_power": 33612372401,
+        "range4_doppler20_power": 33612427349,
+        "selected_peak": [
+          4,
+          20
+        ]
+      },
+      "Float_original_input_peak_competitors": {
+        "exact_difference": 0.0,
+        "exact_tie": true,
+        "range3_doppler20_power": 50093.51851044622,
+        "range4_doppler20_power": 50093.51851044622
+      },
+      "Float_selected_peak": [
+        3,
+        20
+      ],
+      "classification": "FLOAT_REFERENCE_EXACT_TIE_SPLIT_BY_QUANTIZATION",
+      "component": {
+        "Fixed_cluster_count": 2,
+        "Float_cluster_count": 2,
+        "candidate_component_cells": 107,
+        "component_membership_replayed": true,
+        "same_component_cell_set": true
+      },
+      "g": 5,
+      "independent_integer_grouping_and_target_records": "PASS",
+      "source_evidence_vector_id": "g5:phase_interference",
+      "vector_id": "g5:phase_interference"
+    }
+  ],
+  "scope": "MANDATORY_HISTORICAL_D_REPLAY_ONLY_NOT_A_NEW_CPI",
+  "seed_use": "NO_RANDOM_SEEDS; NO_ACCEPTED_S03_SEEDS",
+  "source_evidence": "engineering/s04_numeric/S04-C05-integrated-power-cfar-grouping-v1.0.json",
+  "source_evidence_sha256": "94a61caff90807cf5641234c58eaeea3a1808185603010eb41b25234d709e0d9",
+  "source_hashes": {
+    "engineering/s04_numeric/s04_c02_integer_maps_v06.py": "fd1671774225b60a7d8d1180c288f4e469dc4443335553ebecedd187628c3052",
+    "engineering/s04_numeric/s04_c03_independent_oracle_v1.py": "32fdb0e565dbf9c3db44d882f38736b2e96ba726ba16c688f0c65556546e6429",
+    "engineering/s04_numeric/s04_c05_integrated_qualification_v1.py": "73e94c06bbde884a64f27c069c4885d0bf4c498647106a8cca02f63b65ad1eaf",
+    "engineering/s04_numeric/s04_c05_native_integer_v1.py": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+    "s03_reference/model.py": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b"
+  },
+  "status": "PASS_BOTH_HISTORICAL_EXACT_FLOAT_TIE_CASES_REPLAYED_AND_CLASSIFIED"
+}

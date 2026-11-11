@@ -1,0 +1,64 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S04-C08-S05-TRANSITION-001",
+  "decision_date": "2026-11-12",
+  "authority": "Project system engineer",
+  "decision": "CLOSE_GATE_S04_WITH_OPEN_ITEMS_AND_AUTHORIZE_S05",
+  "gate_s04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+  "next_stage": "S05",
+  "technical_dispositions": {
+    "REQ-RNG-03": {
+      "status": "FAIL",
+      "mandatory_scenarios": 8,
+      "passed": 4,
+      "failed": 4,
+      "success_rate_percent": 50,
+      "acceptance_criterion_unchanged": "8/8 mandatory cases",
+      "final_evaluation_carryover": true,
+      "retest_authorized": false,
+      "threshold_or_architecture_change_authorized": false,
+      "evidence": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "evidence_sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2"
+    },
+    "S04-C02-RISK-PERFORMANCE": {
+      "status": "OPEN",
+      "description": "Fixed-Point statistical performance qualification is incomplete; no statistical PASS is claimed.",
+      "final_evaluation_carryover": true,
+      "statistical_test_authorized": false,
+      "evidence": "engineering/S04-C08-GATE-DISPOSITION-v1.1.md"
+    },
+    "REQ-SCR-01": {
+      "status": "PASS_WITHIN_APPROVED_SCOPE",
+      "evidence": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-RESULTS-v1.0.json"
+    }
+  },
+  "stage_exit": {
+    "c08_completed_by_engineer_disposition": true,
+    "technical_acceptance_of_REQ_RNG_03": false,
+    "technical_acceptance_of_fixed_statistical_performance": false,
+    "open_items_register": "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json"
+  },
+  "s05_authorization": {
+    "rtl_implementation": true,
+    "rtl_simulation": true,
+    "synthesis": true,
+    "REQ_RNG_03_retest": false,
+    "fixed_point_statistical_campaign": false,
+    "board_or_hardware_qualification": false,
+    "frozen_numeric_architecture": "C",
+    "fft_shifts": [
+      0,
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  "progress": {
+    "s04_gate_criteria_complete": 8,
+    "s04_gate_criteria_total": 8,
+    "s04_gate_exit_percent": 100,
+    "overall_stage_weighted_project_percent": 33.333333333333336,
+    "note": "S04 stage-exit completion is administrative disposition with carryover; it is not a claim that all technical requirements passed."
+  }
+}

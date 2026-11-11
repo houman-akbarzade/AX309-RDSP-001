@@ -67,6 +67,9 @@ module tb_fft32;
                     count=count+1;
                 end
             end
+            // The 32nd output is accepted on the next rising edge.
+            @(posedge clk);
+            @(negedge clk);
             out_ready=0;
             if(overflow_sticky || protocol_error) begin
                 $display("FAIL FFT unexpected overflow/protocol error");
@@ -74,6 +77,14 @@ module tb_fft32;
             end
         end
     endtask
+
+    initial begin
+        #50000;
+        $display("FAIL tb_fft32 timeout busy=%b in_ready=%b out_valid=%b protocol_error=%b stage=%0d load=%0d butterfly=%0d output=%0d",
+            busy,in_ready,out_valid,protocol_error,dut.stage,dut.load_index,
+            dut.butterfly_index,dut.output_index);
+        $finish;
+    end
 
     initial begin
         repeat(4) @(negedge clk); rst=0;

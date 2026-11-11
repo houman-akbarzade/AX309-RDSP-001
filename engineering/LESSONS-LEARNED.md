@@ -52,3 +52,36 @@ The Radar Design Plugin should generate and maintain a Requirement-to-Test Trace
 ### Application to AX309-RDSP-001
 
 Carry this lesson into S05 testbench architecture. Reuse the approved C03–C05 oracle interfaces and C06R2 input corpus where scope permits. Add each RTL vector by stable ID and preserve its originating Float/Fixed source. Do not rerun C06R2 CPI. REQ-SCR-01 and REQ-RNG-03 require separately approved scenario definitions and are not implicitly covered by the current corpus.
+
+## LL-AX309-002 — Stage exit with explicit open-item carryover is not requirement acceptance
+
+**Status:** Accepted project lesson; input to the next Radar Design Plugin workflow revision.
+**Source:** AX309-RDSP-001 S04-to-S05 engineer disposition, 2026-11-12.
+**Scope:** Process and traceability lesson. It does not change any technical requirement or acceptance threshold.
+
+### Lesson
+
+A system engineer may authorize a stage transition while retaining failed or incomplete technical obligations for later project evaluation. The project records must represent the administrative gate decision separately from each requirement's technical disposition.
+
+In this project:
+- Gate-S04 was closed by explicit engineer disposition to permit S05.
+- REQ-RNG-03 remained FAIL at 4/8 mandatory scenarios; its 8/8 criterion was not changed.
+- Fixed-Point statistical performance remained OPEN; deterministic evidence was not relabelled as statistical qualification.
+- Both items were transferred to a versioned final-evaluation carryover register.
+
+### Required plugin workflow
+
+The Radar Design Plugin should maintain two independent state fields:
+1. **Technical disposition:** PASS, FAIL, OPEN or INCONCLUSIVE, tied to the exact approved criterion and evidence.
+2. **Gate/stage disposition:** OPEN, CLOSED, or CLOSED_WITH_OPEN_ITEMS, tied to an explicit authorized decision.
+
+When a gate is closed with open items, the plugin must:
+- Preserve the original test denominator, result, acceptance rule and evidence hash.
+- Create a carryover record with a named next review point and final-report obligation.
+- Remove the carried item only from the current stage's entry blockers; do not remove it from requirement traceability.
+- Prevent any automatic conversion of FAIL or OPEN to PASS.
+- Show the carried items in final project evaluation and the final report.
+
+### Application to AX309-RDSP-001
+
+The authoritative carryover record is engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json; the engineer decision is decisions/S04-C08-S05-TRANSITION-2026-11-12.json. S05 may proceed, but neither REQ-RNG-03 nor Fixed-Point statistical performance is technically accepted by this transition.

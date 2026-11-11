@@ -1,0 +1,40 @@
+{
+  "project": "AX309-RDSP-001",
+  "register": "S04-OPEN-ITEMS-CARRYOVER-v1.0",
+  "created_by_decision": "S04-C08-S05-TRANSITION-001",
+  "created_date": "2026-11-12",
+  "purpose": "Preserve unresolved technical acceptance items while the system engineer authorizes transition from S04 to S05. This register supplements and does not modify the approved S02 requirements baseline.",
+  "items": [
+    {
+      "id": "REQ-RNG-03",
+      "technical_disposition": "FAIL",
+      "mandatory_cases": 8,
+      "successful_cases": 4,
+      "failed_cases": 4,
+      "success_rate_percent": 50,
+      "acceptance_rule": "All 8 mandatory scenarios at 4- and 5-sample separations must pass; criterion unchanged.",
+      "evidence": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "evidence_sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2",
+      "current_action": "No further analysis, test rerun, CPI reprocessing, threshold change or architecture correction during S05.",
+      "next_review": "Final project evaluation",
+      "final_report_requirement": "Explicitly report 4/8 successful mandatory scenarios and that REQ-RNG-03 was not fully satisfied.",
+      "status": "OPEN_CARRIED_TO_FINAL_EVALUATION"
+    },
+    {
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "technical_disposition": "OPEN_NOT_STATISTICALLY_QUALIFIED",
+      "description": "Fixed-Point statistical performance (including statistical Pfa/Pd qualification) remains incomplete.",
+      "evidence": "engineering/S04-C08-GATE-DISPOSITION-v1.1.md",
+      "current_action": "No statistical Fixed-Point campaign is authorized by the S04-to-S05 transition decision.",
+      "next_review": "Final project evaluation",
+      "final_report_requirement": "State that Fixed-Point statistical qualification remains incomplete; do not claim PASS or substitute deterministic C06 evidence.",
+      "status": "OPEN_CARRIED_TO_FINAL_EVALUATION"
+    }
+  ],
+  "interpretation_controls": [
+    "Gate-S04 closure does not change either technical disposition.",
+    "Neither carried item may be promoted to PASS by stage-transition bookkeeping.",
+    "The original REQ-RNG-03 8/8 criterion and 4/8 result remain unchanged.",
+    "The approved S02 baseline is not edited; this register is an auditable carryover overlay."
+  ]
+}

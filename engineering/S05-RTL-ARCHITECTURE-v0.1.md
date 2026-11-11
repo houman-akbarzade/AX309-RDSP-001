@@ -69,18 +69,19 @@ The internal interfaces are implementation contracts only. They do not approve t
 
 ## 6. Requirement impact and exclusions
 
-- REQ-SCR-01 remains OPEN. C01 only authorises noise-only g=5 and single-target reference-like laboratory g=1. This architecture does not silently admit clutter or new gain profiles.
-- REQ-RNG-03 remains OPEN. The 128×32 map and grouping engine can carry paired detections, but no two-target resolution claim is made without the approved amplitude/phase envelope, spacing sweep and resolved-pair metric.
+- REQ-SCR-01 is PASS only within the engineer-approved 11-case scope. This does not silently admit other clutter, gain or source populations.
+- REQ-RNG-03 remains technically FAIL: 4/8 mandatory scenarios passed. The 8/8 acceptance criterion is unchanged. By explicit system-engineer disposition dated 2026-11-12, this result is carried to final project evaluation and does not block S05 implementation. No S05 retest or retuning is authorized.
+- S04-C02-RISK-PERFORMANCE remains OPEN: Fixed-Point statistical Pfa/Pd qualification is incomplete and is carried to final project evaluation. No statistical PASS is claimed.
 - Target truth association remains host-side scoring; it is not substituted for hardware grouping.
 - No changes are made to C01–C06 criteria, C02 formats, coefficients, alpha, RNE, saturation or FFT shifts.
 
 ## 7. Implementation sequence
 
-1. Fixed-point arithmetic helper and MF16/MTI2 RTL.
-2. FFT32 DIT and power RTL.
-3. SUM40, CFAR scan/comparator and 8-connected grouping RTL.
-4. Frame controller, memory schedule and top-level integration.
-5. Oracle-driven ISE simulation, then XST synthesis and timing/resource review.
+1. Fixed-point arithmetic helper, MF16 and MTI2 RTL: implemented; local ISim smoke test PASS.
+2. FFT32 DIT and power RTL: implemented; FFT zero/impulse smoke test and power arithmetic smoke test PASS.
+3. SUM40 and strict CFAR comparator: implemented and locally tested. The 2-D CA-CFAR scan controller is now implemented, simulates all 2,782 valid CUTs in order, and synthesizes to the target Spartan-6 part. The 8-connected streaming grouping engine remains to be implemented.
+4. Frame controller, memory schedule and top-level integration: not yet implemented. The 4,224-word MF frame-store to power-map overwrite schedule remains subject to explicit integrated-controller verification.
+5. Continue block-level ISim and XST checks, then add common-vector oracle-driven RTL verification and full top-level synthesis/timing/resource review. The current unit tests are smoke tests, not C03–C05 end-to-end equivalence evidence.
 6. Board-specific constraints and physical interface only after oscillator/pin/ICD confirmation.
 
 **Current limitation:** this is the first S05 architecture baseline. No pre-existing S05 RTL or implementation was found in the repository at the start of this work.

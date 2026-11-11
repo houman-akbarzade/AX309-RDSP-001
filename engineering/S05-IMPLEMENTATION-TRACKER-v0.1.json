@@ -1,0 +1,114 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "tracker": "S05-IMPLEMENTATION-TRACKER-v0.1",
+  "status": "IMPLEMENTATION_IN_PROGRESS",
+  "criteria_status": "S05 formal stage-exit criteria are not yet baselined; no S05 stage criterion PASS is claimed by this tracker.",
+  "frozen_baseline": {
+    "architecture": "C",
+    "fft_stage_shifts": [
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "numeric_contract": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+    "changes_authorized": false
+  },
+  "work_packages": [
+    {
+      "id": "S05-WP01",
+      "name": "RNE, MF16 and MTI2 RTL",
+      "status": "IMPLEMENTED_LOCAL_SMOKE_PASS",
+      "evidence": "engineering/evidence/s05/ISIM-MF-MTI-RNE-v0.1.log"
+    },
+    {
+      "id": "S05-WP02",
+      "name": "FFT32 DIT RTL",
+      "status": "IMPLEMENTED_LOCAL_SMOKE_PASS",
+      "evidence": "engineering/evidence/s05/ISIM-FFT32-v0.1.log",
+      "note": "Zero frame and impulse vectors; 64 bins checked."
+    },
+    {
+      "id": "S05-WP03",
+      "name": "Power, SUM40 and strict CFAR compare",
+      "status": "IMPLEMENTED_LOCAL_SMOKE_PASS",
+      "evidence": "engineering/evidence/s05/ISIM-POWER-CFAR-v0.1.log"
+    },
+    {
+      "id": "S05-WP04",
+      "name": "2-D CA-CFAR scan controller",
+      "status": "IMPLEMENTED_SIM_PASS_XST_PASS",
+      "rtl": "rtl/power_cfar/cfar_2d_scan.v",
+      "testbench": "rtl/tb/tb_cfar_2d_scan.v",
+      "simulation_evidence": "engineering/evidence/s05/ISIM-CFAR-2D-SCAN-v0.1.log",
+      "synthesis_report": "engineering/S05-CFAR-2D-SYNTHESIS-REPORT-v0.1.md"
+    },
+    {
+      "id": "S05-WP05",
+      "name": "Streaming 8-connected grouping",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "S05-WP06",
+      "name": "CPI capture, frame controller and memory scheduler",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "S05-WP07",
+      "name": "Integrated radar top-level and common-vector oracle verification",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "S05-WP08",
+      "name": "Full top-level synthesis, timing constraints and board verification",
+      "status": "NOT_IMPLEMENTED"
+    }
+  ],
+  "unit_test_suite": {
+    "status": "PASS_4_OF_4_LOCAL_ISIM_SMOKE_TESTS",
+    "runner": "rtl/tb/run_isim.sh",
+    "evidence": "engineering/evidence/s05/RTL-UNIT-SUITE-ISIM-v0.1.log",
+    "evidence_sha256": "153f5073d8ce3654bceba0d43dfefc6909f27dda4dbe14eab011dc83818f9578",
+    "tests": {
+      "tb_mf_mti_rne": "PASS",
+      "tb_fft32": "PASS",
+      "tb_power_cfar": "PASS",
+      "tb_cfar_2d_scan": "PASS"
+    },
+    "qualification_limit": "These are local deterministic RTL smoke tests, not full C03-C05 oracle equivalence, system detection acceptance, statistical Pfa/Pd qualification or board testing."
+  },
+  "cfar_2d_synthesis": {
+    "status": "XST_PASS_BLOCK_LEVEL",
+    "runner": "rtl/tools/run_xst_cfar_2d.sh",
+    "evidence": "engineering/evidence/s05/CFAR-2D-XST-REPORT-v0.1.srp.gz",
+    "evidence_sha256": "cadbf806533a4646f83563ea7c214331423d15c99b7faaa3bb1cb43457a61320",
+    "resources": {
+      "RAMB16BWER": 11,
+      "RAMB8BWER": 1,
+      "BRAM_total": 12,
+      "DSP48A1": 5,
+      "slice_LUT": 464,
+      "slice_registers": 146,
+      "reported_IOs": 170,
+      "default_estimated_minimum_period_ns": 7.152
+    },
+    "limitations": "No UCF/board constraints, place-and-route, post-route timing, integrated top-level synthesis or hardware verification.",
+    "evidence_uncompressed_sha256": "7fb6991bd80e7d5b38180b39dd544a7d0900cd7b220e8b64861907f28f3240fc"
+  },
+  "s04_carried_open_items": [
+    {
+      "id": "REQ-RNG-03",
+      "status": "FAIL_CARRIED_TO_FINAL_EVALUATION",
+      "technical_result": "4/8 mandatory cases; 50%; 8/8 criterion unchanged."
+    },
+    {
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "status": "OPEN_CARRIED_TO_FINAL_EVALUATION",
+      "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
+    }
+  ],
+  "next_implementation_step": "Implement streaming grouping_8conn consuming the range-major/Doppler-minor ordered CUT decision stream from cfar_2d_scan.",
+  "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization."
+}

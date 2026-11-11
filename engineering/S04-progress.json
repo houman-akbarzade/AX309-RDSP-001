@@ -2,8 +2,8 @@
   "S02_deferred_open_obligations": [
     "REQ-RNG-03"
   ],
-  "basis": "Engineer-approved REQ-SCR-01 PASS (11/11). REQ-RNG-03 executed under engineer approval: only 4/8 mandatory 4/5-sample cases passed in both Float and Fixed; requirement FAIL and remains Gate-blocking. Fixed C03/C05 oracles passed all 12. S04-C02-RISK-PERFORMANCE remains OPEN because C06 deterministic 16 CPI is not statistical Fixed-Point Pfa/Pd; no new statistical test was authorized or run. C08 NO-GO; no S05/RTL transition.",
-  "completed_count": 7,
+  "basis": "The system engineer explicitly closed Gate-S04 with open items transferred to final project evaluation and authorized S05. REQ-RNG-03 remains FAIL at 4/8 mandatory scenarios (50%); its 8/8 criterion is unchanged and no retest is authorized. Fixed-Point statistical performance remains OPEN and is not claimed PASS. These are final-evaluation carryovers, not S05 entry blockers.",
+  "completed_count": 8,
   "criteria": [
     {
       "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
@@ -121,9 +121,7 @@
       "unit_tests_PASS": 19
     },
     {
-      "F_open_blockers": [
-        "REQ-RNG-03"
-      ],
+      "F_open_blockers": [],
       "F_status": "REQ_RNG_03_FAIL_4_OF_8_BINDING_BLOCKER",
       "PF07_status": "PASS_STATIC_FOR_FROZEN_16_CPI_INPUTS",
       "PF08_final_runner": "engineering/s04_numeric/s04_c06_final_runner_v1.py",
@@ -304,7 +302,13 @@
       "REQ_SCR_01_disposition": "PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE",
       "REQ_SCR_01_evidence": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-RESULTS-v1.0.json",
       "REQ_RNG_03_disposition": "FAIL_ENGINEER_APPROVED_12_CASE_QUALIFICATION_4_OF_8",
-      "REQ_RNG_03_evidence": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json"
+      "REQ_RNG_03_evidence": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "F_carried_open_items": [
+        "REQ-RNG-03",
+        "S04-C02-RISK-PERFORMANCE"
+      ],
+      "remaining_gate_dependency_disposition": "CARRIED_TO_FINAL_EVALUATION_BY_S04-C08-S05-TRANSITION-001",
+      "S05_entry_blocking": false
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
@@ -319,41 +323,56 @@
       "owner_approval_role": "Project owner and system engineer"
     },
     {
-      "acceptance_evidence": "All preceding criteria evidenced; engineer issues explicit approval and preserves unresolved risks",
-      "acceptance_gate": "NO_GO_UNTIL_APPROVED_EVIDENCE_AND_ENGINEER_DISPOSITION",
-      "blocking_open_ids": [
-        "REQ-RNG-03",
-        "S04-C02-RISK-PERFORMANCE"
-      ],
-      "completed": false,
-      "description": "Independent final S04 engineering Gate approval",
-      "gate_disposition": "engineering/S04-C08-GATE-DISPOSITION-v1.1.md",
+      "acceptance_evidence": "Explicit system-engineer decision authorizes S04 exit and S05 entry while preserving REQ-RNG-03 FAIL and Fixed-Point statistical performance OPEN as final-evaluation carryovers. No technical PASS is created.",
+      "acceptance_gate": "ENGINEER_AUTHORIZED_STAGE_EXIT_WITH_CARRIED_OPEN_ITEMS",
+      "blocking_open_ids": [],
+      "completed": true,
+      "description": "Final S04 engineering Gate disposition and controlled transfer of open items",
+      "gate_disposition": "engineering/S04-C08-GATE-DISPOSITION-v1.2.md",
       "id": "S04-C08",
-      "status": "GATE_EXIT_REVIEWED_NO_GO_REQ_RNG_03_FAIL_AND_FIXED_STATISTICAL_PERFORMANCE_OPEN",
+      "status": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
       "accepted_requirement_dispositions": {
         "REQ-SCR-01": "PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE"
       },
       "requirement_dispositions": {
         "REQ-SCR-01": "PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE",
-        "REQ-RNG-03": "FAIL_ENGINEER_APPROVED_12_CASE_QUALIFICATION_4_OF_8",
-        "S04-C02-RISK-PERFORMANCE": "OPEN_NOT_EXECUTED_GATE_BLOCKING"
+        "REQ-RNG-03": "FAIL_CARRIED_TO_FINAL_EVALUATION_4_OF_8",
+        "S04-C02-RISK-PERFORMANCE": "OPEN_CARRIED_TO_FINAL_EVALUATION"
       },
-      "REQ_RNG_03_results_sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2"
+      "REQ_RNG_03_results_sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2",
+      "carried_open_ids": [
+        "REQ-RNG-03",
+        "S04-C02-RISK-PERFORMANCE"
+      ],
+      "decision_record": "decisions/S04-C08-S05-TRANSITION-2026-11-12.json",
+      "decision_id": "S04-C08-S05-TRANSITION-001",
+      "decision_authority": "Project system engineer",
+      "decision_date": "2026-11-12",
+      "technical_requirements_all_pass": false,
+      "stage_exit_authorized": true,
+      "final_evaluation_carryover_register": "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json"
     }
   ],
   "entry_authorization": "decisions/GATE-S03-approved-baseline.json",
-  "gate": "open",
+  "gate": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
   "prohibitions": [
     "No change to independently signed C numeric formats, coefficients, FFT shifts, RNE/narrowing or scale policies without formal engineering change decision",
     "No A/B/C architecture comparison without formal engineering change authorization",
-    "No statistical main CPI, RTL, synthesis or FPGA/hardware testing without separate explicit authorization",
+    "No REQ-RNG-03 retest, CPI reprocessing or threshold/algorithm retuning under the S04-to-S05 transition decision",
+    "No statistical Fixed-Point performance campaign without separate explicit authorization",
+    "S05 RTL implementation, block-level RTL simulation and synthesis are explicitly authorized by S04-C08-S05-TRANSITION-001",
+    "No FPGA board programming or hardware qualification without separate explicit authorization",
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
-  "project_percent": 32.29166666666667,
+  "project_percent": 33.333333333333336,
   "recorded_at_utc": "2026-11-12",
   "stage": "S04",
-  "stage_percent": 87.5,
-  "status": "C01_C07_PASS_REQ_SCR_01_PASS_REQ_RNG_03_FAIL_FIXED_STATISTICAL_PERFORMANCE_OPEN_C08_NO_GO",
+  "stage_percent": 100.0,
+  "status": "C08_CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS_S05_AUTHORIZED",
   "total_count": 8,
-  "weights": "8 equal criteria"
+  "weights": "8 equal criteria",
+  "S04_carried_open_obligations": [
+    "REQ-RNG-03",
+    "S04-C02-RISK-PERFORMANCE"
+  ]
 }

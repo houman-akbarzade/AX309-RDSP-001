@@ -130,6 +130,10 @@ module fft32_dit (
                 protocol_error <= 1'b1;
 
             case (state)
+                ST_IDLE: begin
+                    // A start pulse is handled above; do not clear busy here.
+                end
+
                 ST_LOAD: begin
                     if (in_valid) begin
                         mem_re[load_index] <= {{2{in_re[22]}},in_re};

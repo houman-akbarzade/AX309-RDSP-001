@@ -1,10 +1,10 @@
 {
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "execution_status": {
-    "design": "C01–C07 PASS in approved bounded scopes. REQ-SCR-01 PASS in the engineer-approved 11-case Float/Fixed scope. REQ-RNG-03 and Fixed-Point statistical performance remain Gate-S04 blockers; C08 NO-GO.",
+    "design": "C01–C07 PASS in approved scopes. REQ-SCR-01 PASS. REQ-RNG-03 FAIL: 4/8 mandatory cases pass in both Float and Fixed. Fixed statistical performance risk remains OPEN; C08 NO-GO.",
     "hardware_test": "not_executed",
     "implementation": "S05 preliminary RTL files exist, not yet verified by HDL simulation/synthesis; no additional S05 work in this update",
-    "python_simulation": "S03 approved Float Pfa/Pd in specified scope; S04 REQ-SCR-01 11-case Float/Fixed deterministic qualification PASS against independent C03/C05 oracles; no Fixed stochastic Pd/Pfa qualification.",
+    "python_simulation": "REQ-SCR-01 11-case Float/Fixed PASS. REQ-RNG-03 12-case Float-first/Fixed-from-identical-archive executed; 4/8 mandatory paired-target cases pass in each model; C03/C05 oracles pass all 12. No Fixed-Point statistical Pfa/Pd campaign authorized or run.",
     "rtl_simulation": "not_executed",
     "synthesis": "not_executed"
   },
@@ -14,7 +14,7 @@
     "fpga": "XC6SLX9-2FTG256C",
     "toolchain": "ISE 14.7 (user reported, unverified)"
   },
-  "last_review_at_utc": "2026-11-11T21:32:27.588684+00:00",
+  "last_review_at_utc": "2026-11-12",
   "mode": "Standalone",
   "note": "This JSON-compatible YAML is deliberately serialized as JSON, which YAML 1.2 accepts.",
   "progress": {
@@ -39,13 +39,13 @@
     "C06_ready_input_CPI": 16,
     "C06_status": "PASS_BOUNDED_A_TO_E_OWNER_APPROVED_AI_REVIEW",
     "C07_status": "PASS_OWNER_ENGINEER_EXISTING_EVIDENCE_REVIEW",
-    "C08_status": "GATE_EXIT_REVIEWED_NO_GO_REQ_RNG_AND_FIXED_PERFORMANCE_OPEN",
+    "C08_status": "GATE_EXIT_REVIEWED_NO_GO_REQ_RNG_03_FAIL_AND_FIXED_STATISTICAL_PERFORMANCE_OPEN",
     "S04_blocking_ids": [
       "REQ-RNG-03",
       "S04-C02-RISK-PERFORMANCE"
     ],
     "S04_progress_source": "engineering/S04-progress.json",
-    "basis": "Engineer-system approved REQ-SCR-01 source definition and 11 deterministic cases on 2026-11-12; all 11 Float/Fixed cases PASS with C03 Fraction and C05 union-find oracles. SCR removed from Gate blockers. REQ-RNG-03 and S04-C02-RISK-PERFORMANCE remain binding; C08 NO-GO. No S04 criterion completion credit until C08 exit conditions are all met.",
+    "basis": "Engineer-approved REQ-SCR-01 PASS (11/11). REQ-RNG-03 executed under engineer approval: only 4/8 mandatory 4/5-sample cases passed in both Float and Fixed; requirement FAIL and remains Gate-blocking. Fixed C03/C05 oracles passed all 12. S04-C02-RISK-PERFORMANCE remains OPEN because C06 deterministic 16 CPI is not statistical Fixed-Point Pfa/Pd; no new statistical test was authorized or run. C08 NO-GO; no S05/RTL transition.",
     "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria",
     "overall_percent": 32.29166666666667,
     "s01_completed_criteria": 8,
@@ -67,7 +67,17 @@
     "REQ_SCR_01_results_sha256": "8039f7cb5b975059ffbbf379d85a740f06cba88447a008952f26c76f2ab2fc2a",
     "REQ_SCR_01_inputs_sha256": "be75904067c6f7204085d001a96d36077c89b7c18fe250a6945725966a6b3136",
     "REQ_SCR_01_outputs_sha256": "17aa6b04e9823c34e9a0ead6fbb153fd82dd1d5f5e2e4b804b9c40c5847bcecc",
-    "REQ_SCR_01_runner_sha256": "bfd64e2c878ea4ff1b76aa23f0d022328f0e0cee36bc590bfdef389e5f9bb77b"
+    "REQ_SCR_01_runner_sha256": "bfd64e2c878ea4ff1b76aa23f0d022328f0e0cee36bc590bfdef389e5f9bb77b",
+    "REQ_RNG_03_status": "FAIL_ENGINEER_APPROVED_12_CASE_QUALIFICATION_4_OF_8",
+    "REQ_RNG_03_engineer_approval_date": "2026-11-12",
+    "REQ_RNG_03_evidence": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+    "REQ_RNG_03_results_sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2",
+    "REQ_RNG_03_inputs_sha256": "c06ae8b87d0f87c80cb7a275af514d6e8f9cdb5628ba7adb9d38c1294a8f2940",
+    "REQ_RNG_03_float_outputs_sha256": "363eb534f5c0f1f53ac324306366d82177d8ed976a38708ea6064dc40cec01ea",
+    "REQ_RNG_03_q15_inputs_sha256": "140da68ded243fcd042462b6b4dc0549288c477651cd01e8c48378d35e2f1b35",
+    "REQ_RNG_03_fixed_outputs_sha256": "96c2d0d8b727f7ada6d016f91376a3b0d508b9999151ff63771ca55ff6119152",
+    "S04_C02_RISK_PERFORMANCE_status": "OPEN_NOT_EXECUTED_GATE_BLOCKING",
+    "C08_gate_disposition": "engineering/S04-C08-GATE-DISPOSITION-v1.1.md"
   },
   "project_id": "AX309-RDSP-001",
   "provenance": "current conversation; engineer-supplied specifications unverified against board manual",

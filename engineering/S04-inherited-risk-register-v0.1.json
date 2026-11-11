@@ -1,0 +1,44 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T08:36:17.696741+00:00",
+  "risks": [
+    {
+      "action": "Carry forward, no generalized Pd claim",
+      "finding": "Accepted Pd only for single isolated fixed on-bin SNR20 target, no clutter",
+      "id": "R-S04-001",
+      "topic": "Pd population scope"
+    },
+    {
+      "action": "Separate target-list quality and S05 overflow requirements; no retuning accepted data",
+      "finding": "4135 extra unmatched clusters across 1000 target-present CPI, mean 4.135/CPI, not Pfa",
+      "id": "R-S04-002",
+      "topic": "Extra output clusters"
+    },
+    {
+      "action": "Retain audit trail; independently seeded new development vectors",
+      "finding": "IQ and full RD-power arrays not retained; hashes and per-CPI diagnostics retained",
+      "id": "R-S04-003",
+      "topic": "Full raw array archival"
+    },
+    {
+      "action": "Preserve failures, approved v1.2 EB method has different assumptions",
+      "finding": "Student-t 7/15 method-qualification FAIL and spatial transfer FAIL remain historical",
+      "id": "R-S04-004",
+      "topic": "Historical failures"
+    },
+    {
+      "action": "Predeclare error budget and threshold boundary tests before implementation",
+      "finding": "Fixed threshold, integer power/CFAR and tie behavior may change with scaling, rounding and saturation",
+      "id": "R-S04-005",
+      "topic": "Quantization decision changes"
+    },
+    {
+      "action": "S04 define numeric status, S05 choose hardware capacity and architecture",
+      "finding": "Variable extra clusters and overflow policy not sized; resource/timing hardware proof absent",
+      "id": "R-S04-006",
+      "topic": "List capacity and FPGA architecture"
+    }
+  ],
+  "source_gate": "GATE-S03-APPROVAL-001",
+  "target_stage": "S04"
+}

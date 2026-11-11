@@ -1,0 +1,76 @@
+{
+  "basis": "3 of 12 equally weighted stages fully approved, S04 0/8. Draft work alone does not satisfy criteria.",
+  "completed_count": 0,
+  "criteria": [
+    {
+      "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
+      "completed": false,
+      "description": "Baseline and requirements traceability",
+      "id": "S04-C01",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Per-stage W/F, sign, scales, shifts, rounding, saturation/overflow, coefficients and accepted numeric thresholds approved and version locked",
+      "completed": false,
+      "description": "Engineer-approved fixed-point numeric contract",
+      "id": "S04-C02",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Exact independent integer/rational oracle for IQ packing, coefficient encoding, complex arithmetic, rounding ties, negative extremes and overflow",
+      "completed": false,
+      "description": "Bit-true arithmetic primitive qualification",
+      "id": "S04-C03",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Independent self-checking signed, normal/extreme, DC, bin, off-bin, tie/zero vectors, error and overflow evidence",
+      "completed": false,
+      "description": "Bit-true MF/MTI/Doppler qualification",
+      "id": "S04-C04",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Power bit growth, 40 training-cell mean, alpha representation, strict comparison, threshold boundary, peak/tie, clustering/target-list flags",
+      "completed": false,
+      "description": "Bit-true power, CFAR and grouping qualification",
+      "id": "S04-C05",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
+      "completed": false,
+      "description": "Float-to-bittrue numeric error-budget acceptance",
+      "id": "S04-C06",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
+      "completed": false,
+      "description": "Reproducible corpus and independent evidence review",
+      "id": "S04-C07",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "All preceding criteria evidenced; engineer issues explicit approval and preserves unresolved risks",
+      "completed": false,
+      "description": "Independent final S04 engineering Gate approval",
+      "id": "S04-C08",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "entry_authorization": "decisions/GATE-S03-approved-baseline.json",
+  "gate": "open",
+  "prohibitions": [
+    "No finalized numeric architecture until explicit engineer approval",
+    "No RTL or hardware tests",
+    "No reused acceptance Pd data for parameter tuning"
+  ],
+  "project_percent": 25.0,
+  "recorded_at_utc": "2026-11-11T08:36:17.696741+00:00",
+  "stage": "S04",
+  "stage_percent": 0.0,
+  "status": "ENTRY_AUTHORIZED_NUMERIC_CONTRACT_PROPOSED_NOT_APPROVED",
+  "total_count": 8,
+  "weights": "8 equal criteria"
+}

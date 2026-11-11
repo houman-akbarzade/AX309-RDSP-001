@@ -166,6 +166,40 @@ def stage_evaluation(source,iq,cap,g):
           'reconstruction_scale':{'g':g,'fft_cumulative_shift':cum}}
     return stage_result,oracle_mismatches,original
 
+def cfar_uncertainty_terms(epow, train_avg, train_offsets, alpha_fixed, alpha_float):
+    """Return CUT-local power-error terms on the frozen C05 128x32 geometry.
+
+    The output is ordered as (107 range CUTs, 26 Doppler CUTs). Each CUT
+    receives its own power-error term plus the mean 40-cell training error
+    and the alpha-quantization term. This is an analytic bound helper only.
+    """
+    epow=np.asarray(epow,dtype=np.float64)
+    train_avg=np.asarray(train_avg,dtype=np.float64)
+    if epow.shape!=(128,32) or train_avg.shape!=(128,32):
+        raise ValueError(('C05 power/training map must be 128x32',epow.shape,train_avg.shape))
+    if not np.all(np.isfinite(epow)) or not np.all(np.isfinite(train_avg)):
+        raise ValueError('non-finite power uncertainty input')
+    if np.any(epow<0) or np.any(train_avg<0):
+        raise ValueError('power uncertainty and training average must be nonnegative')
+    offsets=tuple((int(dr),int(db)) for dr,db in train_offsets)
+    expected=tuple((dr,db) for dr in range(-3,4) for db in range(-3,4)
+                   if abs(dr)>1 or abs(db)>1)
+    if len(offsets)!=40 or len(set(offsets))!=40 or set(offsets)!=set(expected):
+        raise ValueError('C05 requires the exact 40-cell 7x7 training ring')
+    cut_error=epow[3:110,3:29]
+    training_error_sum=np.zeros((107,26),dtype=np.float64)
+    for dr,db in offsets:
+        training_error_sum += epow[3+dr:110+dr,3+db:29+db]
+    alpha_error=abs(float(alpha_fixed)-float(alpha_float))*train_avg[3:110,3:29]
+    total=cut_error+float(alpha_fixed)*training_error_sum/40.0+alpha_error
+    if total.shape!=(107,26):
+        raise AssertionError(('C05 uncertainty result shape',total.shape))
+    return {'cut_power_error':cut_error,
+            'training_power_error_sum':training_error_sum,
+            'alpha_quantization_error':alpha_error,
+            'total':total}
+
+
 def pow_and_cfar(cap,original,g,detail_path):
     rd=cap['rd']
     native=NATIVE.complete_map(rd)
@@ -207,9 +241,9 @@ def pow_and_cfar(cap,original,g,detail_path):
     # Approved bound: error in amplitude at FFT5 (not observed deviation).
     E=C_CAP[g]['FFT5']
     epow=2*np.abs(z0)*E+E*E
-    uncertainty=epow + float(ALPHA_FIXED)*sum(
-       epow[3+dr:110+dr,3+db:29+db] for dr,db in S03.TRAIN_OFFSETS
-    )/40 +abs(float(ALPHA_FIXED)-ALPHA_FLOAT)*train_avg[3:110,3:29]
+    uncertainty_terms=cfar_uncertainty_terms(
+        epow,train_avg,S03.TRAIN_OFFSETS,ALPHA_FIXED,ALPHA_FLOAT)
+    uncertainty=uncertainty_terms['total']
     floatmargin=pfloat[3:110,3:29]-ALPHA_FLOAT*train_avg[3:110,3:29]
     fixedmargin=(fixedp[3:110,3:29]-float(ALPHA_FIXED)*(
         np.asarray([[cut['SUM40'] for cut in cuts[k*26:(k+1)*26]] for k in range(107)])*

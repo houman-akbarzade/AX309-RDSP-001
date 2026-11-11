@@ -1,0 +1,399 @@
+{
+  "C01_envelope": "abs(real(x/g)) and abs(imag(x/g)) <= 1+2^-15",
+  "C01_quantizer": "RNE ties-to-even of 32768*x/g, no clipping/SAT during input preparation; raw int64 IQ retained even if signed16 invalid",
+  "CPI_plan": [
+    {
+      "child_seed_u64": 2012805448334265449,
+      "cpi_id": "C06R2-NOISE-001",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 0,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 18162294254475347580,
+      "cpi_id": "C06R2-NOISE-002",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 1,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 3979726421365413046,
+      "cpi_id": "C06R2-NOISE-003",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 2,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 6518530905334955677,
+      "cpi_id": "C06R2-NOISE-004",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 3,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 8207257837617807726,
+      "cpi_id": "C06R2-NOISE-005",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 4,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 8856890129862335181,
+      "cpi_id": "C06R2-NOISE-006",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 5,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 12221500842114680316,
+      "cpi_id": "C06R2-NOISE-007",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 6,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 15118745826006173506,
+      "cpi_id": "C06R2-NOISE-008",
+      "g": 5,
+      "generator_config": {
+        "clutter": null,
+        "law": "CN(0,1)",
+        "sigma2_complex": 1.0,
+        "target": null
+      },
+      "master_seed": 83111001,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "profile_index": 7,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 13833116037735353598,
+      "cpi_id": "C06R2-LAB-001",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 0,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 7683962101233347255,
+      "cpi_id": "C06R2-LAB-002",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 1,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 12386715436824358369,
+      "cpi_id": "C06R2-LAB-003",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 2,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 4164276440279276488,
+      "cpi_id": "C06R2-LAB-004",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 3,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 1870107050591730872,
+      "cpi_id": "C06R2-LAB-005",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 4,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 5480793303136962092,
+      "cpi_id": "C06R2-LAB-006",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 5,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 13008896790343389047,
+      "cpi_id": "C06R2-LAB-007",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 6,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    },
+    {
+      "child_seed_u64": 4093538051797926354,
+      "cpi_id": "C06R2-LAB-008",
+      "g": 1,
+      "generator_config": {
+        "clutter": null,
+        "complex_noise_power": 0.000324,
+        "doppler_bin": 4,
+        "snr_db": 20.0,
+        "target_amplitude_complex": [
+          0.18,
+          0.0
+        ],
+        "target_delay_samples": 40,
+        "target_phase_rad": 0.0,
+        "velocity_m_s_nominal": 1.875
+      },
+      "master_seed": 83111002,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "profile_index": 7,
+      "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator"
+    }
+  ],
+  "approved_criteria": {
+    "A_to_E": "UNCHANGED_APPROVED_CONDITIONAL_CRITERIA",
+    "F": "NOT_APPROVED_BINDING_OPEN_BLOCKERS",
+    "decision": "decisions/S04-C06-CRITERIA-INDEPENDENT-DECISION-v1.0.md",
+    "decision_sha256": "5427ba6b7b66b8d21fc4f0178ccf557b49678e718ab0570727880f25166a144f"
+  },
+  "architecture": "C",
+  "artifact": "C06-REPLACEMENT-16CPI-PRELOCK-MANIFEST",
+  "authorization": "USER_EXPLICIT_AUTHORIZATION_FOR_FINAL_C06_REPLACEMENT_8_PLUS_8_RUN_2026-11-11",
+  "criterion": "S04-C06",
+  "excluded_S03_seed_masters": [
+    311091601,
+    311091602,
+    311091603,
+    311091604,
+    311091605,
+    411091701,
+    411091702,
+    411091703,
+    411091704
+  ],
+  "fft_shifts": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "fixed_denominators": {
+    "NOISE_ONLY_UNIT": 8,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 8,
+    "total": 16
+  },
+  "generator_script": "engineering/s04_numeric/s04_c06_prepare_replacement_16cpi_v1.py",
+  "generator_script_sha256": "a476a1f444da66080a6afe843dd4b1628163726998055c834c9bfe3620424b9d",
+  "input_format": "signed Q1.15 I/Q little-endian interleaved, pulse-major; 16896 bytes only if every raw component fits signed int16",
+  "new_campaign": {
+    "campaign_id": "C06-REPLACEMENT-2026-11-11",
+    "fixed_denominators": {
+      "NOISE_ONLY_UNIT": 8,
+      "SINGLE_TARGET_REFERENCE_LIKE_LAB": 8,
+      "total": 16
+    },
+    "generated_input_manifest": "engineering/s04_numeric/c06_replacement_16cpi_inputs_v1/C06-REPLACEMENT-INPUT-MANIFEST-v1.0.json",
+    "input_directory": "engineering/s04_numeric/c06_replacement_16cpi_inputs_v1",
+    "no_replacement_or_automatic_retry": true,
+    "one_attempt_per_CPI": true,
+    "qualification_output_directory": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1"
+  },
+  "no_C06_processing_or_acceptance_execution": true,
+  "no_RTL_synthesis_FPGA": true,
+  "no_accepted_S03_seed_reuse": true,
+  "no_architecture_or_numeric_contract_change": true,
+  "no_prior_C06_seed_reuse": true,
+  "no_replacement_or_deletion": true,
+  "no_statistical_Pd_Pfa_claim": true,
+  "per_CPI_geometry": {
+    "IQ_components": 8448,
+    "complex_samples": 4224,
+    "pulses": 33,
+    "range_samples": 128
+  },
+  "planned_dispositions": "INCONCLUSIVE retains original CPI ID, Float source and raw IQ; no replacement; valid candidates remain INPUT_READY_ONLY pending execution permission and runtime checks",
+  "prelock_commit_base": "857c7909dd980021fdf7bcb6e9186db5ae3b493f",
+  "profiles": {
+    "NOISE_ONLY_UNIT": {
+      "g": 5,
+      "population": "CN(0,1), noise-only, no target, no clutter"
+    },
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+      "g": 1,
+      "population": "single target k=40, Doppler +4, amplitude 0.18, phase 0, noise power 0.000324, no clutter"
+    }
+  },
+  "project": "AX309-RDSP-001",
+  "repair_runner_source": {
+    "commit": "857c7909dd980021fdf7bcb6e9186db5ae3b493f",
+    "path": "engineering/s04_numeric/s04_c06_16cpi_authorized_runner_v1.py",
+    "sha256": "9fabb81bc50b57cd2706fca0c9a4b0b491b22d17d0c55c5d5050b1498a8b6174"
+  },
+  "replacement_of": {
+    "prior_attempt_ledger": "engineering/s04_numeric/c06_16cpi_qualification_v1/attempt_ledger.json",
+    "prior_attempt_ledger_sha256": "91655e63a84e185b8c6b947064a713f29474994661601b52318c2e99c91402ee",
+    "prior_campaign_prelock": "engineering/S04-C06-16CPI-PRELOCK-v1.0.json",
+    "prior_disposition": "ALL_16_INCONCLUSIVE_PRESERVED_UNCHANGED",
+    "prior_input_manifest": "engineering/s04_numeric/c06_16cpi_inputs_v1/C06-16CPI-INPUT-MANIFEST-v1.0.json",
+    "prior_input_manifest_sha256": "59365ab6aadb1e2c9203415fe5f5b48b4d3298c9d9cb31c4c649f621ecadddb1"
+  },
+  "seed_master_repository_collision_check": "NEW_MASTER_SEEDS_83111001_83111002_NOT_FOUND_IN_PRIOR_C06_OR_ACCEPTED_S03_MASTER_SET; CHILD_SEEDS_UNIQUE_AND_DISJOINT_FROM_PRIOR_C06_CHILD_SEEDS",
+  "seed_masters": {
+    "NOISE_ONLY_UNIT": 83111001,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 83111002
+  },
+  "seed_policy": "Fresh deterministic child seeds; disjoint from all 16 prior C06 child seeds and accepted S03 master seed set; no global RNG state",
+  "source_generator": "s03_reference.model existing noise_only_cpi / generate_cpi",
+  "source_model_sha256_pinned_from_previous_manifest": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+  "status": "PRELOCKED_BEFORE_SOURCE_GENERATION"
+}

@@ -1,0 +1,67 @@
+{
+  "alternatives_and_negative_results": "Do not patch the DUT to compensate for a measurement/collection bug, and do not use aggregate metrics with a missing row.",
+  "applicability": "Stagewise RTL capture, debug readback and golden-vector comparison.",
+  "assessed_root_cause": "The fault was in diagnostic collection scope, not the FFT arithmetic output.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "verification-data-integrity",
+  "chosen_corrective_method": "Assert expected shape and full index coverage before calculating stage metrics; keep the original historical diagnostic and corrected adapter separately versioned.",
+  "evidence": [
+    {
+      "git_commit": "8f05ecc42fe4510e0ceb958ed688d4c0c8d0f6d0",
+      "path": "engineering/S04-C04-INTEGRATED-BITTRUE-MF-MTI-DOPPLER-QUALIFICATION-v1.0.md",
+      "sha256": "ebba63b7a9612287ffcbcb0628b179d52a6501db5d6af9ee46715c3f72b42428"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+      "sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397"
+    },
+    {
+      "git_commit": "8f05ecc42fe4510e0ceb958ed688d4c0c8d0f6d0",
+      "path": "engineering/S04-C04-INTEGRATED-v1.0-INDEPENDENT-TESTS.log",
+      "sha256": "bd7188db2be1e612cb922fb6eacaabc6cda9a8cfda44806d80416e857ac454f4"
+    }
+  ],
+  "generalizable_lesson": "Verification infrastructure has its own correctness contract: dimensions, indices and coverage must be checked before interpreting numerical differences.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-009",
+  "initial_faulty_assumption_or_design_decision": "An array-shape mismatch could be misdiagnosed as a DUT arithmetic defect, or incomplete diagnostics could be accepted because final outputs looked correct.",
+  "non_applicability": "Does not excuse genuine DUT mismatches or permit partial stage coverage.",
+  "observable_consequence": "C04 comparison exposed 127-versus-128 row mismatch; the derived capture adapter moved initialization outside the range loop and all 128 range rows across five FFT stages were checked.",
+  "observed_problem": "A historical diagnostic adapter reinitialized its FFT stage capture list inside the range loop, omitting range row 0 for FFT1-FFT4 metrics.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0127",
+        "timestamp_utc": "2026-11-11T13:25:14.197901+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.558230+00:00",
+  "repeatable_validation": "For each stage, assert 128 range rows x32 bins and compare all integer components against independent golden outputs.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0127",
+      "timestamp_utc": "2026-11-11T13:25:14.197901+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Preserve original v0.5/v0.6 evidence and only correct derived capture tooling; do not alter the numeric baseline.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "stage-capture",
+    "dimensions",
+    "diagnostics",
+    "range-coverage"
+  ],
+  "title": "Verify stage-capture dimensions independently from arithmetic correctness"
+}

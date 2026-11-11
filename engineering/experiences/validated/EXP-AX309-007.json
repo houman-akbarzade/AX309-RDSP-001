@@ -1,0 +1,88 @@
+{
+  "alternatives_and_negative_results": "Do not substitute truncation, arithmetic right shift, implicit HDL expression sizing or wraparound for the frozen C02 behavior.",
+  "applicability": "RTL implementation of the selected C MF16/MTI2/FFT32 and later power/CFAR blocks.",
+  "assessed_root_cause": "Premature narrowing, arithmetic shifts for negative values or multiple rounding points change numerical results and may alter alarms or peak selection.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "fixed-point-arithmetic",
+  "chosen_corrective_method": "Keep full product and accumulator widths through each exact operation; apply mathematical ties-to-even once at the approved boundary; saturate rather than wrap and log pre-narrow values.",
+  "evidence": [
+    {
+      "git_commit": "fac8ec8809861fd1b3afada61d8d53a344226660",
+      "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+      "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856"
+    },
+    {
+      "git_commit": "2e540d798518141a42a13f39e46d4add33b52414",
+      "path": "engineering/S04-C03-INTEGRATED-BITTRUE-PRIMITIVE-QUALIFICATION-v1.0.md",
+      "sha256": "49793d5cb971189dcd4c600fcbb42e6e8b6cb08a34b4a189926369c8f7badeb8"
+    },
+    {
+      "git_commit": "2e540d798518141a42a13f39e46d4add33b52414",
+      "path": "engineering/s04_numeric/s04_c03_independent_oracle_v1.py",
+      "sha256": "32fdb0e565dbf9c3db44d882f38736b2e96ba726ba16c688f0c65556546e6429"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+      "sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397"
+    }
+  ],
+  "generalizable_lesson": "Translate the executable numeric contract into explicit HDL widths and explicit signed casts before writing operators; never rely on Verilog sizing defaults.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-007",
+  "initial_faulty_assumption_or_design_decision": "Intermediate values could be narrowed or rounded early to simplify RTL, changing the bit-true contract while leaving the final output superficially plausible.",
+  "non_applicability": "Does not authorize any numeric-format, coefficient, alpha, FFT shift or architecture change.",
+  "observable_consequence": "C02 fixes exact product/pair/accumulator widths, RNE locations, output formats, shift schedule and saturation telemetry; C03 independently checks rational arithmetic.",
+  "observed_problem": "MF, MTI and FFT contain products, pair sums and butterfly sums whose full integer widths exceed their stored output widths.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0124",
+        "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+      },
+      {
+        "event_id": "AX309-E0125",
+        "timestamp_utc": "2026-11-11T12:52:08.971948+00:00"
+      },
+      {
+        "event_id": "AX309-E0126",
+        "timestamp_utc": "2026-11-11T13:10:00.157194+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.506311+00:00",
+  "repeatable_validation": "Compare each stage and boundary against C03 Fraction oracle and C04 stage capture, including negative half-way RNE, min/max and forced overflow vectors.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0124",
+      "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+    },
+    {
+      "event_id": "AX309-E0125",
+      "timestamp_utc": "2026-11-11T12:52:08.971948+00:00"
+    },
+    {
+      "event_id": "AX309-E0126",
+      "timestamp_utc": "2026-11-11T13:10:00.157194+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "C02 exact formats and [0,1,0,1,1] shifts are immutable without formal engineering change approval.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "bit-growth",
+    "RNE",
+    "overflow",
+    "fixed-point"
+  ],
+  "title": "Preserve exact intermediate widths and round only at contract-defined boundaries"
+}

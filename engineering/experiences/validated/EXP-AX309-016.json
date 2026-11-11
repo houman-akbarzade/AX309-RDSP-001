@@ -1,0 +1,83 @@
+{
+  "alternatives_and_negative_results": "Do not waive them, reinterpret the 600 m theoretical c/(2B) as measured resolution, or claim single-target Pd as two-target resolution.",
+  "applicability": "S05 architecture, buffer/telemetry interfaces and later SCR/range-resolution verification.",
+  "assessed_root_cause": "The current input population does not span the required clutter amplitudes, phase behavior, measurement region or paired-target resolution cases.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "requirements-traceability",
+  "chosen_corrective_method": "Carry both requirements in the S05 traceability matrix; reserve input headroom/telemetry and preserve full range-Doppler/power outputs and cluster records needed for future scoring.",
+  "evidence": [
+    {
+      "git_commit": "e88731cd70ae80d755bc26124ad71c67e4f1a8ee",
+      "path": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json",
+      "sha256": "fa16d4d6e6e249c796f7e60bb7e74706a68b6ffca8e385b659c34616905a5dcd"
+    },
+    {
+      "git_commit": "3b9b59a6e34024e0ff1bcd82235c3585eabf25df",
+      "path": "engineering/S04-C06-REPLACEMENT-16CPI-FINAL-REPORT-v1.0.md",
+      "sha256": "b6d25c230c5558fb1ad2d5aa079d5f7afca5914838caf84b4353b383b8d1be16"
+    }
+  ],
+  "generalizable_lesson": "An architecture may proceed in parallel, but unresolved requirements must remain visible and their data/telemetry impacts must be designed in.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-016",
+  "initial_faulty_assumption_or_design_decision": "A clean single-target or noise-only PASS could be interpreted as closure of clutter dynamic range or two-target separability.",
+  "non_applicability": "Does not define the final SCR tolerance, clutter phase envelope or resolved-pair criterion; these remain to be approved.",
+  "observable_consequence": "REQ-SCR-01 and REQ-RNG-03 remain binding and not executed; the C06 final report and C02 open-obligations file explicitly preserve them.",
+  "observed_problem": "Current C06R2 covers only NOISE_ONLY_UNIT/g5 and SINGLE_TARGET_REFERENCE_LIKE_LAB/g1; it does not test +/-10 dB SCR/clutter or paired targets near 600 m.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0053",
+        "timestamp_utc": "2026-11-09T03:49:10.657859+00:00"
+      },
+      {
+        "event_id": "AX309-E0130",
+        "timestamp_utc": "2026-11-11T14:27:07.656983+00:00"
+      },
+      {
+        "event_id": "AX309-E0137",
+        "timestamp_utc": "2026-11-11T19:17:16.935363+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.701985+00:00",
+  "repeatable_validation": "Approve separate generator envelopes and success metrics, then execute separately authorized tests and retain raw truth/output evidence.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0053",
+      "timestamp_utc": "2026-11-09T03:49:10.657859+00:00"
+    },
+    {
+      "event_id": "AX309-E0130",
+      "timestamp_utc": "2026-11-11T14:27:07.656983+00:00"
+    },
+    {
+      "event_id": "AX309-E0137",
+      "timestamp_utc": "2026-11-11T19:17:16.935363+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Keep REQ-SCR-01 and REQ-RNG-03 OPEN; no implicit waiver or closure.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S02-S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "REQ-SCR-01",
+    "REQ-RNG-03",
+    "clutter",
+    "two-target-resolution"
+  ],
+  "title": "Keep SCR and two-target resolution as binding open requirements with explicit architecture impacts"
+}

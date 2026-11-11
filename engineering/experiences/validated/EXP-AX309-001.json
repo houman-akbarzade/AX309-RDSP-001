@@ -1,0 +1,77 @@
+{
+  "alternatives_and_negative_results": "An IID-CUT binomial interval or an unqualified exchangeability assumption is not justified for this processed radar chain.",
+  "applicability": "Statistical qualification of a radar map where within-map CUT dependence is present and CPI seeds are independently generated.",
+  "assessed_root_cause": "The statistical dependence structure is at the CPI output-vector level, not an IID population of individual CUTs.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "statistical-validity",
+  "chosen_corrective_method": "Use per-CPI alarm counts/fractions as the statistical unit and a method whose theorem matches that sampling structure.",
+  "evidence": [
+    {
+      "git_commit": "e88731cd70ae80d755bc26124ad71c67e4f1a8ee",
+      "path": "engineering/S02-C-CFAR-02-CONTRACT-APPROVED-v1.2.md",
+      "sha256": "6e07ab218cd76f8358d56e3de0bbbc57dc62eff82b702222c0bb47f3b9ca1f3e"
+    },
+    {
+      "git_commit": "9e8c46d2d2fec4a557c2d3d407e3968f564b7aa5",
+      "path": "engineering/S03-C04-FINAL-Pfa-20000CPI-EmpiricalBernstein-v1.2.json",
+      "sha256": "6dab2a8a6669b698a53e74f88105b61169c02f819ac72d3674a94d34aca9cc7f"
+    },
+    {
+      "git_commit": "9e8c46d2d2fec4a557c2d3d407e3968f564b7aa5",
+      "path": "engineering/S03-C04-FINAL-Pfa-EB-20000CPI-result-report-v1.2.md",
+      "sha256": "9eaeade79f2d31aaf8046197cea32fb99aa9cf308bd721cd2a8ad6a126b7f86e"
+    }
+  ],
+  "generalizable_lesson": "For correlated spatial outputs, define the independent experimental unit before calculating uncertainty; never substitute CUT count for independent-trial count.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-001",
+  "initial_faulty_assumption_or_design_decision": "Treating every valid CUT as an independent Bernoulli observation would inflate the effective sample size.",
+  "non_applicability": "Does not prove physical independence of hardware CPI, clutter transfer, or general Pd/Pfa outside the approved noise-only Python reference.",
+  "observable_consequence": "The final Pfa method uses 20,000 CPI-level alarm fractions; the approved bound is computed over independent CPI observations while allowing arbitrary within-CPI CUT correlation.",
+  "observed_problem": "The 2D range-Doppler CUTs share pulse-compression, MTI and FFT processing and cannot be presumed mutually independent.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0043",
+        "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+      },
+      {
+        "event_id": "AX309-E0088",
+        "timestamp_utc": "2026-11-09T06:22:37.878427+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.256356+00:00",
+  "repeatable_validation": "Check the fixed N=20,000 result, 2,782 valid CUTs/CPI, CPI-level EB upper bound 0.0014491445035750084 <= 0.0015 and independent Welford result.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0043",
+      "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+    },
+    {
+      "event_id": "AX309-E0088",
+      "timestamp_utc": "2026-11-09T06:22:37.878427+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Preserve the approved S02 v1.2 contract, fixed sample size, seed separation, alpha and no-optional-stopping rule.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-STAT-001"
+  ],
+  "stage": "S03",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "CPI",
+    "CA-CFAR",
+    "Pfa",
+    "correlation"
+  ],
+  "title": "Use whole CPI observations for correlated range-Doppler CUT statistics"
+}

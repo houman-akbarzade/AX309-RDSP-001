@@ -1,0 +1,75 @@
+{
+  "alternatives_and_negative_results": "Do not add general peak tolerance, suppress the difference or claim Float/Fixed peak equality.",
+  "applicability": "RTL peak selection and target-list grouping for quantized power maps.",
+  "assessed_root_cause": "Quantization breaks the Float exact equality before grouping; the integer grouping implementation follows its own approved stored-power ordering.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "peak-selection",
+  "chosen_corrective_method": "Preserve both exact powers and classify only the narrowly defined historical exception; keep the Fixed integer peak rule and require same unchanged component plus exact independent records.",
+  "evidence": [
+    {
+      "git_commit": "23d4f9ae4d322f6b3de653de3ae853cec78a26dd",
+      "path": "engineering/S04-C05-INTEGRATED-POWER-CFAR-GROUPING-QUALIFICATION-v1.0.md",
+      "sha256": "e3fad2fa2dbd143c2be386eee261f84b748a0db356c521793daf5e06c2aa2323"
+    },
+    {
+      "git_commit": "3842f6af6b8beb567b1896ec5600b885dcc32f2a",
+      "path": "engineering/s04_numeric/c06_replacement_16cpi_inputs_v1/D-HISTORICAL-PHASE-INTERFERENCE-REPLAY-v1.0.json",
+      "sha256": "acbcb3c9ab5c7454f506107bde571b7094d82a3537fcf1d919298f397ec29a9c"
+    },
+    {
+      "git_commit": "3b9b59a6e34024e0ff1bcd82235c3585eabf25df",
+      "path": "engineering/S04-C06-REPLACEMENT-16CPI-FINAL-REPORT-v1.0.md",
+      "sha256": "b6d25c230c5558fb1ad2d5aa079d5f7afca5914838caf84b4353b383b8d1be16"
+    }
+  ],
+  "generalizable_lesson": "When quantization changes a tie, localize the difference to the stage where ordering changes and validate the downstream algorithm against its own frozen contract.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-011",
+  "initial_faulty_assumption_or_design_decision": "Any Float/Fixed peak-coordinate difference could be treated as a grouping bug or waived with a broad coordinate tolerance.",
+  "non_applicability": "Does not permit new peak-coordinate mismatches or waive new two-target separation requirements.",
+  "observable_consequence": "Float chooses (3,20) by its tie rule; fixed integer powers select (4,20) by the frozen maximum stored-power rule. CFAR masks and 107-cell component membership are identical, and independent integer grouping/records match.",
+  "observed_problem": "Two historical phase-interference vectors have an exact Float power tie at adjacent range cells, while quantized stored integer powers differ.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0128",
+        "timestamp_utc": "2026-11-11T13:43:41.145784+00:00"
+      },
+      {
+        "event_id": "AX309-E0130",
+        "timestamp_utc": "2026-11-11T14:27:07.656983+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.597687+00:00",
+  "repeatable_validation": "Replay the two historical vectors, check exact Float tie, Fixed power difference, identical masks/component cells and independent union-find records.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0128",
+      "timestamp_utc": "2026-11-11T13:43:41.145784+00:00"
+    },
+    {
+      "event_id": "AX309-E0130",
+      "timestamp_utc": "2026-11-11T14:27:07.656983+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Keep the exception limited to the two named historical vectors and approved C06 D conditions.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "quantization",
+    "peak-tie",
+    "clustering",
+    "deterministic-output"
+  ],
+  "title": "Distinguish quantization-induced peak tie splitting from a grouping implementation defect"
+}

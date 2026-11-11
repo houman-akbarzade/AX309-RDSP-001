@@ -1,0 +1,91 @@
+{
+  "alternatives_and_negative_results": "Post-hoc threshold relaxation, relabeling the old result PASS, or silently substituting a method after observing final data are invalid.",
+  "applicability": "Statistical-method or numerical-contract revisions under formal change control.",
+  "assessed_root_cause": "The failed result was a method-coverage failure, not a failed radar detection performance trial.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "qualification-governance",
+  "chosen_corrective_method": "Retain the failed version and its evidence; use formal engineer-approved prospective amendment, independent calibration and fixed qualification before any main experiment.",
+  "evidence": [
+    {
+      "git_commit": "628c1b8a1cf6f1c597fcf02fc776f635777929ed",
+      "path": "engineering/S03-C04-alpha-spatial-failure-report-v0.1.md",
+      "sha256": "2ec6ead7526226034cc1eeef07cb8b8aababd006f305eae81f48ed1b0d628a00"
+    },
+    {
+      "git_commit": "b4e28b87dd80b911548fc7f035de8ff8a253c13e",
+      "path": "engineering/S03_C04_v11_independent_15x3000_qualification.json",
+      "sha256": "2aa1e4614b3d3b80ded3b6f7c47a15dd92184635f54619d90f1df8501b2d0ed5"
+    },
+    {
+      "git_commit": "e88731cd70ae80d755bc26124ad71c67e4f1a8ee",
+      "path": "engineering/S02-C-CFAR-02-CONTRACT-APPROVED-v1.2.md",
+      "sha256": "6e07ab218cd76f8358d56e3de0bbbc57dc62eff82b702222c0bb47f3b9ca1f3e"
+    },
+    {
+      "git_commit": "54ecedea6ebdba738c65e28942b85fe8ef966b41",
+      "path": "decisions/S02-C-CFAR-02-v1.1-approved-amendment.json",
+      "sha256": "25f58dd1b2c106e70ce480293f3a014dc4e661bad0052c6177350d8dd23acb4e"
+    }
+  ],
+  "generalizable_lesson": "When a qualification method fails, preserve the failure and make any replacement prospective, versioned and independently qualified.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-002",
+  "initial_faulty_assumption_or_design_decision": "A method failure could be mistaken for a reason to delete the old result or retrospectively relax acceptance limits.",
+  "non_applicability": "Does not imply that a later method automatically validates every application domain; transfer must be separately demonstrated.",
+  "observable_consequence": "The original 7/15 failure remains preserved; only a prospectively approved S02 v1.1 amendment and later v1.2 method were qualified under new frozen protocols.",
+  "observed_problem": "The original Student-t CPI-interval method failed its prespecified 15-condition coverage qualification (8/15 pass, 7/15 fail).",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0070",
+        "timestamp_utc": "2026-11-09T04:45:46.038033+00:00"
+      },
+      {
+        "event_id": "AX309-E0077",
+        "timestamp_utc": "2026-11-09T05:43:41.493868+00:00"
+      },
+      {
+        "event_id": "AX309-E0079",
+        "timestamp_utc": "2026-11-09T05:53:25.802408+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.302995+00:00",
+  "repeatable_validation": "Verify original 7/15 record, independent v1.1 15/15 qualification and approved v1.2 contract/result as separate immutable artifacts.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0070",
+      "timestamp_utc": "2026-11-09T04:45:46.038033+00:00"
+    },
+    {
+      "event_id": "AX309-E0077",
+      "timestamp_utc": "2026-11-09T05:43:41.493868+00:00"
+    },
+    {
+      "event_id": "AX309-E0079",
+      "timestamp_utc": "2026-11-09T05:53:25.802408+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "No approved baseline or historical FAIL may be rewritten; preserve old hashes and approval scope.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-STAT-002",
+    "AX309-CTRL-007"
+  ],
+  "stage": "S03",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "Student-t",
+    "coverage",
+    "amendment",
+    "immutable-evidence"
+  ],
+  "title": "Preserve failed qualification evidence when replacing a statistical method"
+}

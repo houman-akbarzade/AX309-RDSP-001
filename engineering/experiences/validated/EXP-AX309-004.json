@@ -1,0 +1,100 @@
+{
+  "alternatives_and_negative_results": "Do not infer range resolution from single-target localization, or a joint population acceptance rule from a reported J metric.",
+  "applicability": "Radar target-list performance scoring and future multi-target range/Doppler acceptance.",
+  "assessed_root_cause": "Association is a scoring relation; range and Doppler accuracy are separate estimator properties and have separate eligibility conditions.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "requirements-engineering",
+  "chosen_corrective_method": "Keep D/R/V/E/J and the binding requirement fields separate; predefine matching gates and report attempted, eligible and ineligible trials.",
+  "evidence": [
+    {
+      "git_commit": "e88731cd70ae80d755bc26124ad71c67e4f1a8ee",
+      "path": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0"
+    },
+    {
+      "git_commit": "6085cb10ed35cf7a52309d71c764d1541d20e402",
+      "path": "engineering/S03-Pd-independent-fixed-execution-contract-v0.3.json",
+      "sha256": "602e4fe6132c4d8521b33c61a1c2cd413c3e75cc4325fe8b9bca6dea966bed5f"
+    },
+    {
+      "git_commit": "1faf1464ec3b5c68cb995686f9f20146ddaaa3f5",
+      "path": "engineering/S03-Pd-MAIN-1000CPI-v1/REPORT.md",
+      "sha256": "c3c03df96a1fc0c34c4c758640ae09ec7aeaefe75bcd067377a31f74ee8e35f3"
+    },
+    {
+      "git_commit": "883e161d36af5dab2464ad24255a226c39b8ea00",
+      "path": "decisions/GATE-S03-approved-baseline.json",
+      "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+    }
+  ],
+  "generalizable_lesson": "Define detection association, parameter accuracy, eligibility and composite success as distinct metrics with explicit denominators and binding status.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-004",
+  "initial_faulty_assumption_or_design_decision": "One detection could be matched to multiple truth targets, or a target-association PASS could be interpreted as a universal range/velocity accuracy or composite Pd PASS.",
+  "non_applicability": "Does not establish two-target resolution near 600 m or performance across clutter/off-bin/other SNR conditions.",
+  "observable_consequence": "S02 defines one-to-one truth association separately from estimator-error checks; the fixed Pd main test was accepted only for one isolated single-target no-clutter scene, while J remained report-only without a new binding 90% rule.",
+  "observed_problem": "Detection association, range/velocity estimation error, and joint detection-quality claims can produce different denominators and outcomes.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0040",
+        "timestamp_utc": "2026-11-09T03:32:56.000972+00:00"
+      },
+      {
+        "event_id": "AX309-E0041",
+        "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+      },
+      {
+        "event_id": "AX309-E0042",
+        "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+      },
+      {
+        "event_id": "AX309-E0044",
+        "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.415335+00:00",
+  "repeatable_validation": "Check S02 matrix, frozen Pd protocol and 1000-CPI result; verify D=1000/1000 and the stated fixed-scene limitation.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0040",
+      "timestamp_utc": "2026-11-09T03:32:56.000972+00:00"
+    },
+    {
+      "event_id": "AX309-E0041",
+      "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+    },
+    {
+      "event_id": "AX309-E0042",
+      "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+    },
+    {
+      "event_id": "AX309-E0044",
+      "timestamp_utc": "2026-11-09T03:38:02.173364+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "No unapproved Pd composite or new binding threshold; preserve S02 v1.2 and the exact accepted Pd scope.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-REQ-005",
+    "AX309-REQ-006"
+  ],
+  "stage": "S02-S03",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "truth-assignment",
+    "range",
+    "Doppler",
+    "Pd",
+    "requirements"
+  ],
+  "title": "Separate truth association, estimator accuracy and binding acceptance criteria"
+}

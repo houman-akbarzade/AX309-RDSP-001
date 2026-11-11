@@ -1,0 +1,99 @@
+{
+  "alternatives_and_negative_results": "Do not infer DSP/BRAM/CLB fit, Fmax or board behavior from Python or code inspection.",
+  "applicability": "FPGA implementation and radar hardware delivery.",
+  "assessed_root_cause": "Functional/numeric equivalence, HDL simulation, synthesis/resource mapping, timing closure and physical board behavior are different evidence levels.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "verification-boundary",
+  "chosen_corrective_method": "Create synthesizable RTL, verify it against independent golden vectors, then separately run HDL simulation, ISE synthesis/implementation/STA and physical AX309 readback.",
+  "evidence": [
+    {
+      "git_commit": "d848345cf79144339806b8ecbccc98b7a2b4ef44",
+      "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
+      "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json",
+      "sha256": "fa16d4d6e6e249c796f7e60bb7e74706a68b6ffca8e385b659c34616905a5dcd"
+    },
+    {
+      "git_commit": "3b9b59a6e34024e0ff1bcd82235c3585eabf25df",
+      "path": "engineering/S04-C06-REPLACEMENT-16CPI-FINAL-REPORT-v1.0.md",
+      "sha256": "b6d25c230c5558fb1ad2d5aa079d5f7afca5914838caf84b4353b383b8d1be16"
+    },
+    {
+      "git_commit": "3ccc73336e81e16e9ae70c850fa75fe07613352b",
+      "path": "project.yaml",
+      "sha256": "9ca939ce439fe8f550c65aafac1afc38ef95194dfa58e9dc5d053358798f9b39"
+    }
+  ],
+  "generalizable_lesson": "Keep every verification claim scoped to the actual execution layer and tool evidence.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-014",
+  "initial_faulty_assumption_or_design_decision": "A software reference or bit-true Python qualification could be described as proof that the design fits or executes on the FPGA.",
+  "non_applicability": "Does not invalidate the accepted Python reference or S04 deterministic numerical evidence within its scope.",
+  "observable_consequence": "S01 and C02 explicitly exclude resource/timing proof; C06R2 explicitly records no RTL/synthesis/FPGA. The active host has no ISE, Vivado, Icarus, Verilator, GHDL or Yosys executable.",
+  "observed_problem": "The project has extensive Python deterministic and statistical evidence, but no RTL, synthesis, STA or physical-board run is recorded.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0001",
+        "timestamp_utc": "2026-11-08T22:58:53.929258+00:00"
+      },
+      {
+        "event_id": "AX309-E0124",
+        "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+      },
+      {
+        "event_id": "AX309-E0130",
+        "timestamp_utc": "2026-11-11T14:27:07.656983+00:00"
+      },
+      {
+        "event_id": "AX309-E0137",
+        "timestamp_utc": "2026-11-11T19:17:16.935363+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.657210+00:00",
+  "repeatable_validation": "Record tool versions, exact commands, logs, outputs, resource reports, timing paths and board measurements at their respective stages.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0001",
+      "timestamp_utc": "2026-11-08T22:58:53.929258+00:00"
+    },
+    {
+      "event_id": "AX309-E0124",
+      "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+    },
+    {
+      "event_id": "AX309-E0130",
+      "timestamp_utc": "2026-11-11T14:27:07.656983+00:00"
+    },
+    {
+      "event_id": "AX309-E0137",
+      "timestamp_utc": "2026-11-11T19:17:16.935363+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "No claim of synthesis, timing closure or hardware execution until actual tool and board evidence exists.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-CTRL-008"
+  ],
+  "stage": "S01-S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "Python-reference",
+    "RTL",
+    "synthesis",
+    "STA",
+    "hardware"
+  ],
+  "title": "Software-reference PASS does not establish FPGA resource, timing or physical-board PASS"
+}

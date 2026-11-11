@@ -1,0 +1,80 @@
+{
+  "alternatives_and_negative_results": "Do not label a duplicate implementation or same-helper comparison as independent oracle evidence.",
+  "applicability": "RTL verification using frozen C03-C05 oracle implementations and separately authored golden vectors.",
+  "assessed_root_cause": "Shared code and shared intermediate assumptions create common-mode error that ordinary regression tests cannot detect.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "verification-independence",
+  "chosen_corrective_method": "Use independent arithmetic derivation and a structurally different grouping algorithm; compare exact intermediate and final records.",
+  "evidence": [
+    {
+      "git_commit": "2e540d798518141a42a13f39e46d4add33b52414",
+      "path": "engineering/s04_numeric/s04_c03_independent_oracle_v1.py",
+      "sha256": "32fdb0e565dbf9c3db44d882f38736b2e96ba726ba16c688f0c65556546e6429"
+    },
+    {
+      "git_commit": "2e540d798518141a42a13f39e46d4add33b52414",
+      "path": "engineering/S04-C03-INTEGRATED-BITTRUE-PRIMITIVE-QUALIFICATION-v1.0.md",
+      "sha256": "49793d5cb971189dcd4c600fcbb42e6e8b6cb08a34b4a189926369c8f7badeb8"
+    },
+    {
+      "git_commit": "23d4f9ae4d322f6b3de653de3ae853cec78a26dd",
+      "path": "engineering/s04_numeric/s04_c05_integrated_qualification_v1.py",
+      "sha256": "73e94c06bbde884a64f27c069c4885d0bf4c498647106a8cca02f63b65ad1eaf"
+    },
+    {
+      "git_commit": "23d4f9ae4d322f6b3de653de3ae853cec78a26dd",
+      "path": "engineering/S04-C05-INTEGRATED-POWER-CFAR-GROUPING-QUALIFICATION-v1.0.md",
+      "sha256": "e3fad2fa2dbd143c2be386eee261f84b748a0db356c521793daf5e06c2aa2323"
+    }
+  ],
+  "generalizable_lesson": "Independence should be demonstrated by source/data-flow separation and algorithmic diversity, not by module naming.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-008",
+  "initial_faulty_assumption_or_design_decision": "Calling the same helper twice, or comparing two outputs derived from one implementation path, could be described as independent verification.",
+  "non_applicability": "Does not prove independence from every shared upstream model assumption; test assumptions and input truth separately.",
+  "observable_consequence": "C03 uses rational Fraction-based arithmetic and independently derived constants; C05 uses union-find connected components to cross-check the native BFS grouping.",
+  "observed_problem": "A self-check can agree with a DUT while sharing its arithmetic or algorithmic defect.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0126",
+        "timestamp_utc": "2026-11-11T13:10:00.157194+00:00"
+      },
+      {
+        "event_id": "AX309-E0128",
+        "timestamp_utc": "2026-11-11T13:43:41.145784+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.536828+00:00",
+  "repeatable_validation": "Run directed primitive vectors, full-chain vectors and exact grouping/record comparisons; confirm zero mismatches in the accepted C03-C05 evidence.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0126",
+      "timestamp_utc": "2026-11-11T13:10:00.157194+00:00"
+    },
+    {
+      "event_id": "AX309-E0128",
+      "timestamp_utc": "2026-11-11T13:43:41.145784+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Do not edit or merge oracle code with RTL/DUT arithmetic; preserve source hashes and independent ownership.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "independent-oracle",
+    "Fraction",
+    "union-find",
+    "common-mode"
+  ],
+  "title": "Independence requires a different computational path, not a second call to the DUT helper"
+}

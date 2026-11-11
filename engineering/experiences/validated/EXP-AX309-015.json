@@ -1,0 +1,75 @@
+{
+  "alternatives_and_negative_results": "Do not select external SDRAM or assert BRAM-only fit based only on aggregate bits; no memory-controller choice was approved.",
+  "applicability": "AX309 RTL architecture and memory/buffering design.",
+  "assessed_root_cause": "Actual memory feasibility depends on width/depth packing, dual-port demand, buffer lifetime, bank conflicts, arithmetic widths and temporary/debug storage.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "hardware-feasibility",
+  "chosen_corrective_method": "Design explicit buffer lifetimes, access schedules and bank/port maps; estimate primitive count; then verify with ISE synthesis and implementation reports.",
+  "evidence": [
+    {
+      "git_commit": "d848345cf79144339806b8ecbccc98b7a2b4ef44",
+      "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
+      "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json",
+      "sha256": "fa16d4d6e6e249c796f7e60bb7e74706a68b6ffca8e385b659c34616905a5dcd"
+    },
+    {
+      "git_commit": "3ccc73336e81e16e9ae70c850fa75fe07613352b",
+      "path": "project.yaml",
+      "sha256": "9ca939ce439fe8f550c65aafac1afc38ef95194dfa58e9dc5d053358798f9b39"
+    }
+  ],
+  "generalizable_lesson": "Resource feasibility must be demonstrated at primitive and port level, then confirmed by synthesis and timing.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-015",
+  "initial_faulty_assumption_or_design_decision": "Three nominal buffers fitting under 72 KiB could be interpreted as proof that the radar chain fits the device.",
+  "non_applicability": "Does not prove the proposed memory map will fit; board manual/resource report and actual ISE run are still required.",
+  "observable_consequence": "S01 records the 576-Kbit BRAM and 16 DSP resource limits, explicitly labels raw capacity as a comparison only, and C02 leaves DSP/FF/BRAM/LUT/timing/throughput unmeasured.",
+  "observed_problem": "The AX309 baseline has limited BRAM and DSP resources; a simple total-bit sum ignores primitive aspect ratios, ports, banking and simultaneous traffic.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0003",
+        "timestamp_utc": "2026-11-08T22:58:53.929258+00:00"
+      },
+      {
+        "event_id": "AX309-E0124",
+        "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.680662+00:00",
+  "repeatable_validation": "Create a memory map and per-cycle port schedule; compare inferred BRAM primitives and utilization after synthesis.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0003",
+      "timestamp_utc": "2026-11-08T22:58:53.929258+00:00"
+    },
+    {
+      "event_id": "AX309-E0124",
+      "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Board revision, ISE 14.7 availability and physical resource utilization remain unverified.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S01-S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "BRAM",
+    "memory-banking",
+    "ports",
+    "resource-budget"
+  ],
+  "title": "Raw BRAM bit capacity is not a memory architecture or fit result"
+}

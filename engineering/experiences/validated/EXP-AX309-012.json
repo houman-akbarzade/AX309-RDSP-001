@@ -1,0 +1,80 @@
+{
+  "alternatives_and_negative_results": "Do not keep only first-N events, discard the tail, auto-restart an interrupted CPI or label a partial trace COMPLETE.",
+  "applicability": "FPGA overflow/saturation telemetry and host-side evidence capture.",
+  "assessed_root_cause": "Telemetry correctness is part of evidence integrity; a truncated or incomplete trace cannot support a clean acceptance disposition.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "telemetry-evidence",
+  "chosen_corrective_method": "Use append-only event records, stable IDs, full values and location fields; verify byte count, order, hash and complete readback; fail closed on interruption or mismatch.",
+  "evidence": [
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/s04_numeric/s04_c06_fulltrace_capture_v1.py",
+      "sha256": "f7ded485e4c169cd57ae965612c790354d098c3d7288a8c68866bcb224454c74"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/S04-C06-FULLTRACE-UNIT-TESTS-v1.0.log",
+      "sha256": "29bc28576f0d8138a9011e8ce0ec9d706fe8e7f1dc58b61d4b1d1de1873f2e88"
+    },
+    {
+      "git_commit": "1634256407c17c02e681bf2a3f3c1ae5e1182b3c",
+      "path": "engineering/S04-C06-FULLTRACE-INTEGRATION-SMOKE-v3.0.log",
+      "sha256": "65b01b54f95d8ffd8c4a85972400c2e3ff66b6563e432b230ca01c0b0b03ffdf"
+    },
+    {
+      "git_commit": "3842f6af6b8beb567b1896ec5600b885dcc32f2a",
+      "path": "engineering/s04_numeric/s04_c06_replacement_16cpi_authorized_runner_v1.py",
+      "sha256": "68d405193e88f03b205f0a951a74e3ba29fffb89478d14fbeb143348ea341e40"
+    }
+  ],
+  "generalizable_lesson": "Telemetry must be treated as a data path with its own completeness, ordering and durability assertions.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-012",
+  "initial_faulty_assumption_or_design_decision": "A short event summary or a successful write call could be treated as proof that every event was captured.",
+  "non_applicability": "Does not establish that hardware telemetry FIFO sizing or UART throughput is adequate; that requires RTL and interface verification.",
+  "observable_consequence": "C06 added stable event identities, complete pre-narrow integers, stage/location/component, signedness, cumulative counts, sticky flags, ordering, fsync/readback/hash checks and incomplete-trace preservation; final CPI traces were read back.",
+  "observed_problem": "Overflow and input-saturation events can be lost if telemetry stores only a bounded preview, silently truncates or reports success before durable readback.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0132",
+        "timestamp_utc": "2026-11-11T15:02:33.984335+00:00"
+      },
+      {
+        "event_id": "AX309-E0133",
+        "timestamp_utc": "2026-11-11T15:55:42.501546+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.618434+00:00",
+  "repeatable_validation": "Run logger unit tests, diagnostic stress vector and interrupted-run smoke; for actual CPI require per-CPI trace manifests and readback.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0132",
+      "timestamp_utc": "2026-11-11T15:02:33.984335+00:00"
+    },
+    {
+      "event_id": "AX309-E0133",
+      "timestamp_utc": "2026-11-11T15:55:42.501546+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Preserve C02 event fields and full pre-narrow integer; no hidden truncation or automatic CPI retry.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "FullTrace",
+    "overflow",
+    "readback",
+    "fail-closed"
+  ],
+  "title": "Full Trace is an acceptance artifact: ordered, complete, read-back verified and fail-closed"
+}

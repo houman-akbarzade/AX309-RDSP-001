@@ -1,0 +1,89 @@
+{
+  "alternatives_and_negative_results": "Do not normalize or clip input to force fit, and do not use a single gain profile to imply coverage of all source classes.",
+  "applicability": "Fixed-point radar processing where input dynamic range and source profiles are controlled.",
+  "assessed_root_cause": "Gain scaling and quantization define the numeric input presented to the fixed-point chain; clipping changes the experiment and must remain visible.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "fixed-point-input",
+  "chosen_corrective_method": "Preserve source Float, raw integer IQ, Q1.15 bytes, metadata and hashes; validate envelope, signed fit, clip count and conservative headroom before processing.",
+  "evidence": [
+    {
+      "git_commit": "5c83d63a04094ca85df580cab24a4795ea3d8781",
+      "path": "decisions/S04-C01-ENGINEER-CONDITIONAL-SIGNOFF-v1.0.md",
+      "sha256": "5e3dab079726b9fa22e40442e9077e7753c5eef458145aff8b6280dd3fd58d4a"
+    },
+    {
+      "git_commit": "fac8ec8809861fd1b3afada61d8d53a344226660",
+      "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+      "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856"
+    },
+    {
+      "git_commit": "3842f6af6b8beb567b1896ec5600b885dcc32f2a",
+      "path": "engineering/s04_numeric/c06_replacement_16cpi_inputs_v1/C06-REPLACEMENT-INPUT-MANIFEST-v1.0.json",
+      "sha256": "8d8d5ad4037ac905a773b84bd3e96a29e4e644064903a2d28a5d57eb538974e0"
+    },
+    {
+      "git_commit": "3b9b59a6e34024e0ff1bcd82235c3585eabf25df",
+      "path": "engineering/S04-C06-REPLACEMENT-16CPI-FINAL-REPORT-v1.0.md",
+      "sha256": "b6d25c230c5558fb1ad2d5aa079d5f7afca5914838caf84b4353b383b8d1be16"
+    }
+  ],
+  "generalizable_lesson": "Input quantization is part of the system contract and its admission decision, not a preprocessing convenience.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-006",
+  "initial_faulty_assumption_or_design_decision": "Input conversion could be treated as a harmless serialization detail or clipping could be hidden by saturation and still counted as normal performance.",
+  "non_applicability": "Does not establish headroom for the untested SCR +/-10 dB clutter envelope or other target/clutter mixtures.",
+  "observable_consequence": "C01/C02 specify ties-to-even conversion, signed Q1.15 IQ, profile-specific gain and clipping reporting; all 16 C06R2 inputs passed no-clipping and static headroom preflight.",
+  "observed_problem": "The same normalized source is represented at different approved gains; conversion and clipping affect every downstream fixed-point stage.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0124",
+        "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+      },
+      {
+        "event_id": "AX309-E0134",
+        "timestamp_utc": "2026-11-11T16:19:58.633199+00:00"
+      },
+      {
+        "event_id": "AX309-E0135",
+        "timestamp_utc": "2026-11-11T16:19:58.633199+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.468235+00:00",
+  "repeatable_validation": "Check C01 signoff, selected-C input mapping and C06R2 manifest for 16/16 ready, zero clipped components and headroom PASS.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0124",
+      "timestamp_utc": "2026-11-11T12:44:16.992453+00:00"
+    },
+    {
+      "event_id": "AX309-E0134",
+      "timestamp_utc": "2026-11-11T16:19:58.633199+00:00"
+    },
+    {
+      "event_id": "AX309-E0135",
+      "timestamp_utc": "2026-11-11T16:19:58.633199+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "No change to C01 profile gains, Q1.15 mapping, RNE, clipping policy or prelocked C06R2 data.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "Q1.15",
+    "gain",
+    "input-envelope",
+    "headroom",
+    "clipping"
+  ],
+  "title": "Treat input gain, Q1.15 conversion and clipping as explicit admission controls"
+}

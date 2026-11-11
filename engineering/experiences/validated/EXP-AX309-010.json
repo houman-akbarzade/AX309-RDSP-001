@@ -1,0 +1,69 @@
+{
+  "alternatives_and_negative_results": "Do not divide or round the threshold, use floating arithmetic in RTL, wrap products, or change equality to >=.",
+  "applicability": "RTL CA-CFAR and its future SCR/clutter qualification.",
+  "assessed_root_cause": "The decision is a rational integer inequality; exact product widths and strictness are part of the acceptance contract.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "fixed-point-cfar",
+  "chosen_corrective_method": "Use full unsigned cross-products at approved widths, guard the full intermediate products, preserve the 7x7-minus-3x3 training geometry and no-wrap edges.",
+  "evidence": [
+    {
+      "git_commit": "fac8ec8809861fd1b3afada61d8d53a344226660",
+      "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+      "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856"
+    },
+    {
+      "git_commit": "23d4f9ae4d322f6b3de653de3ae853cec78a26dd",
+      "path": "engineering/S04-C05-INTEGRATED-POWER-CFAR-GROUPING-QUALIFICATION-v1.0.md",
+      "sha256": "e3fad2fa2dbd143c2be386eee261f84b748a0db356c521793daf5e06c2aa2323"
+    },
+    {
+      "git_commit": "23d4f9ae4d322f6b3de653de3ae853cec78a26dd",
+      "path": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+      "sha256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117"
+    }
+  ],
+  "generalizable_lesson": "When the threshold is rational, implement its exact integer inequality and prove operand widths rather than approximating with floating arithmetic.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-010",
+  "initial_faulty_assumption_or_design_decision": "Floating threshold division or implicit rounding could alter equality behavior and alarm decisions at the threshold.",
+  "non_applicability": "Does not prove the clutter source population or statistical Pfa outside approved scope.",
+  "observable_consequence": "C05 native engine uses U46.30 power, U52.30 SUM40 and strict 40*Pcut*65536 > 490007*SUM40; equality is NO ALARM; 2,782 valid CUTs are checked.",
+  "observed_problem": "The CFAR decision depends on exact integer CUT power, 40 training cells, a rational alpha and edge-validity geometry.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0128",
+        "timestamp_utc": "2026-11-11T13:43:41.145784+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.584356+00:00",
+  "repeatable_validation": "Test exact equality and plus/minus one integer boundaries, all valid CUT coordinates, 40 training cells, and independent Fraction comparisons.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0128",
+      "timestamp_utc": "2026-11-11T13:43:41.145784+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Alpha 490007/65536, 40 training cells, 2,782 CUT geometry and strict greater-than comparator remain frozen.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-CFAR-004"
+  ],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "CA-CFAR",
+    "integer-comparison",
+    "training-window",
+    "strict-threshold"
+  ],
+  "title": "Implement CA-CFAR as exact unsigned cross-products with frozen geometry"
+}

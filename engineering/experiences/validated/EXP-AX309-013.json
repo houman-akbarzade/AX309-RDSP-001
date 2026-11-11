@@ -1,0 +1,82 @@
+{
+  "alternatives_and_negative_results": "Do not reclassify the old attempt PASS, rerun its CPI, silently replace a sample, or merge denominators across campaigns.",
+  "applicability": "Fixed-denominator qualification with software execution incidents.",
+  "assessed_root_cause": "Execution validity and numerical acceptance are separate; a failed execution consumes its declared attempt and remains part of history.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "campaign-control",
+  "chosen_corrective_method": "Keep old ledger and input manifest immutable; create a new prelocked campaign with independent IDs/seeds and a separate one-shot runner/ledger.",
+  "evidence": [
+    {
+      "git_commit": "a0b3392f1d66f60b82228fa9ab8c47e629f06b32",
+      "path": "engineering/S04-C06-16CPI-EXECUTION-INCIDENT-REPORT-v1.0.md",
+      "sha256": "368b35e50886df872ffbd1634a4a711b74ac109066a9f5df9e0a21d4171f62b7"
+    },
+    {
+      "git_commit": "a0b3392f1d66f60b82228fa9ab8c47e629f06b32",
+      "path": "engineering/s04_numeric/c06_16cpi_qualification_v1/attempt_ledger.json",
+      "sha256": "91655e63a84e185b8c6b947064a713f29474994661601b52318c2e99c91402ee"
+    },
+    {
+      "git_commit": "3b9b59a6e34024e0ff1bcd82235c3585eabf25df",
+      "path": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/attempt_ledger.json",
+      "sha256": "e9d562f8b902e70f58c3909512e23a89f07d3a81a2036606292d6b6f7191a3f0"
+    },
+    {
+      "git_commit": "3b9b59a6e34024e0ff1bcd82235c3585eabf25df",
+      "path": "engineering/S04-C06-REPLACEMENT-16CPI-FINAL-REPORT-v1.0.md",
+      "sha256": "b6d25c230c5558fb1ad2d5aa079d5f7afca5914838caf84b4353b383b8d1be16"
+    }
+  ],
+  "generalizable_lesson": "Use append-only campaigns and immutable attempt ledgers; a replacement must be an explicitly authorized new experiment, not a retry disguised as repair.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-013",
+  "initial_faulty_assumption_or_design_decision": "A repaired Runner could tempt an operator to overwrite the original campaign or retry the same CPI IDs/seeds.",
+  "non_applicability": "Does not justify replacement campaigns without a new explicit engineer authorization.",
+  "observable_consequence": "The first campaign remains 16/16 INCONCLUSIVE with one attempt each; the separately authorized C06R2 campaign uses new IDs/seeds and 8+8 prelocked denominators, each processed exactly once.",
+  "observed_problem": "A common Runner defect caused the first 16-CPI campaign to fail all 16 executions before the numeric checks completed.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0136",
+        "timestamp_utc": "2026-11-11T18:23:11.525401+00:00"
+      },
+      {
+        "event_id": "AX309-E0137",
+        "timestamp_utc": "2026-11-11T19:17:16.935363+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.629939+00:00",
+  "repeatable_validation": "Verify old ledger hashes, new manifest, new ledger attempts=1, 16 unique seeds/IDs and final 8+8 disposition.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0136",
+      "timestamp_utc": "2026-11-11T18:23:11.525401+00:00"
+    },
+    {
+      "event_id": "AX309-E0137",
+      "timestamp_utc": "2026-11-11T19:17:16.935363+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Preserve C06R2 data and old campaign; no further C06 CPI execution is authorized by this experience record.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-CTRL-007"
+  ],
+  "stage": "S04",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "attempt-ledger",
+    "INCONCLUSIVE",
+    "replacement",
+    "seed-isolation"
+  ],
+  "title": "Preserve every CPI disposition and separate replacement campaigns by immutable identity"
+}

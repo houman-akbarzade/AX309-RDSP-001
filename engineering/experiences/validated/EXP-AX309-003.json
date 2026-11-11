@@ -1,0 +1,89 @@
+{
+  "alternatives_and_negative_results": "Do not use the 15/15 synthetic qualification as a substitute for spatial transfer, and do not use the later v1.2 CPI-level theorem as retroactive erasure of the historical diagnostic.",
+  "applicability": "Transfer of statistical or signal-processing methods from synthetic populations to the real radar chain.",
+  "assessed_root_cause": "The synthetic method qualification and the radar-chain spatial population test different assumptions; shared upstream processing creates structured spatial dependence.",
+  "author_role": "historical project engineering record, backfilled by FPGA engineering copilot",
+  "category": "model-validity",
+  "chosen_corrective_method": "Keep method qualification and application-domain transfer as separate evidence claims; preserve the spatial FAIL and any provenance limitations.",
+  "evidence": [
+    {
+      "git_commit": "628c1b8a1cf6f1c597fcf02fc776f635777929ed",
+      "path": "engineering/S03-C04-alpha-spatial-failure-manifest-v0.1.json",
+      "sha256": "4e704a1d074263fa6b5cd388d3f82a902809a6c0fb752418739cbbe5be8a1a15"
+    },
+    {
+      "git_commit": "628c1b8a1cf6f1c597fcf02fc776f635777929ed",
+      "path": "engineering/S03-C04-alpha-spatial-failure-report-v0.1.md",
+      "sha256": "2ec6ead7526226034cc1eeef07cb8b8aababd006f305eae81f48ed1b0d628a00"
+    },
+    {
+      "git_commit": "2267161f3e93f490c7a36cd596f572aa959b78c2",
+      "path": "engineering/S03-C04-spatial-seed-overlap-audit-ADDENDUM-v0.1.md",
+      "sha256": "e306e202843f94e7037c2a6f916da3474525c4e20fb9606ebeafef5d513e5dc2"
+    },
+    {
+      "git_commit": "9e8c46d2d2fec4a557c2d3d407e3968f564b7aa5",
+      "path": "engineering/S03-C04-FINAL-Pfa-EB-20000CPI-result-report-v1.2.md",
+      "sha256": "9eaeade79f2d31aaf8046197cea32fb99aa9cf308bd721cd2a8ad6a126b7f86e"
+    }
+  ],
+  "generalizable_lesson": "A statistical method can be valid under its theorem and still be inapplicable to a particular data-generation or dependence structure.",
+  "human_promotion_status": "NOT_APPROVED_ENGINEER_REVIEW_REQUIRED",
+  "id": "EXP-AX309-003",
+  "initial_faulty_assumption_or_design_decision": "Passing synthetic count-model coverage could be treated as proof that the method transfers to the processed radar spatial field.",
+  "non_applicability": "Does not invalidate the separately approved v1.2 noise-only CPI-level Pfa result within its declared scope.",
+  "observable_consequence": "The post-alpha spatial diagnostic recorded 4/5 necessary checks passing but failed the anisotropy check at z=43.575 versus |z|<=2.576; the failure and seed-overlap caveat remain recorded.",
+  "observed_problem": "A calibrated count model passed its synthetic qualification, but a separate real-chain spatial diagnostic failed a prespecified range-versus-Doppler dependence check.",
+  "origin": "historical_backfill",
+  "original_time_provenance": {
+    "event_times": [
+      {
+        "event_id": "AX309-E0084",
+        "timestamp_utc": "2026-11-09T06:06:33.849443+00:00"
+      },
+      {
+        "event_id": "AX309-E0086",
+        "timestamp_utc": "2026-11-09T06:08:00.103239+00:00"
+      },
+      {
+        "event_id": "AX309-E0088",
+        "timestamp_utc": "2026-11-09T06:22:37.878427+00:00"
+      }
+    ],
+    "missing_historical_times_remain_null": true
+  },
+  "plugin_release_provenance": null,
+  "prior_lesson_links": [],
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T19:31:14.356663+00:00",
+  "repeatable_validation": "Read the spatial failure manifest/report and source-seed overlap addendum; confirm the failed metric and that no retuning or post-hoc data exclusion occurred.",
+  "replay_event_refs": [
+    {
+      "event_id": "AX309-E0084",
+      "timestamp_utc": "2026-11-09T06:06:33.849443+00:00"
+    },
+    {
+      "event_id": "AX309-E0086",
+      "timestamp_utc": "2026-11-09T06:08:00.103239+00:00"
+    },
+    {
+      "event_id": "AX309-E0088",
+      "timestamp_utc": "2026-11-09T06:22:37.878427+00:00"
+    }
+  ],
+  "reviewer_role": "documentary evidence validation by FPGA engineering copilot; not a separate human reviewer",
+  "safety_contract_constraints": "Preserve all historical FAIL records; no alpha, denominator, or seed retuning without explicit change control.",
+  "schema_version": "eem-experience-v1",
+  "seed_queue_links": [
+    "AX309-STAT-002"
+  ],
+  "stage": "S03",
+  "state": "VALIDATED",
+  "superseding_lesson_links": [],
+  "tags": [
+    "spatial-transfer",
+    "anisotropy",
+    "domain-validity"
+  ],
+  "title": "Method qualification does not establish transfer to the radar-chain spatial population"
+}

@@ -1,0 +1,85 @@
+{
+  "C01_scope": "BOUNDED_INPUT_CONTRACT",
+  "S04_completed_count": 1,
+  "S04_percent": 12.5,
+  "S04_total_count": 8,
+  "approved_C01_artifact_sha256": "5e3dab079726b9fa22e40442e9077e7753c5eef458145aff8b6280dd3fd58d4a",
+  "criteria": [
+    {
+      "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
+      "carried_open_obligations": [
+        "REQ-SCR-01",
+        "REQ-RNG-03"
+      ],
+      "completed": true,
+      "decision": "decisions/S04-C01-ENGINEER-CONDITIONAL-SIGNOFF-v1.0.md",
+      "evidence": [
+        "engineering/S04-C01-FINAL-CONDITIONAL-APPROVAL-PACKAGE-v0.8.md",
+        "engineering/S04-C01-BOUNDED-BASELINE-CONTRACT-APPROVAL-PACKAGE-v0.7.md",
+        "decisions/S04-C01-ENGINEER-CONDITIONAL-SIGNOFF-v1.0.md"
+      ],
+      "id": "S04-C01",
+      "scope": [
+        "NOISE_ONLY_UNIT/g=5",
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB/g=1"
+      ],
+      "status": "PASS_BOUNDED_INPUT_CONTRACT"
+    },
+    {
+      "acceptance_evidence": "Per-stage W/F, sign, scales, shifts, rounding, saturation/overflow, coefficients and accepted numeric thresholds approved and version locked",
+      "completed": false,
+      "id": "S04-C02",
+      "status": "OPEN_DESIGN_ENTRY_AUTHORIZED_ONLY"
+    },
+    {
+      "acceptance_evidence": "Exact independent integer/rational oracle for IQ packing, coefficient encoding, complex arithmetic, rounding ties, negative extremes and overflow",
+      "completed": false,
+      "id": "S04-C03",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Independent self-checking signed, normal/extreme, DC, bin, off-bin, tie/zero vectors, error and overflow evidence",
+      "completed": false,
+      "id": "S04-C04",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Power bit growth, 40 training-cell mean, alpha representation, strict comparison, threshold boundary, peak/tie, clustering/target-list flags",
+      "completed": false,
+      "id": "S04-C05",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
+      "completed": false,
+      "id": "S04-C06",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
+      "completed": false,
+      "id": "S04-C07",
+      "status": "NOT_STARTED"
+    },
+    {
+      "acceptance_evidence": "All preceding criteria evidenced; engineer issues explicit approval and preserves unresolved risks",
+      "completed": false,
+      "id": "S04-C08",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "engineer_decision": "S04-C01-SIGNOFF-001",
+  "gate_S04": "OPEN",
+  "independent_C02_C06_required": true,
+  "numeric_architecture_selected": false,
+  "obligations_matrix_path": "engineering/S04-OPEN-S02-OBLIGATIONS-C02-DESIGN-C06-VERIFY-v1.0.json",
+  "open_binding_S02_obligations": [
+    "REQ-SCR-01",
+    "REQ-RNG-03"
+  ],
+  "project": "AX309-RDSP-001",
+  "project_percent": 26.041666666666668,
+  "recorded_at_utc": "2026-11-11T10:48:10.014017+00:00",
+  "stage": "S04",
+  "version": "v1.0"
+}

@@ -1,0 +1,71 @@
+{
+  "approved_C01_scope": [
+    "NOISE_ONLY_UNIT_g5",
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB_g1"
+  ],
+  "decision_id": "S04-C01-SIGNOFF-001",
+  "decision_status": "APPROVED_ROUTING_ONLY_OBLIGATIONS_STILL_OPEN",
+  "deferred_obligations": [
+    {
+      "C01_scope_exclusion": true,
+      "additional_design_owner_approved": "S04-C02",
+      "additional_independent_verification_owner_approved": "S04-C06",
+      "classification": "binding",
+      "closure_deadline_gate": "BEFORE_GATE_S04_APPROVAL",
+      "closure_prerequisites": [
+        "C02 numerical dynamic range / scaling / arithmetic coverage design independently reviewed",
+        "C06 independently qualified evidence on S02 prescribed scenarios and predeclared acceptance oracle",
+        "evidence SHA256, source/seed separation, result status and reviewer trace",
+        "explicit engineering closure decision before Gate-S04"
+      ],
+      "historical_owner_stage_unchanged": [
+        "S03"
+      ],
+      "historical_result_status_unchanged": "NOT_EXECUTED",
+      "no_S02_waiver": true,
+      "origin": "approved S02 CFAR/C-DAT/C-SIG requirements matrix v1.2",
+      "requirement_current_status": "BINDING_OPEN",
+      "requirement_id": "REQ-SCR-01",
+      "s02_acceptance_rule_verbatim": "Declared SCR relative to specified region, numerical generator tolerance fixed",
+      "s02_metric": "SCR +10dB,-10dB and no clutter",
+      "s02_open_items": [
+        "measurement region",
+        "SCR tolerance"
+      ],
+      "s02_verification": "Compare target and clutter power at designated input region"
+    },
+    {
+      "C01_scope_exclusion": true,
+      "additional_design_owner_approved": "S04-C02",
+      "additional_independent_verification_owner_approved": "S04-C06",
+      "classification": "binding_test",
+      "closure_deadline_gate": "BEFORE_GATE_S04_APPROVAL",
+      "closure_prerequisites": [
+        "C02 numerical dynamic range / scaling / arithmetic coverage design independently reviewed",
+        "C06 independently qualified evidence on S02 prescribed scenarios and predeclared acceptance oracle",
+        "evidence SHA256, source/seed separation, result status and reviewer trace",
+        "explicit engineering closure decision before Gate-S04"
+      ],
+      "historical_owner_stage_unchanged": [
+        "S03"
+      ],
+      "historical_result_status_unchanged": "NOT_EXECUTED",
+      "no_S02_waiver": true,
+      "origin": "approved S02 CFAR/C-DAT/C-SIG requirements matrix v1.2",
+      "requirement_current_status": "BINDING_OPEN",
+      "requirement_id": "REQ-RNG-03",
+      "s02_acceptance_rule_verbatim": "Freeze resolved-pair definition, equal received power, success criterion",
+      "s02_metric": "Theoretical two-target range resolution ~600m separate from single target accuracy",
+      "s02_open_items": [
+        "separability metric"
+      ],
+      "s02_verification": "Sweep paired targets around 600m separations; measure resolved clusters"
+    }
+  ],
+  "gate_S04_condition": "Both obligations must be independently evidenced and closed before engineer Gate-S04 approval; do not close due to C01 PASS",
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T10:47:45.823936+00:00",
+  "s02_approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+  "stage": "S04",
+  "version": "v1.0"
+}

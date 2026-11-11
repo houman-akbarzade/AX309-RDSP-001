@@ -1,58 +1,58 @@
 {
-  "project_id": "AX309-RDSP-001",
-  "mode": "Standalone",
-  "stage": "S04",
-  "gate_status": "open",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
-  "provenance": "current conversation; engineer-supplied specifications unverified against board manual",
-  "progress": {
-    "stage_percent": 0.0,
-    "overall_percent": 25.0,
-    "stage_weighting": "12 equal weights",
-    "s01_completed_criteria": 8,
-    "s01_total_criteria": 8,
-    "s02_completed_criteria": 8,
-    "s02_total_criteria": 8,
-    "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria",
-    "basis": "Gate S03 engineer-approved 8/8. S04 entry authorized for numeric contract proposal only; S04 0/8; overall (3+0/8)/12=25%.",
-    "s03_completed_criteria": 8,
-    "s03_total_criteria": 8,
-    "s04_completed_criteria": 0,
-    "s04_total_criteria": 8
+  "execution_status": {
+    "design": "S04 C01 engineer PASS bounded input contract, C02 numeric design entry only; internal numeric architecture NOT approved",
+    "hardware_test": "not_executed",
+    "implementation": "not_executed",
+    "python_simulation": "S03 approved Python model: Pfa 20000 independent CPI upper EB 0.0014491445035750084 <= .0015; Pd second authorized main 1000/1000 D accepted for isolated fixed case, CP L=.9970087504549047. No fixed-point validation.",
+    "rtl_simulation": "not_executed",
+    "synthesis": "not_executed"
   },
+  "gate_status": "open",
   "hardware": {
     "board": "ALINX AX309",
     "fpga": "XC6SLX9-2FTG256C",
     "toolchain": "ISE 14.7 (user reported, unverified)"
   },
-  "execution_status": {
-    "design": "S03 Python floating reference Gate APPROVED; S04 numeric/fixed-point contract PROPOSAL ONLY",
-    "python_simulation": "S03 approved Python model: Pfa 20000 independent CPI upper EB 0.0014491445035750084 <= .0015; Pd second authorized main 1000/1000 D accepted for isolated fixed case, CP L=.9970087504549047. No fixed-point validation.",
-    "rtl_simulation": "not_executed",
-    "synthesis": "not_executed",
-    "implementation": "not_executed",
-    "hardware_test": "not_executed"
-  },
+  "last_review_at_utc": "2026-11-11T10:47:45.823936+00:00",
+  "mode": "Standalone",
   "note": "This JSON-compatible YAML is deliberately serialized as JSON, which YAML 1.2 accepts.",
-  "last_review_at_utc": "2026-11-11T08:33:00.882420+00:00",
+  "progress": {
+    "basis": "Gate S03 engineer APPROVED 8/8; S04 C01 engineer PASS (BOUNDED INPUT CONTRACT) 1/8. Overall (3+1/8)/12*100; C02-C08 still open.",
+    "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria",
+    "overall_percent": 26.041666666666668,
+    "s01_completed_criteria": 8,
+    "s01_total_criteria": 8,
+    "s02_completed_criteria": 8,
+    "s02_total_criteria": 8,
+    "s03_completed_criteria": 8,
+    "s03_total_criteria": 8,
+    "s04_completed_criteria": 1,
+    "s04_total_criteria": 8,
+    "stage_percent": 12.5,
+    "stage_weighting": "12 equal weights"
+  },
+  "project_id": "AX309-RDSP-001",
+  "provenance": "current conversation; engineer-supplied specifications unverified against board manual",
   "s01_approved_baseline": {
+    "approval_record": "decisions/GATE-S01-approved-baseline.json",
     "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
-    "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a",
-    "approval_record": "decisions/GATE-S01-approved-baseline.json"
+    "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a"
   },
   "s02_approved_baseline": {
     "decision": "decisions/GATE-S02-approved-baseline.json",
-    "reviewed_commit": "58b545fd7afb552825efb15b3f871317beff29d9",
     "document_hashes": {
-      "engineering/S02-engineering-contracts-FINAL-PROPOSED-v1.0.md": "8faccf7f89d03a9885fbde43dd7e42577ca4092f4202c2107f927e8da81be13e",
-      "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json": "06141a707a24ffcf08aa21dfa3a6e3f48d699b5234bb025b217f10abcd921da9",
       "engineering/S02-22-requirement-audit-FINAL-v1.0.json": "b86826a42e6dc685b315aff1450740bfb4f8974c1a9c3d881c8534a356b0b70c",
-      "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md": "e85cce3c8a988b79ac633ff9cbe775d9382d415dc6962c866b9c866d56f603f6"
-    }
+      "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md": "e85cce3c8a988b79ac633ff9cbe775d9382d415dc6962c866b9c866d56f603f6",
+      "engineering/S02-engineering-contracts-FINAL-PROPOSED-v1.0.md": "8faccf7f89d03a9885fbde43dd7e42577ca4092f4202c2107f927e8da81be13e",
+      "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json": "06141a707a24ffcf08aa21dfa3a6e3f48d699b5234bb025b217f10abcd921da9"
+    },
+    "reviewed_commit": "58b545fd7afb552825efb15b3f871317beff29d9"
   },
   "s03_approved_baseline": {
     "decision": "decisions/GATE-S03-approved-baseline.json",
-    "reviewed_commit": "470d9fe4f2f6c9e640dc7fc995522609faa500e2",
-    "final_gate_readiness_sha256": "53c6840c98e5743c8432e0155329966256cba44d740c778b8f3483897f56b8fc"
-  }
+    "final_gate_readiness_sha256": "53c6840c98e5743c8432e0155329966256cba44d740c778b8f3483897f56b8fc",
+    "reviewed_commit": "470d9fe4f2f6c9e640dc7fc995522609faa500e2"
+  },
+  "stage": "S04"
 }

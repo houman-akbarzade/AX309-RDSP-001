@@ -1,0 +1,170 @@
+{
+  "$id": "urn:AX309-RDSP-001:S04-C01:input-policy:v0.4-proposed",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "conversation_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "cpi_id": {
+      "pattern": "^(0|[1-9][0-9]{0,19})$",
+      "type": "string"
+    },
+    "created_utc": {
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$",
+      "type": "string"
+    },
+    "float_reference_cpi_sha256": {
+      "oneOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain_den": {
+      "maximum": 9223372036854775807,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "gain_num": {
+      "maximum": 9223372036854775807,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "input_component_count": {
+      "const": 8448
+    },
+    "input_format_id": {
+      "const": "IQ_SIGNED_16_Q15_LE_INTERLEAVED"
+    },
+    "input_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "input_sample_count": {
+      "const": 4224
+    },
+    "input_saturation_any": {
+      "type": "boolean"
+    },
+    "input_saturation_count": {
+      "maximum": 8448,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "invalid_reason_codes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "population_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "processing_status": {
+      "enum": [
+        "VALID_PERFORMANCE",
+        "STRESS_ONLY",
+        "INCONCLUSIVE"
+      ]
+    },
+    "profile_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "profile_registry_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "profile_selection_rule_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "project_id": {
+      "const": "AX309-RDSP-001"
+    },
+    "replay_event_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "saturation_count_by_polarity": {
+      "additionalProperties": false,
+      "properties": {
+        "negative": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "positive": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "positive",
+        "negative"
+      ],
+      "type": "object"
+    },
+    "saturation_events_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "scale_locked_before_sample": {
+      "const": true
+    },
+    "scenario_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "S04_INPUT_CONFIG_PROPOSED_V04"
+    },
+    "source_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "stage_scale_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "cpi_id",
+    "population_id",
+    "scenario_manifest_sha256",
+    "profile_registry_sha256",
+    "profile_id",
+    "profile_selection_rule_id",
+    "gain_num",
+    "gain_den",
+    "input_format_id",
+    "input_sample_count",
+    "input_component_count",
+    "input_payload_sha256",
+    "source_manifest_sha256",
+    "float_reference_cpi_sha256",
+    "scale_locked_before_sample",
+    "stage_scale_manifest_sha256",
+    "input_saturation_count",
+    "input_saturation_any",
+    "saturation_count_by_polarity",
+    "saturation_events_sha256",
+    "processing_status",
+    "invalid_reason_codes",
+    "created_utc",
+    "replay_event_ref",
+    "conversation_ref"
+  ],
+  "title": "AX309 S04 input configurable gain metadata PROPOSED ONLY",
+  "type": "object"
+}

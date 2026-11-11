@@ -1,0 +1,740 @@
+{
+  "CFAR": {
+    "CUTs": 2782,
+    "alpha": {
+      "alpha_fractional_bits": 16,
+      "alpha_unsigned_W": 20,
+      "denominator": 65536,
+      "numerator": 490007
+    },
+    "comparison": "unsigned exact cross-multiplication; equality => no alarm; no implicit rounding/truncation",
+    "doppler_valid": [
+      3,
+      28
+    ],
+    "float_reference_alpha_S02_S03": 7.476912055027923,
+    "left_exact_max_product_W": 68,
+    "left_unsigned_fullproduct_conservative_W": 68,
+    "pre_power_narrowing_full_product_conservative_W": [
+      73,
+      77
+    ],
+    "range_valid": [
+      3,
+      109
+    ],
+    "right_exact_max_product_W": 71,
+    "right_unsigned_fullproduct_conservative_W": 72,
+    "stored_power_operands": "CUT U46.30; SUM40 U52.30",
+    "strict_comparison": "40*Pcut*65536 > 490007*SUM40"
+  },
+  "FFT": {
+    "bit_reversal": [
+      0,
+      16,
+      8,
+      24,
+      4,
+      20,
+      12,
+      28,
+      2,
+      18,
+      10,
+      26,
+      6,
+      22,
+      14,
+      30,
+      1,
+      17,
+      9,
+      25,
+      5,
+      21,
+      13,
+      29,
+      3,
+      19,
+      11,
+      27,
+      7,
+      23,
+      15,
+      31
+    ],
+    "butterfly": "t=(v_re*w_re-v_im*w_im)+j(v_re*w_im+v_im*w_re); output plus=u+t, minus=u-t; align u by <<15; exact full integer products, pair, aligned sum before shift/RNE",
+    "internal_width_commitment": "the full signed product/pair/butterfly widths specified in each stage must be preserved through the arithmetic; allowed extra guard bits but no pre-RNE narrowing",
+    "output": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 25,
+      "max_stored_integer": 16777215,
+      "min_stored_integer": -16777216,
+      "signed": true
+    },
+    "saturation": "on every stage output overflow: log unlimited pre-narrow value (or minimum signed width sufficient to hold it), stage/range/bin/component; SAT signed 25, sticky event flag",
+    "single_rounding_location": "after exact butterfly, before narrowing, divide by 2**(15+s_j) with mathematical ties-to-even; do not substitute arithmetic >> for negative values",
+    "stages": [
+      {
+        "aligned_u_signed_W": 38,
+        "all_internal_arithmetic_F": 30,
+        "overflow": "check every intermediate signed fullwidth; on output overflow record prelimit integer, sign, location, sticky flag then SAT signed 25; never wrap",
+        "post_butterfly_output_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "pre_shift_butterfly_signed_W": 41,
+        "rounding_denom_power_of_two": 15,
+        "rounding_semantics": "integer RNE ties-to-even on exact butterfly output divided by 2^(15+shift); applied once per component",
+        "shift": 0,
+        "signed_input_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 23,
+          "max_stored_integer": 4194303,
+          "min_stored_integer": -4194304,
+          "signed": true
+        },
+        "signed_real_complex_pair_W": 40,
+        "signed_real_product_W": 39,
+        "stage": 1,
+        "twiddle_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 16,
+          "max_stored_integer": 32767,
+          "min_stored_integer": -32768,
+          "signed": true
+        },
+        "twiddle_stage_stored_pairs": [
+          [
+            32767,
+            0
+          ]
+        ]
+      },
+      {
+        "aligned_u_signed_W": 40,
+        "all_internal_arithmetic_F": 30,
+        "overflow": "check every intermediate signed fullwidth; on output overflow record prelimit integer, sign, location, sticky flag then SAT signed 25; never wrap",
+        "post_butterfly_output_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "pre_shift_butterfly_signed_W": 43,
+        "rounding_denom_power_of_two": 16,
+        "rounding_semantics": "integer RNE ties-to-even on exact butterfly output divided by 2^(15+shift); applied once per component",
+        "shift": 1,
+        "signed_input_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "signed_real_complex_pair_W": 42,
+        "signed_real_product_W": 41,
+        "stage": 2,
+        "twiddle_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 16,
+          "max_stored_integer": 32767,
+          "min_stored_integer": -32768,
+          "signed": true
+        },
+        "twiddle_stage_stored_pairs": [
+          [
+            32767,
+            0
+          ],
+          [
+            0,
+            -32768
+          ]
+        ]
+      },
+      {
+        "aligned_u_signed_W": 40,
+        "all_internal_arithmetic_F": 30,
+        "overflow": "check every intermediate signed fullwidth; on output overflow record prelimit integer, sign, location, sticky flag then SAT signed 25; never wrap",
+        "post_butterfly_output_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "pre_shift_butterfly_signed_W": 43,
+        "rounding_denom_power_of_two": 15,
+        "rounding_semantics": "integer RNE ties-to-even on exact butterfly output divided by 2^(15+shift); applied once per component",
+        "shift": 0,
+        "signed_input_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "signed_real_complex_pair_W": 42,
+        "signed_real_product_W": 41,
+        "stage": 3,
+        "twiddle_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 16,
+          "max_stored_integer": 32767,
+          "min_stored_integer": -32768,
+          "signed": true
+        },
+        "twiddle_stage_stored_pairs": [
+          [
+            32767,
+            0
+          ],
+          [
+            23170,
+            -23170
+          ],
+          [
+            0,
+            -32768
+          ],
+          [
+            -23170,
+            -23170
+          ]
+        ]
+      },
+      {
+        "aligned_u_signed_W": 40,
+        "all_internal_arithmetic_F": 30,
+        "overflow": "check every intermediate signed fullwidth; on output overflow record prelimit integer, sign, location, sticky flag then SAT signed 25; never wrap",
+        "post_butterfly_output_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "pre_shift_butterfly_signed_W": 43,
+        "rounding_denom_power_of_two": 16,
+        "rounding_semantics": "integer RNE ties-to-even on exact butterfly output divided by 2^(15+shift); applied once per component",
+        "shift": 1,
+        "signed_input_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "signed_real_complex_pair_W": 42,
+        "signed_real_product_W": 41,
+        "stage": 4,
+        "twiddle_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 16,
+          "max_stored_integer": 32767,
+          "min_stored_integer": -32768,
+          "signed": true
+        },
+        "twiddle_stage_stored_pairs": [
+          [
+            32767,
+            0
+          ],
+          [
+            30274,
+            -12540
+          ],
+          [
+            23170,
+            -23170
+          ],
+          [
+            12540,
+            -30274
+          ],
+          [
+            0,
+            -32768
+          ],
+          [
+            -12540,
+            -30274
+          ],
+          [
+            -23170,
+            -23170
+          ],
+          [
+            -30274,
+            -12540
+          ]
+        ]
+      },
+      {
+        "aligned_u_signed_W": 40,
+        "all_internal_arithmetic_F": 30,
+        "overflow": "check every intermediate signed fullwidth; on output overflow record prelimit integer, sign, location, sticky flag then SAT signed 25; never wrap",
+        "post_butterfly_output_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "pre_shift_butterfly_signed_W": 43,
+        "rounding_denom_power_of_two": 16,
+        "rounding_semantics": "integer RNE ties-to-even on exact butterfly output divided by 2^(15+shift); applied once per component",
+        "shift": 1,
+        "signed_input_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 25,
+          "max_stored_integer": 16777215,
+          "min_stored_integer": -16777216,
+          "signed": true
+        },
+        "signed_real_complex_pair_W": 42,
+        "signed_real_product_W": 41,
+        "stage": 5,
+        "twiddle_format": {
+          "F": 15,
+          "LSB": [
+            1,
+            32768
+          ],
+          "W": 16,
+          "max_stored_integer": 32767,
+          "min_stored_integer": -32768,
+          "signed": true
+        },
+        "twiddle_stage_stored_pairs": [
+          [
+            32767,
+            0
+          ],
+          [
+            32138,
+            -6393
+          ],
+          [
+            30274,
+            -12540
+          ],
+          [
+            27246,
+            -18205
+          ],
+          [
+            23170,
+            -23170
+          ],
+          [
+            18205,
+            -27246
+          ],
+          [
+            12540,
+            -30274
+          ],
+          [
+            6393,
+            -32138
+          ],
+          [
+            0,
+            -32768
+          ],
+          [
+            -6393,
+            -32138
+          ],
+          [
+            -12540,
+            -30274
+          ],
+          [
+            -18205,
+            -27246
+          ],
+          [
+            -23170,
+            -23170
+          ],
+          [
+            -27246,
+            -18205
+          ],
+          [
+            -30274,
+            -12540
+          ],
+          [
+            -32138,
+            -6393
+          ]
+        ]
+      }
+    ]
+  },
+  "MF": {
+    "coefficient": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 16,
+      "max_stored_integer": 32767,
+      "min_stored_integer": -32768,
+      "signed": true
+    },
+    "coefficients_order": "S03 conjugate reversed LFM16; exact frozen integer pairs in mf16_stored_pairs",
+    "complex_pair_signed_W": 33,
+    "four_exact_signed_products_W": 32,
+    "full_convolution_output": "at range r, index r+15 in full convolution; sample index r+15-k, zero outside [0,127]",
+    "input": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 16,
+      "max_stored_integer": 32767,
+      "min_stored_integer": -32768,
+      "signed": true
+    },
+    "mf16_stored_pairs": [
+      [
+        30425,
+        12167
+      ],
+      [
+        15800,
+        28707
+      ],
+      [
+        -2811,
+        32647
+      ],
+      [
+        -17869,
+        27467
+      ],
+      [
+        -27020,
+        18538
+      ],
+      [
+        -31238,
+        9896
+      ],
+      [
+        -32568,
+        3612
+      ],
+      [
+        -32766,
+        402
+      ],
+      [
+        -32766,
+        402
+      ],
+      [
+        -32568,
+        3612
+      ],
+      [
+        -31238,
+        9896
+      ],
+      [
+        -27020,
+        18538
+      ],
+      [
+        -17869,
+        27467
+      ],
+      [
+        -2811,
+        32647
+      ],
+      [
+        15800,
+        28707
+      ],
+      [
+        30425,
+        12167
+      ]
+    ],
+    "output": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 22,
+      "max_stored_integer": 2097151,
+      "min_stored_integer": -2097152,
+      "signed": true
+    },
+    "output_overflow": "pre-narrow guard then SAT signed Q22.15 with sticky per-site telemetry",
+    "product_F": 30,
+    "raw_16tap_accumulator_signed_W": 37,
+    "round": "after exact signed sum all 16 tap products, RNE once per complex I/Q from F30 to F15"
+  },
+  "MTI": {
+    "input": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 22,
+      "max_stored_integer": 2097151,
+      "min_stored_integer": -2097152,
+      "signed": true
+    },
+    "operation": "MF[p+1,r]-MF[p,r] for p 0..31, each complex component",
+    "output": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 23,
+      "max_stored_integer": 4194303,
+      "min_stored_integer": -4194304,
+      "signed": true
+    },
+    "overflow": "full signed 23-bit difference guard, then output saturate with signed bound if needed",
+    "raw_subtract_F": 15,
+    "raw_subtract_signed_W": 23,
+    "round": "RNE once at F15 -> F15 (identity, no numeric rounding actually needed)"
+  },
+  "SUM40": {
+    "input_power": {
+      "F": 30,
+      "LSB": [
+        1,
+        1073741824
+      ],
+      "W": 46,
+      "max_stored_integer": 70368744177663,
+      "min_stored_integer": 0,
+      "signed": false
+    },
+    "raw_sum_unsigned_W": 52,
+    "stored_sum": {
+      "F": 30,
+      "LSB": [
+        1,
+        1073741824
+      ],
+      "W": 52,
+      "max_stored_integer": 4503599627370495,
+      "min_stored_integer": 0,
+      "signed": false
+    },
+    "sum_rounding": "none, all training power integers same F30; overflow guard and unsigned SAT if unexpected",
+    "training_geometry": "7x7 outer less center 3x3 40 training cells, no wrap"
+  },
+  "architecture": "C",
+  "change_control": "C format schedule coefficients numeric scalar and rounding order frozen to this v1.0; changes require separate engineer-authorized engineering change decision",
+  "criterion": "S04-C02",
+  "decision_status": "ENGINEER_SELECTED_BASELINE_NOT_C02_PASS",
+  "evidence_SHA256": {
+    "integer_v05_source": "2d8881be05fb770885ccdbe414f9d52807735ed1c025a2302847203ad1985cfc",
+    "paired_v06": "ab7dd205e71befef03bda3818f6cb2f1e05be747c20d43e38481d2d151c1ca20",
+    "source_coefficients_v03": "b9f5f0f441554da8ce3a8297f03e216bcd2b7f9ef08e0271b07c8faf803c13df"
+  },
+  "evidence_references": {
+    "integer_v05": "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py",
+    "paired_v06": "engineering/s04_numeric/S04-C02-paired-architecture-analysis-v0.6.json",
+    "source_coefficients_v03": "engineering/s04_numeric/S04-C02-coeff-shift-quant-analysis-v0.3.json"
+  },
+  "fft_convention": "32 point forward unnormalized radix-2 DIT, bit-reversed MTI input, negative exponent Twiddles, natural FFT output ordering, no Doppler wrap",
+  "fft_divisor": 8,
+  "input": {
+    "float_reconstructed_input": "g*code/32768",
+    "format": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 16,
+      "max_stored_integer": 32767,
+      "min_stored_integer": -32768,
+      "signed": true
+    },
+    "logical_metadata": "C01 immutable profile/g/source/hash/admission/saturation events before CPI; UART/FPGA ICD not approved",
+    "mapping": "RNE_to_even(32768*x/g) then SAT16; signed interleaved I/Q little endian pulse-major",
+    "no_clip_component_max_error_original": [
+      5,
+      65536
+    ],
+    "on_invalid_or_overflow": "preserve every sample and event; INCONCLUSIVE under approved C01 protocol; STRESS_ONLY only predeclared",
+    "profiles": {
+      "NOISE_ONLY_UNIT": {
+        "approved_context": "CN(0,1) noise-only, g5",
+        "g": [
+          5,
+          1
+        ]
+      },
+      "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+        "approved_context": "predeclared single-target reference-like lab only, g1",
+        "g": [
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "native_integer_clustering": "NOT_IMPLEMENTED_AS_OF_C02_SELECTION_MUST_VERIFY_C05_C06",
+  "official_criterion_state": "OPEN_READY_FOR_INDEPENDENT_SIGN_OFF",
+  "overflow_policy": {
+    "event_fields": [
+      "site",
+      "stage",
+      "range",
+      "bin_or_tap",
+      "I_or_Q",
+      "signedness",
+      "full_integer_before_narrowing",
+      "signed_min",
+      "signed_max",
+      "cumulative_count",
+      "sticky"
+    ],
+    "intermediate_signed_guards": true,
+    "performance_eligibility": "C01 VALID_PERFORMANCE / INCONCLUSIVE / STRESS_ONLY, no deletion/overwrite/retry, no aggregate score after incomplete fixed N",
+    "power_and_SUM_unsigned_SAT_not_wrap": true,
+    "signed_output_SAT_not_wrap": true
+  },
+  "physical_reconstruction": {
+    "CFAR_alpha_and_comparison": "scale invariance only when both CUT and training operate on same stored-power scale",
+    "FFT_original_float_amplitude": "g*8*FFT_integer/32768",
+    "MF_original_float_amplitude": "g*MF_integer/32768",
+    "MTI_original_float_amplitude": "g*MTI_integer/32768",
+    "RD_original_float_power": "(g*8/32768)^2 * stored_power_integer",
+    "SFFT": 8,
+    "g1_original_RD_power_factor": 64,
+    "g1_original_fft_amplitude_factor": 8,
+    "g5_original_RD_power_factor": 1600,
+    "g5_original_fft_amplitude_factor": 40
+  },
+  "power": {
+    "exact_real_multiplication_signed_W": 50,
+    "narrowing": "NO scaling or rounding (F30 stays F30); on raw overflow above U46.30 max, log and SAT to 2^46-1; never wrap",
+    "raw_I_squared_plus_Q_squared_unsigned_W": 51,
+    "raw_power_F": 30,
+    "source": {
+      "F": 15,
+      "LSB": [
+        1,
+        32768
+      ],
+      "W": 25,
+      "max_stored_integer": 16777215,
+      "min_stored_integer": -16777216,
+      "signed": true
+    },
+    "stored_power": {
+      "F": 30,
+      "LSB": [
+        1,
+        1073741824
+      ],
+      "W": 46,
+      "max_stored_integer": 70368744177663,
+      "min_stored_integer": 0,
+      "signed": false
+    }
+  },
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T12:35:38.281908+00:00",
+  "reference_geometry": "33x128 input IQ, MF16, MTI gives 32x128, 32-bin Doppler FFT at each of 128 ranges",
+  "schedule": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "unknown_or_external_qualification": [
+    "UART_FPGA_ICD",
+    "FPGA resources/time/synthesis",
+    "noise+clutter SCR +/-10dB",
+    "two-target range resolution",
+    "numeric error budget and Pd/Pfa"
+  ],
+  "version": "engineer-selected-C-arithmetic-baseline-v1.0"
+}

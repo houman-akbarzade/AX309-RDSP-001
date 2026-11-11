@@ -1,0 +1,106 @@
+{
+  "change_control_required": true,
+  "criterion": "S04-C02",
+  "no_implicit_waiver_or_closure": true,
+  "obligations": [
+    {
+      "acceptance_condition": "Version-locked integer-native 8-neighbor grouping, peak/tie rules and target list reproduce the declared S03 reference, or engineer explicitly approves a predeclared numerical/tie tolerance; reproduce and disposition both exact mismatch vectors with complete evidence.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "Two host S03 cluster peak signatures differ although the distributed-3 C CFAR mask agrees in the 18 deterministic vectors.",
+      "id": "S04-C02-RISK-CLUSTER-PEAK-02",
+      "milestone": "S04-C05 design and S04-C06 verification; before Gate-S04",
+      "owner": "S04-C05 numeric grouping implementation; S04-C06 independent validation",
+      "status": "OPEN_ACKNOWLEDGED_RESIDUAL"
+    },
+    {
+      "acceptance_condition": "Independent fixed-integer 8-connected components, deterministic ties, cluster peaks and target records with 2D CFAR mask and signed numeric interface, pass S03-aligned oracle vectors.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "Neither v0.5 nor v0.6 contains native integer clustering or peak/target-list output.",
+      "id": "S04-C02-RISK-NATIVE-CLUSTER",
+      "milestone": "S04-C05/C06 before Gate-S04",
+      "owner": "S04-C05, independent S04-C06",
+      "status": "OPEN_ACKNOWLEDGED_RESIDUAL"
+    },
+    {
+      "acceptance_condition": "Independent engineering approval of source-unit MAX/RMS, per-stage budgets and threshold/flag equivalence before new tests; out-of-sample fixed-seed-separated evidence must pass without changing denominators.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "No approved Float-vs-bittrue end-to-end MAX/RMS thresholds or exact fixed-point cluster/CFAR margin acceptance limits; v0.4 bounds are conditional.",
+      "id": "S04-C02-RISK-NUMERIC-ERROR",
+      "milestone": "Predeclared before any S04-C06 independent verification, before Gate-S04",
+      "owner": "S04-C06 numerical acceptance, S04-C02 design owner of fixed arithmetic reference",
+      "status": "OPEN_NOT_YET_APPROVED"
+    },
+    {
+      "acceptance_condition": "After separate authorization synthesize the frozen contract; inspect bit-true identity, full throughput, resource/timing reports and thermal/power constraints against independently approved platform budgets.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": false,
+      "finding": "FFT/Power memory bits are hypothetical proxies; DSP, FF, BRAM, LUT, timing, throughput and physical interconnect unverified; no RTL/synthesis permission now.",
+      "id": "S04-C02-RISK-FPGA-COST",
+      "milestone": "Authorized hardware development/implementation milestone (separate permission); before production hardware acceptance",
+      "owner": "Future authorized RTL/FPGA implementation and independent hardware reviewer",
+      "status": "OPEN_NOT_MEASURED"
+    },
+    {
+      "acceptance_condition": "Predeclared, independent integer-vs-Float performance protocol, exact fixed N no replacement/optional stop and source class validity; independent statistical qualification of approved S02 targets using seed separation.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "Deterministic vectors do not establish Pfa/Pd or stochastic saturation margins for fixed-point implementation.",
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "milestone": "Before Gate-S04 once separately authorized",
+      "owner": "S04-C06 independent validation and S04-C07 evidence/reproducibility; final S04-C08 Gate",
+      "status": "OPEN_NOT_EXECUTED"
+    },
+    {
+      "acceptance_condition": "Adopt S02-approved SCR measurement region, generator tolerance and source envelope; independently prove selected C numerical path accommodates predeclared clutter conditions, or formal engineering change if physically infeasible; C06 validates. Do NOT claim covered by current C01 g profiles.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "S02 clutter SCR ±10dB has no approved complete bounded C01 input source population or absolute clutter-phase/dynamic range envelope here; not waived.",
+      "id": "REQ-SCR-01",
+      "milestone": "Before Gate-S04, with explicit engineer requirement closure",
+      "owner": "S04-C02 numerical coverage design and S04-C06 independent qualification; historical S03 owner unchanged",
+      "status": "BINDING_OPEN_S02"
+    },
+    {
+      "acceptance_condition": "Approve S02 resolved-pair definition, equal received power and spacing/phase/oracle, then independently qualify selected C across required separations; no implicit pass from single-target Pd or v0.6 phase stress.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "S02 paired-target range resolution around 600m has no accepted separability model or joint phase/amplitude envelope in C01; numeric adequacy not shown.",
+      "id": "REQ-RNG-03",
+      "milestone": "Before Gate-S04, with explicit engineer requirement closure",
+      "owner": "S04-C02 numerical coverage design and S04-C06 independent qualification; historical S03 owner unchanged",
+      "status": "BINDING_OPEN_S02"
+    },
+    {
+      "acceptance_condition": "Persist all ordered pre-narrow overflow and input-saturation events with stable identities, pre-limit integers, locations, hashes and fixed CPI IDs; verify readback and non-omission; do not change bit-true arithmetic.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": true,
+      "finding": "The v0.5 Python telemetry retains detailed first_24 overflow events and SHA256 digest/count of the complete ordered event stream, but not the full ordered event list. The C01 frozen protocol requires complete event trace for future qualification.",
+      "id": "S04-C02-RISK-FULL-OVERFLOW-TRACE",
+      "milestone": "Before event-trace acceptance or performance test approval",
+      "owner": "S04-C03 primitive qualification and S04-C07 reproducible evidence, independent reviewer",
+      "status": "OPEN_IMPLEMENTATION_EVIDENCE"
+    },
+    {
+      "acceptance_condition": "Explicit field widths, byte order for each interface, timestamps/hashes/flags and overflow event transfer must match C01 and selected C numeric contract; independent review.",
+      "blocking_C02_arithmetic_signoff": false,
+      "blocking_Gate_S04": false,
+      "finding": "C01 logical immutable metadata/profile contract approved; physical UART/FPGA wire ICD not approved.",
+      "id": "S04-C02-ICD",
+      "milestone": "Before HDL/device interface release",
+      "owner": "S04 subsequent interface/control implementation and engineer ICD review",
+      "status": "OPEN_SEPARATE_INTERFACE"
+    }
+  ],
+  "progress_unchanged": {
+    "S04_percent": 12.5,
+    "project_percent": 26.041666666666668
+  },
+  "project": "AX309-RDSP-001",
+  "recorded_utc": "2026-11-11T12:43:01.710666+00:00",
+  "selection": "C+FFT_[0,1,0,1,1]",
+  "state": "SELECTED_ENGINEERING_BASELINE_C02_OPEN_READY_FOR_SIGNOFF",
+  "version": "v1.0"
+}

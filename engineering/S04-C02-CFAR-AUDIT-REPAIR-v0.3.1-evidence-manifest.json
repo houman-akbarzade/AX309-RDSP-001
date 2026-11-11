@@ -1,0 +1,60 @@
+{
+  "C01": "PASS_BOUNDED",
+  "C02": "OPEN",
+  "FPGA_test": false,
+  "Gate_S04": "OPEN",
+  "RTL": false,
+  "S04_percent": 12.5,
+  "SHA256_by_artifact": {
+    "engineering/S04-C02-CFAR-ARITHMETIC-TESTS-v0.3.1.log": "cedf10ca6cbc018d813b71723318e401eafd1f39a4abe711c6c66b1baa591e45",
+    "engineering/S04-C02-CFAR-AUDIT-REPAIR-v0.3.1.md": "d42763c7a54645b2edd64657f857129945a7ae9cac0eb8610e7bdac28d1ed9ce",
+    "engineering/S04-C02-COEFFICIENT-FFT-SHIFT-REVIEW-v0.3.md": "71433e3531282243193d6ace93f641cfab3ca22f044333a05eb7b2ba3df6bcd2",
+    "engineering/S04-progress.json": "8da68fe559c0e5d774ac2c37a852b8b3fe1df21e66eda4323c697100f51aca71",
+    "engineering/s04_numeric/S04-C02-cfar-width-arithmetic-audit-v0.3.1.json": "a0d9dd3fc83455b205ff320c01dc88ed04908ad2a5b3af37a787555335c6ae99",
+    "engineering/s04_numeric/S04-C02-coeff-shift-quant-analysis-v0.3.json": "b9f5f0f441554da8ce3a8297f03e216bcd2b7f9ef08e0271b07c8faf803c13df",
+    "engineering/s04_numeric/s04_c02_cfar_audit_repair_v031.py": "06df33edbb0b06bf961c4bf86e266eef42c37f8c14b2187d52cac7193903e02b",
+    "project.yaml": "fa1f1e262c0d8aab565bb904586674f16246ca5751bdfeb88c771b4bcb80b188",
+    "tests/test_s04_c02_cfar_repair_v031.py": "82c30226453464cfe5e6f015226d25446c42e4e1a9e6bdbbd771798ec02ec28b"
+  },
+  "accepted_S03_seeds_touched": false,
+  "base_git_commit": "3ad3943d59ee930261ab05428602f6139e6d9b29",
+  "deterministic_independent_tests_passed": 9,
+  "historical_v03_unchanged": true,
+  "main_statistical_CPI_generated": 0,
+  "new_conservative_full_path_bits": {
+    "A": [
+      79,
+      83
+    ],
+    "B": [
+      65,
+      69
+    ],
+    "C_hypothetical": [
+      73,
+      77
+    ]
+  },
+  "new_conservative_narrowed_bits": {
+    "A": [
+      74,
+      78
+    ],
+    "B": [
+      61,
+      65
+    ],
+    "C_hypothetical": [
+      68,
+      72
+    ]
+  },
+  "overall_percent": 26.041666666666668,
+  "project": "AX309-RDSP-001",
+  "recorded_utc": "2026-11-11T11:35:00.228577+00:00",
+  "root_cause": "alpha numerator was used in place of coefficient word width in right conservative CFAR product",
+  "stage": "S04",
+  "status": "AUDIT_REPAIRED_ARCHITECTURE_OPEN",
+  "synthesis": false,
+  "version": "C02-v0.3.1"
+}

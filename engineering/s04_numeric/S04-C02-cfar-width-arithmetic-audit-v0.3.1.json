@@ -1,0 +1,320 @@
+{
+  "calculations": {
+    "A": {
+      "boundary_examples": {
+        "CUT0_SUM0": {
+          "CUT": 0,
+          "SUM40": 0,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT0_SUM1": {
+          "CUT": 0,
+          "SUM40": 1,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT0_SUM288230376151711743": {
+          "CUT": 0,
+          "SUM40": 288230376151711743,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT4503599627370495_SUM0": {
+          "CUT": 4503599627370495,
+          "SUM40": 0,
+          "fraction_oracle": true,
+          "integer_decision": true
+        },
+        "CUT4503599627370495_SUM180143985094819800": {
+          "CUT": 4503599627370495,
+          "SUM40": 180143985094819800,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT4503599627370495_SUM288230376151711743": {
+          "CUT": 4503599627370495,
+          "SUM40": 288230376151711743,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "exact_threshold_offset_+0": {
+          "CUT": 490007,
+          "SUM40": 2621440,
+          "decision": false,
+          "exact_fraction_oracle": false
+        },
+        "exact_threshold_offset_+1": {
+          "CUT": 490008,
+          "SUM40": 2621440,
+          "decision": true,
+          "exact_fraction_oracle": true
+        },
+        "exact_threshold_offset_-1": {
+          "CUT": 490006,
+          "SUM40": 2621440,
+          "decision": false,
+          "exact_fraction_oracle": false
+        }
+      },
+      "config": {
+        "F": 15,
+        "alphaF": 16,
+        "alphaNum": 490007,
+        "alphaW": 20,
+        "fftW": 28,
+        "powerW": 52,
+        "sumW": 58
+      },
+      "fixed_point_qualification": false,
+      "full_precision_pre_narrowing_path": {
+        "left_conservative_bits": 79,
+        "left_exact_bits": 77,
+        "max_abs_signed_fft_integer": 134217728,
+        "max_left_product": 94447329657392904273920,
+        "max_right_product": 706174509634859082711040,
+        "raw_exact_I2_plus_Q2_max": 36028797018963968,
+        "raw_exact_SUM40_max": 1441151880758558720,
+        "raw_power_conservative_bits": 57,
+        "raw_power_exact_bits": 56,
+        "raw_sum40_conservative_bits": 63,
+        "raw_sum_exact_bits": 61,
+        "right_conservative_bits": 83,
+        "right_exact_bits": 80
+      },
+      "post_narrowing_candidate_operands": {
+        "Pcut_max": 4503599627370495,
+        "SUM40_max": 288230376151711743,
+        "left_conservative_bits": 74,
+        "left_exact_bits": 74,
+        "left_fits_conservative": true,
+        "max_left_product": 11805916207174110412800,
+        "max_right_product": 141234901926971816052201,
+        "right_conservative_bits": 78,
+        "right_exact_bits": 77,
+        "right_fits_conservative": true
+      },
+      "root_cause": "right_width=WS+f[alpha][0] added alpha numerator rather than alpha declared W (f[alpha][0]=numerator)",
+      "v03_recorded_left_bits": 74,
+      "v03_wrong_right_bits": 490065
+    },
+    "B": {
+      "boundary_examples": {
+        "CUT0_SUM0": {
+          "CUT": 0,
+          "SUM40": 0,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT0_SUM1": {
+          "CUT": 0,
+          "SUM40": 1,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT0_SUM562949953421311": {
+          "CUT": 0,
+          "SUM40": 562949953421311,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT8796093022207_SUM0": {
+          "CUT": 8796093022207,
+          "SUM40": 0,
+          "fraction_oracle": true,
+          "integer_decision": true
+        },
+        "CUT8796093022207_SUM351843720888280": {
+          "CUT": 8796093022207,
+          "SUM40": 351843720888280,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT8796093022207_SUM562949953421311": {
+          "CUT": 8796093022207,
+          "SUM40": 562949953421311,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "exact_threshold_offset_+0": {
+          "CUT": 30625,
+          "SUM40": 163840,
+          "decision": false,
+          "exact_fraction_oracle": false
+        },
+        "exact_threshold_offset_+1": {
+          "CUT": 30626,
+          "SUM40": 163840,
+          "decision": true,
+          "exact_fraction_oracle": true
+        },
+        "exact_threshold_offset_-1": {
+          "CUT": 30624,
+          "SUM40": 163840,
+          "decision": false,
+          "exact_fraction_oracle": false
+        }
+      },
+      "config": {
+        "F": 13,
+        "alphaF": 12,
+        "alphaNum": 30625,
+        "alphaW": 16,
+        "fftW": 23,
+        "powerW": 43,
+        "sumW": 49
+      },
+      "fixed_point_qualification": false,
+      "full_precision_pre_narrowing_path": {
+        "left_conservative_bits": 65,
+        "left_exact_bits": 63,
+        "max_abs_signed_fft_integer": 4194304,
+        "max_left_product": 5764607523034234880,
+        "max_right_product": 43100855808819200000,
+        "raw_exact_I2_plus_Q2_max": 35184372088832,
+        "raw_exact_SUM40_max": 1407374883553280,
+        "raw_power_conservative_bits": 47,
+        "raw_power_exact_bits": 46,
+        "raw_sum40_conservative_bits": 53,
+        "raw_sum_exact_bits": 51,
+        "right_conservative_bits": 69,
+        "right_exact_bits": 66
+      },
+      "post_narrowing_candidate_operands": {
+        "Pcut_max": 8796093022207,
+        "SUM40_max": 562949953421311,
+        "left_conservative_bits": 61,
+        "left_exact_bits": 61,
+        "left_fits_conservative": true,
+        "max_left_product": 1441151880758394880,
+        "max_right_product": 17240342323527649375,
+        "right_conservative_bits": 65,
+        "right_exact_bits": 64,
+        "right_fits_conservative": true
+      },
+      "root_cause": "right_width=WS+f[alpha][0] added alpha numerator rather than alpha declared W (f[alpha][0]=numerator)",
+      "v03_recorded_left_bits": 61,
+      "v03_wrong_right_bits": 30674
+    },
+    "C_hypothetical": {
+      "boundary_examples": {
+        "CUT0_SUM0": {
+          "CUT": 0,
+          "SUM40": 0,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT0_SUM1": {
+          "CUT": 0,
+          "SUM40": 1,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT0_SUM4503599627370495": {
+          "CUT": 0,
+          "SUM40": 4503599627370495,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT70368744177663_SUM0": {
+          "CUT": 70368744177663,
+          "SUM40": 0,
+          "fraction_oracle": true,
+          "integer_decision": true
+        },
+        "CUT70368744177663_SUM2814749767106520": {
+          "CUT": 70368744177663,
+          "SUM40": 2814749767106520,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "CUT70368744177663_SUM4503599627370495": {
+          "CUT": 70368744177663,
+          "SUM40": 4503599627370495,
+          "fraction_oracle": false,
+          "integer_decision": false
+        },
+        "exact_threshold_offset_+0": {
+          "CUT": 490007,
+          "SUM40": 2621440,
+          "decision": false,
+          "exact_fraction_oracle": false
+        },
+        "exact_threshold_offset_+1": {
+          "CUT": 490008,
+          "SUM40": 2621440,
+          "decision": true,
+          "exact_fraction_oracle": true
+        },
+        "exact_threshold_offset_-1": {
+          "CUT": 490006,
+          "SUM40": 2621440,
+          "decision": false,
+          "exact_fraction_oracle": false
+        }
+      },
+      "config": {
+        "F": 15,
+        "alphaF": 16,
+        "alphaNum": 490007,
+        "alphaW": 20,
+        "fftW": 25,
+        "powerW": 46,
+        "sumW": 52
+      },
+      "fixed_point_qualification": false,
+      "full_precision_pre_narrowing_path": {
+        "left_conservative_bits": 73,
+        "left_exact_bits": 71,
+        "max_abs_signed_fft_integer": 16777216,
+        "max_left_product": 1475739525896764129280,
+        "max_right_product": 11033976713044673167360,
+        "raw_exact_I2_plus_Q2_max": 562949953421312,
+        "raw_exact_SUM40_max": 22517998136852480,
+        "raw_power_conservative_bits": 51,
+        "raw_power_exact_bits": 50,
+        "raw_sum40_conservative_bits": 57,
+        "raw_sum_exact_bits": 55,
+        "right_conservative_bits": 77,
+        "right_exact_bits": 74
+      },
+      "post_narrowing_candidate_operands": {
+        "Pcut_max": 70368744177663,
+        "SUM40_max": 4503599627370495,
+        "left_conservative_bits": 68,
+        "left_exact_bits": 68,
+        "left_fits_conservative": true,
+        "max_left_product": 184467440737092894720,
+        "max_right_product": 2206795342608934143465,
+        "right_conservative_bits": 72,
+        "right_exact_bits": 71,
+        "right_fits_conservative": true
+      },
+      "root_cause": "right_width=WS+f[alpha][0] added alpha numerator rather than alpha declared W (f[alpha][0]=numerator)",
+      "v03_recorded_left_bits": 68,
+      "v03_wrong_right_bits": 490059
+    }
+  },
+  "equation": "40*Pcut*(2**alphaF) > alphaNum*SUM40, strict equality false",
+  "error_coverage": {
+    "FFT_post_stage_one_RNE": "INCLUDED only in combined conditional estimate",
+    "MF_MTI_intermediate_products_and_accumulators": "OPEN: v0.3 assumes exact operations before one narrowing step",
+    "MF_coefficient_quantization": "INCLUDED in combined conditional error, excluded in twiddle-only error",
+    "MF_output_one_RNE": "INCLUDED in combined conditional estimate assuming exact MF internal products/sum",
+    "MTI_one_RNE": "INCLUDED in combined conditional estimate assuming exact MTI subtraction",
+    "actual_stagewise_fft_W_F": "OPEN: proxy uses final stage W/F at each stage, not a selected internal schedule",
+    "butterfly_internal_add_sub_rounding": "OPEN: exact add/sub assumed until one post-stage output RNE",
+    "float_source_chirp_roundoff": "Not included as independent high-precision oracle; S03 binary64 coefficients treated as reference",
+    "input_Q1_15": "EXCLUDED from reported v0.3 FFT error; reference origin is decoded post-input-Q1.15 stored samples, not original Float IQ",
+    "input_g": "Reconstructed scale g*SFFT: approved g=5 noise-only or g=1 lab target; error in reconstructed Float amplitude requires multiply by g*SFFT",
+    "internal_twiddle_multiplication_rounding": "OPEN: exact complex multiply assumed; widths/rounding sites not fixed",
+    "saturation_and_overflow": "OPEN: conditional no saturation, no wrapped intermediates; neither stage nor full pipeline certified",
+    "shift_implementation_rounding": "OPEN: modeled ideal divide then one RNE, not proven equivalent to actual signed shift and ties",
+    "twiddle_quantization": "INCLUDED in both conditional and twiddle-only estimates"
+  },
+  "project": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-11T11:30:44.954861+00:00",
+  "source_v03_sha256": "b9f5f0f441554da8ce3a8297f03e216bcd2b7f9ef08e0271b07c8faf803c13df",
+  "status": "REPAIR_ONLY_NO_NUMERIC_ARCHITECTURE_APPROVED",
+  "version": "v0.3.1"
+}

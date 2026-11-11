@@ -1,0 +1,168 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "baseline_commit": "b62116d",
+  "date": "2026-11-12",
+  "scope": "connected CFAR scanner + grouping subsystem; synthetic integer maps only",
+  "geometry_audit": "engineering/S05-CUT-GEOMETRY-AUDIT-v0.1.md",
+  "verification_report": "engineering/S05-CFAR-GROUPING-INTEGRATION-REPORT-v0.1.md",
+  "C05_native_oracle": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+  "independent_crosschecks": "direct integer 40-cell CFAR and separate union-find",
+  "cases": [
+    {
+      "id": 0,
+      "name": "zero_map",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 0,
+      "clusters": 0,
+      "peak_coordinates": []
+    },
+    {
+      "id": 1,
+      "name": "four_boundary_corners",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 4,
+      "clusters": 4,
+      "peak_coordinates": [
+        [
+          3,
+          28
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          109,
+          28
+        ],
+        [
+          109,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "name": "diagonal_late_merge_signed_peak_tie",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 10,
+      "clusters": 5,
+      "peak_coordinates": [
+        [
+          20,
+          10
+        ],
+        [
+          41,
+          11
+        ],
+        [
+          51,
+          16
+        ],
+        [
+          65,
+          28
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "name": "strict_equal_threshold_no_alarm",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 0,
+      "clusters": 0,
+      "peak_coordinates": []
+    },
+    {
+      "id": 4,
+      "name": "repeat_bridge",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 10,
+      "clusters": 5,
+      "peak_coordinates": [
+        [
+          20,
+          10
+        ],
+        [
+          41,
+          11
+        ],
+        [
+          51,
+          16
+        ],
+        [
+          65,
+          28
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    }
+  ],
+  "results": {
+    "ISim": "PASS_5_OF_5",
+    "CUTs_oracle": "PASS_13910_OF_13910",
+    "cluster_records_oracle": "PASS_14_OF_14",
+    "map_words": 20480,
+    "CUT_pause_cycles": 8,
+    "record_stall_cycles": 32,
+    "capacity_overflow_and_reset_recovery": "PASS",
+    "integrated_XST": "PASS_0_ERRORS_1_WARNING",
+    "full_radar_chain": "NOT_RUN",
+    "board_tests": "NOT_RUN"
+  },
+  "resources": {
+    "slice_LUT": 4374,
+    "slice_registers": 1849,
+    "BRAM": 18,
+    "RAMB16BWER": 17,
+    "RAMB8BWER": 1,
+    "DSP48A1": 5,
+    "bonded_IOB": 159,
+    "estimated_minimum_period_ns": 20.259,
+    "estimated_maximum_frequency_MHz": 49.361,
+    "errors": 0,
+    "warnings": 1,
+    "full_chain_fit": "OPEN",
+    "post_route_timing": "NOT_RUN"
+  },
+  "XST_warning": "Xst:2677 unused transient scanner overflow_event, sticky overflow is wired",
+  "files_sha256": {
+    "rtl/integration/cfar_grouping_subsystem.v": "7f638445064129f0fd30c8d12df9cef112d1bba8e5c1ebf660e874d953a7334c",
+    "rtl/tb/tb_cfar_grouping_subsystem.v": "14d25ad1c7ffc9433f50cf30e0a0153f6c0ea70f900b12967845d4eae983f7a7",
+    "rtl/tb/cfar_grouping_subsystem.prj": "8f7d9fd618c24c2a0b00aba608bbf79c2d575b35274a8bbe5cea01dbda93de54",
+    "rtl/tb/run_cfar_grouping_isim.sh": "c15058e174805e56e3a608e0f99f4b689ce97a1f632b8e5defacd1f049bacbf5",
+    "rtl/tools/generate_cfar_grouping_vectors.py": "af12aee41d5bf3313c09192f66f41cc99c643f8fc0f4dcc1c9976df7707296bd",
+    "rtl/tools/run_xst_cfar_grouping_subsystem.sh": "4b16be11cafeff229e9b5e3e2555caf8c798888467135e4ec89177f38dc51d1e",
+    "rtl/tb/vectors/cfar_grouping/map.mem": "5f7e68b74d0aa0c38a23ec61d4a8f162b3830a0575489fe49a70c7a0d8ffe779",
+    "rtl/tb/vectors/cfar_grouping/cut.mem": "57331beb7712e589e19338499e84464b10f66609445b0dcc0984c91a04dedae5",
+    "rtl/tb/vectors/cfar_grouping/expected.mem": "f81983036ba39faa07b7a2d4cfcd12b19ce25b776496e51481aa2b7ced1563a8",
+    "rtl/tb/vectors/cfar_grouping/counts.mem": "83f4f5889df3f6bccb2ebfa29b4169fde7dca6c60e6020f6790747d8b5754acb",
+    "rtl/tb/vectors/cfar_grouping/manifest.json": "d72c46391b056e169795250f7341ef736bf77babe63dcd08552d323b3c611466",
+    "engineering/evidence/s05/cfar_grouping/CFAR-GROUPING-ISIM-COMPILE-v0.1.log": "68ab6918276959abbfc6ad944edc100df35ff7d4710013152d2eab6cb2ad53b6",
+    "engineering/evidence/s05/cfar_grouping/CFAR-GROUPING-ISIM-v0.1.log": "321268205abf21c0e61d54080740aaa1ee78f518af60af7e9c8ef01f717fa071",
+    "engineering/evidence/s05/cfar_grouping/CFAR-GROUPING-ORACLE-v0.1.log": "c77e1dba4034ebfbe3f79fb6a48ec2424b1af2eda6f2286e0736b31ae49288f2",
+    "engineering/evidence/s05/cfar_grouping/CFAR-GROUPING-XST-NETLIST-v0.1.ngc.gz": "4560cf8ed9903734cfcf41c04e1a02fdb88945a755b6fc873b1687b46c2b2d10",
+    "engineering/evidence/s05/cfar_grouping/CFAR-GROUPING-XST-v0.1.srp.gz": "a863db2cf2c65055dd0f9d0b25ce5d64b6cf8e6fe2c6b2a01b8ce9c6e2124e42"
+  },
+  "S04_preserved": {
+    "Gate-S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "REQ-RNG-03": "FAIL_4_OF_8",
+    "S04-C02-RISK-PERFORMANCE": "OPEN"
+  }
+}

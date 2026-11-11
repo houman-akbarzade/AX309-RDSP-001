@@ -98,3 +98,16 @@ The final standalone synthesis shows 6 BRAM, 4,034 LUT, 1,727 registers, 0 DSP48
 **Plugin workflow implication:** Require each proposed streaming RTL memory to state its depth/width, number of reads and writes per cycle, inferred memory technology and resource budgets; inspect XST warnings and actual macro usage before reporting synthesis feasibility. Separately, an internal geometric bound or safe overflow diagnostic must not be treated as approval of an externally visible record-list capacity or selection policy when that decision is still open.
 
 **Evidence:** engineering/S05-GROUPING-EVIDENCE-MANIFEST-v0.1.json, engineering/S05-GROUPING-RTL-VERIFICATION-REPORT-v0.1.md, engineering/S05-GROUPING-TRACEABILITY-v0.1.json. No architecture C/Frozen Fixed-Point change and no REQ-RNG-03 retest were made.
+
+
+## LL-AX309-003 — Detection-domain boundaries must follow signal support, not only array shape
+
+**Status:** Accepted engineering observation from S05 CUT geometry audit and connected RTL qualification, 2026-11-12.
+
+The 128x32 stored power-map shape alone geometrically permits 3172 nonwrapped 7x7 CA-CFAR CUTs. However, the 16-sample echo in a 128-sample acquisition has complete-support delay indices 0..112. The approved S02 engineering contract requires the full 7x7 range-side CFAR window to remain in that support, restricting CUTs to r=3..109 and b=3..28: 2782 CUTs. The matched filter computes a full 143-output convolution and extracts 128 aligned outputs; it does not produce only 113 outputs. Treating allocated array dimensions as the acceptance domain would silently change the Pfa denominator and detector coverage.
+
+The connected CFAR–Grouping test additionally showed that the scanner and grouping engines use distinct completion events. Fatal grouping overflow can leave the scanner stalled; a later system controller must explicitly reset/abort both engines while preserving the reported invalid-frame status to the host.
+
+**Plugin design implication:** track three independent quantities: stored map shape, physically supported/approved signal-valid domain, and validated CUT domain. Require approved evidence before expanding a CUT region, and require a documented fatal-frame abort protocol when joining valid/ready blocks. Neither module-level oracle equivalence nor connected-subsystem XST fit proves full radar-chain performance or resource fit.
+
+**Evidence:** engineering/S05-CUT-GEOMETRY-AUDIT-v0.1.md; engineering/S05-CFAR-GROUPING-INTEGRATION-REPORT-v0.1.md. No S04 carryover disposition is changed.

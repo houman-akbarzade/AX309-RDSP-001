@@ -70,6 +70,14 @@
       "id": "S05-WP08",
       "name": "Full top-level synthesis, timing constraints and board verification",
       "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "S05-WP09",
+      "name": "CFAR scanner and grouping connected RTL subsystem",
+      "status": "IMPLEMENTED_CONNECTED_ISIM_ORACLE_PASS_XST_PASS",
+      "RTL": "rtl/integration/cfar_grouping_subsystem.v",
+      "evidence": "engineering/S05-CFAR-GROUPING-INTEGRATION-EVIDENCE-v0.1.json",
+      "note": "full radar chain and post-route timing not qualified"
     }
   ],
   "unit_test_suite": {
@@ -116,7 +124,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "Connect cfar_2d_scan to grouping_8conn in a self-checking integrated RTL testbench using new synthetic U46.30 maps; then implement CPI/frame controller and memory arbitration.",
+  "next_implementation_step": "Obtain REQ-LIST-01 external capacity decision and implement full-CPI frame controller, fatal-overflow reset, BRAM-safe reuse and full-chain oracle/synthesis.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -156,5 +164,26 @@
   "grouping_integration_plan": "engineering/S05-GROUPING-CFAR-INTEGRATION-PLAN-v0.1.md",
   "grouping_traceability": "engineering/S05-GROUPING-TRACEABILITY-v0.1.json",
   "grouping_evidence_manifest": "engineering/S05-GROUPING-EVIDENCE-MANIFEST-v0.1.json",
-  "S05_status_report": "engineering/S05-RTL-IMPLEMENTATION-STATUS-v0.3.md"
+  "S05_status_report": "engineering/S05-RTL-IMPLEMENTATION-STATUS-v0.3.md",
+  "cfar_grouping_connected": {
+    "status": "PASS_SUBSYSTEM_ONLY_5_MAPS_13910_CUTS_14_RECORDS",
+    "evidence": "engineering/S05-CFAR-GROUPING-INTEGRATION-EVIDENCE-v0.1.json",
+    "geometry": "APPROVED_2782_CUTS_CONFIRMED",
+    "resources": {
+      "slice_LUT": 4374,
+      "slice_registers": 1849,
+      "BRAM": 18,
+      "RAMB16BWER": 17,
+      "RAMB8BWER": 1,
+      "DSP48A1": 5,
+      "bonded_IOB": 159,
+      "estimated_minimum_period_ns": 20.259,
+      "estimated_maximum_frequency_MHz": 49.361,
+      "errors": 0,
+      "warnings": 1,
+      "full_chain_fit": "OPEN",
+      "post_route_timing": "NOT_RUN"
+    },
+    "full_chain_pass": false
+  }
 }

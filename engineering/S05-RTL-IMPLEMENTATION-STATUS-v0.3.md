@@ -31,3 +31,17 @@ Target XC6SLX9-2FTG256; 0 errors, 0 warnings. Measured in synthesis: 4,034 LUT (
 **Next:** self-checking connected cfar_2d_scan to grouping_8conn simulation with new synthetic power maps, then CPI/memory controller work. No architectural or numerical baseline change approved or made.
 
 Evidence and exact source hashes: engineering/S05-GROUPING-EVIDENCE-MANIFEST-v0.1.json; traceability: engineering/S05-GROUPING-TRACEABILITY-v0.1.json; interface mapping: engineering/S05-GROUPING-CFAR-INTEGRATION-PLAN-v0.1.md.
+
+
+## Connected CFAR–Grouping integration and geometry audit (2026-11-12)
+
+- CUT geometry audit: 2782 CUTs confirmed by the approved complete-echo MF support k=0..112 and 7x7 window border; no CFAR contract change. See engineering/S05-CUT-GEOMETRY-AUDIT-v0.1.md.
+- New RTL: rtl/integration/cfar_grouping_subsystem.v. Safe cut_pause throttling preserves simultaneous scanner/grouping handshake; existing numeric and module contracts are unchanged.
+- Connected ISim PASS: 5 synthetic 128x32 maps, 20,480 U46.30 input words, 13,910 accepted CUTs each matched to the approved C05 exact integer CFAR and independently implemented CFAR; 14/14 final grouped records match C05 plus independent union-find.
+- Input/CUT/output back-pressure verified; CUT paused for 8 cycles, record stream stalled for 32 cycles. Explicit capacity failure propagation, frame-invalid marking and synchronous reset recovery PASS. Full physical radar-chain target resolution is NOT inferred.
+- Connected XST PASS: XC6SLX9-2FTG256; 4374 LUT, 1849 FF, 18 BRAM, 5 DSP48A1, 159 bonded IOBs. 0 errors and 1 warning for unused transient scanner overflow_event (persistent overflow_sticky remains wired). Default XST estimated min period 20.259 ns; not post-route timing closure.
+- Resource feasibility for the *full* radar processing chain remains OPEN: the connected subsystem alone uses 76% LUT and 56% BRAM; naive addition of a separate previously estimated ~18-BRAM frame store would exceed 32 BRAM. An approved scheduling/reuse plan, integrated full-chain synthesis and board clock constraints are required.
+- REQ-LIST-01 external target-list capacity/selection policy remains OPEN. Fatal grouping overflow requires an explicit future frame-controller reset/abort procedure.
+- Gate-S04 is still CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS, REQ-RNG-03 FAIL 4/8 and Fixed-Point statistical performance OPEN. No accepted historical test was rerun.
+
+**Evidence:** engineering/S05-CFAR-GROUPING-INTEGRATION-REPORT-v0.1.md and engineering/evidence/s05/cfar_grouping. This is subsystem-level PASS, not complete-system or hardware PASS.

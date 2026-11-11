@@ -1,6 +1,6 @@
 # AX309-RDSP-001 | S05 CFAR Scanner to Grouping Interface/Verification Plan v0.1
 
-**Status:** prepared interface plan only. Combined simulation and hardware integration have NOT been executed or approved.
+**Status:** this is the pre-execution interface plan. The connected CFAR–Grouping RTL simulation and XST synthesis have now been performed and reported in engineering/S05-CFAR-GROUPING-INTEGRATION-REPORT-v0.1.md. Full radar-chain integration and board hardware qualification have NOT been performed.
 
 ## 1. Direct signal mapping
 
@@ -27,7 +27,7 @@
 5. Treat grouping done as the end-of-record-list indication for the CPI. Only then may a controller initiate the next frame. Any grouping frame_invalid, overflow_sticky or protocol_error invalidates that frame and must be reported to the host.
 6. External host record limits, output-list selection/overflow behavior, and physical-unit record encoding remain subject to S05 engineer ICD decisions; do not silently impose a numerical cap.
 
-## 3. Planned combined verification (NOT RUN)
+## 3. Original verification plan (CFAR–Grouping ISim/XST executed; MAP/PAR remains pending)
 
 - Drive one new synthetic 128x32 stored U46.30 map with deterministic spikes and zero/noise background; independently generate the exact 2,782 strict CFAR decisions and 8-connected grouping records from C03/C05 approved oracles. Do not use or reprocess historical REQ-RNG-03/C06 CPI files.
 - Connect the actual scanner and grouping RTL ports; exercise pressure at map input, CUT stream, and target output.
@@ -35,4 +35,4 @@
 - Run an all-zero map for zero-target completion and a dense/bridge mask case for late union and peak ties; avoid source modifications to the approved software oracles.
 - Separately run integrated XST/MAP/PAR under confirmed board oscillator, physical interface, UCF and resource budget. Only post-route timing can establish timing closure.
 
-**Gate:** No integrated-chain PASS is claimed until the connected simulation completes and its independent oracle comparison/log is archived.
+**Gate:** The CFAR–Grouping subsystem simulation is now PASS for five synthetic maps with archived oracle comparisons. This does not establish PASS for the complete radar-chain MF/MTI/FFT/CFAR/Grouping integration.

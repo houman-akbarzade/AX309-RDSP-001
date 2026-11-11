@@ -1,0 +1,124 @@
+{
+  "project": "AX309-RDSP-001",
+  "scope": "connected RTL synthetic map only; no archived CPI",
+  "approved_C05_oracle": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+  "approved_oracle_SHA256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+  "second_independent_Cfar": "own 7x7/3x3 integer window loop and exact comparator",
+  "second_independent_grouping": "rtl/tools/generate_grouping_vectors.py::independent_components",
+  "cases": [
+    {
+      "id": 0,
+      "name": "zero_map",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 0,
+      "clusters": 0,
+      "peak_coordinates": []
+    },
+    {
+      "id": 1,
+      "name": "four_boundary_corners",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 4,
+      "clusters": 4,
+      "peak_coordinates": [
+        [
+          3,
+          28
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          109,
+          28
+        ],
+        [
+          109,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "name": "diagonal_late_merge_signed_peak_tie",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 10,
+      "clusters": 5,
+      "peak_coordinates": [
+        [
+          20,
+          10
+        ],
+        [
+          41,
+          11
+        ],
+        [
+          51,
+          16
+        ],
+        [
+          65,
+          28
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "name": "strict_equal_threshold_no_alarm",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 0,
+      "clusters": 0,
+      "peak_coordinates": []
+    },
+    {
+      "id": 4,
+      "name": "repeat_bridge",
+      "map_cells": 4096,
+      "CUTs": 2782,
+      "alarms": 10,
+      "clusters": 5,
+      "peak_coordinates": [
+        [
+          20,
+          10
+        ],
+        [
+          41,
+          11
+        ],
+        [
+          51,
+          16
+        ],
+        [
+          65,
+          28
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    }
+  ],
+  "map_entries": 20480,
+  "CUT_records": 13910,
+  "golden_records": 14,
+  "map_sha256": "5f7e68b74d0aa0c38a23ec61d4a8f162b3830a0575489fe49a70c7a0d8ffe779",
+  "cut_sha256": "57331beb7712e589e19338499e84464b10f66609445b0dcc0984c91a04dedae5",
+  "expected_sha256": "f81983036ba39faa07b7a2d4cfcd12b19ce25b776496e51481aa2b7ced1563a8",
+  "counts_sha256": "83f4f5889df3f6bccb2ebfa29b4169fde7dca6c60e6020f6790747d8b5754acb",
+  "geometry": "range 3..109 and Doppler 3..28; 2782 valid CUTs; no wrap",
+  "numeric": "U46.30 stored integer power; 40*Pcut*65536 > 490007*sum40",
+  "historical_CPI_retested": false
+}

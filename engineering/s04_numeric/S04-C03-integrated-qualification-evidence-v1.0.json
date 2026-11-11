@@ -1,0 +1,110 @@
+{
+  "C02_historical_regressions_PASS": 39,
+  "C03_completed": false,
+  "CFAR_CUTs_independently_checked": 2782,
+  "FPGA": false,
+  "Gate_S04": "OPEN",
+  "P01_P08": {
+    "P01": {
+      "scope": "IQ packing g1/g5, signed saturation edges, interleaving, reconstruction",
+      "status": "PASS",
+      "tests": 2
+    },
+    "P02": {
+      "scope": "Independent S03 MF16 coeff and FFT32 Twiddle integers, sign/order",
+      "status": "PASS",
+      "tests": 2
+    },
+    "P03": {
+      "scope": "Four exact real products, Gaussian complex multiplication, 16-tap MF accumulator",
+      "status": "PASS",
+      "tests": 3
+    },
+    "P04": {
+      "scope": "MTI, five FFT Butterflies, full intermediate widths and shift schedule",
+      "status": "PASS",
+      "tests": 3
+    },
+    "P05": {
+      "scope": "Independent Fraction nearest-even, both signed ties, signed extrema",
+      "status": "PASS",
+      "tests": 3
+    },
+    "P06": {
+      "scope": "Unsigned power, SUM40, strict CFAR; 4096 powers and 2782 CUT independently verified",
+      "status": "PASS",
+      "tests": 4
+    },
+    "P07": {
+      "scope": "All overflow/saturation events, stable UUID/order/full int and SHA readback",
+      "status": "PASS",
+      "tests": 4
+    },
+    "P08": {
+      "scope": "Independent golden values, deterministic provenance, immutable C and scope",
+      "status": "PASS",
+      "tests": 3
+    }
+  },
+  "RTL": false,
+  "S04_percent": 25,
+  "accepted_S03_seeds_used": false,
+  "byte_re_read_and_sha256": "PASS",
+  "complete_trace_event_count": 17055,
+  "complete_trace_file_count": 7,
+  "criterion": "S04-C03",
+  "files_SHA256": {
+    "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+    "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json": "ba845f306186beba2d1ae085ae417ec63a9b083044241115e3751f6857c3b7ac",
+    "engineering/S04-C03-INTEGRATED-v1.0-C02-REGRESSION-INT-v05.log": "53fd0bc3926eb8f7483b9ed855ef2990d29d564d29e08de0164beda068a5aef2",
+    "engineering/S04-C03-INTEGRATED-v1.0-C02-REGRESSION-PAIRED-v06.log": "c59cf3389923b662687485403e470082c61af8adc46d35bf479fe17d9221b223",
+    "engineering/S04-C03-INTEGRATED-v1.0-C02-REGRESSION-SELECTED-C.log": "fb691662e2d33f398d5fdf26bc86ce4b298ed2e1eb03d3b70b5b1942af4e2d61",
+    "engineering/S04-C03-INTEGRATED-v1.0-FORCED-OVERFLOW.log": "0279b577817b3404a74ed8e038f7ec554dd56e453727e6bb8c5e83dcdf141395",
+    "engineering/S04-C03-INTEGRATED-v1.0-FULLTRACE.log": "620c32802fb84b1c0d49dc2ae0dfb4b954176f95efd8b4d6479e0ea2624abccf",
+    "engineering/S04-C03-INTEGRATED-v1.0-INDEPENDENT-TESTS.log": "5b9dcbfa85576ffded9eb775356f573424ba02c653d110ecd2e5400f45a1060d",
+    "engineering/S04-progress.json": "fc016b73d1a2c51796eeb65c81c11ab0b6d2fa3dc7f54de0bdc6aa35f5f31820",
+    "engineering/s04_numeric/S04-C03-complete-overflow-replay-v1.0.json": "82b9d4600c604fea47b32e7b57a316f05c33b0c4e6e1e6de2c84fc8867b7f79d",
+    "engineering/s04_numeric/S04-C03-forced-internal-overflow-evidence-v1.0.json": "8edea93caffc4e60a264252b0052b3890100292125d6479ab01b16f3da835f51",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-g1-near_clip-overflow-all.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-g1-overrange_stress-overflow-all.jsonl": "71e1e4af4e24d3cd49c970e07fb43bbdaba2a270f1d96b4e5e84e3ec39fb9f67",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-g1-zero-overflow-all.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-g5-near_clip-overflow-all.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-g5-overrange_stress-overflow-all.jsonl": "998039470b58a0efd75279dbe3f341b022fb2b31c43dcefcd47de64a422d9c62",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-g5-zero-overflow-all.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-internal-overflow-injection-all.jsonl": "bf38fe040f95e6c53276e7a96359f16057a7da489670074d1246a874884d7f1c",
+    "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py": "2d8881be05fb770885ccdbe414f9d52807735ed1c025a2302847203ad1985cfc",
+    "engineering/s04_numeric/s04_c03_fulltrace_v1.py": "244ee661775c0eb5c07d1483b22569cee0eb22de48feda122248d911d7242497",
+    "engineering/s04_numeric/s04_c03_independent_oracle_v1.py": "32fdb0e565dbf9c3db44d882f38736b2e96ba726ba16c688f0c65556546e6429",
+    "engineering/s04_numeric/s04_c03_internal_overflow_evidence_v1.py": "aa68b2982ea033c55f619ebc04895210eacff51382607556c6fbdf6246ab7e64",
+    "project.yaml": "542fad05b363858d97d9616c9d144c1bde7bc173591f6495ae8573d49a3a9d7e",
+    "s03_reference/model.py": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+    "tests/test_s04_c03_integrated_qualification_v1.py": "62e90fd874962e161a8af2ad063e58fd87b69158cce3ab56100c6a3089af09a7"
+  },
+  "final_verified_log_copy_SHA256": "668d0307a82c73ca65fa2a73f7a7bd8cdcbc074db1b98fceb275a572abaf4b7e",
+  "forced_internal_overflow_events": 159,
+  "frozen_C": true,
+  "full_input_saturation_events": 16896,
+  "initial_diagnostic_failure_disposition": "Two independently verified incorrect test expected values corrected before final PASS; initial stdout/stderr observed but overwritten",
+  "initial_diagnostic_failure_log_preserved": false,
+  "main_CPI_executed": false,
+  "new_C03_independent_tests_PASS": 24,
+  "not_counted_as_C03_new": true,
+  "original_open_obligations_SHA256": "ba845f306186beba2d1ae085ae417ec63a9b083044241115e3751f6857c3b7ac",
+  "overall_percent": 27.083333333333332,
+  "power_cells_independently_checked": 4096,
+  "project": "AX309-RDSP-001",
+  "python_executable": "/usr/bin/python3",
+  "python_version": "3.14.4",
+  "recorded_at_utc": "2026-11-11T13:08:26.380829+00:00",
+  "report_SHA256": "49793d5cb971189dcd4c600fcbb42e6e8b6cb08a34b4a189926369c8f7badeb8",
+  "shift_schedule": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "status": "READY_FOR_INDEPENDENT_SIGN_OFF_NOT_PASS",
+  "synthesis": false,
+  "version": "integrated-v1.0"
+}

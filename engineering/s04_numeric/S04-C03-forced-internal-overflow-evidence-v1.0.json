@@ -1,0 +1,59 @@
+{
+  "FFT5_signed_output_overflow": 77,
+  "POWER_unsigned_overflow": 41,
+  "SUM40_unsigned_overflow": 41,
+  "events": 159,
+  "expected_results_independent_Fraction_oracle": "PASS",
+  "first_event": {
+    "component": "I",
+    "direction": "positive",
+    "event_id": "58936645-2b4f-5a3f-b37b-6a9b47d43fd4",
+    "fractional_bits": null,
+    "indices": [
+      5,
+      0
+    ],
+    "kind": "output_saturation",
+    "max_integer": "16777215",
+    "min_integer": "-16777216",
+    "ordinal_in_stream": 0,
+    "pre_narrow_integer": "16777216",
+    "signed": true,
+    "site": "FFT5",
+    "source_scope": "input",
+    "sticky": true,
+    "vector_id": "S04-C03-internal-overflow-injection-deterministic",
+    "word_width": 25
+  },
+  "last_event": {
+    "component": "unsigned",
+    "direction": "positive",
+    "event_id": "979a0577-fe94-564d-bcad-0a099d0734f5",
+    "fractional_bits": null,
+    "indices": [
+      40,
+      8
+    ],
+    "kind": "output_saturation",
+    "max_integer": "4503599627370495",
+    "min_integer": "0",
+    "ordinal_in_stream": 158,
+    "pre_narrow_integer": "4503599627370536",
+    "signed": false,
+    "site": "SUM40",
+    "source_scope": "input",
+    "sticky": true,
+    "vector_id": "S04-C03-internal-overflow-injection-deterministic",
+    "word_width": 52
+  },
+  "legacy_summary_first24_only": 24,
+  "new_complete_trace_retained": 159,
+  "no_CPI": true,
+  "no_RTL_or_FPGA": true,
+  "ordered_sequence": "PASS",
+  "replay_readback": "PASS",
+  "source_SHA256": "bf38fe040f95e6c53276e7a96359f16057a7da489670074d1246a874884d7f1c",
+  "source_file": "engineering/s04_numeric/c03_complete_overflow_trace/S04-C03-internal-overflow-injection-all.jsonl",
+  "status": "DETERMINISTIC_INTERNAL_OVERFLOW_FULL_TRACE_VERIFIED",
+  "unique_ids": "PASS"
+}

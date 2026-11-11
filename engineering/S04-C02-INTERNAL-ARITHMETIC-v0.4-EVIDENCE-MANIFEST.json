@@ -1,0 +1,59 @@
+{
+  "C01": "PASS_BOUNDED",
+  "C02": "OPEN",
+  "CPI_generated": 0,
+  "FPGA_hardware": false,
+  "Gate_S04": "OPEN",
+  "RTL": false,
+  "S04_percent": 12.5,
+  "SHA256_by_file": {
+    "engineering/S04-C02-CFAR-AUDIT-REPAIR-v0.3.1.md": "d42763c7a54645b2edd64657f857129945a7ae9cac0eb8610e7bdac28d1ed9ce",
+    "engineering/S04-C02-INTERNAL-ARITHMETIC-ERROR-PROPAGATION-REVIEW-v0.4.md": "a12869d087855a8ac0869aadbd785b7b31f3c7f4e6c4dc3fdae88ad124977c8a",
+    "engineering/S04-C02-V04-INTERNAL-ARITHMETIC-TESTS.log": "b3fdb6cadfc0cf82323a8f7772e410fa5a5e17599208c3d7c6f5786f4bada4d1",
+    "engineering/S04-C02-V04-PYTHON-ENV-AND-V031-RERUN.log": "9c84589292dad1ea55019ba0d8cd5cc81da0e173ae3fa382f4902798f1de4760",
+    "engineering/S04-progress.json": "8da68fe559c0e5d774ac2c37a852b8b3fe1df21e66eda4323c697100f51aca71",
+    "engineering/s04_numeric/S04-C02-internal-arithmetic-error-propagation-v0.4.json": "a98265223b29aa0bcd949d7145b195e3d6f805eb9fbd7a8247e60b8fa0c987e4",
+    "engineering/s04_numeric/s04_c02_internal_arithmetic_v04.py": "8f37cf2e9d6e6698ffcc028556698187878e7da578fd885308980758f9655bcd",
+    "project.yaml": "fa1f1e262c0d8aab565bb904586674f16246ca5751bdfeb88c771b4bcb80b188",
+    "tests/test_s04_c02_internal_arithmetic_v04.py": "d1228341a0e425bdf580b4b7f8e1a036c7fe5984c3ab730d10fe638daf90a305"
+  },
+  "accepted_S03_seeds_used": false,
+  "approved_input_g": {
+    "NOISE_ONLY_UNIT": 5,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 1
+  },
+  "binding_S02_open": [
+    "REQ-SCR-01",
+    "REQ-RNG-03"
+  ],
+  "candidate_formats": [
+    "A",
+    "B",
+    "C_hypothetical"
+  ],
+  "candidate_schedules": [
+    "ZERO",
+    "EARLY_3",
+    "DISTRIBUTED_3",
+    "ALL_5"
+  ],
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "/usr/bin/python3",
+    "venv_found_under_home_depth4": false,
+    "version": "3.14.4"
+  },
+  "executed_v031_command": "/usr/bin/python3 -B -m unittest discover -s tests -p test_s04_c02_cfar_repair_v031.py -v",
+  "executed_v04_command": "/usr/bin/python3 -B -m unittest discover -s tests -p test_s04_c02_internal_arithmetic_v04.py -v",
+  "full_bittrue_model_tested": false,
+  "math_no_saturation_assumed": true,
+  "new_unit_tests_pass": 11,
+  "old_unit_tests_pass": 9,
+  "prior_git_head": "f5e53304b6838bdd083958fe9586ef3434c4eaa3",
+  "project": "AX309-RDSP-001",
+  "project_percent": 26.041666666666668,
+  "recorded_utc": "2026-11-11T11:46:29.044172+00:00",
+  "status": "ANALYTIC_PROPOSED_NO_ARCHITECTURE_APPROVED",
+  "synthesis": false,
+  "version": "S04-C02-v0.4"
+}

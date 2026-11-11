@@ -1,0 +1,2534 @@
+{
+  "conditional_assumptions": [
+    "input sample component did not saturate; source original |x/g| <=1+2^-15 (loose bound)",
+    "MF coefficients exactly the rounded table of v0.3; all internal products/sums untruncated until one output RNE per MF and MTI",
+    "FFT radix2 DIT with bit-reversed input for natural bin ordering, quantized twiddles from v0.3, complex product exactly, butterfly sum exactly, shift is exact rational division by 2**s before one RNE",
+    "all internal outputs remain representable: if margins are negative, error bound does not imply actual safe saturation",
+    "No statistical behavior or RMS conclusion; broad triangle inequality and deterministic maximum bounds only"
+  ],
+  "overflow_detection_candidate": "before narrowing compare unbounded rounded integer to signed W max/min; record tuple stage,index,component,sign,value; sticky flag. Do not permit silent wrap. NOT APPROVED",
+  "project": "AX309-RDSP-001",
+  "reference_semantics": "Float original x; pre-RNE scaled x/g; q=RNE(32768*x/g), SAT16; all following arithmetic in normalized stored q/32768; compare to unquantized x/g",
+  "rounding_candidate": "RNE ties-to-even once per output, after exact multiply/sum and exact division by 2^shift; no internal saturation except explicitly detected output guard",
+  "source_files": [
+    "decisions/S04-C01-ENGINEER-CONDITIONAL-SIGNOFF-v1.0.md",
+    "engineering/S04-C02-COEFFICIENT-FFT-SHIFT-REVIEW-v0.3.md",
+    "engineering/S04-C02-CFAR-AUDIT-REPAIR-v0.3.1.md"
+  ],
+  "status": "PROPOSED_ARITHMETIC_NOT_APPROVED",
+  "summaries": {
+    "A": {
+      "CFAR": {
+        "boundary_examples": {
+          "CUT0_SUM0": {
+            "CUT": 0,
+            "SUM40": 0,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT0_SUM1": {
+            "CUT": 0,
+            "SUM40": 1,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT0_SUM288230376151711743": {
+            "CUT": 0,
+            "SUM40": 288230376151711743,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT4503599627370495_SUM0": {
+            "CUT": 4503599627370495,
+            "SUM40": 0,
+            "fraction_oracle": true,
+            "integer_decision": true
+          },
+          "CUT4503599627370495_SUM180143985094819800": {
+            "CUT": 4503599627370495,
+            "SUM40": 180143985094819800,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT4503599627370495_SUM288230376151711743": {
+            "CUT": 4503599627370495,
+            "SUM40": 288230376151711743,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "exact_threshold_offset_+0": {
+            "CUT": 490007,
+            "SUM40": 2621440,
+            "decision": false,
+            "exact_fraction_oracle": false
+          },
+          "exact_threshold_offset_+1": {
+            "CUT": 490008,
+            "SUM40": 2621440,
+            "decision": true,
+            "exact_fraction_oracle": true
+          },
+          "exact_threshold_offset_-1": {
+            "CUT": 490006,
+            "SUM40": 2621440,
+            "decision": false,
+            "exact_fraction_oracle": false
+          }
+        },
+        "config": {
+          "F": 15,
+          "alphaF": 16,
+          "alphaNum": 490007,
+          "alphaW": 20,
+          "fftW": 28,
+          "powerW": 52,
+          "sumW": 58
+        },
+        "fixed_point_qualification": false,
+        "full_precision_pre_narrowing_path": {
+          "left_conservative_bits": 79,
+          "left_exact_bits": 77,
+          "max_abs_signed_fft_integer": 134217728,
+          "max_left_product": 94447329657392904273920,
+          "max_right_product": 706174509634859082711040,
+          "raw_exact_I2_plus_Q2_max": 36028797018963968,
+          "raw_exact_SUM40_max": 1441151880758558720,
+          "raw_power_conservative_bits": 57,
+          "raw_power_exact_bits": 56,
+          "raw_sum40_conservative_bits": 63,
+          "raw_sum_exact_bits": 61,
+          "right_conservative_bits": 83,
+          "right_exact_bits": 80
+        },
+        "post_narrowing_candidate_operands": {
+          "Pcut_max": 4503599627370495,
+          "SUM40_max": 288230376151711743,
+          "left_conservative_bits": 74,
+          "left_exact_bits": 74,
+          "left_fits_conservative": true,
+          "max_left_product": 11805916207174110412800,
+          "max_right_product": 141234901926971816052201,
+          "right_conservative_bits": 78,
+          "right_exact_bits": 77,
+          "right_fits_conservative": true
+        },
+        "root_cause": "right_width=WS+f[alpha][0] added alpha numerator rather than alpha declared W (f[alpha][0]=numerator)",
+        "v03_recorded_left_bits": 74,
+        "v03_wrong_right_bits": 490065
+      },
+      "FFT": {
+        "butterfly": "DIT: t=what*v; outplus=u+t; outminus=u-t; full exact complex multiply and add/sub; divide by 2^s then one RNE to candidate output",
+        "schedules": {
+          "ALL_5": {
+            "FFT_magnitude_upper_stored_conditional": 45.25471911221977,
+            "FFT_max_signed_output_headroom_conditional": 4050.745250370202,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0001078968062316051,
+              "FFT_twiddle_quantization": 0.0034528031673861986,
+              "MF_coefficients": 0.0004345596269124046,
+              "MF_output_RNE": 4.315821377678509e-05,
+              "MTI_output_RNE": 2.1579106888392544e-05,
+              "input_Q15": 0.0006905295788283215
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.15201684800075863,
+              "5": 0.7600842400037932
+            },
+            "saturation_error_included": false,
+            "scale": 32,
+            "shifts": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 32,
+                "RD_power_scale": 1024,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 160,
+                "RD_power_scale": 25600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25410908801434,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.7458603944074,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0006905550394267433,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.001901946983065918,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254130667200776,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.7458388152213,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 4.315837287515549e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.002614081208930239,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254152246387214,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.745817236035,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 6.473755931273324e-05,
+                  "FFT_twiddle_quantization": 0.0020716651182802297,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.0033262154347945597,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25443567848348,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.7455338039385,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 8.631712033954622e-05,
+                  "FFT_twiddle_quantization": 0.0027622321449283106,
+                  "MF_coefficients": 0.0004345571124460245,
+                  "MF_output_RNE": 4.315796405299382e-05,
+                  "MTI_output_RNE": 2.157898202649691e-05,
+                  "input_Q15": 0.0006905255832583171
+                },
+                "reference_complex_error_total_stored_units": 0.0040383689070516895,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25471911221977,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.745250370202,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0001078968062316051,
+                  "FFT_twiddle_quantization": 0.0034528031673861986,
+                  "MF_coefficients": 0.0004345596269124046,
+                  "MF_output_RNE": 4.315821377678509e-05,
+                  "MTI_output_RNE": 2.1579106888392544e-05,
+                  "input_Q15": 0.0006905295788283215
+                },
+                "reference_complex_error_total_stored_units": 0.004750526500023707,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.004750526500023707
+          },
+          "DISTRIBUTED_3": {
+            "FFT_magnitude_upper_stored_conditional": 181.0185959173327,
+            "FFT_max_signed_output_headroom_conditional": 3914.981373565089,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.00015105567856051923,
+              "FFT_twiddle_quantization": 0.013811212669544794,
+              "MF_coefficients": 0.0017382385076496183,
+              "MF_output_RNE": 0.00017263285510714035,
+              "MTI_output_RNE": 8.631642755357018e-05,
+              "input_Q15": 0.002762118315313286
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.14977259562983142,
+              "5": 0.7488629781491571
+            },
+            "saturation_error_included": false,
+            "scale": 8,
+            "shifts": [
+              0,
+              1,
+              0,
+              1,
+              1
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 8,
+                "RD_power_scale": 64,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 40,
+                "RD_power_scale": 1600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50819659684224,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4005.49177288558,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.0008691091959883875,
+                  "MF_output_RNE": 8.631542866129502e-05,
+                  "MTI_output_RNE": 4.315771433064751e-05,
+                  "input_Q15": 0.001381043175422864
+                },
+                "reference_complex_error_total_stored_units": 0.003782314779694258,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50821817602868,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4005.4917513063933,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 4.315837287515549e-05,
+                  "FFT_twiddle_quantization": 0.002762220157706973,
+                  "MF_coefficients": 0.0008691091959883875,
+                  "MF_output_RNE": 8.631542866129502e-05,
+                  "MTI_output_RNE": 4.315771433064751e-05,
+                  "input_Q15": 0.001381043175422864
+                },
+                "reference_complex_error_total_stored_units": 0.005185004044985323,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 181.0164579312438,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3914.9835115511783,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00010789593218788873,
+                  "FFT_twiddle_quantization": 0.008286660473120919,
+                  "MF_coefficients": 0.001738218391976775,
+                  "MF_output_RNE": 0.00017263085732259004,
+                  "MTI_output_RNE": 8.631542866129502e-05,
+                  "input_Q15": 0.002762086350845728
+                },
+                "reference_complex_error_total_stored_units": 0.013153807434115195,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01752692119553,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3914.9824425612264,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00012947574294085854,
+                  "FFT_twiddle_quantization": 0.011048928579713242,
+                  "MF_coefficients": 0.001738228449784098,
+                  "MF_output_RNE": 0.00017263185621197528,
+                  "MTI_output_RNE": 8.631592810598764e-05,
+                  "input_Q15": 0.0027621023330332683
+                },
+                "reference_complex_error_total_stored_units": 0.01593768288978943,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 181.0185959173327,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3914.981373565089,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00015105567856051923,
+                  "FFT_twiddle_quantization": 0.013811212669544794,
+                  "MF_coefficients": 0.0017382385076496183,
+                  "MF_output_RNE": 0.00017263285510714035,
+                  "MTI_output_RNE": 8.631642755357018e-05,
+                  "input_Q15": 0.002762118315313286
+                },
+                "reference_complex_error_total_stored_units": 0.018721574453728927,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.018721574453728927
+          },
+          "EARLY_3": {
+            "FFT_magnitude_upper_stored_conditional": 181.01876855269714,
+            "FFT_max_signed_output_headroom_conditional": 3914.9812009297248,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0003236910430123749,
+              "FFT_twiddle_quantization": 0.013811212669544794,
+              "MF_coefficients": 0.0017382385076496183,
+              "MF_output_RNE": 0.00017263285510714035,
+              "MTI_output_RNE": 8.631642755357018e-05,
+              "input_Q15": 0.002762118315313286
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.15115367854544629,
+              "5": 0.7557683927272314
+            },
+            "saturation_error_included": false,
+            "scale": 8,
+            "shifts": [
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 8,
+                "RD_power_scale": 64,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 40,
+                "RD_power_scale": 1600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25410908801434,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.7458603944074,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0006905550394267433,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.001901946983065918,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254130667200776,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.7458388152213,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 4.315837287515549e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.002614081208930239,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254152246387214,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4050.745817236035,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 6.473755931273324e-05,
+                  "FFT_twiddle_quantization": 0.0020716651182802297,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.0033262154347945597,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50884977778053,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4005.4911197046413,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00015105505424151472,
+                  "FFT_twiddle_quantization": 0.005524464289856621,
+                  "MF_coefficients": 0.000869114224892049,
+                  "MF_output_RNE": 8.631592810598764e-05,
+                  "MTI_output_RNE": 4.315796405299382e-05,
+                  "input_Q15": 0.0013810511665166341
+                },
+                "reference_complex_error_total_stored_units": 0.008055158627665801,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01876855269714,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3914.9812009297248,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0003236910430123749,
+                  "FFT_twiddle_quantization": 0.013811212669544794,
+                  "MF_coefficients": 0.0017382385076496183,
+                  "MF_output_RNE": 0.00017263285510714035,
+                  "MTI_output_RNE": 8.631642755357018e-05,
+                  "input_Q15": 0.002762118315313286
+                },
+                "reference_complex_error_total_stored_units": 0.018894209818180786,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.018894209818180786
+          },
+          "ZERO": {
+            "FFT_magnitude_upper_stored_conditional": 1448.1482278552548,
+            "FFT_max_signed_output_headroom_conditional": 2647.851741627167,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.000668962021643688,
+              "FFT_twiddle_quantization": 0.11048970135635836,
+              "MF_coefficients": 0.013905908061196947,
+              "MF_output_RNE": 0.0013810628408571228,
+              "MTI_output_RNE": 0.0006905314204285614,
+              "input_Q15": 0.022096946522506287
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.14923311222299096,
+              "5": 0.7461655611149548
+            },
+            "saturation_error_included": false,
+            "scale": 1,
+            "shifts": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 1,
+                "RD_power_scale": 1,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 5,
+                "RD_power_scale": 25,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50819659684224,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 4005.49177288558,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.0008691091959883875,
+                  "MF_output_RNE": 8.631542866129502e-05,
+                  "MTI_output_RNE": 4.315771433064751e-05,
+                  "input_Q15": 0.001381043175422864
+                },
+                "reference_complex_error_total_stored_units": 0.003782314779694258,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01641477287092,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3914.983554709551,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 6.473755931273324e-05,
+                  "FFT_twiddle_quantization": 0.005524440315413946,
+                  "MF_coefficients": 0.001738218391976775,
+                  "MF_output_RNE": 0.00017263085732259004,
+                  "MTI_output_RNE": 8.631542866129502e-05,
+                  "input_Q15": 0.002762086350845728
+                },
+                "reference_complex_error_total_stored_units": 0.010348428903533068,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 362.03285112492824,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3733.9671183574937,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00015105430506304424,
+                  "FFT_twiddle_quantization": 0.016573320946241837,
+                  "MF_coefficients": 0.00347643678395355,
+                  "MF_output_RNE": 0.0003452617146451801,
+                  "MTI_output_RNE": 0.00017263085732259004,
+                  "input_Q15": 0.005524172701691456
+                },
+                "reference_complex_error_total_stored_units": 0.026242877308917657,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 724.0699134713549,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 3371.930056011067,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00032368954464676405,
+                  "FFT_twiddle_quantization": 0.04419571431885297,
+                  "MF_coefficients": 0.006952913799136392,
+                  "MF_output_RNE": 0.0006905274248479011,
+                  "MTI_output_RNE": 0.00034526371242395057,
+                  "input_Q15": 0.011048409332133073
+                },
+                "reference_complex_error_total_stored_units": 0.06355651813204105,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 28,
+                "exact_pre_narrow_stored_magnitude_bound": 1448.1482278552548,
+                "positive_output_component_capacity": 4095.999969482422,
+                "positive_output_headroom_conditional": 2647.851741627167,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.000668962021643688,
+                  "FFT_twiddle_quantization": 0.11048970135635836,
+                  "MF_coefficients": 0.013905908061196947,
+                  "MF_output_RNE": 0.0013810628408571228,
+                  "MTI_output_RNE": 0.0006905314204285614,
+                  "input_Q15": 0.022096946522506287
+                },
+                "reference_complex_error_total_stored_units": 0.14923311222299096,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.14923311222299096
+          }
+        },
+        "stage_word_proposals": [
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 28,
+            "complex_real_pair_addsub_W": 40,
+            "input_F": 15,
+            "input_signed_W": 23,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 41,
+            "product_F": 30,
+            "signed_real_product_W": 39,
+            "stage": 1,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 38
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 28,
+            "complex_real_pair_addsub_W": 45,
+            "input_F": 15,
+            "input_signed_W": 28,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 46,
+            "product_F": 30,
+            "signed_real_product_W": 44,
+            "stage": 2,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 43
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 28,
+            "complex_real_pair_addsub_W": 45,
+            "input_F": 15,
+            "input_signed_W": 28,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 46,
+            "product_F": 30,
+            "signed_real_product_W": 44,
+            "stage": 3,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 43
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 28,
+            "complex_real_pair_addsub_W": 45,
+            "input_F": 15,
+            "input_signed_W": 28,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 46,
+            "product_F": 30,
+            "signed_real_product_W": 44,
+            "stage": 4,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 43
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 28,
+            "complex_real_pair_addsub_W": 45,
+            "input_F": 15,
+            "input_signed_W": 28,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 46,
+            "product_F": 30,
+            "signed_real_product_W": 44,
+            "stage": 5,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 43
+          }
+        ]
+      },
+      "MF": {
+        "candidate_MF_output_W_F": [
+          22,
+          15
+        ],
+        "coeff_error_component": 0.00021728061443615992,
+        "combined_conditional_error": 0.0005841258630714672,
+        "max_abs_coefficient_model_bound": 22.6273566521904,
+        "once_RNE_output_component": 2.1579186437577746e-05,
+        "operation_order": "for each k: complex=(Ir*hr-Ii*hi)+j(Ir*hi+Ii*hr); sum 16 exact products; RNE each I/Q once at output; overflow flag before clip",
+        "real_product_F": 30,
+        "real_product_signed_W": 32,
+        "signed_16tap_raw_accumulator_W": 37,
+        "signed_coeff_W_F": [
+          16,
+          15
+        ],
+        "signed_complex_pair_W": 33,
+        "signed_input_W_F": [
+          16,
+          15
+        ],
+        "source_error_component": 0.0003452660621977295
+      },
+      "MTI": {
+        "candidate_output_W_F": [
+          23,
+          15
+        ],
+        "combined_error_from_MF_plus_MTI_RNE": 0.001189830912580512,
+        "input_signed_W_F": [
+          22,
+          15
+        ],
+        "operation_order": "subtract consecutive MF complex output exact, then one RNE each component; overflow flag before clip",
+        "raw_subtract_W": 23,
+        "source_error_bound_without_clip": 45.256215063871046
+      },
+      "candidate_formats": {
+        "fft": [
+          28,
+          15
+        ],
+        "mf": [
+          22,
+          15
+        ],
+        "mti": [
+          23,
+          15
+        ],
+        "twiddle": [
+          16,
+          15
+        ]
+      },
+      "not_approved": true
+    },
+    "B": {
+      "CFAR": {
+        "boundary_examples": {
+          "CUT0_SUM0": {
+            "CUT": 0,
+            "SUM40": 0,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT0_SUM1": {
+            "CUT": 0,
+            "SUM40": 1,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT0_SUM562949953421311": {
+            "CUT": 0,
+            "SUM40": 562949953421311,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT8796093022207_SUM0": {
+            "CUT": 8796093022207,
+            "SUM40": 0,
+            "fraction_oracle": true,
+            "integer_decision": true
+          },
+          "CUT8796093022207_SUM351843720888280": {
+            "CUT": 8796093022207,
+            "SUM40": 351843720888280,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT8796093022207_SUM562949953421311": {
+            "CUT": 8796093022207,
+            "SUM40": 562949953421311,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "exact_threshold_offset_+0": {
+            "CUT": 30625,
+            "SUM40": 163840,
+            "decision": false,
+            "exact_fraction_oracle": false
+          },
+          "exact_threshold_offset_+1": {
+            "CUT": 30626,
+            "SUM40": 163840,
+            "decision": true,
+            "exact_fraction_oracle": true
+          },
+          "exact_threshold_offset_-1": {
+            "CUT": 30624,
+            "SUM40": 163840,
+            "decision": false,
+            "exact_fraction_oracle": false
+          }
+        },
+        "config": {
+          "F": 13,
+          "alphaF": 12,
+          "alphaNum": 30625,
+          "alphaW": 16,
+          "fftW": 23,
+          "powerW": 43,
+          "sumW": 49
+        },
+        "fixed_point_qualification": false,
+        "full_precision_pre_narrowing_path": {
+          "left_conservative_bits": 65,
+          "left_exact_bits": 63,
+          "max_abs_signed_fft_integer": 4194304,
+          "max_left_product": 5764607523034234880,
+          "max_right_product": 43100855808819200000,
+          "raw_exact_I2_plus_Q2_max": 35184372088832,
+          "raw_exact_SUM40_max": 1407374883553280,
+          "raw_power_conservative_bits": 47,
+          "raw_power_exact_bits": 46,
+          "raw_sum40_conservative_bits": 53,
+          "raw_sum_exact_bits": 51,
+          "right_conservative_bits": 69,
+          "right_exact_bits": 66
+        },
+        "post_narrowing_candidate_operands": {
+          "Pcut_max": 8796093022207,
+          "SUM40_max": 562949953421311,
+          "left_conservative_bits": 61,
+          "left_exact_bits": 61,
+          "left_fits_conservative": true,
+          "max_left_product": 1441151880758394880,
+          "max_right_product": 17240342323527649375,
+          "right_conservative_bits": 65,
+          "right_exact_bits": 64,
+          "right_fits_conservative": true
+        },
+        "root_cause": "right_width=WS+f[alpha][0] added alpha numerator rather than alpha declared W (f[alpha][0]=numerator)",
+        "v03_recorded_left_bits": 61,
+        "v03_wrong_right_bits": 30674
+      },
+      "FFT": {
+        "butterfly": "DIT: t=what*v; outplus=u+t; outminus=u-t; full exact complex multiply and add/sub; divide by 2^s then one RNE to candidate output",
+        "schedules": {
+          "ALL_5": {
+            "FFT_magnitude_upper_stored_conditional": 45.25653631345036,
+            "FFT_max_signed_output_headroom_conditional": 466.74334161623716,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0004316092941113134,
+              "FFT_twiddle_quantization": 0.01381191890501331,
+              "MF_coefficients": 0.0020241096068050806,
+              "MF_output_RNE": 0.00017263999744603894,
+              "MTI_output_RNE": 8.631999872301947e-05,
+              "input_Q15": 0.0006905494040551768
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.5509487105969261,
+              "5": 2.7547435529846305
+            },
+            "saturation_error_included": false,
+            "scale": 32,
+            "shifts": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 32,
+                "RD_power_scale": 1024,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 160,
+                "RD_power_scale": 25600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25172343340379,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.7481544962837,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 8.631674575031098e-05,
+                  "FFT_twiddle_quantization": 0.002762220157706973,
+                  "MF_coefficients": 0.0020239097909607105,
+                  "MF_output_RNE": 0.00017262295478849424,
+                  "MTI_output_RNE": 8.631147739424712e-05,
+                  "input_Q15": 0.0006904812344699989
+                },
+                "reference_complex_error_total_stored_units": 0.005821862361070735,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25180975014954,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.74806817953794,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00017263349150062197,
+                  "FFT_twiddle_quantization": 0.005524440315413946,
+                  "MF_coefficients": 0.0020239097909607105,
+                  "MF_output_RNE": 0.00017262295478849424,
+                  "MTI_output_RNE": 8.631147739424712e-05,
+                  "input_Q15": 0.0006904812344699989
+                },
+                "reference_complex_error_total_stored_units": 0.008670399264528018,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.2533852194035,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.746492710284,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00025895591829658147,
+                  "FFT_twiddle_quantization": 0.008286842272129568,
+                  "MF_coefficients": 0.00202397639405036,
+                  "MF_output_RNE": 0.00017262863548739925,
+                  "MTI_output_RNE": 8.631431774369962e-05,
+                  "input_Q15": 0.0006905039569172968
+                },
+                "reference_complex_error_total_stored_units": 0.011519221494624905,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.2549607405032,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.7449171891843,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0003452811858023178,
+                  "FFT_twiddle_quantization": 0.01104933513433218,
+                  "MF_coefficients": 0.0020240429993317924,
+                  "MF_output_RNE": 0.00017263431637324543,
+                  "MTI_output_RNE": 8.631715818662272e-05,
+                  "input_Q15": 0.0006905266801123479
+                },
+                "reference_complex_error_total_stored_units": 0.014368137474138506,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25653631345036,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.74334161623716,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0004316092941113134,
+                  "FFT_twiddle_quantization": 0.01381191890501331,
+                  "MF_coefficients": 0.0020241096068050806,
+                  "MF_output_RNE": 0.00017263999744603894,
+                  "MTI_output_RNE": 8.631999872301947e-05,
+                  "input_Q15": 0.0006905494040551768
+                },
+                "reference_complex_error_total_stored_units": 0.01721714720615394,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.01721714720615394
+          },
+          "DISTRIBUTED_3": {
+            "FFT_magnitude_upper_stored_conditional": 181.02502307645432,
+            "FFT_max_signed_output_headroom_conditional": 330.9748548532332,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0006042598293097449,
+              "FFT_twiddle_quantization": 0.05524767562005324,
+              "MF_coefficients": 0.008096438427220323,
+              "MF_output_RNE": 0.0006905599897841558,
+              "MTI_output_RNE": 0.0003452799948920779,
+              "input_Q15": 0.0027621976162207074
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.541971291819842,
+              "5": 2.7098564590992105
+            },
+            "saturation_error_included": false,
+            "scale": 8,
+            "shifts": [
+              0,
+              1,
+              0,
+              1,
+              1
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 8,
+                "RD_power_scale": 64,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 40,
+                "RD_power_scale": 1600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50336055006183,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 421.4965173796257,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 8.631674575031098e-05,
+                  "FFT_twiddle_quantization": 0.005524440315413946,
+                  "MF_coefficients": 0.004047819581921421,
+                  "MF_output_RNE": 0.0003452459095769885,
+                  "MTI_output_RNE": 0.00017262295478849424,
+                  "input_Q15": 0.0013809624689399978
+                },
+                "reference_complex_error_total_stored_units": 0.01155740797639116,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50344686680758,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 421.49643106287994,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00017263349150062197,
+                  "FFT_twiddle_quantization": 0.011048880630827892,
+                  "MF_coefficients": 0.004047819581921421,
+                  "MF_output_RNE": 0.0003452459095769885,
+                  "MTI_output_RNE": 0.00017262295478849424,
+                  "input_Q15": 0.0013809624689399978
+                },
+                "reference_complex_error_total_stored_units": 0.017168165037555416,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01293664903164,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 330.98694128065586,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0004315950908428519,
+                  "FFT_twiddle_quantization": 0.03314736908851827,
+                  "MF_coefficients": 0.00809590557620144,
+                  "MF_output_RNE": 0.000690514541949597,
+                  "MTI_output_RNE": 0.0003452572709747985,
+                  "input_Q15": 0.002762015827669187
+                },
+                "reference_complex_error_total_stored_units": 0.04547265739615615,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01897976330918,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 330.9808981663783,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0005179260395811894,
+                  "FFT_twiddle_quantization": 0.04419734053732872,
+                  "MF_coefficients": 0.00809617199732717,
+                  "MF_output_RNE": 0.0006905372654929817,
+                  "MTI_output_RNE": 0.00034526863274649087,
+                  "input_Q15": 0.0027621067204493914
+                },
+                "reference_complex_error_total_stored_units": 0.05660935119292594,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 181.02502307645432,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 330.9748548532332,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0006042598293097449,
+                  "FFT_twiddle_quantization": 0.05524767562005324,
+                  "MF_coefficients": 0.008096438427220323,
+                  "MF_output_RNE": 0.0006905599897841558,
+                  "MTI_output_RNE": 0.0003452799948920779,
+                  "input_Q15": 0.0027621976162207074
+                },
+                "reference_complex_error_total_stored_units": 0.06774641147748026,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.06774641147748026
+          },
+          "EARLY_3": {
+            "FFT_magnitude_upper_stored_conditional": 181.02571366439165,
+            "FFT_max_signed_output_headroom_conditional": 330.9741642652958,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0012948477666480504,
+              "FFT_twiddle_quantization": 0.05524767562005324,
+              "MF_coefficients": 0.008096438427220323,
+              "MF_output_RNE": 0.0006905599897841558,
+              "MTI_output_RNE": 0.0003452799948920779,
+              "input_Q15": 0.0027621976162207074
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.5474959953185484,
+              "5": 2.7374799765927422
+            },
+            "saturation_error_included": false,
+            "scale": 8,
+            "shifts": [
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 8,
+                "RD_power_scale": 64,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 40,
+                "RD_power_scale": 1600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25172343340379,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.7481544962837,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 8.631674575031098e-05,
+                  "FFT_twiddle_quantization": 0.002762220157706973,
+                  "MF_coefficients": 0.0020239097909607105,
+                  "MF_output_RNE": 0.00017262295478849424,
+                  "MTI_output_RNE": 8.631147739424712e-05,
+                  "input_Q15": 0.0006904812344699989
+                },
+                "reference_complex_error_total_stored_units": 0.005821862361070735,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25180975014954,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.74806817953794,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00017263349150062197,
+                  "FFT_twiddle_quantization": 0.005524440315413946,
+                  "MF_coefficients": 0.0020239097909607105,
+                  "MF_output_RNE": 0.00017262295478849424,
+                  "MTI_output_RNE": 8.631147739424712e-05,
+                  "input_Q15": 0.0006904812344699989
+                },
+                "reference_complex_error_total_stored_units": 0.008670399264528018,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 45.2533852194035,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 466.746492710284,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00025895591829658147,
+                  "FFT_twiddle_quantization": 0.008286842272129568,
+                  "MF_coefficients": 0.00202397639405036,
+                  "MF_output_RNE": 0.00017262863548739925,
+                  "MTI_output_RNE": 8.631431774369962e-05,
+                  "input_Q15": 0.0006905039569172968
+                },
+                "reference_complex_error_total_stored_units": 0.011519221494624905,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50983516426065,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 421.49004276542684,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0006042456258543246,
+                  "FFT_twiddle_quantization": 0.02209867026866436,
+                  "MF_coefficients": 0.004048085998663585,
+                  "MF_output_RNE": 0.00034526863274649087,
+                  "MTI_output_RNE": 0.00017263431637324543,
+                  "input_Q15": 0.0013810533602246957
+                },
+                "reference_complex_error_total_stored_units": 0.0286499582025267,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 181.02571366439165,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 330.9741642652958,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0012948477666480504,
+                  "FFT_twiddle_quantization": 0.05524767562005324,
+                  "MF_coefficients": 0.008096438427220323,
+                  "MF_output_RNE": 0.0006905599897841558,
+                  "MTI_output_RNE": 0.0003452799948920779,
+                  "input_Q15": 0.0027621976162207074
+                },
+                "reference_complex_error_total_stored_units": 0.06843699941481855,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.06843699941481855
+          },
+          "ZERO": {
+            "FFT_magnitude_upper_stored_conditional": 1448.1980265850482,
+            "FFT_max_signed_output_headroom_conditional": -936.1981486553607,
+            "all_stage_output_guards_positive": false,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0026760520482355023,
+              "FFT_twiddle_quantization": 0.4419814049604259,
+              "MF_coefficients": 0.06477150741776258,
+              "MF_output_RNE": 0.005524479918273246,
+              "MTI_output_RNE": 0.002762239959136623,
+              "input_Q15": 0.02209758092976566
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.5398132652335995,
+              "5": 2.6990663261679977
+            },
+            "saturation_error_included": false,
+            "scale": 1,
+            "shifts": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 1,
+                "RD_power_scale": 1,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 5,
+                "RD_power_scale": 25,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50336055006183,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 421.4965173796257,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 8.631674575031098e-05,
+                  "FFT_twiddle_quantization": 0.005524440315413946,
+                  "MF_coefficients": 0.004047819581921421,
+                  "MF_output_RNE": 0.0003452459095769885,
+                  "MTI_output_RNE": 0.00017262295478849424,
+                  "input_Q15": 0.0013809624689399978
+                },
+                "reference_complex_error_total_stored_units": 0.01155740797639116,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 181.0068074168694,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 330.9930705128181,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00025895023725093296,
+                  "FFT_twiddle_quantization": 0.022097761261655784,
+                  "MF_coefficients": 0.008095639163842842,
+                  "MF_output_RNE": 0.000690491819153977,
+                  "MTI_output_RNE": 0.0003452459095769885,
+                  "input_Q15": 0.0027619249378799957
+                },
+                "reference_complex_error_total_stored_units": 0.03425001332936052,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 362.025614342145,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": 149.9742635875425,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0006042342633891225,
+                  "FFT_twiddle_quantization": 0.06629473817703654,
+                  "MF_coefficients": 0.01619181115240288,
+                  "MF_output_RNE": 0.001381029083899194,
+                  "MTI_output_RNE": 0.000690514541949597,
+                  "input_Q15": 0.005524031655338374
+                },
+                "reference_complex_error_total_stored_units": 0.09068635887401572,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 724.0751421741194,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": -212.07526424443188,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0012948250409698112,
+                  "FFT_twiddle_quantization": 0.17678936214931487,
+                  "MF_coefficients": 0.03238468798930868,
+                  "MF_output_RNE": 0.002762149061971927,
+                  "MTI_output_RNE": 0.0013810745309859635,
+                  "input_Q15": 0.011048426881797566
+                },
+                "reference_complex_error_total_stored_units": 0.22566052565434883,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 13,
+                "candidate_output_W": 23,
+                "exact_pre_narrow_stored_magnitude_bound": 1448.1980265850482,
+                "positive_output_component_capacity": 511.9998779296875,
+                "positive_output_headroom_conditional": -936.1981486553607,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0026760520482355023,
+                  "FFT_twiddle_quantization": 0.4419814049604259,
+                  "MF_coefficients": 0.06477150741776258,
+                  "MF_output_RNE": 0.005524479918273246,
+                  "MTI_output_RNE": 0.002762239959136623,
+                  "input_Q15": 0.02209758092976566
+                },
+                "reference_complex_error_total_stored_units": 0.5398132652335995,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.5398132652335995
+          }
+        },
+        "stage_word_proposals": [
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 13,
+            "candidate_output_W": 23,
+            "complex_real_pair_addsub_W": 36,
+            "input_F": 13,
+            "input_signed_W": 21,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 26,
+            "pre_shift_butterfly_addsub_W_conservative": 37,
+            "product_F": 26,
+            "signed_real_product_W": 35,
+            "stage": 1,
+            "twiddle_F": 13,
+            "twiddle_signed_W": 14,
+            "u_branch_aligned_W": 34
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 13,
+            "candidate_output_W": 23,
+            "complex_real_pair_addsub_W": 38,
+            "input_F": 13,
+            "input_signed_W": 23,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 26,
+            "pre_shift_butterfly_addsub_W_conservative": 39,
+            "product_F": 26,
+            "signed_real_product_W": 37,
+            "stage": 2,
+            "twiddle_F": 13,
+            "twiddle_signed_W": 14,
+            "u_branch_aligned_W": 36
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 13,
+            "candidate_output_W": 23,
+            "complex_real_pair_addsub_W": 38,
+            "input_F": 13,
+            "input_signed_W": 23,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 26,
+            "pre_shift_butterfly_addsub_W_conservative": 39,
+            "product_F": 26,
+            "signed_real_product_W": 37,
+            "stage": 3,
+            "twiddle_F": 13,
+            "twiddle_signed_W": 14,
+            "u_branch_aligned_W": 36
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 13,
+            "candidate_output_W": 23,
+            "complex_real_pair_addsub_W": 38,
+            "input_F": 13,
+            "input_signed_W": 23,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 26,
+            "pre_shift_butterfly_addsub_W_conservative": 39,
+            "product_F": 26,
+            "signed_real_product_W": 37,
+            "stage": 4,
+            "twiddle_F": 13,
+            "twiddle_signed_W": 14,
+            "u_branch_aligned_W": 36
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 13,
+            "candidate_output_W": 23,
+            "complex_real_pair_addsub_W": 38,
+            "input_F": 13,
+            "input_signed_W": 23,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 26,
+            "pre_shift_butterfly_addsub_W_conservative": 39,
+            "product_F": 26,
+            "signed_real_product_W": 37,
+            "stage": 5,
+            "twiddle_F": 13,
+            "twiddle_signed_W": 14,
+            "u_branch_aligned_W": 36
+          }
+        ]
+      },
+      "MF": {
+        "candidate_MF_output_W_F": [
+          20,
+          13
+        ],
+        "coeff_error_component": 0.0010120166640755746,
+        "combined_conditional_error": 0.001443595100162102,
+        "max_abs_coefficient_model_bound": 22.62707013787427,
+        "once_RNE_output_component": 8.631674575031098e-05,
+        "operation_order": "for each k: complex=(Ir*hr-Ii*hi)+j(Ir*hi+Ii*hr); sum 16 exact products; RNE each I/Q once at output; overflow flag before clip",
+        "real_product_F": 28,
+        "real_product_signed_W": 30,
+        "signed_16tap_raw_accumulator_W": 35,
+        "signed_coeff_W_F": [
+          14,
+          13
+        ],
+        "signed_complex_pair_W": 31,
+        "signed_input_W_F": [
+          16,
+          15
+        ],
+        "source_error_component": 0.0003452616903362163
+      },
+      "MTI": {
+        "candidate_output_W_F": [
+          21,
+          13
+        ],
+        "combined_error_from_MF_plus_MTI_RNE": 0.0029735069460745146,
+        "input_signed_W_F": [
+          20,
+          13
+        ],
+        "operation_order": "subtract consecutive MF complex output exact, then one RNE each component; overflow flag before clip",
+        "raw_subtract_W": 21,
+        "source_error_bound_without_clip": 45.256215063871046
+      },
+      "candidate_formats": {
+        "fft": [
+          23,
+          13
+        ],
+        "mf": [
+          20,
+          13
+        ],
+        "mti": [
+          21,
+          13
+        ],
+        "twiddle": [
+          14,
+          13
+        ]
+      },
+      "not_approved": true
+    },
+    "C_hypothetical": {
+      "CFAR": {
+        "boundary_examples": {
+          "CUT0_SUM0": {
+            "CUT": 0,
+            "SUM40": 0,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT0_SUM1": {
+            "CUT": 0,
+            "SUM40": 1,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT0_SUM4503599627370495": {
+            "CUT": 0,
+            "SUM40": 4503599627370495,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT70368744177663_SUM0": {
+            "CUT": 70368744177663,
+            "SUM40": 0,
+            "fraction_oracle": true,
+            "integer_decision": true
+          },
+          "CUT70368744177663_SUM2814749767106520": {
+            "CUT": 70368744177663,
+            "SUM40": 2814749767106520,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "CUT70368744177663_SUM4503599627370495": {
+            "CUT": 70368744177663,
+            "SUM40": 4503599627370495,
+            "fraction_oracle": false,
+            "integer_decision": false
+          },
+          "exact_threshold_offset_+0": {
+            "CUT": 490007,
+            "SUM40": 2621440,
+            "decision": false,
+            "exact_fraction_oracle": false
+          },
+          "exact_threshold_offset_+1": {
+            "CUT": 490008,
+            "SUM40": 2621440,
+            "decision": true,
+            "exact_fraction_oracle": true
+          },
+          "exact_threshold_offset_-1": {
+            "CUT": 490006,
+            "SUM40": 2621440,
+            "decision": false,
+            "exact_fraction_oracle": false
+          }
+        },
+        "config": {
+          "F": 15,
+          "alphaF": 16,
+          "alphaNum": 490007,
+          "alphaW": 20,
+          "fftW": 25,
+          "powerW": 46,
+          "sumW": 52
+        },
+        "fixed_point_qualification": false,
+        "full_precision_pre_narrowing_path": {
+          "left_conservative_bits": 73,
+          "left_exact_bits": 71,
+          "max_abs_signed_fft_integer": 16777216,
+          "max_left_product": 1475739525896764129280,
+          "max_right_product": 11033976713044673167360,
+          "raw_exact_I2_plus_Q2_max": 562949953421312,
+          "raw_exact_SUM40_max": 22517998136852480,
+          "raw_power_conservative_bits": 51,
+          "raw_power_exact_bits": 50,
+          "raw_sum40_conservative_bits": 57,
+          "raw_sum_exact_bits": 55,
+          "right_conservative_bits": 77,
+          "right_exact_bits": 74
+        },
+        "post_narrowing_candidate_operands": {
+          "Pcut_max": 70368744177663,
+          "SUM40_max": 4503599627370495,
+          "left_conservative_bits": 68,
+          "left_exact_bits": 68,
+          "left_fits_conservative": true,
+          "max_left_product": 184467440737092894720,
+          "max_right_product": 2206795342608934143465,
+          "right_conservative_bits": 72,
+          "right_exact_bits": 71,
+          "right_fits_conservative": true
+        },
+        "root_cause": "right_width=WS+f[alpha][0] added alpha numerator rather than alpha declared W (f[alpha][0]=numerator)",
+        "v03_recorded_left_bits": 68,
+        "v03_wrong_right_bits": 490059
+      },
+      "FFT": {
+        "butterfly": "DIT: t=what*v; outplus=u+t; outminus=u-t; full exact complex multiply and add/sub; divide by 2^s then one RNE to candidate output",
+        "schedules": {
+          "ALL_5": {
+            "FFT_magnitude_upper_stored_conditional": 45.25471911221977,
+            "FFT_max_signed_output_headroom_conditional": 466.7452503702021,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0001078968062316051,
+              "FFT_twiddle_quantization": 0.0034528031673861986,
+              "MF_coefficients": 0.0004345596269124046,
+              "MF_output_RNE": 4.315821377678509e-05,
+              "MTI_output_RNE": 2.1579106888392544e-05,
+              "input_Q15": 0.0006905295788283215
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.15201684800075863,
+              "5": 0.7600842400037932
+            },
+            "saturation_error_included": false,
+            "scale": 32,
+            "shifts": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 32,
+                "RD_power_scale": 1024,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 160,
+                "RD_power_scale": 25600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25410908801434,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.74586039440754,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0006905550394267433,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.001901946983065918,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254130667200776,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.7458388152211,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 4.315837287515549e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.002614081208930239,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254152246387214,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.74581723603467,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 6.473755931273324e-05,
+                  "FFT_twiddle_quantization": 0.0020716651182802297,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.0033262154347945597,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25443567848348,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.7455338039384,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 8.631712033954622e-05,
+                  "FFT_twiddle_quantization": 0.0027622321449283106,
+                  "MF_coefficients": 0.0004345571124460245,
+                  "MF_output_RNE": 4.315796405299382e-05,
+                  "MTI_output_RNE": 2.157898202649691e-05,
+                  "input_Q15": 0.0006905255832583171
+                },
+                "reference_complex_error_total_stored_units": 0.0040383689070516895,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25471911221977,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.7452503702021,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0001078968062316051,
+                  "FFT_twiddle_quantization": 0.0034528031673861986,
+                  "MF_coefficients": 0.0004345596269124046,
+                  "MF_output_RNE": 4.315821377678509e-05,
+                  "MTI_output_RNE": 2.1579106888392544e-05,
+                  "input_Q15": 0.0006905295788283215
+                },
+                "reference_complex_error_total_stored_units": 0.004750526500023707,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.004750526500023707
+          },
+          "DISTRIBUTED_3": {
+            "FFT_magnitude_upper_stored_conditional": 181.0185959173327,
+            "FFT_max_signed_output_headroom_conditional": 330.98137356508914,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.00015105567856051923,
+              "FFT_twiddle_quantization": 0.013811212669544794,
+              "MF_coefficients": 0.0017382385076496183,
+              "MF_output_RNE": 0.00017263285510714035,
+              "MTI_output_RNE": 8.631642755357018e-05,
+              "input_Q15": 0.002762118315313286
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.14977259562983142,
+              "5": 0.7488629781491571
+            },
+            "saturation_error_included": false,
+            "scale": 8,
+            "shifts": [
+              0,
+              1,
+              0,
+              1,
+              1
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 8,
+                "RD_power_scale": 64,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 40,
+                "RD_power_scale": 1600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50819659684224,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 421.4917728855796,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.0008691091959883875,
+                  "MF_output_RNE": 8.631542866129502e-05,
+                  "MTI_output_RNE": 4.315771433064751e-05,
+                  "input_Q15": 0.001381043175422864
+                },
+                "reference_complex_error_total_stored_units": 0.003782314779694258,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50821817602868,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 421.4917513063932,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 4.315837287515549e-05,
+                  "FFT_twiddle_quantization": 0.002762220157706973,
+                  "MF_coefficients": 0.0008691091959883875,
+                  "MF_output_RNE": 8.631542866129502e-05,
+                  "MTI_output_RNE": 4.315771433064751e-05,
+                  "input_Q15": 0.001381043175422864
+                },
+                "reference_complex_error_total_stored_units": 0.005185004044985323,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 181.0164579312438,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 330.9835115511781,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00010789593218788873,
+                  "FFT_twiddle_quantization": 0.008286660473120919,
+                  "MF_coefficients": 0.001738218391976775,
+                  "MF_output_RNE": 0.00017263085732259004,
+                  "MTI_output_RNE": 8.631542866129502e-05,
+                  "input_Q15": 0.002762086350845728
+                },
+                "reference_complex_error_total_stored_units": 0.013153807434115195,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01752692119553,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 330.9824425612263,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00012947574294085854,
+                  "FFT_twiddle_quantization": 0.011048928579713242,
+                  "MF_coefficients": 0.001738228449784098,
+                  "MF_output_RNE": 0.00017263185621197528,
+                  "MTI_output_RNE": 8.631592810598764e-05,
+                  "input_Q15": 0.0027621023330332683
+                },
+                "reference_complex_error_total_stored_units": 0.01593768288978943,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 181.0185959173327,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 330.98137356508914,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00015105567856051923,
+                  "FFT_twiddle_quantization": 0.013811212669544794,
+                  "MF_coefficients": 0.0017382385076496183,
+                  "MF_output_RNE": 0.00017263285510714035,
+                  "MTI_output_RNE": 8.631642755357018e-05,
+                  "input_Q15": 0.002762118315313286
+                },
+                "reference_complex_error_total_stored_units": 0.018721574453728927,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.018721574453728927
+          },
+          "EARLY_3": {
+            "FFT_magnitude_upper_stored_conditional": 181.01876855269714,
+            "FFT_max_signed_output_headroom_conditional": 330.98120092972476,
+            "all_stage_output_guards_positive": true,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.0003236910430123749,
+              "FFT_twiddle_quantization": 0.013811212669544794,
+              "MF_coefficients": 0.0017382385076496183,
+              "MF_output_RNE": 0.00017263285510714035,
+              "MTI_output_RNE": 8.631642755357018e-05,
+              "input_Q15": 0.002762118315313286
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.15115367854544629,
+              "5": 0.7557683927272314
+            },
+            "saturation_error_included": false,
+            "scale": 8,
+            "shifts": [
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 8,
+                "RD_power_scale": 64,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 40,
+                "RD_power_scale": 1600,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.25410908801434,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.74586039440754,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0006905550394267433,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.001901946983065918,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254130667200776,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.7458388152211,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 4.315837287515549e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.002614081208930239,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 45.254152246387214,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 466.74581723603467,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 6.473755931273324e-05,
+                  "FFT_twiddle_quantization": 0.0020716651182802297,
+                  "MF_coefficients": 0.00043455459799419374,
+                  "MF_output_RNE": 4.315771433064751e-05,
+                  "MTI_output_RNE": 2.1578857165323755e-05,
+                  "input_Q15": 0.000690521587711432
+                },
+                "reference_complex_error_total_stored_units": 0.0033262154347945597,
+                "right_shift_bits": 1,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50884977778053,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 421.49111970464133,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00015105505424151472,
+                  "FFT_twiddle_quantization": 0.005524464289856621,
+                  "MF_coefficients": 0.000869114224892049,
+                  "MF_output_RNE": 8.631592810598764e-05,
+                  "MTI_output_RNE": 4.315796405299382e-05,
+                  "input_Q15": 0.0013810511665166341
+                },
+                "reference_complex_error_total_stored_units": 0.008055158627665801,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01876855269714,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 330.98120092972476,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.0003236910430123749,
+                  "FFT_twiddle_quantization": 0.013811212669544794,
+                  "MF_coefficients": 0.0017382385076496183,
+                  "MF_output_RNE": 0.00017263285510714035,
+                  "MTI_output_RNE": 8.631642755357018e-05,
+                  "input_Q15": 0.002762118315313286
+                },
+                "reference_complex_error_total_stored_units": 0.018894209818180786,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.018894209818180786
+          },
+          "ZERO": {
+            "FFT_magnitude_upper_stored_conditional": 1448.1482278552548,
+            "FFT_max_signed_output_headroom_conditional": -936.148258372833,
+            "all_stage_output_guards_positive": false,
+            "error_components_stored_normalized": {
+              "FFT_output_RNE": 0.000668962021643688,
+              "FFT_twiddle_quantization": 0.11048970135635836,
+              "MF_coefficients": 0.013905908061196947,
+              "MF_output_RNE": 0.0013810628408571228,
+              "MTI_output_RNE": 0.0006905314204285614,
+              "input_Q15": 0.022096946522506287
+            },
+            "guarantee_scope": "conditional on no clipping/no output guard violation, exact intermediate complex arithmetic, one RNE per stage; not a measured Float-vs-Fixed error",
+            "input_error_included": true,
+            "reconstructed_original_Float_error_amplitude": {
+              "1": 0.14923311222299096,
+              "5": 0.7461655611149548
+            },
+            "saturation_error_included": false,
+            "scale": 1,
+            "shifts": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "source_reconstruction": {
+              "1": {
+                "FFT_amplitude_scale": 1,
+                "RD_power_scale": 1,
+                "input_Float_LSB": 3.0517578125e-05,
+                "input_complex_error_upper_no_clip": 2.1579186437577746e-05,
+                "input_component_error_upper_no_clip": 1.52587890625e-05
+              },
+              "5": {
+                "FFT_amplitude_scale": 5,
+                "RD_power_scale": 25,
+                "input_Float_LSB": 0.000152587890625,
+                "input_complex_error_upper_no_clip": 0.00010789593218788873,
+                "input_component_error_upper_no_clip": 7.62939453125e-05
+              }
+            },
+            "stage_details": [
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 90.50819659684224,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 421.4917728855796,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 2.1579186437577746e-05,
+                  "FFT_twiddle_quantization": 0.0013811100788534865,
+                  "MF_coefficients": 0.0008691091959883875,
+                  "MF_output_RNE": 8.631542866129502e-05,
+                  "MTI_output_RNE": 4.315771433064751e-05,
+                  "input_Q15": 0.001381043175422864
+                },
+                "reference_complex_error_total_stored_units": 0.003782314779694258,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 1
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 181.01641477287092,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 330.98355470955096,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 6.473755931273324e-05,
+                  "FFT_twiddle_quantization": 0.005524440315413946,
+                  "MF_coefficients": 0.001738218391976775,
+                  "MF_output_RNE": 0.00017263085732259004,
+                  "MTI_output_RNE": 8.631542866129502e-05,
+                  "input_Q15": 0.002762086350845728
+                },
+                "reference_complex_error_total_stored_units": 0.010348428903533068,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 2
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 362.03285112492824,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": 149.96711835749363,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00015105430506304424,
+                  "FFT_twiddle_quantization": 0.016573320946241837,
+                  "MF_coefficients": 0.00347643678395355,
+                  "MF_output_RNE": 0.0003452617146451801,
+                  "MTI_output_RNE": 0.00017263085732259004,
+                  "input_Q15": 0.005524172701691456
+                },
+                "reference_complex_error_total_stored_units": 0.026242877308917657,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 3
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 724.0699134713549,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": -212.069943988933,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.00032368954464676405,
+                  "FFT_twiddle_quantization": 0.04419571431885297,
+                  "MF_coefficients": 0.006952913799136392,
+                  "MF_output_RNE": 0.0006905274248479011,
+                  "MTI_output_RNE": 0.00034526371242395057,
+                  "input_Q15": 0.011048409332133073
+                },
+                "reference_complex_error_total_stored_units": 0.06355651813204105,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 4
+              },
+              {
+                "candidate_output_F": 15,
+                "candidate_output_W": 25,
+                "exact_pre_narrow_stored_magnitude_bound": 1448.1482278552548,
+                "positive_output_component_capacity": 511.9999694824219,
+                "positive_output_headroom_conditional": -936.148258372833,
+                "reference_complex_error_components": {
+                  "FFT_output_RNE": 0.000668962021643688,
+                  "FFT_twiddle_quantization": 0.11048970135635836,
+                  "MF_coefficients": 0.013905908061196947,
+                  "MF_output_RNE": 0.0013810628408571228,
+                  "MTI_output_RNE": 0.0006905314204285614,
+                  "input_Q15": 0.022096946522506287
+                },
+                "reference_complex_error_total_stored_units": 0.14923311222299096,
+                "right_shift_bits": 0,
+                "rounding_location": "RNE after exact twiddle complex product, full butterfly sum and divide by 2**shift",
+                "signed_shift_vs_RNE": "arithmetic right shift alone floors negative quotients and is NOT this RNE rounding rule",
+                "stage": 5
+              }
+            ],
+            "total_complex_error_stored_normalized": 0.14923311222299096
+          }
+        },
+        "stage_word_proposals": [
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 25,
+            "complex_real_pair_addsub_W": 40,
+            "input_F": 15,
+            "input_signed_W": 23,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 41,
+            "product_F": 30,
+            "signed_real_product_W": 39,
+            "stage": 1,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 38
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 25,
+            "complex_real_pair_addsub_W": 42,
+            "input_F": 15,
+            "input_signed_W": 25,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 43,
+            "product_F": 30,
+            "signed_real_product_W": 41,
+            "stage": 2,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 40
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 25,
+            "complex_real_pair_addsub_W": 42,
+            "input_F": 15,
+            "input_signed_W": 25,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 43,
+            "product_F": 30,
+            "signed_real_product_W": 41,
+            "stage": 3,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 40
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 25,
+            "complex_real_pair_addsub_W": 42,
+            "input_F": 15,
+            "input_signed_W": 25,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 43,
+            "product_F": 30,
+            "signed_real_product_W": 41,
+            "stage": 4,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 40
+          },
+          {
+            "actual_physical_registers_unapproved": true,
+            "candidate_output_F": 15,
+            "candidate_output_W": 25,
+            "complex_real_pair_addsub_W": 42,
+            "input_F": 15,
+            "input_signed_W": 25,
+            "intermediate_narrowing": "NONE before post-shift final RNE; proposed only",
+            "pre_shift_F": 30,
+            "pre_shift_butterfly_addsub_W_conservative": 43,
+            "product_F": 30,
+            "signed_real_product_W": 41,
+            "stage": 5,
+            "twiddle_F": 15,
+            "twiddle_signed_W": 16,
+            "u_branch_aligned_W": 40
+          }
+        ]
+      },
+      "MF": {
+        "candidate_MF_output_W_F": [
+          22,
+          15
+        ],
+        "coeff_error_component": 0.00021728061443615992,
+        "combined_conditional_error": 0.0005841258630714672,
+        "max_abs_coefficient_model_bound": 22.6273566521904,
+        "once_RNE_output_component": 2.1579186437577746e-05,
+        "operation_order": "for each k: complex=(Ir*hr-Ii*hi)+j(Ir*hi+Ii*hr); sum 16 exact products; RNE each I/Q once at output; overflow flag before clip",
+        "real_product_F": 30,
+        "real_product_signed_W": 32,
+        "signed_16tap_raw_accumulator_W": 37,
+        "signed_coeff_W_F": [
+          16,
+          15
+        ],
+        "signed_complex_pair_W": 33,
+        "signed_input_W_F": [
+          16,
+          15
+        ],
+        "source_error_component": 0.0003452660621977295
+      },
+      "MTI": {
+        "candidate_output_W_F": [
+          23,
+          15
+        ],
+        "combined_error_from_MF_plus_MTI_RNE": 0.001189830912580512,
+        "input_signed_W_F": [
+          22,
+          15
+        ],
+        "operation_order": "subtract consecutive MF complex output exact, then one RNE each component; overflow flag before clip",
+        "raw_subtract_W": 23,
+        "source_error_bound_without_clip": 45.256215063871046
+      },
+      "candidate_formats": {
+        "fft": [
+          25,
+          15
+        ],
+        "mf": [
+          22,
+          15
+        ],
+        "mti": [
+          23,
+          15
+        ],
+        "twiddle": [
+          16,
+          15
+        ]
+      },
+      "not_approved": true
+    }
+  },
+  "units": "normalized original Float complex amplitude for reconstructed errors; Q stored normalized arithmetic separately",
+  "version": "v0.4"
+}

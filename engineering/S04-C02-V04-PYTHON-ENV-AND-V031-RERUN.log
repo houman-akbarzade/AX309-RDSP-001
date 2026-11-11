@@ -1,0 +1,24 @@
+$ pwd
+/home/houman/AX309-RDSP-001
+$ command -v python3
+/usr/bin/python3
+$ /usr/bin/python3 --version
+Python 3.14.4
+$ /usr/bin/python3 -c "import sys,numpy;print(sys.executable,sys.prefix,sys.base_prefix,numpy.__version__)"
+executable=/usr/bin/python3 prefix=/usr base_prefix=/usr numpy=2.3.5
+$ find /home/houman -maxdepth 4 -name pyvenv.cfg -print
+$ /usr/bin/python3 -B -m unittest discover -s tests -p test_s04_c02_cfar_repair_v031.py -v
+test_all_three_expected_corrected_widths (test_s04_c02_cfar_repair_v031.CFARRepair.test_all_three_expected_corrected_widths) ... ok
+test_deterministic_exact_threshold_below_equal_above (test_s04_c02_cfar_repair_v031.CFARRepair.test_deterministic_exact_threshold_below_equal_above) ... ok
+test_error_scope_flags_preserve_open_problems (test_s04_c02_cfar_repair_v031.CFARRepair.test_error_scope_flags_preserve_open_problems) ... ok
+test_exact_max_sum_and_cut_independent_oracle (test_s04_c02_cfar_repair_v031.CFARRepair.test_exact_max_sum_and_cut_independent_oracle) ... ok
+test_full_precision_before_narrowing_extreme_fft (test_s04_c02_cfar_repair_v031.CFARRepair.test_full_precision_before_narrowing_extreme_fft) ... ok
+test_max_unsigned_operand_products_overflow_free (test_s04_c02_cfar_repair_v031.CFARRepair.test_max_unsigned_operand_products_overflow_free) ... ok
+test_no_architecture_or_seed_claim (test_s04_c02_cfar_repair_v031.CFARRepair.test_no_architecture_or_seed_claim) ... ok
+test_small_exhaustive_analogue_no_wrap (test_s04_c02_cfar_repair_v031.CFARRepair.test_small_exhaustive_analogue_no_wrap) ... ok
+test_v03_immutable_and_bug_provenance (test_s04_c02_cfar_repair_v031.CFARRepair.test_v03_immutable_and_bug_provenance) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.160s
+
+OK

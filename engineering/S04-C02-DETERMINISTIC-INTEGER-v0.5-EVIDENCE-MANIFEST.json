@@ -1,0 +1,64 @@
+{
+  "C01": "PASS_BOUNDED_INPUT_CONTRACT",
+  "C02": "OPEN",
+  "FPGA": false,
+  "Gate_S04": "OPEN",
+  "RTL": false,
+  "S02_binding_OPEN": [
+    "REQ-SCR-01",
+    "REQ-RNG-03"
+  ],
+  "S04_percent": 12.5,
+  "SHA256_files": {
+    "engineering/S04-C02-CFAR-AUDIT-REPAIR-v0.3.1.md": "d42763c7a54645b2edd64657f857129945a7ae9cac0eb8610e7bdac28d1ed9ce",
+    "engineering/S04-C02-DETERMINISTIC-INTEGER-BITTRUE-PROTOTYPE-v0.5.md": "4e619fdb66eb55a3e767755918297629872c08bc0b82664f90ec595df6a07a53",
+    "engineering/S04-C02-INTERNAL-ARITHMETIC-ERROR-PROPAGATION-REVIEW-v0.4.md": "a12869d087855a8ac0869aadbd785b7b31f3c7f4e6c4dc3fdae88ad124977c8a",
+    "engineering/S04-C02-V05-INTEGER-RUN.log": "dc497b6fa8bdab910a1ada2a7be2f15a9d605b7095975cd714273efb95304903",
+    "engineering/S04-C02-V05-INTEGER-UNITTESTS.log": "9688eafb6a81a2b1e9c3bea15353cddbaa23dd43541e43764e075cab13b5df6e",
+    "engineering/S04-C02-V05-STAGE-BOUND-AUDIT.log": "212c6aa51e7d3cdf9c7819c10e1405d5c4036f597bbad799563ec78e0e8c0a2d",
+    "engineering/S04-progress.json": "8da68fe559c0e5d774ac2c37a852b8b3fe1df21e66eda4323c697100f51aca71",
+    "engineering/s04_numeric/S04-C02-deterministic-integer-prototype-v0.5.json": "7bdb640c3cd5d2eccbd404fdf0b2f02ce6b720e0131984fe6bd138065ec410a2",
+    "engineering/s04_numeric/S04-C02-deterministic-test-vectors-v0.5.json": "547aad3304e76552580a91ec87bf99bb7856c96f7363334fe5968219c850f44f",
+    "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py": "2d8881be05fb770885ccdbe414f9d52807735ed1c025a2302847203ad1985cfc",
+    "engineering/s04_numeric/s04_c02_v05_stage_audit.py": "cbad529058187cc88b8446b67b55759271a5e1074ba10096a24851e097f35bc6",
+    "project.yaml": "fa1f1e262c0d8aab565bb904586674f16246ca5751bdfeb88c771b4bcb80b188",
+    "tests/test_s04_c02_integer_bittrue_v05.py": "4142c3ad3d69024aa1a9c14ff937c14af15cfdc1063d7045542354595bf10586"
+  },
+  "accepted_S03_seeds_used": false,
+  "candidate_architectures": [
+    "A",
+    "B",
+    "C_hypothetical"
+  ],
+  "candidate_fft_shifts": [
+    "ZERO",
+    "EARLY_3",
+    "DISTRIBUTED_3",
+    "ALL_5"
+  ],
+  "deterministic_rational_patterns": 9,
+  "full_pipeline_executions": 216,
+  "independent_unit_tests_passed": 14,
+  "integer_only_fixed_arithmetic": true,
+  "no_overflow_silently_wrapped": true,
+  "output_overflow_events": {
+    "B_ZERO": 932,
+    "C_ZERO": 944,
+    "all_others": 0
+  },
+  "preservation_of_original_v04": true,
+  "prior_git_commit": "ccce59ab57a58c524ab42768e7071d4648facf1f",
+  "profiles": {
+    "g1": "C01_SINGLE_TARGET_REFERENCE_LIKE_LAB_SCALING_ONLY",
+    "g5": "C01_NOISE_ONLY_UNIT_SCALING_ONLY"
+  },
+  "project": "AX309-RDSP-001",
+  "project_percent": 26.041666666666668,
+  "recorded_at_utc": "2026-11-11T12:03:44.931816+00:00",
+  "scaled_input_vectors": 18,
+  "stagewise_v04_bound_violations_admissible": 0,
+  "statistical_acceptance_CPI_executed": 0,
+  "status": "DETERMINISTIC_INTEGER_PROTOTYPE_ONLY_NO_ARCH_APPROVAL",
+  "synthesis": false,
+  "version": "S04-C02-v0.5"
+}

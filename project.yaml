@@ -1,22 +1,24 @@
 {
   "project_id": "AX309-RDSP-001",
   "mode": "Standalone",
-  "stage": "S03",
+  "stage": "S04",
   "gate_status": "open",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "provenance": "current conversation; engineer-supplied specifications unverified against board manual",
   "progress": {
-    "stage_percent": 75.0,
-    "overall_percent": 22.916666666666668,
+    "stage_percent": 0.0,
+    "overall_percent": 25.0,
     "stage_weighting": "12 equal weights",
     "s01_completed_criteria": 8,
     "s01_total_criteria": 8,
     "s02_completed_criteria": 8,
     "s02_total_criteria": 8,
     "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria",
-    "basis": "Fixed authorized software Pfa final PASS using approved EB n20000, Pd remains untested, Gate-S03 OPEN. Official S03 6/8 and total 22.9167% unchanged pending engineer decision.",
-    "s03_completed_criteria": 6,
-    "s03_total_criteria": 8
+    "basis": "Gate S03 engineer-approved 8/8. S04 entry authorized for numeric contract proposal only; S04 0/8; overall (3+0/8)/12=25%.",
+    "s03_completed_criteria": 8,
+    "s03_total_criteria": 8,
+    "s04_completed_criteria": 0,
+    "s04_total_criteria": 8
   },
   "hardware": {
     "board": "ALINX AX309",
@@ -24,15 +26,15 @@
     "toolchain": "ISE 14.7 (user reported, unverified)"
   },
   "execution_status": {
-    "design": "S03 floating reference implemented and tested, no RTL",
-    "python_simulation": "S03 float reference and preflight 16/16 verified; approved EB fixed n20000 final software Pfa PASS, U .0014491445035750084 (seed 411091703). No final Pd, RTL, synthesis, STA, FPGA hardware tests.",
+    "design": "S03 Python floating reference Gate APPROVED; S04 numeric/fixed-point contract PROPOSAL ONLY",
+    "python_simulation": "S03 approved Python model: Pfa 20000 independent CPI upper EB 0.0014491445035750084 <= .0015; Pd second authorized main 1000/1000 D accepted for isolated fixed case, CP L=.9970087504549047. No fixed-point validation.",
     "rtl_simulation": "not_executed",
     "synthesis": "not_executed",
     "implementation": "not_executed",
     "hardware_test": "not_executed"
   },
   "note": "This JSON-compatible YAML is deliberately serialized as JSON, which YAML 1.2 accepts.",
-  "last_review_at_utc": "2026-11-09T07:17:10.877220+00:00",
+  "last_review_at_utc": "2026-11-11T08:33:00.882420+00:00",
   "s01_approved_baseline": {
     "path": "engineering/S01-problem-definition-DRAFT-v0.3.md",
     "sha256": "867d8338dac818e6bffdee8a72540e664f81c40a546e9906ea729122c4cb626a",
@@ -47,5 +49,10 @@
       "engineering/S02-22-requirement-audit-FINAL-v1.0.json": "b86826a42e6dc685b315aff1450740bfb4f8974c1a9c3d881c8534a356b0b70c",
       "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md": "e85cce3c8a988b79ac633ff9cbe775d9382d415dc6962c866b9c866d56f603f6"
     }
+  },
+  "s03_approved_baseline": {
+    "decision": "decisions/GATE-S03-approved-baseline.json",
+    "reviewed_commit": "470d9fe4f2f6c9e640dc7fc995522609faa500e2",
+    "final_gate_readiness_sha256": "53c6840c98e5743c8432e0155329966256cba44d740c778b8f3483897f56b8fc"
   }
 }

@@ -1,0 +1,51 @@
+{
+  "S03_percent": 100.0,
+  "actor": "engineer, explicit user authorization",
+  "approved_artifacts_sha256": {
+    "engineering/S02-C-CFAR-02-CONTRACT-APPROVED-v1.2.md": "6e07ab218cd76f8358d56e3de0bbbc57dc62eff82b702222c0bb47f3b9ca1f3e",
+    "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+    "engineering/S03-C04-FINAL-Pfa-20000CPI-EmpiricalBernstein-v1.2.json": "6dab2a8a6669b698a53e74f88105b61169c02f819ac72d3674a94d34aca9cc7f",
+    "engineering/S03-FINAL-GATE-READINESS-v1.0.json": "cd5c8ae4faf3208e3ba97c810515041e213d904d4e428226180cb1b11489116b",
+    "engineering/S03-FINAL-GATE-READINESS-v1.0.md": "53c6840c98e5743c8432e0155329966256cba44d740c778b8f3483897f56b8fc",
+    "engineering/S03-Pd-MAIN-1000CPI-v1/RAW-CPI-records.jsonl": "a676ee7f23065e9a72ce14121172805d80cc9a9358b79e9c960809433b70ae55",
+    "engineering/S03-Pd-MAIN-1000CPI-v1/RESULT.json": "ee0caae031c1e3dd96264232f07d7a57db4745f2482ec72357df2ba85cbbb510"
+  },
+  "approved_criteria": [
+    "S03-C01",
+    "S03-C02",
+    "S03-C03",
+    "S03-C04",
+    "S03-C05",
+    "S03-C06",
+    "S03-C07",
+    "S03-C08"
+  ],
+  "authorization_for_S04": "proposal and independent review of fixed-point bittrue numeric contract; no approved numeric architecture, no RTL or hardware execution",
+  "carried_risks": [
+    "Pd fixed on-bin isolated single-target at SNR20 no clutter only",
+    "4135 additional unmatched target-present clusters not interpretable as Pfa",
+    "full original 33x128 IQ and 128x32 power arrays not archived, only hashes/selected metrics",
+    "historical 7/15 Student-t CI and source-spatial FAIL preserved and not reinterpreted"
+  ],
+  "criterion_C08": "explicit Gate approval accomplished via this decision",
+  "decision_id": "GATE-S03-APPROVAL-001",
+  "disposition": "APPROVED_S03_COMPLETE_S04_ENTRY_AUTHORIZED",
+  "exclusions": [
+    "fixed_point_bittrue_implementation",
+    "RTL",
+    "synthesis",
+    "STA",
+    "physical_FPGA_testing",
+    "general_radar_Pd",
+    "clutter_and_offgrid_unqualified_population_claim"
+  ],
+  "historical_approval_time_utc": null,
+  "overall_percent": 25.0,
+  "prohibited": "Do not rerun Pd main test, do not retune using reserved Pd sample/seed, do not automatically approve S04 contract or Gate-S04",
+  "project_id": "AX309-RDSP-001",
+  "project_progress_formula": "(S01 1 + S02 1 + S03 1)/12 *100",
+  "recorded_at_utc": "2026-11-11T08:33:00.882420+00:00",
+  "reviewed_existing_git_commit": "470d9fe4f2f6c9e640dc7fc995522609faa500e2",
+  "scope": "S03 Python floating-point functional reference validation and approved narrowly scoped statistical Pfa/Pd only",
+  "stage": "S03"
+}

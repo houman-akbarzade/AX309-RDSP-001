@@ -1,0 +1,2785 @@
+{
+  "all_count": 18,
+  "common_count": 14,
+  "decision": "HOLD_NO_ARCH_APPROVED",
+  "hypothesis_C_distributed": {
+    "1": {
+      "A_vs_C_equal_bin_errors": 28672,
+      "A_vs_C_paired_MAX_differences": [
+        0.0
+      ],
+      "B_vs_C_B_smaller_bin_errors": 779,
+      "B_vs_C_C_smaller_bin_errors": 9469,
+      "B_vs_C_equal_bin_errors": 18424,
+      "common_vectors": 7,
+      "conditional_cost_note": "C uses narrower FFT buffer than A and wider than B; not a synthesized utilization estimate",
+      "rank_or_approval": "NONE"
+    },
+    "5": {
+      "A_vs_C_equal_bin_errors": 28672,
+      "A_vs_C_paired_MAX_differences": [
+        0.0
+      ],
+      "B_vs_C_B_smaller_bin_errors": 779,
+      "B_vs_C_C_smaller_bin_errors": 9469,
+      "B_vs_C_equal_bin_errors": 18424,
+      "common_vectors": 7,
+      "conditional_cost_note": "C uses narrower FFT buffer than A and wider than B; not a synthesized utilization estimate",
+      "rank_or_approval": "NONE"
+    }
+  },
+  "native_integer_clustering": "OPEN",
+  "per_architecture": {
+    "A:ALL_5": {
+      "FFT_complex_buffer_bits_proxy": 229376,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 212992,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        79,
+        83
+      ],
+      "cfar_direction_full": {
+        "0_to_1": 428
+      },
+      "cfar_fixed_abs_margin_max": 6.01550709689036e-06,
+      "cfar_fixed_abs_margin_min": 2.4062028387561445e-07,
+      "cfar_float_reference_abs_margin_max": 0.0,
+      "cfar_float_reference_abs_margin_min": 0.0,
+      "host_cluster_count_differing_cases": 2,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "A",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 214,
+          "cfar_cut_change_full": 214,
+          "common_FFT5_MAX": 0.019048057341009336,
+          "common_FFT5_RMS": 0.0013806192786214471,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.0001532759205885558,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0010609509507722363,
+              "RMS": 0.00026985497633280793,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.003001807988319948,
+              "RMS": 0.0004810916779497357,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.007763750506518101,
+              "RMS": 0.0008264756657711601,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.019048057341009336,
+              "RMS": 0.0013806192786214471,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28152084287453,
+          "full_FFT5_RMS": 4.59431846840766,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476768900028984,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.406297356113763,
+              "RMS": 1.6232563053229883,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815189878370212,
+              "RMS": 2.2959084235534917,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63557008906783,
+              "RMS": 3.247297102778223,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28152084287453,
+              "RMS": 4.59431846840766,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 214,
+          "cfar_cut_change_full": 214,
+          "common_FFT5_MAX": 0.09524028670511382,
+          "common_FFT5_RMS": 0.006903096393104512,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007663796029425012,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.005304754753868979,
+              "RMS": 0.0013492748816633863,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.015009039941615966,
+              "RMS": 0.0024054583897475663,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.03881875253262364,
+              "RMS": 0.004132378328853998,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.09524028670511382,
+              "RMS": 0.006903096393104512,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.40760421437295,
+          "full_FFT5_RMS": 22.97159234203831,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.738384450014493,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03148678056885,
+              "RMS": 8.11628152661494,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07594939185113,
+              "RMS": 11.479542117767464,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17785044533932,
+              "RMS": 16.236485513891115,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.40760421437295,
+              "RMS": 22.97159234203831,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "ALL_5"
+    },
+    "A:DISTRIBUTED_3": {
+      "FFT_complex_buffer_bits_proxy": 229376,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 212992,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        79,
+        83
+      ],
+      "cfar_direction_full": {},
+      "cfar_fixed_abs_margin_max": null,
+      "cfar_fixed_abs_margin_min": null,
+      "cfar_float_reference_abs_margin_max": null,
+      "cfar_float_reference_abs_margin_min": null,
+      "host_cluster_count_differing_cases": 0,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "A",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.01949950983033919,
+          "common_FFT5_RMS": 0.001211060306579687,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.00014831729504223643,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0011363974040145728,
+              "RMS": 0.0002557363838573434,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.0031400939934732876,
+              "RMS": 0.00043938417745908,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.008014936460601148,
+              "RMS": 0.0007311746847892884,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.01949950983033919,
+              "RMS": 0.001211060306579687,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28097354471086,
+          "full_FFT5_RMS": 4.594352018190283,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476769980906776,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.406297356113763,
+              "RMS": 1.623256610731567,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815144270192395,
+              "RMS": 2.2959143018829367,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63538765635159,
+              "RMS": 3.24731311753501,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28097354471086,
+              "RMS": 4.594352018190283,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.09749754915173912,
+          "common_FFT5_RMS": 0.006055301532895699,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007415864752109097,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.005681987020077854,
+              "RMS": 0.0012786819192860614,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.01570046996737684,
+              "RMS": 0.0021969208872942717,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.04007468230302702,
+              "RMS": 0.003655873423944604,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.09749754915173912,
+              "RMS": 0.006055301532895699,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.4048677235547,
+          "full_FFT5_RMS": 22.97176009095142,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.73838499045339,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03148678056885,
+              "RMS": 8.116283053657837,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07572135096204,
+              "RMS": 11.479571509414686,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17693828175808,
+              "RMS": 16.236565587675052,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.4048677235547,
+              "RMS": 22.97176009095142,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "DISTRIBUTED_3"
+    },
+    "A:EARLY_3": {
+      "FFT_complex_buffer_bits_proxy": 229376,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 212992,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        79,
+        83
+      ],
+      "cfar_direction_full": {
+        "0_to_1": 748
+      },
+      "cfar_fixed_abs_margin_max": 1.443959490643465e-05,
+      "cfar_fixed_abs_margin_min": 1.4928682503523306e-07,
+      "cfar_float_reference_abs_margin_max": 0.0,
+      "cfar_float_reference_abs_margin_min": 0.0,
+      "host_cluster_count_differing_cases": 6,
+      "host_first20_peak_signature_differing_cases": 6,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "A",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 160,
+          "cfar_cut_change_full": 374,
+          "common_FFT5_MAX": 0.019276662640956874,
+          "common_FFT5_RMS": 0.0013056771544218949,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.0001532759205885558,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0010609509507722363,
+              "RMS": 0.00026985497633280793,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.003001807988319948,
+              "RMS": 0.0004810916779497357,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.007905450570229587,
+              "RMS": 0.000797724851291411,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.019276662640956874,
+              "RMS": 0.0013056771544218949,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28133840983723,
+          "full_FFT5_RMS": 4.594329791755084,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476768900028984,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.406297356113763,
+              "RMS": 1.6232563053229883,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815189878370212,
+              "RMS": 2.2959084235534917,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63557008906783,
+              "RMS": 3.247297405105503,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28133840983723,
+              "RMS": 4.594329791755084,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 160,
+          "cfar_cut_change_full": 374,
+          "common_FFT5_MAX": 0.0963833132048417,
+          "common_FFT5_RMS": 0.00652838577210681,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007663796029425012,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.005304754753868979,
+              "RMS": 0.0013492748816633863,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.015009039941615966,
+              "RMS": 0.0024054583897475663,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.03952725285117784,
+              "RMS": 0.003988624256455254,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.0963833132048417,
+              "RMS": 0.00652838577210681,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.40669204918646,
+          "full_FFT5_RMS": 22.97164895877542,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.738384450014493,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03148678056885,
+              "RMS": 8.11628152661494,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07594939185113,
+              "RMS": 11.479542117767464,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17785044533932,
+              "RMS": 16.236487025527513,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.40669204918646,
+              "RMS": 22.97164895877542,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "EARLY_3"
+    },
+    "A:ZERO": {
+      "FFT_complex_buffer_bits_proxy": 229376,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 212992,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        79,
+        83
+      ],
+      "cfar_direction_full": {},
+      "cfar_fixed_abs_margin_max": null,
+      "cfar_fixed_abs_margin_min": null,
+      "cfar_float_reference_abs_margin_max": null,
+      "cfar_float_reference_abs_margin_min": null,
+      "host_cluster_count_differing_cases": 0,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "A",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.019522925817697767,
+          "common_FFT5_RMS": 0.0012260645536564675,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.00014831729504223643,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0010933690948130186,
+              "RMS": 0.0002545343320347966,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.0030970850282178095,
+              "RMS": 0.0004399856405105841,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.007971939724979971,
+              "RMS": 0.0007394048830267237,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.019522925817697767,
+              "RMS": 0.0012260645536564675,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28063139200323,
+          "full_FFT5_RMS": 4.5943466088844165,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476769980906776,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.40627455204524,
+              "RMS": 1.6232603113118933,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815078381602977,
+              "RMS": 2.295916824165649,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63523559871283,
+              "RMS": 3.2473128487100853,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28063139200323,
+              "RMS": 4.5943466088844165,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.09761462908853225,
+          "common_FFT5_RMS": 0.006130322768279635,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007415864752109097,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0054668454740701795,
+              "RMS": 0.0012726716601733508,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.015485425141099522,
+              "RMS": 0.002199928202551816,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.03985969862492119,
+              "RMS": 0.0036970244151318084,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.09761462908853225,
+              "RMS": 0.006130322768279635,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.40315696001653,
+          "full_FFT5_RMS": 22.97173304442209,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.73838499045339,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03137276022623,
+              "RMS": 8.116301556559472,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07539190801496,
+              "RMS": 11.479584120828248,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17617799356435,
+              "RMS": 16.236564243550426,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.40315696001653,
+              "RMS": 22.97173304442209,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "ZERO"
+    },
+    "B:ALL_5": {
+      "FFT_complex_buffer_bits_proxy": 188416,
+      "MF_raw_accumulator_signed_width": 35,
+      "RD_power_buffer_bits_proxy": 176128,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        65,
+        69
+      ],
+      "cfar_direction_full": {
+        "0_to_1": 642
+      },
+      "cfar_fixed_abs_margin_max": 9.62521880865097e-05,
+      "cfar_fixed_abs_margin_min": 3.850087523460388e-06,
+      "cfar_float_reference_abs_margin_max": 0.00033298229051218007,
+      "cfar_float_reference_abs_margin_min": 0.0,
+      "host_cluster_count_differing_cases": 4,
+      "host_first20_peak_signature_differing_cases": 6,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "B",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 321,
+          "cfar_cut_change_full": 321,
+          "common_FFT5_MAX": 0.07100764912478359,
+          "common_FFT5_RMS": 0.005068315715512064,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.001015892626291932,
+              "RMS": 0.00038345395281760017,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0036682184955410075,
+              "RMS": 0.0008438556673966727,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.010767058206600653,
+              "RMS": 0.0016549944102391414,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.02849010472555711,
+              "RMS": 0.0029574252392837036,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.07100764912478359,
+              "RMS": 0.005068315715512064,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.00045718719846272115,
+              "RMS": 0.00021200399228715595,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.00038108457637989836,
+              "RMS": 0.00012977569391681656,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.43675124531539,
+          "full_FFT5_RMS": 4.6022944947142985,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.204416307848198,
+              "RMS": 1.1480027550935512,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.414022937921667,
+              "RMS": 1.6243061320764285,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.838426520649875,
+              "RMS": 2.2982266263215325,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.69761433162378,
+              "RMS": 3.2517550818308187,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.43675124531539,
+              "RMS": 4.6022944947142985,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899331424915576,
+              "RMS": 0.4061860018664129,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.6009105734123485,
+              "RMS": 0.8116140859229038,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 321,
+          "cfar_cut_change_full": 321,
+          "common_FFT5_MAX": 0.3550382456239684,
+          "common_FFT5_RMS": 0.025341578577557346,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.005079463131459679,
+              "RMS": 0.0019172697640875832,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.01834109247770695,
+              "RMS": 0.004219278336982552,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.053835291033008444,
+              "RMS": 0.008274972051194436,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.14245052362780822,
+              "RMS": 0.014787126196416532,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.3550382456239684,
+              "RMS": 0.025341578577557346,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0022859359923250917,
+              "RMS": 0.0010600199614318785,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0019054228818994928,
+              "RMS": 0.0006488784695841723,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 417.18375622657726,
+          "full_FFT5_RMS": 23.011472473571498,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.02208153924101,
+              "RMS": 5.740013775467758,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.070114689608374,
+              "RMS": 8.121530660382144,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.19213260324946,
+              "RMS": 11.491133131607665,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.48807165811908,
+              "RMS": 16.2587754091541,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 417.18375622657726,
+              "RMS": 23.011472473571498,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449665712457798,
+              "RMS": 2.030930009332065,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.00455286706175,
+              "RMS": 4.058070429614521,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "ALL_5"
+    },
+    "B:DISTRIBUTED_3": {
+      "FFT_complex_buffer_bits_proxy": 188416,
+      "MF_raw_accumulator_signed_width": 35,
+      "RD_power_buffer_bits_proxy": 176128,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        65,
+        69
+      ],
+      "cfar_direction_full": {},
+      "cfar_fixed_abs_margin_max": null,
+      "cfar_fixed_abs_margin_min": null,
+      "cfar_float_reference_abs_margin_max": null,
+      "cfar_float_reference_abs_margin_min": null,
+      "host_cluster_count_differing_cases": 0,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "B",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.07329751524024501,
+          "common_FFT5_RMS": 0.004411960293503557,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0010729895956037147,
+              "RMS": 0.000352138290862741,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.003996483840925303,
+              "RMS": 0.0007622567395101471,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.011420990821481077,
+              "RMS": 0.0014651846833283,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.029736900094990366,
+              "RMS": 0.002589464017066176,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.07329751524024501,
+              "RMS": 0.004411960293503557,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.00045718719846272115,
+              "RMS": 0.00021200399228715595,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.00038108457637989836,
+              "RMS": 0.00012977569391681656,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.43456250789492,
+          "full_FFT5_RMS": 4.6024284949323935,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.204416307848198,
+              "RMS": 1.1480031823143109,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.414022937921667,
+              "RMS": 1.6243073316857737,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.83824412594207,
+              "RMS": 2.2982500864440008,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.696884752638006,
+              "RMS": 3.2518190477439344,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.43456250789492,
+              "RMS": 4.6024284949323935,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899331424915576,
+              "RMS": 0.4061860018664129,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.6009105734123485,
+              "RMS": 0.8116140859229038,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.36648757620125005,
+          "common_FFT5_RMS": 0.022059801467514732,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0053649479780158525,
+              "RMS": 0.0017606914543132745,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0199824192046262,
+              "RMS": 0.003811283697549882,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.05710495410740843,
+              "RMS": 0.0073259234166401736,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.14868450047496187,
+              "RMS": 0.012947320085328834,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.36648757620125005,
+              "RMS": 0.022059801467514732,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0022859359923250917,
+              "RMS": 0.0010600199614318785,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0019054228818994928,
+              "RMS": 0.0006488784695841723,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 417.17281253947493,
+          "full_FFT5_RMS": 23.012142474661978,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.02208153924101,
+              "RMS": 5.740015911571554,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.070114689608374,
+              "RMS": 8.121536658428873,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.19122062971041,
+              "RMS": 11.491250432220005,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.4844237631902,
+              "RMS": 16.259095238719674,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 417.17281253947493,
+              "RMS": 23.012142474661978,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449665712457798,
+              "RMS": 2.030930009332065,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.00455286706175,
+              "RMS": 4.058070429614521,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "DISTRIBUTED_3"
+    },
+    "B:EARLY_3": {
+      "FFT_complex_buffer_bits_proxy": 188416,
+      "MF_raw_accumulator_signed_width": 35,
+      "RD_power_buffer_bits_proxy": 176128,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        65,
+        69
+      ],
+      "cfar_direction_full": {
+        "0_to_1": 748
+      },
+      "cfar_fixed_abs_margin_max": 0.0002313026925548911,
+      "cfar_fixed_abs_margin_min": 2.3886095732450485e-06,
+      "cfar_float_reference_abs_margin_max": 0.0,
+      "cfar_float_reference_abs_margin_min": 0.0,
+      "host_cluster_count_differing_cases": 6,
+      "host_first20_peak_signature_differing_cases": 6,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "B",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 160,
+          "cfar_cut_change_full": 374,
+          "common_FFT5_MAX": 0.07211540747046029,
+          "common_FFT5_RMS": 0.0047940216704723555,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.001015892626291932,
+              "RMS": 0.00038345395281760017,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0036682184955410075,
+              "RMS": 0.0008438556673966727,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.010767058206600653,
+              "RMS": 0.0016549944102391414,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.02912019077948193,
+              "RMS": 0.002875453653410341,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.07211540747046029,
+              "RMS": 0.0047940216704723555,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.00045718719846272115,
+              "RMS": 0.00021200399228715595,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.00038108457637989836,
+              "RMS": 0.00012977569391681656,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.4360216611248,
+          "full_FFT5_RMS": 4.602339703445537,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.204416307848198,
+              "RMS": 1.1480027550935512,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.414022937921667,
+              "RMS": 1.6243061320764285,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.838426520649875,
+              "RMS": 2.2982266263215325,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.69761433162378,
+              "RMS": 3.2517562673483806,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.4360216611248,
+              "RMS": 4.602339703445537,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899331424915576,
+              "RMS": 0.4061860018664129,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.6009105734123485,
+              "RMS": 0.8116140859229038,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 160,
+          "cfar_cut_change_full": 374,
+          "common_FFT5_MAX": 0.3605770373523415,
+          "common_FFT5_RMS": 0.02397010835235881,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.005079463131459679,
+              "RMS": 0.0019172697640875832,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.01834109247770695,
+              "RMS": 0.004219278336982552,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.053835291033008444,
+              "RMS": 0.008274972051194436,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.14560095389742897,
+              "RMS": 0.014377268267049739,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.3605770373523415,
+              "RMS": 0.02397010835235881,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0022859359923250917,
+              "RMS": 0.0010600199614318785,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0019054228818994928,
+              "RMS": 0.0006488784695841723,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 417.1801083056243,
+          "full_FFT5_RMS": 23.011698517227693,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.02208153924101,
+              "RMS": 5.740013775467758,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.070114689608374,
+              "RMS": 8.121530660382144,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.19213260324946,
+              "RMS": 11.491133131607665,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.48807165811908,
+              "RMS": 16.258781336741908,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 417.1801083056243,
+              "RMS": 23.011698517227693,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449665712457798,
+              "RMS": 2.030930009332065,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.00455286706175,
+              "RMS": 4.058070429614521,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "EARLY_3"
+    },
+    "B:ZERO": {
+      "FFT_complex_buffer_bits_proxy": 188416,
+      "MF_raw_accumulator_signed_width": 35,
+      "RD_power_buffer_bits_proxy": 176128,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        65,
+        69
+      ],
+      "cfar_direction_full": {},
+      "cfar_fixed_abs_margin_max": null,
+      "cfar_fixed_abs_margin_min": null,
+      "cfar_float_reference_abs_margin_max": null,
+      "cfar_float_reference_abs_margin_min": null,
+      "host_cluster_count_differing_cases": 0,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "B",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.07338549333243166,
+          "common_FFT5_RMS": 0.0044596613959270665,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0010729895956037147,
+              "RMS": 0.000352138290862741,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0038245242664073412,
+              "RMS": 0.0007569452319352208,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.011248437299179941,
+              "RMS": 0.0014647327900147247,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.02956426660352815,
+              "RMS": 0.002614707687711327,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.07338549333243166,
+              "RMS": 0.0044596613959270665,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.00045718719846272115,
+              "RMS": 0.00021200399228715595,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.00038108457637989836,
+              "RMS": 0.00012977569391681656,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 88.53625970191065,
+          "full_FFT5_RMS": 5.033124172772862,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.204416307848198,
+              "RMS": 1.1480031823143109,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.413931740903225,
+              "RMS": 1.6243221477952026,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.837980588525213,
+              "RMS": 2.2982602069654847,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.69627653431689,
+              "RMS": 3.2518180333767304,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 88.53625970191065,
+              "RMS": 5.033124172772862,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899331424915576,
+              "RMS": 0.4061860018664129,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.6009105734123485,
+              "RMS": 0.8116140859229038,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 466
+        },
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.3669274666621836,
+          "common_FFT5_RMS": 0.022298306979632306,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0053649479780158525,
+              "RMS": 0.0017606914543132745,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.01912262133203626,
+              "RMS": 0.00378472615967528,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.056242186495902735,
+              "RMS": 0.007323663950072323,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.1478213330176508,
+              "RMS": 0.01307353843855462,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.3669274666621836,
+              "RMS": 0.022298306979632306,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0022859359923250917,
+              "RMS": 0.0010600199614318785,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0019054228818994928,
+              "RMS": 0.0006488784695841723,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 442.68129850955336,
+          "full_FFT5_RMS": 25.165620863864316,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.02208153924101,
+              "RMS": 5.740015911571554,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.06965870451616,
+              "RMS": 8.121610738976015,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.18990294262613,
+              "RMS": 11.491301034827423,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.4813826715846,
+              "RMS": 16.25909016688366,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 442.68129850955336,
+              "RMS": 25.165620863864316,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449665712457798,
+              "RMS": 2.030930009332065,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.00455286706175,
+              "RMS": 4.058070429614521,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 466
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "ZERO"
+    },
+    "C_hypothetical:ALL_5": {
+      "FFT_complex_buffer_bits_proxy": 204800,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 188416,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        73,
+        77
+      ],
+      "cfar_direction_full": {
+        "0_to_1": 428
+      },
+      "cfar_fixed_abs_margin_max": 6.01550709689036e-06,
+      "cfar_fixed_abs_margin_min": 2.4062028387561445e-07,
+      "cfar_float_reference_abs_margin_max": 0.0,
+      "cfar_float_reference_abs_margin_min": 0.0,
+      "host_cluster_count_differing_cases": 2,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "C_hypothetical",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 214,
+          "cfar_cut_change_full": 214,
+          "common_FFT5_MAX": 0.019048057341009336,
+          "common_FFT5_RMS": 0.0013806192786214471,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.0001532759205885558,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0010609509507722363,
+              "RMS": 0.00026985497633280793,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.003001807988319948,
+              "RMS": 0.0004810916779497357,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.007763750506518101,
+              "RMS": 0.0008264756657711601,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.019048057341009336,
+              "RMS": 0.0013806192786214471,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28152084287453,
+          "full_FFT5_RMS": 4.59431846840766,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476768900028984,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.406297356113763,
+              "RMS": 1.6232563053229883,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815189878370212,
+              "RMS": 2.2959084235534917,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63557008906783,
+              "RMS": 3.247297102778223,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28152084287453,
+              "RMS": 4.59431846840766,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 214,
+          "cfar_cut_change_full": 214,
+          "common_FFT5_MAX": 0.09524028670511382,
+          "common_FFT5_RMS": 0.006903096393104512,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007663796029425012,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.005304754753868979,
+              "RMS": 0.0013492748816633863,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.015009039941615966,
+              "RMS": 0.0024054583897475663,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.03881875253262364,
+              "RMS": 0.004132378328853998,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.09524028670511382,
+              "RMS": 0.006903096393104512,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.40760421437295,
+          "full_FFT5_RMS": 22.97159234203831,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.738384450014493,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03148678056885,
+              "RMS": 8.11628152661494,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07594939185113,
+              "RMS": 11.479542117767464,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17785044533932,
+              "RMS": 16.236485513891115,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.40760421437295,
+              "RMS": 22.97159234203831,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "ALL_5"
+    },
+    "C_hypothetical:DISTRIBUTED_3": {
+      "FFT_complex_buffer_bits_proxy": 204800,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 188416,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        73,
+        77
+      ],
+      "cfar_direction_full": {},
+      "cfar_fixed_abs_margin_max": null,
+      "cfar_fixed_abs_margin_min": null,
+      "cfar_float_reference_abs_margin_max": null,
+      "cfar_float_reference_abs_margin_min": null,
+      "host_cluster_count_differing_cases": 0,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "C_hypothetical",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.01949950983033919,
+          "common_FFT5_RMS": 0.001211060306579687,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.00014831729504223643,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0011363974040145728,
+              "RMS": 0.0002557363838573434,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.0031400939934732876,
+              "RMS": 0.00043938417745908,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.008014936460601148,
+              "RMS": 0.0007311746847892884,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.01949950983033919,
+              "RMS": 0.001211060306579687,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28097354471086,
+          "full_FFT5_RMS": 4.594352018190283,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476769980906776,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.406297356113763,
+              "RMS": 1.623256610731567,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815144270192395,
+              "RMS": 2.2959143018829367,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63538765635159,
+              "RMS": 3.24731311753501,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28097354471086,
+              "RMS": 4.594352018190283,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.09749754915173912,
+          "common_FFT5_RMS": 0.006055301532895699,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007415864752109097,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.005681987020077854,
+              "RMS": 0.0012786819192860614,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.01570046996737684,
+              "RMS": 0.0021969208872942717,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.04007468230302702,
+              "RMS": 0.003655873423944604,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.09749754915173912,
+              "RMS": 0.006055301532895699,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.4048677235547,
+          "full_FFT5_RMS": 22.97176009095142,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.73838499045339,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03148678056885,
+              "RMS": 8.116283053657837,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07572135096204,
+              "RMS": 11.479571509414686,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17693828175808,
+              "RMS": 16.236565587675052,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.4048677235547,
+              "RMS": 22.97176009095142,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "DISTRIBUTED_3"
+    },
+    "C_hypothetical:EARLY_3": {
+      "FFT_complex_buffer_bits_proxy": 204800,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 188416,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        73,
+        77
+      ],
+      "cfar_direction_full": {
+        "0_to_1": 748
+      },
+      "cfar_fixed_abs_margin_max": 1.443959490643465e-05,
+      "cfar_fixed_abs_margin_min": 1.4928682503523306e-07,
+      "cfar_float_reference_abs_margin_max": 0.0,
+      "cfar_float_reference_abs_margin_min": 0.0,
+      "host_cluster_count_differing_cases": 6,
+      "host_first20_peak_signature_differing_cases": 6,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "C_hypothetical",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 160,
+          "cfar_cut_change_full": 374,
+          "common_FFT5_MAX": 0.019276662640956874,
+          "common_FFT5_RMS": 0.0013056771544218949,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.0001532759205885558,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0010609509507722363,
+              "RMS": 0.00026985497633280793,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.003001807988319948,
+              "RMS": 0.0004810916779497357,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.007905450570229587,
+              "RMS": 0.000797724851291411,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.019276662640956874,
+              "RMS": 0.0013056771544218949,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 83.28133840983723,
+          "full_FFT5_RMS": 4.594329791755084,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476768900028984,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.406297356113763,
+              "RMS": 1.6232563053229883,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815189878370212,
+              "RMS": 2.2959084235534917,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63557008906783,
+              "RMS": 3.247297405105503,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 83.28133840983723,
+              "RMS": 4.594329791755084,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        },
+        {
+          "cfar_cut_change_common": 160,
+          "cfar_cut_change_full": 374,
+          "common_FFT5_MAX": 0.0963833132048417,
+          "common_FFT5_RMS": 0.00652838577210681,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007663796029425012,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.005304754753868979,
+              "RMS": 0.0013492748816633863,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.015009039941615966,
+              "RMS": 0.0024054583897475663,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.03952725285117784,
+              "RMS": 0.003988624256455254,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.0963833132048417,
+              "RMS": 0.00652838577210681,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 416.40669204918646,
+          "full_FFT5_RMS": 22.97164895877542,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.738384450014493,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03148678056885,
+              "RMS": 8.11628152661494,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07594939185113,
+              "RMS": 11.479542117767464,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17785044533932,
+              "RMS": 16.236487025527513,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 416.40669204918646,
+              "RMS": 22.97164895877542,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 0
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "EARLY_3"
+    },
+    "C_hypothetical:ZERO": {
+      "FFT_complex_buffer_bits_proxy": 204800,
+      "MF_raw_accumulator_signed_width": 37,
+      "RD_power_buffer_bits_proxy": 188416,
+      "alpha_only_fixed_power_cut_changes": 0,
+      "alpha_only_reference_cut_changes": 0,
+      "candidate_full_width_CFAR_comparator_bits": [
+        73,
+        77
+      ],
+      "cfar_direction_full": {},
+      "cfar_fixed_abs_margin_max": null,
+      "cfar_fixed_abs_margin_min": null,
+      "cfar_float_reference_abs_margin_max": null,
+      "cfar_float_reference_abs_margin_min": null,
+      "host_cluster_count_differing_cases": 0,
+      "host_first20_peak_signature_differing_cases": 2,
+      "integer_native_cluster_status": "OPEN",
+      "logic/control_complexity": "OPEN: five FFT shifts, RNE sites, pipeline and saturation flag placement not approved",
+      "option": "C_hypothetical",
+      "profiles": [
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.019522925817697767,
+          "common_FFT5_RMS": 0.0012260645536564675,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0006907760553547036,
+              "RMS": 0.00014831729504223643,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0010933690948130186,
+              "RMS": 0.0002545343320347966,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.0030970850282178095,
+              "RMS": 0.0004399856405105841,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.007971939724979971,
+              "RMS": 0.0007394048830267237,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.019522925817697767,
+              "RMS": 0.0012260645536564675,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.0001872565987862911,
+              "RMS": 5.801216029447373e-05,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.0003745131975725822,
+              "RMS": 8.96206439182647e-05,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 88.48339457140887,
+          "full_FFT5_RMS": 5.0298770952273975,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 5.202499886526467,
+              "RMS": 1.1476769980906776,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 10.40627455204524,
+              "RMS": 1.6232603113118933,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 20.815078381602977,
+              "RMS": 2.295916824165649,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 41.63523559871283,
+              "RMS": 3.2473128487100853,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 88.48339457140887,
+              "RMS": 5.0298770952273975,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 1.4899837014238992,
+              "RMS": 0.4062175909838099,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 2.600925547500655,
+              "RMS": 0.8116780141491081,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 1,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 472
+        },
+        {
+          "cfar_cut_change_common": 0,
+          "cfar_cut_change_full": 0,
+          "common_FFT5_MAX": 0.09761462908853225,
+          "common_FFT5_RMS": 0.006130322768279635,
+          "common_n": 7,
+          "common_stages": {
+            "FFT1": {
+              "MAX": 0.0034538802767735207,
+              "RMS": 0.0007415864752109097,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT2": {
+              "MAX": 0.0054668454740701795,
+              "RMS": 0.0012726716601733508,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT3": {
+              "MAX": 0.015485425141099522,
+              "RMS": 0.002199928202551816,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT4": {
+              "MAX": 0.03985969862492119,
+              "RMS": 0.0036970244151318084,
+              "cases": 7,
+              "samples": 28448
+            },
+            "FFT5": {
+              "MAX": 0.09761462908853225,
+              "RMS": 0.006130322768279635,
+              "cases": 7,
+              "samples": 28672
+            },
+            "MF": {
+              "MAX": 0.000936282993931456,
+              "RMS": 0.00029006080147386793,
+              "cases": 7,
+              "samples": 29568
+            },
+            "MTI": {
+              "MAX": 0.001872565987862912,
+              "RMS": 0.00044810321959134103,
+              "cases": 7,
+              "samples": 28672
+            }
+          },
+          "full_FFT5_MAX": 442.4169728570444,
+          "full_FFT5_RMS": 25.149385476136988,
+          "full_n": 9,
+          "full_stages": {
+            "FFT1": {
+              "MAX": 26.01249943263235,
+              "RMS": 5.73838499045339,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT2": {
+              "MAX": 52.03137276022623,
+              "RMS": 8.116301556559472,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT3": {
+              "MAX": 104.07539190801496,
+              "RMS": 11.479584120828248,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT4": {
+              "MAX": 208.17617799356435,
+              "RMS": 16.236564243550426,
+              "cases": 9,
+              "samples": 36576
+            },
+            "FFT5": {
+              "MAX": 442.4169728570444,
+              "RMS": 25.149385476136988,
+              "cases": 9,
+              "samples": 36864
+            },
+            "MF": {
+              "MAX": 7.449918507119503,
+              "RMS": 2.03108795491905,
+              "cases": 9,
+              "samples": 38016
+            },
+            "MTI": {
+              "MAX": 13.004627737503284,
+              "RMS": 4.058390070745542,
+              "cases": 9,
+              "samples": 36864
+            }
+          },
+          "g": 5,
+          "input_sat_event_count_full": 8448,
+          "internal_event_count_full": 472
+        }
+      ],
+      "req_rng_03": "BINDING_OPEN",
+      "req_scr_01": "BINDING_OPEN",
+      "schedule": "ZERO"
+    }
+  },
+  "project": "AX309-RDSP-001",
+  "statistical_generalization": "NOT_ALLOWED",
+  "version": "v0.6"
+}

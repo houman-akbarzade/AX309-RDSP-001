@@ -1,0 +1,1440 @@
+{
+  "A_stagewise_caps": {
+    "status": "PASS_ALL_112_CPI_STAGE_CHECKS",
+    "worst_by_profile": {
+      "NOISE_ONLY_UNIT": {
+        "FFT1": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.02337,
+          "worst_MAX": 0.0019057648538427843,
+          "worst_RMS": 0.0005519344648296728
+        },
+        "FFT2": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.06428,
+          "worst_MAX": 0.0028660763868380164,
+          "worst_RMS": 0.0008331797780847962
+        },
+        "FFT3": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.16335,
+          "worst_MAX": 0.004254497060481714,
+          "worst_RMS": 0.001249103081320045
+        },
+        "FFT4": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.39629,
+          "worst_MAX": 0.007158075843170599,
+          "worst_RMS": 0.0018452168597222047
+        },
+        "FFT5": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.93177,
+          "worst_MAX": 0.01333723058602593,
+          "worst_RMS": 0.0026928696409836863
+        },
+        "MF": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.00366,
+          "worst_MAX": 0.0008148099711148579,
+          "worst_RMS": 0.0002572432879846144
+        },
+        "MTI": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.00731,
+          "worst_MAX": 0.0011858008168209144,
+          "worst_RMS": 0.0003635333705846311
+        }
+      },
+      "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+        "FFT1": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.00468,
+          "worst_MAX": 0.00033676371618659756,
+          "worst_RMS": 0.0001020150246720768
+        },
+        "FFT2": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.01286,
+          "worst_MAX": 0.0005573008188885147,
+          "worst_RMS": 0.0001498686789343137
+        },
+        "FFT3": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.03267,
+          "worst_MAX": 0.001161491988430819,
+          "worst_RMS": 0.0002174166158475393
+        },
+        "FFT4": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.07926,
+          "worst_MAX": 0.002072723591067146,
+          "worst_RMS": 0.0003125663599298378
+        },
+        "FFT5": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.18636,
+          "worst_MAX": 0.00434850507112011,
+          "worst_RMS": 0.00045997289348713785
+        },
+        "MF": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.00074,
+          "worst_MAX": 0.00017364107313160818,
+          "worst_RMS": 5.1081077651831506e-05
+        },
+        "MTI": {
+          "all_8_pass": true,
+          "approved_MAX_and_RMS_cap": 0.00147,
+          "worst_MAX": 0.00023009630569054268,
+          "worst_RMS": 7.149472172078512e-05
+        }
+      }
+    }
+  },
+  "B_integer_oracle": {
+    "alarm_mismatches": 0,
+    "cluster_record_mismatches": 0,
+    "margin_mismatches": 0,
+    "power_cells_compared": 65536,
+    "power_mismatches": 0,
+    "status": "PASS_ZERO_MISMATCHES",
+    "training_cell_comparisons": 1780480,
+    "training_mismatches": 0,
+    "valid_CUTs_compared": 44512
+  },
+  "C_CFAR_margin": {
+    "CUT_denominator_per_CPI": 2782,
+    "ambiguous_CUTs": 0,
+    "changed_CUTs": 0,
+    "outside_envelope_CUTs": 0,
+    "status": "PASS_NO_FLOAT_FIXED_CUT_CHANGES",
+    "total_CUTs": 44512
+  },
+  "D_peak_classification": {
+    "historical_cases": [
+      {
+        "CFAR": {
+          "Fixed_alarm_count": 214,
+          "Float_alarm_count": 214,
+          "both_competitor_cells_alarm_in_both_masks": true,
+          "mask_identical": true
+        },
+        "D_conditions_all_satisfied": true,
+        "Fixed_integer_peak_competitors": {
+          "difference_r4_minus_r3": 54948,
+          "range3_doppler20_power": 33612372401,
+          "range4_doppler20_power": 33612427349,
+          "selected_peak": [
+            4,
+            20
+          ]
+        },
+        "Float_original_input_peak_competitors": {
+          "exact_difference": 0.0,
+          "exact_tie": true,
+          "range3_doppler20_power": 2003.740740417848,
+          "range4_doppler20_power": 2003.740740417848
+        },
+        "Float_selected_peak": [
+          3,
+          20
+        ],
+        "classification": "FLOAT_REFERENCE_EXACT_TIE_SPLIT_BY_QUANTIZATION",
+        "component": {
+          "Fixed_cluster_count": 2,
+          "Float_cluster_count": 2,
+          "candidate_component_cells": 107,
+          "component_membership_replayed": true,
+          "same_component_cell_set": true
+        },
+        "g": 1,
+        "independent_integer_grouping_and_target_records": "PASS",
+        "source_evidence_vector_id": "g1:phase_interference",
+        "vector_id": "g1:phase_interference"
+      },
+      {
+        "CFAR": {
+          "Fixed_alarm_count": 214,
+          "Float_alarm_count": 214,
+          "both_competitor_cells_alarm_in_both_masks": true,
+          "mask_identical": true
+        },
+        "D_conditions_all_satisfied": true,
+        "Fixed_integer_peak_competitors": {
+          "difference_r4_minus_r3": 54948,
+          "range3_doppler20_power": 33612372401,
+          "range4_doppler20_power": 33612427349,
+          "selected_peak": [
+            4,
+            20
+          ]
+        },
+        "Float_original_input_peak_competitors": {
+          "exact_difference": 0.0,
+          "exact_tie": true,
+          "range3_doppler20_power": 50093.51851044622,
+          "range4_doppler20_power": 50093.51851044622
+        },
+        "Float_selected_peak": [
+          3,
+          20
+        ],
+        "classification": "FLOAT_REFERENCE_EXACT_TIE_SPLIT_BY_QUANTIZATION",
+        "component": {
+          "Fixed_cluster_count": 2,
+          "Float_cluster_count": 2,
+          "candidate_component_cells": 107,
+          "component_membership_replayed": true,
+          "same_component_cell_set": true
+        },
+        "g": 5,
+        "independent_integer_grouping_and_target_records": "PASS",
+        "source_evidence_vector_id": "g5:phase_interference",
+        "vector_id": "g5:phase_interference"
+      }
+    ],
+    "historical_replay_file": "engineering/s04_numeric/c06_replacement_16cpi_inputs_v1/D-HISTORICAL-PHASE-INTERFERENCE-REPLAY-v1.0.json",
+    "historical_replay_sha256": "acbcb3c9ab5c7454f506107bde571b7094d82a3537fcf1d919298f397ec29a9c",
+    "new_CPI_peak_coordinate_differences": 0,
+    "status": "PASS_NO_NEW_CPI_PEAK_DIFFERENCES_AND_TWO_HISTORICAL_EXCEPTIONS_VERIFIED"
+  },
+  "E_CPI_disposition_and_trace": {
+    "all_inputs_ready": true,
+    "input_clip_components": 0,
+    "internal_saturation_or_overflow_events": 0,
+    "status": "PASS_16_VALID_PERFORMANCE",
+    "trace_events": 0,
+    "trace_readback": "PASS_ALL",
+    "trace_scope_manifests": 32,
+    "trace_truncation": false
+  },
+  "Gate_S04": "OPEN",
+  "REQ-RNG-03": "OPEN_BINDING_BLOCKER",
+  "REQ-SCR-01": "OPEN_BINDING_BLOCKER",
+  "RTL_synthesis_FPGA": "NOT_RUN",
+  "accepted_S03_seeds": "NOT_USED",
+  "aggregate_sha256": "d1609c708abff971c9a8d26918270318bbd71b350218d2f09991a7a302655308",
+  "attempts": {
+    "auto_retries": 0,
+    "exactly_once": 16,
+    "multiple_attempts": 0,
+    "planned": 16,
+    "replacements": 0,
+    "zero_attempt": 0
+  },
+  "campaign_id": "C06-REPLACEMENT-2026-11-11",
+  "campaign_lock_commit": "3842f6af6b8beb567b1896ec5600b885dcc32f2a",
+  "criterion": "S04-C06",
+  "execution_lock_sha256": "e7f96463456e1d76d8a5f63bc6662b6f5f69f01c216841ea1b141779cf86050f",
+  "execution_runner_sha256": "68d405193e88f03b205f0a951a74e3ba29fffb89478d14fbeb143348ea341e40",
+  "fixed_denominators": {
+    "NOISE_ONLY_UNIT": 8,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 8,
+    "total": 16
+  },
+  "frozen_configuration": {
+    "alpha_fixed": "490007/65536",
+    "alpha_float": 7.476912055027923,
+    "architecture": "C",
+    "fft_shifts": [
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "no_numeric_contract_change": true
+  },
+  "input_manifest_sha256": "8d8d5ad4037ac905a773b84bd3e96a29e4e644064903a2d28a5d57eb538974e0",
+  "official_C06_state": "OPEN_PENDING_INDEPENDENT_REVIEW_OF_A_TO_E_EVIDENCE",
+  "package_sha256": "460c72e1ed760857ffe740ab249fcd0bc233383682855e5c865cb81928e8da32",
+  "per_CPI": [
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-001",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-001/CPI-result.json",
+      "result_sha256": "eccd4593b1c1677e1d265374b941f046bd8cd52068e147b0dc7f36478de51cfb",
+      "seed": 2012805448334265449,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0018509738703744155,
+          "RMS": 0.0005519344648296728,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0025236369536772206,
+          "RMS": 0.00082897539823304,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.004254497060481714,
+          "RMS": 0.001244453761288248,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.0055492464872303375,
+          "RMS": 0.0018309203252097834,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.011093981709282861,
+          "RMS": 0.002677154123432937,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0007663238827073506,
+          "RMS": 0.0002572432879846144,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0011360462698918096,
+          "RMS": 0.0003635038064584764,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-001.manifest.json",
+      "trace_manifest_sha256": "8c893b2a288766373e2b96266cd5ae3c1c3c1f3e92984c97dea15ecbf5d424bf",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-002",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-002/CPI-result.json",
+      "result_sha256": "4ae8f1d6081b86863cf6e128ce48a93b1ad45a7aa83fef2b846753daf341d614",
+      "seed": 18162294254475347580,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0018188205993297942,
+          "RMS": 0.000544200910869939,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0025597508177065322,
+          "RMS": 0.0008189787648680061,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.004068363588019999,
+          "RMS": 0.0012289082113167555,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.007158075843170599,
+          "RMS": 0.0017963026345518885,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.011493534217982715,
+          "RMS": 0.0026273928763023862,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.000782887633956398,
+          "RMS": 0.0002560761784986199,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0011858008168209144,
+          "RMS": 0.00036003496975370184,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-002.manifest.json",
+      "trace_manifest_sha256": "5e6099ccd8dcf1469b60d13f3ef020582ad1ee23957fa47db62ce50464e19e6b",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-003",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-003/CPI-result.json",
+      "result_sha256": "bd41718452978f8880e0a7305b38ee9cec7c5c086b3def1a081a12cbeea0cd9a",
+      "seed": 3979726421365413046,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.001509355063974328,
+          "RMS": 0.0005498268845907214,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0024498599718041046,
+          "RMS": 0.0008331797780847962,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0034532338109492483,
+          "RMS": 0.001249103081320045,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.005162680148024925,
+          "RMS": 0.0018452168597222047,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.011609057427627571,
+          "RMS": 0.0026899675790668597,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.000713933904478086,
+          "RMS": 0.0002527428198296304,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0010847555134649869,
+          "RMS": 0.00036077802864016687,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-003.manifest.json",
+      "trace_manifest_sha256": "599d7bf3c643199f51475748bbcab9cf4156f6c25ec6cb97f8343f3e298d75c2",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-004",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-004/CPI-result.json",
+      "result_sha256": "f65de9738c8db48d362840c78eb8ce44922309448a0e1dfb81e58e8dfd20e131",
+      "seed": 6518530905334955677,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0015332149097160963,
+          "RMS": 0.0005390108373017356,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0025882312509063117,
+          "RMS": 0.0008177830147822578,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0033642040449081904,
+          "RMS": 0.0012322100963627549,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.006511562828307495,
+          "RMS": 0.0018164474442433215,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.01333723058602593,
+          "RMS": 0.0026663897681408898,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0006939156740724392,
+          "RMS": 0.0002513244571673762,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0010127752026359356,
+          "RMS": 0.00035605314906191613,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-004.manifest.json",
+      "trace_manifest_sha256": "45af2f1bfcaaebfe1ac0a8ae3267f44abc2841f0c00b4b13a3d34579c10c8f1c",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-005",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-005/CPI-result.json",
+      "result_sha256": "f4ce5c98a5e050ff82debec75c48e92a4f46ab5b221bfb55d8b6178acab11c25",
+      "seed": 8207257837617807726,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0019057648538427843,
+          "RMS": 0.000546356975799705,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.00256893058918046,
+          "RMS": 0.0008265603975451721,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.003620310014402427,
+          "RMS": 0.001240399694268949,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.005996311766406528,
+          "RMS": 0.0018306264885981477,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.010401968329294617,
+          "RMS": 0.0026928696409836863,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0008148099711148579,
+          "RMS": 0.00025561653935597477,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.001158184737981986,
+          "RMS": 0.0003626343014412488,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-005.manifest.json",
+      "trace_manifest_sha256": "9d1acbf24abf26e428322c3b469b27ba43fb4d4d491f79535ff1760ddda987ed",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-006",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-006/CPI-result.json",
+      "result_sha256": "04c1450871304c285af59cecb765c5b53521ade7cd1add55e46fbdd5f601ac64",
+      "seed": 8856890129862335181,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0017206691813895067,
+          "RMS": 0.0005397405970797538,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.00244111277541173,
+          "RMS": 0.0008193607180084909,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0033334923585028645,
+          "RMS": 0.00123124126734494,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.005584570718104003,
+          "RMS": 0.001800517193742403,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.010529292440709555,
+          "RMS": 0.0026304619843473365,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0007709634190287165,
+          "RMS": 0.0002532984471585458,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0010635499234926086,
+          "RMS": 0.00035505837614998497,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-006.manifest.json",
+      "trace_manifest_sha256": "abf66835a31f1d94e4d8ec225a6f72e71500f7ecd628d06a55581c9307d30cae",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-007",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-007/CPI-result.json",
+      "result_sha256": "1fae661fa92805501fe1b554d90a7f52a75d518214229d40a7b6e54c3494ec94",
+      "seed": 12221500842114680316,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0015641598409870533,
+          "RMS": 0.0005482418362930729,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0028660763868380164,
+          "RMS": 0.000824074201832592,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0037683693411157426,
+          "RMS": 0.0012417911703524807,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.006377178190240796,
+          "RMS": 0.0018153663721651825,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.010818768469359533,
+          "RMS": 0.0026424712193240598,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0007760550310747639,
+          "RMS": 0.00025278834505215394,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0010244981002920073,
+          "RMS": 0.0003635333705846311,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-007.manifest.json",
+      "trace_manifest_sha256": "25adea8bf4f0aecf4006d67e2e9ae06fe18840e7528f9cb91e30a86db8f448cb",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-NOISE-008",
+      "g": 5,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "NOISE_ONLY_UNIT",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-008/CPI-result.json",
+      "result_sha256": "7bf22bddea949f56e2e145a2ff484e0245dc7de054bb7db45667d3e867535067",
+      "seed": 15118745826006173506,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.00155723972785748,
+          "RMS": 0.0005469487936712435,
+          "approved_cap_MAX_RMS": 0.02337,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.002269217154327404,
+          "RMS": 0.0008311365577747767,
+          "approved_cap_MAX_RMS": 0.06428,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0036859924305313414,
+          "RMS": 0.0012442430995880697,
+          "approved_cap_MAX_RMS": 0.16335,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.006002245233037419,
+          "RMS": 0.001827146181480907,
+          "approved_cap_MAX_RMS": 0.39629,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.01125379001089986,
+          "RMS": 0.002669551945480003,
+          "approved_cap_MAX_RMS": 0.93177,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0007029081639139951,
+          "RMS": 0.00025554583440716915,
+          "approved_cap_MAX_RMS": 0.00366,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0010191656143190156,
+          "RMS": 0.00036005375973375474,
+          "approved_cap_MAX_RMS": 0.00731,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-NOISE-008.manifest.json",
+      "trace_manifest_sha256": "3469d8df9f91e06a02aa76975dabdc53c85f1424063621c71194dfbd8d12e957",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-001",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-001/CPI-result.json",
+      "result_sha256": "512789a1ab59254459640fe238978875b234bf6fe5042a40a17a2314013a3a14",
+      "seed": 13833116037735353598,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.00027801419346219704,
+          "RMS": 0.00010072914665626342,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0005453635195185991,
+          "RMS": 0.0001478868926343772,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0010114602129846686,
+          "RMS": 0.00021413354582211177,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.0019835309928083206,
+          "RMS": 0.0003086314031871109,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.0040465573046082216,
+          "RMS": 0.0004541814673053399,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.00014249306439865234,
+          "RMS": 5.04871126719052e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.00020601373313670765,
+          "RMS": 7.071321109381516e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-001.manifest.json",
+      "trace_manifest_sha256": "6ff3d957976225c3585c2f7449d7c2726c6660337451a33c31c23678212a35f1",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-002",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-002/CPI-result.json",
+      "result_sha256": "2b79085979f3d6c917442c4122680640b384555a46ef4db251d3ef0369c6603a",
+      "seed": 7683962101233347255,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0003009526437846508,
+          "RMS": 0.00010138657012242362,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0004677532225108217,
+          "RMS": 0.0001482100762255802,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0009579454967212986,
+          "RMS": 0.0002140701456056882,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.0018061786822618842,
+          "RMS": 0.0003073068605734196,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.0040070542804499,
+          "RMS": 0.00045469228606600615,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.00015160962973834608,
+          "RMS": 5.001222315992488e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.00019846617096742314,
+          "RMS": 7.119419482086529e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-002.manifest.json",
+      "trace_manifest_sha256": "dcfa57fb47ddcdbbe65bf15e1a333bb756d224f1b367f0621fe721185503ecf0",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-003",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-003/CPI-result.json",
+      "result_sha256": "6cc9c59dd99985caff7c34eeb7b83855f94af9c6e00f728d45662445686d46a8",
+      "seed": 12386715436824358369,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.00033676371618659756,
+          "RMS": 0.00010156085294894767,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0004657675264724618,
+          "RMS": 0.0001488005022951321,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.001161491988430819,
+          "RMS": 0.00021518996214345236,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.0018137183622423264,
+          "RMS": 0.0003076019202220796,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.0042449328875544656,
+          "RMS": 0.00045206316643761244,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.00015765022832621694,
+          "RMS": 5.001976594825314e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.00023009630569054268,
+          "RMS": 7.116229047353271e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-003.manifest.json",
+      "trace_manifest_sha256": "70f35b21d828120a91b8abc1634eb19cd3b3031eb7d533d918e8223132831431",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-004",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-004/CPI-result.json",
+      "result_sha256": "07495870b0bf53d720917e491241e41400be9f3652bfc276fab7a0e99106c8ff",
+      "seed": 4164276440279276488,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.00029251200868784166,
+          "RMS": 0.0001020150246720768,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.00044860836110971263,
+          "RMS": 0.00014929213751157456,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0009289243789935296,
+          "RMS": 0.00021486093528200645,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.001672112277192341,
+          "RMS": 0.0003090437979983934,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.004024685900522761,
+          "RMS": 0.0004579057631308832,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.00014203229043965537,
+          "RMS": 5.1081077651831506e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.00020016207165633095,
+          "RMS": 7.147857555189966e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-004.manifest.json",
+      "trace_manifest_sha256": "2151e7f3da00ecedeaa91ba996cba84ff926f3f985c279ae74db8698a69a8e3c",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-005",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-005/CPI-result.json",
+      "result_sha256": "9589ee5d98567cac2f9d409f38aec9c4613ad0c6f21b4d2f7310a69679bcad4b",
+      "seed": 1870107050591730872,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0002849638391118291,
+          "RMS": 9.685654239741435e-05,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0004801432964567009,
+          "RMS": 0.00014247540564712625,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0008531971978977714,
+          "RMS": 0.0002061089776643037,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.0017264392885521904,
+          "RMS": 0.0002959539115843354,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.0040418209611329785,
+          "RMS": 0.000437405700674525,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.00017364107313160818,
+          "RMS": 4.8589323077465536e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.00020352838421360393,
+          "RMS": 6.797831138881396e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-005.manifest.json",
+      "trace_manifest_sha256": "0bb82d89f751dae8fa1533f75a7d5418ffb188f62034dff4e14200fc5826e502",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-006",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-006/CPI-result.json",
+      "result_sha256": "8ad5f8f4ef84c31609b2656d02596731b34ea42001753c08a5060690e70e8aaa",
+      "seed": 5480793303136962092,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.00030602891303526834,
+          "RMS": 0.00010186686024082176,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0004992244741204325,
+          "RMS": 0.0001498686789343137,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0010136913004395213,
+          "RMS": 0.0002174166158475393,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.0017854380946801076,
+          "RMS": 0.0003125663599298378,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.003949973124068092,
+          "RMS": 0.00045997289348713785,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.00015032007718030093,
+          "RMS": 4.951486532648317e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.00019068441512463182,
+          "RMS": 7.149472172078512e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-006.manifest.json",
+      "trace_manifest_sha256": "d56e14e7de47c8fbb73508a5759c24b0792f003f77e10dc924235ddef0576052",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-007",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-007/CPI-result.json",
+      "result_sha256": "e1831ddf18610ab2af56bb2a2d448281ca02b10d81c03c0969349e899e7e39d5",
+      "seed": 13008896790343389047,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0003346997288335636,
+          "RMS": 0.00010104204438119684,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.00051747600838521,
+          "RMS": 0.00014779650289496607,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.001042536800154387,
+          "RMS": 0.00021435396673036348,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.002072723591067146,
+          "RMS": 0.00030773698395975425,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.00434850507112011,
+          "RMS": 0.00045403351080138986,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0001404100364020755,
+          "RMS": 5.02463470093132e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0002081361913218336,
+          "RMS": 7.085020979589058e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-007.manifest.json",
+      "trace_manifest_sha256": "239e5d6e20298de68bc21d5989bb587a7115a7674299912165c06bf281689358",
+      "trace_readback": "PASS"
+    },
+    {
+      "CFAR_ambiguous_CUTs": 0,
+      "CFAR_changed_CUTs": 0,
+      "CFAR_outside_envelope_CUTs": 0,
+      "CUT_denominator": 2782,
+      "attempts": 1,
+      "cpi_id": "C06R2-LAB-008",
+      "g": 1,
+      "peak_coordinate_differences": 0,
+      "power_cells": 4096,
+      "power_mismatches": 0,
+      "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+      "result_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-LAB-008/CPI-result.json",
+      "result_sha256": "0c6483e1de016dbf7cf04d80e8cbddde1ee0337f8acc946729e5e824a494a2fd",
+      "seed": 4093538051797926354,
+      "stage_metrics": {
+        "FFT1": {
+          "MAX": 0.0002844966322252547,
+          "RMS": 0.00010024534891276428,
+          "approved_cap_MAX_RMS": 0.00468,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT2": {
+          "MAX": 0.0005573008188885147,
+          "RMS": 0.00014648958588144506,
+          "approved_cap_MAX_RMS": 0.01286,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT3": {
+          "MAX": 0.0010087393288439872,
+          "RMS": 0.00021171857298456768,
+          "approved_cap_MAX_RMS": 0.03267,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT4": {
+          "MAX": 0.001983269623199198,
+          "RMS": 0.0003033483999446462,
+          "approved_cap_MAX_RMS": 0.07926,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "FFT5": {
+          "MAX": 0.004163584867903708,
+          "RMS": 0.0004477924507513805,
+          "approved_cap_MAX_RMS": 0.18636,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MF": {
+          "MAX": 0.0001371798174412861,
+          "RMS": 4.92239612423072e-05,
+          "approved_cap_MAX_RMS": 0.00074,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        },
+        "MTI": {
+          "MAX": 0.0001950615100430777,
+          "RMS": 7.030442866133268e-05,
+          "approved_cap_MAX_RMS": 0.00147,
+          "cap_pass": true,
+          "oracle_mismatches": 0
+        }
+      },
+      "status": "PASS",
+      "trace_input_events": 0,
+      "trace_internal_events": 0,
+      "trace_manifest": "C06R2-LAB-008.manifest.json",
+      "trace_manifest_sha256": "c560caf5c815efa00457355dfedd49a89d4640a2982c635061eaa6a190e6cd05",
+      "trace_readback": "PASS"
+    }
+  ],
+  "prelock_sha256": "fb2adccd5365f60ceb0509de6121d9f97fe4ca9465bfc6173c3c18cf80c780ed",
+  "prior_16_CPI": {
+    "input_manifest_sha256": "59365ab6aadb1e2c9203415fe5f5b48b4d3298c9d9cb31c4c649f621ecadddb1",
+    "ledger_path": "engineering/s04_numeric/c06_16cpi_qualification_v1/attempt_ledger.json",
+    "ledger_sha256": "91655e63a84e185b8c6b947064a713f29474994661601b52318c2e99c91402ee",
+    "status": "ALL_INCONCLUSIVE_PRESERVED"
+  },
+  "project": "AX309-RDSP-001",
+  "recommended_C06_disposition": "ACCEPT_BOUNDED_A_TO_E_RESULTS_AFTER_INDEPENDENT_REVIEW",
+  "recommended_Gate_S04_disposition": "KEEP_OPEN_NO_GO_UNTIL_F_BLOCKERS_ARE_INDEPENDENTLY_SPECIFIED_AND_CLOSED",
+  "repair_runner_commit": "857c7909dd980021fdf7bcb6e9186db5ae3b493f",
+  "statistics": "NOT_RUN_NOT_CLAIMED",
+  "status": "PASS_BOUNDED_A_TO_E_EXECUTION_PENDING_INDEPENDENT_SIGNOFF",
+  "status_counts": {
+    "FAIL": 0,
+    "INCONCLUSIVE": 0,
+    "PASS": 16
+  }
+}

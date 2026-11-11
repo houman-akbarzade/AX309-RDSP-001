@@ -1,0 +1,316 @@
+{
+  "B_complete_integer_oracle_matches": true,
+  "D_historical_evidence_existing_reference": "engineering/s04_numeric/S04-C05-integrated-power-cfar-grouping-v1.0.json",
+  "D_historical_replay_file": "engineering/s04_numeric/c06_replacement_16cpi_inputs_v1/D-HISTORICAL-PHASE-INTERFERENCE-REPLAY-v1.0.json",
+  "D_historical_replay_sha256": "acbcb3c9ab5c7454f506107bde571b7094d82a3537fcf1d919298f397ec29a9c",
+  "D_historical_vectors_replayed_in_current_16_CPI_authorization": true,
+  "Float_fixed_C_and_D": {
+    "CFAR": {
+      "Float_0_to_fixed_1": 0,
+      "Float_1_to_fixed_0": 0,
+      "changed_CUT_count": 0,
+      "changed_OUTSIDE_envelope_FAIL": 0,
+      "changed_WITHIN_envelope_INCONCLUSIVE": 0,
+      "details_file": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/C06R2-NOISE-006/cfar_all_2782_CUTs.json",
+      "details_file_sha256": "f9a2bcc8541116157508a67882e94990db470893daa36ae8a605dabfcd067e67",
+      "total_CUT_denominator": 2782,
+      "unchanged_CUT_count": 2782
+    },
+    "grouping": {
+      "Fixed_cluster_count": 1,
+      "Float_cluster_count": 1,
+      "changed_peak_coordinates": [],
+      "historical_tie_exception_automatically_applied": false,
+      "peak_coordinate_symmetric_difference_count": 0
+    }
+  },
+  "acceptance_decision": "AWAIT_INDEPENDENT_REVIEW",
+  "all_A_stage_CAPs_pass": true,
+  "cpi_id": "C06R2-NOISE-006",
+  "fail_reasons": [],
+  "g": 5,
+  "global_denominator": 16,
+  "inconclusive_reasons": [],
+  "independent_stage_oracle_mismatch_count": 0,
+  "input_Q15_sha256": "7c6e4215819eec8db5efff2453de88d8b84e85b56847cd24f5123e15ae07b748",
+  "input_disposition_before_execution": "INPUT_READY_ONLY_PENDING_AUTHORIZATION_AND_RUNTIME_C06",
+  "input_source_sha256": "011484e5da053e3d7c7be6acfd432e439f4ee6b715a7bbc7a9435718c75139c3",
+  "integer_chain": {
+    "CUT_alarm_comparisons": 2782,
+    "CUT_margin_comparisons": 2782,
+    "CUT_training_comparisons": 2782,
+    "alarm_mismatches": 0,
+    "cluster_count": 1,
+    "cluster_record_mismatches": 0,
+    "independent_cluster_count": 1,
+    "margin_mismatches": 0,
+    "power_cell_count": 4096,
+    "power_mismatches": 0,
+    "training_mismatches": 0
+  },
+  "profile_denominator": 8,
+  "profile_id": "NOISE_ONLY_UNIT",
+  "source_quantization_decomposition": "reported stagewise; total MAX/RMS independently computed from paired complex differences",
+  "stage_errors_and_oracle": {
+    "FFT1": {
+      "Float_reference_sha256": "bd2cff7947ccfe7eda74281c29999bfc8799ac4877ff64e5804574e99f56002e",
+      "MAX_RMS_input_only": {
+        "MAX": 0.0013407710785254732,
+        "RMS": 0.0004790159664450274,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0011915591098778933,
+        "signed_Q_MAX": 0.0011354654818083176
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.0006738425207152668,
+        "RMS": 0.00024935115328631895,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0006393326947957689,
+        "signed_Q_MAX": 0.0005983111449090472
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.0017206691813895067,
+        "RMS": 0.0005397405970797538,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0016039420087050615,
+        "signed_Q_MAX": 0.0016386591898847058
+      },
+      "approved_cap_MAX_and_RMS": 0.02337,
+      "cap_pass": true,
+      "fixed_values_sha256": "c3967f5be7ce31059ce9f8b32b22a461e209a755944a3a48ee31bfe79d68c7ff",
+      "integer_components_compared": 8192,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "c3967f5be7ce31059ce9f8b32b22a461e209a755944a3a48ee31bfe79d68c7ff",
+      "quantized_input_Float_reference_sha256": "59acb0d80c25156523e55b6f607ac4cd84f27912fccc3e2ebaaf37348471620c",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 0,
+        "g": 5
+      }
+    },
+    "FFT2": {
+      "Float_reference_sha256": "cbca24a19a8e19d7f6a30fc14759c9b9f28e50d4fec0f520bba56b740d77ab13",
+      "MAX_RMS_input_only": {
+        "MAX": 0.0020540606315047486,
+        "RMS": 0.0006774308763398127,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.001603411999878901,
+        "signed_Q_MAX": 0.001811597073360094
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.001421976774808221,
+        "RMS": 0.0004496092361121858,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.00127698865801662,
+        "signed_Q_MAX": 0.001218081602246457
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.00244111277541173,
+        "RMS": 0.0008193607180084909,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.002083210073564601,
+        "signed_Q_MAX": 0.002293315233233173
+      },
+      "approved_cap_MAX_and_RMS": 0.06428,
+      "cap_pass": true,
+      "fixed_values_sha256": "e6ba010962d177ebc914473cf37f87dabb457775d7c5bf1d60dbf53f5879657f",
+      "integer_components_compared": 8192,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "e6ba010962d177ebc914473cf37f87dabb457775d7c5bf1d60dbf53f5879657f",
+      "quantized_input_Float_reference_sha256": "049d8aa7ede7031b40ba8023b8957cf3193e68e4e3058eac35c2bf699faba0a0",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 1,
+        "g": 5
+      }
+    },
+    "FFT3": {
+      "Float_reference_sha256": "e86f9b7f0031670287f740669df3dd2627c310545682121e1a6dc35d75641ebd",
+      "MAX_RMS_input_only": {
+        "MAX": 0.003159826024963559,
+        "RMS": 0.0009580319328900569,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0021665730782327586,
+        "signed_Q_MAX": 0.0026195600330165547
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.002475582352090827,
+        "RMS": 0.0007585414178814357,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0024639245655180275,
+        "signed_Q_MAX": 0.0021122000707975985
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.0033334923585028645,
+        "RMS": 0.00123124126734494,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0030837136097678908,
+        "signed_Q_MAX": 0.003263318280495753
+      },
+      "approved_cap_MAX_and_RMS": 0.16335,
+      "cap_pass": true,
+      "fixed_values_sha256": "75b3aea4f8680d3387e891c132e164ae0a5fb62d8d6fc64a243345be70ad4bff",
+      "integer_components_compared": 8192,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "75b3aea4f8680d3387e891c132e164ae0a5fb62d8d6fc64a243345be70ad4bff",
+      "quantized_input_Float_reference_sha256": "70ee6f5387e98638015d8cf39fc2ae0bbf4ffd14a0d2d9cda757289840269424",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 1,
+        "g": 5
+      }
+    },
+    "FFT4": {
+      "Float_reference_sha256": "0fe45037ad767208f6f34a9c2c7a2ef70608e1f36a68f4ad1ad5f394fafff003",
+      "MAX_RMS_input_only": {
+        "MAX": 0.004563786580596193,
+        "RMS": 0.0013548617526796354,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0034615043505752396,
+        "signed_Q_MAX": 0.0036136702687610267
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.004492334949300071,
+        "RMS": 0.0011664250957288656,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.004320760825848424,
+        "signed_Q_MAX": 0.003605286679892572
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.005584570718104003,
+        "RMS": 0.001800517193742403,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.004932240049029701,
+        "signed_Q_MAX": 0.005536334391209152
+      },
+      "approved_cap_MAX_and_RMS": 0.39629,
+      "cap_pass": true,
+      "fixed_values_sha256": "16f36f682d4d85e5a404c454e72f7fb32e66dffd5e330eb59f6fa8cd4e853acb",
+      "integer_components_compared": 8192,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "16f36f682d4d85e5a404c454e72f7fb32e66dffd5e330eb59f6fa8cd4e853acb",
+      "quantized_input_Float_reference_sha256": "81dd60ab09b314ca62e26419a3db106314c1911f81210b4b11eb3d97e77c1cae",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 2,
+        "g": 5
+      }
+    },
+    "FFT5": {
+      "Float_reference_sha256": "e2a14dc6c15bfb06cb35f891af751e9fc60962099d194268516b9ebe3947c12a",
+      "MAX_RMS_input_only": {
+        "MAX": 0.008589475218838452,
+        "RMS": 0.0019160638657801912,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0062703223483708825,
+        "signed_Q_MAX": 0.005966418862506373
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.006505492642463242,
+        "RMS": 0.0017746669736601367,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.00598869309077088,
+        "signed_Q_MAX": 0.005973424069019018
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.010529292440709555,
+        "RMS": 0.0026304619843473365,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.009050623624233367,
+        "signed_Q_MAX": 0.009769795942311532
+      },
+      "approved_cap_MAX_and_RMS": 0.93177,
+      "cap_pass": true,
+      "fixed_values_sha256": "b143a596b1f025d5ea8f5c2d44f7151c78dc7cc123a36f9d7e882ce22c4e211e",
+      "integer_components_compared": 8192,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "b143a596b1f025d5ea8f5c2d44f7151c78dc7cc123a36f9d7e882ce22c4e211e",
+      "quantized_input_Float_reference_sha256": "7893d399fd4f33e73bf78b4f4b695506da2bfb636e0743d0bacfaac0365caa0d",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 3,
+        "g": 5
+      }
+    },
+    "MF": {
+      "Float_reference_sha256": "6de36f2d3e5dba8a5788e86dc35fb306c6fdf4d0651ba96f8f727f4bd04093c8",
+      "MAX_RMS_input_only": {
+        "MAX": 0.0006861873003429105,
+        "RMS": 0.00024226317517558296,
+        "complex_samples": 4224,
+        "signed_I_MAX": 0.0006627380078745304,
+        "signed_Q_MAX": 0.0006647601504483625
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.00017681805799818777,
+        "RMS": 7.484675215701379e-05,
+        "complex_samples": 4224,
+        "signed_I_MAX": 0.0001746371949107317,
+        "signed_Q_MAX": 0.00017681795739976636
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.0007709634190287165,
+        "RMS": 0.0002532984471585458,
+        "complex_samples": 4224,
+        "signed_I_MAX": 0.0007557674061686726,
+        "signed_Q_MAX": 0.0007552009767781698
+      },
+      "approved_cap_MAX_and_RMS": 0.00366,
+      "cap_pass": true,
+      "fixed_values_sha256": "95507af7feb8b574cc1345cbc8047daafd5e4c3a24c626605003b95d936e77e9",
+      "integer_components_compared": 8448,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "95507af7feb8b574cc1345cbc8047daafd5e4c3a24c626605003b95d936e77e9",
+      "quantized_input_Float_reference_sha256": "a8cc49b05ea9c206d4c77d13dcf92f7e5b2596d0d9369110be340d2da76a056f",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 0,
+        "g": 5
+      }
+    },
+    "MTI": {
+      "Float_reference_sha256": "c2e977c9a952ce43ffd0d56e35b12da24010b27f4d067496f8c7205fee86fa39",
+      "MAX_RMS_input_only": {
+        "MAX": 0.0009413575265407639,
+        "RMS": 0.0003387154381699161,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0009281173884536642,
+        "signed_Q_MAX": 0.0008029788600625309
+      },
+      "MAX_RMS_processing_only": {
+        "MAX": 0.0002681680993148491,
+        "RMS": 0.00010636516725939808,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0002485133447152066,
+        "signed_Q_MAX": 0.00022928248037512589
+      },
+      "MAX_RMS_total": {
+        "MAX": 0.0010635499234926086,
+        "RMS": 0.00035505837614998497,
+        "complex_samples": 4096,
+        "signed_I_MAX": 0.0010296849888407067,
+        "signed_Q_MAX": 0.0009353322794272145
+      },
+      "approved_cap_MAX_and_RMS": 0.00731,
+      "cap_pass": true,
+      "fixed_values_sha256": "e2653e10367bbfa6a17e448956e1eab3e21866ec588f30b75fe798ebccee7931",
+      "integer_components_compared": 8192,
+      "oracle_first_bad_component": null,
+      "oracle_mismatched_components": 0,
+      "oracle_values_sha256": "e2653e10367bbfa6a17e448956e1eab3e21866ec588f30b75fe798ebccee7931",
+      "quantized_input_Float_reference_sha256": "50ec21a43dcb478679fc985221e6c6a130547267c903ee2932bf89c023dd9947",
+      "reconstruction_scale": {
+        "fft_cumulative_shift": 0,
+        "g": 5
+      }
+    }
+  },
+  "statistics": "NOT_PFA_PD",
+  "status": "PASS",
+  "trace_complete_ordered_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "trace_input_events": 0,
+  "trace_internal_events": 0,
+  "trace_manifest": "C06R2-NOISE-006.manifest.json",
+  "trace_manifest_sha256": "abf66835a31f1d94e4d8ec225a6f72e71500f7ecd628d06a55581c9307d30cae",
+  "trace_readback": "PASS"
+}

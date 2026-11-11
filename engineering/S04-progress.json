@@ -3,7 +3,7 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "C06R2 completed 16/16 A-E deterministic numeric PASS with independent real signoff pending; C07 existing evidence review completed but not independently approved; C08 NO-GO. Gate-S04 binding blockers REQ-SCR-01, REQ-RNG-03 and S04-C02-RISK-PERFORMANCE preserved. No new tests or S05 work in this update.",
+  "basis": "AI technical acceptance for C06R2 A–E recorded 2026-11-12 from owner-supplied decision, separate from authorized independent engineer sign-off. C06 official OPEN pending approval authority decision; C07 reviewed, pending independent approval; C08 NO-GO. REQ-SCR-01, REQ-RNG-03 and S04-C02-RISK-PERFORMANCE remain binding. No new tests.",
   "completed_count": 5,
   "criteria": [
     {
@@ -292,7 +292,13 @@
       "remaining_gate_dependency": "S04_C02_RISK_PERFORMANCE_STATISTICAL_QUALIFICATION_SEPARATE_FROM_C06R2",
       "separate_explicit_execution_authorization_required": true,
       "signoff_handoff": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md",
-      "status": "PASS_PENDING_INDEPENDENT_SIGNOFF"
+      "status": "PASS_PENDING_AUTHORIZED_SIGNOFF",
+      "ai_technical_decision": "TECHNICAL_ACCEPTANCE_A_TO_E_PASS",
+      "ai_technical_decision_date": "2026-11-12",
+      "ai_reviewer_identity": "ChatGPT — AI-based independent technical reviewer (declared in user-supplied decision)",
+      "ai_decision_provenance": "User-supplied decision dated 2026-11-12; not an authenticated human engineering signature",
+      "ai_decision_record": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md",
+      "authority_condition": "PENDING_OWNER_DETERMINATION_AI_SIGNOFF_ELIGIBILITY_OR_AUTHORIZED_HUMAN_SIGNOFF"
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
@@ -329,10 +335,10 @@
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
   "project_percent": 30.208333333333332,
-  "recorded_at_utc": "2026-11-11T20:56:38.638009+00:00",
+  "recorded_at_utc": "2026-11-11T21:05:04.049772+00:00",
   "stage": "S04",
   "stage_percent": 62.5,
-  "status": "C01_C05_PASS_C06R2_16_OF_16_PASS_PENDING_INDEPENDENT_SIGNOFF_C07_REVIEW_PENDING_C08_NO_GO",
+  "status": "C01_C05_PASS_C06R2_TECHNICALLY_ACCEPTED_PENDING_AUTHORIZED_SIGNOFF_C07_REVIEW_PENDING_C08_NO_GO",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

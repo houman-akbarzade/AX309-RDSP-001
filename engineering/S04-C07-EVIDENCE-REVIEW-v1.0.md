@@ -4,7 +4,7 @@
 
 - C01–C05: retain existing PASS decisions and frozen C02 architecture C, Q contracts, RNE and FFT shifts [0,1,0,1,1].
 - C06R2: accepted execution aggregate 16/16 PASS on approved noise-only and single-target laboratory input profiles; no new CPI has been run in this review.
-- C06: A–E execution success is PASS_PENDING_INDEPENDENT_SIGNOFF; no independent signature is present in this review.
+- C06: A–E execution success is PASS_PENDING_INDEPENDENT_SIGNOFF; AI technical acceptance (ChatGPT, 2026-11-12; user-supplied decision) is recorded in the existing C06 package; approval authority for official independent sign-off remains unresolved.
 - REQ-SCR-01 and REQ-RNG-03: binding OPEN per S02 and S04-C06 criterion F; neither is covered by C06R2.
 - S04-C02-RISK-PERFORMANCE: Gate-blocking until explicitly dispositioned; deterministic 16 CPI is not statistical Pfa/Pd qualification.
 - No new numeric evidence, algorithm changes or qualification claims are introduced.

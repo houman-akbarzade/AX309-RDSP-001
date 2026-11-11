@@ -51,3 +51,16 @@ This is deterministic numeric evidence for the two C01-approved populations. It 
 - Signature / authenticated approval record and date: **PENDING**
 
 Until completed by an actual independent reviewer, this section is not a signature and does not change the official C06 status.
+
+
+## AI technical acceptance decision — 2026-11-12 (separate from authorized sign-off)
+
+- **Declared reviewer identity:** ChatGPT — AI-based independent technical reviewer (as identified in the project owner's supplied decision).
+- **Decision provenance:** Decision text supplied by the project owner in the 2026-11-12 conversation; not a cryptographically authenticated reviewer signature, and not a human engineer sign-off.
+- **Declared decision:** TECHNICAL_ACCEPTANCE — C06 A–E PASS, bounded C06R2 scope only.
+- **Evidence cited in the decision:** replacement Aggregate, Evidence Manifest, Attempt Ledger and final execution report.
+- **Declared observations:** 16/16 CPI PASS; 112 stagewise checks PASS; 65,536 power, 44,512 CUT and 1,780,480 training-cell comparisons with zero reported mismatches; no reported saturation/overflow; one attempt per CPI; two historical D exceptions classified under the approved rule; 32 Trace scopes PASS.
+- **Verification boundary:** This entry records the supplied AI reviewer decision. It does not claim a newly performed independent file-by-file audit, new hash readback, new CPI execution, or a separate authenticated reviewer act.
+- **Official approval applicability:** PENDING AUTHORITY DETERMINATION. Existing project records require actual independent engineering sign-off; no explicit authority delegation permitting an AI-only approval to satisfy this criterion was found. Accordingly official S04-C06 remains OPEN / PASS_PENDING_AUTHORIZED_SIGNOFF, and progress is not incremented.
+- **Excluded:** REQ-SCR-01, REQ-RNG-03, statistical Fixed-Point Pfa/Pd, RTL, hardware and Gate-S04.
+- **Minimum unresolved decision:** project owner to decide/document whether AI technical acceptance satisfies the formally authorized independent sign-off role, or obtain an authorized human sign-off. No replacement CPI execution is needed.

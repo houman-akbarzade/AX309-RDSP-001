@@ -43,3 +43,32 @@
 2. **S04-C02-RISK-PERFORMANCE:** deterministic fixed-point agreement does not establish statistical Fixed-Point performance. The approved risk-disposition/change-control path or a minimum statistical qualification remains unresolved.
 
 **Gate decision:** NO-GO. C08 remains OPEN; S04 remains 7/8 = 87.5%; overall project progress remains 32.29%. No credit is added for documentation alone. Next work is REQ-RNG-03 only; no S05 work is started.
+
+
+## REQ-RNG-03 — existing evidence and minimum proposed qualification (not yet authorized)
+
+**Existing S02 decisions:** S01-Q03 provisionally accepted theoretical range resolution of about 600 m for a 250 kHz LFM bandwidth, with measurable acceptance criteria deferred to S02. S02-D06 explicitly separates single-target localization from two-target range resolution, requires integer-sample range estimation and reporting error in bins/metres, and does not require sub-sample interpolation. The approved S02 matrix still defines REQ-RNG-03 as a binding test: sweep paired targets around 600 m and measure resolved clusters. Its acceptance rule is still OPEN: freeze resolved-pair definition, equal received power and success criterion.
+
+**Existing Float evidence (development only):**
+- `engineering/S03_extended_boundary_multitarget_cases.json` contains `two_ranges_4bin` and `two_ranges_5bin`: equal-amplitude targets, same velocity 1.5 m/s, no added noise or clutter, zero relative phase, one deterministic scene each, and an uncalibrated CFAR alpha.
+- At 4-bin separation, only 1/2 truth targets were matched, 1 was missed, and 4 detections were unmatched. At 5 bins, the result was also 1/2 matched, 1 missed and 4 unmatched. These are developmental characterizations, not formal PASS/FAIL evidence.
+- The existing `same_speed_two_ranges` case resolved 2/2 targets at 20-bin separation, about 3 km; it does not establish resolution near 600 m.
+- No approved relative-phase sweep, target-amplitude envelope, formal association tolerance or quantitative success rule exists. No existing case closes REQ-RNG-03.
+
+**Physical reference:** theoretical resolution c/(2B) = 599.584916 m; one range sample c/(2Fs) = 149.896229 m. Thus 3, 4 and 5 samples correspond to 449.688687 m, 599.584916 m and 749.481145 m.
+
+**Minimum proposed deterministic Float/Fixed matrix (pending engineer approval):**
+- Two targets at range delays k1=40 and k2=40+delta-k, using delta-k values of 3, 4 and 5 samples. Both are within the valid range/CUT domain.
+- Equal received power means equal target-only input component power, measured separately before coherent summation, noise and Q1.15. Proposed amplitude is 0.18 for each target, reusing the existing C01 single-target lab amplitude; proposed input gain g=1.
+- Both targets use the same on-bin Doppler bin +4 (1.875 m/s nominal), with no noise and no clutter. This isolates range separability; it makes no statistical Pd/Pfa claim.
+- Set target 1 phase to 0 and target 2 relative phase to 0°, 90°, 180° and 270° at pulse 0. Total: 3 separations × 4 relative phases = 12 deterministic cases.
+- Use the existing S03 Float chain and approved S03 alpha 7.476912055027923. Feed the exact same generated IQ arrays to frozen C Fixed-Point with unchanged architecture C and FFT shifts [0,1,0,1,1]. Check C03 stage arithmetic oracle, C03 power/CFAR oracle and C05 independent grouping oracle.
+
+**Proposed quantitative resolved-pair rule (requires approval):**
+- For the nominal 4-bin and above-resolution 5-bin separations, require both Float and Fixed to produce two distinct target-associated cluster records, one-to-one with the two truths; each associated peak must be within ±1 range bin of its target and at Doppler bin +4. Require 8/8 cases to pass (4 phases at each of 4 and 5 bins).
+- The 3-bin/450 m cases are below nominal theoretical resolution and are characterization-only; report matched/missed/extra clusters and range errors, but do not count them as PASS/FAIL.
+- Additional clusters are reported separately and are not assigned an invented false-cluster limit. Any input clipping or internal/power overflow is a failure of that fixed-point case. Float/Fixed MAX/RMS and mask/record differences are reported; no unapproved numerical error tolerance is invented.
+
+**Only engineer decisions required before execution:** approve (1) the two-target amplitude 0.18 each and g=1 envelope, (2) noise-free/no-clutter and common Doppler +4, (3) the 3/4/5-bin spacing matrix and four relative phases, and (4) the ±1-bin one-to-one association rule and 8/8 pass criterion at 4/5 bins. These choices define a narrow deterministic resolution qualification only; they do not claim general performance over amplitude, SNR, Doppler or clutter populations.
+
+**Current status:** REQ-RNG-03 remains BINDING OPEN. No RNG scenario has been run under this proposal and no acceptance parameter has been changed. Await engineer approval before generating the 12 inputs or executing Float/Fixed.

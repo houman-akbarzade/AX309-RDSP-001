@@ -13,6 +13,12 @@ import subprocess
 import sys
 import traceback
 
+# Resolve imports against this repository, regardless of the launch directory.
+# No scientific-model or scorer source is modified by this bootstrap.
+BASE = Path(__file__).resolve().parent.parent
+# Prepend unconditionally so this repository wins over any external PYTHONPATH.
+sys.path.insert(0, str(BASE))
+
 import numpy as np
 import scipy
 from scipy.stats import beta
@@ -20,7 +26,6 @@ from scipy.stats import beta
 from s03_reference import model as m
 from s03_reference import pd_acceptance_candidate as pd
 
-BASE = Path(__file__).resolve().parent.parent
 OUTPUT = BASE / 'engineering' / 'S03-Pd-MAIN-1000CPI-v1'
 CONTRACT = BASE / 'engineering' / 'S03-Pd-independent-fixed-execution-contract-v0.3.json'
 SOURCE = (BASE / 's03_reference' / 'model.py')
@@ -42,6 +47,29 @@ def checkpoint_file(path, obj):
         f.flush()
         os.fsync(f.fileno())
     os.replace(tmp,path)
+
+def preflight():
+    """Read-only startup/source audit: no RNG, CPI, run marker, or main()."""
+    contract = json.loads(CONTRACT.read_text(encoding='utf-8'))
+    expected = contract['source_locked_SHA256']
+    assert Path(m.__file__).resolve() == SOURCE.resolve()
+    assert Path(pd.__file__).resolve() == SCORER.resolve()
+    assert sha(SOURCE) == expected['model']
+    assert sha(SCORER) == expected['pd_scorer']
+    assert sha(MATRIX) == expected['approved_S02_matrix']
+    assert sha(CONTRACT) == '602e4fe6132c4d8521b33c61a1c2cd413c3e75cc4325fe8b9bca6dea966bed5f'
+    assert pd.N == contract['N'] == 1000
+    assert pd.MASTER_SEED_RESERVED == contract['master_seed_reserved_not_used'] == 411091704
+    assert pd.ALPHA_FIXED == contract['alpha'] == 7.476912055027923
+    assert (pd.TRUTH_K, pd.TRUE_BIN, pd.TRUE_VELOCITY) == (40, 4, 1.875)
+    assert (pd.TARGET_AMPLITUDE, pd.TARGET_PHASE, pd.SNR_DB) == (0.18+0j, 0.0, 20.0)
+    assert (m.N, m.PULSES, m.FFT_N) == (128, 33, 32)
+    assert pd.min_success_count() == contract['min_successes_N1000'] == 916
+    assert contract['optional_joint_guard'].startswith('NOT_APPROVED')
+    assert not OUTPUT.exists(), 'main run output directory exists; preflight cannot assert untouched state'
+    print('PREFLIGHT PASS: repository import, frozen hashes, 916 threshold; 0 CPI; no seed use; no run marker')
+    return 0
+
 
 def main():
     # All source/contract checks take place BEFORE run marker and sampling.
@@ -179,4 +207,9 @@ def main():
     return 0 if disposition in ('PASS','FAIL') else 2
 
 if __name__=='__main__':
+    if sys.argv[1:] == ['--preflight']:
+        sys.exit(preflight())
+    if sys.argv[1:]:
+        raise SystemExit('Unsupported arguments. Use --preflight for zero-CPI audit.')
+    # Without --preflight this is the one-shot main attempt; never invoke in tests.
     sys.exit(main())

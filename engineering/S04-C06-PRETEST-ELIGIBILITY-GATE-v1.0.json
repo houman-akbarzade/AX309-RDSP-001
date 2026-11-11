@@ -12,6 +12,8 @@
       "g": 1
     }
   },
+  "C06_input_frozen_manifest": "engineering/S04-C06-FROZEN-RUNNER-ORACLE-INPUT-PREFLIGHT-v1.0.json",
+  "C06_input_frozen_manifest_sha256": "37f2c3fba1ecddb3ff54121e757e952415b46eb054c1275c740296a994dbc739",
   "D": "APPROVED_NARROW_EXACT_FLOAT_TIE_EXCEPTION",
   "E": "APPROVED_PRELOCKED_FIXED_DENOMINATOR_AND_CPI_DISPOSITIONS",
   "F": "NOT_APPROVED_BINDING_OPEN_BLOCKERS",
@@ -81,6 +83,8 @@
     1,
     1
   ],
+  "final_runner_smoke_evidence": "engineering/s04_numeric/c06_final_runner_smoke_v1/C06-PF08-REAL-RUNNER-SMOKE-001-summary.json",
+  "final_runner_smoke_evidence_sha256": "678777c87c7f4bb8866773d4eb80b1b8b5f35c7e6f57f279b8cc4e4ade0fa4a3",
   "fulltrace_adapter": "engineering/s04_numeric/s04_c06_fulltrace_capture_v1.py",
   "fulltrace_adapter_sha256": "f7ded485e4c169cd57ae965612c790354d098c3d7288a8c68866bcb224454c74",
   "fulltrace_engine_sources": {
@@ -90,6 +94,13 @@
     "v0_5": "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py",
     "v0_5_sha256": "8340563c88985ef1fd6efc735247704a1fa0a9ad3e39f4230d4e4090389c0a03"
   },
+  "fulltrace_final_runner": "engineering/s04_numeric/s04_c06_final_runner_v1.py",
+  "fulltrace_final_runner_sha256": "351209f907bff42d4435c2c1a9243634d2c1d20d38c2fba2d5efff9a608c4a27",
+  "fulltrace_final_runner_smoke_log": "engineering/S04-C06-RUNNER-SMOKE-UNIT-v1.0.log",
+  "fulltrace_final_runner_smoke_log_sha256": "2912c1928bba42b5c9dea2c9053b47b90db051831e901cad5209dbd9cac61fe3",
+  "fulltrace_final_runner_smoke_result": "3_OF_3_PASS_DIAGNOSTIC_ONLY_AND_FAIL_CLOSED",
+  "fulltrace_final_runner_smoke_test": "tests/test_s04_c06_final_runner_smoke_v1.py",
+  "fulltrace_final_runner_smoke_test_sha256": "fdec214a5b66b8c55df0feacc361b0dff3cd75fb2d4ff008447cd607fabe5480",
   "fulltrace_integration_smoke": {
     "C04_input_stress": {
       "engine_sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
@@ -257,9 +268,9 @@
   },
   "known_preflight_blockers": [
     {
-      "finding": "Software guard coverage and C06 streaming recorder are implemented and diagnostic smokes pass. Exact final C06 runner binding, independently authorized candidate CPI capture and independent review remain pending.",
-      "id": "S04-C02-RISK-FULL-OVERFLOW-TRACE",
-      "status": "OPEN_IMPLEMENTED_GUARD_COVERAGE_AND_DIAGNOSTIC_SMOKE_VERIFIED_C06_CANDIDATE_CPI_PENDING_INDEPENDENT_REVIEW"
+      "finding": "No independently authorized C06 candidate CPI bytes/source metadata and fixed planned N; no per-candidate analytic envelope and static headroom, independent oracle review/permission not complete. PF08 software infrastructure alone PASS.",
+      "id": "AUTHORIZATION_AND_INPUT_PRELOCK",
+      "status": "OPEN"
     }
   ],
   "overall_percent": 30.208333333333332,
@@ -303,7 +314,7 @@
     {
       "id": "PF-08",
       "mandatory": true,
-      "status": "GUARD_COVERAGE_AND_UNIT_DIAGNOSTIC_INTEGRATION_VERIFIED_C06_CANDIDATE_CPI_AND_INDEPENDENT_REVIEW_PENDING"
+      "status": "PASS_SOFTWARE_INFRASTRUCTURE_SCOPE_ONLY_RUNTIME_CPI_CONFIRMATION_REQUIRED"
     },
     {
       "id": "PF-09",
@@ -340,7 +351,7 @@
     "fixed_N_denominator_and_seed_separation",
     "stress_corpus_separation"
   ],
-  "preflight_status": "BLOCKED_C06_CANDIDATE_CPI_CAPTURE_AND_INDEPENDENT_REVIEW_PENDING",
+  "preflight_status": "BLOCKED_NO_APPROVED_CANDIDATE_SOURCE_N_HEADROOM_OR_EXECUTION_AUTHORIZATION",
   "project": "AX309-RDSP-001",
   "selected_C_contract": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
   "selected_C_contract_sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",

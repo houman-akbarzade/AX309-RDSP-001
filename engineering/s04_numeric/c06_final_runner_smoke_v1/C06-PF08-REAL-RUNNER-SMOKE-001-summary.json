@@ -1,0 +1,59 @@
+{
+  "FFT_shifts": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "PF08_runtime_C06_candidate_CPI_evidence": "PENDING_SEPARATE_EXECUTION_AUTHORIZATION",
+  "RTL_synthesis_FPGA_executed": false,
+  "acceptance_CPI_executed": 0,
+  "accepted_S03_seed_used": false,
+  "architecture": "C",
+  "complete_ordered_stream_sha256": "245a8612eacb0e59a506c3e779b79ca44c9b10b5a0f9af67646e820b7149347d",
+  "criterion": "S04-C06",
+  "disposition": "STRESS_ONLY",
+  "engine": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+  "envelope": {
+    "all_components_in_envelope": false,
+    "analytic_clip_count": 8448,
+    "bound": 1.000030517578125,
+    "finite": true,
+    "maximum_normalized_absolute_component": 1.2
+  },
+  "grouping": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+  "independent_C03_oracle": "engineering/s04_numeric/s04_c03_independent_oracle_v1.py",
+  "input": "existing C04 overrange_stress/g1, class DIAGNOSTIC_ONLY, no seed",
+  "input_IQ_component_count": 8448,
+  "input_IQ_le16_sha256": "978764e55c8177682ca17b5943644b996a459c42c0bfdc960bdcb502a21a8b4b",
+  "input_event_count": 8448,
+  "input_shape": [
+    33,
+    128
+  ],
+  "input_source_sha256": "28343c814de39dc1416b9f9613e37b41a36d7372fb5ba5d95247c22e84c99751",
+  "native_CFAR_alarm_count": 107,
+  "native_CFAR_valid_CUT": 2782,
+  "native_group_count": 1,
+  "native_mask_sha256": "74af88cb090b31ec54f78fae9fb8c30f0facffb12c30ca9a1bcf66ea628c1b18",
+  "native_power_sha256": "cf0b38140dbe760523949e0a70bb3607627906e334a57ebb71e0727bc2de3701",
+  "native_target_record_sha256": "a26cc853e4992bf3a4d58e20c423aba2e7127e2d3509fbe603214a1c4d624570",
+  "performance_eligible": false,
+  "processing_event_count": 0,
+  "project": "AX309-RDSP-001",
+  "readback_and_hash": "PASS",
+  "reason": [
+    "INPUT_ENVELOPE",
+    "INPUT_CLIPPING"
+  ],
+  "recorder_reused_unchanged": "engineering/s04_numeric/s04_c06_fulltrace_capture_v1.py",
+  "runner": "engineering/s04_numeric/s04_c06_final_runner_v1.py",
+  "scope": "PF08_SOFTWARE_INFRASTRUCTURE_SMOKE_ONLY",
+  "statistical_CPI_executed": 0,
+  "status": "PASS_DIAGNOSTIC_FULL_RUNNER_SMOKE",
+  "total_recorded_events": 8448,
+  "trace_manifest_filename": "C06-PF08-REAL-RUNNER-SMOKE-001.manifest.json",
+  "trace_manifest_sha256": "9f3f9873866629cb305e01005c421b92878c7c1387bf2924e1a103f75d7c6ea1",
+  "unique_event_ids": 8448
+}

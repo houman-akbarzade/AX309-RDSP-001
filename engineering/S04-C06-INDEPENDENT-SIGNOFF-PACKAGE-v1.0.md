@@ -40,3 +40,14 @@ This is deterministic numeric evidence for the two C01-approved populations. It 
 - REQ-SCR-01 and REQ-RNG-03: BINDING OPEN; neither is covered by this campaign.
 - Gate-S04: OPEN / NO-GO.
 - No change to C01–C05 or the frozen numeric baseline.
+
+## Independent reviewer sign-off (unfilled)
+
+- Reviewer identity and affiliation: **PENDING**
+- Independence/conflict declaration: **PENDING**
+- Evidence manifest SHA-256 reviewed: **PENDING REVIEWER READBACK**
+- Decision (PASS bounded A–E / REJECT / REQUEST CORRECTION): **PENDING**
+- Scope exclusions and open F obligations acknowledged: **PENDING**
+- Signature / authenticated approval record and date: **PENDING**
+
+Until completed by an actual independent reviewer, this section is not a signature and does not change the official C06 status.

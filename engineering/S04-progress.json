@@ -3,7 +3,7 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "Independent decision e8a89dd approved C06 A-E with binding conditions; F REQ-SCR-01 and REQ-RNG-03 remain OPEN Gate-S04 blockers. Current order documentation/preparation only, zero C06 acceptance tests. S04 5/8=62.5%, overall 30.2083%.",
+  "basis": "C06R2 completed 16/16 A-E deterministic numeric PASS with independent real signoff pending; C07 existing evidence review completed but not independently approved; C08 NO-GO. Gate-S04 binding blockers REQ-SCR-01, REQ-RNG-03 and S04-C02-RISK-PERFORMANCE preserved. No new tests or S05 work in this update.",
   "completed_count": 5,
   "criteria": [
     {
@@ -126,6 +126,7 @@
         "REQ-SCR-01",
         "REQ-RNG-03"
       ],
+      "F_status": "OPEN_REQ_SCR_01_AND_REQ_RNG_03_BINDING",
       "PF07_status": "PASS_STATIC_FOR_FROZEN_16_CPI_INPUTS",
       "PF08_final_runner": "engineering/s04_numeric/s04_c06_final_runner_v1.py",
       "PF08_final_runner_sha256": "351209f907bff42d4435c2c1a9243634d2c1d20d38c2fba2d5efff9a608c4a27",
@@ -133,19 +134,24 @@
       "PF08_smoke_tests_passed": 3,
       "PF08_status": "PASS_SOFTWARE_INFRASTRUCTURE_SCOPE_ONLY_RUNTIME_CPI_CONFIRMATION_REQUIRED",
       "PF09_status": "PASS_FLOAT_INPUT_PAIRING",
-      "PF10_status": "INDEPENDENT_C06_EXECUTION_PACKAGE_REVIEW_PENDING",
+      "PF10_status": "PRELOCK_EXECUTED_AND_EVIDENCE_COMPLETE_PENDING_INDEPENDENT_SIGNOFF",
       "RTL_synthesis_FPGA_authorized": false,
-      "acceptance_cpi_run": 0,
+      "acceptance_cpi_run": 16,
       "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
-      "acceptance_tests_run": 0,
+      "acceptance_evidence_review_status": "PENDING_INDEPENDENT_SIGNOFF",
+      "acceptance_tests_run": 16,
       "accepted_S03_seed_reuse_authorized": false,
       "approved_numeric_thresholds": true,
       "approved_scope": "A-E conditional only; C01 NOISE_ONLY_UNIT/g5 and SINGLE_TARGET_REFERENCE_LIKE_LAB/g1",
       "completed": false,
-      "current_order_execution_authorized": false,
+      "current_order_execution_authorized": true,
       "description": "Float-to-bittrue numeric error-budget acceptance",
+      "execution_campaign": "C06-REPLACEMENT-2026-11-11",
       "execution_contract": "engineering/S04-C06-EXECUTION-CONTRACT-v1.0.md",
       "execution_contract_sha256": "32313ded767d304f0cf053fe433042223105864fa506aee8adcd710d4e6ec840",
+      "execution_evidence_manifest": "engineering/s04_numeric/c06_replacement_16cpi_qualification_v1/S04-C06-REPLACEMENT-16CPI-FINAL-EVIDENCE-MANIFEST-v1.0.json",
+      "execution_result": "PASS_BOUNDED_A_TO_E_16_OF_16_REPLACEMENT",
+      "execution_result_report": "engineering/S04-C06-REPLACEMENT-16CPI-FINAL-REPORT-v1.0.md",
       "fulltrace_adapter": "engineering/s04_numeric/s04_c06_fulltrace_capture_v1.py",
       "fulltrace_adapter_sha256": "f7ded485e4c169cd57ae965612c790354d098c3d7288a8c68866bcb224454c74",
       "fulltrace_engine_sources": {
@@ -268,35 +274,50 @@
       "independent_criteria_decision": "decisions/S04-C06-CRITERIA-INDEPENDENT-DECISION-v1.0.md",
       "independent_decision_commit": "e8a89dd8472cfbbb4859f924c18ca8386709db44",
       "independent_decision_sha256": "5427ba6b7b66b8d21fc4f0178ccf557b49678e718ab0570727880f25166a144f",
-      "known_preflight_blockers": [
-        "C06-EXECUTION-INDEPENDENT-PERMISSION_AND_PF10_REVIEW_PENDING"
-      ],
-      "new_acceptance_tests_run": 0,
+      "independent_signoff": "PENDING_REAL_REVIEWER_SIGNATURE",
+      "known_preflight_blockers": [],
+      "new_acceptance_tests_run": 16,
       "no_acceptance_execution_before_engineer_approval": true,
+      "no_reexecution_of_16_CPI": true,
       "preapproval_analytic_evidence": "engineering/s04_numeric/S04-C06-proposed-analytic-stage-bounds-v0.1.json",
       "preapproval_criteria_package": "engineering/S04-C06-PREAPPROVAL-NUMERIC-ACCEPTANCE-CRITERIA-v0.1.md",
       "preflight_16CPI_fixed_denominator": 16,
       "preflight_16CPI_inconclusive": 0,
       "preflight_16CPI_package": "engineering/S04-C06-16CPI-EXECUTION-DECISION-PACKAGE-v1.0.json",
+      "preflight_16CPI_package_scope": "HISTORICAL_FIRST_CAMPAIGN_PRELOCK_RETAINED",
       "preflight_16CPI_ready_only": 16,
       "pretest_eligibility_gate": "engineering/S04-C06-PRETEST-ELIGIBILITY-GATE-v1.0.json",
       "pretest_eligibility_gate_sha256": "e5bee18a09461f57673fcb83c3774e35ab4b9f050d71b1fe2750561686360f82",
+      "prior_campaign_disposition": "16_OF_16_INCONCLUSIVE_PRESERVED_UNCHANGED",
+      "remaining_gate_dependency": "S04_C02_RISK_PERFORMANCE_STATISTICAL_QUALIFICATION_SEPARATE_FROM_C06R2",
       "separate_explicit_execution_authorization_required": true,
-      "status": "OPEN_A_TO_E_APPROVED_CONDITIONAL_EXECUTION_PENDING_F_BLOCKED"
+      "signoff_handoff": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md",
+      "status": "PASS_PENDING_INDEPENDENT_SIGNOFF"
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
       "completed": false,
       "description": "Reproducible corpus and independent evidence review",
+      "evidence_reuse": "NO_NEW_TESTS_C06R2_AND_C01_C05_LOCKED_EVIDENCE",
       "id": "S04-C07",
-      "status": "NOT_STARTED"
+      "remaining_condition": "FINAL_INDEPENDENT_REVIEW_OF_FROZEN_CORPUS_SEED_PROVENANCE_AND_C06_SIGNOFF",
+      "review_record": "engineering/S04-C07-EVIDENCE-REVIEW-v1.0.md",
+      "status": "EVIDENCE_REVIEW_COMPLETE_PENDING_INDEPENDENT_APPROVAL"
     },
     {
       "acceptance_evidence": "All preceding criteria evidenced; engineer issues explicit approval and preserves unresolved risks",
+      "acceptance_gate": "NO_GO_UNTIL_APPROVED_EVIDENCE_AND_ENGINEER_DISPOSITION",
+      "blocking_open_ids": [
+        "S04-C06-INDEPENDENT-SIGNOFF",
+        "REQ-SCR-01",
+        "REQ-RNG-03",
+        "S04-C02-RISK-PERFORMANCE"
+      ],
       "completed": false,
       "description": "Independent final S04 engineering Gate approval",
+      "gate_disposition": "engineering/S04-C08-GATE-DISPOSITION-v1.0.md",
       "id": "S04-C08",
-      "status": "NOT_STARTED"
+      "status": "GATE_EXIT_REVIEWED_NO_GO_BLOCKERS_OPEN"
     }
   ],
   "entry_authorization": "decisions/GATE-S03-approved-baseline.json",
@@ -308,10 +329,10 @@
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
   "project_percent": 30.208333333333332,
-  "recorded_at_utc": "2026-11-11T14:57:53.357132+00:00",
+  "recorded_at_utc": "2026-11-11T20:56:38.638009+00:00",
   "stage": "S04",
   "stage_percent": 62.5,
-  "status": "C01_C02_C03_C04_C05_PASS_C06_OPEN_A_TO_E_APPROVED_CONDITIONAL_F_BLOCKED",
+  "status": "C01_C05_PASS_C06R2_16_OF_16_PASS_PENDING_INDEPENDENT_SIGNOFF_C07_REVIEW_PENDING_C08_NO_GO",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

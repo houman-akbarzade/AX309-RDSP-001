@@ -1,9 +1,8 @@
 {
   "S02_deferred_open_obligations": [
-    "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "Owner/system engineer explicitly approved bounded C06 A–E with documented AI technical review and C07 existing evidence review on 2026-11-12. No independent human signature claimed. Three binding Gate-S04 blockers unchanged; C08 NO-GO. No tests rerun.",
+  "basis": "Engineer-system approved REQ-SCR-01 source definition and 11 deterministic cases on 2026-11-12; all 11 Float/Fixed cases PASS with C03 Fraction and C05 union-find oracles. SCR removed from Gate blockers. REQ-RNG-03 and S04-C02-RISK-PERFORMANCE remain binding; C08 NO-GO. No S04 criterion completion credit until C08 exit conditions are all met.",
   "completed_count": 7,
   "criteria": [
     {
@@ -123,10 +122,9 @@
     },
     {
       "F_open_blockers": [
-        "REQ-SCR-01",
         "REQ-RNG-03"
       ],
-      "F_status": "OPEN_REQ_SCR_01_AND_REQ_RNG_03_BINDING",
+      "F_status": "OPEN_REQ_RNG_03_BINDING",
       "PF07_status": "PASS_STATIC_FOR_FROZEN_16_CPI_INPUTS",
       "PF08_final_runner": "engineering/s04_numeric/s04_c06_final_runner_v1.py",
       "PF08_final_runner_sha256": "351209f907bff42d4435c2c1a9243634d2c1d20d38c2fba2d5efff9a608c4a27",
@@ -302,7 +300,9 @@
       "owner_approval_date": "2026-11-12",
       "owner_approval_role": "Project owner and system engineer (explicit user statement)",
       "signoff_mechanism": "Owner-authorized adoption of documented AI technical acceptance; no independent human signature",
-      "official_decision_document": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md"
+      "official_decision_document": "engineering/S04-C06-INDEPENDENT-SIGNOFF-PACKAGE-v1.0.md",
+      "REQ_SCR_01_disposition": "PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE",
+      "REQ_SCR_01_evidence": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-RESULTS-v1.0.json"
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
@@ -320,7 +320,6 @@
       "acceptance_evidence": "All preceding criteria evidenced; engineer issues explicit approval and preserves unresolved risks",
       "acceptance_gate": "NO_GO_UNTIL_APPROVED_EVIDENCE_AND_ENGINEER_DISPOSITION",
       "blocking_open_ids": [
-        "REQ-SCR-01",
         "REQ-RNG-03",
         "S04-C02-RISK-PERFORMANCE"
       ],
@@ -328,7 +327,10 @@
       "description": "Independent final S04 engineering Gate approval",
       "gate_disposition": "engineering/S04-C08-GATE-DISPOSITION-v1.0.md",
       "id": "S04-C08",
-      "status": "GATE_EXIT_REVIEWED_NO_GO_BLOCKERS_OPEN"
+      "status": "GATE_EXIT_REVIEWED_NO_GO_REQ_RNG_AND_FIXED_PERFORMANCE_OPEN",
+      "accepted_requirement_dispositions": {
+        "REQ-SCR-01": "PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE"
+      }
     }
   ],
   "entry_authorization": "decisions/GATE-S03-approved-baseline.json",
@@ -340,10 +342,10 @@
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
   "project_percent": 32.29166666666667,
-  "recorded_at_utc": "2026-11-11T21:14:51.969949+00:00",
+  "recorded_at_utc": "2026-11-11T21:32:27.588684+00:00",
   "stage": "S04",
   "stage_percent": 87.5,
-  "status": "C01_C07_PASS_C08_NO_GO_BINDING_SCR_RNG_FIXED_STATISTICS",
+  "status": "C01_C07_PASS_REQ_SCR_01_PASS_C08_NO_GO_REQ_RNG_AND_FIXED_STATISTICS_OPEN",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

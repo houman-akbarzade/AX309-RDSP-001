@@ -1,0 +1,3279 @@
+{
+  "acceptance_summary": {
+    "all_11_Float_Fixed_cluster_peak_coordinates_identical": true,
+    "all_11_fixed_no_internal_or_power_overflow": true,
+    "all_11_input_sets_no_saturation": true,
+    "all_11_scenarios_executed": true,
+    "all_9_target_scenarios_associated_in_float_and_fixed": true,
+    "all_fixed_arithmetic_stages_match_independent_C03_oracle": true,
+    "all_fixed_grouping_matches_independent_C05_union_find": true,
+    "all_fixed_power_cfar_match_independent_C03_oracle": true,
+    "both_clutter_only_scenarios_exact_zero_after_MTI_float_and_fixed": true
+  },
+  "architecture": "C",
+  "archives": {
+    "inputs": {
+      "arrays": 22,
+      "contains_float_and_exact_q1_15_iq": true,
+      "path": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-INPUTS-v1.0.npz",
+      "sha256": "be75904067c6f7204085d001a96d36077c89b7c18fe250a6945725966a6b3136"
+    },
+    "outputs": {
+      "arrays": 66,
+      "fft_values_in_original_amplitude_units": true,
+      "path": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-OUTPUTS-v1.0.npz",
+      "sha256": "17aa6b04e9823c34e9a0ead6fbb153fd82dd1d5f5e2e4b804b9c40c5847bcecc"
+    }
+  },
+  "cases": [
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.00383735360373016,
+          "RMS": 0.0004541952009019371,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00014616566084066596,
+          "RMS": 5.051989027253333e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.00019064734907236732,
+          "RMS": 7.139224598286394e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.5428801814978215,
+          "RMS": 0.013020826650417858,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": null,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.0,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": null,
+      "SCR_requested_dB": null,
+      "case_id": "SCR00_TARGET_NO_CLUTTER",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868682036,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83952859761,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899766370,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18877073,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64001736,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53743721,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186752,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114089,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931102,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.124336202105666,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510423277,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.203408923164129,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_no_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "016cf6dfdabd6073335a6acbe827502c4244a8a6ab1e622bda0866c80a73739f",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.0039345037458068145,
+          "RMS": 0.00045242497173620305,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00013403801613298227,
+          "RMS": 4.982727827250969e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.00022399482747692036,
+          "RMS": 7.033575950301119e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.5560594241114813,
+          "RMS": 0.01408896992877076,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": 10.0,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.0032399999999999994,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 0,
+      "SCR_requested_dB": 10.0,
+      "case_id": "SCR_PLUS10_PHASE_000",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868768669,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83952638650,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899688704,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18877073,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64001736,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53730962,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186752,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114091,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931105,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056664,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510423286,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.203408923164127,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "5529c65e4ac32ecf1bd8bce4827ec4853a0a4c93fe443659c21cbd193b69bbb4",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.004480259896402072,
+          "RMS": 0.0004526891292043247,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00013588556239978425,
+          "RMS": 4.98044895337263e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.00020125703147330382,
+          "RMS": 6.966009145371867e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.6330927650406011,
+          "RMS": 0.015513159616290862,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": 10.000000000000002,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.0032399999999999985,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 90,
+      "SCR_requested_dB": 10.0,
+      "case_id": "SCR_PLUS10_PHASE_090",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868659625,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83951346245,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899822277,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18854125,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64005316,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53742042,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.780807351867544,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114089,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931105,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056664,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.816106051042327,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.2034089231641283,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "057ed558ac34bca18b828623d4149355bc9e6fe0d2e4be8f936011fcc5bf9bab",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.004156897451241009,
+          "RMS": 0.00045315545701266735,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00013803493270555343,
+          "RMS": 4.967857459149766e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.00019304520329771978,
+          "RMS": 7.092679711327623e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.5879865924780461,
+          "RMS": 0.013910397179433974,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": 10.000000000000002,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.0032399999999999985,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 180,
+      "SCR_requested_dB": 10.0,
+      "case_id": "SCR_PLUS10_PHASE_180",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868659625,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83952103001,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899632801,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18865597,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64031753,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53743721,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186752,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114089,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931105,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056664,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510423286,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.2034089231641283,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "bb2d822126e6e89a3cd645c7e01e80230111dc3c466c1e4844c6e6c3e75de04a",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.004806670327520173,
+          "RMS": 0.0004561158325442473,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00014654008532482844,
+          "RMS": 5.0444423378745636e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.0002023910642209054,
+          "RMS": 7.134117485135858e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.678198699184577,
+          "RMS": 0.015847993149187486,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": 9.999999999999998,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.0032400000000000003,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 270,
+      "SCR_requested_dB": 10.0,
+      "case_id": "SCR_PLUS10_PHASE_270",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868659625,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83950589493,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899800516,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18853280,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64019426,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53750944,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186753,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114089,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931102,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.124336202105666,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.816106051042327,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.20340892316413,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "900b72400546168efc950be74ab114aeddad0518f1d6627a2e69c1a660c110b6",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.004702193532040919,
+          "RMS": 0.0004582635936603917,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00013938240569918653,
+          "RMS": 5.171299709532924e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.00019881574945492306,
+          "RMS": 7.15130571959316e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.6650196949894962,
+          "RMS": 0.0160482326339859,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": -10.0,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.32400000000000007,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 0,
+      "SCR_requested_dB": -10.0,
+      "case_id": "SCR_MINUS10_PHASE_000",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868659625,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83950810600,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899744609,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18857666,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64067141,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53770930,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.780807351867495,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114089,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931105,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056693,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510422913,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.2034089231641576,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "95bc9fe7a8f6a75c2bc2ba1983a7b1b7114d339363c87ecebda4e34c0465a160",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.004156897451255451,
+          "RMS": 0.000445674573194632,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00018355729840524115,
+          "RMS": 5.1359383093256825e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.0002764983069554391,
+          "RMS": 6.919314485207864e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.5879865924798651,
+          "RMS": 0.01443481607772779,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": -10.0,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.32399999999999995,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 90,
+      "SCR_requested_dB": -10.0,
+      "case_id": "SCR_MINUS10_PHASE_090",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868736557,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83952103001,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899766370,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18869140,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64031753,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53732653,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186751,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114091,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.63324753931097,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056584,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510423304,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.203408923164129,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "57301dc58612bfcd2c6fbea6d2b5d5f0a51997fccfcaf6b16a5f4532fabea51c",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.0043757854586230025,
+          "RMS": 0.00043976059232965107,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00014789683961738181,
+          "RMS": 5.1107189549371937e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.00020813039744232151,
+          "RMS": 6.811983307331307e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.6143447200711307,
+          "RMS": 0.014924205506510364,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": -10.0,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.32400000000000007,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 180,
+      "SCR_requested_dB": -10.0,
+      "case_id": "SCR_MINUS10_PHASE_180",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868682036,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83951660785,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899766370,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18842657,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64007109,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53696548,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186752,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114089,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.633247539311036,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056689,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510423166,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.203408923164149,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "50d389b685e4210c0bf9ade6e7576b5bc03d2c0d3978362b04fb68847b403ab6",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.004044077899954532,
+          "RMS": 0.00045535326379652437,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00014595162307339652,
+          "RMS": 5.163840204531599e-05,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.0002399306517351957,
+          "RMS": 7.07423418611996e-05,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.5692385475131232,
+          "RMS": 0.013847679341828326,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": -10.0,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.32400000000000007,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0324,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 270,
+      "SCR_requested_dB": -10.0,
+      "case_id": "SCR_MINUS10_PHASE_270",
+      "clutter_only_MTI_exact_zero": null,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [
+          [
+            27,
+            4
+          ],
+          [
+            40,
+            4
+          ],
+          [
+            53,
+            4
+          ],
+          [
+            65,
+            7
+          ],
+          [
+            66,
+            16
+          ],
+          [
+            107,
+            20
+          ]
+        ],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 18,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 6,
+        "clusters": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 868736557,
+            "range_bin": 27,
+            "range_m_exact_rational": [
+              8094396366,
+              2000000
+            ],
+            "record_id": 0,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 83952417541,
+            "range_bin": 40,
+            "range_m_exact_rational": [
+              11991698320,
+              2000000
+            ],
+            "record_id": 1,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 899744609,
+            "range_bin": 53,
+            "range_m_exact_rational": [
+              15889000274,
+              2000000
+            ],
+            "record_id": 2,
+            "signed_doppler_bin": 4,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              1200000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 18869989,
+            "range_bin": 65,
+            "range_m_exact_rational": [
+              19486509770,
+              2000000
+            ],
+            "record_id": 3,
+            "signed_doppler_bin": 7,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              2100000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 64001736,
+            "range_bin": 66,
+            "range_m_exact_rational": [
+              19786302228,
+              2000000
+            ],
+            "record_id": 4,
+            "signed_doppler_bin": -16,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -4800000000,
+              640000000
+            ]
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "max_equal_power_cells": 1,
+            "power_stored_integer": 53723741,
+            "range_bin": 107,
+            "range_m_exact_rational": [
+              32077793006,
+              2000000
+            ],
+            "record_id": 5,
+            "signed_doppler_bin": -12,
+            "tie_flag": false,
+            "velocity_m_s_nominal_rational": [
+              -3600000000,
+              640000000
+            ]
+          }
+        ],
+        "fixed_target_associated": true,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 18,
+        "cluster_count": 6,
+        "target_associated": true,
+        "targets": [
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 51.78080735186753,
+            "range_bin": 27,
+            "range_m_exact": 4047.198183,
+            "record_id": 0,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 5,
+            "doppler_bin": 4,
+            "power_linear": 5004.523264114091,
+            "range_bin": 40,
+            "range_m_exact": 5995.84916,
+            "record_id": 1,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 4,
+            "doppler_bin": 4,
+            "power_linear": 53.633247539311064,
+            "range_bin": 53,
+            "range_m_exact": 7944.500137,
+            "record_id": 2,
+            "velocity_m_s_nominal": 1.875
+          },
+          {
+            "cluster_cells": 1,
+            "doppler_bin": 7,
+            "power_linear": 1.1243362021056722,
+            "range_bin": 65,
+            "range_m_exact": 9743.254885,
+            "record_id": 3,
+            "velocity_m_s_nominal": 3.28125
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 16,
+            "power_linear": 3.8161060510423286,
+            "range_bin": 66,
+            "range_m_exact": 9893.151114,
+            "record_id": 4,
+            "velocity_m_s_nominal": -7.5
+          },
+          {
+            "cluster_cells": 2,
+            "doppler_bin": 20,
+            "power_linear": 3.203408923164133,
+            "range_bin": 107,
+            "range_m_exact": 16038.896503,
+            "record_id": 5,
+            "velocity_m_s_nominal": -5.625
+          }
+        ]
+      },
+      "float_clutter_only_MTI_exact_zero": null,
+      "kind": "target_plus_clutter",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "d281be3df7467c0fdd155c27ce4873220bc86d5cf2aa32f97a61c034395f8d49",
+        "seed_for_target_noise": 20261112,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.0,
+          "RMS": 0.0,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.00013822746141845918,
+          "RMS": 0.000130314593665501,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.0,
+          "RMS": 0.0,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": null,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.0032399999999999994,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 0,
+      "SCR_requested_dB": 10.0,
+      "case_id": "CLUTTER_ONLY_PLUS10",
+      "clutter_only_MTI_exact_zero": true,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 0,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 0,
+        "clusters": [],
+        "fixed_target_associated": false,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 0,
+        "cluster_count": 0,
+        "target_associated": false,
+        "targets": []
+      },
+      "float_clutter_only_MTI_exact_zero": true,
+      "kind": "clutter_only",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "620b16f1472f81255aca0f29b4ae02fd66e4b187bb8d5ee1e2e10b343247f75a",
+        "seed_for_target_noise": null,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "Float_vs_Fixed_original_amplitude_error": {
+        "FFT_final_original_amplitude": {
+          "MAX": 0.0,
+          "RMS": 0.0,
+          "count": 4096
+        },
+        "MF": {
+          "MAX": 0.0001631282236989757,
+          "RMS": 0.00013842265859848423,
+          "count": 4224
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0,
+          "count": 4096
+        },
+        "power_final_original_units": {
+          "MAX": 0.0,
+          "RMS": 0.0,
+          "count": 4096
+        }
+      },
+      "SCR_measured_dB": null,
+      "SCR_measurement": {
+        "clutter_power_mean_before_noise_quantization": 0.32400000000000007,
+        "note": "SCR uses only the single target range cell k=40, averaged over 33 pulses; [40,56) is output diagnostics only.",
+        "output_diagnostic_range_support": [
+          40,
+          56
+        ],
+        "pulse_indices": [
+          0,
+          32
+        ],
+        "target_power_mean_before_noise_quantization": 0.0,
+        "target_range_cell": 40
+      },
+      "SCR_phase_offset_deg_at_target_cell_pulse0": 0,
+      "SCR_requested_dB": -10.0,
+      "case_id": "CLUTTER_ONLY_MINUS10",
+      "clutter_only_MTI_exact_zero": true,
+      "fixed": {
+        "C03_power_Cfar_oracle": "PASS_ALL_4096_POWER_AND_2782_CUTS",
+        "C05_independent_union_find_grouping": "PASS",
+        "Fixed_cluster_peak_coordinates": [],
+        "Float_Fixed_cluster_peak_coordinates_identical": true,
+        "Float_cluster_peak_coordinates": [],
+        "bittrue_independent_C03_oracle": {
+          "FFT1": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT2": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT3": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT4": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "FFT5": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          },
+          "MF": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8448,
+            "mismatch_count": 0
+          },
+          "MTI": {
+            "first_mismatch_index": null,
+            "integer_component_count": 8192,
+            "mismatch_count": 0
+          }
+        },
+        "cfar_alarm_count": 0,
+        "changed_CUT_count_vs_Float": 0,
+        "cluster_count": 0,
+        "clusters": [],
+        "fixed_target_associated": false,
+        "internal_overflow_by_site": {},
+        "internal_overflow_count": 0,
+        "power_overflow_count": 0
+      },
+      "float": {
+        "cfar_alarm_count": 0,
+        "cluster_count": 0,
+        "target_associated": false,
+        "targets": []
+      },
+      "float_clutter_only_MTI_exact_zero": true,
+      "kind": "clutter_only",
+      "source": {
+        "dtype": "complex128",
+        "gain_g": 1,
+        "input_saturation_count": 0,
+        "input_sha256_float_c128_little_endian": "1a728a2c9ba4e9d4d84d4d5041beacfb0e3d1cbd90e39d26a200f8339fad0bcd",
+        "seed_for_target_noise": null,
+        "shape": [
+          33,
+          128
+        ]
+      },
+      "status": "PASS"
+    }
+  ],
+  "decision_basis": "Engineer-system approval 2026-11-12; SCR measured at target range cell 40 over 33 pulses before noise and Q1.15; range [40,56) is diagnostic output support only.",
+  "engineer_approval": {
+    "approved_parameters": {
+      "SCR_conditions_dB": [
+        10,
+        -10,
+        "no_clutter"
+      ],
+      "SCR_measurement": "single target range cell k=40; mean power over 33 pulses; before noise and Q1.15",
+      "clutter_model": "stationary coherent complex clutter",
+      "generator_tolerance_dB": 0.1,
+      "isolated_stationary_clutter_MTI_output": "exactly_zero",
+      "output_monitoring_range_cells": [
+        40,
+        55
+      ],
+      "relative_phase_offsets_deg": [
+        0,
+        90,
+        180,
+        270
+      ]
+    },
+    "authority": "Project system engineer",
+    "date": "2026-11-12",
+    "execution_authorization": "Explicitly granted in the engineer instruction on 2026-11-12",
+    "title": "Engineer system approval"
+  },
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "3.14.4",
+    "utc": "2026-11-11T21:27:27.080685+00:00"
+  },
+  "execution_notes": [
+    "A preliminary runner invocation stopped in the reporting layer while converting the power map to original units (Python list/scalar type mismatch); it produced no archived result or acceptance record and no DUT/oracle mismatch was reported.",
+    "The reporting conversion was corrected. The complete 11-case run then finished with exit code 0 and all acceptance checks true. The final evidence and hashes below refer only to that completed run.",
+    "Post-run evidence normalization: the initial result report applied an extra 1/8 factor to the Float FFT diagnostic. The archived Float FFT outputs were rescaled by 8 to original-amplitude units and the diagnostic MAX/RMS values recalculated from the already archived Float/Fixed arrays. Exact Q1.15 input codes were materialized from the archived Float IQ using the approved C03 input-pack oracle; Float/Fixed cluster-peak coordinate equality was checked against the archived cluster records. No signal-chain or oracle campaign was rerun for these report/archive corrections."
+  ],
+  "fft_shifts": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "fixed_reconstruction_note": "FFT Fixed-Point is reconstructed as g*8*code/32768 and compared against the unscaled S03 DFT output; archived Float and Fixed FFT arrays are both in original-amplitude units.",
+  "gain_g": 1,
+  "overall": "PASS_11_OF_11",
+  "project": "AX309-RDSP-001",
+  "reproducible_runner_source": {
+    "note": "Final reproducible runner with corrected original-amplitude FFT comparison, Q1.15 input archiving and cluster-peak equality check. The already completed signal-chain run was not repeated for these report/archive refinements.",
+    "path": "engineering/s04_numeric/s04_c08_req_scr01_qualification_v1.py",
+    "sha256": "bfd64e2c878ea4ff1b76aa23f0d022328f0e0cee36bc590bfdef389e5f9bb77b"
+  },
+  "requirement": "REQ-SCR-01",
+  "seed": 20261112,
+  "seed_reused_across_target_cases_for_paired_noise": true,
+  "source_model": "s03_reference.model.generate_cpi; no Float model changes"
+}

@@ -1,45 +1,45 @@
 # AX309-RDSP-001 | S04-C08 Gate Disposition v1.0
 
-**Disposition:** NO-GO / Gate-S04 remains OPEN. This is a documented gate review, not an approval to waive requirements.
+**Current disposition: OPEN / NO-GO.** C01–C07 remain accepted in their approved scopes. REQ-SCR-01 is now closed by the engineer-approved, 11-scenario Float/Fixed qualification below. C08 remains incomplete because REQ-RNG-03 and S04-C02-RISK-PERFORMANCE are still binding Gate-S04 blockers.
 
-## Gate-S04 exit review
+## REQ-SCR-01 — engineer decision and qualification
 
-The approved S02 requirement matrix and subsequent S04 decisions retain binding obligations that must be closed before Gate-S04. In particular:
+**Approval authority:** Project system engineer, explicit decision supplied 2026-11-12. The engineer approved SCR +10 dB, −10 dB and no-clutter cases; generator tolerance ±0.1 dB; stationary coherent complex clutter; relative phases 0°, 90°, 180° and 270°; and exact-zero MTI output only for the isolated stationary-clutter controls. Execution was expressly authorized. No Float model, architecture, coefficient, numeric contract or FFT schedule change was made.
 
-- REQ-SCR-01 is a binding requirement for SCR +10 dB and −10 dB plus a no-clutter condition. Its measurement region and generator tolerance remain open; no clutter source envelope or C01-authorised clutter population is approved.
-- REQ-RNG-03 is a binding requirement for two equal-power targets around 600 m range separation. The equal-power convention, relative-phase coverage, spacing sweep, truth-to-cluster association and quantitative resolved-pair success metric remain open.
-- S04-C02-RISK-PERFORMANCE is marked blocking_Gate_S04=true in the approved residual-obligations record. C06R2 is a 16-CPI deterministic numerical qualification, not fixed-point statistical Pfa/Pd qualification. No statistical claim is inferred from it.
-- C06 A–E has an AI technical acceptance decision (ChatGPT, dated 2026-11-12, supplied by the owner and recorded in the existing C06 package). An authorized independent engineering sign-off or explicit owner-approved delegation to AI is not documented; official C06 PASS remains unavailable.
+**Corrected measurement definition:**
+- Target range cell: k=40.
+- SCR is the ratio of target-only to clutter-only mean power at that single range cell, averaged over all 33 pulses, before noise addition and Q1.15 quantization.
+- Range cells [40,56) are output-monitoring support only; they are not the SCR measurement region.
+- Clutter phase offsets are defined relative to the target's first sample at k=40, pulse 0. The target Doppler phase then evolves naturally at bin +4.
+- Approved target profile: k=40, Doppler +4, amplitude 0.18, initial phase 0, input SNR 20 dB, g=1. The same deterministic noise realization is paired across the nine target cases.
 
-The original S02 ownership of REQ-SCR-01 and REQ-RNG-03 remains S03. The approved forward responsibilities remain S04-C02 for numeric coverage design and S04-C06 for independent qualification. No owner or requirement is removed by this review.
+**Executed scenarios:** one no-clutter target control; four phases at SCR +10 dB; four phases at SCR −10 dB; and one isolated clutter-only control at each SCR level. Total 11. The clutter-only controls have no target and no added noise.
 
-## Minimum closure work
+**Results:**
+- All 11 scenarios completed PASS.
+- Maximum measured SCR deviation: 1.78e-15 dB, within ±0.1 dB.
+- All nine target scenarios: target correctly associated at (range 40, Doppler +4) in both Float and Fixed.
+- Float and Fixed cluster-peak coordinates identical in all 11 cases; changed CFAR CUTs: zero.
+- Both isolated clutter-only cases: exactly zero MTI output in Float and Fixed; zero CFAR clusters.
+- Input saturation: zero across all 11 inputs.
+- Fixed internal arithmetic and power overflow: zero across all 11 cases.
+- Independent C03 Fraction oracle: zero integer mismatches in MF (8,448 components), MTI (8,192), and each of FFT1–FFT5 (8,192 per stage), for every case.
+- Independent C03 oracle: all 4,096 power cells and 2,782 valid CFAR CUT decisions per case PASS.
+- Independent C05 union-find grouping oracle: PASS for all cases.
 
-1. Determine whether the recorded AI technical acceptance is an authorized independent sign-off under the project contract; otherwise obtain an authorized human sign-off on C06R2. Do not rerun its 16 CPI.
-2. For REQ-SCR-01, freeze the active-support measurement region, generator tolerance, clutter amplitude/phase/statistical envelope, no-clutter control, authorised source profile and numerical headroom conditions; then obtain a separate test authorization and independent evidence.
-3. For REQ-RNG-03, freeze equal received-power definition, target amplitude envelope, relative-phase sweep, fixed range-separation sweep around 600 m, truth-to-cluster association and resolved-pair metric; then obtain a separate test authorization and independent evidence.
-4. Obtain an explicit engineer disposition of the still-blocking fixed-point performance obligation. The C06R2 deterministic corpus cannot substitute for statistical qualification.
-5. Re-run the Gate-S04 exit checklist only after the above evidence and requirement dispositions are independently accepted.
+**Float/Fixed diagnostic errors in original-amplitude units (maximum across cases):** MF MAX 1.836e-4, RMS 1.384e-4; MTI MAX 2.765e-4, RMS 7.151e-5; final FFT MAX 4.807e-3, RMS 4.583e-4. Power MAX difference 0.6782 and RMS 0.01605 in original power units. No separate numeric Float/Fixed error threshold was approved for this requirement; these values are reported, not used to invent a new tolerance. Each target-present case yielded six clusters in both models, with identical peak coordinates. A separate false-cluster/Pfa threshold was not part of this SCR approval, so this deterministic run makes no Pfa/Pd claim.
 
-## REQ-SCR-01 — existing evidence and minimum closure proposal (2026-11-12)
+**Evidence:**
+- Reproducible runner: `engineering/s04_numeric/s04_c08_req_scr01_qualification_v1.py` (SHA-256 `bfd64e2c878ea4ff1b76aa23f0d022328f0e0cee36bc590bfdef389e5f9bb77b`)
+- Result and per-case trace: `engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-RESULTS-v1.0.json` (SHA-256 `8039f7cb5b975059ffbbf379d85a740f06cba88447a008952f26c76f2ab2fc2a`)
+- Exact Float and Q1.15 input arrays: `engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-INPUTS-v1.0.npz` (SHA-256 `be75904067c6f7204085d001a96d36077c89b7c18fe250a6945725966a6b3136`)
+- Float and Fixed stage output arrays: `engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-OUTPUTS-v1.0.npz` (SHA-256 `17aa6b04e9823c34e9a0ead6fbb153fd82dd1d5f5e2e4b804b9c40c5847bcecc`)
 
-**Existing approved decisions:** S01-D15 approves the initial simple stationary clutter class with pulse-to-pulse fixed phase; broader temporally correlated clutter is a separate later case. S01-D18 approves weak/strong clutter relative to target and a no-clutter baseline, with numeric SCR deferred to S02. S02-D20 binds the three source conditions: no clutter, SCR +10 dB and SCR −10 dB, defined by target-echo power divided by clutter power at receiver input over a specified region. S02-D02 requires stationary-clutter suppression and moving-target MTI response; its finite-precision suppression threshold remains OPEN. C01's approved single-target lab profile is k=40, Doppler +4, amplitude 0.18, phase 0, SNR 20 dB, no clutter, g=1. It does not authorize clutter as an input population.
+**Decision: REQ-SCR-01 = PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE.** The approved scope is limited to this stationary, uniform, coherent clutter envelope and the 11 specified cases. It does not qualify wider correlated/heterogeneous clutter, statistical Pfa/Pd, or other target/source populations.
 
-**Float-model evidence:** `s03_reference/model.py::generate_cpi` accepts a 128-element complex stationary clutter profile repeated identically over all 33 pulses. `s03_reference/extended_scenarios.py` contains developmental ±10 dB clutter examples, but those are three-target cases, not approved REQ-SCR qualification. `tests/test_s03_qualification_and_clutter.py` contains a source-level SCR power-definition check and a stationary-clutter MTI cancellation unit test; neither closes the full requirement. The generator capability exists; no Float algorithm change is needed. No scenario was executed for this disposition.
+## Remaining Gate-S04 blockers
 
-**Minimum proposed source scenarios (pending engineer approval):** use the already approved single-target k=40, Doppler +4, amplitude 0.18, phase 0, SNR 20 dB and g=1 profile as the matched no-clutter control. Add stationary uniform complex clutter, constant over range and identical across pulses. Define SCR before noise addition and before Q1.15 quantization as the ratio of target-only to clutter-only mean power over the same active-echo support: all 33 pulses × 16 samples at range indices [40,56). Proposed clutter amplitudes are 0.0569209979 for +10 dB and 0.5692099788 for −10 dB. For phase sensitivity, use four fixed clutter-to-target phase offsets 0°, 90°, 180°, 270° for each nonzero SCR. Add one clutter-only control at each SCR level to verify stationary cancellation. Total: 1 no-clutter target control + 8 target/clutter cases + 2 clutter-only controls = 11 deterministic cases. Use a newly predeclared seed, paired identically across target/no-clutter comparisons, not a seed from an accepted S03 campaign.
+1. **REQ-RNG-03:** equal-power two-target resolution near 600 m. The approved model and numeric criteria still require the relative-phase/separation cases and quantitative resolved-pair rule to be frozen before execution.
+2. **S04-C02-RISK-PERFORMANCE:** deterministic fixed-point agreement does not establish statistical Fixed-Point performance. The approved risk-disposition/change-control path or a minimum statistical qualification remains unresolved.
 
-**Expected Float outputs:** the clutter-only pulse-compressed response is identical pulse-to-pulse and its ideal MTI difference is zero; the target-plus-clutter cases retain the target at range index 40 and Doppler bin +4, with output compared to the paired no-clutter Float control. Record SCR measured from separately retained source components, all Float stage outputs, peak/detection/cluster association, and the deviation from the no-clutter control. No statistical Pfa/Pd or wider correlated-clutter claim follows.
-
-**Proposed Fixed-Point PASS/FAIL:** use the exact same frozen IQ inputs and g=1. Require no input clipping or internal saturation/overflow; exact zero post-MTI clutter-only output for the stationary deterministic controls; at least one correctly associated target record at range index 40 and Doppler bin +4 in each mixed case; report every unmatched/extra cluster without assigning an SCR-specific failure threshold that S02 has not approved; report stagewise Float-vs-Fixed MAX/RMS and mask/record differences. The numeric suppression threshold for non-ideal clutter and any nonzero Float/Fixed error tolerance are not approved by existing S02 decisions and must not be inferred from this proposal.
-
-**Only unresolved engineer decisions for SCR:** (1) approve the measurement region [33 pulses × 16 active samples at k=40] and pre-noise/pre-quantization component-power definition; (2) approve generator tolerance ±0.1 dB; (3) approve the stationary-uniform clutter source profile, four phase offsets and its limited scope (not correlated/heterogeneous clutter); (4) approve the finite-precision suppression rule as exact zero for the clutter-only stationary controls, and the exact functional target/cluster checks above as the SCR Fixed-Point acceptance rule. Until these are approved, no SCR scenario is run and REQ-SCR-01 remains OPEN.
-
-## Decision
-
-C08 remains NO-GO / OPEN. REQ-SCR-01 is still binding and unexecuted; this section records existing decisions, Float-model capability and a minimum proposal only. No acceptance parameter was changed, no test was run, and no progress credit is claimed.
-
-
-## Updated disposition after explicit engineer-owner C06/C07 approval — 2026-11-12
-
-C06 A–E and C07 are officially accepted by the project owner acting as system engineer, using the documented scoped ChatGPT AI technical review for C06 and pre-existing reviewed corpus for C07. No independent human signature or repeat qualification is claimed. Earlier C06/C07 pending-status text is historical. **Current blocking Gate-S04 requirements are only REQ-SCR-01, REQ-RNG-03 and S04-C02-RISK-PERFORMANCE**; all remain binding. Gate-S04 stays OPEN / NO-GO, C08 stays incomplete. No statistical, clutter or paired-target tests are authorized by this update.
+**Gate decision:** NO-GO. C08 remains OPEN; S04 remains 7/8 = 87.5%; overall project progress remains 32.29%. No credit is added for documentation alone. Next work is REQ-RNG-03 only; no S05 work is started.

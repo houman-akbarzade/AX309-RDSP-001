@@ -1,10 +1,10 @@
 {
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "execution_status": {
-    "design": "C01–C07 PASS in approved bounded scopes. C06 AI technical review ratified by project owner/system engineer; C07 existing evidence review approved. Gate-S04 remains NO-GO.",
+    "design": "C01–C07 PASS in approved bounded scopes. REQ-SCR-01 PASS in the engineer-approved 11-case Float/Fixed scope. REQ-RNG-03 and Fixed-Point statistical performance remain Gate-S04 blockers; C08 NO-GO.",
     "hardware_test": "not_executed",
     "implementation": "S05 preliminary RTL files exist, not yet verified by HDL simulation/synthesis; no additional S05 work in this update",
-    "python_simulation": "S03 approved Float Pfa/Pd in specified scope; S04 C06R2 16/16 bounded Fixed/Float numerical qualification PASS; no Fixed stochastic Pd/Pfa qualification",
+    "python_simulation": "S03 approved Float Pfa/Pd in specified scope; S04 REQ-SCR-01 11-case Float/Fixed deterministic qualification PASS against independent C03/C05 oracles; no Fixed stochastic Pd/Pfa qualification.",
     "rtl_simulation": "not_executed",
     "synthesis": "not_executed"
   },
@@ -14,7 +14,7 @@
     "fpga": "XC6SLX9-2FTG256C",
     "toolchain": "ISE 14.7 (user reported, unverified)"
   },
-  "last_review_at_utc": "2026-11-11T21:14:51.969949+00:00",
+  "last_review_at_utc": "2026-11-11T21:32:27.588684+00:00",
   "mode": "Standalone",
   "note": "This JSON-compatible YAML is deliberately serialized as JSON, which YAML 1.2 accepts.",
   "progress": {
@@ -39,14 +39,13 @@
     "C06_ready_input_CPI": 16,
     "C06_status": "PASS_BOUNDED_A_TO_E_OWNER_APPROVED_AI_REVIEW",
     "C07_status": "PASS_OWNER_ENGINEER_EXISTING_EVIDENCE_REVIEW",
-    "C08_status": "GATE_EXIT_REVIEWED_NO_GO_BLOCKERS_OPEN",
+    "C08_status": "GATE_EXIT_REVIEWED_NO_GO_REQ_RNG_AND_FIXED_PERFORMANCE_OPEN",
     "S04_blocking_ids": [
-      "REQ-SCR-01",
       "REQ-RNG-03",
       "S04-C02-RISK-PERFORMANCE"
     ],
     "S04_progress_source": "engineering/S04-progress.json",
-    "basis": "Owner/system engineer explicitly approved bounded C06 A–E with documented AI technical review and C07 existing evidence review on 2026-11-12. No independent human signature claimed. Three binding Gate-S04 blockers unchanged; C08 NO-GO. No tests rerun.",
+    "basis": "Engineer-system approved REQ-SCR-01 source definition and 11 deterministic cases on 2026-11-12; all 11 Float/Fixed cases PASS with C03 Fraction and C05 union-find oracles. SCR removed from Gate blockers. REQ-RNG-03 and S04-C02-RISK-PERFORMANCE remain binding; C08 NO-GO. No S04 criterion completion credit until C08 exit conditions are all met.",
     "method": "each stage equally weighted; S02 draft artifacts do not count as approved acceptance criteria",
     "overall_percent": 32.29166666666667,
     "s01_completed_criteria": 8,
@@ -59,7 +58,16 @@
     "s04_total_criteria": 8,
     "stage_percent": 87.5,
     "stage_weighting": "12 equal weights",
-    "C06_ai_technical_decision": "TECHNICAL_ACCEPTANCE_A_TO_E_PASS_USER_SUPPLIED_2026-11-12"
+    "C06_ai_technical_decision": "TECHNICAL_ACCEPTANCE_A_TO_E_PASS_USER_SUPPLIED_2026-11-12",
+    "REQ_SCR_01_status": "PASS_ENGINEER_APPROVED_11_CASE_FLOAT_FIXED_ORACLE",
+    "REQ_SCR_01_engineer_approval_date": "2026-11-12",
+    "REQ_SCR_01_evidence": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-RESULTS-v1.0.json",
+    "REQ_SCR_01_inputs": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-INPUTS-v1.0.npz",
+    "REQ_SCR_01_outputs": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-OUTPUTS-v1.0.npz",
+    "REQ_SCR_01_results_sha256": "8039f7cb5b975059ffbbf379d85a740f06cba88447a008952f26c76f2ab2fc2a",
+    "REQ_SCR_01_inputs_sha256": "be75904067c6f7204085d001a96d36077c89b7c18fe250a6945725966a6b3136",
+    "REQ_SCR_01_outputs_sha256": "17aa6b04e9823c34e9a0ead6fbb153fd82dd1d5f5e2e4b804b9c40c5847bcecc",
+    "REQ_SCR_01_runner_sha256": "bfd64e2c878ea4ff1b76aa23f0d022328f0e0cee36bc590bfdef389e5f9bb77b"
   },
   "project_id": "AX309-RDSP-001",
   "provenance": "current conversation; engineer-supplied specifications unverified against board manual",

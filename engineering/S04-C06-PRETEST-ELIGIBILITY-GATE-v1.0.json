@@ -12,8 +12,13 @@
       "g": 1
     }
   },
+  "C06_fixed_denominator_per_profile": 8,
+  "C06_headroom_scope": "CONSERVATIVE_STATIC_INPUT_SPECIFIC_ONLY_NOT_RUNTIME_TELEMETRY",
   "C06_input_frozen_manifest": "engineering/S04-C06-FROZEN-RUNNER-ORACLE-INPUT-PREFLIGHT-v1.0.json",
   "C06_input_frozen_manifest_sha256": "37f2c3fba1ecddb3ff54121e757e952415b46eb054c1275c740296a994dbc739",
+  "C06_input_inconclusive_count": 0,
+  "C06_ready_input_count": 16,
+  "C06_total_fixed_denominator": 16,
   "D": "APPROVED_NARROW_EXACT_FLOAT_TIE_EXCEPTION",
   "E": "APPROVED_PRELOCKED_FIXED_DENOMINATOR_AND_CPI_DISPOSITIONS",
   "F": "NOT_APPROVED_BINDING_OPEN_BLOCKERS",
@@ -30,6 +35,8 @@
   "analytic_evidence_sha256": "05d624d737813f0cb70370a0cee8ed3724d29d1958534b134a39af193a56d99b",
   "analytic_source": "engineering/s04_numeric/s04_c06_preapproval_analytic_bounds_v0.py",
   "analytic_source_sha256": "609d47b39e39a4e64a0a3cd4b9413c82dd2b5bf99fc87251d18a1db0ae1fbcf4",
+  "approved_C06_16CPI_input_decision_package": "engineering/S04-C06-16CPI-EXECUTION-DECISION-PACKAGE-v1.0.json",
+  "approved_C06_16CPI_input_decision_package_sha256": "da5d758601cdd3569401be29f473895e87a1cfbdff960e6eed54186f909d8b7d",
   "approved_conditional_caps_original_complex_Float_amplitude": [
     {
       "g1_MAX_RMS": 0.00074,
@@ -268,8 +275,8 @@
   },
   "known_preflight_blockers": [
     {
-      "finding": "No independently authorized C06 candidate CPI bytes/source metadata and fixed planned N; no per-candidate analytic envelope and static headroom, independent oracle review/permission not complete. PF08 software infrastructure alone PASS.",
-      "id": "AUTHORIZATION_AND_INPUT_PRELOCK",
+      "finding": "Independent authorization to execute the exact prelocked 16-CPI numeric qualification and unlock reviewed runner release is required. PF10 independent execution package review remains pending; runtime full trace, Oracle B equality and A–E checks are mandatory during that authorized execution.",
+      "id": "C06-EXECUTION-INDEPENDENT-PERMISSION",
       "status": "OPEN"
     }
   ],
@@ -284,32 +291,32 @@
     {
       "id": "PF-02",
       "mandatory": true,
-      "status": "PARTIAL_STATIC_CONTRACT_PINNED_IMPLEMENTATION_HASH_PENDING"
+      "status": "PASS_FROZEN_RUNNER_SOURCE_AND_CONTRACT_PINNED"
     },
     {
       "id": "PF-03",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_LOCKED_APPROVED_SOURCE_AND_GAIN_16_OF_16"
     },
     {
       "id": "PF-04",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_IMMUTABLE_SOURCE_Q15_AND_RAW_INPUT_BYTES_16_OF_16"
     },
     {
       "id": "PF-05",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_COMPONENTWISE_ANALYTIC_INPUT_ENVELOPE_16_OF_16"
     },
     {
       "id": "PF-06",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_ZERO_INPUT_CLIP_COMPONENTS_16_OF_16"
     },
     {
       "id": "PF-07",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_PREEXECUTION_CONSERVATIVE_STAGE_HEADROOM_16_OF_16"
     },
     {
       "id": "PF-08",
@@ -319,22 +326,22 @@
     {
       "id": "PF-09",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_ALL_16_EXACT_FLOAT_AND_IQ_PAIRS_VERIFIED"
     },
     {
       "id": "PF-10",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PARTIAL_FROZEN_ORACLE_PINNED_INDEPENDENT_EXECUTION_REVIEW_PENDING"
     },
     {
       "id": "PF-11",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_PRELOCKED_8_PLUS_8_CPI_IDS_SEEDS_DENOMINATORS"
     },
     {
       "id": "PF-12",
       "mandatory": true,
-      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+      "status": "PASS_PREDECLARED_INPUT_STATUS_STRESS_EXCLUDED_NO_REPLACEMENT"
     }
   ],
   "preflight_order": [
@@ -351,7 +358,7 @@
     "fixed_N_denominator_and_seed_separation",
     "stress_corpus_separation"
   ],
-  "preflight_status": "BLOCKED_NO_APPROVED_CANDIDATE_SOURCE_N_HEADROOM_OR_EXECUTION_AUTHORIZATION",
+  "preflight_status": "INPUTS_READY_INDEPENDENT_16CPI_EXECUTION_AUTHORIZATION_PENDING",
   "project": "AX309-RDSP-001",
   "selected_C_contract": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
   "selected_C_contract_sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",

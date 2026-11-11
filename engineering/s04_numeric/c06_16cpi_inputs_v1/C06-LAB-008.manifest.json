@@ -1,0 +1,553 @@
+{
+  "IQ_Q15_payload_file": "engineering/s04_numeric/c06_16cpi_inputs_v1/C06-LAB-008.iq_q15_iq_le.bin",
+  "IQ_Q15_payload_sha256": "64f9f40a9124cc89b3b11e07298447e45cb5cdbc97a8835c42fda4f0e3ad547b",
+  "IQ_component_count": 8448,
+  "IQ_payload_bytes": 16896,
+  "IQ_signed16_fit": true,
+  "child_seed_u64": 9469613857587596360,
+  "cpi_id": "C06-LAB-008",
+  "disposition": "INPUT_READY_ONLY_PENDING_AUTHORIZATION_AND_RUNTIME_C06",
+  "float_complex_sample_count": 4224,
+  "float_file": "engineering/s04_numeric/c06_16cpi_inputs_v1/C06-LAB-008.float_c128.npy",
+  "float_sha256": "5f7d5f70b4480ac7bec922f98ebbef102c8fa418814954461b9269b4c6e3b52f",
+  "float_shape": [
+    33,
+    128
+  ],
+  "g": 1,
+  "generator": "s03_reference.model.generate_cpi",
+  "generator_config": {
+    "clutter": null,
+    "complex_noise_power": 0.000324,
+    "doppler_bin": 4,
+    "snr_db": 20.0,
+    "target_amplitude_complex": [
+      0.18,
+      0.0
+    ],
+    "target_delay_samples": 40,
+    "target_phase_rad": 0.0,
+    "velocity_m_s_nominal": 1.875
+  },
+  "inconclusive_reasons": [],
+  "input_clip_component_count": 0,
+  "input_clip_locations_pulse_range_component": [],
+  "input_envelope_bound": 1.000030517578125,
+  "input_envelope_pass": true,
+  "master_seed": 73111002,
+  "profile_id": "SINGLE_TARGET_REFERENCE_LIKE_LAB",
+  "profile_index": 7,
+  "quantization_error_original_amplitude": {
+    "complex_MAX": 2.1316305001651038e-05,
+    "complex_RMS": 1.2504495728577348e-05,
+    "component_MAX": 1.5249437094119744e-05
+  },
+  "raw_unclipped_IQ_file": "engineering/s04_numeric/c06_16cpi_inputs_v1/C06-LAB-008.iqraw_i64.npy",
+  "raw_unclipped_IQ_sha256": "67107297656500bccf46ef3af58e1ff8a6967ad58102ba6d85329905d6b96eec",
+  "reconstructed_float_sha256": "b2fdaed446d6a38bcc209f350ba7b372e38cc53786e1d77cbb10e39a01a97906",
+  "seed_derivation": "child=SeedSequence([master_seed,profile_index,191]).generate_state(1,dtype=uint64)[0]; passed as seed to existing S03 model generator",
+  "static_headroom": {
+    "CFAR": {
+      "left_product_bound": 18739231068488990720,
+      "right_product_bound": 140111608858903272640,
+      "strict_expression": "40*Pcut*65536 versus 490007*SUM40"
+    },
+    "FFT": [
+      {
+        "aligned_u_bound": 8805744640,
+        "butterfly_bound": 17611220550,
+        "input_component_bound": 268730,
+        "max_twiddle_L1_component_sum": 32767,
+        "max_twiddle_component_abs": 32767,
+        "max_twiddle_component_abs_any": 32767,
+        "output_component_bound": 537452,
+        "pair_bound": 8805475910,
+        "product_bound": 8805475910,
+        "shift": 0,
+        "stage": 1
+      },
+      {
+        "aligned_u_bound": 17611227136,
+        "butterfly_bound": 35222454272,
+        "input_component_bound": 537452,
+        "max_twiddle_L1_component_sum": 32768,
+        "max_twiddle_component_abs": 32767,
+        "max_twiddle_component_abs_any": 32768,
+        "output_component_bound": 537452,
+        "pair_bound": 17611227136,
+        "product_bound": 17611227136,
+        "shift": 1,
+        "stage": 2
+      },
+      {
+        "aligned_u_bound": 17611227136,
+        "butterfly_bound": 42516752816,
+        "input_component_bound": 537452,
+        "max_twiddle_L1_component_sum": 46340,
+        "max_twiddle_component_abs": 32767,
+        "max_twiddle_component_abs_any": 32768,
+        "output_component_bound": 1297508,
+        "pair_bound": 24905525680,
+        "product_bound": 17611227136,
+        "shift": 0,
+        "stage": 3
+      },
+      {
+        "aligned_u_bound": 42516742144,
+        "butterfly_bound": 102643262864,
+        "input_component_bound": 1297508,
+        "max_twiddle_L1_component_sum": 46340,
+        "max_twiddle_component_abs": 32767,
+        "max_twiddle_component_abs_any": 32768,
+        "output_component_bound": 1566212,
+        "pair_bound": 60126520720,
+        "product_bound": 42516742144,
+        "shift": 1,
+        "stage": 4
+      },
+      {
+        "aligned_u_bound": 51321634816,
+        "butterfly_bound": 123899898896,
+        "input_component_bound": 1566212,
+        "max_twiddle_L1_component_sum": 46340,
+        "max_twiddle_component_abs": 32767,
+        "max_twiddle_component_abs_any": 32768,
+        "output_component_bound": 1890562,
+        "pair_bound": 72578264080,
+        "product_bound": 51321634816,
+        "shift": 1,
+        "stage": 5
+      }
+    ],
+    "MF": {
+      "accumulator_bound": 4402874430,
+      "output_component_bound": 134365,
+      "pair_bound": 309661048,
+      "product_bound": 225659442,
+      "tap_count": 16
+    },
+    "MTI": {
+      "difference_component_bound": 268730
+    },
+    "POWER": {
+      "raw_power_bound": 7148449351688
+    },
+    "SUM40": {
+      "raw_sum_bound": 285937974067520,
+      "training_cells": 40
+    },
+    "all_contract_points_fit": true,
+    "checks": [
+      {
+        "conservative_abs_or_unsigned_max": 6887,
+        "fits": true,
+        "positive_limit": 32767,
+        "required_bits": 14,
+        "signed": true,
+        "site": "IQ_INPUT",
+        "width_bits": 16
+      },
+      {
+        "conservative_abs_or_unsigned_max": 225659442,
+        "fits": true,
+        "positive_limit": 2147483647,
+        "required_bits": 29,
+        "signed": true,
+        "site": "MF_PRODUCT",
+        "width_bits": 32
+      },
+      {
+        "conservative_abs_or_unsigned_max": 309661048,
+        "fits": true,
+        "positive_limit": 4294967295,
+        "required_bits": 30,
+        "signed": true,
+        "site": "MF_PAIR",
+        "width_bits": 33
+      },
+      {
+        "conservative_abs_or_unsigned_max": 4402874430,
+        "fits": true,
+        "positive_limit": 68719476735,
+        "required_bits": 34,
+        "signed": true,
+        "site": "MF_ACC",
+        "width_bits": 37
+      },
+      {
+        "conservative_abs_or_unsigned_max": 134365,
+        "fits": true,
+        "positive_limit": 2097151,
+        "required_bits": 19,
+        "signed": true,
+        "site": "MF_OUTPUT",
+        "width_bits": 22
+      },
+      {
+        "conservative_abs_or_unsigned_max": 268730,
+        "fits": true,
+        "positive_limit": 4194303,
+        "required_bits": 20,
+        "signed": true,
+        "site": "MTI_RAW_SUBTRACT",
+        "width_bits": 23
+      },
+      {
+        "conservative_abs_or_unsigned_max": 268730,
+        "fits": true,
+        "positive_limit": 4194303,
+        "required_bits": 20,
+        "signed": true,
+        "site": "MTI_OUTPUT",
+        "width_bits": 23
+      },
+      {
+        "conservative_abs_or_unsigned_max": 268730,
+        "fits": true,
+        "positive_limit": 4194303,
+        "required_bits": 20,
+        "signed": true,
+        "site": "FFT1_INPUT",
+        "width_bits": 23
+      },
+      {
+        "conservative_abs_or_unsigned_max": 8805475910,
+        "fits": true,
+        "positive_limit": 274877906943,
+        "required_bits": 35,
+        "signed": true,
+        "site": "FFT1_PRODUCT",
+        "width_bits": 39
+      },
+      {
+        "conservative_abs_or_unsigned_max": 8805475910,
+        "fits": true,
+        "positive_limit": 549755813887,
+        "required_bits": 35,
+        "signed": true,
+        "site": "FFT1_TW_PAIR",
+        "width_bits": 40
+      },
+      {
+        "conservative_abs_or_unsigned_max": 8805744640,
+        "fits": true,
+        "positive_limit": 137438953471,
+        "required_bits": 35,
+        "signed": true,
+        "site": "FFT1_ALIGNED_U",
+        "width_bits": 38
+      },
+      {
+        "conservative_abs_or_unsigned_max": 17611220550,
+        "fits": true,
+        "positive_limit": 1099511627775,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT1_BUTTERFLY",
+        "width_bits": 41
+      },
+      {
+        "conservative_abs_or_unsigned_max": 537452,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 21,
+        "signed": true,
+        "site": "FFT1_OUTPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 537452,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 21,
+        "signed": true,
+        "site": "FFT2_INPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 17611227136,
+        "fits": true,
+        "positive_limit": 1099511627775,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT2_PRODUCT",
+        "width_bits": 41
+      },
+      {
+        "conservative_abs_or_unsigned_max": 17611227136,
+        "fits": true,
+        "positive_limit": 2199023255551,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT2_TW_PAIR",
+        "width_bits": 42
+      },
+      {
+        "conservative_abs_or_unsigned_max": 17611227136,
+        "fits": true,
+        "positive_limit": 549755813887,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT2_ALIGNED_U",
+        "width_bits": 40
+      },
+      {
+        "conservative_abs_or_unsigned_max": 35222454272,
+        "fits": true,
+        "positive_limit": 4398046511103,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT2_BUTTERFLY",
+        "width_bits": 43
+      },
+      {
+        "conservative_abs_or_unsigned_max": 537452,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 21,
+        "signed": true,
+        "site": "FFT2_OUTPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 537452,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 21,
+        "signed": true,
+        "site": "FFT3_INPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 17611227136,
+        "fits": true,
+        "positive_limit": 1099511627775,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT3_PRODUCT",
+        "width_bits": 41
+      },
+      {
+        "conservative_abs_or_unsigned_max": 24905525680,
+        "fits": true,
+        "positive_limit": 2199023255551,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT3_TW_PAIR",
+        "width_bits": 42
+      },
+      {
+        "conservative_abs_or_unsigned_max": 17611227136,
+        "fits": true,
+        "positive_limit": 549755813887,
+        "required_bits": 36,
+        "signed": true,
+        "site": "FFT3_ALIGNED_U",
+        "width_bits": 40
+      },
+      {
+        "conservative_abs_or_unsigned_max": 42516752816,
+        "fits": true,
+        "positive_limit": 4398046511103,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT3_BUTTERFLY",
+        "width_bits": 43
+      },
+      {
+        "conservative_abs_or_unsigned_max": 1297508,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 22,
+        "signed": true,
+        "site": "FFT3_OUTPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 1297508,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 22,
+        "signed": true,
+        "site": "FFT4_INPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 42516742144,
+        "fits": true,
+        "positive_limit": 1099511627775,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT4_PRODUCT",
+        "width_bits": 41
+      },
+      {
+        "conservative_abs_or_unsigned_max": 60126520720,
+        "fits": true,
+        "positive_limit": 2199023255551,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT4_TW_PAIR",
+        "width_bits": 42
+      },
+      {
+        "conservative_abs_or_unsigned_max": 42516742144,
+        "fits": true,
+        "positive_limit": 549755813887,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT4_ALIGNED_U",
+        "width_bits": 40
+      },
+      {
+        "conservative_abs_or_unsigned_max": 102643262864,
+        "fits": true,
+        "positive_limit": 4398046511103,
+        "required_bits": 38,
+        "signed": true,
+        "site": "FFT4_BUTTERFLY",
+        "width_bits": 43
+      },
+      {
+        "conservative_abs_or_unsigned_max": 1566212,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 22,
+        "signed": true,
+        "site": "FFT4_OUTPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 1566212,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 22,
+        "signed": true,
+        "site": "FFT5_INPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 51321634816,
+        "fits": true,
+        "positive_limit": 1099511627775,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT5_PRODUCT",
+        "width_bits": 41
+      },
+      {
+        "conservative_abs_or_unsigned_max": 72578264080,
+        "fits": true,
+        "positive_limit": 2199023255551,
+        "required_bits": 38,
+        "signed": true,
+        "site": "FFT5_TW_PAIR",
+        "width_bits": 42
+      },
+      {
+        "conservative_abs_or_unsigned_max": 51321634816,
+        "fits": true,
+        "positive_limit": 549755813887,
+        "required_bits": 37,
+        "signed": true,
+        "site": "FFT5_ALIGNED_U",
+        "width_bits": 40
+      },
+      {
+        "conservative_abs_or_unsigned_max": 123899898896,
+        "fits": true,
+        "positive_limit": 4398046511103,
+        "required_bits": 38,
+        "signed": true,
+        "site": "FFT5_BUTTERFLY",
+        "width_bits": 43
+      },
+      {
+        "conservative_abs_or_unsigned_max": 1890562,
+        "fits": true,
+        "positive_limit": 16777215,
+        "required_bits": 22,
+        "signed": true,
+        "site": "FFT5_OUTPUT",
+        "width_bits": 25
+      },
+      {
+        "conservative_abs_or_unsigned_max": 7148449351688,
+        "fits": true,
+        "positive_limit": 2251799813685247,
+        "required_bits": 43,
+        "signed": false,
+        "site": "POWER_RAW",
+        "width_bits": 51
+      },
+      {
+        "conservative_abs_or_unsigned_max": 7148449351688,
+        "fits": true,
+        "positive_limit": 70368744177663,
+        "required_bits": 43,
+        "signed": false,
+        "site": "POWER_U46_STORED",
+        "width_bits": 46
+      },
+      {
+        "conservative_abs_or_unsigned_max": 285937974067520,
+        "fits": true,
+        "positive_limit": 4503599627370495,
+        "required_bits": 49,
+        "signed": false,
+        "site": "SUM40_RAW",
+        "width_bits": 52
+      },
+      {
+        "conservative_abs_or_unsigned_max": 285937974067520,
+        "fits": true,
+        "positive_limit": 4503599627370495,
+        "required_bits": 49,
+        "signed": false,
+        "site": "SUM40_U52_STORED",
+        "width_bits": 52
+      },
+      {
+        "conservative_abs_or_unsigned_max": 18739231068488990720,
+        "fits": true,
+        "positive_limit": 9444732965739290427391,
+        "required_bits": 65,
+        "signed": false,
+        "site": "CFAR_LEFT_PRE_POWER_NARROW",
+        "width_bits": 73
+      },
+      {
+        "conservative_abs_or_unsigned_max": 140111608858903272640,
+        "fits": true,
+        "positive_limit": 151115727451828646838271,
+        "required_bits": 67,
+        "signed": false,
+        "site": "CFAR_RIGHT_PRE_POWER_NARROW",
+        "width_bits": 77
+      },
+      {
+        "conservative_abs_or_unsigned_max": 18739231068488990720,
+        "fits": true,
+        "positive_limit": 295147905179352825855,
+        "required_bits": 65,
+        "signed": false,
+        "site": "CFAR_LEFT_STORED_OPERANDS",
+        "width_bits": 68
+      },
+      {
+        "conservative_abs_or_unsigned_max": 140111608858903272640,
+        "fits": true,
+        "positive_limit": 4722366482869645213695,
+        "required_bits": 67,
+        "signed": false,
+        "site": "CFAR_RIGHT_STORED_OPERANDS",
+        "width_bits": 72
+      }
+    ],
+    "input_max_abs_I_integer": 6666,
+    "input_max_abs_Q_integer": 6887,
+    "method": "conservative_absolute_interval_propagation_over_all_input_components_and_frozen_coefficients",
+    "not_C06_processing_execution": true
+  },
+  "static_headroom_pass": true
+}

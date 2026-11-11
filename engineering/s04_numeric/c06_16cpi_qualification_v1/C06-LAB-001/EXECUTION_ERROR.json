@@ -1,0 +1,7 @@
+{
+  "cpi_id": "C06-LAB-001",
+  "failure": "EXECUTION_ERROR_NO_RETRY",
+  "message": "operands could not be broadcast together with shapes (128,32) (107,26) ",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/houman/AX309-RDSP-001/engineering/s04_numeric/s04_c06_16cpi_authorized_runner_v1.py\", line 365, in main\n    e=run_cpi(rec,ledger)\n  File \"/home/houman/AX309-RDSP-001/engineering/s04_numeric/s04_c06_16cpi_authorized_runner_v1.py\", line 298, in run_cpi\n    cfar=pow_and_cfar(result['captured'],original,g,sub/'cfar_all_2782_CUTs.json')\n  File \"/home/houman/AX309-RDSP-001/engineering/s04_numeric/s04_c06_16cpi_authorized_runner_v1.py\", line 210, in pow_and_cfar\n    uncertainty=epow + float(ALPHA_FIXED)*sum(\n                ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~\n       epow[3+dr:110+dr,3+db:29+db] for dr,db in S03.TRAIN_OFFSETS\n       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    )/40 +abs(float(ALPHA_FIXED)-ALPHA_FLOAT)*train_avg[3:110,3:29]\n    ~~~~\nValueError: operands could not be broadcast together with shapes (128,32) (107,26) \n",
+  "type": "ValueError"
+}

@@ -134,7 +134,7 @@ def main():
  OUT.mkdir(parents=True,exist_ok=True)
  records=[]
  seen_seeds=set();seen_source_hashes=set()
- for item in plan['cpi_plan']:
+ for item in plan['CPI_plan']:
   profile=item['profile_id'];g=int(item['g']);seed=int(item['child_seed_u64'])
   if seed in seen_seeds:raise RuntimeError('duplicate child seed')
   seen_seeds.add(seed)

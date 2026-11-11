@@ -1,0 +1,65 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "baseline_commit": "bbcac98",
+  "scope": "isolated XST memory-mapping probes plus symbolic address-lifetime validation; no complete radar-chain fit or RTL frame controller claim",
+  "probe_results": {
+    "iq_cpi_banked_probe": {
+      "bram_total": 9,
+      "RAMB16": 9,
+      "RAMB8": null,
+      "slice_LUT": 34,
+      "errors": 0,
+      "warnings": 0,
+      "evidence_path": "engineering/evidence/s05/resource_budget/iq_cpi_banked_probe-XST-v0.1.srp.gz"
+    },
+    "iq_cpi_store_probe": {
+      "bram_total": 16,
+      "RAMB16": 16,
+      "RAMB8": null,
+      "slice_LUT": null,
+      "errors": 0,
+      "warnings": 1,
+      "evidence_path": "engineering/evidence/s05/resource_budget/iq_cpi_store_probe-XST-v0.1.srp.gz"
+    },
+    "mf_frame_banked_probe": {
+      "bram_total": 14,
+      "RAMB16": 13,
+      "RAMB8": 2,
+      "slice_LUT": 52,
+      "errors": 0,
+      "warnings": 0,
+      "evidence_path": "engineering/evidence/s05/resource_budget/mf_frame_banked_probe-XST-v0.1.srp.gz"
+    },
+    "mf_frame_store_probe": {
+      "bram_total": 25,
+      "RAMB16": 25,
+      "RAMB8": null,
+      "slice_LUT": null,
+      "errors": 0,
+      "warnings": 1,
+      "evidence_path": "engineering/evidence/s05/resource_budget/mf_frame_store_probe-XST-v0.1.srp.gz"
+    }
+  },
+  "memory_lifetime": "engineering/S05-MEMORY-LIFETIME-SYMBOLIC-EVIDENCE-v0.1.json",
+  "resource_report": "engineering/S05-RESOURCE-LIFETIME-AND-RECOVERY-v0.1.md",
+  "REQ_LIST_01_decision": "engineering/S05-REQ-LIST-01-DECISION-PACKAGE-v0.1.md",
+  "files_sha256": {
+    "rtl/tools/resource_probe/iq_cpi_banked_probe.v": "11245493a8e64230b7898212ba9aa231a5053660974b28cab624f2c647b50fde",
+    "rtl/tools/resource_probe/iq_cpi_store_probe.v": "b17e8aec24ba6b3f406bee37ae3949a0f744df7595c7c2f2b143a68d24056b97",
+    "rtl/tools/resource_probe/mf_frame_banked_probe.v": "5f0822d556bb6f00303f9b8e89659bb142c3610607a6fbb89fbaadb0968d0da0",
+    "rtl/tools/resource_probe/mf_frame_store_probe.v": "8297748d697ebb2954011b7bbef5adb45893ef4fe15a73ffffe938e7a7ca56dd",
+    "rtl/tools/resource_probe/run_xst_storage_probes.sh": "6af56f0709c1fdf5b53f5cc0ec3c1f8355c46391e3b99fd333703d5804782ae0",
+    "engineering/evidence/s05/resource_budget/iq_cpi_banked_probe-XST-v0.1.srp.gz": "7decde1d80f0ee40e925ed914c7f87bf2978c8dad0e1fc28716b2d8bf5e8675c",
+    "engineering/evidence/s05/resource_budget/iq_cpi_store_probe-XST-v0.1.srp.gz": "256d4253876cebe7b0208b370fcabe52c7477833aa9a1a2f9a3ec7250c2ec682",
+    "engineering/evidence/s05/resource_budget/mf_frame_banked_probe-XST-v0.1.srp.gz": "5f61a532e052ac0455de495a1c6f2b4e12e774cbd0f7bb0ae6b79382d273ce3e",
+    "engineering/evidence/s05/resource_budget/mf_frame_store_probe-XST-v0.1.srp.gz": "6a3f56cd0390bffd4f0ccb2a8c5005aad725ad706a3c99b59a4bd5cfed746ed8",
+    "engineering/s05_memory_lifetime_validate_v0.py": "1a1577cac0f44ee275fe1ce42f53ed5c600f11186bf884802a33f408bf023e29",
+    "engineering/S05-MEMORY-LIFETIME-SYMBOLIC-EVIDENCE-v0.1.json": "f97c3fe16c547bee94a0dafb11879e2c53657c385c360a043eec242d3d1570eb"
+  },
+  "S04_dispositions_unchanged": {
+    "gate": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "REQ-RNG-03": "FAIL_4_OF_8",
+    "S04-C02-RISK-PERFORMANCE": "OPEN"
+  }
+}

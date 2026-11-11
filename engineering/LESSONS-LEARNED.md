@@ -111,3 +111,19 @@ The connected CFAR–Grouping test additionally showed that the scanner and grou
 **Plugin design implication:** track three independent quantities: stored map shape, physically supported/approved signal-valid domain, and validated CUT domain. Require approved evidence before expanding a CUT region, and require a documented fatal-frame abort protocol when joining valid/ready blocks. Neither module-level oracle equivalence nor connected-subsystem XST fit proves full radar-chain performance or resource fit.
 
 **Evidence:** engineering/S05-CUT-GEOMETRY-AUDIT-v0.1.md; engineering/S05-CFAR-GROUPING-INTEGRATION-REPORT-v0.1.md. No S04 carryover disposition is changed.
+
+
+## LL-AX309-004 — Resource viability requires phase lifetimes and actual FPGA memory inference
+
+**Source:** S05 REQ-LIST-01/resource-lifetime feasibility review, 2026-11-12.
+**Status:** Engineering observation for the radar-design plugin; **not** an Architecture C change.
+
+A correct 4,224-word RAM description may infer very different FPGA resources depending on depth banking and synchronous read style. In isolated ISE 14.7 XST probes, a naive 4,224x50 array used 25 BRAM with an address-range warning; splitting the memory into 4,096+128 words with independently synchronous bank reads used 14 BRAM and 0 warnings. The corresponding 4,224x32 IQ case changed from 16 to 9 BRAM. A first conditional-read banked variant instead mapped into distributed LUTRAM and overran its available memory-LUT class. Consequently, theoretical bit counts alone do not prove a design will fit.
+
+The approved S02 UART contract also requires **full 16,896-byte CPI upload and verification before RUN**, so a one-pulse IQ buffer is insufficient unless another retention mechanism exists. A symbolic lifetime proof demonstrates that pulse-major input IQ can be overwritten by delay-aligned MF, then each range's 33 MF words overwritten by its 32 Doppler powers in address order b*128+r. However the current CFAR scanner contains an independent private range-major power RAM, so shared-storage resource benefits remain an *unimplemented hypothesis* until the scanner interface and bank arbitration are reverified.
+
+The connected CFAR–Grouping block alone uses 76% LUT; clock and full-chain resource fit remain unproven. A fatal grouping overflow can hold the scanner indefinitely at a pending CUT, so the future frame controller must latch the error/CPI ID, force a shared datapath reset and require host-visible invalidation and fresh input upload. Never equate grouping done, scanner done or a reset edge with a successful CPI commit after a fatal fault.
+
+**Process lesson:** freeze the external record-list capacity/overflow policy before building the controller. Preserve separately (1) measured XST resource results, (2) symbolic memory-lifetime feasibility, and (3) completed integrated hardware qualification. Only the third establishes design fit.
+
+**Evidence:** engineering/S05-REQ-LIST-01-DECISION-PACKAGE-v0.1.md, engineering/S05-RESOURCE-LIFETIME-AND-RECOVERY-v0.1.md, engineering/S05-RESOURCE-PROBE-EVIDENCE-v0.1.json. Gate-S04 and its carried technical items are unchanged.

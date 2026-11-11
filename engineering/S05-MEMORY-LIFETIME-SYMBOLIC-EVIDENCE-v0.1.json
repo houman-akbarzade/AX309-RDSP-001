@@ -1,0 +1,33 @@
+{
+  "project": "AX309-RDSP-001",
+  "scope": "symbolic address/lifetime proof ONLY",
+  "no_CPI_processing": true,
+  "no_RTL_mutation": true,
+  "storage_words": 4224,
+  "storage_width_bits": 50,
+  "input_upload_layout": "addr=p*128+r, p=0..32, r=0..127, lower 32 bits are Q1.15 I/Q",
+  "MF_overwrite_layout": "same addr=p*128+r after all raw source samples [r:min(127,r+15)] have been read for pulse p; pulse-major, range ascending",
+  "range_processing": "r=0..127 ascending, read all MF[p*128+r], p=0..32, before any power write at that range",
+  "power_overwrite_layout": "addr=b*128+r for b=0..31, r=0..127, Doppler-major, after all 33 MF samples for r consumed",
+  "power_map_final": "addresses 0..4095 as b*128+r, final 128 words 4096..4223 are stale consumed MF",
+  "CFAR_address_translation": "external shared memory address b*128+r; existing scanner power_mem uses r*32+b and must not silently be treated as shared",
+  "checks": {
+    "no_raw_read_after_MF_overwrite": true,
+    "no_unread_MF_overwritten_by_power": true,
+    "no_power_map_clobber": true,
+    "all_2782_CUTs_with_40_training_cells_addressed": true
+  },
+  "symbolic_reads": {
+    "raw_taps": 63624,
+    "mf_samples": 4224,
+    "power_cells": 114062
+  },
+  "unproven": [
+    "actual synchronous BRAM read latency and port arbitration",
+    "data-path cycle budget and FIFO depth",
+    "integrated synthesized common-ram mapping",
+    "upload/readback/rerun semantics after destructive overwrite",
+    "full RTL/clock/PAR verification"
+  ],
+  "decision": "PROPOSED_ONLY_NOT_ARCHITECTURE_CHANGE"
+}

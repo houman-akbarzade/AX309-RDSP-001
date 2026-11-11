@@ -3,8 +3,8 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "3 approved stages plus 1 of 8 approved S04 criteria; no evidence credit for C02 design proposals",
-  "completed_count": 1,
+  "basis": "Three S01-S03 stages engineer-approved plus S04 2/8 independent engineer-signed criteria (C01 bounded; C02 selected C numeric contract); C03 entry authorized OPEN, not counted; no Gate-S04 approval.",
+  "completed_count": 2,
   "criteria": [
     {
       "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
@@ -33,13 +33,25 @@
     },
     {
       "acceptance_evidence": "Per-stage W/F, sign, scales, shifts, rounding, saturation/overflow, coefficients and accepted numeric thresholds approved and version locked",
-      "acceptance_review_gate": "REQUIRES_SEPARATE_INDEPENDENT_ENGINEER_SIGN_OFF",
-      "completed": false,
-      "decision_status": "ENGINEER_SELECTED_NUMERIC_BASELINE_NOT_C02_FINAL_PASS",
+      "acceptance_review_gate": "COMPLETED_BY_EXPLICIT_ENGINEER_SIGN_OFF",
+      "completed": true,
+      "decision_status": "INDEPENDENT_ENGINEER_SIGN_OFF_PASS_C_SELECTED",
       "description": "Engineer-approved fixed-point numeric contract",
       "engineer_selection_document": "decisions/S04-C02-ENGINEER-SELECTED-C-BASELINE-DECISION-v1.0.md",
+      "evidence": [
+        "decisions/S04-C02-ENGINEER-SELECTED-C-BASELINE-DECISION-v1.0.md",
+        "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+        "decisions/S04-C02-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+        "engineering/S04-C02-C-SELECTION-v1.0-UNITTESTS.log",
+        "engineering/S04-C02-C-SELECTION-v1.0-V05-RERUN.log",
+        "engineering/S04-C02-C-SELECTION-v1.0-V06-RERUN.log"
+      ],
       "id": "S04-C02",
+      "independent_engineer_signoff_document": "decisions/S04-C02-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+      "independent_engineer_signoff_id": "S04-C02-INDEPENDENT-SIGNOFF-001",
+      "independent_test_decision": "ENGINEER_CONFIRMED_39_OF_39_PASS",
       "locked_executable_contract": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+      "residual_obligations_unchanged": "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json",
       "selected_architecture": "C",
       "selected_fft_shift_schedule": [
         0,
@@ -48,15 +60,21 @@
         1,
         1
       ],
-      "status": "OPEN_SELECTED_C_BASELINE_READY_FOR_INDEPENDENT_SIGN_OFF",
+      "status": "PASS_BOUNDED_SELECTED_C_NUMERIC_CONTRACT",
       "unresolved_obligations": "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json"
     },
     {
       "acceptance_evidence": "Exact independent integer/rational oracle for IQ packing, coefficient encoding, complex arithmetic, rounding ties, negative extremes and overflow",
       "completed": false,
       "description": "Bit-true arithmetic primitive qualification",
+      "entry_basis": [
+        "decisions/S04-C02-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+        "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+        "engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json"
+      ],
+      "entry_package": "engineering/S04-C03-ENTRY-PACKAGE-v0.1.md",
       "id": "S04-C03",
-      "status": "NOT_STARTED"
+      "status": "OPEN_ENTRY_AUTHORIZED"
     },
     {
       "acceptance_evidence": "Independent self-checking signed, normal/extreme, DC, bin, off-bin, tie/zero vectors, error and overflow evidence",
@@ -97,16 +115,16 @@
   "entry_authorization": "decisions/GATE-S03-approved-baseline.json",
   "gate": "open",
   "prohibitions": [
-    "No change to engineer-selected C architecture formats, coefficients, shifts or RNE/narrowing without explicit engineering change decision",
-    "No C02 PASS or progress change until separate independent sign-off",
-    "No RTL or hardware tests without separate authorization",
-    "No reused accepted S03 Pfa/Pd seeds for numeric tuning"
+    "No change to independently signed C numeric formats, coefficients, FFT shifts, RNE/narrowing or scale policies without formal engineering change decision",
+    "No A/B/C architecture comparison without formal engineering change authorization",
+    "No statistical main CPI, RTL, synthesis or FPGA/hardware testing without separate explicit authorization",
+    "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
-  "project_percent": 26.041666666666668,
-  "recorded_at_utc": "2026-11-11T12:41:57.157675+00:00",
+  "project_percent": 27.083333333333332,
+  "recorded_at_utc": "2026-11-11T12:50:45.909229+00:00",
   "stage": "S04",
-  "stage_percent": 12.5,
-  "status": "C01_PASS_BOUNDED_C02_C_SELECTED_OPEN_READY_FOR_SIGN_OFF",
+  "stage_percent": 25.0,
+  "status": "C01_PASS_BOUNDED_C02_PASS_C_SELECTED_C03_OPEN_ENTRY_AUTHORIZED",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

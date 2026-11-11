@@ -1,0 +1,382 @@
+{
+  "conditional_independence_note": "Probability of any clipping assumes independent Gaussian real/imag noise components conditional on a frozen deterministic mean; stochastic correlated clutter cannot use product formula without conditional model.",
+  "exact_tests_passed": {
+    "boundary_metadata_consistency": 120,
+    "exact_quantizer_boundaries": 20,
+    "stored_reconstructed_domain": 36
+  },
+  "n_IQ_real_components": 8448,
+  "n_complex_samples": 4224,
+  "no_rng_no_CPI_samples": true,
+  "not_approved": [
+    "input_scale",
+    "A_B_choice",
+    "FFT_shift",
+    "numeric_acceptance_thresholds"
+  ],
+  "q15_thresholds_exact": {
+    "lower_exclusive": "-65537/65536",
+    "lower_raw_integer_at_threshold": -32768,
+    "upper_inclusive": "65535/65536",
+    "upper_raw_integer": 32768
+  },
+  "scale_metadata_options": {
+    "adaptive": "data-dependent g must be frozen as an algorithm and retains decision/selection metadata; distribution transfer needs new qualification",
+    "configurable": "explicit pre-CPI g, metadata and calibration",
+    "fixed": "frozen g for a declared input population"
+  },
+  "scenarios": {
+    "noise_only_CN_0_1": {
+      "mean_definition": "noise-only zero means",
+      "scales": {
+        "1": {
+          "component_count": 8448,
+          "expected_saturated_components": 1328.863701977307,
+          "g": 1,
+          "log10_expected_saturated_components": 3.1234804387947217,
+          "log10_prob_at_least_one_saturation": 0.0,
+          "prob_at_least_one_saturation": 1.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -1.0000152587890625,
+          "threshold_float_upper_inclusive": 0.9999847412109375
+        },
+        "2": {
+          "component_count": 8448,
+          "expected_saturated_components": 39.5175054450953,
+          "g": 2,
+          "log10_expected_saturated_components": 1.5967895218056896,
+          "log10_prob_at_least_one_saturation": 0.0,
+          "prob_at_least_one_saturation": 1.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -2.000030517578125,
+          "threshold_float_upper_inclusive": 1.999969482421875
+        },
+        "4": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.00013024501072673978,
+          "g": 4,
+          "log10_expected_saturated_components": -3.885238904153942,
+          "log10_prob_at_least_one_saturation": -3.8852671828441028,
+          "prob_at_least_one_saturation": 0.00013023653021743882,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -4.00006103515625,
+          "threshold_float_upper_inclusive": 3.99993896484375
+        },
+        "8": {
+          "component_count": 8448,
+          "expected_saturated_components": 9.482304476938229e-26,
+          "g": 8,
+          "log10_expected_saturated_components": -25.02308610359087,
+          "log10_prob_at_least_one_saturation": -25.02308610359087,
+          "prob_at_least_one_saturation": 9.482304476938229e-26,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -8.0001220703125,
+          "threshold_float_upper_inclusive": 7.9998779296875
+        }
+      },
+      "variance_complex": 1.0
+    },
+    "pd_fixed_scene_analytic_mean_CN_0_000324": {
+      "mean_definition": "S03 fixed target waveform analytic mean, no random realization",
+      "scales": {
+        "1": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 1,
+          "log10_expected_saturated_components": -901.9847807146357,
+          "log10_prob_at_least_one_saturation": -901.9847807146357,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -1.0000152587890625,
+          "threshold_float_upper_inclusive": 0.9999847412109375
+        },
+        "2": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 2,
+          "log10_expected_saturated_components": -4441.063128304479,
+          "log10_prob_at_least_one_saturation": -4441.063128304479,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -2.000030517578125,
+          "threshold_float_upper_inclusive": 1.999969482421875
+        },
+        "4": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 4,
+          "log10_expected_saturated_components": -19561.032229423152,
+          "log10_prob_at_least_one_saturation": -19561.032229423152,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -4.00006103515625,
+          "threshold_float_upper_inclusive": 3.99993896484375
+        },
+        "8": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 8,
+          "log10_expected_saturated_components": -81969.30685358551,
+          "log10_prob_at_least_one_saturation": -81969.30685358551,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -8.0001220703125,
+          "threshold_float_upper_inclusive": 7.9998779296875
+        }
+      },
+      "variance_complex": 0.000324
+    },
+    "pd_plus_deterministic_clutter_0p8_complex": {
+      "mean_definition": "S03 target analytic means plus illustrative deterministic uniform clutter",
+      "scales": {
+        "1": {
+          "component_count": 8448,
+          "expected_saturated_components": 2.1200760225182687,
+          "g": 1,
+          "log10_expected_saturated_components": 0.32635143430998925,
+          "log10_prob_at_least_one_saturation": -0.052871560876518134,
+          "prob_at_least_one_saturation": 0.8853774144127295,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -1.0000152587890625,
+          "threshold_float_upper_inclusive": 0.9999847412109375
+        },
+        "2": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 2,
+          "log10_expected_saturated_components": -1395.9137190251793,
+          "log10_prob_at_least_one_saturation": -1395.9137190251793,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -2.000030517578125,
+          "threshold_float_upper_inclusive": 1.999969482421875
+        },
+        "4": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 4,
+          "log10_expected_saturated_components": -12226.6084182887,
+          "log10_prob_at_least_one_saturation": -12226.6084182887,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -4.00006103515625,
+          "threshold_float_upper_inclusive": 3.99993896484375
+        },
+        "8": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 8,
+          "log10_expected_saturated_components": -66056.38606642433,
+          "log10_prob_at_least_one_saturation": -66056.38606642433,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -8.0001220703125,
+          "threshold_float_upper_inclusive": 7.9998779296875
+        }
+      },
+      "variance_complex": 0.000324
+    },
+    "pd_plus_deterministic_clutter_1p2_complex": {
+      "mean_definition": "S03 target analytic means plus illustrative deterministic uniform clutter",
+      "scales": {
+        "1": {
+          "component_count": 8448,
+          "expected_saturated_components": 4221.662398106351,
+          "g": 1,
+          "log10_expected_saturated_components": 3.625483500288121,
+          "log10_prob_at_least_one_saturation": 0.0,
+          "prob_at_least_one_saturation": 1.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -1.0000152587890625,
+          "threshold_float_upper_inclusive": 0.9999847412109375
+        },
+        "2": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 2,
+          "log10_expected_saturated_components": -516.3703138699638,
+          "log10_prob_at_least_one_saturation": -516.3703138699638,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -2.000030517578125,
+          "threshold_float_upper_inclusive": 1.999969482421875
+        },
+        "4": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 4,
+          "log10_expected_saturated_components": -9202.621228128815,
+          "log10_prob_at_least_one_saturation": -9202.621228128815,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -4.00006103515625,
+          "threshold_float_upper_inclusive": 3.99993896484375
+        },
+        "8": {
+          "component_count": 8448,
+          "expected_saturated_components": 0.0,
+          "g": 8,
+          "log10_expected_saturated_components": -58743.17234410905,
+          "log10_prob_at_least_one_saturation": -58743.17234410905,
+          "prob_at_least_one_saturation": 0.0,
+          "probability_model": "independent Gaussian noise components conditional on deterministic scene",
+          "threshold_float_lower_exclusive": -8.0001220703125,
+          "threshold_float_upper_inclusive": 7.9998779296875
+        }
+      },
+      "variance_complex": 0.000324
+    }
+  },
+  "status": "DETERMINISTIC_ANALYSIS_ONLY",
+  "stored_to_reconstructed_scale_maps": {
+    "A": {
+      "1": {
+        "B00_float": "1",
+        "B01_IQ": "1",
+        "B02_tap": "1",
+        "B03_MF": "1",
+        "B04_MTI": "1",
+        "B05_FFT": "1",
+        "B06_RD_power": "1",
+        "B07_training_sum40": "1",
+        "B08_threshold": "1",
+        "B08_training_mean": "1",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "1",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "1",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      },
+      "2": {
+        "B00_float": "1",
+        "B01_IQ": "2",
+        "B02_tap": "1",
+        "B03_MF": "2",
+        "B04_MTI": "2",
+        "B05_FFT": "2",
+        "B06_RD_power": "4",
+        "B07_training_sum40": "4",
+        "B08_threshold": "4",
+        "B08_training_mean": "4",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "4",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "2",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      },
+      "4": {
+        "B00_float": "1",
+        "B01_IQ": "4",
+        "B02_tap": "1",
+        "B03_MF": "4",
+        "B04_MTI": "4",
+        "B05_FFT": "4",
+        "B06_RD_power": "16",
+        "B07_training_sum40": "16",
+        "B08_threshold": "16",
+        "B08_training_mean": "16",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "16",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "4",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      },
+      "8": {
+        "B00_float": "1",
+        "B01_IQ": "8",
+        "B02_tap": "1",
+        "B03_MF": "8",
+        "B04_MTI": "8",
+        "B05_FFT": "8",
+        "B06_RD_power": "64",
+        "B07_training_sum40": "64",
+        "B08_threshold": "64",
+        "B08_training_mean": "64",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "64",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "8",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      }
+    },
+    "B": {
+      "1": {
+        "B00_float": "1",
+        "B01_IQ": "1",
+        "B02_tap": "1",
+        "B03_MF": "1",
+        "B04_MTI": "1",
+        "B05_FFT": "8",
+        "B06_RD_power": "64",
+        "B07_training_sum40": "64",
+        "B08_threshold": "64",
+        "B08_training_mean": "64",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "64",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "1",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      },
+      "2": {
+        "B00_float": "1",
+        "B01_IQ": "2",
+        "B02_tap": "1",
+        "B03_MF": "2",
+        "B04_MTI": "2",
+        "B05_FFT": "16",
+        "B06_RD_power": "256",
+        "B07_training_sum40": "256",
+        "B08_threshold": "256",
+        "B08_training_mean": "256",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "256",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "2",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      },
+      "4": {
+        "B00_float": "1",
+        "B01_IQ": "4",
+        "B02_tap": "1",
+        "B03_MF": "4",
+        "B04_MTI": "4",
+        "B05_FFT": "32",
+        "B06_RD_power": "1024",
+        "B07_training_sum40": "1024",
+        "B08_threshold": "1024",
+        "B08_training_mean": "1024",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "1024",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "4",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      },
+      "8": {
+        "B00_float": "1",
+        "B01_IQ": "8",
+        "B02_tap": "1",
+        "B03_MF": "8",
+        "B04_MTI": "8",
+        "B05_FFT": "64",
+        "B06_RD_power": "4096",
+        "B07_training_sum40": "4096",
+        "B08_threshold": "4096",
+        "B08_training_mean": "4096",
+        "B09_alarm_flag": null,
+        "B10_selected_peak_power": "4096",
+        "B11_range_m": "1",
+        "B11_target_amplitude": "8",
+        "B11_velocity_m_s": "1",
+        "B12_serialization": null
+      }
+    }
+  },
+  "timestamp_utc": "2026-11-11T09:29:52.841871+00:00"
+}

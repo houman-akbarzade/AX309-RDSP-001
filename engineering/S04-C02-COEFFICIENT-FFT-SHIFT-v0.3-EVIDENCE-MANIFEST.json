@@ -1,0 +1,53 @@
+{
+  "C01": "PASS_BOUNDED_INPUT_CONTRACT",
+  "C02": "OPEN",
+  "FPGA_hardware": false,
+  "RTL": false,
+  "accepted_S03_seed_used": false,
+  "conditional_error_bounds_not_certified_for_full_pipeline": true,
+  "deterministic_unit_tests": 12,
+  "exact_integer_width_boundary_tests": true,
+  "fft_shift_schedules_covered": [
+    "ALL_5",
+    "DISTRIBUTED_3",
+    "EARLY_3",
+    "ZERO"
+  ],
+  "fft_stage_twiddle_occurrences": 31,
+  "formula_corrected_v02": "integer bit_length with exact Fraction positive symmetric endpoints; baseline v0.2 table values retained",
+  "gate_S04": "OPEN",
+  "main_stochastic_CPI_count": 0,
+  "numeric_candidates": [
+    "A",
+    "B",
+    "C_hypothetical"
+  ],
+  "open_binding_S02": [
+    "REQ-SCR-01",
+    "REQ-RNG-03"
+  ],
+  "previous_commit": "d50c96a816a6d676f0d23e6a2297a3959f1c134e",
+  "project": "AX309-RDSP-001",
+  "project_progress_percent": 26.041666666666668,
+  "recorded_utc": "2026-11-11T11:23:49.383012+00:00",
+  "reference_lfm_taps": 16,
+  "source_SHA256": {
+    "decisions/S04-C01-ENGINEER-CONDITIONAL-SIGNOFF-v1.0.md": "5e3dab079726b9fa22e40442e9077e7753c5eef458145aff8b6280dd3fd58d4a",
+    "engineering/S04-C02-COEFF-SHIFT-UNITTEST-v0.3.log": "1edb14239efe243b3915eb42ccac10bf118af77e20816e4fca850e929b4de328",
+    "engineering/S04-C02-COEFFICIENT-FFT-SHIFT-REVIEW-v0.3.md": "71433e3531282243193d6ace93f641cfab3ca22f044333a05eb7b2ba3df6bcd2",
+    "engineering/S04-C02-NUMERIC-RANGE-BITGROWTH-ANALYSIS-v0.2.md": "c42b6a8ec5cbf51e4dfabff6e6c8102788dd412ddfd64ed80e9c207ad393489b",
+    "engineering/S04-OPEN-S02-OBLIGATIONS-C02-DESIGN-C06-VERIFY-v1.0.json": "1a63641ddec3d778d07977aad79438fc6e1f5ed7b353bacdc3de800ecf6910a1",
+    "engineering/S04-progress.json": "8da68fe559c0e5d774ac2c37a852b8b3fe1df21e66eda4323c697100f51aca71",
+    "engineering/s04_numeric/S04-C02-coeff-shift-quant-analysis-v0.3.json": "b9f5f0f441554da8ce3a8297f03e216bcd2b7f9ef08e0271b07c8faf803c13df",
+    "engineering/s04_numeric/S04-C02-range-bitgrowth-v0.2.json": "514e05adaf6e318dde1d36c566aa94562e6c9d70fd6b4a67ccb354dd7fc9957d",
+    "engineering/s04_numeric/build_s04_c02_v03_report.py": "987875683613febd8bad22e4a6054177c747056138fd087b79e0ef5293163921",
+    "engineering/s04_numeric/s04_c02_coeff_shift_v03.py": "2523d7dc6a902275c3abe597e5a39f7b95d1cff5d91f395b3e672057489934c0",
+    "project.yaml": "fa1f1e262c0d8aab565bb904586674f16246ca5751bdfeb88c771b4bcb80b188",
+    "tests/test_s04_c02_coeff_shift_v03.py": "1165abee584d3e04e22b5fc743e762386bdc585865c1dcdeda7095a618d182a3"
+  },
+  "stage": "S04",
+  "stage_progress_percent": 12.5,
+  "status": "DETERMINISTIC_ANALYTIC_DESIGN_REVIEW_NOT_APPROVED",
+  "synthesis": false,
+  "version": "C02_coeff_precision_shift_v0.3"
+}

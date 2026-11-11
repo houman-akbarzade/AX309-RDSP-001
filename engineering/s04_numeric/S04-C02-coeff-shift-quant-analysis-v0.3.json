@@ -1,0 +1,5280 @@
+{
+  "CFAR": {
+    "A": {
+      "alpha_frac": 16,
+      "alpha_numerator": 490007,
+      "input_F_FFT": 15,
+      "integer_compare_left_width_conservative": 74,
+      "integer_compare_right_width_conservative": 490065,
+      "no_float_fixed_decision_qualification": true,
+      "power_frac": 30,
+      "power_stored_width": 52,
+      "raw_exact_I2_plus_Q2_bits": 57,
+      "raw_exact_real_square_product_bits": 56,
+      "strict_equality_is_no_alarm": true,
+      "sum40_exact_growth_bits_conservative": 58,
+      "sum40_frac": 30,
+      "sum40_stored_width": 58,
+      "threshold_minus_one": false,
+      "threshold_plus_one": true
+    },
+    "B": {
+      "alpha_frac": 12,
+      "alpha_numerator": 30625,
+      "input_F_FFT": 13,
+      "integer_compare_left_width_conservative": 61,
+      "integer_compare_right_width_conservative": 30674,
+      "no_float_fixed_decision_qualification": true,
+      "power_frac": 26,
+      "power_stored_width": 43,
+      "raw_exact_I2_plus_Q2_bits": 47,
+      "raw_exact_real_square_product_bits": 46,
+      "strict_equality_is_no_alarm": true,
+      "sum40_exact_growth_bits_conservative": 49,
+      "sum40_frac": 26,
+      "sum40_stored_width": 49,
+      "threshold_minus_one": false,
+      "threshold_plus_one": true
+    },
+    "C_hypothetical": {
+      "alpha_frac": 16,
+      "alpha_numerator": 490007,
+      "input_F_FFT": 15,
+      "integer_compare_left_width_conservative": 68,
+      "integer_compare_right_width_conservative": 490059,
+      "no_float_fixed_decision_qualification": true,
+      "power_frac": 30,
+      "power_stored_width": 46,
+      "raw_exact_I2_plus_Q2_bits": 51,
+      "raw_exact_real_square_product_bits": 50,
+      "strict_equality_is_no_alarm": true,
+      "sum40_exact_growth_bits_conservative": 52,
+      "sum40_frac": 30,
+      "sum40_stored_width": 52,
+      "threshold_minus_one": false,
+      "threshold_plus_one": true
+    }
+  },
+  "Q15_scale": "q*2^-15*g",
+  "formats": {
+    "A": {
+      "metadata": {
+        "MF": [
+          22,
+          15
+        ],
+        "MTI": [
+          23,
+          15
+        ],
+        "alpha": [
+          490007,
+          16
+        ],
+        "mf_coeff": [
+          16,
+          15
+        ],
+        "power": [
+          52,
+          30
+        ],
+        "stage_out": [
+          28,
+          15
+        ],
+        "sum40": [
+          58,
+          30
+        ],
+        "twiddle_candidate": [
+          16,
+          15
+        ]
+      },
+      "mf16": [
+        {
+          "abs_complex_error": 1.316409064508131e-05,
+          "decoded": [
+            0.928497314453125,
+            0.371307373046875
+          ],
+          "im_error": -9.820904962543064e-06,
+          "index": 0,
+          "modulus_error": -1.1785956636201078e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999882140433638,
+          "phase_error_rad": -5.863865102595512e-06,
+          "re_error": -8.766020090589244e-06,
+          "reference": [
+            0.9285060804732156,
+            0.37131719395183754
+          ],
+          "stored_integer": [
+            30425,
+            12167
+          ]
+        },
+        {
+          "abs_complex_error": 6.353751477625894e-06,
+          "decoded": [
+            0.482177734375,
+            0.876068115234375
+          ],
+          "im_error": -1.978961031601223e-06,
+          "index": 1,
+          "modulus_error": -4.644982128820807e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999953550178712,
+          "phase_error_rad": 4.335249261799845e-06,
+          "re_error": -6.03770412282989e-06,
+          "reference": [
+            0.48218377207912283,
+            0.8760700941954066
+          ],
+          "stored_integer": [
+            15800,
+            28707
+          ]
+        },
+        {
+          "abs_complex_error": 1.3461588861323108e-05,
+          "decoded": [
+            -0.085784912109375,
+            0.996307373046875
+          ],
+          "im_error": -5.239135903001291e-06,
+          "index": 2,
+          "modulus_error": -6.28365315302748e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.999993716346847,
+          "phase_error_rad": -1.1905081617191726e-05,
+          "re_error": 1.2400235064755072e-05,
+          "reference": [
+            -0.08579731234443976,
+            0.996312612182778
+          ],
+          "stored_integer": [
+            -2811,
+            32647
+          ]
+        },
+        {
+          "abs_complex_error": 6.585451273980415e-06,
+          "decoded": [
+            -0.545318603515625,
+            0.838226318359375
+          ],
+          "im_error": 1.6128045368102306e-06,
+          "index": 3,
+          "modulus_error": -2.129936996442261e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999978700630036,
+          "phase_error_rad": -6.2315021929215675e-06,
+          "re_error": 6.384906421241787e-06,
+          "reference": [
+            -0.5453249884220462,
+            0.8382247055548382
+          ],
+          "stored_integer": [
+            -17869,
+            27467
+          ]
+        },
+        {
+          "abs_complex_error": 5.30748356116805e-06,
+          "decoded": [
+            -0.8245849609375,
+            0.56573486328125
+          ],
+          "im_error": 3.0524976365464696e-06,
+          "index": 4,
+          "modulus_error": -1.853333640888799e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999981466663591,
+          "phase_error_rad": -4.973387377926741e-06,
+          "re_error": 4.3418475250689426e-06,
+          "reference": [
+            -0.8245893027850251,
+            0.5657318107836135
+          ],
+          "stored_integer": [
+            -27020,
+            18538
+          ]
+        },
+        {
+          "abs_complex_error": 4.498251486755958e-06,
+          "decoded": [
+            -0.95330810546875,
+            0.302001953125
+          ],
+          "im_error": -3.99619422802866e-06,
+          "index": 5,
+          "modulus_error": 7.618215758231628e-07,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000007618215758,
+          "phase_error_rad": 4.4332696007565175e-06,
+          "re_error": -2.0651145561378925e-06,
+          "reference": [
+            -0.9533060403541939,
+            0.30200594931922803
+          ],
+          "stored_integer": [
+            -31238,
+            9896
+          ]
+        },
+        {
+          "abs_complex_error": 1.2767852445015107e-05,
+          "decoded": [
+            -0.993896484375,
+            0.1102294921875
+          ],
+          "im_error": 7.284893616760213e-06,
+          "index": 6,
+          "modulus_error": -9.618745810735518e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999903812541893,
+          "phase_error_rad": -8.396336295568574e-06,
+          "re_error": 1.0485627356060512e-05,
+          "reference": [
+            -0.9939069700023561,
+            0.11022220729388324
+          ],
+          "stored_integer": [
+            -32568,
+            3612
+          ]
+        },
+        {
+          "abs_complex_error": 1.4679483895242518e-05,
+          "decoded": [
+            -0.99993896484375,
+            0.01226806640625
+          ],
+          "im_error": -3.4718794700069194e-06,
+          "index": 7,
+          "modulus_error": 1.421933197454095e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000142193319745,
+          "phase_error_rad": 3.646595198691926e-06,
+          "re_error": -1.426300460549701e-05,
+          "reference": [
+            -0.9999247018391445,
+            0.012271538285720007
+          ],
+          "stored_integer": [
+            -32766,
+            402
+          ]
+        },
+        {
+          "abs_complex_error": 1.4679483895242518e-05,
+          "decoded": [
+            -0.99993896484375,
+            0.01226806640625
+          ],
+          "im_error": -3.4718794700069194e-06,
+          "index": 8,
+          "modulus_error": 1.421933197454095e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000142193319745,
+          "phase_error_rad": 3.646595198691926e-06,
+          "re_error": -1.426300460549701e-05,
+          "reference": [
+            -0.9999247018391445,
+            0.012271538285720007
+          ],
+          "stored_integer": [
+            -32766,
+            402
+          ]
+        },
+        {
+          "abs_complex_error": 1.2767852445015107e-05,
+          "decoded": [
+            -0.993896484375,
+            0.1102294921875
+          ],
+          "im_error": 7.284893616760213e-06,
+          "index": 9,
+          "modulus_error": -9.618745810735518e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999903812541893,
+          "phase_error_rad": -8.396336295568574e-06,
+          "re_error": 1.0485627356060512e-05,
+          "reference": [
+            -0.9939069700023561,
+            0.11022220729388324
+          ],
+          "stored_integer": [
+            -32568,
+            3612
+          ]
+        },
+        {
+          "abs_complex_error": 4.498251486755958e-06,
+          "decoded": [
+            -0.95330810546875,
+            0.302001953125
+          ],
+          "im_error": -3.99619422802866e-06,
+          "index": 10,
+          "modulus_error": 7.618215758231628e-07,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000007618215758,
+          "phase_error_rad": 4.4332696007565175e-06,
+          "re_error": -2.0651145561378925e-06,
+          "reference": [
+            -0.9533060403541939,
+            0.30200594931922803
+          ],
+          "stored_integer": [
+            -31238,
+            9896
+          ]
+        },
+        {
+          "abs_complex_error": 5.30748356116805e-06,
+          "decoded": [
+            -0.8245849609375,
+            0.56573486328125
+          ],
+          "im_error": 3.0524976365464696e-06,
+          "index": 11,
+          "modulus_error": -1.853333640888799e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999981466663591,
+          "phase_error_rad": -4.973387377926741e-06,
+          "re_error": 4.3418475250689426e-06,
+          "reference": [
+            -0.8245893027850251,
+            0.5657318107836135
+          ],
+          "stored_integer": [
+            -27020,
+            18538
+          ]
+        },
+        {
+          "abs_complex_error": 6.585451273980415e-06,
+          "decoded": [
+            -0.545318603515625,
+            0.838226318359375
+          ],
+          "im_error": 1.6128045368102306e-06,
+          "index": 12,
+          "modulus_error": -2.129936996442261e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999978700630036,
+          "phase_error_rad": -6.2315021929215675e-06,
+          "re_error": 6.384906421241787e-06,
+          "reference": [
+            -0.5453249884220462,
+            0.8382247055548382
+          ],
+          "stored_integer": [
+            -17869,
+            27467
+          ]
+        },
+        {
+          "abs_complex_error": 1.3461588861323108e-05,
+          "decoded": [
+            -0.085784912109375,
+            0.996307373046875
+          ],
+          "im_error": -5.239135903001291e-06,
+          "index": 13,
+          "modulus_error": -6.28365315302748e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.999993716346847,
+          "phase_error_rad": -1.1905081617191726e-05,
+          "re_error": 1.2400235064755072e-05,
+          "reference": [
+            -0.08579731234443976,
+            0.996312612182778
+          ],
+          "stored_integer": [
+            -2811,
+            32647
+          ]
+        },
+        {
+          "abs_complex_error": 6.353751477625894e-06,
+          "decoded": [
+            0.482177734375,
+            0.876068115234375
+          ],
+          "im_error": -1.978961031601223e-06,
+          "index": 14,
+          "modulus_error": -4.644982128820807e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999953550178712,
+          "phase_error_rad": 4.335249261799845e-06,
+          "re_error": -6.03770412282989e-06,
+          "reference": [
+            0.48218377207912283,
+            0.8760700941954066
+          ],
+          "stored_integer": [
+            15800,
+            28707
+          ]
+        },
+        {
+          "abs_complex_error": 1.316409064508131e-05,
+          "decoded": [
+            0.928497314453125,
+            0.371307373046875
+          ],
+          "im_error": -9.820904962543064e-06,
+          "index": 15,
+          "modulus_error": -1.1785956636201078e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999882140433638,
+          "phase_error_rad": -5.863865102595512e-06,
+          "re_error": -8.766020090589244e-06,
+          "reference": [
+            0.9285060804732156,
+            0.37131719395183754
+          ],
+          "stored_integer": [
+            30425,
+            12167
+          ]
+        }
+      ],
+      "mf_coeff_sum_abs": 15.999957329090368,
+      "mf_coefficient_complex_abs_error_max": 1.4679483895242518e-05,
+      "mf_coefficient_error_bound_at_complex_input_magnitude_sqrt2": 0.00021727398376038598,
+      "mf_magnitude_growth_upper": 22.6273566521904,
+      "mf_magnitude_max": 1.0000142193319745,
+      "mti_magnitude_growth_upper": 45.2547133043808,
+      "not_approved": true,
+      "raw_fft_twiddle_component_product_bits": 44,
+      "raw_fft_twiddle_real_pair_bits": 45,
+      "raw_mf_accum16_bits": 37,
+      "raw_mf_accum16_fractional_bits": 30,
+      "raw_mf_component_product_bits": 32,
+      "raw_mf_real_pair_bits": 33,
+      "source_reconstruction_factor": {
+        "NOISE_ONLY_UNIT": 5,
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": 1
+      },
+      "stage_output_saturation_margins": {
+        "MF": {
+          "complex_magnitude_bound": 22.6273566521904,
+          "fits_conditional_no_operation_rounding": true,
+          "positive_limit_margin": 41.372612830231475,
+          "stored_real_limit_max": 63.999969482421875
+        },
+        "MTI": {
+          "complex_magnitude_bound": 45.2547133043808,
+          "fits_conditional_no_operation_rounding": true,
+          "positive_limit_margin": 82.74525617804107,
+          "stored_real_limit_max": 127.99996948242188
+        }
+      },
+      "twiddle32_by_stage": {
+        "1": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 1,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          }
+        ],
+        "2": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 2,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 1,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 2,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          }
+        ],
+        "3": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 3,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297461715e-05,
+            "j": 1,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": -1.4496030297572737e-05,
+            "stage": 3,
+            "stored_integer": [
+              23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 2,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 3,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              -0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297572737e-05,
+            "j": 3,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": 1.4496030297461715e-05,
+            "stage": 3,
+            "stored_integer": [
+              -23170,
+              -23170
+            ]
+          }
+        ],
+        "4": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 4,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471563446e-05,
+            "decoded": [
+              0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.997322410218221e-06,
+            "j": 1,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": 9.627644963261517e-06,
+            "stage": 4,
+            "stored_integer": [
+              30274,
+              -12540
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297461715e-05,
+            "j": 2,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": -1.4496030297572737e-05,
+            "stage": 4,
+            "stored_integer": [
+              23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.190185147153081e-05,
+            "decoded": [
+              0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 3,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": 6.99732241016271e-06,
+            "stage": 4,
+            "stored_integer": [
+              12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 4,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 4,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471596083e-05,
+            "decoded": [
+              -0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 5,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": -6.997322410273732e-06,
+            "stage": 4,
+            "stored_integer": [
+              -12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              -0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297572737e-05,
+            "j": 6,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": 1.4496030297461715e-05,
+            "stage": 4,
+            "stored_integer": [
+              -23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471498174e-05,
+            "decoded": [
+              -0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.9973224101071985e-06,
+            "j": 7,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": -9.627644963261517e-06,
+            "stage": 4,
+            "stored_integer": [
+              -30274,
+              -12540
+            ]
+          }
+        ],
+        "5": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 5,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966491364e-05,
+            "decoded": [
+              0.98077392578125,
+              -0.195098876953125
+            ],
+            "im_error": -8.554936996751916e-06,
+            "j": 1,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": -1.060583354964284e-05,
+            "re_error": -1.135462198043058e-05,
+            "stage": 5,
+            "stored_integer": [
+              32138,
+              -6393
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471563446e-05,
+            "decoded": [
+              0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.997322410218221e-06,
+            "j": 2,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": 9.627644963261517e-06,
+            "stage": 5,
+            "stored_integer": [
+              30274,
+              -12540
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873488939e-05,
+            "decoded": [
+              0.83148193359375,
+              -0.555572509765625
+            ],
+            "im_error": -2.2767460228223513e-06,
+            "j": 3,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": 4.952240494127124e-06,
+            "re_error": 1.2321291204764329e-05,
+            "stage": 5,
+            "stored_integer": [
+              27246,
+              -18205
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297461715e-05,
+            "j": 4,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": -1.4496030297572737e-05,
+            "stage": 5,
+            "stored_integer": [
+              23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873468766e-05,
+            "decoded": [
+              0.555572509765625,
+              -0.83148193359375
+            ],
+            "im_error": -1.2321291204764329e-05,
+            "j": 5,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": -4.952240494238146e-06,
+            "re_error": 2.276746022711329e-06,
+            "stage": 5,
+            "stored_integer": [
+              18205,
+              -27246
+            ]
+          },
+          {
+            "abs_complex_error": 1.190185147153081e-05,
+            "decoded": [
+              0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 6,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": 6.99732241016271e-06,
+            "stage": 5,
+            "stored_integer": [
+              12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966441259e-05,
+            "decoded": [
+              0.195098876953125,
+              -0.98077392578125
+            ],
+            "im_error": 1.135462198043058e-05,
+            "j": 7,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": 1.0605833549615085e-05,
+            "re_error": 8.55493699666865e-06,
+            "stage": 5,
+            "stored_integer": [
+              6393,
+              -32138
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 8,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 5,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966524768e-05,
+            "decoded": [
+              -0.195098876953125,
+              -0.98077392578125
+            ],
+            "im_error": 1.135462198043058e-05,
+            "j": 9,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": -1.0605833549615085e-05,
+            "re_error": -8.554936996807427e-06,
+            "stage": 5,
+            "stored_integer": [
+              -6393,
+              -32138
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471596083e-05,
+            "decoded": [
+              -0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 10,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": -6.997322410273732e-06,
+            "stage": 5,
+            "stored_integer": [
+              -12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873310937e-05,
+            "decoded": [
+              -0.555572509765625,
+              -0.83148193359375
+            ],
+            "im_error": -1.2321291204542284e-05,
+            "j": 11,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": 4.952240493683035e-06,
+            "re_error": -2.276746023044396e-06,
+            "stage": 5,
+            "stored_integer": [
+              -18205,
+              -27246
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              -0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297572737e-05,
+            "j": 12,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": 1.4496030297461715e-05,
+            "stage": 5,
+            "stored_integer": [
+              -23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873379765e-05,
+            "decoded": [
+              -0.83148193359375,
+              -0.555572509765625
+            ],
+            "im_error": -2.2767460228223513e-06,
+            "j": 13,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": -4.952240494127124e-06,
+            "re_error": -1.2321291204653306e-05,
+            "stage": 5,
+            "stored_integer": [
+              -27246,
+              -18205
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471498174e-05,
+            "decoded": [
+              -0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.9973224101071985e-06,
+            "j": 14,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": -9.627644963261517e-06,
+            "stage": 5,
+            "stored_integer": [
+              -30274,
+              -12540
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966274237e-05,
+            "decoded": [
+              -0.98077392578125,
+              -0.195098876953125
+            ],
+            "im_error": -8.554936996391094e-06,
+            "j": 15,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": 1.0605833549170995e-05,
+            "re_error": 1.135462198043058e-05,
+            "stage": 5,
+            "stored_integer": [
+              -32138,
+              -6393
+            ]
+          }
+        ]
+      },
+      "twiddle_abs_error_by_stage_max": [
+        3.0517578125e-05,
+        3.0517578125e-05,
+        3.0517578125e-05,
+        3.0517578125e-05,
+        3.0517578125e-05
+      ],
+      "twiddle_magnitude_by_stage_max": [
+        0.999969482421875,
+        1.0,
+        1.0,
+        1.0000115725473502,
+        1.0000115725473502
+      ],
+      "twiddle_max_abs_error": 3.0517578125e-05,
+      "twiddle_max_magnitude": 1.0000115725473502
+    },
+    "B": {
+      "metadata": {
+        "MF": [
+          20,
+          13
+        ],
+        "MTI": [
+          21,
+          13
+        ],
+        "alpha": [
+          30625,
+          12
+        ],
+        "mf_coeff": [
+          14,
+          13
+        ],
+        "power": [
+          43,
+          26
+        ],
+        "stage_out": [
+          23,
+          13
+        ],
+        "sum40": [
+          49,
+          26
+        ],
+        "twiddle_candidate": [
+          14,
+          13
+        ]
+      },
+      "mf16": [
+        {
+          "abs_complex_error": 4.4402177522700525e-05,
+          "decoded": [
+            0.928466796875,
+            0.371337890625
+          ],
+          "im_error": 2.0696673162456936e-05,
+          "index": 0,
+          "modulus_error": -2.8789457842903765e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999712105421571,
+          "phase_error_rad": 3.380463555824331e-05,
+          "re_error": -3.9283598215589244e-05,
+          "reference": [
+            0.9285060804732156,
+            0.37131719395183754
+          ],
+          "stored_integer": [
+            7606,
+            3042
+          ]
+        },
+        {
+          "abs_complex_error": 2.9170302306943442e-05,
+          "decoded": [
+            0.482177734375,
+            0.8760986328125
+          ],
+          "im_error": 2.8538617093398777e-05,
+          "index": 1,
+          "modulus_error": 2.2090727469725735e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000220907274697,
+          "phase_error_rad": 1.9049889234956652e-05,
+          "re_error": -6.03770412282989e-06,
+          "reference": [
+            0.48218377207912283,
+            0.8760700941954066
+          ],
+          "stored_integer": [
+            3950,
+            7177
+          ]
+        },
+        {
+          "abs_complex_error": 3.110044631084146e-05,
+          "decoded": [
+            -0.0858154296875,
+            0.996337890625
+          ],
+          "im_error": 2.527844222199871e-05,
+          "index": 2,
+          "modulus_error": 2.6739776254558478e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000267397762546,
+          "phase_error_rad": 1.588129032570329e-05,
+          "re_error": -1.8117343060244928e-05,
+          "reference": [
+            -0.08579731234443976,
+            0.996312612182778
+          ],
+          "stored_integer": [
+            -703,
+            8162
+          ]
+        },
+        {
+          "abs_complex_error": 4.8930101733799506e-05,
+          "decoded": [
+            -0.5452880859375,
+            0.8382568359375
+          ],
+          "im_error": 3.213038266181023e-05,
+          "index": 3,
+          "modulus_error": 6.809807478802554e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000068098074788,
+          "phase_error_rad": -4.8453744854182183e-05,
+          "re_error": 3.690248454624179e-05,
+          "reference": [
+            -0.5453249884220462,
+            0.8382247055548382
+          ],
+          "stored_integer": [
+            -4467,
+            6867
+          ]
+        },
+        {
+          "abs_complex_error": 5.814499410796465e-05,
+          "decoded": [
+            -0.8245849609375,
+            0.565673828125
+          ],
+          "im_error": -5.798265861345353e-05,
+          "index": 4,
+          "modulus_error": -3.638184687415613e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999636181531258,
+          "phase_error_rad": 4.535720897180795e-05,
+          "re_error": 4.3418475250689426e-06,
+          "reference": [
+            -0.8245893027850251,
+            0.5657318107836135
+          ],
+          "stored_integer": [
+            -6755,
+            4634
+          ]
+        },
+        {
+          "abs_complex_error": 5.9105290674219385e-05,
+          "decoded": [
+            -0.9532470703125,
+            0.302001953125
+          ],
+          "im_error": -3.99619422802866e-06,
+          "index": 5,
+          "modulus_error": -5.742327337665554e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999425767266233,
+          "phase_error_rad": -1.400051128275237e-05,
+          "re_error": 5.897004169386211e-05,
+          "reference": [
+            -0.9533060403541939,
+            0.30200594931922803
+          ],
+          "stored_integer": [
+            -7809,
+            2474
+          ]
+        },
+        {
+          "abs_complex_error": 1.2767852445015107e-05,
+          "decoded": [
+            -0.993896484375,
+            0.1102294921875
+          ],
+          "im_error": 7.284893616760213e-06,
+          "index": 6,
+          "modulus_error": -9.618745810735518e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999903812541893,
+          "phase_error_rad": -8.396336295568574e-06,
+          "re_error": 1.0485627356060512e-05,
+          "reference": [
+            -0.9939069700023561,
+            0.11022220729388324
+          ],
+          "stored_integer": [
+            -8142,
+            903
+          ]
+        },
+        {
+          "abs_complex_error": 7.416983890441231e-05,
+          "decoded": [
+            -0.9998779296875,
+            0.0123291015625
+          ],
+          "im_error": 5.756327677999308e-05,
+          "index": 7,
+          "modulus_error": -4.606055003730791e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999539394499627,
+          "phase_error_rad": -5.813558641065697e-05,
+          "re_error": 4.677215164450299e-05,
+          "reference": [
+            -0.9999247018391445,
+            0.012271538285720007
+          ],
+          "stored_integer": [
+            -8191,
+            101
+          ]
+        },
+        {
+          "abs_complex_error": 7.416983890441231e-05,
+          "decoded": [
+            -0.9998779296875,
+            0.0123291015625
+          ],
+          "im_error": 5.756327677999308e-05,
+          "index": 8,
+          "modulus_error": -4.606055003730791e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999539394499627,
+          "phase_error_rad": -5.813558641065697e-05,
+          "re_error": 4.677215164450299e-05,
+          "reference": [
+            -0.9999247018391445,
+            0.012271538285720007
+          ],
+          "stored_integer": [
+            -8191,
+            101
+          ]
+        },
+        {
+          "abs_complex_error": 1.2767852445015107e-05,
+          "decoded": [
+            -0.993896484375,
+            0.1102294921875
+          ],
+          "im_error": 7.284893616760213e-06,
+          "index": 9,
+          "modulus_error": -9.618745810735518e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999903812541893,
+          "phase_error_rad": -8.396336295568574e-06,
+          "re_error": 1.0485627356060512e-05,
+          "reference": [
+            -0.9939069700023561,
+            0.11022220729388324
+          ],
+          "stored_integer": [
+            -8142,
+            903
+          ]
+        },
+        {
+          "abs_complex_error": 5.9105290674219385e-05,
+          "decoded": [
+            -0.9532470703125,
+            0.302001953125
+          ],
+          "im_error": -3.99619422802866e-06,
+          "index": 10,
+          "modulus_error": -5.742327337665554e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999425767266233,
+          "phase_error_rad": -1.400051128275237e-05,
+          "re_error": 5.897004169386211e-05,
+          "reference": [
+            -0.9533060403541939,
+            0.30200594931922803
+          ],
+          "stored_integer": [
+            -7809,
+            2474
+          ]
+        },
+        {
+          "abs_complex_error": 5.814499410796465e-05,
+          "decoded": [
+            -0.8245849609375,
+            0.565673828125
+          ],
+          "im_error": -5.798265861345353e-05,
+          "index": 11,
+          "modulus_error": -3.638184687415613e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999636181531258,
+          "phase_error_rad": 4.535720897180795e-05,
+          "re_error": 4.3418475250689426e-06,
+          "reference": [
+            -0.8245893027850251,
+            0.5657318107836135
+          ],
+          "stored_integer": [
+            -6755,
+            4634
+          ]
+        },
+        {
+          "abs_complex_error": 4.8930101733799506e-05,
+          "decoded": [
+            -0.5452880859375,
+            0.8382568359375
+          ],
+          "im_error": 3.213038266181023e-05,
+          "index": 12,
+          "modulus_error": 6.809807478802554e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000068098074788,
+          "phase_error_rad": -4.8453744854182183e-05,
+          "re_error": 3.690248454624179e-05,
+          "reference": [
+            -0.5453249884220462,
+            0.8382247055548382
+          ],
+          "stored_integer": [
+            -4467,
+            6867
+          ]
+        },
+        {
+          "abs_complex_error": 3.110044631084146e-05,
+          "decoded": [
+            -0.0858154296875,
+            0.996337890625
+          ],
+          "im_error": 2.527844222199871e-05,
+          "index": 13,
+          "modulus_error": 2.6739776254558478e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000267397762546,
+          "phase_error_rad": 1.588129032570329e-05,
+          "re_error": -1.8117343060244928e-05,
+          "reference": [
+            -0.08579731234443976,
+            0.996312612182778
+          ],
+          "stored_integer": [
+            -703,
+            8162
+          ]
+        },
+        {
+          "abs_complex_error": 2.9170302306943442e-05,
+          "decoded": [
+            0.482177734375,
+            0.8760986328125
+          ],
+          "im_error": 2.8538617093398777e-05,
+          "index": 14,
+          "modulus_error": 2.2090727469725735e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000220907274697,
+          "phase_error_rad": 1.9049889234956652e-05,
+          "re_error": -6.03770412282989e-06,
+          "reference": [
+            0.48218377207912283,
+            0.8760700941954066
+          ],
+          "stored_integer": [
+            3950,
+            7177
+          ]
+        },
+        {
+          "abs_complex_error": 4.4402177522700525e-05,
+          "decoded": [
+            0.928466796875,
+            0.371337890625
+          ],
+          "im_error": 2.0696673162456936e-05,
+          "index": 15,
+          "modulus_error": -2.8789457842903765e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999712105421571,
+          "phase_error_rad": 3.380463555824331e-05,
+          "re_error": -3.9283598215589244e-05,
+          "reference": [
+            0.9285060804732156,
+            0.37131719395183754
+          ],
+          "stored_integer": [
+            7606,
+            3042
+          ]
+        }
+      ],
+      "mf_coeff_sum_abs": 15.999754732874523,
+      "mf_coefficient_complex_abs_error_max": 7.416983890441231e-05,
+      "mf_coefficient_error_bound_at_complex_input_magnitude_sqrt2": 0.0010119857807204503,
+      "mf_magnitude_growth_upper": 22.62707013787427,
+      "mf_magnitude_max": 1.0000267397762546,
+      "mti_magnitude_growth_upper": 45.25414027574854,
+      "not_approved": true,
+      "raw_fft_twiddle_component_product_bits": 37,
+      "raw_fft_twiddle_real_pair_bits": 38,
+      "raw_mf_accum16_bits": 35,
+      "raw_mf_accum16_fractional_bits": 28,
+      "raw_mf_component_product_bits": 30,
+      "raw_mf_real_pair_bits": 31,
+      "source_reconstruction_factor": {
+        "NOISE_ONLY_UNIT": 5,
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": 1
+      },
+      "stage_output_saturation_margins": {
+        "MF": {
+          "complex_magnitude_bound": 22.62707013787427,
+          "fits_conditional_no_operation_rounding": true,
+          "positive_limit_margin": 41.37280779181323,
+          "stored_real_limit_max": 63.9998779296875
+        },
+        "MTI": {
+          "complex_magnitude_bound": 45.25414027574854,
+          "fits_conditional_no_operation_rounding": true,
+          "positive_limit_margin": 82.74573765393896,
+          "stored_real_limit_max": 127.9998779296875
+        }
+      },
+      "twiddle32_by_stage": {
+        "1": [
+          {
+            "abs_complex_error": 0.0001220703125,
+            "decoded": [
+              0.9998779296875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -0.0001220703125,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9998779296875,
+            "phase_error_rad": 0.0,
+            "re_error": -0.0001220703125,
+            "stage": 1,
+            "stored_integer": [
+              8191,
+              0
+            ]
+          }
+        ],
+        "2": [
+          {
+            "abs_complex_error": 0.0001220703125,
+            "decoded": [
+              0.9998779296875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -0.0001220703125,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9998779296875,
+            "phase_error_rad": 0.0,
+            "re_error": -0.0001220703125,
+            "stage": 2,
+            "stored_integer": [
+              8191,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 1,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 2,
+            "stored_integer": [
+              0,
+              -8192
+            ]
+          }
+        ],
+        "3": [
+          {
+            "abs_complex_error": 0.0001220703125,
+            "decoded": [
+              0.9998779296875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -0.0001220703125,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9998779296875,
+            "phase_error_rad": 0.0,
+            "re_error": -0.0001220703125,
+            "stage": 3,
+            "stored_integer": [
+              8191,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 6.581626310299082e-05,
+            "decoded": [
+              0.7071533203125,
+              -0.7071533203125
+            ],
+            "im_error": -4.6539125952538285e-05,
+            "j": 1,
+            "modulus_error": 6.581626310309119e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000065816263103,
+            "phase_error_rad": 0.0,
+            "re_error": 4.653912595242726e-05,
+            "stage": 3,
+            "stored_integer": [
+              5793,
+              -5793
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 2,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 3,
+            "stored_integer": [
+              0,
+              -8192
+            ]
+          },
+          {
+            "abs_complex_error": 6.581626310299082e-05,
+            "decoded": [
+              -0.7071533203125,
+              -0.7071533203125
+            ],
+            "im_error": -4.653912595242726e-05,
+            "j": 3,
+            "modulus_error": 6.581626310309119e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000065816263103,
+            "phase_error_rad": 0.0,
+            "re_error": -4.6539125952538285e-05,
+            "stage": 3,
+            "stored_integer": [
+              -5793,
+              -5793
+            ]
+          }
+        ],
+        "4": [
+          {
+            "abs_complex_error": 0.0001220703125,
+            "decoded": [
+              0.9998779296875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -0.0001220703125,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9998779296875,
+            "phase_error_rad": 0.0,
+            "re_error": -0.0001220703125,
+            "stage": 4,
+            "stored_integer": [
+              8191,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525077956e-05,
+            "decoded": [
+              0.923828125,
+              -0.3826904296875
+            ],
+            "im_error": -6.997322410218221e-06,
+            "j": 1,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": -2.6138657265195597e-05,
+            "re_error": -5.140751128673848e-05,
+            "stage": 4,
+            "stored_integer": [
+              7568,
+              -3135
+            ]
+          },
+          {
+            "abs_complex_error": 6.581626310299082e-05,
+            "decoded": [
+              0.7071533203125,
+              -0.7071533203125
+            ],
+            "im_error": -4.6539125952538285e-05,
+            "j": 2,
+            "modulus_error": 6.581626310309119e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000065816263103,
+            "phase_error_rad": 0.0,
+            "re_error": 4.653912595242726e-05,
+            "stage": 4,
+            "stored_integer": [
+              5793,
+              -5793
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525077207e-05,
+            "decoded": [
+              0.3826904296875,
+              -0.923828125
+            ],
+            "im_error": 5.140751128673848e-05,
+            "j": 3,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": 2.6138657265084575e-05,
+            "re_error": 6.99732241016271e-06,
+            "stage": 4,
+            "stored_integer": [
+              3135,
+              -7568
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 4,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 4,
+            "stored_integer": [
+              0,
+              -8192
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525078704e-05,
+            "decoded": [
+              -0.3826904296875,
+              -0.923828125
+            ],
+            "im_error": 5.140751128673848e-05,
+            "j": 5,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": -2.613865726530662e-05,
+            "re_error": -6.997322410273732e-06,
+            "stage": 4,
+            "stored_integer": [
+              -3135,
+              -7568
+            ]
+          },
+          {
+            "abs_complex_error": 6.581626310299082e-05,
+            "decoded": [
+              -0.7071533203125,
+              -0.7071533203125
+            ],
+            "im_error": -4.653912595242726e-05,
+            "j": 6,
+            "modulus_error": 6.581626310309119e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000065816263103,
+            "phase_error_rad": 0.0,
+            "re_error": -4.6539125952538285e-05,
+            "stage": 4,
+            "stored_integer": [
+              -5793,
+              -5793
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525076458e-05,
+            "decoded": [
+              -0.923828125,
+              -0.3826904296875
+            ],
+            "im_error": -6.9973224101071985e-06,
+            "j": 7,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": 2.613865726530662e-05,
+            "re_error": 5.140751128673848e-05,
+            "stage": 4,
+            "stored_integer": [
+              -7568,
+              -3135
+            ]
+          }
+        ],
+        "5": [
+          {
+            "abs_complex_error": 0.0001220703125,
+            "decoded": [
+              0.9998779296875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -0.0001220703125,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9998779296875,
+            "phase_error_rad": 0.0,
+            "re_error": -0.0001220703125,
+            "stage": 5,
+            "stored_integer": [
+              8191,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 5.4318625632816553e-05,
+            "decoded": [
+              0.9808349609375,
+              -0.195068359375
+            ],
+            "im_error": 2.1962641128248084e-05,
+            "j": 1,
+            "modulus_error": 4.444172572726224e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000444417257273,
+            "phase_error_rad": 3.123143859201649e-05,
+            "re_error": 4.968053426956942e-05,
+            "stage": 5,
+            "stored_integer": [
+              8035,
+              -1598
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525077956e-05,
+            "decoded": [
+              0.923828125,
+              -0.3826904296875
+            ],
+            "im_error": -6.997322410218221e-06,
+            "j": 2,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": -2.6138657265195597e-05,
+            "re_error": -5.140751128673848e-05,
+            "stage": 5,
+            "stored_integer": [
+              7568,
+              -3135
+            ]
+          },
+          {
+            "abs_complex_error": 5.6307950108921756e-05,
+            "decoded": [
+              0.8314208984375,
+              -0.5555419921875
+            ],
+            "im_error": 2.824083210217765e-05,
+            "j": 3,
+            "modulus_error": -5.6193857736808184e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999438061422632,
+            "phase_error_rad": -3.582780965682986e-06,
+            "re_error": -4.871386504523567e-05,
+            "stage": 5,
+            "stored_integer": [
+              6811,
+              -4551
+            ]
+          },
+          {
+            "abs_complex_error": 6.581626310299082e-05,
+            "decoded": [
+              0.7071533203125,
+              -0.7071533203125
+            ],
+            "im_error": -4.6539125952538285e-05,
+            "j": 4,
+            "modulus_error": 6.581626310309119e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000065816263103,
+            "phase_error_rad": 0.0,
+            "re_error": 4.653912595242726e-05,
+            "stage": 5,
+            "stored_integer": [
+              5793,
+              -5793
+            ]
+          },
+          {
+            "abs_complex_error": 5.6307950108977436e-05,
+            "decoded": [
+              0.5555419921875,
+              -0.8314208984375
+            ],
+            "im_error": 4.871386504523567e-05,
+            "j": 5,
+            "modulus_error": -5.6193857736808184e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999438061422632,
+            "phase_error_rad": 3.5827809655719638e-06,
+            "re_error": -2.824083210228867e-05,
+            "stage": 5,
+            "stored_integer": [
+              4551,
+              -6811
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525077207e-05,
+            "decoded": [
+              0.3826904296875,
+              -0.923828125
+            ],
+            "im_error": 5.140751128673848e-05,
+            "j": 6,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": 2.6138657265084575e-05,
+            "re_error": 6.99732241016271e-06,
+            "stage": 5,
+            "stored_integer": [
+              3135,
+              -7568
+            ]
+          },
+          {
+            "abs_complex_error": 5.4318625632850225e-05,
+            "decoded": [
+              0.195068359375,
+              -0.9808349609375
+            ],
+            "im_error": -4.968053426956942e-05,
+            "j": 7,
+            "modulus_error": 4.444172572726224e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000444417257273,
+            "phase_error_rad": -3.123143859196098e-05,
+            "re_error": -2.196264112833135e-05,
+            "stage": 5,
+            "stored_integer": [
+              1598,
+              -8035
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 8,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 5,
+            "stored_integer": [
+              0,
+              -8192
+            ]
+          },
+          {
+            "abs_complex_error": 5.431862563279411e-05,
+            "decoded": [
+              -0.195068359375,
+              -0.9808349609375
+            ],
+            "im_error": -4.968053426956942e-05,
+            "j": 9,
+            "modulus_error": 4.444172572726224e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000444417257273,
+            "phase_error_rad": 3.123143859196098e-05,
+            "re_error": 2.1962641128192573e-05,
+            "stage": 5,
+            "stored_integer": [
+              -1598,
+              -8035
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525078704e-05,
+            "decoded": [
+              -0.3826904296875,
+              -0.923828125
+            ],
+            "im_error": 5.140751128673848e-05,
+            "j": 10,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": -2.613865726530662e-05,
+            "re_error": -6.997322410273732e-06,
+            "stage": 5,
+            "stored_integer": [
+              -3135,
+              -7568
+            ]
+          },
+          {
+            "abs_complex_error": 5.630795010900249e-05,
+            "decoded": [
+              -0.5555419921875,
+              -0.8314208984375
+            ],
+            "im_error": 4.8713865045457716e-05,
+            "j": 11,
+            "modulus_error": -5.6193857736808184e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999438061422632,
+            "phase_error_rad": -3.5827809661270753e-06,
+            "re_error": 2.8240832101955604e-05,
+            "stage": 5,
+            "stored_integer": [
+              -4551,
+              -6811
+            ]
+          },
+          {
+            "abs_complex_error": 6.581626310299082e-05,
+            "decoded": [
+              -0.7071533203125,
+              -0.7071533203125
+            ],
+            "im_error": -4.653912595242726e-05,
+            "j": 12,
+            "modulus_error": 6.581626310309119e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000065816263103,
+            "phase_error_rad": 0.0,
+            "re_error": -4.6539125952538285e-05,
+            "stage": 5,
+            "stored_integer": [
+              -5793,
+              -5793
+            ]
+          },
+          {
+            "abs_complex_error": 5.63079501090178e-05,
+            "decoded": [
+              -0.8314208984375,
+              -0.5555419921875
+            ],
+            "im_error": 2.824083210217765e-05,
+            "j": 13,
+            "modulus_error": -5.6193857736808184e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999438061422632,
+            "phase_error_rad": 3.582780965682986e-06,
+            "re_error": 4.8713865045346694e-05,
+            "stage": 5,
+            "stored_integer": [
+              -6811,
+              -4551
+            ]
+          },
+          {
+            "abs_complex_error": 5.188154525076458e-05,
+            "decoded": [
+              -0.923828125,
+              -0.3826904296875
+            ],
+            "im_error": -6.9973224101071985e-06,
+            "j": 14,
+            "modulus_error": -4.48162465385149e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999551837534615,
+            "phase_error_rad": 2.613865726530662e-05,
+            "re_error": 5.140751128673848e-05,
+            "stage": 5,
+            "stored_integer": [
+              -7568,
+              -3135
+            ]
+          },
+          {
+            "abs_complex_error": 5.4318625632962446e-05,
+            "decoded": [
+              -0.9808349609375,
+              -0.195068359375
+            ],
+            "im_error": 2.1962641128608906e-05,
+            "j": 15,
+            "modulus_error": 4.444172572726224e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000444417257273,
+            "phase_error_rad": -3.1231438592183025e-05,
+            "re_error": -4.968053426956942e-05,
+            "stage": 5,
+            "stored_integer": [
+              -8035,
+              -1598
+            ]
+          }
+        ]
+      },
+      "twiddle_abs_error_by_stage_max": [
+        0.0001220703125,
+        0.0001220703125,
+        0.0001220703125,
+        0.0001220703125,
+        0.0001220703125
+      ],
+      "twiddle_magnitude_by_stage_max": [
+        0.9998779296875,
+        1.0,
+        1.000065816263103,
+        1.000065816263103,
+        1.000065816263103
+      ],
+      "twiddle_max_abs_error": 0.0001220703125,
+      "twiddle_max_magnitude": 1.000065816263103
+    },
+    "C_hypothetical": {
+      "metadata": {
+        "MF": [
+          22,
+          15
+        ],
+        "MTI": [
+          23,
+          15
+        ],
+        "alpha": [
+          490007,
+          16
+        ],
+        "mf_coeff": [
+          16,
+          15
+        ],
+        "power": [
+          46,
+          30
+        ],
+        "stage_out": [
+          25,
+          15
+        ],
+        "sum40": [
+          52,
+          30
+        ],
+        "twiddle_candidate": [
+          16,
+          15
+        ]
+      },
+      "mf16": [
+        {
+          "abs_complex_error": 1.316409064508131e-05,
+          "decoded": [
+            0.928497314453125,
+            0.371307373046875
+          ],
+          "im_error": -9.820904962543064e-06,
+          "index": 0,
+          "modulus_error": -1.1785956636201078e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999882140433638,
+          "phase_error_rad": -5.863865102595512e-06,
+          "re_error": -8.766020090589244e-06,
+          "reference": [
+            0.9285060804732156,
+            0.37131719395183754
+          ],
+          "stored_integer": [
+            30425,
+            12167
+          ]
+        },
+        {
+          "abs_complex_error": 6.353751477625894e-06,
+          "decoded": [
+            0.482177734375,
+            0.876068115234375
+          ],
+          "im_error": -1.978961031601223e-06,
+          "index": 1,
+          "modulus_error": -4.644982128820807e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999953550178712,
+          "phase_error_rad": 4.335249261799845e-06,
+          "re_error": -6.03770412282989e-06,
+          "reference": [
+            0.48218377207912283,
+            0.8760700941954066
+          ],
+          "stored_integer": [
+            15800,
+            28707
+          ]
+        },
+        {
+          "abs_complex_error": 1.3461588861323108e-05,
+          "decoded": [
+            -0.085784912109375,
+            0.996307373046875
+          ],
+          "im_error": -5.239135903001291e-06,
+          "index": 2,
+          "modulus_error": -6.28365315302748e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.999993716346847,
+          "phase_error_rad": -1.1905081617191726e-05,
+          "re_error": 1.2400235064755072e-05,
+          "reference": [
+            -0.08579731234443976,
+            0.996312612182778
+          ],
+          "stored_integer": [
+            -2811,
+            32647
+          ]
+        },
+        {
+          "abs_complex_error": 6.585451273980415e-06,
+          "decoded": [
+            -0.545318603515625,
+            0.838226318359375
+          ],
+          "im_error": 1.6128045368102306e-06,
+          "index": 3,
+          "modulus_error": -2.129936996442261e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999978700630036,
+          "phase_error_rad": -6.2315021929215675e-06,
+          "re_error": 6.384906421241787e-06,
+          "reference": [
+            -0.5453249884220462,
+            0.8382247055548382
+          ],
+          "stored_integer": [
+            -17869,
+            27467
+          ]
+        },
+        {
+          "abs_complex_error": 5.30748356116805e-06,
+          "decoded": [
+            -0.8245849609375,
+            0.56573486328125
+          ],
+          "im_error": 3.0524976365464696e-06,
+          "index": 4,
+          "modulus_error": -1.853333640888799e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999981466663591,
+          "phase_error_rad": -4.973387377926741e-06,
+          "re_error": 4.3418475250689426e-06,
+          "reference": [
+            -0.8245893027850251,
+            0.5657318107836135
+          ],
+          "stored_integer": [
+            -27020,
+            18538
+          ]
+        },
+        {
+          "abs_complex_error": 4.498251486755958e-06,
+          "decoded": [
+            -0.95330810546875,
+            0.302001953125
+          ],
+          "im_error": -3.99619422802866e-06,
+          "index": 5,
+          "modulus_error": 7.618215758231628e-07,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000007618215758,
+          "phase_error_rad": 4.4332696007565175e-06,
+          "re_error": -2.0651145561378925e-06,
+          "reference": [
+            -0.9533060403541939,
+            0.30200594931922803
+          ],
+          "stored_integer": [
+            -31238,
+            9896
+          ]
+        },
+        {
+          "abs_complex_error": 1.2767852445015107e-05,
+          "decoded": [
+            -0.993896484375,
+            0.1102294921875
+          ],
+          "im_error": 7.284893616760213e-06,
+          "index": 6,
+          "modulus_error": -9.618745810735518e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999903812541893,
+          "phase_error_rad": -8.396336295568574e-06,
+          "re_error": 1.0485627356060512e-05,
+          "reference": [
+            -0.9939069700023561,
+            0.11022220729388324
+          ],
+          "stored_integer": [
+            -32568,
+            3612
+          ]
+        },
+        {
+          "abs_complex_error": 1.4679483895242518e-05,
+          "decoded": [
+            -0.99993896484375,
+            0.01226806640625
+          ],
+          "im_error": -3.4718794700069194e-06,
+          "index": 7,
+          "modulus_error": 1.421933197454095e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000142193319745,
+          "phase_error_rad": 3.646595198691926e-06,
+          "re_error": -1.426300460549701e-05,
+          "reference": [
+            -0.9999247018391445,
+            0.012271538285720007
+          ],
+          "stored_integer": [
+            -32766,
+            402
+          ]
+        },
+        {
+          "abs_complex_error": 1.4679483895242518e-05,
+          "decoded": [
+            -0.99993896484375,
+            0.01226806640625
+          ],
+          "im_error": -3.4718794700069194e-06,
+          "index": 8,
+          "modulus_error": 1.421933197454095e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000142193319745,
+          "phase_error_rad": 3.646595198691926e-06,
+          "re_error": -1.426300460549701e-05,
+          "reference": [
+            -0.9999247018391445,
+            0.012271538285720007
+          ],
+          "stored_integer": [
+            -32766,
+            402
+          ]
+        },
+        {
+          "abs_complex_error": 1.2767852445015107e-05,
+          "decoded": [
+            -0.993896484375,
+            0.1102294921875
+          ],
+          "im_error": 7.284893616760213e-06,
+          "index": 9,
+          "modulus_error": -9.618745810735518e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999903812541893,
+          "phase_error_rad": -8.396336295568574e-06,
+          "re_error": 1.0485627356060512e-05,
+          "reference": [
+            -0.9939069700023561,
+            0.11022220729388324
+          ],
+          "stored_integer": [
+            -32568,
+            3612
+          ]
+        },
+        {
+          "abs_complex_error": 4.498251486755958e-06,
+          "decoded": [
+            -0.95330810546875,
+            0.302001953125
+          ],
+          "im_error": -3.99619422802866e-06,
+          "index": 10,
+          "modulus_error": 7.618215758231628e-07,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 1.0000007618215758,
+          "phase_error_rad": 4.4332696007565175e-06,
+          "re_error": -2.0651145561378925e-06,
+          "reference": [
+            -0.9533060403541939,
+            0.30200594931922803
+          ],
+          "stored_integer": [
+            -31238,
+            9896
+          ]
+        },
+        {
+          "abs_complex_error": 5.30748356116805e-06,
+          "decoded": [
+            -0.8245849609375,
+            0.56573486328125
+          ],
+          "im_error": 3.0524976365464696e-06,
+          "index": 11,
+          "modulus_error": -1.853333640888799e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999981466663591,
+          "phase_error_rad": -4.973387377926741e-06,
+          "re_error": 4.3418475250689426e-06,
+          "reference": [
+            -0.8245893027850251,
+            0.5657318107836135
+          ],
+          "stored_integer": [
+            -27020,
+            18538
+          ]
+        },
+        {
+          "abs_complex_error": 6.585451273980415e-06,
+          "decoded": [
+            -0.545318603515625,
+            0.838226318359375
+          ],
+          "im_error": 1.6128045368102306e-06,
+          "index": 12,
+          "modulus_error": -2.129936996442261e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999978700630036,
+          "phase_error_rad": -6.2315021929215675e-06,
+          "re_error": 6.384906421241787e-06,
+          "reference": [
+            -0.5453249884220462,
+            0.8382247055548382
+          ],
+          "stored_integer": [
+            -17869,
+            27467
+          ]
+        },
+        {
+          "abs_complex_error": 1.3461588861323108e-05,
+          "decoded": [
+            -0.085784912109375,
+            0.996307373046875
+          ],
+          "im_error": -5.239135903001291e-06,
+          "index": 13,
+          "modulus_error": -6.28365315302748e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.999993716346847,
+          "phase_error_rad": -1.1905081617191726e-05,
+          "re_error": 1.2400235064755072e-05,
+          "reference": [
+            -0.08579731234443976,
+            0.996312612182778
+          ],
+          "stored_integer": [
+            -2811,
+            32647
+          ]
+        },
+        {
+          "abs_complex_error": 6.353751477625894e-06,
+          "decoded": [
+            0.482177734375,
+            0.876068115234375
+          ],
+          "im_error": -1.978961031601223e-06,
+          "index": 14,
+          "modulus_error": -4.644982128820807e-06,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999953550178712,
+          "phase_error_rad": 4.335249261799845e-06,
+          "re_error": -6.03770412282989e-06,
+          "reference": [
+            0.48218377207912283,
+            0.8760700941954066
+          ],
+          "stored_integer": [
+            15800,
+            28707
+          ]
+        },
+        {
+          "abs_complex_error": 1.316409064508131e-05,
+          "decoded": [
+            0.928497314453125,
+            0.371307373046875
+          ],
+          "im_error": -9.820904962543064e-06,
+          "index": 15,
+          "modulus_error": -1.1785956636201078e-05,
+          "modulus_exact": 1.0,
+          "modulus_quantized": 0.9999882140433638,
+          "phase_error_rad": -5.863865102595512e-06,
+          "re_error": -8.766020090589244e-06,
+          "reference": [
+            0.9285060804732156,
+            0.37131719395183754
+          ],
+          "stored_integer": [
+            30425,
+            12167
+          ]
+        }
+      ],
+      "mf_coeff_sum_abs": 15.999957329090368,
+      "mf_coefficient_complex_abs_error_max": 1.4679483895242518e-05,
+      "mf_coefficient_error_bound_at_complex_input_magnitude_sqrt2": 0.00021727398376038598,
+      "mf_magnitude_growth_upper": 22.6273566521904,
+      "mf_magnitude_max": 1.0000142193319745,
+      "mti_magnitude_growth_upper": 45.2547133043808,
+      "not_approved": true,
+      "raw_fft_twiddle_component_product_bits": 41,
+      "raw_fft_twiddle_real_pair_bits": 42,
+      "raw_mf_accum16_bits": 37,
+      "raw_mf_accum16_fractional_bits": 30,
+      "raw_mf_component_product_bits": 32,
+      "raw_mf_real_pair_bits": 33,
+      "source_reconstruction_factor": {
+        "NOISE_ONLY_UNIT": 5,
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": 1
+      },
+      "stage_output_saturation_margins": {
+        "MF": {
+          "complex_magnitude_bound": 22.6273566521904,
+          "fits_conditional_no_operation_rounding": true,
+          "positive_limit_margin": 41.372612830231475,
+          "stored_real_limit_max": 63.999969482421875
+        },
+        "MTI": {
+          "complex_magnitude_bound": 45.2547133043808,
+          "fits_conditional_no_operation_rounding": true,
+          "positive_limit_margin": 82.74525617804107,
+          "stored_real_limit_max": 127.99996948242188
+        }
+      },
+      "twiddle32_by_stage": {
+        "1": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 1,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          }
+        ],
+        "2": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 2,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 1,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 2,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          }
+        ],
+        "3": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 3,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297461715e-05,
+            "j": 1,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": -1.4496030297572737e-05,
+            "stage": 3,
+            "stored_integer": [
+              23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 2,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 3,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              -0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297572737e-05,
+            "j": 3,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": 1.4496030297461715e-05,
+            "stage": 3,
+            "stored_integer": [
+              -23170,
+              -23170
+            ]
+          }
+        ],
+        "4": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 4,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471563446e-05,
+            "decoded": [
+              0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.997322410218221e-06,
+            "j": 1,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": 9.627644963261517e-06,
+            "stage": 4,
+            "stored_integer": [
+              30274,
+              -12540
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297461715e-05,
+            "j": 2,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": -1.4496030297572737e-05,
+            "stage": 4,
+            "stored_integer": [
+              23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.190185147153081e-05,
+            "decoded": [
+              0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 3,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": 6.99732241016271e-06,
+            "stage": 4,
+            "stored_integer": [
+              12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 4,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 4,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471596083e-05,
+            "decoded": [
+              -0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 5,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": -6.997322410273732e-06,
+            "stage": 4,
+            "stored_integer": [
+              -12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              -0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297572737e-05,
+            "j": 6,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": 1.4496030297461715e-05,
+            "stage": 4,
+            "stored_integer": [
+              -23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471498174e-05,
+            "decoded": [
+              -0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.9973224101071985e-06,
+            "j": 7,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": -9.627644963261517e-06,
+            "stage": 4,
+            "stored_integer": [
+              -30274,
+              -12540
+            ]
+          }
+        ],
+        "5": [
+          {
+            "abs_complex_error": 3.0517578125e-05,
+            "decoded": [
+              0.999969482421875,
+              0.0
+            ],
+            "im_error": 0.0,
+            "j": 0,
+            "modulus_error": -3.0517578125e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.999969482421875,
+            "phase_error_rad": 0.0,
+            "re_error": -3.0517578125e-05,
+            "stage": 5,
+            "stored_integer": [
+              32767,
+              0
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966491364e-05,
+            "decoded": [
+              0.98077392578125,
+              -0.195098876953125
+            ],
+            "im_error": -8.554936996751916e-06,
+            "j": 1,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": -1.060583354964284e-05,
+            "re_error": -1.135462198043058e-05,
+            "stage": 5,
+            "stored_integer": [
+              32138,
+              -6393
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471563446e-05,
+            "decoded": [
+              0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.997322410218221e-06,
+            "j": 2,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": 9.627644963261517e-06,
+            "stage": 5,
+            "stored_integer": [
+              30274,
+              -12540
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873488939e-05,
+            "decoded": [
+              0.83148193359375,
+              -0.555572509765625
+            ],
+            "im_error": -2.2767460228223513e-06,
+            "j": 3,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": 4.952240494127124e-06,
+            "re_error": 1.2321291204764329e-05,
+            "stage": 5,
+            "stored_integer": [
+              27246,
+              -18205
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297461715e-05,
+            "j": 4,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": -1.4496030297572737e-05,
+            "stage": 5,
+            "stored_integer": [
+              23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873468766e-05,
+            "decoded": [
+              0.555572509765625,
+              -0.83148193359375
+            ],
+            "im_error": -1.2321291204764329e-05,
+            "j": 5,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": -4.952240494238146e-06,
+            "re_error": 2.276746022711329e-06,
+            "stage": 5,
+            "stored_integer": [
+              18205,
+              -27246
+            ]
+          },
+          {
+            "abs_complex_error": 1.190185147153081e-05,
+            "decoded": [
+              0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 6,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": 6.99732241016271e-06,
+            "stage": 5,
+            "stored_integer": [
+              12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966441259e-05,
+            "decoded": [
+              0.195098876953125,
+              -0.98077392578125
+            ],
+            "im_error": 1.135462198043058e-05,
+            "j": 7,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": 1.0605833549615085e-05,
+            "re_error": 8.55493699666865e-06,
+            "stage": 5,
+            "stored_integer": [
+              6393,
+              -32138
+            ]
+          },
+          {
+            "abs_complex_error": 6.123233995736766e-17,
+            "decoded": [
+              0.0,
+              -1.0
+            ],
+            "im_error": 0.0,
+            "j": 8,
+            "modulus_error": 0.0,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0,
+            "phase_error_rad": 0.0,
+            "re_error": -6.123233995736766e-17,
+            "stage": 5,
+            "stored_integer": [
+              0,
+              -32768
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966524768e-05,
+            "decoded": [
+              -0.195098876953125,
+              -0.98077392578125
+            ],
+            "im_error": 1.135462198043058e-05,
+            "j": 9,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": -1.0605833549615085e-05,
+            "re_error": -8.554936996807427e-06,
+            "stage": 5,
+            "stored_integer": [
+              -6393,
+              -32138
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471596083e-05,
+            "decoded": [
+              -0.3826904296875,
+              -0.92388916015625
+            ],
+            "im_error": -9.627644963261517e-06,
+            "j": 10,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": -2.7803105617785207e-06,
+            "re_error": -6.997322410273732e-06,
+            "stage": 5,
+            "stored_integer": [
+              -12540,
+              -30274
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873310937e-05,
+            "decoded": [
+              -0.555572509765625,
+              -0.83148193359375
+            ],
+            "im_error": -1.2321291204542284e-05,
+            "j": 11,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": 4.952240493683035e-06,
+            "re_error": -2.276746023044396e-06,
+            "stage": 5,
+            "stored_integer": [
+              -18205,
+              -27246
+            ]
+          },
+          {
+            "abs_complex_error": 2.0500482647320155e-05,
+            "decoded": [
+              -0.70709228515625,
+              -0.70709228515625
+            ],
+            "im_error": 1.4496030297572737e-05,
+            "j": 12,
+            "modulus_error": -2.0500482647345386e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999794995173527,
+            "phase_error_rad": 0.0,
+            "re_error": 1.4496030297461715e-05,
+            "stage": 5,
+            "stored_integer": [
+              -23170,
+              -23170
+            ]
+          },
+          {
+            "abs_complex_error": 1.2529875873379765e-05,
+            "decoded": [
+              -0.83148193359375,
+              -0.555572509765625
+            ],
+            "im_error": -2.2767460228223513e-06,
+            "j": 13,
+            "modulus_error": 1.1509683802035653e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.000011509683802,
+            "phase_error_rad": -4.952240494127124e-06,
+            "re_error": -1.2321291204653306e-05,
+            "stage": 5,
+            "stored_integer": [
+              -27246,
+              -18205
+            ]
+          },
+          {
+            "abs_complex_error": 1.1901851471498174e-05,
+            "decoded": [
+              -0.92388916015625,
+              -0.3826904296875
+            ],
+            "im_error": -6.9973224101071985e-06,
+            "j": 14,
+            "modulus_error": 1.1572547350180429e-05,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 1.0000115725473502,
+            "phase_error_rad": 2.7803105617785207e-06,
+            "re_error": -9.627644963261517e-06,
+            "stage": 5,
+            "stored_integer": [
+              -30274,
+              -12540
+            ]
+          },
+          {
+            "abs_complex_error": 1.4216693966274237e-05,
+            "decoded": [
+              -0.98077392578125,
+              -0.195098876953125
+            ],
+            "im_error": -8.554936996391094e-06,
+            "j": 15,
+            "modulus_error": -9.467404448182393e-06,
+            "modulus_exact": 1.0,
+            "modulus_quantized": 0.9999905325955518,
+            "phase_error_rad": 1.0605833549170995e-05,
+            "re_error": 1.135462198043058e-05,
+            "stage": 5,
+            "stored_integer": [
+              -32138,
+              -6393
+            ]
+          }
+        ]
+      },
+      "twiddle_abs_error_by_stage_max": [
+        3.0517578125e-05,
+        3.0517578125e-05,
+        3.0517578125e-05,
+        3.0517578125e-05,
+        3.0517578125e-05
+      ],
+      "twiddle_magnitude_by_stage_max": [
+        0.999969482421875,
+        1.0,
+        1.0,
+        1.0000115725473502,
+        1.0000115725473502
+      ],
+      "twiddle_max_abs_error": 3.0517578125e-05,
+      "twiddle_max_magnitude": 1.0000115725473502
+    }
+  },
+  "input_g_approved": {
+    "NOISE_ONLY_UNIT": 5,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 1
+  },
+  "project": "AX309-RDSP-001",
+  "reference_coefficients": {
+    "fft32_twiddles": {
+      "1": [
+        {
+          "im": -0.0,
+          "index": 0,
+          "re": 1.0
+        }
+      ],
+      "2": [
+        {
+          "im": -0.0,
+          "index": 0,
+          "re": 1.0
+        },
+        {
+          "im": -1.0,
+          "index": 1,
+          "re": 6.123233995736766e-17
+        }
+      ],
+      "3": [
+        {
+          "im": -0.0,
+          "index": 0,
+          "re": 1.0
+        },
+        {
+          "im": -0.7071067811865475,
+          "index": 1,
+          "re": 0.7071067811865476
+        },
+        {
+          "im": -1.0,
+          "index": 2,
+          "re": 6.123233995736766e-17
+        },
+        {
+          "im": -0.7071067811865476,
+          "index": 3,
+          "re": -0.7071067811865475
+        }
+      ],
+      "4": [
+        {
+          "im": -0.0,
+          "index": 0,
+          "re": 1.0
+        },
+        {
+          "im": -0.3826834323650898,
+          "index": 1,
+          "re": 0.9238795325112867
+        },
+        {
+          "im": -0.7071067811865475,
+          "index": 2,
+          "re": 0.7071067811865476
+        },
+        {
+          "im": -0.9238795325112867,
+          "index": 3,
+          "re": 0.38268343236508984
+        },
+        {
+          "im": -1.0,
+          "index": 4,
+          "re": 6.123233995736766e-17
+        },
+        {
+          "im": -0.9238795325112867,
+          "index": 5,
+          "re": -0.3826834323650897
+        },
+        {
+          "im": -0.7071067811865476,
+          "index": 6,
+          "re": -0.7071067811865475
+        },
+        {
+          "im": -0.3826834323650899,
+          "index": 7,
+          "re": -0.9238795325112867
+        }
+      ],
+      "5": [
+        {
+          "im": -0.0,
+          "index": 0,
+          "re": 1.0
+        },
+        {
+          "im": -0.19509032201612825,
+          "index": 1,
+          "re": 0.9807852804032304
+        },
+        {
+          "im": -0.3826834323650898,
+          "index": 2,
+          "re": 0.9238795325112867
+        },
+        {
+          "im": -0.5555702330196022,
+          "index": 3,
+          "re": 0.8314696123025452
+        },
+        {
+          "im": -0.7071067811865475,
+          "index": 4,
+          "re": 0.7071067811865476
+        },
+        {
+          "im": -0.8314696123025452,
+          "index": 5,
+          "re": 0.5555702330196023
+        },
+        {
+          "im": -0.9238795325112867,
+          "index": 6,
+          "re": 0.38268343236508984
+        },
+        {
+          "im": -0.9807852804032304,
+          "index": 7,
+          "re": 0.19509032201612833
+        },
+        {
+          "im": -1.0,
+          "index": 8,
+          "re": 6.123233995736766e-17
+        },
+        {
+          "im": -0.9807852804032304,
+          "index": 9,
+          "re": -0.1950903220161282
+        },
+        {
+          "im": -0.9238795325112867,
+          "index": 10,
+          "re": -0.3826834323650897
+        },
+        {
+          "im": -0.8314696123025455,
+          "index": 11,
+          "re": -0.555570233019602
+        },
+        {
+          "im": -0.7071067811865476,
+          "index": 12,
+          "re": -0.7071067811865475
+        },
+        {
+          "im": -0.5555702330196022,
+          "index": 13,
+          "re": -0.8314696123025453
+        },
+        {
+          "im": -0.3826834323650899,
+          "index": 14,
+          "re": -0.9238795325112867
+        },
+        {
+          "im": -0.1950903220161286,
+          "index": 15,
+          "re": -0.9807852804032304
+        }
+      ]
+    },
+    "mf16": [
+      {
+        "abs": 1.0,
+        "im": 0.37131719395183754,
+        "index": 0,
+        "phase_rad": 0.380427235395639,
+        "re": 0.9285060804732156
+      },
+      {
+        "abs": 1.0,
+        "im": 0.8760700941954066,
+        "index": 1,
+        "phase_rad": 1.0676506283684062,
+        "re": 0.48218377207912283
+      },
+      {
+        "abs": 1.0,
+        "im": 0.996312612182778,
+        "index": 2,
+        "phase_rad": 1.6566992509164924,
+        "re": -0.08579731234443976
+      },
+      {
+        "abs": 1.0,
+        "im": 0.8382247055548382,
+        "index": 3,
+        "phase_rad": 2.1475731030398975,
+        "re": -0.5453249884220462
+      },
+      {
+        "abs": 1.0,
+        "im": 0.5657318107836135,
+        "index": 4,
+        "phase_rad": 2.5402721847386216,
+        "re": -0.8245893027850251
+      },
+      {
+        "abs": 1.0,
+        "im": 0.30200594931922803,
+        "index": 5,
+        "phase_rad": 2.834796496012665,
+        "re": -0.9533060403541939
+      },
+      {
+        "abs": 1.0,
+        "im": 0.11022220729388324,
+        "index": 6,
+        "phase_rad": 3.031146036862027,
+        "re": -0.9939069700023561
+      },
+      {
+        "abs": 1.0,
+        "im": 0.012271538285720007,
+        "index": 7,
+        "phase_rad": 3.129320807286708,
+        "re": -0.9999247018391445
+      },
+      {
+        "abs": 1.0,
+        "im": 0.012271538285720007,
+        "index": 8,
+        "phase_rad": 3.129320807286708,
+        "re": -0.9999247018391445
+      },
+      {
+        "abs": 1.0,
+        "im": 0.11022220729388324,
+        "index": 9,
+        "phase_rad": 3.031146036862027,
+        "re": -0.9939069700023561
+      },
+      {
+        "abs": 1.0,
+        "im": 0.30200594931922803,
+        "index": 10,
+        "phase_rad": 2.834796496012665,
+        "re": -0.9533060403541939
+      },
+      {
+        "abs": 1.0,
+        "im": 0.5657318107836135,
+        "index": 11,
+        "phase_rad": 2.5402721847386216,
+        "re": -0.8245893027850251
+      },
+      {
+        "abs": 1.0,
+        "im": 0.8382247055548382,
+        "index": 12,
+        "phase_rad": 2.1475731030398975,
+        "re": -0.5453249884220462
+      },
+      {
+        "abs": 1.0,
+        "im": 0.996312612182778,
+        "index": 13,
+        "phase_rad": 1.6566992509164924,
+        "re": -0.08579731234443976
+      },
+      {
+        "abs": 1.0,
+        "im": 0.8760700941954066,
+        "index": 14,
+        "phase_rad": 1.0676506283684062,
+        "re": 0.48218377207912283
+      },
+      {
+        "abs": 1.0,
+        "im": 0.37131719395183754,
+        "index": 15,
+        "phase_rad": 0.380427235395639,
+        "re": 0.9285060804732156
+      }
+    ]
+  },
+  "risks": [
+    "actual FFT twiddle intermediate multiplication and rounding topology is not approved",
+    "coefficient error bounds below are conditional on exact arithmetic apart from indicated rounding sites",
+    "REQ-SCR-01 and REQ-RNG-03 binding/open: no absolute clutter/paired-target magnitude or joint model",
+    "stored-domain ideal coefficients not a proof of zero saturation or bittrue Pd"
+  ],
+  "rounding": "RNE candidate for coefficients and each post-shift; not engineer approved",
+  "schedules": {
+    "ALL_5": {
+      "FFT_normalization": 32,
+      "per_architecture": {
+        "A": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.00405987829191789,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.001211391060781035,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.0019235042132211006,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.0026356173656611665,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.003347745768504613,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.00405987829191789,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 45.25454647809288,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.7459467101653,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.7459467101653,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.7459467101653,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.745684858005,
+              "complex_magnitude_upper_if_exact_ops": 45.25428462441707,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.745423004329,
+              "complex_magnitude_upper_if_exact_ops": 45.25454647809288,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.000690532124395459,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.001381053712106891,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.002071575299818323,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.0027621088742313784,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.003452650439807562,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.003452650439807562
+        },
+        "B": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.016526114539609466,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.005131235069963405,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.007979687679723669,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.010828402886095836,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.013677211838362768,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.016526114539609466,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 45.25584574416007,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74849974746166,
+              "complex_magnitude_upper_if_exact_ops": 45.25137818222585,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74849974746166,
+              "complex_magnitude_upper_if_exact_ops": 45.25137818222585,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74701060915555,
+              "complex_magnitude_upper_if_exact_ops": 45.25286732053196,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74552142184467,
+              "complex_magnitude_upper_if_exact_ops": 45.25435650784283,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74403218552743,
+              "complex_magnitude_upper_if_exact_ops": 45.25584574416007,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.0027620935226897302,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.005524018460569726,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.008286125183575915,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.011048413692142697,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.013810883995243306,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.013810883995243306
+        },
+        "C_hypothetical": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.00405987829191789,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.001211391060781035,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.0019235042132211006,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.0026356173656611665,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.003347745768504613,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.00405987829191789,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 45.25454647809288,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.74594671016547,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.74594671016547,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.74594671016547,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.7456848580048,
+              "complex_magnitude_upper_if_exact_ops": 45.25428462441707,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.745423004329,
+              "complex_magnitude_upper_if_exact_ops": 45.25454647809288,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.000690532124395459,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.001381053712106891,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.002071575299818323,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.0027621088742313784,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.003452650439807562,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.003452650439807562
+        }
+      },
+      "reconstruction": {
+        "NOISE_ONLY_UNIT": {
+          "FFT_amplitude_scale": 160,
+          "power_scale": 25600
+        },
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+          "FFT_amplitude_scale": 32,
+          "power_scale": 1024
+        }
+      },
+      "shifts": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "DISTRIBUTED_3": {
+      "FFT_normalization": 8,
+      "per_architecture": {
+        "A": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.015958981621305657,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.0024012029351244924,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.003803850053567046,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.01039141515758162,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.013175190335601123,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.015958981621305657,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 181.0181859123715,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4005.491923937909,
+              "complex_magnitude_upper_if_exact_ops": 90.50804554451281,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4005.491923937909,
+              "complex_magnitude_upper_if_exact_ops": 90.50804554451281,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3914.9838783933965,
+              "complex_magnitude_upper_if_exact_ops": 181.01609108902562,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3914.9828309847535,
+              "complex_magnitude_upper_if_exact_ops": 181.01713849766827,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3914.9817835700505,
+              "complex_magnitude_upper_if_exact_ops": 181.0181859123715,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.001381064248790918,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.002762107424213782,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.008286301199273292,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.011048435496925513,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.013810601759230249,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.013810601759230249
+        },
+        "B": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.06498228081130235,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.0101761533941765,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.015786741867946714,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.04270938296203987,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.05384564864982298,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.06498228081130235,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 181.02338297664028,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 421.49712156523583,
+              "complex_magnitude_upper_if_exact_ops": 90.5027563644517,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 21,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 421.49712156523583,
+              "complex_magnitude_upper_if_exact_ops": 90.5027563644517,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 21,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 330.98840864755965,
+              "complex_magnitude_upper_if_exact_ops": 181.01146928212785,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 330.9824518983162,
+              "complex_magnitude_upper_if_exact_ops": 181.01742603137131,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 330.9764949530472,
+              "complex_magnitude_upper_if_exact_ops": 181.02338297664028,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.0055241870453794605,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.011048036921139452,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.03314450073430366,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.04419365476857079,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.05524353598097322,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.05524353598097322
+        },
+        "C_hypothetical": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.015958981621305657,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.0024012029351244924,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.003803850053567046,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.01039141515758162,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.013175190335601123,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.015958981621305657,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 181.0181859123715,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 421.49192393790906,
+              "complex_magnitude_upper_if_exact_ops": 90.50804554451281,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 421.49192393790906,
+              "complex_magnitude_upper_if_exact_ops": 90.50804554451281,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 330.98387839339625,
+              "complex_magnitude_upper_if_exact_ops": 181.01609108902562,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 330.9828309847536,
+              "complex_magnitude_upper_if_exact_ops": 181.01713849766827,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 330.98178357005037,
+              "complex_magnitude_upper_if_exact_ops": 181.0181859123715,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.001381064248790918,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.002762107424213782,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.008286301199273292,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.011048435496925513,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.013810601759230249,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.013810601759230249
+        }
+      },
+      "reconstruction": {
+        "NOISE_ONLY_UNIT": {
+          "FFT_amplitude_scale": 40,
+          "power_scale": 1600
+        },
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+          "FFT_amplitude_scale": 8,
+          "power_scale": 64
+        }
+      },
+      "shifts": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    "EARLY_3": {
+      "FFT_normalization": 8,
+      "per_architecture": {
+        "A": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.016131616985757512,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.001211391060781035,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.0019235042132211006,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.0026356173656611665,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.006673912350571648,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.016131616985757512,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 181.0181859123715,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.7459467101653,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.7459467101653,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4050.7459467101653,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4005.4914002335877,
+              "complex_magnitude_upper_if_exact_ops": 90.50856924883414,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3914.9817835700505,
+              "complex_magnitude_upper_if_exact_ops": 181.0181859123715,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.000690532124395459,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.001381053712106891,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.002071575299818323,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.005524217748462757,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.013810601759230249,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.013810601759230249
+        },
+        "B": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.06567286874864066,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.005131235069963405,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.007979687679723669,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.010828402886095836,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.027268106930975224,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.06567286874864066,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 181.02338297664028,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74849974746166,
+              "complex_magnitude_upper_if_exact_ops": 45.25137818222585,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74849974746166,
+              "complex_magnitude_upper_if_exact_ops": 45.25137818222585,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 466.74701060915555,
+              "complex_magnitude_upper_if_exact_ops": 45.25286732053196,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 20,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 421.49116491400184,
+              "complex_magnitude_upper_if_exact_ops": 90.50871301568566,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 21,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 330.9764949530472,
+              "complex_magnitude_upper_if_exact_ops": 181.02338297664028,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.0027620935226897302,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.005524018460569726,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.008286125183575915,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.022096827384285395,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.05524353598097322,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.05524353598097322
+        },
+        "C_hypothetical": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.016131616985757512,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.001211391060781035,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.0019235042132211006,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.0026356173656611665,
+              "ideal_unit_twiddle_input_bound": 45.254833995939045,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.006673912350571648,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.016131616985757512,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 181.0181859123715,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.74594671016547,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.74594671016547,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 466.74594671016547,
+              "complex_magnitude_upper_if_exact_ops": 45.254022772256405,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 1,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 421.49140023358774,
+              "complex_magnitude_upper_if_exact_ops": 90.50856924883414,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 330.98178357005037,
+              "complex_magnitude_upper_if_exact_ops": 181.0181859123715,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.000690532124395459,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.001381053712106891,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.002071575299818323,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.005524217748462757,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.013810601759230249,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.013810601759230249
+        }
+      },
+      "reconstruction": {
+        "NOISE_ONLY_UNIT": {
+          "FFT_amplitude_scale": 40,
+          "power_scale": 1600
+        },
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+          "FFT_amplitude_scale": 8,
+          "power_scale": 64
+        }
+      },
+      "shifts": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    "ZERO": {
+      "FFT_normalization": 1,
+      "per_architecture": {
+        "A": {
+          "all_stages_fit_candidate_output_format": true,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.12713236956360477,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.0024012029351244924,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.007586120920696514,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.020718092755850508,
+              "ideal_unit_twiddle_input_bound": 362.03867196751236,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.05250654791528782,
+              "ideal_unit_twiddle_input_bound": 724.0773439350247,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.12713236956360477,
+              "ideal_unit_twiddle_input_bound": 1448.1546878700494,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 1448.145487298972,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 4005.491923937909,
+              "complex_magnitude_upper_if_exact_ops": 90.50804554451281,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3914.9838783933965,
+              "complex_magnitude_upper_if_exact_ops": 181.01609108902562,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3733.9677873043706,
+              "complex_magnitude_upper_if_exact_ops": 362.03218217805124,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 25,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 3371.931415491749,
+              "complex_magnitude_upper_if_exact_ops": 724.0685539906731,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 26,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 28,
+              "candidate_stage_output_margin": 2647.85448218345,
+              "complex_magnitude_upper_if_exact_ops": 1448.145487298972,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 27,
+              "representable_positive_component_max": 4095.999969482422,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.001381064248790918,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.005524214848427564,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.016572602398546583,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.044193741987702054,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.11048481407384199,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.11048481407384199
+        },
+        "B": {
+          "all_stages_fit_candidate_output_format": false,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.5177002199041763,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.0101761533941765,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.03148716699014312,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.08515981000578315,
+              "ideal_unit_twiddle_input_bound": 362.03867196751236,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.21460571548193697,
+              "ideal_unit_twiddle_input_bound": 724.0773439350247,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.5177002199041763,
+              "ideal_unit_twiddle_input_bound": 1448.1546878700494,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 1448.1870638131222,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 421.49712156523583,
+              "complex_magnitude_upper_if_exact_ops": 90.5027563644517,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 21,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 330.9943652007841,
+              "complex_magnitude_upper_if_exact_ops": 181.0055127289034,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 22,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": 149.9769393654318,
+              "complex_magnitude_upper_if_exact_ops": 362.0229385642557,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": false,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": -212.06982619579776,
+              "complex_magnitude_upper_if_exact_ops": 724.0697041254853,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 8.631674575031098e-05,
+              "candidate_post_stage_RNE_max_component_error": 6.103515625e-05,
+              "candidate_stage_fits": false,
+              "candidate_stage_out_F": 13,
+              "candidate_stage_out_W": 23,
+              "candidate_stage_output_margin": -936.1871858834347,
+              "complex_magnitude_upper_if_exact_ops": 1448.1870638131222,
+              "error_model_coeff_component_max": 0.0001220703125,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 25,
+              "representable_positive_component_max": 511.9998779296875,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.0055241870453794605,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.022096073842278904,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.06628900146860732,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.17677461907428316,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.4419482878477858,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.4419482878477858
+        },
+        "C_hypothetical": {
+          "all_stages_fit_candidate_output_format": false,
+          "conditional_MF_MTI_quantization_plus_FFT_one_RNE_each_stage_error_bound": 0.12713236956360477,
+          "conditional_error_stage_trace": [
+            {
+              "cumulative_error_conditional": 0.0024012029351244924,
+              "ideal_unit_twiddle_input_bound": 90.50966799187809,
+              "stage": 1
+            },
+            {
+              "cumulative_error_conditional": 0.007586120920696514,
+              "ideal_unit_twiddle_input_bound": 181.01933598375618,
+              "stage": 2
+            },
+            {
+              "cumulative_error_conditional": 0.020718092755850508,
+              "ideal_unit_twiddle_input_bound": 362.03867196751236,
+              "stage": 3
+            },
+            {
+              "cumulative_error_conditional": 0.05250654791528782,
+              "ideal_unit_twiddle_input_bound": 724.0773439350247,
+              "stage": 4
+            },
+            {
+              "cumulative_error_conditional": 0.12713236956360477,
+              "ideal_unit_twiddle_input_bound": 1448.1546878700494,
+              "stage": 5
+            }
+          ],
+          "fft_output_magnitude_bound": 1448.145487298972,
+          "stage": [
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 421.49192393790906,
+              "complex_magnitude_upper_if_exact_ops": 90.50804554451281,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 23,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 1
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 330.98387839339625,
+              "complex_magnitude_upper_if_exact_ops": 181.01609108902562,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 24,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 2
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": true,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": 149.96778730437063,
+              "complex_magnitude_upper_if_exact_ops": 362.03218217805124,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 25,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 3
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": false,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": -212.0685845082512,
+              "complex_magnitude_upper_if_exact_ops": 724.0685539906731,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 26,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 4
+            },
+            {
+              "candidate_post_stage_RNE_max_complex_error": 2.1579186437577746e-05,
+              "candidate_post_stage_RNE_max_component_error": 1.52587890625e-05,
+              "candidate_stage_fits": false,
+              "candidate_stage_out_F": 15,
+              "candidate_stage_out_W": 25,
+              "candidate_stage_output_margin": -936.1455178165502,
+              "complex_magnitude_upper_if_exact_ops": 1448.145487298972,
+              "error_model_coeff_component_max": 3.0517578125e-05,
+              "error_model_operation_rounding": "Exact complex ops then one post-stage RNE only; actual multiplier narrowing topology OPEN",
+              "minimum_signed_W_at_Foutput": 27,
+              "representable_positive_component_max": 511.9999694824219,
+              "rounding_sites_per_complex_butterfly_if_implementing_candidate": "post twiddle product and optional right shift; exact order OPEN",
+              "shift": 0,
+              "stage": 5
+            }
+          ],
+          "twiddle_error_traces": [
+            {
+              "error_upper_from_twiddle_only": 0.001381064248790918,
+              "operator_rounding_excluded": true,
+              "stage": 1
+            },
+            {
+              "error_upper_from_twiddle_only": 0.005524214848427564,
+              "operator_rounding_excluded": true,
+              "stage": 2
+            },
+            {
+              "error_upper_from_twiddle_only": 0.016572602398546583,
+              "operator_rounding_excluded": true,
+              "stage": 3
+            },
+            {
+              "error_upper_from_twiddle_only": 0.044193741987702054,
+              "operator_rounding_excluded": true,
+              "stage": 4
+            },
+            {
+              "error_upper_from_twiddle_only": 0.11048481407384199,
+              "operator_rounding_excluded": true,
+              "stage": 5
+            }
+          ],
+          "twiddle_only_error_bound_from_mti_input": 0.11048481407384199
+        }
+      },
+      "reconstruction": {
+        "NOISE_ONLY_UNIT": {
+          "FFT_amplitude_scale": 5,
+          "power_scale": 25
+        },
+        "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+          "FFT_amplitude_scale": 1,
+          "power_scale": 1
+        }
+      },
+      "shifts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "sources": [
+    "s03_reference/model.py chirp/matched_filter",
+    "np.fft.fft unnormalized forward exponent negative",
+    "C01 g5/g1 immutable input"
+  ],
+  "status": "ANALYTICAL_PROPOSED_NO_ARCHITECTURE_APPROVED",
+  "twiddle_rule": "Radix2 DIT stage m=2^s; j=0..m/2-1; exp(-i*2*pi*j/m); DIT bitreversal input required for natural order output",
+  "version": "S04-C02-v0.3",
+  "width_corrections": {
+    "correct_exact_continuous_envelope": "Qreq=ceil(M*2^F); unsigned W=max(1,Qreq.bit_length()); signed W=max(2,1+Qreq.bit_length()) for continuous [-M,M] enclosing quantizer values",
+    "explicit_quantized_integer_bound": "for raw integer bound K>=0 exact: unsigned W=max(1,K.bit_length()), signed symmetric W=max(2,1+K.bit_length())",
+    "legacy_numeric_tables": "v0.2 computed main ideal numeric boundary widths were rechecked; differences or loose bounds listed in report; v0.2 files preserved",
+    "negative_minimum_note": "signed min -2^(W-1) representable; +2^(W-1) NOT, hence symmetric +/-2^(W-1) needs W+1",
+    "previous_signed_float_log_expression": "F+1+ceil(log2(M+2^-F)), sensitive to float boundary rounding and symmetry constraints",
+    "previous_unsigned_expression": "F+floor(log2(M))+1, correct only for positive real M with careful exact powers and boundary handling; floating log can mis-round"
+  }
+}

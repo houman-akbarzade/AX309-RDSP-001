@@ -3,8 +3,8 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "Engineer independently signed C03 PASS P01-P08 24/24; C04 OPEN; 3 of 8 S04 criteria; S01-S03 3 full stages",
-  "completed_count": 3,
+  "basis": "Independent engineer signed C04 PASS 18/18 on 1036800 integer components with zero mismatches; C05 OPEN, 4/8 S04, S01-S03 3 complete stages.",
+  "completed_count": 4,
   "criteria": [
     {
       "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
@@ -91,18 +91,31 @@
     },
     {
       "acceptance_evidence": "Independent self-checking signed, normal/extreme, DC, bin, off-bin, tie/zero vectors, error and overflow evidence",
-      "completed": false,
+      "completed": true,
       "description": "Bit-true MF/MTI/Doppler qualification",
+      "engineer_confirmed_integer_components": 1036800,
+      "engineer_confirmed_integer_mismatch_count": 0,
+      "engineer_confirmed_new_tests_pass": 18,
       "entry_basis": "decisions/S04-C03-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
       "id": "S04-C04",
-      "status": "OPEN_EXECUTION_AUTHORIZED"
+      "independent_engineer_signoff": "decisions/S04-C04-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+      "qualification_data": "engineering/s04_numeric/S04-C04-integrated-fullchain-v1.0.json",
+      "qualification_report": "engineering/S04-C04-INTEGRATED-BITTRUE-MF-MTI-DOPPLER-QUALIFICATION-v1.0.md",
+      "status": "PASS_INDEPENDENT_BITTRUE_MF_MTI_DOPPLER_QUALIFICATION"
     },
     {
       "acceptance_evidence": "Power bit growth, 40 training-cell mean, alpha representation, strict comparison, threshold boundary, peak/tie, clustering/target-list flags",
       "completed": false,
       "description": "Bit-true power, CFAR and grouping qualification",
+      "entry_basis": "decisions/S04-C04-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
       "id": "S04-C05",
-      "status": "NOT_STARTED"
+      "native_clustering_implemented": true,
+      "qualification_data": "engineering/s04_numeric/S04-C05-integrated-power-cfar-grouping-v1.0.json",
+      "qualification_report": "engineering/S04-C05-INTEGRATED-POWER-CFAR-GROUPING-QUALIFICATION-v1.0.md",
+      "requires_explicit_engineer_signoff": true,
+      "residual_float_fixed_peak_discrepancies_count": 2,
+      "status": "OPEN_READY_FOR_INDEPENDENT_SIGN_OFF",
+      "unit_tests_PASS": 19
     },
     {
       "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
@@ -134,11 +147,11 @@
     "No statistical main CPI, RTL, synthesis or FPGA/hardware testing without separate explicit authorization",
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
-  "project_percent": 28.125,
-  "recorded_at_utc": "2026-11-11T13:14:45.675396+00:00",
+  "project_percent": 29.166666666666668,
+  "recorded_at_utc": "2026-11-11T13:42:20.679868+00:00",
   "stage": "S04",
-  "stage_percent": 37.5,
-  "status": "C01_C02_C03_PASS_C04_OPEN_EXECUTION_AUTHORIZED",
+  "stage_percent": 50.0,
+  "status": "C01_C02_C03_C04_PASS_C05_OPEN_READY_FOR_SIGNOFF",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

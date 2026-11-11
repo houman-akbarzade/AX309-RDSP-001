@@ -1,0 +1,497 @@
+{
+  "S02_open_obligations": [
+    "REQ-SCR-01",
+    "REQ-RNG-03"
+  ],
+  "accepted_S03_seeds_touched": false,
+  "assumptions": [
+    "postquantizer each signed real component magnitude <=1",
+    "ideal matched-filter complex tap |h|<=1; quantized coefficient gain not yet certified",
+    "ideal FFT unit modulus twiddles; no arithmetic error or stage saturation",
+    "input Gaussian unbounded before clipping; only admission-approved postquantizer has finite bound"
+  ],
+  "candidate_formats_not_approved": {
+    "A": {
+      "formats": {
+        "FFT": [
+          28,
+          15
+        ],
+        "MF": [
+          22,
+          15
+        ],
+        "MTI": [
+          23,
+          15
+        ],
+        "alpha": [
+          20,
+          16
+        ],
+        "coeff": [
+          16,
+          15
+        ],
+        "fft_shift": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "power": [
+          52,
+          30
+        ],
+        "sum40": [
+          58,
+          30
+        ]
+      },
+      "input_profile_reconstruction": {
+        "1": {
+          "FFT_amplitude_scale": 1,
+          "MF_MTI_amplitude_scale": 1,
+          "input_normalized_amplitude_scale": 1,
+          "power_sum_threshold_scale": 1
+        },
+        "5": {
+          "FFT_amplitude_scale": 5,
+          "MF_MTI_amplitude_scale": 5,
+          "input_normalized_amplitude_scale": 5,
+          "power_sum_threshold_scale": 25
+        }
+      },
+      "net_FFT_scale": 1,
+      "not_synthesis": true,
+      "resource_storage_proxies": {
+        "CFAR_left_crossproduct_unsigned_bits_conservative": 74,
+        "CFAR_right_crossproduct_unsigned_bits_conservative": 78,
+        "CFAR_training_cell_additions_per_CUT": 39,
+        "FFT_32_radix2_complex_butterflies": 80,
+        "MTI_buffer_bits_32x128": 188416,
+        "RD_complex_FFT_buffer_bits_128x32": 229376,
+        "RD_power_buffer_bits_128x32": 212992,
+        "coefficient_rom_bits_16_complex": 512,
+        "complex_MF_products_per_128_range_output_if_unshared": 16,
+        "full_exact_signed_component_product_bits": 32,
+        "raw_16tap_accumulator_bits_conservative": 37,
+        "raw_16tap_accumulator_fractional_bits": 30,
+        "raw_complex_pair_addsub_bits_conservative": 33
+      },
+      "stage_storage": {
+        "FFT": {
+          "F": 15,
+          "W": 28,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 1448.1546878700494,
+          "max_representable_stored": 4095.999969482422,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "MF": {
+          "F": 15,
+          "W": 22,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 22.627416997969522,
+          "max_representable_stored": 63.999969482421875,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "MTI": {
+          "F": 15,
+          "W": 23,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 45.254833995939045,
+          "max_representable_stored": 127.99996948242188,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "power": {
+          "F": 30,
+          "W": 52,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 2097152.0000000005,
+          "max_representable_stored": 4194303.999999999,
+          "unused_integer_bits_vs_minimum": 0
+        },
+        "sum40": {
+          "F": 30,
+          "W": 58,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 83886080.00000001,
+          "max_representable_stored": 268435456.0,
+          "unused_integer_bits_vs_minimum": 1
+        }
+      },
+      "twiddle_F_and_internal_fft_rounding": "OPEN"
+    },
+    "B": {
+      "formats": {
+        "FFT": [
+          23,
+          13
+        ],
+        "MF": [
+          20,
+          13
+        ],
+        "MTI": [
+          21,
+          13
+        ],
+        "alpha": [
+          16,
+          12
+        ],
+        "coeff": [
+          14,
+          13
+        ],
+        "fft_shift": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "power": [
+          43,
+          26
+        ],
+        "sum40": [
+          49,
+          26
+        ]
+      },
+      "input_profile_reconstruction": {
+        "1": {
+          "FFT_amplitude_scale": 8,
+          "MF_MTI_amplitude_scale": 1,
+          "input_normalized_amplitude_scale": 1,
+          "power_sum_threshold_scale": 64
+        },
+        "5": {
+          "FFT_amplitude_scale": 40,
+          "MF_MTI_amplitude_scale": 5,
+          "input_normalized_amplitude_scale": 5,
+          "power_sum_threshold_scale": 1600
+        }
+      },
+      "net_FFT_scale": 8,
+      "not_synthesis": true,
+      "resource_storage_proxies": {
+        "CFAR_left_crossproduct_unsigned_bits_conservative": 61,
+        "CFAR_right_crossproduct_unsigned_bits_conservative": 65,
+        "CFAR_training_cell_additions_per_CUT": 39,
+        "FFT_32_radix2_complex_butterflies": 80,
+        "MTI_buffer_bits_32x128": 172032,
+        "RD_complex_FFT_buffer_bits_128x32": 188416,
+        "RD_power_buffer_bits_128x32": 176128,
+        "coefficient_rom_bits_16_complex": 448,
+        "complex_MF_products_per_128_range_output_if_unshared": 16,
+        "full_exact_signed_component_product_bits": 30,
+        "raw_16tap_accumulator_bits_conservative": 35,
+        "raw_16tap_accumulator_fractional_bits": 28,
+        "raw_complex_pair_addsub_bits_conservative": 31
+      },
+      "stage_storage": {
+        "FFT": {
+          "F": 13,
+          "W": 23,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 181.01933598375618,
+          "max_representable_stored": 511.9998779296875,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "MF": {
+          "F": 13,
+          "W": 20,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 22.627416997969522,
+          "max_representable_stored": 63.9998779296875,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "MTI": {
+          "F": 13,
+          "W": 21,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 45.254833995939045,
+          "max_representable_stored": 127.9998779296875,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "power": {
+          "F": 26,
+          "W": 43,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 32768.00000000001,
+          "max_representable_stored": 131071.9999999851,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "sum40": {
+          "F": 26,
+          "W": 49,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 1310720.0000000002,
+          "max_representable_stored": 8388607.999999985,
+          "unused_integer_bits_vs_minimum": 2
+        }
+      },
+      "twiddle_F_and_internal_fft_rounding": "OPEN"
+    },
+    "C_hypothetical": {
+      "formats": {
+        "FFT": [
+          25,
+          15
+        ],
+        "MF": [
+          22,
+          15
+        ],
+        "MTI": [
+          23,
+          15
+        ],
+        "alpha": [
+          20,
+          16
+        ],
+        "coeff": [
+          16,
+          15
+        ],
+        "fft_shift": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "power": [
+          46,
+          30
+        ],
+        "sum40": [
+          52,
+          30
+        ]
+      },
+      "input_profile_reconstruction": {
+        "1": {
+          "FFT_amplitude_scale": 8,
+          "MF_MTI_amplitude_scale": 1,
+          "input_normalized_amplitude_scale": 1,
+          "power_sum_threshold_scale": 64
+        },
+        "5": {
+          "FFT_amplitude_scale": 40,
+          "MF_MTI_amplitude_scale": 5,
+          "input_normalized_amplitude_scale": 5,
+          "power_sum_threshold_scale": 1600
+        }
+      },
+      "net_FFT_scale": 8,
+      "not_synthesis": true,
+      "resource_storage_proxies": {
+        "CFAR_left_crossproduct_unsigned_bits_conservative": 68,
+        "CFAR_right_crossproduct_unsigned_bits_conservative": 72,
+        "CFAR_training_cell_additions_per_CUT": 39,
+        "FFT_32_radix2_complex_butterflies": 80,
+        "MTI_buffer_bits_32x128": 188416,
+        "RD_complex_FFT_buffer_bits_128x32": 204800,
+        "RD_power_buffer_bits_128x32": 188416,
+        "coefficient_rom_bits_16_complex": 512,
+        "complex_MF_products_per_128_range_output_if_unshared": 16,
+        "full_exact_signed_component_product_bits": 32,
+        "raw_16tap_accumulator_bits_conservative": 37,
+        "raw_16tap_accumulator_fractional_bits": 30,
+        "raw_complex_pair_addsub_bits_conservative": 33
+      },
+      "stage_storage": {
+        "FFT": {
+          "F": 15,
+          "W": 25,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 181.01933598375618,
+          "max_representable_stored": 511.9999694824219,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "MF": {
+          "F": 15,
+          "W": 22,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 22.627416997969522,
+          "max_representable_stored": 63.999969482421875,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "MTI": {
+          "F": 15,
+          "W": 23,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 45.254833995939045,
+          "max_representable_stored": 127.99996948242188,
+          "unused_integer_bits_vs_minimum": 1
+        },
+        "power": {
+          "F": 30,
+          "W": 46,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 32768.00000000001,
+          "max_representable_stored": 65535.99999999907,
+          "unused_integer_bits_vs_minimum": 0
+        },
+        "sum40": {
+          "F": 30,
+          "W": 52,
+          "ideal_bound_fits_stored": true,
+          "ideal_bound_stored": 1310720.0000000002,
+          "max_representable_stored": 4194303.999999999,
+          "unused_integer_bits_vs_minimum": 1
+        }
+      },
+      "twiddle_F_and_internal_fft_rounding": "OPEN"
+    }
+  },
+  "hardware_synthesis_evidence": false,
+  "input_component_error_bound_no_clipping": {
+    "g1": 1.52587890625e-05,
+    "g5": 7.62939453125e-05
+  },
+  "input_g_profiles_approved": {
+    "NOISE_ONLY_UNIT": 5,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 1
+  },
+  "input_q15_LSB_original_float": {
+    "g1": 3.0517578125e-05,
+    "g5": 0.000152587890625
+  },
+  "main_CPI_generated": 0,
+  "missing_inputs": [
+    "target/clutter source amplitude covariance/crest factors for SCR +/-10",
+    "two-target coherent overlap phase and power envelope, frozen resolution oracle",
+    "FFT twiddle W/F and coefficient modulus bound after quantization",
+    "internal rounding topology, actual multiplier/accumulator widths, resource schedule"
+  ],
+  "quantized_twiddle_growth_risk": {
+    "1": {
+      "conservative_fft_shift8_mag_from_MTI": 181.01933598375618,
+      "conservative_unshifted_fft_mag_from_MTI": 1448.1546878700494,
+      "twiddle_abs_bound": 1.0,
+      "validity": "conditional on input postquantizer bound, ideal MF coefficient norm and exact arithmetic in FFT; quantitative rounding/overflow not covered"
+    },
+    "10001/10000": {
+      "conservative_fft_shift8_mag_from_MTI": 181.0645953434617,
+      "conservative_unshifted_fft_mag_from_MTI": 1448.5167627476935,
+      "twiddle_abs_bound": 1.0001,
+      "validity": "conditional on input postquantizer bound, ideal MF coefficient norm and exact arithmetic in FFT; quantitative rounding/overflow not covered"
+    }
+  },
+  "source": "S02 approved reference / S03 Float model / C01 signed bounded profiles, no generated CPI",
+  "source_input_complex_noise_variance": {
+    "NOISE_ONLY_UNIT": 1,
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": 0.000324
+  },
+  "stages": {
+    "1": {
+      "shift8": {
+        "CA_CFAR_sum40_conservative_stored": 1310720.0000000002,
+        "FFT_abs_component_conservative_stored": 181.01933598375618,
+        "FFT_min_W_F13": 22,
+        "FFT_min_W_F15": 24,
+        "MF_abs_component_conservative_stored": 22.627416997969522,
+        "MF_min_W_F15": 21,
+        "MTI_abs_component_conservative_stored": 45.254833995939045,
+        "MTI_min_W_F15": 22,
+        "RD_power_conservative_stored": 32768.00000000001,
+        "fft_shift_scale": 8,
+        "g": 1,
+        "input_complex_mag_bound_stored": 1.4142135623730951,
+        "original_FFT_amp_bound": 1448.1546878700494,
+        "original_MF_amp_bound": 22.627416997969522,
+        "original_MTI_amp_bound": 45.254833995939045,
+        "original_power_bound": 2097152.0000000005,
+        "original_sum40_bound": 83886080.00000001,
+        "power_min_unsigned_W_F26": 42,
+        "power_min_unsigned_W_F30": 46,
+        "sum40_min_unsigned_W_F26": 47,
+        "sum40_min_unsigned_W_F30": 51
+      },
+      "unshifted": {
+        "CA_CFAR_sum40_conservative_stored": 83886080.00000001,
+        "FFT_abs_component_conservative_stored": 1448.1546878700494,
+        "FFT_min_W_F13": 25,
+        "FFT_min_W_F15": 27,
+        "MF_abs_component_conservative_stored": 22.627416997969522,
+        "MF_min_W_F15": 21,
+        "MTI_abs_component_conservative_stored": 45.254833995939045,
+        "MTI_min_W_F15": 22,
+        "RD_power_conservative_stored": 2097152.0000000005,
+        "fft_shift_scale": 1,
+        "g": 1,
+        "input_complex_mag_bound_stored": 1.4142135623730951,
+        "original_FFT_amp_bound": 1448.1546878700494,
+        "original_MF_amp_bound": 22.627416997969522,
+        "original_MTI_amp_bound": 45.254833995939045,
+        "original_power_bound": 2097152.0000000005,
+        "original_sum40_bound": 83886080.00000001,
+        "power_min_unsigned_W_F26": 48,
+        "power_min_unsigned_W_F30": 52,
+        "sum40_min_unsigned_W_F26": 53,
+        "sum40_min_unsigned_W_F30": 57
+      }
+    },
+    "5": {
+      "shift8": {
+        "CA_CFAR_sum40_conservative_stored": 1310720.0000000002,
+        "FFT_abs_component_conservative_stored": 181.01933598375618,
+        "FFT_min_W_F13": 22,
+        "FFT_min_W_F15": 24,
+        "MF_abs_component_conservative_stored": 22.627416997969522,
+        "MF_min_W_F15": 21,
+        "MTI_abs_component_conservative_stored": 45.254833995939045,
+        "MTI_min_W_F15": 22,
+        "RD_power_conservative_stored": 32768.00000000001,
+        "fft_shift_scale": 8,
+        "g": 5,
+        "input_complex_mag_bound_stored": 1.4142135623730951,
+        "original_FFT_amp_bound": 7240.773439350247,
+        "original_MF_amp_bound": 113.13708498984761,
+        "original_MTI_amp_bound": 226.27416997969522,
+        "original_power_bound": 52428800.00000001,
+        "original_sum40_bound": 2097152000.0000002,
+        "power_min_unsigned_W_F26": 42,
+        "power_min_unsigned_W_F30": 46,
+        "sum40_min_unsigned_W_F26": 47,
+        "sum40_min_unsigned_W_F30": 51
+      },
+      "unshifted": {
+        "CA_CFAR_sum40_conservative_stored": 83886080.00000001,
+        "FFT_abs_component_conservative_stored": 1448.1546878700494,
+        "FFT_min_W_F13": 25,
+        "FFT_min_W_F15": 27,
+        "MF_abs_component_conservative_stored": 22.627416997969522,
+        "MF_min_W_F15": 21,
+        "MTI_abs_component_conservative_stored": 45.254833995939045,
+        "MTI_min_W_F15": 22,
+        "RD_power_conservative_stored": 2097152.0000000005,
+        "fft_shift_scale": 1,
+        "g": 5,
+        "input_complex_mag_bound_stored": 1.4142135623730951,
+        "original_FFT_amp_bound": 7240.773439350247,
+        "original_MF_amp_bound": 113.13708498984761,
+        "original_MTI_amp_bound": 226.27416997969522,
+        "original_power_bound": 52428800.00000001,
+        "original_sum40_bound": 2097152000.0000002,
+        "power_min_unsigned_W_F26": 48,
+        "power_min_unsigned_W_F30": 52,
+        "sum40_min_unsigned_W_F26": 53,
+        "sum40_min_unsigned_W_F30": 57
+      }
+    }
+  },
+  "status": "ANALYSIS_ONLY_NO_ARCH_APPROVAL",
+  "timestamp_utc": "2026-11-11T10:56:31.787307+00:00",
+  "unit_tests_exact_rational": [
+    "strict comparator equality false",
+    "positive common FFT/power scaling cancels in exact ideal ratio"
+  ]
+}

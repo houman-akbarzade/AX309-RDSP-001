@@ -1,0 +1,83 @@
+{
+  "Clopper_Pearson_one_sided_confidence": 0.95,
+  "D_definition": "unique global one-to-one truth association within 2 range sample and 1 Doppler-bin attribution gate",
+  "E_definition": "positive, unique, strict adjacent dominant FFT Doppler peak for matched record, full 32-bin power row required",
+  "Gate_S03": "OPEN",
+  "J_definition": "D and R and V, no separate CP binding criterion",
+  "L_at_915": 0.8990676705833044,
+  "L_at_916": 0.9001427009482232,
+  "N": 1000,
+  "R_definition": "D and abs(range bin - 40) <=1",
+  "S03_progress_percent": 75,
+  "V_definition": "D and E and absolute Doppler error <= 0.234375 m/s",
+  "V_reporting_invalid": "INVALID or missing peak row => INCONCLUSIVE entire CPI; ineligible valid peak => V=0 without dropping CPI",
+  "accuracy": {
+    "range_bins": 1,
+    "velocity_m_s": 0.234375
+  },
+  "alpha": 7.476912055027923,
+  "change_scope": "PD-AUD-001 scorer reporting correction only; no scenario, S02, alpha, cluster, association, Pd acceptance or J criterion change",
+  "engineer_decision": "primary D exact one-sided 95% CP lower>=0.90, n=1000, kmin=916; J reported independently with no separate binding J>=0.90",
+  "gate": "OPEN",
+  "mandatory_validity": "all 1000 IID full CPI valid; no exclusions, topups, reused seeds or retunes",
+  "master_seed_reserved_not_used": 411091704,
+  "matched_gate": {
+    "range_bins": 2,
+    "velocity_bins": 1
+  },
+  "min_successes_N1000": 916,
+  "no_main_Pd_run": true,
+  "noise": {
+    "E_abs_w_squared": 0.000324,
+    "distribution": "CN(0,0.000324)",
+    "variance_each_component": 0.000162
+  },
+  "null_p09_tail_at_915": 0.060693730517966386,
+  "null_p09_tail_at_916": 0.04850250689914629,
+  "optional_joint_guard": "NOT_APPROVED; only apply bound to J if formally engineer approved",
+  "original_protocol_sha256": "cde5b6efa467cbcf1450798a963555a48a08318e52f8c9d9065ba20105ef6da1",
+  "outcomes": [
+    "D detection and truth association",
+    "R matched range <=1",
+    "V eligible and Doppler <=0.234375",
+    "J joint event D AND R AND V and eligibility"
+  ],
+  "peak_evidence_mandatory": "Matched detection requires entire 32 Doppler power bins at selected range to verify positive unique peak and adjacent-bin dominance. Missing power row => INCONCLUSIVE, never infer eligible from association only.",
+  "primary_Pd_goal": 0.9,
+  "progress": "unchanged S03 75%; overall 22.916666666666668%",
+  "project": "AX309-RDSP-001",
+  "project_progress_percent": 22.916666666666668,
+  "recorded_utc": "2026-11-11T08:05:37.457252+00:00",
+  "regression_test_result": "75/75 deterministic and prior established unit tests PASS; not Pd trial",
+  "reserved_seed_no_main_sample": 411091704,
+  "seed_formula": "PCG64 SeedSequence([411091704,i,191]) per CPI i=0..999",
+  "source_SHA256": {
+    "approved_matrix": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+    "draft_MD": "416982f71d275f2a0ee23c88862a4b9a07301ba84581baf5a0267fc4d4f21986",
+    "model": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+    "score_candidate": "a0f846f9bc9b0b21185402b9e121c231bbc3ac3c19b6b4194599c72d746724b9"
+  },
+  "source_locked_SHA256": {
+    "PD_AUD001_regression_tests": "f4ca88f680201e82b574f9f9b7cd1ef5ffe39b9da72f7f8fb93538f1266f6414",
+    "Pd_deterministic_protocol_tests": "2fa5960a87cafbabd35253e87b5552799eaf948e39192c24042d4e8639a9f2d4",
+    "approved_S02_matrix": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+    "model": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+    "pd_scorer": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea",
+    "pre_fix_baseline_fixture": "8264964cca8adb78d5e146114ceb859e2ec711ca4247abafdc32087db4a2e091"
+  },
+  "stage": "S03",
+  "status": "APPROVED_IN_PRINCIPLE_EXECUTION_NO_GO",
+  "target": {
+    "SNR_dB": 20,
+    "amplitude_imag": 0.0,
+    "amplitude_real": 0.18,
+    "doppler_bin_signed": 4,
+    "k": 40,
+    "no_clutter": true,
+    "phase_rad": 0.0,
+    "v_nominal_m_s": 1.875
+  },
+  "test_suite_deterministic_total": 67,
+  "timestamp_utc": "2026-11-10T16:00:59.090746+00:00",
+  "version": "v0.3"
+}

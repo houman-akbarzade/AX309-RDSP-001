@@ -1,0 +1,61 @@
+{
+  "Gate_S03": "OPEN",
+  "PD_AUD001": "CLOSED_BY_DETERMINISTIC_REGRESSION",
+  "S03_percent": 75,
+  "audit_version": "v0.4",
+  "baseline_comparison_cases": 10,
+  "checks": [
+    {
+      "evidence": "abs(.18)^2/10^(20/10)=.000324 complex Gaussian variance, real and imag .000162; 16 active echo samples, not CPI-wide SNR; same approved frozen model.",
+      "name": "SNR input definition versus generator",
+      "status": "PASS (static)"
+    },
+    {
+      "evidence": "fresh PCG64(SeedSequence([411091704,i,191])) specified for each complete CPI; frozen model uses local RNG and stateless MF/MTI/FFT/CFAR/cluster/matching. Statistical independence NOT experimentally demonstrated; no reserved samples generated.",
+      "name": "Independent CPI and absence of processing state",
+      "status": "PASS (structural only)"
+    },
+    {
+      "evidence": "411091704 appears only as reserved/constant in evidence and candidate tests; all earlier main Pfa trials use disjoint seed 411091703. External undocumented usage cannot be ruled out.",
+      "name": "Reserved seed never previously tuned on",
+      "status": "PASS (visible repository scope)"
+    },
+    {
+      "evidence": "alpha 7.476912055027923, 40-cell 7x7 minus 3x3, strict comparator, 8-connectivity, one-to-one assignment 2 range sample/1 Doppler bin. Model and S02 hashes unchanged. Fixed v0.3 contract only V semantic correction.",
+      "name": "Frozen alpha, clustering, association, success rules",
+      "status": "PASS"
+    },
+    {
+      "evidence": "V now explicitly D AND E AND |velocity error|<=.234375 without tolerance padding. J remains D AND R AND V, numerically preserved in pre-fix 10-case non-V baseline; D/R/matched ID/extra clusters unchanged for all 10 cases. S02 conditional Doppler eligibility preserved; J is report-only, not new 90% acceptance rule.",
+      "name": "D, R, V, J traceability to S02",
+      "status": "PASS"
+    },
+    {
+      "evidence": "Beta.ppf(.05,915,86)=.8990676705833044 vs Beta.ppf(.05,916,85)=.9001427009482232. Independent Binomial SF at p=.9: Pr(K>=915)=.060693730517966386 and Pr(K>=916)=.04850250689914629. Exactly n=1000 k_D>=916.",
+      "name": "Independent exact Clopper-Pearson k_min=916",
+      "status": "PASS"
+    }
+  ],
+  "commit_before_audit": "414e27e437fdef075656c0c9636a63377c5a3b4b",
+  "decision": "APPROVED_IN_PRINCIPLE_EXECUTION_NO_GO",
+  "main_pd_authorized": false,
+  "main_pd_generated": 0,
+  "master_seed_reserved": 411091704,
+  "overall_percent": 22.916666666666668,
+  "preflight_ready_for_authorization": true,
+  "project": "AX309-RDSP-001",
+  "report_sha256": "0e4d689958c82ed95d2284e6ceef3025490679f342279bcd0570265e696068b6",
+  "source_sha256": {
+    "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+    "engineering/S03-Pd-PD-AUD-001-full-regression-v0.4.log": "77eeac73a06d47ebd389a416490ceb2d8663106f42352b20ab87db305cbc0f25",
+    "engineering/S03-Pd-independent-fixed-execution-contract-v0.3.json": "602e4fe6132c4d8521b33c61a1c2cd413c3e75cc4325fe8b9bca6dea966bed5f",
+    "engineering/S03-Pd-independent-fixed-protocol-PROPOSED-v0.2.json": "cde5b6efa467cbcf1450798a963555a48a08318e52f8c9d9065ba20105ef6da1",
+    "s03_reference/model.py": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+    "s03_reference/pd_acceptance_candidate.py": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea",
+    "tests/fixtures/s03_pd_v02_pre_fix_nonV_baseline.json": "8264964cca8adb78d5e146114ceb859e2ec711ca4247abafdc32087db4a2e091",
+    "tests/test_s03_pd_aud001_regression.py": "f4ca88f680201e82b574f9f9b7cd1ef5ffe39b9da72f7f8fb93538f1266f6414",
+    "tests/test_s03_pd_protocol_deterministic.py": "2fa5960a87cafbabd35253e87b5552799eaf948e39192c24042d4e8639a9f2d4"
+  },
+  "tests_passed": 75,
+  "utc": "2026-11-11T08:05:37.457252+00:00"
+}

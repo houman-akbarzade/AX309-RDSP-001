@@ -65,6 +65,7 @@ class TestPdProtocol(unittest.TestCase):
         z=a.score_detection_records([record(40,4)],matched_range_power_bins=x)
         self.assertTrue(z['detection_and_one_to_one_association'])
         self.assertFalse(z['doppler_peak_eligible'])
+        self.assertFalse(z['doppler_halfbin_accuracy_conditional'])
         self.assertFalse(z['joint_detection_and_both_accuracies'])
     def test_doppler_eligibility(self):
         import numpy as np

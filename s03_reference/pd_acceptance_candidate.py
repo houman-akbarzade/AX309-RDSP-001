@@ -77,7 +77,7 @@ def score_detection_records(detections, *, matched_range_power_bins=None, valid_
     dr_samples=abs(candidate['range_bin']-TRUTH_K) if matched else None
     dv_abs=abs(candidate['velocity_m_s_nominal']-float(m.bin_velocity(TRUE_BIN))) if matched else None
     range_ok=bool(matched and dr_samples<=RANGE_ACCURACY_SAMPLES)
-    dop_ok=bool(matched and dv_abs<=DOPPLER_ACCURACY_M_S+1e-12)
+    # V must include peak eligibility; calculate it after validating the full power row.
     if matched and matched_range_power_bins is None:
         return {'status':'INCONCLUSIVE','reason':'matched peak power row missing; Doppler eligibility cannot be inferred from cluster association alone'}
     elig=(doppler_peak_eligibility(matched_range_power_bins, candidate['doppler_bin'])
@@ -85,6 +85,7 @@ def score_detection_records(detections, *, matched_range_power_bins=None, valid_
     if elig['status']!='VALID':
         return {'status':'INCONCLUSIVE','reason':'invalid matched Doppler power row'}
     eligible=bool(elig['eligible'])
+    dop_ok=doppler_accuracy_event(matched,eligible,dv_abs)
     return {'status':'VALID','detection_and_one_to_one_association':bool(matched),
             'range_accuracy_conditional':range_ok,
             'doppler_halfbin_accuracy_conditional':dop_ok,
@@ -94,6 +95,19 @@ def score_detection_records(detections, *, matched_range_power_bins=None, valid_
             'velocity_error_m_s_nominal':dv_abs,
             'extra_unmatched_cluster_count':len(detections)-(1 if matched else 0),
             'velocity_onbin_eligibility_design':'on-bin truth k40,b+4, away from MTI DC and Nyquist; actual output peak status to be recorded at run time'}
+
+def doppler_accuracy_event(matched, eligible, absolute_error_m_s):
+    """Contract V = D AND eligible AND |Doppler error| <= fixed half-bin.
+
+    This helper allows deterministic boundary checks even though the fixed
+    32-bin integer estimator only produces errors in multiples of 0.46875 m/s.
+    """
+    if not matched or not eligible:
+        return False
+    if absolute_error_m_s is None or not math.isfinite(float(absolute_error_m_s)) or float(absolute_error_m_s)<0:
+        raise ValueError('valid matched Doppler error must be finite and nonnegative')
+    return bool(float(absolute_error_m_s)<=DOPPLER_ACCURACY_M_S)
+
 
 def verify_fixed_parameters():
     t=m.Target(TRUTH_K,TRUE_VELOCITY,TARGET_AMPLITUDE,TARGET_PHASE)

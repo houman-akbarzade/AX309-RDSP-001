@@ -127,7 +127,7 @@ def main():
  own=Path(__file__)
  if sha_file(own)!=plan['generator_script_sha256']:
   raise RuntimeError('generator source changed after pre-lock')
- if plan['source_model_sha256']!='2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b':
+ if plan['source_model_sha256_pinned_from_previous_manifest']!='2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b':
   raise RuntimeError('source model identity not the previously pinned S03 model')
  if OUT.exists() and any(OUT.iterdir()):
   raise FileExistsError('refuse overwrite: CPI input directory is not empty')

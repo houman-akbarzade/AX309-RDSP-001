@@ -60,7 +60,7 @@ A0 [0,0,0,0,0] gives S=1, maximum ideal stored magnitude1448.15. B1 [1,1,1,0,0] 
 ## 7. Exact CA-CFAR integer/rational arithmetic (22 independent checks PASS)
 
 Let P be integer CUT power and SUM the sum of 40 power cells at the same scale. Alpha is A/2^Fa; the EXACT strict decision with chosen quantized alpha is 40*P*2^Fa > A*SUM (no division, no overflow). Equality implies NO ALARM.
-- A: A=490007, Fa=16, alpha_q=7.4769287109375, delta alpha=+0.0000013971205145 from 7.476912055027923.
+- A: A=490007, Fa=16, alpha_q=7.4769134521484375, delta alpha=+0.0000013971205145 from 7.476912055027923.
 - B: A=30625, Fa=12, alpha_q=7.476806640625, delta alpha=-0.000105414402923.
 - Nearest-round alpha error bound: A <=7.62939453125e-6; B <=0.0001220703125.
 - Independent Fraction reference compared to integer cross-products on 11 cases per option, including exact threshold, below and above: 22/22 arithmetic checks PASS. With SUM=40*2^Fa, threshold P=A; at P=A-1 false, P=A false, P=A+1 true.

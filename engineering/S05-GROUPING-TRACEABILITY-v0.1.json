@@ -1,0 +1,57 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "purpose": "Supplemental requirement-to-RTL test traceability; no change to approved S02 baseline.",
+  "test_scope": "11 synthetic 2,782-CUT maps; unchanged S04 C05 native reference plus independent union-find; no historical CPI replay.",
+  "baseline": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+  "requirements": [
+    {
+      "id": "REQ-DET-01",
+      "RTL_scope": "8-neighbour nonwrap grouping, deterministic peak and list ordering, stored integer power, stable IDs, member counts",
+      "module": "rtl/grouping/grouping_8conn.v",
+      "verification": "PASS_MODULE_SCOPE_887_RECORDS_EXACT",
+      "evidence": "engineering/evidence/s05/grouping/GROUPING-ISIM-SIMULATION-v0.1.log",
+      "outstanding": "Integrated radar/host truth association and full output chain not verified; no full requirement PASS."
+    },
+    {
+      "id": "REQ-LIST-01",
+      "RTL_scope": "Variable-length outputs; serial IDs, explicit overflow_sticky/frame_invalid for allocation fault; output stable while stalled",
+      "module": "rtl/grouping/grouping_8conn.v",
+      "verification": "PASS_LOCAL_OUTPUT_HANDSHAKE_AND_FORCED_INTERNAL_OVERFLOW_ONLY",
+      "evidence": "engineering/evidence/s05/grouping/GROUPING-ISIM-SIMULATION-v0.1.log",
+      "outstanding": "S02 leaves external list capacity and deterministic selection on overflow OPEN. No technical PASS until engineer approves policy."
+    },
+    {
+      "id": "REQ-RES-01",
+      "RTL_scope": "Grouping block standalone RTL synthesis and resource feasibility",
+      "module": "rtl/grouping/grouping_8conn.v",
+      "verification": "PASS_XST_GROUPING_ONLY",
+      "evidence": "engineering/evidence/s05/grouping/GROUPING-XST-REPORT-v0.1.srp.gz",
+      "outstanding": "LUT 70% for grouping alone; combined RTL synthesis, BRAM sharing, UCF, physical timing and full FPGA fit OPEN."
+    },
+    {
+      "id": "REQ-DOP-01",
+      "RTL_scope": "Signed FFT Doppler index tie-breaking in grouped component peaks",
+      "verification": "PASS_LOCAL_TIE_TESTS_ONLY",
+      "evidence": "engineering/evidence/s05/grouping/GROUPING-ISIM-SIMULATION-v0.1.log",
+      "outstanding": "No complete Doppler estimator or physical-unit interface claim."
+    },
+    {
+      "id": "REQ-RNG-03",
+      "technical_result": "FAIL_4_OF_8_50_PERCENT",
+      "acceptance_rule": "8_OF_8_UNCHANGED",
+      "status": "CARRIED_TO_FINAL_PROJECT_EVALUATION",
+      "evidence": "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json",
+      "no_retest": true
+    },
+    {
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "technical_result": "OPEN_NOT_STATISTICALLY_QUALIFIED",
+      "status": "CARRIED_TO_FINAL_PROJECT_EVALUATION",
+      "evidence": "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json",
+      "no_statistical_test": true
+    }
+  ],
+  "integration_plan": "engineering/S05-GROUPING-CFAR-INTEGRATION-PLAN-v0.1.md",
+  "evidence_manifest": "engineering/S05-GROUPING-EVIDENCE-MANIFEST-v0.1.json"
+}

@@ -85,3 +85,16 @@ When a gate is closed with open items, the plugin must:
 ### Application to AX309-RDSP-001
 
 The authoritative carryover record is engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json; the engineer decision is decisions/S04-C08-S05-TRANSITION-2026-11-12.json. S05 may proceed, but neither REQ-RNG-03 nor Fixed-Point statistical performance is technically accepted by this transition.
+
+## LL-AX309-003 — RAM inference and output-list policy are independent design controls
+
+**Status:** Accepted S05 implementation lesson; candidate for Radar Design Plugin workflow revision.
+**Source:** S05 grouping_8conn ISim/XST artifact and the frozen S02 REQ-LIST-01.
+
+The synthesis resource cost of a small logical table can be dominated by its inferred read/write ports. The initial grouping implementation with multiply addressed parent/statistic memories produced excessive distributed-logic resource use. Refactoring both memories into single synchronous read/write port structures enabled XST block RAM inference while preserving bit-identical output records against the unchanged C05 BFS reference and independent union-find.
+
+The final standalone synthesis shows 6 BRAM, 4,034 LUT, 1,727 registers, 0 DSP48A1 and 0 warnings, not a whole-system fit. The downstream scanner separately uses 12 BRAM; the project must check the actual combined memory lifetime and target capacity before claiming a hardware architecture fit.
+
+**Plugin workflow implication:** Require each proposed streaming RTL memory to state its depth/width, number of reads and writes per cycle, inferred memory technology and resource budgets; inspect XST warnings and actual macro usage before reporting synthesis feasibility. Separately, an internal geometric bound or safe overflow diagnostic must not be treated as approval of an externally visible record-list capacity or selection policy when that decision is still open.
+
+**Evidence:** engineering/S05-GROUPING-EVIDENCE-MANIFEST-v0.1.json, engineering/S05-GROUPING-RTL-VERIFICATION-REPORT-v0.1.md, engineering/S05-GROUPING-TRACEABILITY-v0.1.json. No architecture C/Frozen Fixed-Point change and no REQ-RNG-03 retest were made.

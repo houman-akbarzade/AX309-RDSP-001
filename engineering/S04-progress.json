@@ -3,7 +3,7 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "Engineer signed C05 deterministic PASS 19/19; C06 criteria preapproval only; S04 5/8; 3 previously signed stages; no new statistical acceptance tests.",
+  "basis": "Independent decision e8a89dd approved C06 A-E with binding conditions; F REQ-SCR-01 and REQ-RNG-03 remain OPEN Gate-S04 blockers. Current order documentation/preparation only, zero C06 acceptance tests. S04 5/8=62.5%, overall 30.2083%.",
   "completed_count": 5,
   "criteria": [
     {
@@ -122,16 +122,39 @@
       "unit_tests_PASS": 19
     },
     {
+      "F_open_blockers": [
+        "REQ-SCR-01",
+        "REQ-RNG-03"
+      ],
+      "RTL_synthesis_FPGA_authorized": false,
+      "acceptance_cpi_run": 0,
       "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
-      "approved_numeric_thresholds": false,
+      "acceptance_tests_run": 0,
+      "accepted_S03_seed_reuse_authorized": false,
+      "approved_numeric_thresholds": true,
+      "approved_scope": "A-E conditional only; C01 NOISE_ONLY_UNIT/g5 and SINGLE_TARGET_REFERENCE_LIKE_LAB/g1",
       "completed": false,
+      "current_order_execution_authorized": false,
       "description": "Float-to-bittrue numeric error-budget acceptance",
+      "execution_contract": "engineering/S04-C06-EXECUTION-CONTRACT-v1.0.md",
+      "execution_contract_sha256": "32313ded767d304f0cf053fe433042223105864fa506aee8adcd710d4e6ec840",
+      "future_test_plan": "engineering/S04-C06-FUTURE-TEST-PLAN-v1.0.md",
+      "future_test_plan_sha256": "e38b0c819c36fc1f66a8464be371dc7c7f05ca0dbf41463147fbbfd71815976f",
       "id": "S04-C06",
+      "independent_criteria_decision": "decisions/S04-C06-CRITERIA-INDEPENDENT-DECISION-v1.0.md",
+      "independent_decision_commit": "e8a89dd8472cfbbb4859f924c18ca8386709db44",
+      "independent_decision_sha256": "5427ba6b7b66b8d21fc4f0178ccf557b49678e718ab0570727880f25166a144f",
+      "known_preflight_blockers": [
+        "S04-C02-RISK-FULL-OVERFLOW-TRACE"
+      ],
       "new_acceptance_tests_run": 0,
       "no_acceptance_execution_before_engineer_approval": true,
       "preapproval_analytic_evidence": "engineering/s04_numeric/S04-C06-proposed-analytic-stage-bounds-v0.1.json",
       "preapproval_criteria_package": "engineering/S04-C06-PREAPPROVAL-NUMERIC-ACCEPTANCE-CRITERIA-v0.1.md",
-      "status": "OPEN_AWAITING_INDEPENDENT_CRITERIA_APPROVAL"
+      "pretest_eligibility_gate": "engineering/S04-C06-PRETEST-ELIGIBILITY-GATE-v1.0.json",
+      "pretest_eligibility_gate_sha256": "e5bee18a09461f57673fcb83c3774e35ab4b9f050d71b1fe2750561686360f82",
+      "separate_explicit_execution_authorization_required": true,
+      "status": "OPEN_A_TO_E_APPROVED_CONDITIONAL_EXECUTION_PENDING_F_BLOCKED"
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
@@ -157,10 +180,10 @@
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
   "project_percent": 30.208333333333332,
-  "recorded_at_utc": "2026-11-11T13:56:39.793315+00:00",
+  "recorded_at_utc": "2026-11-11T14:26:25.648683+00:00",
   "stage": "S04",
   "stage_percent": 62.5,
-  "status": "C01_C02_C03_C04_C05_PASS_C06_OPEN_PREAPPROVAL",
+  "status": "C01_C02_C03_C04_C05_PASS_C06_OPEN_A_TO_E_APPROVED_CONDITIONAL_F_BLOCKED",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

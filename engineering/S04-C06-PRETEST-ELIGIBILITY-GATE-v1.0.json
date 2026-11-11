@@ -1,0 +1,180 @@
+{
+  "A": "APPROVED_CONDITIONAL_DETERMINISTIC_SAFETY_CEILINGS_ONLY",
+  "B": "APPROVED_ZERO_INTEGER_ORACLE_MISMATCH",
+  "C": "APPROVED_AMBIGUOUS_IS_INCONCLUSIVE_NO_EXCLUSION",
+  "C01_profiles": {
+    "NOISE_ONLY_UNIT": {
+      "authorized_population": "CN(0,1), noise-only, no target, no clutter",
+      "g": 5
+    },
+    "SINGLE_TARGET_REFERENCE_LIKE_LAB": {
+      "authorized_population": "predeclared single target k=40, Doppler +4, amplitude 0.18, phase 0, noise power 0.000324, no clutter",
+      "g": 1
+    }
+  },
+  "D": "APPROVED_NARROW_EXACT_FLOAT_TIE_EXCEPTION",
+  "E": "APPROVED_PRELOCKED_FIXED_DENOMINATOR_AND_CPI_DISPOSITIONS",
+  "F": "NOT_APPROVED_BINDING_OPEN_BLOCKERS",
+  "FPGA_authorized": false,
+  "Gate_S04": "OPEN",
+  "REQ-RNG-03": "BINDING_OPEN_GATE_BLOCKER",
+  "REQ-SCR-01": "BINDING_OPEN_GATE_BLOCKER",
+  "RTL_authorized": false,
+  "S04_percent": 62.5,
+  "acceptance_CPI_run": 0,
+  "acceptance_tests_run": 0,
+  "accepted_S03_seed_reuse_authorized": false,
+  "analytic_evidence": "engineering/s04_numeric/S04-C06-proposed-analytic-stage-bounds-v0.1.json",
+  "analytic_evidence_sha256": "05d624d737813f0cb70370a0cee8ed3724d29d1958534b134a39af193a56d99b",
+  "analytic_source": "engineering/s04_numeric/s04_c06_preapproval_analytic_bounds_v0.py",
+  "analytic_source_sha256": "609d47b39e39a4e64a0a3cd4b9413c82dd2b5bf99fc87251d18a1db0ae1fbcf4",
+  "approved_conditional_caps_original_complex_Float_amplitude": [
+    {
+      "g1_MAX_RMS": 0.00074,
+      "g5_MAX_RMS": 0.00366,
+      "stage": "MF"
+    },
+    {
+      "g1_MAX_RMS": 0.00147,
+      "g5_MAX_RMS": 0.00731,
+      "stage": "MTI"
+    },
+    {
+      "g1_MAX_RMS": 0.00468,
+      "g5_MAX_RMS": 0.02337,
+      "stage": "FFT1"
+    },
+    {
+      "g1_MAX_RMS": 0.01286,
+      "g5_MAX_RMS": 0.06428,
+      "stage": "FFT2"
+    },
+    {
+      "g1_MAX_RMS": 0.03267,
+      "g5_MAX_RMS": 0.16335,
+      "stage": "FFT3"
+    },
+    {
+      "g1_MAX_RMS": 0.07926,
+      "g5_MAX_RMS": 0.39629,
+      "stage": "FFT4"
+    },
+    {
+      "g1_MAX_RMS": 0.18636,
+      "g5_MAX_RMS": 0.93177,
+      "stage": "FFT5"
+    }
+  ],
+  "architecture": "C",
+  "created_utc": "2026-11-11T14:26:25.648368+00:00",
+  "criterion": "S04-C06",
+  "current_order_execution_authorized": false,
+  "decision_commit": "e8a89dd8472cfbbb4859f924c18ca8386709db44",
+  "decision_document": "decisions/S04-C06-CRITERIA-INDEPENDENT-DECISION-v1.0.md",
+  "decision_document_sha256": "5427ba6b7b66b8d21fc4f0178ccf557b49678e718ab0570727880f25166a144f",
+  "execution_contract": "engineering/S04-C06-EXECUTION-CONTRACT-v1.0.md",
+  "execution_contract_sha256": "32313ded767d304f0cf053fe433042223105864fa506aee8adcd710d4e6ec840",
+  "fft_shift_schedule": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "future_test_plan": "engineering/S04-C06-FUTURE-TEST-PLAN-v1.0.md",
+  "future_test_plan_sha256": "e38b0c819c36fc1f66a8464be371dc7c7f05ca0dbf41463147fbbfd71815976f",
+  "known_preflight_blockers": [
+    {
+      "finding": "Existing v0.5 telemetry retains first_24 events plus digest/count, not complete ordered event list; full ordered clipping/overflow trace readback and non-omission must be implemented and independently verified before PF-08 passes.",
+      "id": "S04-C02-RISK-FULL-OVERFLOW-TRACE",
+      "status": "OPEN_IMPLEMENTATION_EVIDENCE"
+    }
+  ],
+  "overall_percent": 30.208333333333332,
+  "preapproval_proposal_preserved_as_historical": "engineering/S04-C06-PREAPPROVAL-NUMERIC-ACCEPTANCE-CRITERIA-v0.1.md",
+  "preflight_items": [
+    {
+      "id": "PF-01",
+      "mandatory": true,
+      "status": "PASS_STATIC_DECISION_HASH_VERIFIED"
+    },
+    {
+      "id": "PF-02",
+      "mandatory": true,
+      "status": "PARTIAL_STATIC_CONTRACT_PINNED_IMPLEMENTATION_HASH_PENDING"
+    },
+    {
+      "id": "PF-03",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-04",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-05",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-06",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-07",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-08",
+      "mandatory": true,
+      "status": "BLOCKED_KNOWN_OPEN_FULL_ORDERED_OVERFLOW_TRACE"
+    },
+    {
+      "id": "PF-09",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-10",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-11",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    },
+    {
+      "id": "PF-12",
+      "mandatory": true,
+      "status": "NOT_EVALUATED_NO_CANDIDATE_INPUT"
+    }
+  ],
+  "preflight_order": [
+    "authorization",
+    "hash_pin",
+    "frozen_C_contract",
+    "C01_profile_and_g",
+    "payload_and_metadata",
+    "input_analytic_envelope",
+    "no_input_clipping",
+    "static_pre_narrow_headroom",
+    "complete_runtime_overflow_telemetry",
+    "independent_Float_and_integer_oracles",
+    "fixed_N_denominator_and_seed_separation",
+    "stress_corpus_separation"
+  ],
+  "preflight_status": "BLOCKED_KNOWN_OVERFLOW_TRACE_GAP_AND_NO_CANDIDATE_INPUTS",
+  "project": "AX309-RDSP-001",
+  "selected_C_contract": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+  "selected_C_contract_sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+  "separate_explicit_execution_authorization_required": true,
+  "statistical_main_CPI_authorized": false,
+  "status": "PREPARATION_ONLY_NOT_EVALUATED_NO_TEST_INPUTS",
+  "synthesis_authorized": false,
+  "version": "v1.0"
+}

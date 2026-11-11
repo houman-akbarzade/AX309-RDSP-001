@@ -66,7 +66,7 @@
     }
   ],
   "architecture": "C",
-  "created_utc": "2026-11-11T14:26:25.648368+00:00",
+  "created_utc": "2026-11-11T14:57:53.356844+00:00",
   "criterion": "S04-C06",
   "current_order_execution_authorized": false,
   "decision_commit": "e8a89dd8472cfbbb4859f924c18ca8386709db44",
@@ -81,13 +81,185 @@
     1,
     1
   ],
+  "fulltrace_adapter": "engineering/s04_numeric/s04_c06_fulltrace_capture_v1.py",
+  "fulltrace_adapter_sha256": "f7ded485e4c169cd57ae965612c790354d098c3d7288a8c68866bcb224454c74",
+  "fulltrace_engine_sources": {
+    "C04_stage_capture": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+    "C04_stage_capture_sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+    "selected_C_arithmetic_contract_sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+    "v0_5": "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py",
+    "v0_5_sha256": "8340563c88985ef1fd6efc735247704a1fa0a9ad3e39f4230d4e4090389c0a03"
+  },
+  "fulltrace_integration_smoke": {
+    "C04_input_stress": {
+      "engine_sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+      "events": 8448,
+      "gain": 1,
+      "input_trace": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-C04-INPUT-G1.input.jsonl",
+      "input_trace_sha256": "d96195abef26678f43242b28cfef247ffbaad7eab9ad9c23461872412b98ec85",
+      "manifest": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-C04-INPUT-G1.manifest.json",
+      "manifest_sha256": "3ba3825f4005d5f3ebcccf4952d65bb6e76afe44df14fe1fd5ce78628423e4ad",
+      "processing_trace": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-C04-INPUT-G1.processing.jsonl",
+      "processing_trace_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "profile_id": "DIAGNOSTIC_ONLY"
+    },
+    "classification": "deterministic diagnostic/stress fixtures only; no C06 acceptance vector or CPI; no seed change",
+    "hash_order_field_readback": "PASS_STATIC_AUDIT",
+    "internal_overflow_injection": {
+      "engine_sha256": "8340563c88985ef1fd6efc735247704a1fa0a9ad3e39f4230d4e4090389c0a03",
+      "events": 159,
+      "gain": 1,
+      "input_trace": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-INTERNAL.input.jsonl",
+      "input_trace_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "manifest": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-INTERNAL.manifest.json",
+      "manifest_sha256": "b06d5e43e61c960946886367e82433fcb27f294865315d8eb0584cfd4001159c",
+      "processing_trace": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-INTERNAL.processing.jsonl",
+      "processing_trace_sha256": "6899732025af393368e19d6b07a8b267c5bc26cac6c0bfaad3a0f034e0a47d9b",
+      "profile_id": "DIAGNOSTIC_ONLY",
+      "site_counts": {
+        "FFT5": 77,
+        "POWER": 41,
+        "SUM40": 41
+      }
+    },
+    "manifest_files": 3,
+    "no_truncation": true,
+    "smoke_log": "engineering/S04-C06-FULLTRACE-INTEGRATION-SMOKE-v3.0.log",
+    "smoke_log_sha256": "65b01b54f95d8ffd8c4a85972400c2e3ff66b6563e432b230ca01c0b0b03ffdf",
+    "status": "PASS_DIAGNOSTIC_ONLY_NOT_C06_ACCEPTANCE",
+    "total_events": 17055,
+    "trace_files": 6,
+    "unique_event_ids_static_readback": 17055,
+    "v0_5_input_stress": {
+      "engine_sha256": "8340563c88985ef1fd6efc735247704a1fa0a9ad3e39f4230d4e4090389c0a03",
+      "events": 8448,
+      "gain": 1,
+      "input_trace": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-V05-INPUT-G1.input.jsonl",
+      "input_trace_sha256": "489e17c9eb9300cd6c147f5b4f1a69a5f005dd85b660927cefafa27d0f44e602",
+      "manifest": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-V05-INPUT-G1.manifest.json",
+      "manifest_sha256": "da8d842dfc8e93b4b1858167db5fb9b4f7c1e52b00b06590addb5b5d207fb45e",
+      "processing_trace": "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-V05-INPUT-G1.processing.jsonl",
+      "processing_trace_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "profile_id": "DIAGNOSTIC_ONLY"
+    }
+  },
+  "fulltrace_unit_test_log": "engineering/S04-C06-FULLTRACE-UNIT-TESTS-v1.0.log",
+  "fulltrace_unit_test_log_sha256": "29bc28576f0d8138a9011e8ce0ec9d706fe8e7f1dc58b61d4b1d1de1873f2e88",
+  "fulltrace_unit_test_result": {
+    "failed": 0,
+    "passed": 7,
+    "scope": "logger-only unit fixtures; no C06 acceptance vector or CPI",
+    "tests_run": 7
+  },
+  "fulltrace_unit_tests": "tests/test_s04_c06_fulltrace_capture_unit.py",
+  "fulltrace_unit_tests_sha256": "dae73d067d7164bc477fcbb3ecb04f971c650e42895b6b159e17f26efda47ff5",
   "future_test_plan": "engineering/S04-C06-FUTURE-TEST-PLAN-v1.0.md",
   "future_test_plan_sha256": "e38b0c819c36fc1f66a8464be371dc7c7f05ca0dbf41463147fbbfd71815976f",
+  "guard_coverage_static_audit": {
+    "arithmetic_rounding_narrowing_coefficients_formats_unchanged": true,
+    "assertions_preserved": true,
+    "limitation": "Python v0.5/C04 implementation guard inventory only; no RTL/hardware or C06 candidate-CPI runtime evidence",
+    "sites": [
+      {
+        "guard": "bounded",
+        "site": "IQ input quantizer",
+        "telemetry": "output_saturation",
+        "width": "signed 16"
+      },
+      {
+        "guard": "intermediate_guard",
+        "site": "MF_PRODUCT",
+        "width": "signed 32"
+      },
+      {
+        "guard": "intermediate_guard",
+        "site": "MF_PAIR",
+        "width": "signed 33"
+      },
+      {
+        "guard": "intermediate_guard",
+        "site": "MF_ACC",
+        "width": "signed 37"
+      },
+      {
+        "guard": "bounded",
+        "site": "MF output",
+        "width": "signed 22"
+      },
+      {
+        "guard": "bounded",
+        "site": "MTI output difference",
+        "width": "signed 23"
+      },
+      {
+        "guard": "intermediate_guard",
+        "site": "FFT1..FFT5_PRODUCT",
+        "width": "signed 39 (FFT1), 41 (FFT2..5)"
+      },
+      {
+        "guard": "intermediate_guard",
+        "site": "FFT1..FFT5_TW_PAIR",
+        "width": "signed 40 (FFT1), 42 (FFT2..5)"
+      },
+      {
+        "guard": "intermediate_guard",
+        "site": "FFT1..FFT5_BUTTERFLY",
+        "width": "signed 41 (FFT1), 43 (FFT2..5)"
+      },
+      {
+        "guard": "bounded",
+        "site": "FFT1..FFT5 output",
+        "width": "signed 25"
+      },
+      {
+        "guard": "unsigned_intermediate_guard before unchanged assertion",
+        "site": "POWER_RAW",
+        "width": "unsigned 51"
+      },
+      {
+        "guard": "ubounded",
+        "site": "POWER stored",
+        "width": "unsigned 46"
+      },
+      {
+        "guard": "ubounded",
+        "site": "SUM40",
+        "width": "unsigned 52"
+      },
+      {
+        "guard": "unsigned_intermediate_guard before unchanged assertion",
+        "site": "CFAR_LEFT_PRODUCT",
+        "width": "unsigned 68"
+      },
+      {
+        "guard": "unsigned_intermediate_guard before unchanged assertion",
+        "site": "CFAR_RIGHT_PRODUCT",
+        "width": "unsigned 72"
+      }
+    ],
+    "source_modules": [
+      "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py",
+      "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py"
+    ],
+    "status": "PASS_CODE_INSPECTION_AND_UNIT_GUARD_FIXTURE"
+  },
+  "historical_C03_fulltrace_evidence": {
+    "C03_forced_internal_manifest": "engineering/s04_numeric/S04-C03-forced-internal-overflow-evidence-v1.0.json",
+    "C03_forced_internal_manifest_sha256": "8edea93caffc4e60a264252b0052b3890100292125d6479ab01b16f3da835f51",
+    "C03_replay_manifest": "engineering/s04_numeric/S04-C03-complete-overflow-replay-v1.0.json",
+    "C03_replay_manifest_sha256": "82b9d4600c604fea47b32e7b57a316f05c33b0c4e6e1e6de2c84fc8867b7f79d",
+    "complete_readback_unique_order_hash_audit": "PASS_STATIC_READ_ONLY",
+    "forced_internal_overflow_events": 159,
+    "input_clipping_events": 16896,
+    "limitation": "historical deterministic C03 diagnostic fixtures, not C06 candidate CPI runtime evidence",
+    "total_events": 17055,
+    "trace_files": 7
+  },
   "known_preflight_blockers": [
     {
-      "finding": "Existing v0.5 telemetry retains first_24 events plus digest/count, not complete ordered event list; full ordered clipping/overflow trace readback and non-omission must be implemented and independently verified before PF-08 passes.",
+      "finding": "Software guard coverage and C06 streaming recorder are implemented and diagnostic smokes pass. Exact final C06 runner binding, independently authorized candidate CPI capture and independent review remain pending.",
       "id": "S04-C02-RISK-FULL-OVERFLOW-TRACE",
-      "status": "OPEN_IMPLEMENTATION_EVIDENCE"
+      "status": "OPEN_IMPLEMENTED_GUARD_COVERAGE_AND_DIAGNOSTIC_SMOKE_VERIFIED_C06_CANDIDATE_CPI_PENDING_INDEPENDENT_REVIEW"
     }
   ],
   "overall_percent": 30.208333333333332,
@@ -131,7 +303,7 @@
     {
       "id": "PF-08",
       "mandatory": true,
-      "status": "BLOCKED_KNOWN_OPEN_FULL_ORDERED_OVERFLOW_TRACE"
+      "status": "GUARD_COVERAGE_AND_UNIT_DIAGNOSTIC_INTEGRATION_VERIFIED_C06_CANDIDATE_CPI_AND_INDEPENDENT_REVIEW_PENDING"
     },
     {
       "id": "PF-09",
@@ -168,7 +340,7 @@
     "fixed_N_denominator_and_seed_separation",
     "stress_corpus_separation"
   ],
-  "preflight_status": "BLOCKED_KNOWN_OVERFLOW_TRACE_GAP_AND_NO_CANDIDATE_INPUTS",
+  "preflight_status": "BLOCKED_C06_CANDIDATE_CPI_CAPTURE_AND_INDEPENDENT_REVIEW_PENDING",
   "project": "AX309-RDSP-001",
   "selected_C_contract": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
   "selected_C_contract_sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",

@@ -58,7 +58,13 @@ def intermediate_guard(x,W,tel,site,index,component):
     lo=-(1<<(W-1));hi=(1<<(W-1))-1
     if not lo<=x<=hi: tel.record(site,index,component,x,W,under=True)
 
+def unsigned_intermediate_guard(x,W,tel,site,index):
+    if not 0<=x<(1<<W):
+        tel.record(site,index,'unsigned',x,W,under=True)
+
 def ubounded(x,W,tel,site,index):
+    if x<0:
+        tel.record(site,index,'unsigned',x,W,under=True)
     assert x>=0
     hi=(1<<W)-1
     if x>hi:
@@ -247,6 +253,7 @@ def run_one(src,iq,initial_tel,opt,shifts,g,capture_stages=False):
        prow=[]
        for b,(i,q) in enumerate(row):
           raw=i*i+q*q
+          unsigned_intermediate_guard(raw,2*wfft+1,tel,'POWER_RAW',(r,b))
           assert raw <(1<<(2*wfft+1))
           prow.append(ubounded(raw,wp,tel,'POWER',(r,b)))
        pw.append(prow)
@@ -259,8 +266,12 @@ def run_one(src,iq,initial_tel,opt,shifts,g,capture_stages=False):
           sm=ubounded(sm,ws,tel,'SUM40',(r,b))
           cut=pw[r][b]
           left=40*cut*(1<<fa);right=a_coef*sm
-          assert left <(1<<CFAR['calculations'][opt]['post_narrowing_candidate_operands']['left_conservative_bits'])
-          assert right<(1<<CFAR['calculations'][opt]['post_narrowing_candidate_operands']['right_conservative_bits'])
+          left_width=CFAR['calculations'][opt]['post_narrowing_candidate_operands']['left_conservative_bits']
+          right_width=CFAR['calculations'][opt]['post_narrowing_candidate_operands']['right_conservative_bits']
+          unsigned_intermediate_guard(left,left_width,tel,'CFAR_LEFT_PRODUCT',(r,b))
+          unsigned_intermediate_guard(right,right_width,tel,'CFAR_RIGHT_PRODUCT',(r,b))
+          assert left <(1<<left_width)
+          assert right<(1<<right_width)
           hit=left>right
           valid+=1;alarms+=hit
           if hit and len(decisions)<20:decisions.append((r,b))

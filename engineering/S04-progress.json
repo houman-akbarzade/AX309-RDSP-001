@@ -126,6 +126,7 @@
         "REQ-SCR-01",
         "REQ-RNG-03"
       ],
+      "PF08_status": "GUARD_COVERAGE_AND_UNIT_DIAGNOSTIC_INTEGRATION_VERIFIED_C06_CANDIDATE_CPI_AND_INDEPENDENT_REVIEW_PENDING",
       "RTL_synthesis_FPGA_authorized": false,
       "acceptance_cpi_run": 0,
       "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
@@ -138,14 +139,130 @@
       "description": "Float-to-bittrue numeric error-budget acceptance",
       "execution_contract": "engineering/S04-C06-EXECUTION-CONTRACT-v1.0.md",
       "execution_contract_sha256": "32313ded767d304f0cf053fe433042223105864fa506aee8adcd710d4e6ec840",
+      "fulltrace_adapter": "engineering/s04_numeric/s04_c06_fulltrace_capture_v1.py",
+      "fulltrace_adapter_sha256": "f7ded485e4c169cd57ae965612c790354d098c3d7288a8c68866bcb224454c74",
+      "fulltrace_engine_sources": {
+        "C04_stage_capture": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+        "C04_stage_capture_sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+        "selected_C_arithmetic_contract_sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+        "v0_5": "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py",
+        "v0_5_sha256": "8340563c88985ef1fd6efc735247704a1fa0a9ad3e39f4230d4e4090389c0a03"
+      },
+      "fulltrace_integration_smoke_log": "engineering/S04-C06-FULLTRACE-INTEGRATION-SMOKE-v3.0.log",
+      "fulltrace_integration_smoke_log_sha256": "65b01b54f95d8ffd8c4a85972400c2e3ff66b6563e432b230ca01c0b0b03ffdf",
+      "fulltrace_smoke_artifacts": {
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-C04-INPUT-G1.input.jsonl": "d96195abef26678f43242b28cfef247ffbaad7eab9ad9c23461872412b98ec85",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-C04-INPUT-G1.manifest.json": "3ba3825f4005d5f3ebcccf4952d65bb6e76afe44df14fe1fd5ce78628423e4ad",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-C04-INPUT-G1.processing.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-INTERNAL.input.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-INTERNAL.manifest.json": "b06d5e43e61c960946886367e82433fcb27f294865315d8eb0584cfd4001159c",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-INTERNAL.processing.jsonl": "6899732025af393368e19d6b07a8b267c5bc26cac6c0bfaad3a0f034e0a47d9b",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-V05-INPUT-G1.input.jsonl": "489e17c9eb9300cd6c147f5b4f1a69a5f005dd85b660927cefafa27d0f44e602",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-V05-INPUT-G1.manifest.json": "da8d842dfc8e93b4b1858167db5fb9b4f7c1e52b00b06590addb5b5d207fb45e",
+        "engineering/s04_numeric/c06_fulltrace_smoke_v3/DIAG-PF08-V3-V05-INPUT-G1.processing.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "fulltrace_smoke_events": 17055,
+      "fulltrace_unit_test_log": "engineering/S04-C06-FULLTRACE-UNIT-TESTS-v1.0.log",
+      "fulltrace_unit_test_log_sha256": "29bc28576f0d8138a9011e8ce0ec9d706fe8e7f1dc58b61d4b1d1de1873f2e88",
+      "fulltrace_unit_tests": "tests/test_s04_c06_fulltrace_capture_unit.py",
+      "fulltrace_unit_tests_passed": 7,
+      "fulltrace_unit_tests_sha256": "dae73d067d7164bc477fcbb3ecb04f971c650e42895b6b159e17f26efda47ff5",
       "future_test_plan": "engineering/S04-C06-FUTURE-TEST-PLAN-v1.0.md",
       "future_test_plan_sha256": "e38b0c819c36fc1f66a8464be371dc7c7f05ca0dbf41463147fbbfd71815976f",
+      "guard_coverage_static_audit": {
+        "arithmetic_rounding_narrowing_coefficients_formats_unchanged": true,
+        "assertions_preserved": true,
+        "limitation": "Python v0.5/C04 implementation guard inventory only; no RTL/hardware or C06 candidate-CPI runtime evidence",
+        "sites": [
+          {
+            "guard": "bounded",
+            "site": "IQ input quantizer",
+            "telemetry": "output_saturation",
+            "width": "signed 16"
+          },
+          {
+            "guard": "intermediate_guard",
+            "site": "MF_PRODUCT",
+            "width": "signed 32"
+          },
+          {
+            "guard": "intermediate_guard",
+            "site": "MF_PAIR",
+            "width": "signed 33"
+          },
+          {
+            "guard": "intermediate_guard",
+            "site": "MF_ACC",
+            "width": "signed 37"
+          },
+          {
+            "guard": "bounded",
+            "site": "MF output",
+            "width": "signed 22"
+          },
+          {
+            "guard": "bounded",
+            "site": "MTI output difference",
+            "width": "signed 23"
+          },
+          {
+            "guard": "intermediate_guard",
+            "site": "FFT1..FFT5_PRODUCT",
+            "width": "signed 39 (FFT1), 41 (FFT2..5)"
+          },
+          {
+            "guard": "intermediate_guard",
+            "site": "FFT1..FFT5_TW_PAIR",
+            "width": "signed 40 (FFT1), 42 (FFT2..5)"
+          },
+          {
+            "guard": "intermediate_guard",
+            "site": "FFT1..FFT5_BUTTERFLY",
+            "width": "signed 41 (FFT1), 43 (FFT2..5)"
+          },
+          {
+            "guard": "bounded",
+            "site": "FFT1..FFT5 output",
+            "width": "signed 25"
+          },
+          {
+            "guard": "unsigned_intermediate_guard before unchanged assertion",
+            "site": "POWER_RAW",
+            "width": "unsigned 51"
+          },
+          {
+            "guard": "ubounded",
+            "site": "POWER stored",
+            "width": "unsigned 46"
+          },
+          {
+            "guard": "ubounded",
+            "site": "SUM40",
+            "width": "unsigned 52"
+          },
+          {
+            "guard": "unsigned_intermediate_guard before unchanged assertion",
+            "site": "CFAR_LEFT_PRODUCT",
+            "width": "unsigned 68"
+          },
+          {
+            "guard": "unsigned_intermediate_guard before unchanged assertion",
+            "site": "CFAR_RIGHT_PRODUCT",
+            "width": "unsigned 72"
+          }
+        ],
+        "source_modules": [
+          "engineering/s04_numeric/s04_c02_integer_bittrue_v05.py",
+          "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py"
+        ],
+        "status": "PASS_CODE_INSPECTION_AND_UNIT_GUARD_FIXTURE"
+      },
       "id": "S04-C06",
       "independent_criteria_decision": "decisions/S04-C06-CRITERIA-INDEPENDENT-DECISION-v1.0.md",
       "independent_decision_commit": "e8a89dd8472cfbbb4859f924c18ca8386709db44",
       "independent_decision_sha256": "5427ba6b7b66b8d21fc4f0178ccf557b49678e718ab0570727880f25166a144f",
       "known_preflight_blockers": [
-        "S04-C02-RISK-FULL-OVERFLOW-TRACE"
+        "S04-C02-RISK-FULL-OVERFLOW-TRACE: final C06 runner binding, candidate CPI capture and independent review pending"
       ],
       "new_acceptance_tests_run": 0,
       "no_acceptance_execution_before_engineer_approval": true,
@@ -180,7 +297,7 @@
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
   "project_percent": 30.208333333333332,
-  "recorded_at_utc": "2026-11-11T14:26:25.648683+00:00",
+  "recorded_at_utc": "2026-11-11T14:57:53.357132+00:00",
   "stage": "S04",
   "stage_percent": 62.5,
   "status": "C01_C02_C03_C04_C05_PASS_C06_OPEN_A_TO_E_APPROVED_CONDITIONAL_F_BLOCKED",

@@ -77,11 +77,11 @@
       "acceptance_condition": "Persist all ordered pre-narrow overflow and input-saturation events with stable identities, pre-limit integers, locations, hashes and fixed CPI IDs; verify readback and non-omission; do not change bit-true arithmetic.",
       "blocking_C02_arithmetic_signoff": false,
       "blocking_Gate_S04": true,
-      "finding": "The v0.5 Python telemetry retains detailed first_24 overflow events and SHA256 digest/count of the complete ordered event stream, but not the full ordered event list. The C01 frozen protocol requires complete event trace for future qualification.",
+      "finding": "The raw v0.5 Telemetry summary still exposes only first_24 plus digest/count. The C06 streaming recorder now persists complete CPI-scoped JSONL events with stable UUIDs, full pre-narrow integers, stage/location/component, signedness, cumulative counts, sticky flags, order and readback hashes. The two previously assertion-only unsigned width checks (POWER_RAW W51 and CFAR left/right W68/W72) now call telemetry guards before the unchanged assertions. Seven logger-only unit tests pass; deterministic v0.5/C04/input and synthetic internal diagnostic smokes persist 17,055 events with unique IDs and verified readback. The obligation remains OPEN until final C06 runner binding, an independently authorized C06 candidate-CPI trace and independent review.",
       "id": "S04-C02-RISK-FULL-OVERFLOW-TRACE",
       "milestone": "Before event-trace acceptance or performance test approval",
       "owner": "S04-C03 primitive qualification and S04-C07 reproducible evidence, independent reviewer",
-      "status": "OPEN_IMPLEMENTATION_EVIDENCE"
+      "status": "OPEN_IMPLEMENTED_GUARD_COVERAGE_AND_DIAGNOSTIC_SMOKE_VERIFIED_C06_CANDIDATE_CPI_PENDING_INDEPENDENT_REVIEW"
     },
     {
       "acceptance_condition": "Explicit field widths, byte order for each interface, timestamps/hashes/flags and overflow event transfer must match C01 and selected C numeric contract; independent review.",

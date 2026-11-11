@@ -1,0 +1,2899 @@
+{
+  "criterion": "S04-C04",
+  "decision": "UNAPPROVED_C04_READY_FOR_REVIEW",
+  "error_interpretation": "zero integer oracle mismatch is proof for tested deterministic vectors only; float deviations reflect input and coefficient quantization, rounding, and clipping; no Pd/Pfa conclusion",
+  "fft_shifts": [
+    0,
+    1,
+    0,
+    1,
+    1
+  ],
+  "frozen_arch": "C",
+  "g1": {},
+  "g5": {},
+  "no_historic_accepted_seeds": true,
+  "no_main_statistical_CPI": true,
+  "project": "AX309-RDSP-001",
+  "vectors": [
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "zero",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "ea48e18e7c50aadfbefd30b5fcd102d1460132601fa0606b6d56d798f82b2fc9",
+      "vector_id": "g1:zero"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 1.8053922628923095e-05,
+          "RMS": 7.3192427971046275e-06
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 1.8053922628923095e-05,
+          "RMS": 7.3192427971046275e-06
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "dc_stationary",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "5db6e905fc666d6141946a17d4b51cbdd12d19bd481e6cd7f504b9aec55617e0",
+      "vector_id": "g1:dc_stationary"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0001835517597786978,
+          "RMS": 0.00015837584265801353
+        },
+        "FFT2": {
+          "MAX": 0.0006705371388328082,
+          "RMS": 0.00038577002616751815
+        },
+        "FFT3": {
+          "MAX": 0.0019238387569002547,
+          "RMS": 0.0007567569158255924
+        },
+        "FFT4": {
+          "MAX": 0.005068133847561175,
+          "RMS": 0.0013646379895899962
+        },
+        "FFT5": {
+          "MAX": 0.01257737196431018,
+          "RMS": 0.0023539631155242643
+        },
+        "MF": {
+          "MAX": 2.3004879315367768e-05,
+          "RMS": 8.456277830097971e-06
+        },
+        "MTI": {
+          "MAX": 2.291464321524741e-05,
+          "RMS": 1.3146430841882374e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0001835517597786978,
+          "RMS": 0.00015837584265801353
+        },
+        "FFT2": {
+          "MAX": 0.0006705371388328082,
+          "RMS": 0.00038577002616751815
+        },
+        "FFT3": {
+          "MAX": 0.0019238387569002547,
+          "RMS": 0.0007567569158255924
+        },
+        "FFT4": {
+          "MAX": 0.005068133847561175,
+          "RMS": 0.0013646379895899962
+        },
+        "FFT5": {
+          "MAX": 0.01257737196431018,
+          "RMS": 0.0023539631155242643
+        },
+        "MF": {
+          "MAX": 2.3004879315367768e-05,
+          "RMS": 8.456277830097971e-06
+        },
+        "MTI": {
+          "MAX": 2.291464321524741e-05,
+          "RMS": 1.3146430841882374e-05
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "dc_pulsed",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "af9cd92eb389d88c4556e39299749e68ba46411555df211aef2a1d6e78e8b8d3",
+      "vector_id": "g1:dc_pulsed"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0008287477096453314,
+          "RMS": 0.0006318032875666566
+        },
+        "FFT2": {
+          "MAX": 0.0030410782387868796,
+          "RMS": 0.001510105879864859
+        },
+        "FFT3": {
+          "MAX": 0.008856054582623568,
+          "RMS": 0.0029996641495377355
+        },
+        "FFT4": {
+          "MAX": 0.023260238832511413,
+          "RMS": 0.005452944319573501
+        },
+        "FFT5": {
+          "MAX": 0.05761701859910111,
+          "RMS": 0.009418617954669471
+        },
+        "MF": {
+          "MAX": 4.773309600277203e-05,
+          "RMS": 2.381184175003662e-05
+        },
+        "MTI": {
+          "MAX": 9.37911788953822e-05,
+          "RMS": 4.6943396748940634e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0008287477096453314,
+          "RMS": 0.0006318032875666566
+        },
+        "FFT2": {
+          "MAX": 0.0030410782387868796,
+          "RMS": 0.001510105879864859
+        },
+        "FFT3": {
+          "MAX": 0.008856054582623568,
+          "RMS": 0.0029996641495377355
+        },
+        "FFT4": {
+          "MAX": 0.023260238832511413,
+          "RMS": 0.005452944319573501
+        },
+        "FFT5": {
+          "MAX": 0.05761701859910111,
+          "RMS": 0.009418617954669471
+        },
+        "MF": {
+          "MAX": 4.773309600277203e-05,
+          "RMS": 2.381184175003662e-05
+        },
+        "MTI": {
+          "MAX": 9.37911788953822e-05,
+          "RMS": 4.6943396748940634e-05
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "signed_extreme",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "ac6d91680c764ba2da3b094a2e967389f01992937f99a2dd0c910a606722f884",
+      "vector_id": "g1:signed_extreme"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 7.326345064712169e-05,
+          "RMS": 2.5932213938844388e-05
+        },
+        "FFT2": {
+          "MAX": 0.00014652690129424338,
+          "RMS": 3.667368865467435e-05
+        },
+        "FFT3": {
+          "MAX": 0.00029305380258848676,
+          "RMS": 5.1864427877688775e-05
+        },
+        "FFT4": {
+          "MAX": 0.0005861076051769735,
+          "RMS": 7.33473773093487e-05
+        },
+        "FFT5": {
+          "MAX": 0.001172215210353947,
+          "RMS": 0.00010372885575537754
+        },
+        "MF": {
+          "MAX": 1.8315862661780423e-05,
+          "RMS": 9.168422163668587e-06
+        },
+        "MTI": {
+          "MAX": 3.6631725323560845e-05,
+          "RMS": 1.8336844327337174e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0007490263951451644,
+          "RMS": 0.00040486485666066006
+        },
+        "FFT2": {
+          "MAX": 0.0014980527902903288,
+          "RMS": 0.0005725653712177445
+        },
+        "FFT3": {
+          "MAX": 0.0029961055805806575,
+          "RMS": 0.0008097297133213201
+        },
+        "FFT4": {
+          "MAX": 0.005992211161161315,
+          "RMS": 0.0011451307424354888
+        },
+        "FFT5": {
+          "MAX": 0.01198442232232263,
+          "RMS": 0.00161945942664264
+        },
+        "MF": {
+          "MAX": 0.0001872565987862911,
+          "RMS": 0.0001431413428044361
+        },
+        "MTI": {
+          "MAX": 0.0003745131975725822,
+          "RMS": 0.00028628268560887225
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 2.1579186437577746e-05,
+        "RMS": 2.1579186437577746e-05
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "half_lsb",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0006926208892842836,
+          "RMS": 0.0004204637556446407
+        },
+        "FFT2": {
+          "MAX": 0.0013852417785685672,
+          "RMS": 0.0005946255457189779
+        },
+        "FFT3": {
+          "MAX": 0.0027704835571371344,
+          "RMS": 0.0008409275112892814
+        },
+        "FFT4": {
+          "MAX": 0.005540967114274269,
+          "RMS": 0.0011892510914379558
+        },
+        "FFT5": {
+          "MAX": 0.011081934228548538,
+          "RMS": 0.0016818550225785628
+        },
+        "MF": {
+          "MAX": 0.0001731552223210709,
+          "RMS": 0.00014865638642974448
+        },
+        "MTI": {
+          "MAX": 0.0003463104446421418,
+          "RMS": 0.00029731277285948896
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "d99dca69fd9054a538289c04a084f76a87918a8b05311521ecac8ff3b5a62cfa",
+      "vector_id": "g1:half_lsb"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0003298919097639471,
+          "RMS": 0.0001984575944801406
+        },
+        "FFT2": {
+          "MAX": 0.0011363974040145728,
+          "RMS": 0.0004665457276223033
+        },
+        "FFT3": {
+          "MAX": 0.0031400939934732876,
+          "RMS": 0.0009184035099704103
+        },
+        "FFT4": {
+          "MAX": 0.008014936460601148,
+          "RMS": 0.0016548450410397
+        },
+        "FFT5": {
+          "MAX": 0.01949950983033919,
+          "RMS": 0.0028567538674457685
+        },
+        "MF": {
+          "MAX": 3.58611109401224e-05,
+          "RMS": 1.5299320250531955e-05
+        },
+        "MTI": {
+          "MAX": 7.17222218802448e-05,
+          "RMS": 3.059864050106391e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0003298919097639471,
+          "RMS": 0.0001984575944801406
+        },
+        "FFT2": {
+          "MAX": 0.0011363974040145728,
+          "RMS": 0.0004665457276223033
+        },
+        "FFT3": {
+          "MAX": 0.0031400939934732876,
+          "RMS": 0.0009184035099704103
+        },
+        "FFT4": {
+          "MAX": 0.008014936460601148,
+          "RMS": 0.0016548450410397
+        },
+        "FFT5": {
+          "MAX": 0.01949950983033919,
+          "RMS": 0.0028567538674457685
+        },
+        "MF": {
+          "MAX": 3.58611109401224e-05,
+          "RMS": 1.5299320250531955e-05
+        },
+        "MTI": {
+          "MAX": 7.17222218802448e-05,
+          "RMS": 3.059864050106391e-05
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "negative_alternating",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "839321bfe332c6d04960bcda60d0985ee20bc6088dd42d41b1f5d6431fc89b9a",
+      "vector_id": "g1:negative_alternating"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": 5,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00012995426760416517,
+          "RMS": 1.9031803443793905e-05
+        },
+        "FFT2": {
+          "MAX": 0.00025990853520834644,
+          "RMS": 2.612627658823244e-05
+        },
+        "FFT3": {
+          "MAX": 0.0006665293426282765,
+          "RMS": 4.7995394014144076e-05
+        },
+        "FFT4": {
+          "MAX": 0.0010357285518134078,
+          "RMS": 6.288689325838036e-05
+        },
+        "FFT5": {
+          "MAX": 0.001671897944956118,
+          "RMS": 8.47003910998735e-05
+        },
+        "MF": {
+          "MAX": 2.5031843897615238e-05,
+          "RMS": 6.323332411835886e-06
+        },
+        "MTI": {
+          "MAX": 4.131376336079964e-05,
+          "RMS": 8.564357980422503e-06
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00025412404572183256,
+          "RMS": 4.407014284915165e-05
+        },
+        "FFT2": {
+          "MAX": 0.0005082480914435474,
+          "RMS": 6.19880490514731e-05
+        },
+        "FFT3": {
+          "MAX": 0.0007601952951832377,
+          "RMS": 9.301453950320262e-05
+        },
+        "FFT4": {
+          "MAX": 0.0010500885335756336,
+          "RMS": 0.00012778407834177963
+        },
+        "FFT5": {
+          "MAX": 0.0018593196059240016,
+          "RMS": 0.00017719726281006592
+        },
+        "MF": {
+          "MAX": 9.479545003078696e-05,
+          "RMS": 1.9697905409507105e-05
+        },
+        "MTI": {
+          "MAX": 0.000127062022860984,
+          "RMS": 2.9886945358933803e-05
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 1.866141807864426e-05,
+        "RMS": 4.731939877256774e-06
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "onbin_k5",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": 5,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00022319193833840426,
+          "RMS": 3.9047541992438866e-05
+        },
+        "FFT2": {
+          "MAX": 0.0004463838766766937,
+          "RMS": 5.5221563463044214e-05
+        },
+        "FFT3": {
+          "MAX": 0.0006023712635086361,
+          "RMS": 7.809508398488493e-05
+        },
+        "FFT4": {
+          "MAX": 0.0010940011101570292,
+          "RMS": 0.00011044312692609012
+        },
+        "FFT5": {
+          "MAX": 0.0018971043389425322,
+          "RMS": 0.00015619016796977305
+        },
+        "MF": {
+          "MAX": 9.066265084440073e-05,
+          "RMS": 1.8436286358769417e-05
+        },
+        "MTI": {
+          "MAX": 0.0001115959691692952,
+          "RMS": 2.761078173152123e-05
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "e298243da2da00eab11b7df2d8c7f773737569fd28dc5fe83a189ab74ffcafd3",
+      "vector_id": "g1:onbin_k5"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": 5,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00013094981589662088,
+          "RMS": 2.0604463196037523e-05
+        },
+        "FFT2": {
+          "MAX": 0.0002971737180790514,
+          "RMS": 3.641387818607223e-05
+        },
+        "FFT3": {
+          "MAX": 0.0006119041979388109,
+          "RMS": 6.051700183061699e-05
+        },
+        "FFT4": {
+          "MAX": 0.0012761449937743249,
+          "RMS": 9.233739837709391e-05
+        },
+        "FFT5": {
+          "MAX": 0.0020956940158526993,
+          "RMS": 0.000137088675354998
+        },
+        "MF": {
+          "MAX": 2.6826522886542824e-05,
+          "RMS": 6.413886011153014e-06
+        },
+        "MTI": {
+          "MAX": 3.8648711636128965e-05,
+          "RMS": 8.762851346389604e-06
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0003323865429762575,
+          "RMS": 4.413084624557067e-05
+        },
+        "FFT2": {
+          "MAX": 0.000529860744253247,
+          "RMS": 6.582156161100016e-05
+        },
+        "FFT3": {
+          "MAX": 0.0009510322830156389,
+          "RMS": 9.722375693098012e-05
+        },
+        "FFT4": {
+          "MAX": 0.0013504559634723644,
+          "RMS": 0.00014323837310856283
+        },
+        "FFT5": {
+          "MAX": 0.0023257815047114396,
+          "RMS": 0.00020832441437265166
+        },
+        "MF": {
+          "MAX": 0.0001686950539042009,
+          "RMS": 2.1152583573020172e-05
+        },
+        "MTI": {
+          "MAX": 0.00017444481710573773,
+          "RMS": 2.834932981058848e-05
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 2.002448861276285e-05,
+        "RMS": 4.506826252344696e-06
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "offbin_k5p37",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": 5,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00024390338228958157,
+          "RMS": 3.76138927807951e-05
+        },
+        "FFT2": {
+          "MAX": 0.0003489495694428494,
+          "RMS": 5.319407730424575e-05
+        },
+        "FFT3": {
+          "MAX": 0.0005536486653392324,
+          "RMS": 7.522778556158372e-05
+        },
+        "FFT4": {
+          "MAX": 0.0007155747605709501,
+          "RMS": 0.00010638815460850166
+        },
+        "FFT5": {
+          "MAX": 0.0013398892363003473,
+          "RMS": 0.0001504555711231844
+        },
+        "MF": {
+          "MAX": 0.0001585250994364924,
+          "RMS": 2.004616493884872e-05
+        },
+        "MTI": {
+          "MAX": 0.0001642347587854731,
+          "RMS": 2.6597038652123124e-05
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "da654287d2d4d85767178c2e6a0f5bcd82bb56855d9c27bcd1936ae9d0305be7",
+      "vector_id": "g1:offbin_k5p37"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [
+        {
+          "component": "I",
+          "limited": -32768,
+          "pulse": 0,
+          "range": 0,
+          "raw": "-39322",
+          "status": "SAT"
+        },
+        {
+          "component": "Q",
+          "limited": -32768,
+          "pulse": 0,
+          "range": 0,
+          "raw": "-36864",
+          "status": "SAT"
+        }
+      ],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0008287477096453314,
+          "RMS": 0.0006318032875666566
+        },
+        "FFT2": {
+          "MAX": 0.0030410782387868796,
+          "RMS": 0.001510105879864859
+        },
+        "FFT3": {
+          "MAX": 0.008856054582623568,
+          "RMS": 0.0029996641495377355
+        },
+        "FFT4": {
+          "MAX": 0.023260238832511413,
+          "RMS": 0.005452944319573501
+        },
+        "FFT5": {
+          "MAX": 0.05761701859910111,
+          "RMS": 0.009418617954669471
+        },
+        "MF": {
+          "MAX": 4.773309600277203e-05,
+          "RMS": 2.381184175003662e-05
+        },
+        "MTI": {
+          "MAX": 9.37911788953822e-05,
+          "RMS": 4.6943396748940634e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 5.9612987564660775,
+          "RMS": 3.44729790148751
+        },
+        "FFT2": {
+          "MAX": 11.923980074027495,
+          "RMS": 4.875803995094452
+        },
+        "FFT3": {
+          "MAX": 23.850734239329878,
+          "RMS": 6.896276417973526
+        },
+        "FFT4": {
+          "MAX": 47.70701666128225,
+          "RMS": 9.754007289438315
+        },
+        "FFT5": {
+          "MAX": 95.42512968795488,
+          "RMS": 13.795945956735597
+        },
+        "MF": {
+          "MAX": 1.490320052936664,
+          "RMS": 1.2186522613114512
+        },
+        "MTI": {
+          "MAX": 2.9803037380289124,
+          "RMS": 2.437313448264024
+        }
+      },
+      "g": 1,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.23589158163958793,
+        "RMS": 0.23587031083460971
+      },
+      "input_saturation_count": 8448,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "overrange",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 8,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 5.9604701718496615,
+          "RMS": 3.4468236037779443
+        },
+        "FFT2": {
+          "MAX": 11.920940343699323,
+          "RMS": 4.874544687570476
+        },
+        "FFT3": {
+          "MAX": 23.841880687398646,
+          "RMS": 6.893647207555889
+        },
+        "FFT4": {
+          "MAX": 47.68376137479729,
+          "RMS": 9.749089375140953
+        },
+        "FFT5": {
+          "MAX": 95.36752274959458,
+          "RMS": 13.787294415111777
+        },
+        "MF": {
+          "MAX": 1.4902833460700764,
+          "RMS": 1.218631706265448
+        },
+        "MTI": {
+          "MAX": 2.9802350859248308,
+          "RMS": 2.437272343785238
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "eac9d1adf8d7d253caae23e0d1ff64f6746fa2a6e1e5548104914d10b7912efc",
+      "vector_id": "g1:overrange"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "zero",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "ea48e18e7c50aadfbefd30b5fcd102d1460132601fa0606b6d56d798f82b2fc9",
+      "vector_id": "g5:zero"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 9.026961314430243e-05,
+          "RMS": 3.659621398475099e-05
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 9.026961314430243e-05,
+          "RMS": 3.659621398475099e-05
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "dc_stationary",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "5e379e59b9e77846586ad2ba3076cf219abbe6babc855317d82ba482117e4bca",
+      "vector_id": "g5:dc_stationary"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0009177587988884477,
+          "RMS": 0.0007918792132938526
+        },
+        "FFT2": {
+          "MAX": 0.003352685694154802,
+          "RMS": 0.0019288501308432206
+        },
+        "FFT3": {
+          "MAX": 0.00961919378453183,
+          "RMS": 0.0037837845791362703
+        },
+        "FFT4": {
+          "MAX": 0.025340669237866646,
+          "RMS": 0.006823189947962046
+        },
+        "FFT5": {
+          "MAX": 0.06288685982167203,
+          "RMS": 0.011769815577638613
+        },
+        "MF": {
+          "MAX": 0.00011502439657588654,
+          "RMS": 4.2281389151992034e-05
+        },
+        "MTI": {
+          "MAX": 0.00011457321607623515,
+          "RMS": 6.573215421370603e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0009177587988884477,
+          "RMS": 0.0007918792132938526
+        },
+        "FFT2": {
+          "MAX": 0.003352685694154802,
+          "RMS": 0.0019288501308432206
+        },
+        "FFT3": {
+          "MAX": 0.00961919378453183,
+          "RMS": 0.0037837845791362703
+        },
+        "FFT4": {
+          "MAX": 0.025340669237866646,
+          "RMS": 0.006823189947962046
+        },
+        "FFT5": {
+          "MAX": 0.06288685982167203,
+          "RMS": 0.011769815577638613
+        },
+        "MF": {
+          "MAX": 0.00011502439657588654,
+          "RMS": 4.2281389151992034e-05
+        },
+        "MTI": {
+          "MAX": 0.00011457321607623515,
+          "RMS": 6.573215421370603e-05
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "dc_pulsed",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "1c7c6f97751ac99991d14f01875c0493158419e733db7050ba7fda67d68c4984",
+      "vector_id": "g5:dc_pulsed"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.004143738548184914,
+          "RMS": 0.0031590164378386748
+        },
+        "FFT2": {
+          "MAX": 0.015205391193851248,
+          "RMS": 0.0075505293993323504
+        },
+        "FFT3": {
+          "MAX": 0.04428027291295113,
+          "RMS": 0.014998320747700534
+        },
+        "FFT4": {
+          "MAX": 0.11630119416222323,
+          "RMS": 0.02726472159788468
+        },
+        "FFT5": {
+          "MAX": 0.28808509299483737,
+          "RMS": 0.04709308977337203
+        },
+        "MF": {
+          "MAX": 0.0002386654800093971,
+          "RMS": 0.00011905920875427365
+        },
+        "MTI": {
+          "MAX": 0.0004689558944727118,
+          "RMS": 0.00023471698375248954
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.004143738548184914,
+          "RMS": 0.0031590164378386748
+        },
+        "FFT2": {
+          "MAX": 0.015205391193851248,
+          "RMS": 0.0075505293993323504
+        },
+        "FFT3": {
+          "MAX": 0.04428027291295113,
+          "RMS": 0.014998320747700534
+        },
+        "FFT4": {
+          "MAX": 0.11630119416222323,
+          "RMS": 0.02726472159788468
+        },
+        "FFT5": {
+          "MAX": 0.28808509299483737,
+          "RMS": 0.04709308977337203
+        },
+        "MF": {
+          "MAX": 0.0002386654800093971,
+          "RMS": 0.00011905920875427365
+        },
+        "MTI": {
+          "MAX": 0.0004689558944727118,
+          "RMS": 0.00023471698375248954
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "signed_extreme",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "0af67e0502388ca99c3a40470365bba023c99fc1b853f58ccbe881cd97182f41",
+      "vector_id": "g5:signed_extreme"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00036631725323560865,
+          "RMS": 0.0001296610696942235
+        },
+        "FFT2": {
+          "MAX": 0.0007326345064712173,
+          "RMS": 0.00018336844327337398
+        },
+        "FFT3": {
+          "MAX": 0.0014652690129424346,
+          "RMS": 0.000259322139388447
+        },
+        "FFT4": {
+          "MAX": 0.0029305380258848692,
+          "RMS": 0.00036673688654674795
+        },
+        "FFT5": {
+          "MAX": 0.0058610760517697385,
+          "RMS": 0.000518644278776894
+        },
+        "MF": {
+          "MAX": 9.157931330890216e-05,
+          "RMS": 4.5842110818343494e-05
+        },
+        "MTI": {
+          "MAX": 0.00018315862661780433,
+          "RMS": 9.168422163668699e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.003745131975725824,
+          "RMS": 0.0020243242833033
+        },
+        "FFT2": {
+          "MAX": 0.007490263951451648,
+          "RMS": 0.0028628268560887222
+        },
+        "FFT3": {
+          "MAX": 0.014980527902903296,
+          "RMS": 0.0040486485666066
+        },
+        "FFT4": {
+          "MAX": 0.029961055805806592,
+          "RMS": 0.0057256537121774444
+        },
+        "FFT5": {
+          "MAX": 0.059922111611613184,
+          "RMS": 0.0080972971332132
+        },
+        "MF": {
+          "MAX": 0.000936282993931456,
+          "RMS": 0.0007157067140221807
+        },
+        "MTI": {
+          "MAX": 0.001872565987862912,
+          "RMS": 0.0014314134280443611
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.00010789593218788873,
+        "RMS": 0.00010789593218788873
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "half_lsb",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0034631044464214196,
+          "RMS": 0.002102318778223205
+        },
+        "FFT2": {
+          "MAX": 0.006926208892842839,
+          "RMS": 0.0029731277285948913
+        },
+        "FFT3": {
+          "MAX": 0.013852417785685679,
+          "RMS": 0.00420463755644641
+        },
+        "FFT4": {
+          "MAX": 0.027704835571371357,
+          "RMS": 0.005946255457189782
+        },
+        "FFT5": {
+          "MAX": 0.055409671142742714,
+          "RMS": 0.008409275112892817
+        },
+        "MF": {
+          "MAX": 0.0008657761116053549,
+          "RMS": 0.0007432819321487228
+        },
+        "MTI": {
+          "MAX": 0.0017315522232107098,
+          "RMS": 0.0014865638642974457
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "892e6e276926174a06d33b912137c3ed2126a1588da79cf47ad67b1638ec8244",
+      "vector_id": "g5:half_lsb"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.001649459548822061,
+          "RMS": 0.0009922879723991043
+        },
+        "FFT2": {
+          "MAX": 0.005681987020077854,
+          "RMS": 0.002332728638108765
+        },
+        "FFT3": {
+          "MAX": 0.01570046996737684,
+          "RMS": 0.004592017549847891
+        },
+        "FFT4": {
+          "MAX": 0.04007468230302702,
+          "RMS": 0.008274225205192366
+        },
+        "FFT5": {
+          "MAX": 0.09749754915173912,
+          "RMS": 0.014283769337219985
+        },
+        "MF": {
+          "MAX": 0.00017930555470120008,
+          "RMS": 7.649660125272024e-05
+        },
+        "MTI": {
+          "MAX": 0.00035861110940240017,
+          "RMS": 0.00015299320250544048
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.001649459548822061,
+          "RMS": 0.0009922879723991043
+        },
+        "FFT2": {
+          "MAX": 0.005681987020077854,
+          "RMS": 0.002332728638108765
+        },
+        "FFT3": {
+          "MAX": 0.01570046996737684,
+          "RMS": 0.004592017549847891
+        },
+        "FFT4": {
+          "MAX": 0.04007468230302702,
+          "RMS": 0.008274225205192366
+        },
+        "FFT5": {
+          "MAX": 0.09749754915173912,
+          "RMS": 0.014283769337219985
+        },
+        "MF": {
+          "MAX": 0.00017930555470120008,
+          "RMS": 7.649660125272024e-05
+        },
+        "MTI": {
+          "MAX": 0.00035861110940240017,
+          "RMS": 0.00015299320250544048
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.0,
+        "RMS": 0.0
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "negative_alternating",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT2": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT3": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT4": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "FFT5": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MF": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        },
+        "MTI": {
+          "MAX": 0.0,
+          "RMS": 0.0
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "548c3fd8a5980e921272095de89ed92ea8d21fb06c97fa110ab7c9552363bee7",
+      "vector_id": "g5:negative_alternating"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": 5,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00040281479251713095,
+          "RMS": 6.683455988758037e-05
+        },
+        "FFT2": {
+          "MAX": 0.0008056295850342619,
+          "RMS": 9.403598949634118e-05
+        },
+        "FFT3": {
+          "MAX": 0.0013807598843234186,
+          "RMS": 0.0001363131284912552
+        },
+        "FFT4": {
+          "MAX": 0.0019256863739932192,
+          "RMS": 0.00020477737609701357
+        },
+        "FFT5": {
+          "MAX": 0.003496338733873735,
+          "RMS": 0.00030536214169976585
+        },
+        "MF": {
+          "MAX": 0.0001016139318819615,
+          "RMS": 3.182382870526413e-05
+        },
+        "MTI": {
+          "MAX": 0.00017961570026726257,
+          "RMS": 4.653754056837683e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0014775213882079871,
+          "RMS": 0.0001799687081088965
+        },
+        "FFT2": {
+          "MAX": 0.0029550427764102245,
+          "RMS": 0.00025433545235888116
+        },
+        "FFT3": {
+          "MAX": 0.0035719909395523363,
+          "RMS": 0.0003659138599159314
+        },
+        "FFT4": {
+          "MAX": 0.005204964101564513,
+          "RMS": 0.0005205849049062871
+        },
+        "FFT5": {
+          "MAX": 0.009000835535422566,
+          "RMS": 0.0007350468498449077
+        },
+        "MF": {
+          "MAX": 0.0005802123549501901,
+          "RMS": 9.987323131075744e-05
+        },
+        "MTI": {
+          "MAX": 0.0007033221302952492,
+          "RMS": 0.0001265682163893003
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 9.900520193185752e-05,
+        "RMS": 2.2612214203668935e-05
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "onbin_k5",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": 5,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0012709896171088884,
+          "RMS": 0.0001602686210152225
+        },
+        "FFT2": {
+          "MAX": 0.002541979234211229,
+          "RMS": 0.00022665405746256603
+        },
+        "FFT3": {
+          "MAX": 0.003046963249368124,
+          "RMS": 0.0003205372420304555
+        },
+        "FFT4": {
+          "MAX": 0.004244992652313881,
+          "RMS": 0.00045330811492513503
+        },
+        "FFT5": {
+          "MAX": 0.008148861408453511,
+          "RMS": 0.0006410744840609073
+        },
+        "MF": {
+          "MAX": 0.0005514551424253553,
+          "RMS": 9.251186465769945e-05
+        },
+        "MTI": {
+          "MAX": 0.0006354948085556716,
+          "RMS": 0.00011332702873128023
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "fa11a95b3a07cd71a9f4004678807a15d06820196f48254549c3b7cdf1aab09f",
+      "vector_id": "g5:onbin_k5"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [],
+      "fixed_bin_at_range40": 5,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.00033691325508435614,
+          "RMS": 6.0821982258549366e-05
+        },
+        "FFT2": {
+          "MAX": 0.0006276175505176795,
+          "RMS": 0.00011720518811257837
+        },
+        "FFT3": {
+          "MAX": 0.0009679808867992153,
+          "RMS": 0.0001722276496078861
+        },
+        "FFT4": {
+          "MAX": 0.0013700051943986598,
+          "RMS": 0.0002777210787532139
+        },
+        "FFT5": {
+          "MAX": 0.0025022976845564195,
+          "RMS": 0.0004800185586974554
+        },
+        "MF": {
+          "MAX": 0.0001069896013105792,
+          "RMS": 3.0799757672877795e-05
+        },
+        "MTI": {
+          "MAX": 0.00019678535153962298,
+          "RMS": 4.187551305404625e-05
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0013472965513977896,
+          "RMS": 0.00019302367515690422
+        },
+        "FFT2": {
+          "MAX": 0.0017141298517763242,
+          "RMS": 0.0002815592842092997
+        },
+        "FFT3": {
+          "MAX": 0.0032184027185431408,
+          "RMS": 0.0003994914957448977
+        },
+        "FFT4": {
+          "MAX": 0.004490878494253384,
+          "RMS": 0.0005800346210798793
+        },
+        "FFT5": {
+          "MAX": 0.007079930695709112,
+          "RMS": 0.0008667342844636344
+        },
+        "MF": {
+          "MAX": 0.0007724068180538758,
+          "RMS": 0.00010114162992973438
+        },
+        "MTI": {
+          "MAX": 0.0008707677562112232,
+          "RMS": 0.00013601524954538196
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 0.00010498091910181622,
+        "RMS": 2.2426609546305918e-05
+      },
+      "input_saturation_count": 0,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "offbin_k5p37",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": 5,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.0011491732079687708,
+          "RMS": 0.0001823935520816186
+        },
+        "FFT2": {
+          "MAX": 0.001603851027585749,
+          "RMS": 0.0002579434350432297
+        },
+        "FFT3": {
+          "MAX": 0.0029851487120525545,
+          "RMS": 0.0003647871041632407
+        },
+        "FFT4": {
+          "MAX": 0.0033433191674671903,
+          "RMS": 0.000515886870086472
+        },
+        "FFT5": {
+          "MAX": 0.006590425747503633,
+          "RMS": 0.0007295742083264906
+        },
+        "MF": {
+          "MAX": 0.0007618094532462912,
+          "RMS": 9.571887130704817e-05
+        },
+        "MTI": {
+          "MAX": 0.0008163927422036601,
+          "RMS": 0.00012897171752161392
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "f7c228b71cd97adfed63b2ffd4996b4d6b236765625d73556ef3e2ae34e086b9",
+      "vector_id": "g5:offbin_k5p37"
+    },
+    {
+      "bittrue_stage_agreement": {
+        "FFT1": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT2": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT3": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT4": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "FFT5": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        },
+        "MF": {
+          "first_mismatch": null,
+          "matched_integer_components": 8448,
+          "mismatch_count": 0,
+          "total_integer_components": 8448
+        },
+        "MTI": {
+          "first_mismatch": null,
+          "matched_integer_components": 8192,
+          "mismatch_count": 0,
+          "total_integer_components": 8192
+        }
+      },
+      "error_budget_disposition": "observed MAX/RMS are not algebraically additive and not approved numeric acceptance limits",
+      "first_input_saturation": [
+        {
+          "component": "I",
+          "limited": -32768,
+          "pulse": 0,
+          "range": 0,
+          "raw": "-39322",
+          "status": "SAT"
+        },
+        {
+          "component": "Q",
+          "limited": -32768,
+          "pulse": 0,
+          "range": 0,
+          "raw": "-36864",
+          "status": "SAT"
+        }
+      ],
+      "fixed_bin_at_range40": null,
+      "fixed_coefficient_twiddle_arithmetic_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 0.004143738548184914,
+          "RMS": 0.0031590164378386748
+        },
+        "FFT2": {
+          "MAX": 0.015205391193851248,
+          "RMS": 0.0075505293993323504
+        },
+        "FFT3": {
+          "MAX": 0.04428027291295113,
+          "RMS": 0.014998320747700534
+        },
+        "FFT4": {
+          "MAX": 0.11630119416222323,
+          "RMS": 0.02726472159788468
+        },
+        "FFT5": {
+          "MAX": 0.28808509299483737,
+          "RMS": 0.04709308977337203
+        },
+        "MF": {
+          "MAX": 0.0002386654800093971,
+          "RMS": 0.00011905920875427365
+        },
+        "MTI": {
+          "MAX": 0.0004689558944727118,
+          "RMS": 0.00023471698375248954
+        }
+      },
+      "float_reference_stage_error_original_amplitude": {
+        "FFT1": {
+          "MAX": 29.80649378233042,
+          "RMS": 17.236489507437554
+        },
+        "FFT2": {
+          "MAX": 59.61990037013756,
+          "RMS": 24.379019975472257
+        },
+        "FFT3": {
+          "MAX": 119.25367119664952,
+          "RMS": 34.48138208986764
+        },
+        "FFT4": {
+          "MAX": 238.5350833064115,
+          "RMS": 48.770036447191586
+        },
+        "FFT5": {
+          "MAX": 477.1256484397749,
+          "RMS": 68.97972978367802
+        },
+        "MF": {
+          "MAX": 7.451600264683329,
+          "RMS": 6.093261306557258
+        },
+        "MTI": {
+          "MAX": 14.901518690144579,
+          "RMS": 12.186567241320125
+        }
+      },
+      "g": 5,
+      "implementation_error_from_independent_oracle": 0,
+      "input_float_max_rms": {
+        "MAX": 1.17945790819794,
+        "RMS": 1.1793515541730486
+      },
+      "input_saturation_count": 8448,
+      "internal_overflow_by_site": {},
+      "internal_overflow_count": 0,
+      "internal_overflow_first_24": [],
+      "kind": "overrange",
+      "not_stochastic_CPI": true,
+      "numeric_deviation_includes_quantization_input_coeff_twiddle_rounding_and_sat": true,
+      "reconstruction_final_amplitude_factor": 40,
+      "reference_bin_at_range40": null,
+      "scaling_contract": "g*8*code/32768; original power uses (g*8)^2 on normalized stored power",
+      "source_quantization_effect_stage_original_amplitude": {
+        "FFT1": {
+          "MAX": 29.80235085924838,
+          "RMS": 17.234118018889717
+        },
+        "FFT2": {
+          "MAX": 59.60470171849676,
+          "RMS": 24.372723437852375
+        },
+        "FFT3": {
+          "MAX": 119.20940343699353,
+          "RMS": 34.468236037779434
+        },
+        "FFT4": {
+          "MAX": 238.41880687398705,
+          "RMS": 48.74544687570475
+        },
+        "FFT5": {
+          "MAX": 476.8376137479741,
+          "RMS": 68.93647207555887
+        },
+        "MF": {
+          "MAX": 7.451416730350392,
+          "RMS": 6.093158531327238
+        },
+        "MTI": {
+          "MAX": 14.90117542962419,
+          "RMS": 12.186361718926188
+        }
+      },
+      "source_sample_count": 4224,
+      "source_sha256": "3494df3c8d55c2cc5214c4f235cd852948ad75e2f9da5c547e679e95d0108bc0",
+      "vector_id": "g5:overrange"
+    }
+  ],
+  "version": "integrated-full-chain-v1.0"
+}

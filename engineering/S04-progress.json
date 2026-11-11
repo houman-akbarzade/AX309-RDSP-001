@@ -3,8 +3,8 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "Three S01-S03 stages engineer-approved plus S04 2/8 independent engineer-signed criteria (C01 bounded; C02 selected C numeric contract); C03 entry authorized OPEN, not counted; no Gate-S04 approval.",
-  "completed_count": 2,
+  "basis": "Engineer independently signed C03 PASS P01-P08 24/24; C04 OPEN; 3 of 8 S04 criteria; S01-S03 3 full stages",
+  "completed_count": 3,
   "criteria": [
     {
       "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
@@ -65,8 +65,20 @@
     },
     {
       "acceptance_evidence": "Exact independent integer/rational oracle for IQ packing, coefficient encoding, complex arithmetic, rounding ties, negative extremes and overflow",
-      "completed": false,
+      "accepted_evidence": "engineering/s04_numeric/S04-C03-integrated-qualification-evidence-v1.0.json",
+      "accepted_sections": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08"
+      ],
+      "completed": true,
       "description": "Bit-true arithmetic primitive qualification",
+      "engineer_signoff": "decisions/S04-C03-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
       "entry_basis": [
         "decisions/S04-C02-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
         "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
@@ -74,14 +86,16 @@
       ],
       "entry_package": "engineering/S04-C03-ENTRY-PACKAGE-v0.1.md",
       "id": "S04-C03",
-      "status": "OPEN_ENTRY_AUTHORIZED"
+      "independent_passed_tests": 24,
+      "status": "PASS_INDEPENDENT_INTEGER_PRIMITIVE_QUALIFICATION"
     },
     {
       "acceptance_evidence": "Independent self-checking signed, normal/extreme, DC, bin, off-bin, tie/zero vectors, error and overflow evidence",
       "completed": false,
       "description": "Bit-true MF/MTI/Doppler qualification",
+      "entry_basis": "decisions/S04-C03-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
       "id": "S04-C04",
-      "status": "NOT_STARTED"
+      "status": "OPEN_EXECUTION_AUTHORIZED"
     },
     {
       "acceptance_evidence": "Power bit growth, 40 training-cell mean, alpha representation, strict comparison, threshold boundary, peak/tie, clustering/target-list flags",
@@ -120,11 +134,11 @@
     "No statistical main CPI, RTL, synthesis or FPGA/hardware testing without separate explicit authorization",
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
-  "project_percent": 27.083333333333332,
-  "recorded_at_utc": "2026-11-11T12:50:45.909229+00:00",
+  "project_percent": 28.125,
+  "recorded_at_utc": "2026-11-11T13:14:45.675396+00:00",
   "stage": "S04",
-  "stage_percent": 25.0,
-  "status": "C01_PASS_BOUNDED_C02_PASS_C_SELECTED_C03_OPEN_ENTRY_AUTHORIZED",
+  "stage_percent": 37.5,
+  "status": "C01_C02_C03_PASS_C04_OPEN_EXECUTION_AUTHORIZED",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

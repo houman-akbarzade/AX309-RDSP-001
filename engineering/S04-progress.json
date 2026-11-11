@@ -3,8 +3,8 @@
     "REQ-SCR-01",
     "REQ-RNG-03"
   ],
-  "basis": "Independent engineer signed C04 PASS 18/18 on 1036800 integer components with zero mismatches; C05 OPEN, 4/8 S04, S01-S03 3 complete stages.",
-  "completed_count": 4,
+  "basis": "Engineer signed C05 deterministic PASS 19/19; C06 criteria preapproval only; S04 5/8; 3 previously signed stages; no new statistical acceptance tests.",
+  "completed_count": 5,
   "criteria": [
     {
       "acceptance_evidence": "S02/S03 approved source hashes, numeric interfaces, limits and verification oracle independently audited and approved",
@@ -105,24 +105,33 @@
     },
     {
       "acceptance_evidence": "Power bit growth, 40 training-cell mean, alpha representation, strict comparison, threshold boundary, peak/tie, clustering/target-list flags",
-      "completed": false,
+      "completed": true,
       "description": "Bit-true power, CFAR and grouping qualification",
       "entry_basis": "decisions/S04-C04-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+      "float_fixed_peak_coordinate_issues": "OPEN_C06_TWO_HISTORIC_V06_CASES_NOT_WAIVED",
       "id": "S04-C05",
+      "independent_confirmed_tests": 19,
+      "independent_engineer_signoff": "decisions/S04-C05-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+      "independent_signoff_evidence_commit": "23d4f9ae4d322f6b3de653de3ae853cec78a26dd",
       "native_clustering_implemented": true,
       "qualification_data": "engineering/s04_numeric/S04-C05-integrated-power-cfar-grouping-v1.0.json",
       "qualification_report": "engineering/S04-C05-INTEGRATED-POWER-CFAR-GROUPING-QUALIFICATION-v1.0.md",
       "requires_explicit_engineer_signoff": true,
       "residual_float_fixed_peak_discrepancies_count": 2,
-      "status": "OPEN_READY_FOR_INDEPENDENT_SIGN_OFF",
+      "status": "PASS_INDEPENDENT_POWER_CFAR_NATIVE_GROUPING_DETERMINISTIC_BOUNDED",
       "unit_tests_PASS": 19
     },
     {
       "acceptance_evidence": "Preapproved per-stage max/RMS tolerances and analytic bounds, decisions/flag exactness and no post-hoc criterion adjustment",
+      "approved_numeric_thresholds": false,
       "completed": false,
       "description": "Float-to-bittrue numeric error-budget acceptance",
       "id": "S04-C06",
-      "status": "NOT_STARTED"
+      "new_acceptance_tests_run": 0,
+      "no_acceptance_execution_before_engineer_approval": true,
+      "preapproval_analytic_evidence": "engineering/s04_numeric/S04-C06-proposed-analytic-stage-bounds-v0.1.json",
+      "preapproval_criteria_package": "engineering/S04-C06-PREAPPROVAL-NUMERIC-ACCEPTANCE-CRITERIA-v0.1.md",
+      "status": "OPEN_AWAITING_INDEPENDENT_CRITERIA_APPROVAL"
     },
     {
       "acceptance_evidence": "Frozen code, seed separation, source/IO SHA, environment, complete traces, inherited risk audit and failure handling",
@@ -147,11 +156,11 @@
     "No statistical main CPI, RTL, synthesis or FPGA/hardware testing without separate explicit authorization",
     "No reuse of accepted S03 Pfa/Pd seeds for tuning or post-hoc denominator changes"
   ],
-  "project_percent": 29.166666666666668,
-  "recorded_at_utc": "2026-11-11T13:42:20.679868+00:00",
+  "project_percent": 30.208333333333332,
+  "recorded_at_utc": "2026-11-11T13:56:39.793315+00:00",
   "stage": "S04",
-  "stage_percent": 50.0,
-  "status": "C01_C02_C03_C04_PASS_C05_OPEN_READY_FOR_SIGNOFF",
+  "stage_percent": 62.5,
+  "status": "C01_C02_C03_C04_C05_PASS_C06_OPEN_PREAPPROVAL",
   "total_count": 8,
   "weights": "8 equal criteria"
 }

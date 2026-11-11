@@ -1,0 +1,13 @@
+# AX309-RDSP-001 | Independent Engineer Sign-off S04-C05 v1.0
+
+**Decision: S04-C05 = PASS — bounded deterministic integer Power, CFAR and Native grouping qualification.**
+
+Authority: explicit independent engineer sign-off in the current user directive confirming **19/19** independent test PASS and acceptance of the C05 evidence within deterministic test scope. Baseline qualification commit: \`23d4f9ae4d322f6b3de653de3ae853cec78a26dd\`. Supporting evidence includes \`engineering/S04-C05-INTEGRATED-POWER-CFAR-GROUPING-QUALIFICATION-v1.0.md\`, source \`engineering/s04_numeric/s04_c05_native_integer_v1.py\`, independent Fraction and union-find comparison \`engineering/s04_numeric/s04_c05_integrated_qualification_v1.py\`, evidence JSON \`engineering/s04_numeric/S04-C05-integrated-power-cfar-grouping-v1.0.json\` and independent tests \`tests/test_s04_c05_integer_power_cfar_grouping_v1.py\`.
+
+Signed scope: selected architecture C with FFT shifts **[0,1,0,1,1]**, U46.30 power, U52.30 SUM40, strict CFAR \`40*Pcut*65536 > 490007*SUM40\`, 2782 valid CUTs, 40 training cells, native exact-int eight-neighbor nonwrapped grouping, stored integer maximum-power peak/tie rule, stable target records. The deterministic 18-vector suite compares **73,728 power cells and 50,076 CFAR CUTs**, with independent union-find confirmation and 19 new tests PASS.
+
+Two v0.6 Float-reference versus Fixed peak differences \`g1:phase_interference\` and \`g5:phase_interference\` were **reproduced**, not hidden: original Float source powers tie exactly at (r3,b20) and (r4,b20), so Float selects r3; stored integer powers 33,612,372,401 and 33,612,427,349 select r4. Fixed CFAR alarm masks and independently computed Native grouping agree. The **numerical Float/Fixed peak-coordinate acceptance remains OPEN for C06**, and this C05 signature does not constitute its waiver. No after-the-fact tolerance or automatic disposition is permitted.
+
+The selected C arithmetic, input scales, coefficients, rounding and stage shifts remain change-controlled. The immutable \`engineering/S04-C02-SELECTED-C-OPEN-OBLIGATIONS-v1.0.json\` remains authoritative; **REQ-SCR-01** and **REQ-RNG-03** are BINDING OPEN, as are end-to-end Float/Fixed error acceptance, prospective statistical performance, hardware trace fidelity, physical interface and FPGA resource/timing evidence.
+
+**Progress consequence:** C01 PASS BOUNDED, C02 PASS, C03 PASS, C04 PASS, **C05 PASS**, C06 OPEN. S04=5/8=**62.5%**. Overall project=(3+5/8)/12*100=**30.2083333333333%** (reported 30.2083%). Gate-S04 OPEN. No main statistical acceptance CPI, accepted S03 seed tuning, RTL, synthesis or FPGA test authorized by this decision.

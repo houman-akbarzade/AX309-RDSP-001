@@ -1,0 +1,159 @@
+{
+  "CFAR_prospective_margin_formula": "abs(float_margin)> (Ecutpower + alpha*sum(Etrainpower)/40 + abs(delta_alpha)*mean(FloatPtrain)); else margin ambiguous; never drop CPI or CUT",
+  "MF_coefficient_L1_error": 0.00015363590729238472,
+  "MF_quantized_coefficient_L1_norm": 15.999957329090368,
+  "RMS_note": "RMS upper bound equals MAX analytical bound; not a measured or calibrated RMS performance tolerance",
+  "conditional_assumptions": [
+    "no input clip",
+    "no internal overflow or saturation",
+    "abs(re(x/g)) and abs(im(x/g)) <=1+2^-15",
+    "frozen selected C exact RNE and widths"
+  ],
+  "criterion": "S04-C06",
+  "final_power_error_formula": "abs(Pbittrue-Pfloat)<=2*abs(Zfloat)*Efft+Efft**2 before clipping",
+  "input_complex_error_per_g": 2.1579186437577746e-05,
+  "input_component_error_per_g": 1.52587890625e-05,
+  "no_empirical_results_used": true,
+  "no_main_CPI_or_historical_seeds": true,
+  "project": "AX309-RDSP-001",
+  "proposed_design_factor_NOT_APPROVED": 1.25,
+  "stagewise": [
+    {
+      "PROPOSED_MAX_cap_g1": 0.00074,
+      "PROPOSED_MAX_cap_g5": 0.00366,
+      "PROPOSED_RMS_cap_g1": 0.00074,
+      "PROPOSED_RMS_cap_g5": 0.00366,
+      "analytic_MAX_bound_original_per_g": 0.0005841258630714672,
+      "analytic_RMS_upper_via_MAX_per_g": 0.0005841258630714672,
+      "components_original_per_g": {
+        "fft_RNE": 0.0,
+        "fft_twiddle": 0.0,
+        "input": 0.0003452660621977295,
+        "mf_RNE": 2.1579186437577746e-05,
+        "mf_coeff": 0.00021728061443615992
+      },
+      "cumulative_scale": 1,
+      "max_ideal_original_per_g": 22.628107531935523,
+      "stage": "MF"
+    },
+    {
+      "PROPOSED_MAX_cap_g1": 0.00147,
+      "PROPOSED_MAX_cap_g5": 0.00731,
+      "PROPOSED_RMS_cap_g1": 0.00147,
+      "PROPOSED_RMS_cap_g5": 0.00731,
+      "analytic_MAX_bound_original_per_g": 0.0011682517261429343,
+      "analytic_RMS_upper_via_MAX_per_g": 0.0011682517261429343,
+      "components_original_per_g": {
+        "fft_RNE": 0.0,
+        "fft_twiddle": 0.0,
+        "input": 0.000690532124395459,
+        "mf_RNE": 4.315837287515549e-05,
+        "mf_coeff": 0.00043456122887231983
+      },
+      "cumulative_scale": 1,
+      "max_ideal_original_per_g": 45.256215063871046,
+      "stage": "MTI"
+    },
+    {
+      "PROPOSED_MAX_cap_g1": 0.00468,
+      "PROPOSED_MAX_cap_g5": 0.02337,
+      "PROPOSED_RMS_cap_g1": 0.00468,
+      "PROPOSED_RMS_cap_g5": 0.02337,
+      "analytic_MAX_bound_original_per_g": 0.0037391570653636107,
+      "analytic_RMS_upper_via_MAX_per_g": 0.0037391570653636107,
+      "beta": 0.999969482421875,
+      "components_original_per_g": {
+        "fft_RNE": 2.1579186437577746e-05,
+        "fft_twiddle": 0.0013811100788534865,
+        "input": 0.001381043175422864,
+        "mf_RNE": 8.631542866129502e-05,
+        "mf_coeff": 0.0008691091959883875
+      },
+      "cumulative_scale": 1,
+      "delta_twiddle": 3.0517578125e-05,
+      "max_ideal_original_per_g": 90.51243012774209,
+      "stage": "FFT1"
+    },
+    {
+      "PROPOSED_MAX_cap_g1": 0.01286,
+      "PROPOSED_MAX_cap_g5": 0.06428,
+      "PROPOSED_RMS_cap_g1": 0.01286,
+      "PROPOSED_RMS_cap_g5": 0.06428,
+      "analytic_MAX_bound_original_per_g": 0.01028369266130935,
+      "analytic_RMS_upper_via_MAX_per_g": 0.01028369266130935,
+      "beta": 1.0,
+      "components_original_per_g": {
+        "fft_RNE": 8.631674575031098e-05,
+        "fft_twiddle": 0.005524440315413946,
+        "input": 0.002762086350845728,
+        "mf_RNE": 0.00017263085732259004,
+        "mf_coeff": 0.001738218391976775
+      },
+      "cumulative_scale": 2,
+      "delta_twiddle": 3.0517578125e-05,
+      "max_ideal_original_per_g": 181.02486025548419,
+      "stage": "FFT2"
+    },
+    {
+      "PROPOSED_MAX_cap_g1": 0.03267,
+      "PROPOSED_MAX_cap_g5": 0.16335,
+      "PROPOSED_RMS_cap_g1": 0.03267,
+      "PROPOSED_RMS_cap_g5": 0.16335,
+      "analytic_MAX_bound_original_per_g": 0.0261349840109078,
+      "analytic_RMS_upper_via_MAX_per_g": 0.0261349840109078,
+      "beta": 1.0,
+      "components_original_per_g": {
+        "fft_RNE": 0.00021579186437577745,
+        "fft_twiddle": 0.016573320946241837,
+        "input": 0.005524172701691456,
+        "mf_RNE": 0.0003452617146451801,
+        "mf_coeff": 0.00347643678395355
+      },
+      "cumulative_scale": 2,
+      "delta_twiddle": 3.0517578125e-05,
+      "max_ideal_original_per_g": 362.04972051096837,
+      "stage": "FFT3"
+    },
+    {
+      "PROPOSED_MAX_cap_g1": 0.07926,
+      "PROPOSED_MAX_cap_g5": 0.39629,
+      "PROPOSED_RMS_cap_g1": 0.07926,
+      "PROPOSED_RMS_cap_g5": 0.39629,
+      "analytic_MAX_bound_original_per_g": 0.06340546784673377,
+      "analytic_RMS_upper_via_MAX_per_g": 0.06340546784673377,
+      "beta": 1.0000115725473502,
+      "components_original_per_g": {
+        "fft_RNE": 0.0005179029717634341,
+        "fft_twiddle": 0.04419571431885297,
+        "input": 0.011048409332133073,
+        "mf_RNE": 0.0006905274248479011,
+        "mf_coeff": 0.006952913799136392
+      },
+      "cumulative_scale": 4,
+      "delta_twiddle": 3.0517578125e-05,
+      "max_ideal_original_per_g": 724.0994410219367,
+      "stage": "FFT4"
+    },
+    {
+      "PROPOSED_MAX_cap_g1": 0.18636,
+      "PROPOSED_MAX_cap_g5": 0.93177,
+      "PROPOSED_RMS_cap_g1": 0.18636,
+      "PROPOSED_RMS_cap_g5": 0.93177,
+      "analytic_MAX_bound_original_per_g": 0.14908206420940287,
+      "analytic_RMS_upper_via_MAX_per_g": 0.14908206420940287,
+      "beta": 1.0000115725473502,
+      "components_original_per_g": {
+        "fft_RNE": 0.0012084454284841538,
+        "fft_twiddle": 0.11048970135635836,
+        "input": 0.022096946522506287,
+        "mf_RNE": 0.0013810628408571228,
+        "mf_coeff": 0.013905908061196947
+      },
+      "cumulative_scale": 8,
+      "delta_twiddle": 3.0517578125e-05,
+      "max_ideal_original_per_g": 1448.1988820438735,
+      "stage": "FFT5"
+    }
+  ],
+  "status": "PROPOSED_NOT_APPROVED"
+}

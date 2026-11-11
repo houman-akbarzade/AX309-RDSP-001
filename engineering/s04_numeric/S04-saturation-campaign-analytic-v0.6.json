@@ -1,0 +1,768 @@
+{
+  "assumptions": "Full 8448 real components per CPI; v0.5 exact RNE Q1.15 asymmetric clipping; conditional independent Gaussian real/imag source noise. Across CPI, independent and identically distributed with fixed per-CPI q, unless explicitly identified otherwise.",
+  "campaign_lengths": [
+    1000,
+    20000
+  ],
+  "classes": {
+    "ILLUSTRATIVE_CLUTTER_0P8": {
+      "approved_population": false,
+      "comparison": {
+        "1": {
+          "campaign": {
+            "1000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 1.0
+            },
+            "20000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 1.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 2.1200760225182687,
+            "log10_expected": 0.32635143430998925,
+            "log10_probability": -0.052871560876518134,
+            "probability": 0.8853774144127295
+          }
+        },
+        "2": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -1392.9137190251793,
+              "log_probability": -3207.3023652542747,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -1391.6126890295152,
+              "log_probability": -3204.3066329807207,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -1395.9137190251793,
+            "log10_probability": -1395.9137190251793,
+            "probability": 0.0
+          }
+        },
+        "3": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -5467.951621265916,
+              "log_probability": -12590.423892339524,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -5466.650591270252,
+              "log_probability": -12587.42816006597,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -5470.951621265916,
+            "log10_probability": -5470.951621265916,
+            "probability": 0.0
+          }
+        },
+        "4": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -12223.6084182887,
+              "log_probability": -28145.89852654809,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -12222.307388293037,
+              "log_probability": -28142.902794274538,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -12226.6084182887,
+            "log10_probability": -12226.6084182887,
+            "probability": 0.0
+          }
+        },
+        "5": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -21659.962981772995,
+              "log_probability": -49873.90787663336,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -21658.66195177733,
+              "log_probability": -49870.912144359805,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -21662.962981772995,
+            "log10_probability": -21662.962981772995,
+            "probability": 0.0
+          }
+        },
+        "6": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -33777.03812669799,
+              "log_probability": -77774.50447602633,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -33775.73709670232,
+              "log_probability": -77771.50874375277,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -33780.03812669799,
+            "log10_probability": -33780.03812669799,
+            "probability": 0.0
+          }
+        },
+        "8": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -66053.38606642433,
+              "log_probability": -152093.5420983293,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -66052.08503642866,
+              "log_probability": -152090.54636605573,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -66056.38606642433,
+            "log10_probability": -66056.38606642433,
+            "probability": 0.0
+          }
+        }
+      },
+      "note": "Pd reference-like mathematical definition is not an approved new fixed point population or re-run authorization",
+      "source_definition": "deterministic uniform real .8 offset, independent small Gaussian noise; illustrative not accepted clutter law"
+    },
+    "ILLUSTRATIVE_CLUTTER_1P2": {
+      "approved_population": false,
+      "comparison": {
+        "1": {
+          "campaign": {
+            "1000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "probability": 1.0
+            },
+            "20000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "probability": 1.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 4221.662398106351,
+            "log10_expected": 3.625483500288121,
+            "log10_probability": 0.0,
+            "probability": 1.0
+          }
+        },
+        "2": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -513.3703138699636,
+              "log_probability": -1182.0788319026528,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -512.0692838742998,
+              "log_probability": -1179.083099629099,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -516.3703138699638,
+            "log10_probability": -516.3703138699638,
+            "probability": 0.0
+          }
+        },
+        "3": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -3516.2454802232546,
+              "log_probability": -8096.454426069757,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -3514.944450227591,
+              "log_probability": -8093.458693796203,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -3519.2454802232546,
+            "log10_probability": -3519.2454802232546,
+            "probability": 0.0
+          }
+        },
+        "4": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -9199.621228128815,
+              "log_probability": -21182.910701080986,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -9198.320198133151,
+              "log_probability": -21179.914968807432,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -9202.621228128815,
+            "log10_probability": -9202.621228128815,
+            "probability": 0.0
+          }
+        },
+        "5": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -17563.67629620262,
+              "log_probability": -40441.859217809026,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -17562.375266206953,
+              "log_probability": -40438.86348553547,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -17566.67629620262,
+            "log10_probability": -17566.67629620262,
+            "probability": 0.0
+          }
+        },
+        "6": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -28608.445205095773,
+              "log_probability": -65873.37946299052,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -28607.144175100108,
+              "log_probability": -65870.38373071696,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -28611.445205095773,
+            "log10_probability": -28611.445205095773,
+            "probability": 0.0
+          }
+        },
+        "8": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -58740.17234410905,
+              "log_probability": -135254.24519944662,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -58738.871314113385,
+              "log_probability": -135251.24946717307,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -58743.17234410905,
+            "log10_probability": -58743.17234410905,
+            "probability": 0.0
+          }
+        }
+      },
+      "note": "Pd reference-like mathematical definition is not an approved new fixed point population or re-run authorization",
+      "source_definition": "deterministic uniform real 1.2 offset, independent small Gaussian noise; illustrative not accepted clutter law"
+    },
+    "NOISE_ONLY_UNIT": {
+      "approved_population": true,
+      "comparison": {
+        "1": {
+          "campaign": {
+            "1000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "probability": 1.0
+            },
+            "20000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "probability": 1.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 1328.863701977307,
+            "log10_expected": 3.1234804387947217,
+            "log10_probability": 0.0,
+            "probability": 1.0
+          }
+        },
+        "2": {
+          "campaign": {
+            "1000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "probability": 1.0
+            },
+            "20000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "probability": 1.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 39.5175054450953,
+            "log10_expected": 1.5967895218056896,
+            "log10_probability": 0.0,
+            "probability": 1.0
+          }
+        },
+        "3": {
+          "campaign": {
+            "1000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 1.0
+            },
+            "20000": {
+              "log10_probability": 0.0,
+              "log_probability": 0.0,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 1.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.18662052603946422,
+            "log10_expected": -0.7290405907319591,
+            "log10_probability": -0.7689303230543286,
+            "probability": 0.17024316196717024
+          }
+        },
+        "4": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -0.9132143196050488,
+              "log_probability": -2.1027536790312857,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 0.12211968640652197
+            },
+            "20000": {
+              "log10_probability": -0.033347044742796116,
+              "log_probability": -0.0767844081201678,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 0.9260894894597131
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.00013024501072673978,
+            "log10_expected": -3.885238904153942,
+            "log10_probability": -3.8852671828441028,
+            "probability": 0.00013023653021743882
+          }
+        },
+        "5": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -4.886445018870827,
+              "log_probability": -11.251455458186975,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 1.2988379846585035e-05
+            },
+            "20000": {
+              "log10_probability": -3.58546860976293,
+              "log_probability": -8.255846572238209,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 0.0002597355468073351
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 1.2988464196310972e-08,
+            "log10_expected": -7.886442198465048,
+            "log10_probability": -7.886442201285124,
+            "probability": 1.2988464111970831e-08
+          }
+        },
+        "6": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -9.740408875644293,
+              "log_probability": -22.428120276725444,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 1.8179884692983466e-10
+            },
+            "20000": {
+              "log10_probability": -8.439378880730377,
+              "log_probability": -19.43238800489854,
+              "method": "stable exact iid CPI expression via expm1/log1p",
+              "probability": 3.6359769323170374e-09
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 1.8179884694636032e-13,
+            "log10_expected": -12.740408875604816,
+            "log10_probability": -12.740408875604855,
+            "probability": 1.8179884694634353e-13
+          }
+        },
+        "8": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -22.02308610359087,
+              "log_probability": -50.71002976385267,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 9.482304476938227e-23
+            },
+            "20000": {
+              "log10_probability": -20.72205610792689,
+              "log_probability": -47.71429749029868,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 1.8964608953876443e-21
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 9.482304476938229e-26,
+            "log10_expected": -25.02308610359087,
+            "log10_probability": -25.02308610359087,
+            "probability": 9.482304476938229e-26
+          }
+        }
+      },
+      "note": "Pd reference-like mathematical definition is not an approved new fixed point population or re-run authorization",
+      "source_definition": "CN(0,1), independent components, absent target"
+    },
+    "PD_REFERENCE_LIKE": {
+      "approved_population": true,
+      "comparison": {
+        "1": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -898.9847807146357,
+              "log_probability": -2069.9889549020413,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -897.6837507189716,
+              "log_probability": -2066.9932226284873,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -901.9847807146357,
+            "log10_probability": -901.9847807146357,
+            "probability": 0.0
+          }
+        },
+        "2": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -4438.063128304479,
+              "log_probability": -10219.018001000413,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -4436.7620983088145,
+              "log_probability": -10216.02226872686,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -4441.063128304479,
+            "log10_probability": -4441.063128304479,
+            "probability": 0.0
+          }
+        },
+        "3": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -10657.724246792573,
+              "log_probability": -24540.316975905775,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -10656.42321679691,
+              "log_probability": -24537.32124363222,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -10660.724246792573,
+            "log10_probability": -10660.724246792573,
+            "probability": 0.0
+          }
+        },
+        "4": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -19558.032229423152,
+              "log_probability": -45034.033459766855,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -19556.731199427486,
+              "log_probability": -45031.0377274933,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -19561.032229423152,
+            "log10_probability": -19561.032229423152,
+            "probability": 0.0
+          }
+        },
+        "5": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -31139.016390130128,
+              "log_probability": -71700.2349504109,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -31137.71536013446,
+              "log_probability": -71697.23921813734,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -31142.016390130128,
+            "log10_probability": -31142.016390130128,
+            "probability": 0.0
+          }
+        },
+        "6": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -45400.7128219236,
+              "log_probability": -104539.00455506492,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -45399.41179192793,
+              "log_probability": -104536.00882279137,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -45403.7128219236,
+            "log10_probability": -45403.7128219236,
+            "probability": 0.0
+          }
+        },
+        "8": {
+          "campaign": {
+            "1000": {
+              "log10_probability": -81966.30685358551,
+              "log_probability": -188734.3962888417,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            },
+            "20000": {
+              "log10_probability": -81965.00582358985,
+              "log_probability": -188731.40055656814,
+              "method": "rare-event asymptotic relative error bounded by O(N*q)",
+              "probability": 0.0
+            }
+          },
+          "per_CPI": {
+            "expected_saturated_components": 0.0,
+            "log10_expected": -81969.30685358551,
+            "log10_probability": -81969.30685358551,
+            "probability": 0.0
+          }
+        }
+      },
+      "note": "Pd reference-like mathematical definition is not an approved new fixed point population or re-run authorization",
+      "source_definition": "single fixed k40, bin+4 amplitude .18, no clutter; analytic target means only"
+    }
+  },
+  "independent_closed_form_checks": 14,
+  "limitations": [
+    "iid across CPI is a modeling premise not an empirically proved fact",
+    "heterogeneous independent CPI risk equals 1-prod(1-q_i), not 1-(1-q)^N",
+    "without independence, Frechet lower max(q_i) and union upper min(1,sum(q_i)); trivial upper remains 1 for many scales",
+    "correlated clutter invalidates conditional independent-component product absent specified joint model",
+    "no clipping performance rule or approved gain/risk is implied by this analysis"
+  ],
+  "project": "AX309-RDSP-001",
+  "quantization_tradeoff": {
+    "1": {
+      "complex_max_abs_original_units": 2.1579186437577746e-05,
+      "component_max_abs_original_units": 1.52587890625e-05,
+      "component_rms_uniform_roundoff_hypothesis": 8.809665972742094e-06,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    },
+    "2": {
+      "complex_max_abs_original_units": 4.315837287515549e-05,
+      "component_max_abs_original_units": 3.0517578125e-05,
+      "component_rms_uniform_roundoff_hypothesis": 1.7619331945484187e-05,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    },
+    "3": {
+      "complex_max_abs_original_units": 6.473755931273324e-05,
+      "component_max_abs_original_units": 4.57763671875e-05,
+      "component_rms_uniform_roundoff_hypothesis": 2.642899791822628e-05,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    },
+    "4": {
+      "complex_max_abs_original_units": 8.631674575031098e-05,
+      "component_max_abs_original_units": 6.103515625e-05,
+      "component_rms_uniform_roundoff_hypothesis": 3.5238663890968374e-05,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    },
+    "5": {
+      "complex_max_abs_original_units": 0.00010789593218788873,
+      "component_max_abs_original_units": 7.62939453125e-05,
+      "component_rms_uniform_roundoff_hypothesis": 4.4048329863710466e-05,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    },
+    "6": {
+      "complex_max_abs_original_units": 0.00012947511862546648,
+      "component_max_abs_original_units": 9.1552734375e-05,
+      "component_rms_uniform_roundoff_hypothesis": 5.285799583645256e-05,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    },
+    "8": {
+      "complex_max_abs_original_units": 0.00017263349150062197,
+      "component_max_abs_original_units": 0.0001220703125,
+      "component_rms_uniform_roundoff_hypothesis": 7.047732778193675e-05,
+      "rms_assumption": "only for independent uniform quantization error on [-Delta/2,Delta/2], NOT a proven RMS tolerance"
+    }
+  },
+  "recorded_utc": "2026-11-11T10:03:51.131378+00:00",
+  "risk_tiers_not_approved": {
+    "1000": [
+      {
+        "component_LSB_original_float_units": 0.0001228535518695776,
+        "component_RMS_uniform_roundoff_hypothesis": 3.546476562140114e-05,
+        "component_max_quantization_error_original_float_units": 6.14267759347888e-05,
+        "smallest_candidate_in_comparison_grid": 5,
+        "target_campaign_stop_probability_UNAPPROVED": 0.1,
+        "theoretical_minimum_continuous_g": 4.025665187662319
+      },
+      {
+        "component_LSB_original_float_units": 0.00013123662255701773,
+        "component_RMS_uniform_roundoff_hypothesis": 3.788474968041575e-05,
+        "component_max_quantization_error_original_float_units": 6.561831127850886e-05,
+        "smallest_candidate_in_comparison_grid": 5,
+        "target_campaign_stop_probability_UNAPPROVED": 0.01,
+        "theoretical_minimum_continuous_g": 4.300361647948357
+      },
+      {
+        "component_LSB_original_float_units": 0.00013899867865207276,
+        "component_RMS_uniform_roundoff_hypothesis": 4.012546226838825e-05,
+        "component_max_quantization_error_original_float_units": 6.949933932603638e-05,
+        "smallest_candidate_in_comparison_grid": 5,
+        "target_campaign_stop_probability_UNAPPROVED": 0.001,
+        "theoretical_minimum_continuous_g": 4.55470870207112
+      }
+    ],
+    "20000": [
+      {
+        "component_LSB_original_float_units": 0.0001334532758492396,
+        "component_RMS_uniform_roundoff_hypothesis": 3.8524642367897934e-05,
+        "component_max_quantization_error_original_float_units": 6.67266379246198e-05,
+        "smallest_candidate_in_comparison_grid": 5,
+        "target_campaign_stop_probability_UNAPPROVED": 0.1,
+        "theoretical_minimum_continuous_g": 4.372996943027883
+      },
+      {
+        "component_LSB_original_float_units": 0.00014123641907654472,
+        "component_RMS_uniform_roundoff_hypothesis": 4.077144228661095e-05,
+        "component_max_quantization_error_original_float_units": 7.061820953827236e-05,
+        "smallest_candidate_in_comparison_grid": 5,
+        "target_campaign_stop_probability_UNAPPROVED": 0.01,
+        "theoretical_minimum_continuous_g": 4.628034980300217
+      },
+      {
+        "component_LSB_original_float_units": 0.00014849770975088037,
+        "component_RMS_uniform_roundoff_hypothesis": 4.286759634935685e-05,
+        "component_max_quantization_error_original_float_units": 7.424885487544018e-05,
+        "smallest_candidate_in_comparison_grid": 5,
+        "target_campaign_stop_probability_UNAPPROVED": 0.001,
+        "theoretical_minimum_continuous_g": 4.865972953116848
+      }
+    ]
+  },
+  "scales_all_unapproved": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8
+  ],
+  "scope": "analytical prospective design comparison; no sample generation or accepted data",
+  "stage": "S04",
+  "status": "C01_HOLD_C02_OPEN_NOT_APPROVED",
+  "version": "v0.6"
+}

@@ -21,6 +21,16 @@ class Worker(QThread):
    rng=np.random.default_rng(c['seed']);source=M.generate_cpi([])+c['noise']/np.sqrt(2)*(rng.normal(size=(33,128))+1j*rng.normal(size=(33,128)))
    truth=[];metadata=dict(scenario='Noise only',noise_rms=c['noise'],seed=c['seed'])
   else:_,truth,metadata,source=prepare_with_source(c['scenario'],noise_rms=c['noise'],seed=c['seed'])
+  if c.get('target_velocities') is not None and truth:
+   from dataclasses import replace
+   from s03_reference import model as M
+   velocities=c['target_velocities']
+   if len(velocities)!=len(truth) or any(not np.isfinite(v) or not -7.5<=v<7.5 for v in velocities):raise ValueError('One radial velocity per target in [-7.5,7.5) m/s is required')
+   adjusted=[replace(t,velocity=float(v)) for t,v in zip(truth,velocities)]
+   def signal(ts):return M.generate_cpi([M.Target(t.delay,t.velocity,t.amplitude) for t in ts])
+   if any(a.velocity!=b.velocity for a,b in zip(adjusted,truth)):source=source+(signal(adjusted)-signal(truth))
+   truth=adjusted
+   metadata['target_velocities_m_s']=velocities
   if target in (1,2):source=source[:c['pri_count']]
   input_mode=c['input_mode'];raw_chain=input_mode in ('Raw PRI/CPI through hardware','File raw PRI/CPI through hardware')
   traces=[];engine_results=[];initial=None
@@ -122,7 +132,7 @@ class Worker(QThread):
    for fixed in [False,True]:
     ref=reference(initial,initial_entry,target,fixed)
     full_chain['Python '+('Fixed' if fixed else 'Float')]=compare(got,ref,target,fixed)
-  out=dict(version='0.2.0',target=target,entry=in_stage,input_mode=input_mode,origin=info,metadata=metadata,
+  out=dict(version='0.2.1',target=target,entry=in_stage,input_mode=input_mode,origin=info,metadata=metadata,
    truth=truth,actual_input=decode(engine_results[-1]['input_echo'],in_stage,rows=(engine_results[-1]['input_echo'].size//128)),
    output=got,references=references,metrics=metrics,full_chain_metrics=full_chain,transport=traces,
    elapsed_s=time.monotonic()-started,source_input=initial,source_entry=initial_entry)
@@ -130,7 +140,7 @@ class Worker(QThread):
    from .statistics import sweep
    pwr=np.abs(np.asarray(got)/32768)**2 if target==3 else np.asarray(got,float)/(1<<30)
    out['threshold_exploration']=sweep(pwr,truth,noise_only=c['scenario']=='Noise only' and not input_mode.startswith('File'))
-  stamp=time.strftime('%Y%m%dT%H%M%S',time.gmtime());p=ROOT/'engineering/evidence/stage_lab_v0.2/runs'/f'{stamp}-target{target}'
+  stamp=time.strftime('%Y%m%dT%H%M%S',time.gmtime());p=ROOT/'engineering/evidence/stage_lab_v0.2.1/runs'/f'{stamp}-target{target}'
   p.parent.mkdir(parents=True,exist_ok=True)
   arrays=dict(input_words=engine_results[-1]['input_echo'],output_words=engine_results[-1]['output'],initial_words=encode(initial,initial_entry),initial_entry=np.array(initial_entry),entry=np.array(in_stage),target=np.array(target))
   for label,ref in references.items():

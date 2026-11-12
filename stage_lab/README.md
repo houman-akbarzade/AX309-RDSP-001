@@ -1,3 +1,7 @@
+## v0.2.1 operator interface update
+
+Dimensioned axes, independent PRI/bin/range-cell selection, input/output range–PRI or range–Doppler/velocity maps, FPGA/software/difference views, full data tables, readable error metrics, threshold plots, individual target velocities, arbitrary fractional complex-noise RMS, dynamic SVG diagrams and Persian B Nazanin help. See `engineering/STAGE-LAB-v0.2.1-GUI-REPORT.md`. The stable v0.1 and lab v0.2.0 tags are retained. No RTL or bitstream changes.
+
 # AX309 Stage Lab v0.2.0
 
 A separate development application and separate FPGA test images. The stable full pipeline, original GUI and its shortcut are preserved.

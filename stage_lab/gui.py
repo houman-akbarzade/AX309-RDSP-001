@@ -102,6 +102,7 @@ class Window(QMainWindow):
  def execute(self):
   if self.worker and self.worker.isRunning():return
   c=dict(injection_engine=self.injection.currentText(),target=self.target.currentData(),input_mode=self.input.currentText(),engine=self.engine.currentText(),arithmetic=self.arithmetic.currentText(),scenario=self.scenario.currentText(),noise=self.noise.value(),seed=self.seed.value(),pri_count=self.pris.value(),file=self.file.text(),file_format=self.format.currentText(),port=self.port.text(),program=self.program.isChecked())
+  if hasattr(self,'velocities'):c['target_velocities']=self.velocities()
   self.run.setEnabled(False);self.restore.setEnabled(False);self.save.setEnabled(False)
   self.worker=Worker(c);self.worker.progress.connect(self.banner.setText);self.worker.completed.connect(self.result);self.worker.failed.connect(self.error);self.worker.start()
  def error(self,text):
@@ -167,6 +168,9 @@ class Window(QMainWindow):
  def closeEvent(self,event):
   if self.worker and self.worker.isRunning():event.ignore()
   else:event.accept()
+from .gui_upgrade import upgrade_window
+Window=upgrade_window(Window)
+
 def main():
  app=QApplication(sys.argv);w=Window();w.show()
  if '--show-power' in sys.argv:

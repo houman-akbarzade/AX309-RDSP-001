@@ -5,7 +5,8 @@
 // Only ONE frame buffered; bytes arriving during echo are counted and dropped.
 // Back-pressure through the host Stop-and-Wait protocol is REQUIRED.
 module s02_frame_echo #(
-    parameter integer TIMEOUT_CLKS = 86800
+    parameter integer TIMEOUT_CLKS = 86800,
+    parameter integer ECHO_MODE = 1
 )(
     input  wire       clk,
     input  wire       rst,
@@ -22,10 +23,21 @@ module s02_frame_echo #(
     output reg  [15:0] partial_timeout_count,
     output reg  [15:0] uart_error_count,
     output reg  [15:0] busy_drop_count,
-    output wire        response_busy
+    output wire        response_busy,
+    // ECHO_MODE=0: verified frame held until frame_done. Index 0 is
+    // on-wire byte 4 (version), index 9 is first payload byte.
+    output wire        frame_ready,
+    input  wire        frame_done,
+    output wire [7:0]  frame_type,
+    output wire [7:0]  frame_flags,
+    output wire [31:0] frame_seq,
+    output wire [15:0] frame_length,
+    output wire [31:0] frame_crc,
+    input  wire [9:0]  frame_rd_index,
+    output wire [7:0]  frame_rd_byte
 );
     localparam [2:0] SEARCH=0, HEADER=1, PAYLOAD=2,
-                     CRC_BYTES=3, ECHO_FETCH=4, ECHO_SEND=5;
+                     CRC_BYTES=3, ECHO_FETCH=4, ECHO_SEND=5, HELD=6;
     reg [2:0] state;
     reg [1:0] sof_seen;
     reg [9:0] write_pos;
@@ -37,6 +49,7 @@ module s02_frame_echo #(
     reg [31:0] crc_value;
     reg [31:0] rx_crc;
     reg [7:0] header_type;
+    reg [7:0] header_flags;
     reg [31:0] header_sequence;
     reg [31:0] idle_cycles;
     // 529 bytes: SOF + nine header bytes + 512 data + four CRC bytes.
@@ -50,7 +63,14 @@ module s02_frame_echo #(
                      (read_pos == 3) ? 8'h3C : ram_read_q;
 
     assign tx_valid = (state == ECHO_SEND);
-    assign response_busy = (state == ECHO_FETCH) || (state == ECHO_SEND);
+    assign response_busy = (state == ECHO_FETCH) || (state == ECHO_SEND) || (state == HELD);
+    assign frame_ready = (state == HELD);
+    assign frame_type = header_type;
+    assign frame_flags = header_flags;
+    assign frame_seq = header_sequence;
+    assign frame_length = declared_length;
+    assign frame_crc = ~crc_value;
+    assign frame_rd_byte = ram_read_q;
 
     function [31:0] crc32_byte;
         input [31:0] old_crc;
@@ -79,6 +99,7 @@ module s02_frame_echo #(
             crc_value <= 32'hFFFFFFFF;
             rx_crc <= 0;
             header_type <= 0;
+            header_flags <= 0;
             header_sequence <= 0;
             idle_cycles <= 0;
             ram_read_q <= 0;
@@ -91,6 +112,13 @@ module s02_frame_echo #(
             busy_drop_count <= 0;
         end else begin
             // One synchronous BRAM read port: registered data, registered read enable.
+            if (state == HELD) begin
+                ram_read_q <= frame_ram[frame_rd_index];
+            end
+            if (state == HELD && frame_done) begin
+                state <= SEARCH;
+                sof_seen <= 0;
+            end
             if (state == ECHO_FETCH) begin
                 if (read_pos >= 4) ram_read_q <= frame_ram[read_pos - 4];
                 state <= ECHO_SEND;
@@ -186,6 +214,7 @@ module s02_frame_echo #(
                             crc_value <= crc32_byte(crc_value, rx_data);
                             write_pos <= write_pos + 1'b1;
                             if (write_pos == 5) header_type <= rx_data;
+                            if (write_pos == 6) header_flags <= rx_data;
                             if (write_pos >= 7 && write_pos <= 10)
                                 header_sequence[8*(write_pos-7) +: 8] <= rx_data;
                             if (write_pos == 11)
@@ -217,7 +246,8 @@ module s02_frame_echo #(
                                 good_count <= good_count + 1'b1;
                                 frame_bytes <= write_pos + 1'b1;
                                 read_pos <= 0;
-                                state <= ECHO_FETCH;
+                                if (ECHO_MODE != 0) state <= ECHO_FETCH;
+                                else state <= HELD;
                             end else begin
                                 crc_error_count <= crc_error_count + 1'b1;
                                 state <= SEARCH;

@@ -1,0 +1,10 @@
+# ALINX AX309 user manual Rev 1.0 (2019-04-26); Drive file
+# 1ePDZQcIS-p0DH56A2YQBhT2sC8MZk0Pp, pp. 12, 20-22, 27-28.
+# Board revision and actual physical voltage/pin mapping MUST be confirmed
+# before programming. Physical CP2102GM/JTAG not attached as of this test.
+NET "clk50" LOC = "T8" | IOSTANDARD = LVCMOS33;
+NET "reset_n" LOC = "L3" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "uart_rxd" LOC = "C11" | IOSTANDARD = LVCMOS33;
+NET "uart_txd" LOC = "D12" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
+NET "clk50" TNM_NET = "clk50_group";
+TIMESPEC "TS_clk50" = PERIOD "clk50_group" 20 ns HIGH 50%;

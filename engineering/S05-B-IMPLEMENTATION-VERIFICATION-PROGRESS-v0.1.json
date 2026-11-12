@@ -1,0 +1,185 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "stage": "S05",
+  "model": "S05-B_ENGINEER_WORK_PACKAGE_MODEL",
+  "baseline_git": "a061671",
+  "status": "MEASURED_IMPLEMENTATION_WITH_SEPARATE_UNCHANGED_ENGINEERING_ACCEPTANCE",
+  "model_basis": "User S05-B table: 25 CFAR+Grouping, 10 PC, 15 MF, 10 MTI, 15 FFT, 10 Power, 10 UART, 5 DSP regression",
+  "implementation": {
+    "stage_before_percent": 40,
+    "stage_after_percent": 44,
+    "stage_delta_percentage_points": 4,
+    "packages": [
+      {
+        "id": "CFAR_GROUPING",
+        "weight_percent": 25,
+        "before_credit": 25,
+        "after_credit": 25,
+        "status": "UNCHANGED_ENGINEER_S05B_BASELINE",
+        "note": "Architectural/Gate acceptance independent"
+      },
+      {
+        "id": "PC_LINK_SOFTWARE",
+        "weight_percent": 10,
+        "before_credit": 10,
+        "after_credit": 10,
+        "status": "UNCHANGED_55_PREVIOUS_TESTS_PLUS_2_NEW_SOFTWARE_TESTS"
+      },
+      {
+        "id": "MATCHED_FILTER",
+        "weight_percent": 15,
+        "before_credit": 0,
+        "after_credit": 0,
+        "status": "NOT_CREDITED_IN_S05B"
+      },
+      {
+        "id": "MTI",
+        "weight_percent": 10,
+        "before_credit": 0,
+        "after_credit": 0,
+        "status": "NOT_CREDITED_IN_S05B"
+      },
+      {
+        "id": "DOPPLER_FFT",
+        "weight_percent": 15,
+        "before_credit": 0,
+        "after_credit": 0,
+        "status": "NOT_CREDITED_IN_S05B"
+      },
+      {
+        "id": "POWER_CHAIN_INTEGRATION",
+        "weight_percent": 10,
+        "before_credit": 0,
+        "after_credit": 0,
+        "status": "NOT_CREDITED_IN_S05B"
+      },
+      {
+        "id": "UART_FPGA",
+        "weight_percent": 10,
+        "before_credit": 5,
+        "after_credit": 9,
+        "status": "S05_B_IMPLEMENTED_AND_VERIFIED_SUBPARTS_ONLY"
+      },
+      {
+        "id": "FULL_DSP_REGRESSION",
+        "weight_percent": 5,
+        "before_credit": 0,
+        "after_credit": 0,
+        "status": "NO_NEW_CREDIT"
+      }
+    ],
+    "UART_FPGA_subweights_precommitted_for_this_scoring": [
+      {
+        "id": "UART_RX_TX_S02_PARSER",
+        "weight_pts_of_stage": 5,
+        "credit_before": 5,
+        "credit_after": 5,
+        "evidence": "Commit a061671; engineering/evidence/s05/uart_s02/S05-UART-RTL-EVIDENCE-v0.1.json",
+        "criterion": "Synthesizable PHY/framing RX TX, ISim and XST (lab ECHO)"
+      },
+      {
+        "id": "R1_SESSION_ARQ",
+        "weight_pts_of_stage": 2,
+        "credit_before": 0,
+        "credit_after": 2,
+        "evidence": "rtl/uart/s05_session_arq.v; rtl/uart/s02_r1_reply_tx.v; rtl/tb/tb_uart_s05_session.v; engineering/evidence/s05/uart_s05",
+        "criterion": "R1 4-stage session, valid ACK/NACK, stale/duplicate/READY loss, reset, outbound bounded STAGE replay; ISim PASS and XST"
+      },
+      {
+        "id": "UART_CPI_IQ_INGRESS_READBACK",
+        "weight_pts_of_stage": 2,
+        "credit_before": 0,
+        "credit_after": 2,
+        "evidence": "rtl/uart/s05_iq_cpi_banked.v; rtl/tb/tb_uart_s05_iq_full.v; engineering/evidence/s05/uart_s05",
+        "criterion": "35 CRC/offset/sequence checked packets, 16896 bytes RAM, 35 correct StageData readbacks byte exact; ISim PASS, XST Block RAM"
+      },
+      {
+        "id": "BOARD_PHYSICAL_LOOPBACK",
+        "weight_pts_of_stage": 1,
+        "credit_before": 0,
+        "credit_after": 0,
+        "evidence": "rtl/uart/AX309_UART_S05.ucf; rtl/tools/run_ise_uart_s05_board.sh; board USB/JTAG not attached",
+        "criterion": "Actual AX309 CP2102GM hardware PASS, explicitly NOT RUN"
+      }
+    ],
+    "no_credit_for_documentation_or_unrun_board_tests": true
+  },
+  "whole_project_weighted": {
+    "stage_count": 12,
+    "weight_per_stage_percent": 8.333333333333334,
+    "approved_stage_weight_reference": "engineering/S03-FINAL-GATE-READINESS-v1.0.md: approved rubric 12 equal stage weights",
+    "previously_completed_S01_to_S04_stages": 4,
+    "base_legacy_formal_gate_percent_S01_to_S04": 33.333333333333336,
+    "S05B_implementation_before_percent": 36.66666666666667,
+    "S05B_implementation_after_percent": 37.00000000000001,
+    "delta_percentage_points": 0.3333333333333357,
+    "important": "Weighted project stage-lifecycle progress with S01-S04 as completed engineering stages and S05B implementation; NOT a claim that 37% of radar RTL/hardware has been built. Legacy formal gate percent remains unchanged."
+  },
+  "verification": {
+    "software": {
+      "pass": 57,
+      "fail": 0,
+      "not_run": 0,
+      "evidence": "engineering/evidence/s05/uart_s05/PC-REGRESSION-v0.1.log.gz"
+    },
+    "RTL_simulation": {
+      "pass": 41,
+      "fail": 0,
+      "not_run": 4,
+      "pass_breakdown": {
+        "prior_UART_echo_4_good_plus_7_reject": 11,
+        "R1_session_RTL_independent_checks": 18,
+        "full_IQ_end_to_end_accelerated_bit_serial_checks": 12
+      },
+      "not_run_cases": [
+        "50MHz full 35-packet stream at 434 clocks/bit (accelerated full-CPI TB used CPB10)",
+        "mid-IQ global reset and post-reset host disposition",
+        "terminal COMMIT/ABORT recovery (terminal RTL out of current scope)",
+        "second CPI after explicit release and verified fresh upload"
+      ],
+      "evidence": [
+        "engineering/evidence/s05/uart_s05/ISIM-ECHO-v0.1.log.gz",
+        "engineering/evidence/s05/uart_s05/ISIM-SESSION-v0.1.log.gz",
+        "engineering/evidence/s05/uart_s05/ISIM-FULL-IQ-v0.1.log.gz"
+      ]
+    },
+    "synthesis": {
+      "new_jobs_pass": 4,
+      "new_jobs_fail": 0,
+      "not_run": 1,
+      "breakdown": "standalone IQ bank, session, reply TX, and physical AX309 top: XST zero errors; whole radar integration XST not run",
+      "important": "Standalone exposed RTL modules can exceed IOB package limits; only constrained AX309 physical top is placeable"
+    },
+    "timing": {
+      "pass": 1,
+      "fail": 0,
+      "not_run": 1,
+      "scope": "20ns clk50 registered-to-registered routed timing PASS; 13.767ns minimum / +6.233ns slack; I/O external delay constraint completeness NOT RUN",
+      "board_measurement": "NOT_RUN"
+    },
+    "hardware": {
+      "pass": 0,
+      "fail": 0,
+      "not_run": 3,
+      "planned": [
+        "CP2102GM Loopback",
+        "R1 HELLO/ACTIVATE on physical AX309",
+        "full 16896B IQ upload+readback physical AX309"
+      ],
+      "reason": "No CP2102GM UART device or JTAG cable was enumerated on remote host"
+    }
+  },
+  "engineering_acceptance": {
+    "REQ_LIST_01_logical": "APPROVED_702_NO_TOP_K_NO_SILENT_DROP",
+    "REQ_LIST_01_full": "OPEN",
+    "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "REQ_RNG_03": "FAIL_4_OF_8",
+    "S04_C02_RISK_PERFORMANCE": "OPEN",
+    "seven_DSP_output_schemas": "OPEN_0_OF_7",
+    "complete_architecture_C_XC6SLX9_fit": "OPEN",
+    "final_ICD_v1_signoff": "NOT_AUTOMATICALLY_GRANTED_BY_S05B",
+    "changes_to_engineering_acceptance": false
+  },
+  "evidence_commit": "THE_COMMIT_CONTAINING_THIS_JSON_AND_NEW_RTL_FILES",
+  "next_board_step": "Connect AX309 mini-USB CP2102 and JTAG; verify board Rev and bank VCCO/Pinout; program generated bitstream then python3 -m pc_link board-iq-smoke --port /dev/ttyUSB0 --baud 115200"
+}

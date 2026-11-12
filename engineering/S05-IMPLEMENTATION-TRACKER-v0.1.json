@@ -134,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "Use real UART/S02 echo RTL golden PC vectors as hardware baseline; implement Session/Epoch FSM + real ACK/NACK/ARQ without changing S02 or S04, then CPI input/readback and transaction controller after independent ISim. No full chain PASS yet.",
+  "next_implementation_step": "Hardware IQ-only smoke after AX309 connected; parallel implement full DSP shared memory and Frame Controller without reopening S04.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -331,7 +331,7 @@
     "full_IQ_bytewise_readback_ICD_approved": false,
     "lost_COMMIT_ACK_terminal_reconciliation_approved": false,
     "reference_PC_packetizer_parser": "IMPLEMENTED_55_UNITTESTS_PASS_SOFTWARE_ONLY",
-    "FPGA_UART_RTL": "NOT_IMPLEMENTED",
+    "FPGA_UART_RTL": "IMPLEMENTED_R1_SESSION_ARQ_IQ_ONLY_ISIM_PASS",
     "ICD_v1_signed_off": false,
     "ICD_v1_revision": "R2",
     "ACK_NACK_delayed_duplicate_stale_rules": "R2_PROPOSED_PENDING_ENGINEER_APPROVAL",
@@ -367,16 +367,18 @@
     "software_FPGA_simulator": "IMPLEMENTED_PYTHON_ONLY_NO_FPGA_RTL",
     "laboratory_R1_direction": "AUTHORIZED_FOR_PC_SOFTWARE_IMPLEMENTATION_NOT_FINAL_ICD_PASS",
     "host_journal_release_unknown": "BLOCKED_PENDING_DURABILITY_CONTRACT",
-    "board_UART_test": "NOT_RUN",
+    "board_UART_test": "NOT_RUN_USB_CP2102_AND_JTAG_NOT_ATTACHED",
     "UART_S02_frame_parser_RTL": "IMPLEMENTED_CRC32_0_TO_512_AND_FRAME_ECHO",
     "UART_RX_TX_RTL_ISim": "PASS_INDEPENDENT_PC_ORACLE_3_FRAMES_607_BYTES",
-    "UART_RTL_synthesis": "XST_ALL_FOUR_TOPS_ZERO_ERRORS_UART_INTEGRATED_674_LUT_341_FF_1_RAMB8",
-    "UART_RTL_evidence": "engineering/evidence/s05/uart_s02/S05-UART-RTL-EVIDENCE-v0.1.json",
-    "UART_RTL_lab_echo_only": true,
-    "UART_RTL_session_FSM": "NOT_IMPLEMENTED",
-    "UART_RTL_ARQ": "NOT_IMPLEMENTED",
-    "UART_RX_TX_frame_controller": "NOT_IMPLEMENTED",
-    "UART_RTL_postroute": "NOT_RUN"
+    "UART_RTL_synthesis": "XST_PASS_2125_LUT_1592_FF_10_BRAM_PIN_MINIMAL_AX309",
+    "UART_RTL_evidence": "engineering/evidence/s05/uart_s05/S05-B-UART-RTL-EVIDENCE-v0.1.json",
+    "UART_RTL_lab_echo_only": false,
+    "UART_RTL_session_FSM": "IMPLEMENTED_4_MESSAGE_HELLO_OFFER_ACTIVATE_READY_18_ISIM_CHECKS",
+    "UART_RTL_ARQ": "IMPLEMENTED_INBOUND_EXACT_EPOCH_ACK_NACK_REPLAY_AND_OUTBOUND_STAGE_DATA_RETRY",
+    "UART_RX_TX_frame_controller": "FULL_DSP_FRAME_CONTROLLER_NOT_IMPLEMENTED",
+    "UART_RTL_postroute": "PAR_TRCE_PASS_20_NS_CLK50_MIN_13P767_NS",
+    "UART_RTL_IQ": "IMPLEMENTED_35_UPLOAD_16896_BYTES_35_STAGE_READBACK_ISIM_PASS",
+    "UART_RTL_bitstream": "GENERATED_NO_BOARD_FLASH"
   },
   "pc_uart_software_reference": {
     "status": "PC_SOFTWARE_IMPLEMENTED_UNITTEST_PASS",
@@ -428,5 +430,23 @@
     "board": "NOT_RUN",
     "MAP_PAR_STA": "NOT_RUN",
     "whole_radar_fit": "NOT_VERIFIED"
+  },
+  "S05_B_implementation_progress": "engineering/S05-B-IMPLEMENTATION-VERIFICATION-PROGRESS-v0.1.json",
+  "S05_B_verified_UART_IQ": {
+    "status": "REAL_ISIM_XST_PNR_PASS_HARDWARE_NOT_RUN",
+    "evidence": "engineering/evidence/s05/uart_s05/S05-B-UART-RTL-EVIDENCE-v0.1.json",
+    "progress_model": "engineering/S05-B-IMPLEMENTATION-VERIFICATION-PROGRESS-v0.1.json",
+    "UART_RTL": "rtl/uart/uart_s05_session_top.v",
+    "Physical_Board_top": "rtl/uart/uart_s05_ax309_top.v",
+    "IQ_RAM": "rtl/uart/s05_iq_cpi_banked.v",
+    "R1_session_ARQ": "rtl/uart/s05_session_arq.v",
+    "IO_constraints": "rtl/uart/AX309_UART_S05.ucf",
+    "ISim": "PASS_3_TESTBENCHES_41_RECORDED_CHECKS",
+    "PC": "PASS_57_UNITTESTS",
+    "XST": "PASS_2125_LUT_1592_FF_10_BRAM",
+    "PlaceRoute": "PASS_CLK_PERIOD_20NS",
+    "Bitstream": "GENERATED_NOT_PROGRAMMED",
+    "Board": "NOT_RUN",
+    "Full_Radar": "NOT_QUALIFIED"
   }
 }

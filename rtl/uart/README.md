@@ -54,3 +54,46 @@ changes or 702-record result transmission occurred here.
 Independent XST minimum-period estimates are not timing closure.
 Older S04 dispositions and the seven open DSP-stage output schemas remain
 unchanged.
+
+## S05-B executable R1 / complete IQ integration (separate from ECHO)
+
+From repository root:
+
+```bash
+bash rtl/tb/run_uart_s05_session_isim.sh
+bash rtl/tb/run_uart_s05_iq_full_isim.sh
+bash rtl/tools/run_xst_uart_s05.sh
+bash rtl/tools/run_ise_uart_s05_board.sh
+python3 -m unittest discover -s tests -p 'test_s05_pc*.py' -v
+```
+
+`uart_s05_session_top` uses the SAME UART RX/TX and S02 receive parser as the
+previous echo test. It implements R1 HELLO/OFFER/ACTIVATE/READY, one-shot
+activation, inbound exact-SID ACK/NACK, sequence dedup, 35 uploaded IQ packets
+with BRAM writes **before ACK**, and 35 stage-0 raw-IQ readbacks with outbound
+Stop-and-Wait, identical-sequence retry and a terminal retry-error latch.
+
+The full-CPI ISim TB uses an accelerated **10 cycles per UART bit** for
+practical 16,896-byte throughput regression; the ECHO and Session TBs use
+the **nominal physical 50MHz/115200 = 434 cycles per bit**. The testbench
+compares 21,754 wire bytes including the full 16,896-byte readback against
+independent `pc_link.codec` generated frames, and injects a dropped ACK
+requiring an identical outgoing STAGE_DATA replay. No DUT-side CRC routines
+are used to produce golden bytes.
+
+The real AX309 pin wrapper is `uart_s05_ax309_top.v`, with
+`AX309_UART_S05.ucf` based on ALINX manual Rev1.0:
+50MHz CLK=T8, USB CP2102 RX=C11, TX=D12, active-low RESET=L3.
+Bank VCCO nominal 3.3V according to the manual. **Confirm actual
+board revision and physical voltage/pinout before programming.**
+The board-specific build generates
+`rtl/build/ise_uart_s05_ax309/uart_s05_ax309_top.bit` (not committed).
+A UART readback-only physical smoke is available at:
+`python3 -m pc_link board-iq-smoke --port /dev/ttyUSB0 --baud 115200`.
+
+FPGA R1 recovery with a volatile terminal history, terminal CPI_COMMIT,
+DSP RUN, seven DSP-stage result schemas, target Clustering/Tracking and
+full Architecture-C fit remain OUT OF SCOPE / NOT APPROVED.
+Bitgen RAMB8 default-initialization DRC warning must remain recorded;
+the current ingress store uses coverage+write-before-read and does not
+assume zero-initialized BRAM.

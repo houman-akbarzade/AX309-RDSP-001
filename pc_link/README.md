@@ -70,3 +70,25 @@ CPI upload, RESULT/COMMIT or full FPGA resource/timing fit.
 The demonstration's short synthetic IQ and cluster semantics are **transport
 fixtures only**. Do not infer radar detection, Range-Resolution, statistical
 qualification, RTL readiness or board PASS from the software tests.
+
+## S05-B FPGA UART/IQ-only board smoke (new)
+
+After verifying AX309 board revision, UCF/voltage and programming the
+`uart_s05_ax309_top.bit` with JTAG, run on the PC attached to the
+CP2102GM USB-UART port:
+
+```bash
+python3 -m pc_link board-iq-smoke --port /dev/ttyUSB0 --baud 115200 --cpi-id 23
+```
+
+This real-port command uses the existing byte codec and R1 handshake,
+sends one OPEN_CPI and 35 canonical IQ_UPLOAD packets, then requests
+35 raw-IQ STAGE_DATA readbacks. Every byte, CPI_ID, offset, count,
+outbound sequence and per-frame CRC are verified before IQ-only success.
+Timeout/CRC/bytes failures do **not** synthesize CPI_COMMIT; interrupted
+host sessions require explicit reset/recovery (no silent new CPI).
+
+`tests/test_s05_pc_board_iq.py` tests this PC command's underlying
+logic against a **software-only** UART stub. This test is NOT board
+evidence. The hardware board has not been connected to the development
+host in the recorded campaign.

@@ -1,0 +1,264 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05-B",
+  "baseline_git": "a061671",
+  "status": "RTL_ISIM_XST_MAP_PAR_TRCE_BITGEN_PASS_HARDWARE_NOT_RUN",
+  "source": "Actual ISE14.7 run outputs and direct PC golden byte references",
+  "test_results": {
+    "PC_software": {
+      "pass": 57,
+      "fail": 0,
+      "not_run": 0
+    },
+    "ISim_ECHO": {
+      "valid_frames": 3,
+      "exact_TX_bytes": 607,
+      "positive_checks": 4,
+      "injected_error_checks": 7,
+      "CPB": 434,
+      "fail": 0
+    },
+    "ISim_SESSION": {
+      "pass_checks": 18,
+      "fail": 0,
+      "response_frames": 15,
+      "exact_TX_bytes": 627,
+      "CPB": 434,
+      "lost_READY_duplicate_activation": "PASS",
+      "reset_after_HELLO": "PASS"
+    },
+    "ISim_FULL_IQ": {
+      "pass_checks": 12,
+      "fail": 0,
+      "upload_packets": 35,
+      "raw_IQ_bytes": 16896,
+      "readback_packets": 35,
+      "exact_TX_bytes": 21754,
+      "response_frames": 113,
+      "FPGA_outbound_StageData_retry": 1,
+      "CPB": 10,
+      "note": "Accelerated serial bit timing; RTL functional ISim only, not a real 50MHz full CPI timing run"
+    }
+  },
+  "resource_XST_standalone": {
+    "s05_iq_cpi_banked": {
+      "LUT": 35,
+      "FF": 0,
+      "RAMB16BWER": 8,
+      "RAMB8BWER": 1,
+      "IOB": 92,
+      "errors": 0,
+      "note": "Standalone wide diagnostic ports may exceed physical IOB package; no board fit implied"
+    },
+    "s05_session_arq": {
+      "LUT": 2266,
+      "FF": 1239,
+      "RAMB16BWER": 0,
+      "RAMB8BWER": 0,
+      "IOB": 743,
+      "errors": 0,
+      "note": "Standalone wide diagnostic ports may exceed physical IOB package; no board fit implied"
+    },
+    "s02_r1_reply_tx": {
+      "LUT": 550,
+      "FF": 344,
+      "RAMB16BWER": 0,
+      "RAMB8BWER": 0,
+      "IOB": 348,
+      "errors": 0,
+      "note": "Standalone wide diagnostic ports may exceed physical IOB package; no board fit implied"
+    }
+  },
+  "resource_XST_physical_AX309_top": {
+    "LUT": 2125,
+    "FF": 1592,
+    "RAMB16BWER": 8,
+    "RAMB8BWER": 2,
+    "DSP48A1": 0,
+    "IOB": 4,
+    "xst_errors": 0
+  },
+  "resource_fit_scope": "Only UART+session+IQ ingress/readback top fits XC6SLX9. Connected CFAR+Grouping alone previously 4374 LUT. 4374+2125=6499 > 5720 (non-integrated conservative tally, no total-chip conclusion). MF, MTI, FFT, Power not connected.",
+  "timing": {
+    "mode": "Constrained placement and routing, ISE14.7 on Rev1.0-manual pins",
+    "clk50_period_constraint_ns": 20.0,
+    "post_route_minimum_period_ns": 13.767,
+    "post_route_worst_slack_ns": 6.233,
+    "clk50_failing_endpoints": 0,
+    "par_status": "PASS",
+    "trce_status": "TIMING_CLK50_PASS",
+    "external_UART_IO_delays_explicitly_constrained": false,
+    "all_intended_system_clocks_and_IO_validated": false,
+    "physical_clock_and_pin_verified_on_board": false
+  },
+  "bitstream": {
+    "path": "rtl/build/ise_uart_s05_ax309/uart_s05_ax309_top.bit",
+    "raw_sha256": "616d4f1d10c7327b8fbad511e61eaa4e0e8d64b90ddb3fa5d40a0aeeb55fbfbe",
+    "size_bytes": 340987,
+    "bitgen_status": "PASS_WITH_RAMB8_INITIALIZATION_WARNING",
+    "warning": "PhysDesignRules:2410 RAMB8 default initialization may be incorrect. RAM data is not assumed initialized before a verified frame upload.",
+    "board_programmed": false
+  },
+  "board_manual": "ALINX AX309 User Manual Rev 1.0 2019-04-26, Google Drive file id 1ePDZQcIS-p0DH56A2YQBhT2sC8MZk0Pp",
+  "pins": {
+    "clk50": "T8",
+    "reset_n_active_low": "L3",
+    "FPGA_RX_from_CP2102GM": "C11",
+    "FPGA_TX_to_CP2102GM": "D12",
+    "IOSTANDARD": "LVCMOS33 from nominal 3.3V bank, actual board revision not inspected"
+  },
+  "board_availability": "NO_CP2102GM_USB_PORT_OR_JTAG_ENUMERATED_ON_REMOTE_HOST",
+  "hardware_test": "NOT_RUN",
+  "real_board_smoke_command": "python3 -m pc_link board-iq-smoke --port /dev/ttyUSB0 --baud 115200 --cpi-id 23",
+  "example_real_PC_generated_EXPECTED_OFFER": {
+    "wire_length": 43,
+    "wire_prefix_hex": "a55ac33c010900000000001a0002010011223344",
+    "crc32_LE_hex": "d3e2e7eb",
+    "CRC_checked": true
+  },
+  "golden_IQ_sha256": "311812204baef218d4df282e5df372a816a25e340a5b68b21ca62b3801e55865",
+  "raw_log_and_bitstream_evidence": {
+    "ISIM-ECHO-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISIM-ECHO-v0.1.log.gz",
+      "compressed_sha256": "eb7695dd9c53eb02005d231978ae10e5442c3d91eb6770b64981a89e8dc285a1",
+      "original_sha256": "998e33c4dbdb8ee0e2a707fe0fb600b97622f725202ea8ce4cb4b6604f851fd8"
+    },
+    "ISIM-SESSION-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISIM-SESSION-v0.1.log.gz",
+      "compressed_sha256": "450dfbbb214c93907b7d692e6f75c8e9b3c4f1f4e4d0fdf89f08bd1a93031886",
+      "original_sha256": "b76743673dcfd91b613bb0bb2db7303edccdcdceb11bc5323dd2392cbe875177"
+    },
+    "ISIM-FULL-IQ-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISIM-FULL-IQ-v0.1.log.gz",
+      "compressed_sha256": "691072bd8f8de41d585e8e57788113d9e46f04efc003456e1a92cdc38c6cd6d3",
+      "original_sha256": "11498f3584387f1189ab11fd775104e956546288f061138e503ddf2036f3d7c3"
+    },
+    "ISIM-ECHO-COMPILE-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISIM-ECHO-COMPILE-v0.1.log.gz",
+      "compressed_sha256": "e727b2f2c966dc81b82bd3577fafefbccff97acb1e50d9c682ece078582c0c50",
+      "original_sha256": "a3e6618e8c96630504f709f410e726ebeab4a2c21d9af51777d54e7e50f884a3"
+    },
+    "ISIM-SESSION-COMPILE-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISIM-SESSION-COMPILE-v0.1.log.gz",
+      "compressed_sha256": "a4fc25750843520740e6c1b1fd8f3ac40c9b37dd0b5c2ba4249dd9b21481f2fa",
+      "original_sha256": "3c46823d1c71744017c52a8fbd6b10d343604f4c519c7cb8b7eca5da21723c09"
+    },
+    "ISIM-FULL-IQ-COMPILE-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISIM-FULL-IQ-COMPILE-v0.1.log.gz",
+      "compressed_sha256": "8225cc9d646d0c7c40094077ee67c9b64baceaef93d54e5e8dcd3ec36b1c47fd",
+      "original_sha256": "cf070adc84e53fce2b8480bff351df9b8f29702d9097d54626087a4ae29af161"
+    },
+    "PC-REGRESSION-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/PC-REGRESSION-v0.1.log.gz",
+      "compressed_sha256": "8ea0779a21015a115f40005b6a41df97bcc7d400521f239db6400642c04e141d",
+      "original_sha256": "342c17e55168f7329bb93955d3bf2f0e794951ad2284710c2df9ee96ab046abc"
+    },
+    "XST-SESSION-STANDALONE-v0.1.srp.gz": {
+      "path": "engineering/evidence/s05/uart_s05/XST-SESSION-STANDALONE-v0.1.srp.gz",
+      "compressed_sha256": "4480790e1135859b32dfb5e874e392d041afb19c4bdc2ac5236dbf76bc9534f9",
+      "original_sha256": "3f59f1921f3660b4f6249817ccfb3dd0c5fd73acdb93f26df09a78ad03a4add5"
+    },
+    "XST-IQ-BANKED-v0.1.srp.gz": {
+      "path": "engineering/evidence/s05/uart_s05/XST-IQ-BANKED-v0.1.srp.gz",
+      "compressed_sha256": "28e2f48a158656d70253fee5f7cf4132a6c2740193e731cf0ca343ac013d4e6c",
+      "original_sha256": "27748d9cf88172d206a7b881ca808141993bab0d1c04e543396adeaa82478de5"
+    },
+    "XST-REPLY-TX-v0.1.srp.gz": {
+      "path": "engineering/evidence/s05/uart_s05/XST-REPLY-TX-v0.1.srp.gz",
+      "compressed_sha256": "3e9df624a38c22d9b71eff4505bfa6ac2651900c6179b096e1d611aa6add1385",
+      "original_sha256": "48506823e2d5640a4e24a1c9fcc001d7c3598cd66f1d5255765b02f305a0fc55"
+    },
+    "XST-AX309-TOP-v0.1.srp.gz": {
+      "path": "engineering/evidence/s05/uart_s05/XST-AX309-TOP-v0.1.srp.gz",
+      "compressed_sha256": "c6b9d172baaba3a13a0d058b03b665c1c2c0cecef4dfc264bc22b13a230305fd",
+      "original_sha256": "de67b042f063709ebb94c753f0c1b6d5a6d9ed02653d79e07d2b0d5b1ed9987a"
+    },
+    "ISE-MAP-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISE-MAP-v0.1.log.gz",
+      "compressed_sha256": "6198ffd75ce1ef8d7c19778ddb60ae7f4771946ced59a8decb64c8c2e383ba49",
+      "original_sha256": "cc7da62b85a2b3b4d81abbc1a18c2243ae8a14726b35c2c19cc69902aa0b0705"
+    },
+    "ISE-PAR-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISE-PAR-v0.1.log.gz",
+      "compressed_sha256": "1a0314dbd50caaaeeec56f5b02cd57b37ec21ea15c44b499b27fcba386f22d96",
+      "original_sha256": "02aa2106df4b9441d50750cc675985da2fd464da956acc16f4d9cd6347bd509a"
+    },
+    "ISE-TRCE-v0.1.twr.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISE-TRCE-v0.1.twr.gz",
+      "compressed_sha256": "84b20aeb0f17e1f278b447c834aef03d3478df7b56505f30f566272c3af4af38",
+      "original_sha256": "7635ef259d3bb1f2d1d1ee6f3a1788590ce9d60056c4b0e34ab4b079181ad259"
+    },
+    "ISE-BITGEN-v0.1.log.gz": {
+      "path": "engineering/evidence/s05/uart_s05/ISE-BITGEN-v0.1.log.gz",
+      "compressed_sha256": "ac7cd043c542515e9456ab1343655dd5a1bc9d825697d9e6209d72d00c89e59a",
+      "original_sha256": "ed5acfd87aaa700f364e0d8ada26d38a063e549f186bd2c680baa76dee54647a"
+    },
+    "AX309-UART-S05-v0.1.bit.gz": {
+      "path": "engineering/evidence/s05/uart_s05/AX309-UART-S05-v0.1.bit.gz",
+      "compressed_sha256": "d0d522d622038cbfa75edfefefa1dd14ef3bfb9777adb421b0774c8ba6c74d21",
+      "original_sha256": "616d4f1d10c7327b8fbad511e61eaa4e0e8d64b90ddb3fa5d40a0aeeb55fbfbe"
+    }
+  },
+  "rtl_source_sha256": {
+    "rtl/uart/uart_rx_8n1.v": "dbc893a83aa8d318797cd4bddf4ab9ee11527f45a29b99b809e7b12809de0e37",
+    "rtl/uart/uart_tx_8n1.v": "2e655a7e0fd7c76acf302d765d926e3dc11de190dc3ee3b9275151f7642cf6a4",
+    "rtl/uart/s02_frame_echo.v": "c6b7767a2f6b5f2bbf81c839d7e3acae048d8338970dfe14832e34183209b994",
+    "rtl/uart/s02_r1_reply_tx.v": "5dffa5c173ba0376613ca1546dad356ec0feb90889de54d5df8fc9b8c06f8187",
+    "rtl/uart/s05_iq_cpi_banked.v": "14e7f1357e4d0b548a4dbcabb22ea6a2456431db9a7b838197252c54b3499fc4",
+    "rtl/uart/s05_session_arq.v": "4e8ef4bbd57a0af90aa83be5d7afa6ee11a28e042bd641f9f0bf14dbec910460",
+    "rtl/uart/uart_s05_session_top.v": "2f25d0d066fdbd00500c8ddbb0eadd4317e67004c1c61b2152273f28a74ce1a0",
+    "rtl/uart/uart_s05_ax309_top.v": "5865d37681ac29e29b3859b7112853b629e5f9b23e3c5708ed2b20b742522d3a",
+    "rtl/uart/AX309_UART_S05.ucf": "03bd52fedec6269c0b4e22c6e059fe83a4de296c5a4ca1720279ae74e1bde5fb",
+    "rtl/tb/tb_uart_s02_echo.v": "ab840c732423b4671a8d918d600997617331da212903437fcbc7d8dc89886c46",
+    "rtl/tb/tb_uart_s05_session.v": "d3229ca23e557786db2cea5b664c87e9c7725ed51dab3a8b0d117fe00cef0e93",
+    "rtl/tb/tb_uart_s05_iq_full.v": "24da910b63de1d38c6bb92a719386d3ac2a76ef63453ffb26825a28c131b0d84",
+    "rtl/tools/generate_uart_r1_vectors.py": "6640eb58754c860de6cdf35973b24638bbd333769c33f5376cd337b57beb84a6",
+    "rtl/tools/generate_uart_iq_full_vectors.py": "44c69badda246666de3f9431d14a8b2548cd0cc3247ebe051857e53ed35d5dd7",
+    "rtl/tools/run_xst_uart_s05.sh": "e870cfe55d944c9e3bf4cac3e0ff7081d977926e6c36fe1b67c653cfa2ae01b6",
+    "rtl/tools/run_ise_uart_s05_board.sh": "c4c9ac686ae76572c612e02e917a33945092e1b89c785e704cf616a4a382ef8e",
+    "rtl/tb/run_uart_s05_session_isim.sh": "29eb7e3ae4446ee941573743390095c2b1286081a26b572a2c31eb8aeb82b3c9",
+    "rtl/tb/run_uart_s05_iq_full_isim.sh": "31b1b55520e8a7bd92951a48beb7330b0d4a5464536c7e2883a0f8239d23df91",
+    "pc_link/board_iq.py": "cdc5ed947acd9e88180748ff0502a80082cc8186aa357b42f45c7cbb6dafb836",
+    "pc_link/codec.py": "796a56dd4a91341932b76f3e9292da5524f49123cc314728d370641f1b8f6a61",
+    "pc_link/iq.py": "660123228e4a7068e36485d5c30e3a8d77c6d464f1dca191ab19883dc6083e08",
+    "pc_link/__main__.py": "1256422c0e2b1c92d644e3a2d25f4e439eb24aa57979bce840c8059fa9ac1bd0",
+    "tests/test_s05_pc_board_iq.py": "f1972dc802a79131bdd11742c578b26c0319e3220a40b493fdf622073313d52c",
+    "engineering/S05-B-IMPLEMENTATION-VERIFICATION-PROGRESS-v0.1.json": "4fc30acef3396ceba3caa9ac5e004492bc1650e540238b8bfadde4bea71ccf8a"
+  },
+  "golden_mem_sha256": {
+    "rtl/tb/vectors/uart_r1/old_seq_b.mem": "aab6e868d8957799c9fabcfa96de9c9ca5e0f9e57c571247facf0517584f8065",
+    "rtl/tb/vectors/uart_r1/open_b.mem": "37fa98db8e63b0ab1b21f3c712c08909aaaffe1047e9b741d16d33df6f5af6be",
+    "rtl/tb/vectors/uart_r1/bad_crc.mem": "6eb68cadaed470972408061b908df83c420edba0460081c635059ba7e20de5c4",
+    "rtl/tb/vectors/uart_r1/inbound_ack_b.mem": "7f6bb4fe4beb139314b7111beb288c4e57d931ca33bf99f461e342364ce4dda1",
+    "rtl/tb/vectors/uart_r1/activate_a.mem": "a53099ccf73651c873df4d5bc8e32586e462e0eed9760ff86a7e9f9002141ff5",
+    "rtl/tb/vectors/uart_r1/expected_responses.mem": "6762edd58980e45e640a0c58ee60de44509838cedc12c333fc4d9b66734338de",
+    "rtl/tb/vectors/uart_r1/hello_a.mem": "ab4f90ec137da624f759fae9ab623941a4c70f2d9200b244d56f76592daf1a77",
+    "rtl/tb/vectors/uart_r1/activate_b.mem": "b1bbf605905932a207b8b686c4736a8fd971c62def40bfbbb68ecd1b65f9e5c2",
+    "rtl/tb/vectors/uart_r1/hello_b.mem": "c930ce868b775d35bff02ec7dfb658bb0f88adbc09519017d6072e9a464b9991",
+    "rtl/tb/vectors/uart_r1/future_b.mem": "f44053f47fc51f979c733d4a817862ea76a8291dfbb3225b851a7e7f3b79a5cb",
+    "rtl/tb/vectors/uart_r1/truncated.mem": "09caa69b36a8f2575371be230fbbe98b54a13a7a5dc7c949ae5458a8fbf5c0ba",
+    "rtl/tb/vectors/uart_r1/old_a.mem": "22462c6d45fcf344dfba417f55d41fc7c31b586a6ad3b6013227c67f282ccd66",
+    "rtl/tb/vectors/uart_r1/new_bad_b.mem": "5efa1b2c51325a07ac6941ae863c3a6a5373f21f1aea70228d407d23efb37736",
+    "rtl/tb/vectors/uart_iq_full/response_lengths.mem": "7bacc27a96c46680072ce69d918794b57cd9fccd30bd437f665d4c1d9ee8f171",
+    "rtl/tb/vectors/uart_iq_full/activate.mem": "65de62c34eb3af32ab7b239530ac4463c8ea527d9b52a40d07dbf9b04a9d2f52",
+    "rtl/tb/vectors/uart_iq_full/stage_acks_flat.mem": "448a7cab1134e934433167a65ad2276575e7eb98f9d377fbb1b43dbe05466101",
+    "rtl/tb/vectors/uart_iq_full/bad_crc.mem": "a85620299a7d8d10733f581b0aa1ed823fdc527866b1fa2e266713abcf133e81",
+    "rtl/tb/vectors/uart_iq_full/expected_responses.mem": "44ee232c8681b826ad8ca8f98012874585adc55f25abdcd249ba18aedb2d30c5",
+    "rtl/tb/vectors/uart_iq_full/uploads_flat.mem": "22a0353a0e60c54e96d273f1029f496077a522aa0aacdadbbcdef1bf9c1bb60c",
+    "rtl/tb/vectors/uart_iq_full/bad_stage.mem": "a59aaf9010484476e32d6c5d299128bdba2e60f55da0124109dc452c83dcfd50",
+    "rtl/tb/vectors/uart_iq_full/hello.mem": "88fbea18bff82e6f2cd1a2e0b1298406550fad5668fffbe658689fdd9147c96a",
+    "rtl/tb/vectors/uart_iq_full/requests_flat.mem": "53d25623002bb75db3905d76404e6492cca22c1348212173ddb98e46ffcce60e",
+    "rtl/tb/vectors/uart_iq_full/bad_offset.mem": "037d0abce2438a1bd5f61331e296630454d8f66d245604f9186e8d046362a823",
+    "rtl/tb/vectors/uart_iq_full/open_cpi.mem": "9f37616b13c3b3d9f440ea248f09450c01a0b77efc51a190d27cae9f55e84c04",
+    "rtl/tb/vectors/uart_iq_full/truncated.mem": "8dcdb0a0d09ace2036ed4cd37dea082963e0367c2b972d0f7c34107a7586ad22",
+    "rtl/tb/vectors/uart_iq_full/upload_offsets_16bit_le.mem": "1671ea42545832a98f202bb9f86dc754e297b445b5e75e4345370543225c1c38",
+    "rtl/tb/vectors/uart_iq_full/old_sid.mem": "7f8d99b69d4efec93ea37860c1f4cd41a27d55d0a33674d00a3869d4191396fb",
+    "rtl/tb/vectors/uart_iq_full/future.mem": "93e2394c37d30cae09d9669a87ef099c62c8814552503eb949018ca19edfeeb5"
+  },
+  "prior_S04_accepted_test_campaigns_rerun": false,
+  "S02_contract_changed": false,
+  "S04_disposition_changed": false,
+  "REQ_LIST_01_full_acceptance": "OPEN",
+  "seven_DSP_stage_output_schemas": "OPEN",
+  "complete_architecture_C_fit": "NOT_VERIFIED"
+}

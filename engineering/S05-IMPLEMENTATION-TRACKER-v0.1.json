@@ -134,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "System engineer review of S05 Link Session/Epoch R1 candidate, proposed 128-bit epoch-tagged wire, trusted reconnect after power loss, RELEASE/UNKNOWN, handshake timeout budget. Do not build PC packetizer or UART RTL before final signoff.",
+  "next_implementation_step": "After PC software 55/55 tests, use pc_link golden frames to implement independent UART RTL 8N1 RX/TX, S02 SOF/CRC/parser, R1 session handshake and ARQ; verify ISim serial bit-level before board/UCF. Do not reopen accepted S04 tests.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -330,7 +330,7 @@
     "full_UART_packet_replay_implementation": "NOT_IMPLEMENTED",
     "full_IQ_bytewise_readback_ICD_approved": false,
     "lost_COMMIT_ACK_terminal_reconciliation_approved": false,
-    "reference_PC_packetizer_parser": "NOT_IMPLEMENTED_PENDING_ENGINEER_SIGNOFF",
+    "reference_PC_packetizer_parser": "IMPLEMENTED_55_UNITTESTS_PASS_SOFTWARE_ONLY",
     "FPGA_UART_RTL": "NOT_IMPLEMENTED",
     "ICD_v1_signed_off": false,
     "ICD_v1_revision": "R2",
@@ -338,7 +338,7 @@
     "COMMIT_original_wire_retransmit_vs_new_query_sequence": "R2_SPECIFIED_PENDING_ENGINEER_APPROVAL",
     "post_COMMIT_retry_exhaustion": "NO_CONTRADICTORY_ABORT_R2_CANDIDATE_S02_SCOPED_EXCEPTION_NEEDS_APPROVAL",
     "terminal_persistence": "R2_RESET_DOMAIN_TABLE_PROPOSED_POWER_LOSS_NOT_GUARANTEED",
-    "seven_DSP_stage_output_schemas": "ALL_OPEN_0_OF_7_APPROVED",
+    "seven_DSP_stage_output_schemas": "ALL_SEVEN_OPEN_NOT_APPROVED",
     "UART_RX_TX_RTL": "NOT_IMPLEMENTED",
     "link_session_epoch_addendum": {
       "status": "R1_PROPOSED_PENDING_SYSTEM_ENGINEER_FINAL_REVIEW",
@@ -357,6 +357,46 @@
       "PC_packetizer_parser": "NOT_IMPLEMENTED",
       "UART_RTL": "NOT_IMPLEMENTED",
       "engineer_signoff": false
-    }
+    },
+    "PC_reference_root": "pc_link/",
+    "PC_software_unit_tests": "tests/test_s05_pc_link.py;tests/test_s05_pc_serial.py",
+    "PC_test_command": "python3 -m unittest discover -s tests -p 'test_s05_pc*.py' -v",
+    "PC_software_evidence": "engineering/evidence/s05/pc_link/PC-LINK-SOFTWARE-EVIDENCE-v0.1.json",
+    "PC_software_test_count": 55,
+    "PC_software_test_failures": 0,
+    "software_FPGA_simulator": "IMPLEMENTED_PYTHON_ONLY_NO_FPGA_RTL",
+    "laboratory_R1_direction": "AUTHORIZED_FOR_PC_SOFTWARE_IMPLEMENTATION_NOT_FINAL_ICD_PASS",
+    "host_journal_release_unknown": "BLOCKED_PENDING_DURABILITY_CONTRACT",
+    "board_UART_test": "NOT_RUN"
+  },
+  "pc_uart_software_reference": {
+    "status": "PC_SOFTWARE_IMPLEMENTED_UNITTEST_PASS",
+    "root": "pc_link",
+    "modules": [
+      "pc_link/codec.py",
+      "pc_link/session.py",
+      "pc_link/arq.py",
+      "pc_link/iq.py",
+      "pc_link/simulator.py",
+      "pc_link/serial_io.py",
+      "pc_link/__main__.py"
+    ],
+    "tests": [
+      "tests/test_s05_pc_link.py",
+      "tests/test_s05_pc_serial.py"
+    ],
+    "test_count_run": 55,
+    "passed": 55,
+    "failed": 0,
+    "demo": "FPGASoftwareSimulator; 35 upload packets; 16896 byte readback; 88 RESULT packets; 702 synthetic records; host COMMIT once",
+    "evidence": "engineering/evidence/s05/pc_link/PC-LINK-SOFTWARE-EVIDENCE-v0.1.json",
+    "real_UART_RTL": "NOT_IMPLEMENTED",
+    "real_board_test": "NOT_RUN",
+    "not_in_scope": [
+      "RELEASE_CPI durable journal",
+      "RECOVER_UNKNOWN durable host journal",
+      "seven DSP stage schemas",
+      "S04 numerical qualification"
+    ]
   }
 }

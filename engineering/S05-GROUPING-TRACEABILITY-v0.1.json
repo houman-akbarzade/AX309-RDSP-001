@@ -121,7 +121,7 @@
     "status": "R2_CONDITIONALLY_ACCEPTED_FOR_FURTHER_SPECIFICATION_NOT_FINAL_SIGNOFF",
     "REQ-UART-01": "APPROVED_S02_TRANSPORT_PRIMITIVES_ONLY_ICD_PENDING",
     "REQ-LIST-01": "LOGICAL_APPROVED_PHYSICAL_AND_HOST_UART_NOT_PASS",
-    "host_packet_codec": "NOT_IMPLEMENTED",
+    "host_packet_codec": "SOFTWARE_UNITTEST_55_OF_55_PASS",
     "UART_serial_ISim": "NOT_RUN",
     "FPGA_frame_controller": "NOT_IMPLEMENTED",
     "full_FPGA_resource_fit": "OPEN",
@@ -148,7 +148,20 @@
       "REQ-LIST-01": "LOGICAL_POLICY_APPROVED_FULL_TRANSPORT_TECHNICAL_PASS_OPEN",
       "REQ-OBS-01": "SEVEN_DSP_STAGE_OUTPUT_SCHEMAS_OPEN_NOT_APPROVED",
       "PC_packetizer_parser": "NOT_IMPLEMENTED",
-      "UART_RTL": "NOT_IMPLEMENTED"
+      "UART_RTL": "NOT_IMPLEMENTED",
+      "lab_implementation": "PC_CODEC_AND_FAKE_SERIAL_SIM_IMPLEMENTED",
+      "actual_20_case_R1_full_matrix": "NOT_RUN_IN_FULL",
+      "software_unit_evidence": "engineering/evidence/s05/pc_link/PC-LINK-SOFTWARE-EVIDENCE-v0.1.json"
     }
+  },
+  "PC_S05_UART_software_verification": {
+    "test_status": "SOFTWARE_PASS_55_TESTS",
+    "evidence": "engineering/evidence/s05/pc_link/PC-LINK-SOFTWARE-EVIDENCE-v0.1.json",
+    "simulated_IQ": "35_PACKETS_16896_BYTE_EXACT_READBACK",
+    "simulated_result": "702_SYNTHETIC_TRANSPORT_RECORDS_88_RESULT_PACKETS_COMMIT",
+    "R1_link_session": "PC_SOFTWARE_IMPLEMENTATION_ENABLED_NOT_FINAL_SIGNOFF",
+    "FPGA_board_or_RTL_status": "NOT_RUN_NOT_IMPLEMENTED",
+    "REQ_LIST_01_logical_policy": "APPROVED",
+    "REQ_LIST_01_technical": "OPEN"
   }
 }

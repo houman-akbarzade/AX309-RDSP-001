@@ -3,6 +3,7 @@
 // This preserves exact arithmetic; no mandatory stage is moved to the host.
 module radar_cpi_core(
  input wire clk,rst,start,
+ input wire debug_read,input wire [11:0] debug_addr,output wire [45:0] debug_power,
  output reg [12:0] iq_read_addr,input wire [31:0] iq_read_word,
  output wire out_valid,input wire out_ready,
  output wire [9:0] out_record_id,output wire [6:0] out_range,
@@ -28,10 +29,12 @@ module radar_cpi_core(
  wire mf_start=(state==MF_BEGIN);
  wire mf_done,mf_sat,mf_error;
  wire signed [21:0] mf_re,mf_im;
+ wire signed [15:0] sample_re_selected=zero_sample?16'sd0:iq_read_word[15:0];
+ wire signed [15:0] sample_im_selected=zero_sample?16'sd0:iq_read_word[31:16];
  mf16_serial_mac u_mf(.clk(clk),.rst(rst),.start(mf_start),
  .range_in(range_index),.tap_valid(state==TAP_SEND),.tap_index(tap),
- .sample_re(zero_sample?16'sd0:$signed(iq_read_word[15:0])),
- .sample_im(zero_sample?16'sd0:$signed(iq_read_word[31:16])),
+ .sample_re(sample_re_selected),
+ .sample_im(sample_im_selected),
  .busy(),.done(mf_done),.range_out(),.result_re(mf_re),.result_im(mf_im),
  .saturation_event(mf_sat),.saturation_mask(),.prelimit_re(),.prelimit_im(),
  .protocol_error(mf_error));
@@ -60,7 +63,7 @@ module radar_cpi_core(
  .out_valid(power_valid),.out_ready(map_ready),.power_out(power_value),
  .range_out(power_range),.bin_out(power_bin),.overflow_sticky(pow_sat));
  cfar_grouping_subsystem u_detect(.clk(clk),.rst(rst),
- .start(start && !busy),.map_valid(power_valid),.map_ready(map_ready),
+ .start(start && !busy),.debug_read(debug_read),.debug_addr(debug_addr),.debug_power(debug_power),.map_valid(power_valid),.map_ready(map_ready),
  .map_power(power_value),.cut_pause(1'b0),
  .out_valid(out_valid),.out_ready(out_ready),
  .out_record_id(out_record_id),.out_range(out_range),.out_bin(out_bin),

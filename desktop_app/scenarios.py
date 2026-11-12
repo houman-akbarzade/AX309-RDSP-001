@@ -66,7 +66,7 @@ def score(records,targets):
    for i,v in enumerate(records) if i not in used]
   eligible=[v for v in choices if v[0]<=2 and v[1]<=1]
   if eligible:
-   dr,db,i,v=min(eligible,key=lambda v:(v[0]+v[1],-v[3]['power_stored_integer']))
+   dr,db,i,v=min(eligible,key=lambda v:(v[0]+v[1],-v[3].get('power_stored_integer',v[3].get('peak_power_linear',0))))
    used.add(i);matches.append(dict(target=t.name,matched=True,record=i,range_error_m=(v['range_bin']-t.delay)*RANGE_STEP,
     velocity_error_m_s=(v['signed_doppler_bin']*VELOCITY_STEP-t.velocity)))
   else:matches.append(dict(target=t.name,matched=False))

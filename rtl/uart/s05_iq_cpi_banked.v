@@ -15,7 +15,9 @@ module s05_iq_cpi_banked (
     reg [31:0] bank1[0:127];
     reg [31:0] read0;
     reg [31:0] read1;
+    reg read_bank;
     always @(posedge clk) begin
+        read_bank<=read_addr[12];
         if (write_en && !write_addr[12])
             bank0[write_addr[11:0]] <= write_word;
         if (write_en && write_addr[12] && write_addr[11:7]==0)
@@ -24,5 +26,5 @@ module s05_iq_cpi_banked (
         read0 <= bank0[read_addr[11:0]];
         read1 <= bank1[read_addr[6:0]];
     end
-    assign read_word = read_addr[12] ? read1 : read0;
+    assign read_word = read_bank ? read1 : read0;
 endmodule

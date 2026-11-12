@@ -5,6 +5,7 @@ module cfar_grouping_subsystem #(
  parameter integer GROUP_MAX_LABELS = 702
 ) (
  input wire clk, rst, start,
+ input wire debug_read, input wire [11:0] debug_addr, output wire [45:0] debug_power,
  input wire map_valid,
  input wire cut_pause, // optional safe throttling from a future frame controller
  output wire map_ready,
@@ -41,6 +42,7 @@ module cfar_grouping_subsystem #(
 
  cfar_2d_scan u_scanner(
   .clk(clk), .rst(rst), .start(start),
+  .debug_read(debug_read),.debug_addr(debug_addr),.debug_power(debug_power),
   .map_valid(map_valid), .map_ready(map_ready), .map_power(map_power),
   .out_valid(cut_valid), .out_ready(cut_ready),
   .out_range(cut_range), .out_bin(cut_bin), .out_power(cut_power),

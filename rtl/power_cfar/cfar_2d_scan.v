@@ -9,6 +9,9 @@ module cfar_2d_scan (
     input wire rst,
     input wire start,
 
+    input wire debug_read,
+    input wire [11:0] debug_addr,
+    output wire [45:0] debug_power,
     input wire map_valid,
     output wire map_ready,
     input wire [45:0] map_power,
@@ -69,6 +72,10 @@ module cfar_2d_scan (
 
     wire cmp_alarm;
     wire cmp_equality;
+    wire ram_read_enable=(state==ST_SCAN_INIT) || (state==ST_READ && !guard_cell) || (state==ST_IDLE && debug_read);
+    wire [11:0] ram_read_addr=(state==ST_IDLE)?debug_addr:(state==ST_SCAN_INIT)?cut_addr:train_addr;
+    always @(posedge clk)if(ram_read_enable)mem_q<=power_mem[ram_read_addr];
+    assign debug_power=mem_q;
     assign map_ready = (state == ST_LOAD);
     assign out_valid = (state == ST_EMIT);
     assign out_range = cut_range;
@@ -101,7 +108,7 @@ module cfar_2d_scan (
             win_row <= 3'd0;
             win_col <= 3'd0;
             training_count <= 6'd0;
-            mem_q <= 46'd0;
+
             cut_power <= 46'd0;
             sum40 <= 52'd0;
         end else begin
@@ -122,7 +129,7 @@ module cfar_2d_scan (
 
             case (state)
                 ST_IDLE: begin
-                    // A start pulse is handled above; otherwise remain idle.
+
                 end
 
                 ST_LOAD: begin
@@ -143,7 +150,7 @@ module cfar_2d_scan (
                     win_col <= 3'd0;
                     training_count <= 6'd0;
                     sum40 <= 52'd0;
-                    mem_q <= power_mem[cut_addr];
+
                     state <= ST_READ;
                 end
 
@@ -158,7 +165,7 @@ module cfar_2d_scan (
                     end else begin
                         if ((win_row == 3'd0) && (win_col == 3'd0))
                             cut_power <= mem_q;
-                        mem_q <= power_mem[train_addr];
+
                         state <= ST_ACCUM;
                     end
                 end

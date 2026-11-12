@@ -22,6 +22,8 @@ module mf16_serial_mac (
     wire signed [15:0] coeff_re;
     wire signed [15:0] coeff_im;
     reg [3:0] expected_tap;
+    reg finalize_pending;
+    reg signed [36:0] final_re,final_im;
     reg signed [36:0] accum_re;
     reg signed [36:0] accum_im;
 
@@ -50,17 +52,18 @@ module mf16_serial_mac (
     wire signed [63:0] pre_re, pre_im;
 
     rne_sat_signed #(.IN_W(37),.OUT_W(22)) u_rne_re (
-        .in_value(accum_re_next), .shift_amt(6'd15),
+        .in_value(final_re), .shift_amt(6'd15),
         .out_value(rounded_re), .overflow(ov_re), .prelimit(pre_re)
     );
     rne_sat_signed #(.IN_W(37),.OUT_W(22)) u_rne_im (
-        .in_value(accum_im_next), .shift_amt(6'd15),
+        .in_value(final_im), .shift_amt(6'd15),
         .out_value(rounded_im), .overflow(ov_im), .prelimit(pre_im)
     );
 
     always @(posedge clk) begin
         if (rst) begin
             busy <= 1'b0;
+            finalize_pending<=0;final_re<=0;final_im<=0;
             done <= 1'b0;
             range_out <= 7'd0;
             result_re <= 22'sd0;
@@ -78,6 +81,12 @@ module mf16_serial_mac (
             saturation_event <= 1'b0;
             saturation_mask <= 2'b00;
 
+            if(finalize_pending)begin
+                result_re<=rounded_re;result_im<=rounded_im;
+                prelimit_re<=pre_re;prelimit_im<=pre_im;
+                saturation_mask<={ov_im,ov_re};saturation_event<=ov_re|ov_im;
+                done<=1;busy<=0;finalize_pending<=0;
+            end
             if (start) begin
                 if (busy) begin
                     protocol_error <= 1'b1;
@@ -90,7 +99,8 @@ module mf16_serial_mac (
                 end
             end
 
-            if (tap_valid && busy) begin
+            if(tap_valid && finalize_pending)protocol_error<=1;
+            if (tap_valid && busy && !finalize_pending) begin
                 if (tap_index != expected_tap) begin
                     protocol_error <= 1'b1;
                     busy <= 1'b0;
@@ -99,14 +109,8 @@ module mf16_serial_mac (
                     accum_im <= accum_im_next;
                     expected_tap <= expected_tap + 4'd1;
                     if (tap_index == 4'd15) begin
-                        result_re <= rounded_re;
-                        result_im <= rounded_im;
-                        prelimit_re <= pre_re;
-                        prelimit_im <= pre_im;
-                        saturation_mask <= {ov_im,ov_re};
-                        saturation_event <= ov_re | ov_im;
-                        done <= 1'b1;
-                        busy <= 1'b0;
+                        final_re<=accum_re_next;final_im<=accum_im_next;
+                        finalize_pending<=1;
                     end
                 end
             end

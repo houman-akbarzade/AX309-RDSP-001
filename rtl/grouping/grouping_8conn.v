@@ -69,9 +69,9 @@ module grouping_8conn #(
     reg [STAT_W-1:0] stat_a;
     (* ram_style = "block" *) reg [9:0] parent [0:RAM_LAST_ADDRESS];
     reg [9:0] parent_q;
-    reg emitted [0:RAM_LAST_ADDRESS];
-    reg [9:0] prev_row [0:31];
-    reg [9:0] curr_row [0:31];
+    (* ram_style="distributed" *) reg emitted [0:RAM_LAST_ADDRESS];
+    (* ram_style="distributed" *) reg [9:0] prev_row [0:31];
+    (* ram_style="distributed" *) reg [9:0] curr_row [0:31];
 
     reg [5:0] state;
     reg [6:0] expected_range;
@@ -275,6 +275,45 @@ module grouping_8conn #(
     end
 
 
+
+    // Experimental equivalent single-write-port table inference.
+    reg emitted_we,emitted_data;
+    reg [9:0] emitted_addr;
+    reg curr_we,prev_we;
+    reg [4:0] curr_addr;
+    reg [9:0] curr_data,prev_data;
+    always @* begin
+        emitted_we=0;emitted_addr=0;emitted_data=0;
+        curr_we=0;curr_addr=0;curr_data=0;
+        prev_we=0;prev_data=0;
+        if(state==S_PROCESS && selected_root==0 && label_count<MAX_LABELS && label_count<PHYSICAL_LABELS) begin
+            emitted_we=1;emitted_addr=next_label;emitted_data=0;
+            curr_we=1;curr_addr=expected_bin-5'd3;curr_data=next_label;
+        end
+        if(state==S_OUTPUT && out_ready) begin
+            emitted_we=1;emitted_addr=best_index;emitted_data=1;
+        end
+        if(state==S_INIT_ROW) begin
+            curr_we=1;curr_addr=row_index;curr_data=0;prev_we=1;prev_data=0;
+        end
+        if(state==S_SHIFT_ROW) begin
+            curr_we=1;curr_addr=row_index;curr_data=0;prev_we=1;prev_data=curr_row[row_index];
+        end
+        if(state==S_ACCEPT && in_valid && in_range==expected_range && in_bin==expected_bin && !in_alarm) begin
+            curr_we=1;curr_addr=expected_bin-5'd3;curr_data=0;
+        end
+        if(state==S_ADD_WRITE) begin
+            curr_we=1;curr_addr=expected_bin-5'd3;curr_data=selected_root;
+        end
+    end
+    always @(posedge clk)begin
+        if(!rst)begin
+            if(emitted_we)emitted[emitted_addr]<=emitted_data;
+            if(curr_we)curr_row[curr_addr]<=curr_data;
+            if(prev_we)prev_row[row_index]<=prev_data;
+        end
+    end
+
     assign in_ready = (state == S_ACCEPT);
     assign out_valid = (state == S_OUTPUT);
     assign out_record_id = emitted_count;
@@ -336,8 +375,6 @@ module grouping_8conn #(
                 end
 
                 S_INIT_ROW: begin
-                    prev_row[row_index] <= 10'd0;
-                    curr_row[row_index] <= 10'd0;
                     if (row_index == 5'd31)
                         state <= S_ACCEPT;
                     else
@@ -354,7 +391,6 @@ module grouping_8conn #(
                             done <= 1'b1;
                             state <= S_IDLE;
                         end else if (!in_alarm) begin
-                            curr_row[expected_bin-5'd3] <= 10'd0;
                             state <= S_STEP;
                         end else begin
                             current_power <= in_power;
@@ -424,10 +460,8 @@ module grouping_8conn #(
                             done <= 1'b1;
                             state <= S_IDLE;
                         end else begin
-                            emitted[next_label] <= 1'b0;
                             label_count <= next_label;
                             root_count <= root_count + 10'd1;
-                            curr_row[expected_bin-5'd3] <= next_label;
                             state <= S_STEP;
                         end
                     end else
@@ -436,7 +470,6 @@ module grouping_8conn #(
 
                 S_ADD_READ: state <= S_ADD_WRITE;
                 S_ADD_WRITE: begin
-                    curr_row[expected_bin-5'd3] <= selected_root;
                     state <= S_STEP;
                 end
 
@@ -455,8 +488,6 @@ module grouping_8conn #(
                 end
 
                 S_SHIFT_ROW: begin
-                    prev_row[row_index] <= curr_row[row_index];
-                    curr_row[row_index] <= 10'd0;
                     if (row_index == 5'd31) begin
                         expected_range <= expected_range + 7'd1;
                         expected_bin <= 5'd3;
@@ -500,7 +531,6 @@ module grouping_8conn #(
 
                 S_OUTPUT: begin
                     if (out_ready) begin
-                        emitted[best_index] <= 1'b1;
                         emitted_count <= emitted_count + 10'd1;
                         state <= S_SORT_INIT;
                     end

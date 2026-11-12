@@ -1,0 +1,74 @@
+{
+  "schema_version": "eem-experience-v1",
+  "id": "EXP-AX309-017",
+  "title": "Check opaque FPGA IP clock connectivity after mixed RTL/netlist integration",
+  "project": "AX309-RDSP-001",
+  "stage": "S05/S09 laboratory probe",
+  "category": "clocking-and-integration",
+  "tags": [
+    "ISE",
+    "Spartan-6",
+    "FFT-IP",
+    "BUFG",
+    "hold",
+    "opaque-netlist"
+  ],
+  "origin": "current_project",
+  "state": "CANDIDATE",
+  "observed_problem": "Full optimized resource probe mapped and met setup at 50MHz but had 18 DSP cascade hold violations. PAR showed an extra fabric-routed local clk_IBUF network with 305 loads beside the inferred BUFG.",
+  "initial_assumption": "A BUFG inferred for visible soft RTL would necessarily clock the opaque linked FFT NGC as well.",
+  "observable_consequence": "The IP DSP cascade path had 0.508ns data delay and 0.589ns positive clock skew, yielding -0.081ns hold slack. Standalone IP timing had not exposed the integration clock split.",
+  "assessed_root_cause": "Mixed inferred-clock RTL and opaque NGC integration left the IP branch on the raw input clock net; verified in PAR clock reports.",
+  "corrective_method": "Use one explicit top-level BUFG shared by all soft logic and opaque FFT IP. Retain the 20ns constraint and reject timing exception workarounds.",
+  "alternatives_and_negative_results": [
+    "Local-clock version: minimum period 19.417ns but 18 hold failures; not accepted.",
+    "No false-path, multicycle, or clock-period relaxation was used."
+  ],
+  "repeatable_validation": "Recreate grouping_ram_pipelined and grouping_ram_globalclock with prepare_resource_probes.py and run MAP/PAR/TRCE; inspect clock reports. Final probe: clk_g global only, 1213 loads, min period 19.260ns, setup/hold failures zero.",
+  "generalizable_lesson": "Standalone IP timing success and a visible top BUFG do not prove that every linked IP clock endpoint uses that BUFG. Inspect post-link/post-route clock networks and include hold checks.",
+  "applicability": "Mixed soft RTL and opaque IP/netlist synthesis flows, especially inferred clock-buffer insertion.",
+  "nonapplicability": "Not a claim that all cores require manually instantiated BUFGs; explicit clock architecture and actual tool reports govern. Does not justify unsupported timing exceptions.",
+  "safety_and_contract_constraints": "No production RTL or bitstream change; no stage advance; no change to C02 arithmetic, requirements, existing acceptance or prior lessons.",
+  "author_role": "FPGA implementation agent",
+  "reviewer_role": "Pending engineer review; no independent human review claimed",
+  "observed_at_utc": "2026-11-12T10:18:34.949687+00:00",
+  "time_provenance": "Current experiment recording time; not historical reconstruction",
+  "evidence": [
+    {
+      "path": "engineering/evidence/s05/ip_evaluation_20261112/resources/grouping_ram_pipelined/par.log.gz",
+      "sha256": "04ef867e7e420da854a5d0168d226cf431600e226d356c665656425421c6bf62",
+      "git_commit": "f6c4284",
+      "replay_event_ids": [
+        "AX309-E0141"
+      ]
+    },
+    {
+      "path": "engineering/evidence/s05/ip_evaluation_20261112/resources/grouping_ram_pipelined/probe.twr.gz",
+      "sha256": "e61f3c34567bab3a98396bedf93e087e204ff8c1af7bb4d28b7944bf1f614063",
+      "git_commit": "f6c4284",
+      "replay_event_ids": [
+        "AX309-E0141"
+      ]
+    },
+    {
+      "path": "engineering/evidence/s05/ip_evaluation_20261112/resources/grouping_ram_globalclock/par.log.gz",
+      "sha256": "176eb484febb64abd44e35100bbe995adeffd6d076956f43ef586ea51fddd02e",
+      "git_commit": "f6c4284",
+      "replay_event_ids": [
+        "AX309-E0141"
+      ]
+    },
+    {
+      "path": "engineering/evidence/s05/ip_evaluation_20261112/resources/grouping_ram_globalclock/probe.twr.gz",
+      "sha256": "03c3422c105a827d81dc13120bd205430bca6b6247673b06997ab70ec7959ee5",
+      "git_commit": "f6c4284",
+      "replay_event_ids": [
+        "AX309-E0141"
+      ]
+    }
+  ],
+  "prior_lesson_links": [],
+  "supersedes": null,
+  "plugin_release_provenance": null,
+  "engineer_approval": null
+}

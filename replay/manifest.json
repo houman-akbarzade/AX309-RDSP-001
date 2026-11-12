@@ -1,13 +1,13 @@
 {
   "canonical": true,
-  "conversation_archive_row_count": 103,
+  "conversation_archive_row_count": 105,
   "conversation_capture_quality_counts": {
     "EXCERPT": 30,
     "FULL": 57,
     "SUMMARY": 6,
-    "verbatim": 10
+    "verbatim": 12
   },
-  "conversation_hash_sha256": "eda95232c8d4970966587542690d67f737c80b1bf7c663b71be58e23d4df3492",
+  "conversation_hash_sha256": "6d370dfc8ced9d0be023452dea5f51231c6b6ffbc11ed48f65662621f186d93e",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "eem_backfill": {
     "approved": 0,
@@ -19,17 +19,17 @@
     "status": "COMPLETE_CANDIDATES_VALIDATED_NOT_PROMOTED",
     "validated": 16
   },
-  "event_count": 140,
-  "events_hash_sha256": "5e706562e68f941dbe6907a9cec182b029a43a00cdb215e20f624231282b3be8",
+  "event_count": 141,
+  "events_hash_sha256": "5cbe7ad3207570034c79e0ae8f584665268e45bb049c3e66a666e752e8654d29",
   "historical_timestamp_policy": "recorded_at_utc is capture time; historical_time_utc remains null when original platform time is unavailable.",
-  "last_event_id": "AX309-E0140",
-  "last_message_ref": "AX309-20261112-IP-TRIAL-agent-final",
+  "last_event_id": "AX309-E0141",
+  "last_message_ref": "AX309-20261112-IP-EVALUATION-agent-final",
   "legacy_capture_policy": "Preserve EXCERPT and SUMMARY records as captured; do not reconstruct or upgrade them to FULL.",
   "legacy_projection_generated": false,
   "project_id": "AX309-RDSP-001",
   "schema_version": "0.2.0",
   "timestamps_warning": "Record capture times are not historical chat times",
-  "updated_at_utc": "2026-11-12T09:16:32.180009+00:00",
+  "updated_at_utc": "2026-11-12T10:22:27.454942+00:00",
   "dialogue_integrity_r2": {
     "jsonl_parse": "PASS",
     "identified_id_uniqueness": "PASS",
@@ -38,5 +38,16 @@
     "historical_completeness": "INCOMPLETE: preserve 30 excerpts and 6 summaries",
     "current_turn": "Engineer message and exact prepared final stored; text and SHA readback PASS. Historical gaps remain."
   },
-  "feasibility_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical incompleteness retained."
+  "feasibility_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical incompleteness retained.",
+  "eem_current_register": {
+    "total": 17,
+    "states": {
+      "VALIDATED": 16,
+      "CANDIDATE": 1
+    },
+    "index_sha256": "6e8b6396340fdf5c3ba0a1f35483f6848c6170f43347cb7ba30a1b04b359e31e",
+    "new_candidate": "EXP-AX309-017",
+    "engineer_approval": null
+  },
+  "IP_evaluation_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical excerpts/summaries remain incomplete."
 }

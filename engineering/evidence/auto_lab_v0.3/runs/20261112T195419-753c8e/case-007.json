@@ -1,0 +1,226 @@
+{
+  "id": "case-007",
+  "case": "Range separation 8 cells",
+  "scope": "isolated",
+  "stage": 1,
+  "entry": 0,
+  "targets": [
+    {
+      "name": "R1",
+      "delay": 45,
+      "velocity": 2.8125,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    },
+    {
+      "name": "R2",
+      "delay": 53,
+      "velocity": 2.8125,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    }
+  ],
+  "noise_rms": 0.0,
+  "seed": 20261112,
+  "origin": {
+    "origin": "Software Float FFT/chain (no IP model)",
+    "input_quantization_RMSE": 5.3932805365429145e-06,
+    "input_clips": 0
+  },
+  "metrics": {
+    "Python Float": {
+      "RMSE": 7.479073344787993e-06,
+      "NRMSE_percent": 0.0015344649823169168,
+      "max_abs_error": 2.342309979900504e-05,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "full_chain_metrics": {},
+  "functional": {
+    "range_resolution": {
+      "separation_m": 1199.169832,
+      "peaks": [
+        45,
+        53
+      ],
+      "valley_depth_db": 6.8766630917063605,
+      "valley_exact_zero": false,
+      "resolved": true,
+      "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+    }
+  },
+  "reference_functional": {
+    "Python Float": {
+      "range_resolution": {
+        "separation_m": 1199.169832,
+        "peaks": [
+          45,
+          53
+        ],
+        "valley_depth_db": 6.876797230516605,
+        "resolved": true,
+        "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+      }
+    },
+    "Python Fixed": {
+      "range_resolution": {
+        "separation_m": 1199.169832,
+        "peaks": [
+          45,
+          53
+        ],
+        "valley_depth_db": 6.8766630917063605,
+        "resolved": true,
+        "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+      }
+    }
+  },
+  "hardware_records": null,
+  "status": {
+    "target": 1,
+    "state": 3,
+    "flags": 0,
+    "input_words": 128,
+    "output_words": 128
+  },
+  "physical_UART": true,
+  "reused_identical_capture": false,
+  "input_sha256": "dc4a532b51869a8ebaef60806163820a0fb084d0f446c171a05b261df9ecf4a9",
+  "output_sha256": "1f323361de138bad5039799e2c1e080c4c393193066ba49e097fdacf62719908",
+  "input_echo_verified": true,
+  "elapsed_s": 0.9576730679982575,
+  "transport_trace": [
+    {
+      "sequence": 0,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "8425f2ae63664dda3bbc7cd0a0f5eeea9aff2ab1a107ff69f3f237ff074f83be",
+      "response_sha256": "e1e1d5e070fabdcab8e7f90a75ef3e8b6fa1e2c1f330896b9d5f69d34360269a"
+    },
+    {
+      "sequence": 1,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "0ae0b7a4bfad738b7882129774a4c10dd5ec4a2d9ddc4321e374a2d6628f8e64",
+      "response_sha256": "b6a470bce1f9f626493f74fdadd829a55d1c11f545bca371d3eb88b0166c09ff"
+    },
+    {
+      "sequence": 2,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "562466eb5b0d0111efebd68867a69ca51206d21cf258f16b21c56c2bcddd4dfd",
+      "response_sha256": "b132c0643791d5c237262ce6601cf6b56471415f1e11b1ae854853b7935e2103"
+    },
+    {
+      "sequence": 3,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "abdb4fe19b293096e05839083c8206e1eb0f24f98a1d65304921a80c08d62e1f",
+      "response_sha256": "c17dcb9654dfe3fd6ff04e907135f15308a9199c068c4fb063b68eb868608e52"
+    },
+    {
+      "sequence": 4,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "0402820e55167927a4aa0c8fc676152aab163af7233011c7305e9b3b747eb34c",
+      "response_sha256": "23ddd25e4e4b0e20292af034129137a46b093e58770be01d5ecdde6f7f203901"
+    },
+    {
+      "sequence": 5,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "8a0165b129492690ece2a3efe44771554117da064789f7f47fb7a49016f6591b",
+      "response_sha256": "0e1106fcee033301dcb3975c0e04664061958e4068ca75878a440f63f01fbee3"
+    },
+    {
+      "sequence": 6,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "d9fe7cf814e81cd5bc472ff00c4b001436842b798fa0f2c0a1d5a63aaaa6b1c3",
+      "response_sha256": "8f7388c082b9a72bda6b93a5c05bb82c67bc0fa0e9f2d90572db1f6223e63725"
+    },
+    {
+      "sequence": 7,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "9dbd03b25f06f23fbc5ad95d9b04de31a02edc670e42a30396326f8e314c03fb",
+      "response_sha256": "bb8789931eaf06583b5d0997e88a77548ee68be893a5413fcdb13a96d0575558"
+    },
+    {
+      "sequence": 8,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "618628a7d2523f7ea85235704bdab7301af1777a7fd6e140bc717f10a4b25f21",
+      "response_sha256": "f5d5e5202f3e261c8dab2921deba34782ddefc0ecec8ca8d24ff1206682f3f70"
+    },
+    {
+      "sequence": 9,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "9ba45ea5252f04f45c2f4e00652b9d0679dbb23051ff90f34f6fa70a4366ea1e",
+      "response_sha256": "c689375c16ec48772327783e7f32f9fa150a5ce0d0cc89dc7f2839b750c21549"
+    },
+    {
+      "sequence": 10,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "bf7b5cf0ad31892d45019bb1f7bc1bfbb9b1c3ad35858ab32a2d8639fe8bfdc9",
+      "response_sha256": "bb93f891f67fa49890c9ee52dc60f1416bb2a3c50b1d795525aa6288c402f9e2"
+    },
+    {
+      "sequence": 11,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "88b6c0d816c1bb6d3a227cbb56bd226e814421ec69e611f8d0ac1977173d3dbd",
+      "response_sha256": "51226199d114b9b09a625e9d78be4fb8be745fad9d9d08843c0763f38db15b1b"
+    },
+    {
+      "sequence": 12,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "8f6230fc9d719417bcd33f0e85199963f442276c2823a859fd0a0990dc72c4ab",
+      "response_sha256": "94f78ca61c14796c54bc9d427da41c9c5c8600d513e780465bbbe3a249d57ba9"
+    }
+  ],
+  "artifact": "case-007.npz",
+  "analysis_history": [
+    {
+      "previous_functional": {
+        "range_resolution": {
+          "separation_m": 1199.169832,
+          "peaks": [
+            45,
+            53
+          ],
+          "valley_depth_db": 6.8766630917063605,
+          "resolved": true,
+          "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+        }
+      },
+      "reason": "Recomputed from preserved actual words; exact-zero valley is not an arbitrary finite dB floor."
+    }
+  ]
+}

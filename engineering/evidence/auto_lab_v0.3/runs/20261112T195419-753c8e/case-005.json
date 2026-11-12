@@ -1,0 +1,199 @@
+{
+  "id": "case-005",
+  "case": "Range separation 2 cells",
+  "scope": "isolated",
+  "stage": 1,
+  "entry": 0,
+  "targets": [
+    {
+      "name": "R1",
+      "delay": 45,
+      "velocity": 2.8125,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    },
+    {
+      "name": "R2",
+      "delay": 47,
+      "velocity": 2.8125,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    }
+  ],
+  "noise_rms": 0.0,
+  "seed": 20261112,
+  "origin": {
+    "origin": "Software Float FFT/chain (no IP model)",
+    "input_quantization_RMSE": 3.965117896661203e-06,
+    "input_clips": 0
+  },
+  "metrics": {
+    "Python Float": {
+      "RMSE": 7.097881187619991e-06,
+      "NRMSE_percent": 0.0011285267026860304,
+      "max_abs_error": 2.568039246655396e-05,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "full_chain_metrics": {},
+  "functional": {
+    "range_resolution": {
+      "separation_m": 299.792458,
+      "peaks": [],
+      "valley_depth_db": null,
+      "resolved": false,
+      "criterion": "Two distinct local maxima, each within ±1 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+    }
+  },
+  "reference_functional": {
+    "Python Float": {
+      "range_resolution": {
+        "separation_m": 299.792458,
+        "peaks": [],
+        "valley_depth_db": null,
+        "resolved": false,
+        "criterion": "Two distinct local maxima, each within ±1 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+      }
+    },
+    "Python Fixed": {
+      "range_resolution": {
+        "separation_m": 299.792458,
+        "peaks": [],
+        "valley_depth_db": null,
+        "resolved": false,
+        "criterion": "Two distinct local maxima, each within ±1 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+      }
+    }
+  },
+  "hardware_records": null,
+  "status": {
+    "target": 1,
+    "state": 3,
+    "flags": 0,
+    "input_words": 128,
+    "output_words": 128
+  },
+  "physical_UART": true,
+  "reused_identical_capture": false,
+  "input_sha256": "7e160bba64ac4d2001d50dc46849b95cfc470c00cf6bcb9e4bbcb8e49a251497",
+  "output_sha256": "579bd733d923bde5251b355e1af0684a88e1b10cb5982629245d39c5be19628c",
+  "input_echo_verified": true,
+  "elapsed_s": 0.9541768589988351,
+  "transport_trace": [
+    {
+      "sequence": 0,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "9d248aba6ca7815d3c35ed6b72b38ee63e044a9943663dcd6d393d8b602d9865",
+      "response_sha256": "8c1fdccacfb4905b70c3a70f7536ece17acd3b28a6135defe17875d578698b96"
+    },
+    {
+      "sequence": 1,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "8ade1e76e6c6661ae7b0ea8291e490a8c2d635cb5595bd2269d9e9a307dae3b5",
+      "response_sha256": "b2434f97508fb491b9944c2e96e8a53df951f705b5de37c3cbc00857a398f447"
+    },
+    {
+      "sequence": 2,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "e4edcba4f827caaf03a71c6fcbc0c424b068693a25076e4440252828c56efe18",
+      "response_sha256": "e0f2ada7f4229a3af7585e4d7dfc3b1af839d0911a1a961745c918f4b22f5d6f"
+    },
+    {
+      "sequence": 3,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "deeb67c75bf812644cb4d85f2f73f0d1abeed33e32aa82941218f46885b4e672",
+      "response_sha256": "6e40a5af2e4f06d20addb8cc925131d93524be5d8b631397a2a2dd57d53e4e7a"
+    },
+    {
+      "sequence": 4,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "fea79b9f5884dfb05a61442c315fb7a6b268fd9f6b6ac68f9da67c8cf8061b8d",
+      "response_sha256": "9590e5a0ae8bb74a90dac33d29a4e604716462af2ac7761b46cf0ed215cf73db"
+    },
+    {
+      "sequence": 5,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "bcf08f93798159ea7ddd70e37cd73f4f3959fd813237cdfbc1eaf3387060730e",
+      "response_sha256": "89a5197574678a870dd5dda2f0e058a7d303fc7047498f01f6aa81b2fe9c6253"
+    },
+    {
+      "sequence": 6,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "dc373f363479ba772e8d19020b90fb6dab1db47e35bc2342d5807a9dbe5e524f",
+      "response_sha256": "417de5bf4cd0423ac0417f48fe6ce1378dac2d5d69f0e1666bc035c10bbcd7f5"
+    },
+    {
+      "sequence": 7,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "37d14d4e3f4472cc9aadc6d686ecd170846f1e470679aec3040d6f0aca4d76d5",
+      "response_sha256": "f05a285231f307df1ff4e76fd5657b921bf5d9977322523255c28d2b55a76765"
+    },
+    {
+      "sequence": 8,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "9a7d2b855828ba84a57192db70bcc7e4de6b2f417d2b8fd267a19a839c91ab66",
+      "response_sha256": "48fba52f5932ab786d4fbafadfca63a5f7f3cbb1a6d290bc7263af8db32f27f6"
+    },
+    {
+      "sequence": 9,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "88b7dd813d0172432df686054b76e81aaddf7c5e80d7e340467939eb72c90ca9",
+      "response_sha256": "3bd55edf3e30b89f8cc4412601935eb379a9eaf8b3c3c5cf191af03f0f5a2962"
+    },
+    {
+      "sequence": 10,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "4d9858338a5930230da7883e3ba41a1d3c66f560d2cd25d1cf590e45ac042b72",
+      "response_sha256": "9326f4030102cf7c403dae6ea0d664f85420adc61844baf976b6fc502efb23e7"
+    },
+    {
+      "sequence": 11,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "5c55a6e475f042c0b5b259f2365432dc109db07ed4f4d9f8705a63dc8b429d32",
+      "response_sha256": "63730b63c85bb89b50af57dd45960a7308e88947a56f79bf967e36f380ee7e30"
+    },
+    {
+      "sequence": 12,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "11d52ccebf9a137c2372c4a1c0bb38fb67476c698230fd11270e5ccf498e5627",
+      "response_sha256": "28c22f2ab4ad076144fdca6cd0754c5f4bcdc22e5203a19198ba2ee01c7591d8"
+    }
+  ],
+  "artifact": "case-005.npz"
+}

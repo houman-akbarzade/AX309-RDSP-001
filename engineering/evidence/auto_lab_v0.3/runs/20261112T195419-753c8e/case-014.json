@@ -1,0 +1,235 @@
+{
+  "id": "case-014",
+  "case": "MTI near-stationary",
+  "scope": "isolated",
+  "stage": 2,
+  "entry": 1,
+  "targets": [
+    {
+      "name": "Slow",
+      "delay": 65,
+      "velocity": 0.05,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    }
+  ],
+  "noise_rms": 0.0,
+  "seed": 20261112,
+  "origin": {
+    "origin": "Software Float FFT/chain (no IP model)",
+    "input_quantization_RMSE": 5.062163409748879e-06,
+    "input_clips": 0
+  },
+  "metrics": {
+    "Python Float": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "full_chain_metrics": {},
+  "functional": {
+    "mti_target_response": [
+      {
+        "target": "Slow",
+        "velocity_m_s": 0.05,
+        "input_power": 3.6864402471110225,
+        "output_power": 0.0016180053353309631,
+        "gain_db": -33.57627249536573,
+        "exact_zero_output": false,
+        "analytic_gain_db": -33.57898648020866
+      }
+    ]
+  },
+  "reference_functional": {
+    "Python Float": {
+      "mti_target_response": [
+        {
+          "target": "Slow",
+          "velocity_m_s": 0.05,
+          "input_power": 3.6864402471110225,
+          "output_power": 0.0016180053353309631,
+          "gain_db": -33.57627249536573,
+          "exact_zero_output": false,
+          "analytic_gain_db": -33.57898648020866
+        }
+      ]
+    },
+    "Python Fixed": {
+      "mti_target_response": [
+        {
+          "target": "Slow",
+          "velocity_m_s": 0.05,
+          "input_power": 3.6864402471110225,
+          "output_power": 0.0016180053353309631,
+          "gain_db": -33.57627249536573,
+          "exact_zero_output": false,
+          "analytic_gain_db": -33.57898648020866
+        }
+      ]
+    }
+  },
+  "hardware_records": null,
+  "status": {
+    "target": 2,
+    "state": 3,
+    "flags": 0,
+    "input_words": 256,
+    "output_words": 128
+  },
+  "physical_UART": true,
+  "reused_identical_capture": false,
+  "input_sha256": "ab4a71b83c3d5820461ff6e195a21cb37ed430f9bfd28f38d49b2098dfd1fd16",
+  "output_sha256": "e99fd5321835fdf327574e0b787b1e03c198c3c88a35faaf431fe4e6e231db71",
+  "input_echo_verified": true,
+  "elapsed_s": 1.3583210819924716,
+  "transport_trace": [
+    {
+      "sequence": 0,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "24f3b74c27b609d10dfbf34f22643369560cd57b3d5485b8117afa808a4c1eb4",
+      "response_sha256": "a609dc7f26ee00d2797bb5a362f7186d3c9efc59a19a3132b58b11a98edf8e6b"
+    },
+    {
+      "sequence": 1,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "0e7f82eeb3bdf5b9f30c770c6673c7e097b6247c106ca1ab91d6053125f2ecb3",
+      "response_sha256": "a359e0bbd878a654c6ca62be4a5986cb99751ac2ed7386f56c75ab74e023f941"
+    },
+    {
+      "sequence": 2,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "6f0f09c9a1fc69e727b96793e05b45e16b861cf46b2f8ed37816b8e007354e5c",
+      "response_sha256": "c15d8aa164886b969195ac680861fe936dd816bb10c05436366f8c6f81953c6a"
+    },
+    {
+      "sequence": 3,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "dd8295c8bfed5125d234cba057cbee5e228257870b1faa64134d6ec6c3c8a853",
+      "response_sha256": "2f4e2cb697c22c365f263ad0850793b2d17a92525f400903b2d2dd2de2f43c6a"
+    },
+    {
+      "sequence": 4,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "340e989500ebd71f1fb2b0c477863afb646aea2ebabda753cc156f841845cf3f",
+      "response_sha256": "c2a6805e81292cc2f33744c6181e5232e09b0e3a9ac1aba1fa449593fa752478"
+    },
+    {
+      "sequence": 5,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "cac3a37d83a54a0e2f9c71ec9320069cefc8f89570d4834c923707a83ebcc153",
+      "response_sha256": "49b2b480d066ceabbfb4c70500dfb509045a18f52dda341b48305d52dc063879"
+    },
+    {
+      "sequence": 6,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "91758c8cf0cc5e1e30f9e8f7e9c300e387059b8118fc3591dd359f6896bf02d4",
+      "response_sha256": "f73398afe6be784fb3a4b2505e594fd7f7bcebb1670279a332681cd23c1f6cb7"
+    },
+    {
+      "sequence": 7,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "ff2859ba21046906ed7dffa637afd316affe879c838f4663940f3ee8246eefc9",
+      "response_sha256": "d293a396f1c48e8cee6e590dc77cc1b1ada9d9976c830027862606f6839ce208"
+    },
+    {
+      "sequence": 8,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "f8f24f42191874fde89199431bae669dde36fc9be4a73f7472f91a886f6f43c7",
+      "response_sha256": "d6746dae3b121367f4959fb3098bd377bc74e3a5d1608c81135bf5d05ac56a4c"
+    },
+    {
+      "sequence": 9,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "81db4e83aece1ecc656418d299c3060d91d5f67a0a3cf2b1bd96242bfe9cbca8",
+      "response_sha256": "b87f89e1bc237b4cff0f4a3c53cb2d38c3394e67b53e44826cce80ee395dc8b1"
+    },
+    {
+      "sequence": 10,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "47f577bebbe923de4e44980be516515a9168ecfd994b04e03b24168c836938e5",
+      "response_sha256": "15585dd29d659627d3cd2c632bcc4b7ac3ba8fc4be76f610d5710bc7d43abe1c"
+    },
+    {
+      "sequence": 11,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "a4c1154b6c1711d10e14d3c94353b95bde14f478dfbaa82ec4fb248edb573b60",
+      "response_sha256": "cd8fcd95eda5053c61a9f22ad71521bbfca0b61d8410e640bdacdbb0f3ac6901"
+    },
+    {
+      "sequence": 12,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "d7c932fc6511072c3825d67de016250e1ecc6ceed0b3debe6b2da9a1c81b6a47",
+      "response_sha256": "45c2612a0de7aa095b83cae7ad8d32a76ce4ce17e88b8cf6827e6ebd69c7007f"
+    },
+    {
+      "sequence": 13,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "6a70baeeff4098c32a401661dcfa058f9c0be95ce38c4a800c6843cfb1594332",
+      "response_sha256": "1a6ad0a4c72cf9bbd5ba983252bce122ce3f10c8fce8fb10307b88363a9934eb"
+    },
+    {
+      "sequence": 14,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "db7c5ff5e009a2c24afbc8f493def0ed2be6ffdb14c7b7c4517ea399f224283e",
+      "response_sha256": "e506547ae0008eec95d1f67934709a95896c1b3360945d8e46397cffe71b3bd2"
+    },
+    {
+      "sequence": 15,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "ae7475f042a659495d59bbc912c216aabeeb2247cd7d1dd1396d7f6f4783541d",
+      "response_sha256": "8aa00c3af27a3c521547a38601332f3a9eea61143416c68f0069192cab48b36f"
+    },
+    {
+      "sequence": 16,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "f73c43b7c2905a5227c1044c7d1c80219eb9b9ef4b247925407aac5f436750a7",
+      "response_sha256": "64235fa0c4d5f71abf3a82babd0d27ccf087b29d6c0d621c5ed19f1716415db7"
+    }
+  ],
+  "artifact": "case-014.npz"
+}

@@ -1,0 +1,211 @@
+{
+  "id": "case-006",
+  "case": "Range separation 4 cells",
+  "scope": "isolated",
+  "stage": 1,
+  "entry": 0,
+  "targets": [
+    {
+      "name": "R1",
+      "delay": 45,
+      "velocity": 2.8125,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    },
+    {
+      "name": "R2",
+      "delay": 49,
+      "velocity": 2.8125,
+      "amplitude": 0.12,
+      "bearing": 0.0,
+      "tangential": 180.0
+    }
+  ],
+  "noise_rms": 0.0,
+  "seed": 20261112,
+  "origin": {
+    "origin": "Software Float FFT/chain (no IP model)",
+    "input_quantization_RMSE": 4.69576667372938e-06,
+    "input_clips": 0
+  },
+  "metrics": {
+    "Python Float": {
+      "RMSE": 6.71808620686274e-06,
+      "NRMSE_percent": 0.0011871991090457463,
+      "max_abs_error": 1.96360067269067e-05,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "full_chain_metrics": {},
+  "functional": {
+    "range_resolution": {
+      "separation_m": 599.584916,
+      "peaks": [
+        46,
+        48
+      ],
+      "valley_depth_db": 0.03920506523974518,
+      "valley_exact_zero": false,
+      "resolved": false,
+      "criterion": "Two distinct local maxima, each within ±1 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+    }
+  },
+  "reference_functional": {
+    "Python Float": {
+      "range_resolution": {
+        "separation_m": 599.584916,
+        "peaks": [
+          46,
+          48
+        ],
+        "valley_depth_db": 0.039203577763890135,
+        "valley_exact_zero": false,
+        "resolved": false,
+        "criterion": "Two distinct local maxima, each within ±1 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+      }
+    },
+    "Python Fixed": {
+      "range_resolution": {
+        "separation_m": 599.584916,
+        "peaks": [
+          46,
+          48
+        ],
+        "valley_depth_db": 0.03920506523974518,
+        "valley_exact_zero": false,
+        "resolved": false,
+        "criterion": "Two distinct local maxima, each within ±1 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+      }
+    }
+  },
+  "hardware_records": null,
+  "status": {
+    "target": 1,
+    "state": 3,
+    "flags": 0,
+    "input_words": 128,
+    "output_words": 128
+  },
+  "physical_UART": true,
+  "reused_identical_capture": false,
+  "input_sha256": "310fae41548e7c3bd53b746f6d9967b144844892ee675601bb3406612d656e63",
+  "output_sha256": "63a0a29aea488e2454f54f3182345a908902311f1e27587af38c385a3166e94b",
+  "input_echo_verified": true,
+  "elapsed_s": 0.9537016589893028,
+  "transport_trace": [
+    {
+      "sequence": 0,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "d4ce70efb727a81ca8e8f8081e7c658cbaaec55d9436be264fb85ee7bd711fb2",
+      "response_sha256": "9c8f6be84121758ff913ccbbe40bbe8015e5bcea7e75e2afbf5b4f3d8d5de31c"
+    },
+    {
+      "sequence": 1,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "456ff5b36d0cc875c555d1dc792e2ca2d7a4e17cf361dd03a72b227fe5f13b00",
+      "response_sha256": "e6655811671931ce2a007c5495d5927c21872d474eed7bf9138d8ec60f4c2545"
+    },
+    {
+      "sequence": 2,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "9e172f85d209ef036cbd016f06d0c7da567d2fceff35c3a397d3ac401888a6b1",
+      "response_sha256": "dd79e230ad2bb2fb07873c3c379ef96d35375f656dd51775b63658681e430883"
+    },
+    {
+      "sequence": 3,
+      "kind": 2,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "c698ff859c90fcef5ac1eec2783e42132739bed8355a7d5845e28aaec45f1014",
+      "response_sha256": "4ded4f0f1148d999ecf804841734422a20b0eda7a34dad30d649d6d810bac9af"
+    },
+    {
+      "sequence": 4,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "898e0a9b3e951121ed46724371a2dab28fc8a95ea0b8196ad163c5d7e4815630",
+      "response_sha256": "821666e367574fed257e4c488b7ed00e7e933a4549911a7316a9dc37ffefceab"
+    },
+    {
+      "sequence": 5,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "4b803260e140f81e63f407e95e80da59016f7699d1e005417346c1c046cf37bc",
+      "response_sha256": "84bbb8a9fde32ef84662f67b53eea457382ff6b41200b42165866ac0e5982334"
+    },
+    {
+      "sequence": 6,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "8904b70063ad0e32bd56995e79e0f1b51641b834b4db1668f63957fc45f1616f",
+      "response_sha256": "4de996f6b689ee43a3e5b4c93d70dab5dc84f0a2ae288e06a20cb62215606be9"
+    },
+    {
+      "sequence": 7,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "38f2833759f3b6356a6f47536966f409c08ea0456f49d41c3bd81184659ba344",
+      "response_sha256": "430064a0046dfdf8748c2dd8eab73f6abb13ee5f55954771e5ea16c17cdae435"
+    },
+    {
+      "sequence": 8,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "d98b3b55faa9a429dd6c13eff7213563c6ce49ebb38fc70ca5d63b5a56c666c4",
+      "response_sha256": "198afd7eef81e1ca6751219982b9de69105ba3835bf6b253da070af2c63183db"
+    },
+    {
+      "sequence": 9,
+      "kind": 1,
+      "attempt": 0,
+      "response_type": 6,
+      "request_sha256": "8b1d5ef5f186f9490d3cb25d89ab377ec8fa2f47a8a40d95340a4e271ca9ab8f",
+      "response_sha256": "583776b9717c4f1944ae26aab306361707a64a0a54e959e0f9d06b1167ca0af3"
+    },
+    {
+      "sequence": 10,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "04281ad553643fafdf95ebcd6ddc7bbb35788c72e6f56af4986127d6ac8a1370",
+      "response_sha256": "b9af6235b105e38e8f6de31cfd68065d94c104f9633ace350032d921c37d58a4"
+    },
+    {
+      "sequence": 11,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "30a85619023c86662bd9587113aaa0caa253cac2cb15c56842f7618feaee9611",
+      "response_sha256": "6d84b99404b6a162af1db0ed8bfacd3b37ac806e41afb4f13f91ee2f6a65b74f"
+    },
+    {
+      "sequence": 12,
+      "kind": 3,
+      "attempt": 0,
+      "response_type": 4,
+      "request_sha256": "fa9f2ab2cc29b0a6c25628a799bb147d2e6e48179abc5c2f4c5a6c7a03e1d262",
+      "response_sha256": "6816f7935a66706863546955c77adcf3c0a9af78c1243f3313126cf1b9d145a9"
+    }
+  ],
+  "artifact": "case-006.npz"
+}

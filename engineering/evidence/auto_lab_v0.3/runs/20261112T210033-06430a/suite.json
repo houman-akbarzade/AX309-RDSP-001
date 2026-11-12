@@ -1,0 +1,574 @@
+{
+  "version": "0.3.0",
+  "kind": "normal",
+  "status": "COMPLETE",
+  "configuration": {
+    "mode": "normal",
+    "level": "quick",
+    "repeats": 32,
+    "engine": "Python",
+    "port": "/dev/ttyUSB1",
+    "seed": 20261112,
+    "case": {
+      "name": "Two aircraft",
+      "targets": [
+        {
+          "name": "A1",
+          "delay": 35,
+          "velocity": 2.8125,
+          "amplitude": 0.18,
+          "bearing": -0.25,
+          "tangential": 180.0
+        },
+        {
+          "name": "A2",
+          "delay": 80,
+          "velocity": -3.75,
+          "amplitude": 0.12,
+          "bearing": 0.25,
+          "tangential": 180.0
+        }
+      ],
+      "noise": 0.002,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "file": "",
+    "file_format": "Normalized float"
+  },
+  "case": {
+    "name": "Two aircraft",
+    "targets": [
+      {
+        "name": "A1",
+        "delay": 35,
+        "velocity": 2.8125,
+        "amplitude": 0.18,
+        "bearing": -0.25,
+        "tangential": 180.0
+      },
+      {
+        "name": "A2",
+        "delay": 80,
+        "velocity": -3.75,
+        "amplitude": 0.12,
+        "bearing": 0.25,
+        "tangential": 180.0
+      }
+    ],
+    "noise": 0.002,
+    "seed": 20261112,
+    "clutter": false
+  },
+  "metadata": {
+    "scenario": "Two aircraft",
+    "noise_rms": 0.002,
+    "seed": 20261112,
+    "input_clips": 0,
+    "targets": [
+      {
+        "name": "A1",
+        "delay": 35,
+        "velocity": 2.8125,
+        "amplitude": 0.18,
+        "bearing": -0.25,
+        "tangential": 180.0
+      },
+      {
+        "name": "A2",
+        "delay": 80,
+        "velocity": -3.75,
+        "amplitude": 0.12,
+        "bearing": 0.25,
+        "tangential": 180.0
+      }
+    ],
+    "radar": {
+      "fs": 1000000.0,
+      "fc": 10000000000.0,
+      "pri": 0.001,
+      "pulses": 33,
+      "samples": 128
+    }
+  },
+  "origin": {
+    "origin": "Software Float FFT/chain (no IP model)",
+    "input_quantization_RMSE": 1.2521209309757044e-05,
+    "input_clips": 0
+  },
+  "hardware_records": [
+    {
+      "record_id": 0,
+      "range_bin": 22,
+      "doppler_bin": 6,
+      "signed_doppler_bin": 6,
+      "power_stored_integer": 1722057345,
+      "cluster_cells": 4,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 1,
+      "range_bin": 35,
+      "doppler_bin": 6,
+      "signed_doppler_bin": 6,
+      "power_stored_integer": 176014824026,
+      "cluster_cells": 5,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 2,
+      "range_bin": 48,
+      "doppler_bin": 6,
+      "signed_doppler_bin": 6,
+      "power_stored_integer": 1731489269,
+      "cluster_cells": 4,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 3,
+      "range_bin": 65,
+      "doppler_bin": 7,
+      "signed_doppler_bin": 7,
+      "power_stored_integer": 230746,
+      "cluster_cells": 1,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 4,
+      "range_bin": 66,
+      "doppler_bin": 16,
+      "signed_doppler_bin": -16,
+      "power_stored_integer": 791060,
+      "cluster_cells": 2,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 5,
+      "range_bin": 67,
+      "doppler_bin": 24,
+      "signed_doppler_bin": -8,
+      "power_stored_integer": 1234243757,
+      "cluster_cells": 4,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 6,
+      "range_bin": 80,
+      "doppler_bin": 24,
+      "signed_doppler_bin": -8,
+      "power_stored_integer": 126669548450,
+      "cluster_cells": 5,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 7,
+      "range_bin": 93,
+      "doppler_bin": 24,
+      "signed_doppler_bin": -8,
+      "power_stored_integer": 1243630901,
+      "cluster_cells": 4,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    },
+    {
+      "record_id": 8,
+      "range_bin": 107,
+      "doppler_bin": 20,
+      "signed_doppler_bin": -12,
+      "power_stored_integer": 667316,
+      "cluster_cells": 2,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    }
+  ],
+  "references": {
+    "Python Float": [
+      {
+        "range_bin": 22,
+        "doppler_bin": 6,
+        "velocity_m_s_nominal": 2.8125,
+        "range_m_exact": 3297.717038,
+        "power_linear": 1.6038520612603413,
+        "cluster_cells": 4,
+        "record_id": 0,
+        "signed_doppler_bin": 6
+      },
+      {
+        "range_bin": 35,
+        "doppler_bin": 6,
+        "velocity_m_s_nominal": 2.8125,
+        "range_m_exact": 5246.368015,
+        "power_linear": 163.92877712270595,
+        "cluster_cells": 5,
+        "record_id": 1,
+        "signed_doppler_bin": 6
+      },
+      {
+        "range_bin": 48,
+        "doppler_bin": 6,
+        "velocity_m_s_nominal": 2.8125,
+        "range_m_exact": 7195.018992,
+        "power_linear": 1.6126172201124738,
+        "cluster_cells": 4,
+        "record_id": 2,
+        "signed_doppler_bin": 6
+      },
+      {
+        "range_bin": 65,
+        "doppler_bin": 7,
+        "velocity_m_s_nominal": 3.28125,
+        "range_m_exact": 9743.254885,
+        "power_linear": 0.00021467000906032937,
+        "cluster_cells": 1,
+        "record_id": 3,
+        "signed_doppler_bin": 7
+      },
+      {
+        "range_bin": 66,
+        "doppler_bin": 16,
+        "velocity_m_s_nominal": -7.5,
+        "range_m_exact": 9893.151114,
+        "power_linear": 0.0007366401805144453,
+        "cluster_cells": 2,
+        "record_id": 4,
+        "signed_doppler_bin": -16
+      },
+      {
+        "range_bin": 67,
+        "doppler_bin": 24,
+        "velocity_m_s_nominal": -3.75,
+        "range_m_exact": 10043.047343,
+        "power_linear": 1.1494818936991567,
+        "cluster_cells": 4,
+        "record_id": 5,
+        "signed_doppler_bin": -8
+      },
+      {
+        "range_bin": 80,
+        "doppler_bin": 24,
+        "velocity_m_s_nominal": -3.75,
+        "range_m_exact": 11991.69832,
+        "power_linear": 117.97072150791716,
+        "cluster_cells": 5,
+        "record_id": 6,
+        "signed_doppler_bin": -8
+      },
+      {
+        "range_bin": 93,
+        "doppler_bin": 24,
+        "velocity_m_s_nominal": -3.75,
+        "range_m_exact": 13940.349297,
+        "power_linear": 1.1582437716546925,
+        "cluster_cells": 4,
+        "record_id": 7,
+        "signed_doppler_bin": -8
+      },
+      {
+        "range_bin": 107,
+        "doppler_bin": 20,
+        "velocity_m_s_nominal": -5.625,
+        "range_m_exact": 16038.896503,
+        "power_linear": 0.0006214352615229107,
+        "cluster_cells": 2,
+        "record_id": 8,
+        "signed_doppler_bin": -12
+      }
+    ],
+    "Python Fixed": [
+      {
+        "range_bin": 22,
+        "doppler_bin": 6,
+        "signed_doppler_bin": 6,
+        "power_stored_integer": 1722057345,
+        "cluster_cells": 4,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 0,
+        "range_m_exact_rational": [
+          6595434076,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          1800000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 35,
+        "doppler_bin": 6,
+        "signed_doppler_bin": 6,
+        "power_stored_integer": 176014824026,
+        "cluster_cells": 5,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 1,
+        "range_m_exact_rational": [
+          10492736030,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          1800000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 48,
+        "doppler_bin": 6,
+        "signed_doppler_bin": 6,
+        "power_stored_integer": 1731489269,
+        "cluster_cells": 4,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 2,
+        "range_m_exact_rational": [
+          14390037984,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          1800000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 65,
+        "doppler_bin": 7,
+        "signed_doppler_bin": 7,
+        "power_stored_integer": 230746,
+        "cluster_cells": 1,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 3,
+        "range_m_exact_rational": [
+          19486509770,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          2100000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 66,
+        "doppler_bin": 16,
+        "signed_doppler_bin": -16,
+        "power_stored_integer": 791060,
+        "cluster_cells": 2,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 4,
+        "range_m_exact_rational": [
+          19786302228,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          -4800000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 67,
+        "doppler_bin": 24,
+        "signed_doppler_bin": -8,
+        "power_stored_integer": 1234243757,
+        "cluster_cells": 4,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 5,
+        "range_m_exact_rational": [
+          20086094686,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          -2400000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 80,
+        "doppler_bin": 24,
+        "signed_doppler_bin": -8,
+        "power_stored_integer": 126669548450,
+        "cluster_cells": 5,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 6,
+        "range_m_exact_rational": [
+          23983396640,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          -2400000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 93,
+        "doppler_bin": 24,
+        "signed_doppler_bin": -8,
+        "power_stored_integer": 1243630901,
+        "cluster_cells": 4,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 7,
+        "range_m_exact_rational": [
+          27880698594,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          -2400000000,
+          640000000
+        ]
+      },
+      {
+        "range_bin": 107,
+        "doppler_bin": 20,
+        "signed_doppler_bin": -12,
+        "power_stored_integer": 667316,
+        "cluster_cells": 2,
+        "tie_flag": false,
+        "max_equal_power_cells": 1,
+        "record_id": 8,
+        "range_m_exact_rational": [
+          32077793006,
+          2000000
+        ],
+        "velocity_m_s_nominal_rational": [
+          -3600000000,
+          640000000
+        ]
+      }
+    ]
+  },
+  "metrics": {
+    "Python Float": {
+      "hardware_clusters": 9,
+      "reference_clusters": 9,
+      "compared_fields": [
+        "record_id",
+        "range_bin",
+        "doppler_bin",
+        "signed_doppler_bin",
+        "cluster_cells"
+      ],
+      "common_peak_coordinates": 9,
+      "hardware_only_peaks": [],
+      "reference_only_peaks": [],
+      "record_signatures_exact": true
+    },
+    "Python Fixed": {
+      "hardware_clusters": 9,
+      "reference_clusters": 9,
+      "compared_fields": [
+        "record_id",
+        "range_bin",
+        "doppler_bin",
+        "signed_doppler_bin",
+        "cluster_cells",
+        "power_stored_integer",
+        "tie_flag",
+        "max_equal_power_cells"
+      ],
+      "common_peak_coordinates": 9,
+      "hardware_only_peaks": [],
+      "reference_only_peaks": [],
+      "record_signatures_exact": true
+    }
+  },
+  "association": {
+    "matches": [
+      {
+        "target": "A1",
+        "matched": true,
+        "expected_range_m": 5246.368015,
+        "expected_velocity_m_s": 2.8125,
+        "record_id": 1,
+        "range_error_m": 0.0,
+        "velocity_error_m_s": 0.0
+      },
+      {
+        "target": "A2",
+        "matched": true,
+        "expected_range_m": 11991.69832,
+        "expected_velocity_m_s": -3.75,
+        "record_id": 6,
+        "range_error_m": 0.0,
+        "velocity_error_m_s": 0.0
+      }
+    ],
+    "matched_targets": 2,
+    "defined_targets": 2,
+    "unassociated_clusters": 7,
+    "all_targets_resolved": true,
+    "criterion": "One-to-one association; ±2 range cells and ±1 natural Doppler bin, circular distance for association only; clustering itself is nonwrapped."
+  },
+  "reference_association": {
+    "Python Float": {
+      "matches": [
+        {
+          "target": "A1",
+          "matched": true,
+          "expected_range_m": 5246.368015,
+          "expected_velocity_m_s": 2.8125,
+          "record_id": 1,
+          "range_error_m": 0.0,
+          "velocity_error_m_s": 0.0
+        },
+        {
+          "target": "A2",
+          "matched": true,
+          "expected_range_m": 11991.69832,
+          "expected_velocity_m_s": -3.75,
+          "record_id": 6,
+          "range_error_m": 0.0,
+          "velocity_error_m_s": 0.0
+        }
+      ],
+      "matched_targets": 2,
+      "defined_targets": 2,
+      "unassociated_clusters": 7,
+      "all_targets_resolved": true,
+      "criterion": "One-to-one association; ±2 range cells and ±1 natural Doppler bin, circular distance for association only; clustering itself is nonwrapped."
+    },
+    "Python Fixed": {
+      "matches": [
+        {
+          "target": "A1",
+          "matched": true,
+          "expected_range_m": 5246.368015,
+          "expected_velocity_m_s": 2.8125,
+          "record_id": 1,
+          "range_error_m": 0.0,
+          "velocity_error_m_s": 0.0
+        },
+        {
+          "target": "A2",
+          "matched": true,
+          "expected_range_m": 11991.69832,
+          "expected_velocity_m_s": -3.75,
+          "record_id": 6,
+          "range_error_m": 0.0,
+          "velocity_error_m_s": 0.0
+        }
+      ],
+      "matched_targets": 2,
+      "defined_targets": 2,
+      "unassociated_clusters": 7,
+      "all_targets_resolved": true,
+      "criterion": "One-to-one association; ±2 range cells and ±1 natural Doppler bin, circular distance for association only; clustering itself is nonwrapped."
+    }
+  },
+  "physical_UART": true,
+  "input_echo_verified": true,
+  "terminal": "COMMIT",
+  "released": true,
+  "elapsed_s": 13.17480959801469,
+  "bitstream_sha256": "fa51f7d050ff52d3772777fd1b1829386ef3708ddbed43c9f7775232d57c1cfb",
+  "directory": "/home/houman/AX309-RDSP-001-stage-lab/engineering/evidence/auto_lab_v0.3/runs/20261112T210033-06430a"
+}

@@ -182,7 +182,8 @@ def summary_chart(job,d):
     q=k/99;color=f'rgb({int(255*q)},{int(235*np.sqrt(q))},{int(100+120*(1-q))})'
     bar+=f'<rect x="895" y="{65+(99-k)*2.6}" width="14" height="2.7" fill="{color}"/>'
    panel=panel.replace('</g></svg>',bar+text(800,355,'Color scale: 0 .. '+fmt(hi),12)+'</g></svg>');panels.append(panel)
-  svg='<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="400" viewBox="0 0 1840 400">'+panels[0]+panels[1].replace('<svg ','<svg x="920" ',1)+'</svg>'
+  contents=[panel.split('>',1)[1].rsplit('</svg>',1)[0] for panel in panels]
+  svg='<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="400" viewBox="0 0 1840 400"><g>'+contents[0]+'</g><g transform="translate(920 0)">'+contents[1]+'</g></svg>'
   caption='خروجی FPGA و '+label+' در صفحه برد–سرعت؛ '+unit+' با مقیاس رنگ مشترک و راهنمای رنگی. دامنه و توان در مقیاس عددی نرمال‌شده سامانه هستند.'
   if stage in (3,4):
    # Shared normalization preserves FPGA/reference gain differences.

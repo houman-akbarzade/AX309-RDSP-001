@@ -1,0 +1,32 @@
+{
+  "project": "AX309-RDSP-001",
+  "time_utc": "2026-11-12T07:59:33.071759+00:00",
+  "source_commit": "9aee1392af589cea0977e902a3acb0db8a1a0fa2",
+  "status": "HARDWARE_BRINGUP_BLOCKED",
+  "serial_device": "/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_f4d179353796ed11aa2f634ce259fb3e-if00-port0",
+  "serial_access": "DENIED: root:dialout 0660; user houman lacks dialout membership and ACL",
+  "jtag_usb": "0403:6014 FT232H; USB enumeration does not establish successful JTAG access",
+  "impact": "14.7 executed; cable autodetection failed; no FPGA IDCODE obtained",
+  "software_regression": {
+    "executed": 57,
+    "pass": 57,
+    "fail": 0
+  },
+  "hardware_session": "NOT_VERIFIED",
+  "hardware_iq": "NOT_VERIFIED",
+  "hardware_dsp": "NOT_IMPLEMENTED_IN_CURRENT_TOP",
+  "programming_performed": false,
+  "implementation_progress_changed": false,
+  "engineering_acceptance_changed": false,
+  "conversation_capture_status": "BLOCKED: full current request and complete exchange not persisted; do not claim full dialogue capture",
+  "preserved_open": [
+    "REQ-RNG-03 FAIL/unresolved",
+    "REQ-LIST-01 final acceptance OPEN; logical 702 approved",
+    "Fixed-point statistical risk OPEN",
+    "Seven DSP readback contracts OPEN"
+  ],
+  "evidence_sha256": {
+    "jtag-identify.log": "812efe8e211117d68d9d2614da4d5265521424489c28729b60ad557e6b9caa26",
+    "pc-smoke.log": "98bf9bb7e3db85d051192f0df7ce0232e5654f0342c50603a83f6ce99867ef3d"
+  }
+}

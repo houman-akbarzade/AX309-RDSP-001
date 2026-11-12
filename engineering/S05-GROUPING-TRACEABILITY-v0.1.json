@@ -80,7 +80,12 @@
     "full_technical_PASS": false,
     "lab_evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json",
     "abstract_host_commit_rollback_semantics": "PASS_8_POLICY_CASES_NON_RTL",
-    "uart_transaction_verified": false
+    "uart_transaction_verified": false,
+    "logical_policy_status": "APPROVED_702_COMPLETE_LIST_NO_TOP_K",
+    "physical_buffer_and_REPLAY": "OPEN_NOT_QUALIFIED",
+    "technical_PASS": false,
+    "ICD_review": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
+    "ICD_candidate_status": "PENDING_SYSTEM_ENGINEER_SIGNOFF"
   },
   "resource_and_abort_risks": {
     "state": "OPEN_FULL_CHAIN_FEASIBILITY_AND_CONTROLLER_RECOVERY_NOT_IMPLEMENTED",
@@ -109,5 +114,16 @@
     "FPGA_to_host_full_702_UART_transfer": "NOT_RUN",
     "physical_pin_map_and_PAR": "NOT_RUN",
     "accepted_previous_block_test_results_unchanged": true
+  },
+  "uart_ICD_v1_candidate": {
+    "source": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
+    "machine_readable_candidate": "engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json",
+    "status": "NOT_APPROVED",
+    "REQ-UART-01": "APPROVED_S02_TRANSPORT_PRIMITIVES_ONLY_ICD_PENDING",
+    "REQ-LIST-01": "LOGICAL_APPROVED_PHYSICAL_AND_HOST_UART_NOT_PASS",
+    "host_packet_codec": "NOT_IMPLEMENTED",
+    "UART_serial_ISim": "NOT_RUN",
+    "FPGA_frame_controller": "NOT_IMPLEMENTED",
+    "full_FPGA_resource_fit": "OPEN"
   }
 }

@@ -95,7 +95,7 @@
     "S05_cfar_2d_synthesis_report": "engineering/S05-CFAR-2D-SYNTHESIS-REPORT-v0.1.md",
     "S05_xst_report_evidence": "engineering/evidence/s05/CFAR-2D-XST-REPORT-v0.1.srp.gz",
     "S05_xst_report_sha256": "cadbf806533a4646f83563ea7c214331423d15c99b7faaa3bb1cb43457a61320",
-    "S05_next_work_package": "Engineer signoff of bidirectional UART ICD, ACK-safe replay, record packing, complete-CPI input verification, and COMMIT-ACK reconciliation; then implement staged UART and frame-control RTL.",
+    "S05_next_work_package": "Engineer signoff of proposed ICD v1.0 numeric TYPE/ACK, record packing/result<=8, bytewise IQ readback, COMMIT ACK-loss reconciliation; then PC golden packetizer/parser before RTL.",
     "S05_xst_report_uncompressed_sha256": "7fb6991bd80e7d5b38180b39dd544a7d0900cd7b220e8b64861907f28f3240fc",
     "S05_grouping_RTL_status": "IMPLEMENTED_ISIM_11_CASE_ORACLE_PASS_XST_PASS_STANDALONE",
     "S05_grouping_RTL_sha256": "c2fc13c66be6fa7cb38c925070555c3b18837c0b9724d66436647e59bc46d087",
@@ -139,7 +139,13 @@
     "S05_UART_RTL_status": "NOT_IMPLEMENTED",
     "S05_Frame_Controller_RTL_status": "NOT_IMPLEMENTED",
     "S05_UART_end_to_end_qualification": "NOT_RUN",
-    "S05_Tracking_FPGA": "OUT_OF_SCOPE_NO_IMPLEMENTATION"
+    "S05_Tracking_FPGA": "OUT_OF_SCOPE_NO_IMPLEMENTATION",
+    "S05_REQ_LIST_01_logical_policy_status": "APPROVED_MAX_702_NO_TOP_K_NO_SILENT_DROP",
+    "S05_REQ_LIST_01_physical_buffer_status": "OPEN_UNAPPROVED_FIFO_DEPTH_AND_REPLAY",
+    "S05_UART_ICD_v1_status": "ENGINEER_REVIEW_CANDIDATE_NOT_APPROVED",
+    "S05_UART_ICD_v1_candidate": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
+    "S05_UART_ICD_v1_manifest": "engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json",
+    "S05_PC_Packetizer_Parser_reference": "NOT_IMPLEMENTED_WAITING_ICD_SIGNOFF"
   },
   "project_id": "AX309-RDSP-001",
   "provenance": "current conversation; engineer-supplied specifications unverified against board manual",

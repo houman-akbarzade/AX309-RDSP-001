@@ -1,0 +1,80 @@
+{
+  "project": "AX309-RDSP-001",
+  "candidate": "S05-UART-ICD-v1.0",
+  "status": "ENGINEER_REVIEW_PENDING_NOT_APPROVED",
+  "source": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
+  "baseline_git": "c5160db",
+  "already_approved": {
+    "lab_transport": "CP2102GM_USB_UART_CPI_BY_CPI_STOP_AND_WAIT",
+    "logical_target_list": "ALL_0_TO_702_COMPONENTS_NO_TOP_K_NO_SILENT_DROP",
+    "transaction_semantics": "CPI_ID_PROVISIONAL_UNTIL_VERIFIED_COMMIT_OR_ABORT",
+    "S02_packet_framing": "SOF_4_VERSION_1_TYPE_1_FLAGS_1_SEQ_4_LENGTH_2_PAYLOAD_LE512_CRC_4",
+    "S02_CRC": "CRC32_ISO_HDLC"
+  },
+  "proposals_not_approved": {
+    "record_bytes": 13,
+    "record_bit_layout": "unchanged grouping_8conn concatenation 99 bits, zero-extend to 104, least-significant-octet first",
+    "padding": "five high bits zero",
+    "result_records_per_packet_max": 8,
+    "result_payload": "CPI_ID_LE32 + whole_13_byte_records",
+    "replay": "retain entire 125-byte or smaller framed RESULT until exact ACK",
+    "FIFO_initial_lab_depth": 8,
+    "FIFO_production_depth_approved": false,
+    "input_verification": "full 16896-byte byte-for-byte STAGE_DATA readback, 34 x <=500B chunks",
+    "ack_payload": "acknowledged_sequence_u32LE",
+    "nack_payload": "expected_sequence_u32LE",
+    "ack_nack_sequence_exception": "control responses do not advance reliable ordered application sequence; explicit S02 interpretation approval required",
+    "lost_COMMIT_ACK": "keep immutable terminal CPI_ID/count/status and allow idempotent COMMIT replay or query, never contradictory abort",
+    "type_codes": {
+      "COMMAND": 1,
+      "IQ_UPLOAD": 2,
+      "STAGE_REQUEST": 3,
+      "STAGE_DATA": 4,
+      "RESULT": 5,
+      "ACK": 6,
+      "NACK": 7,
+      "STATUS": 8
+    },
+    "command_codes": {
+      "OPEN_CPI": 1,
+      "REQUEST_INPUT_READBACK": 2,
+      "HOST_VERIFIED_INPUT": 3,
+      "RUN_CPI": 4,
+      "QUERY_CPI_STATUS": 5,
+      "RELEASE_CPI": 6
+    },
+    "status_codes": {
+      "UPLOAD_OPEN": 1,
+      "UPLOAD_COMPLETE_UNVERIFIED": 2,
+      "INPUT_VERIFIED": 3,
+      "PROCESSING": 4,
+      "RESULT_STREAM_START": 5,
+      "CPI_COMMIT": 6,
+      "CPI_ABORT": 7,
+      "TERMINAL_RECONCILED": 8
+    }
+  },
+  "uncertainties_needing_engineering_signoff": [
+    "TYPE/opcode/STATUS numeric codes and ACK/NACK numbering exception",
+    "RESULT byte schema and packing, FIFO/replay buffer separation",
+    "IQ readback message schema and host verified gate",
+    "COMMIT ACK-loss reconciliation vs S02 retry-exhaustion abort rule",
+    "status reason codes, production UART and FIFO resource/clock tests"
+  ],
+  "timing_scenario": {
+    "assumptions": "nominal 115200 baud 8N1, 21B ACK frame with 4B ack_seq, 34 upload packets, 34 request/response IQ readback packets, 88 results packets <=8 records; no retries, no extra COMMAND/STATUS, no DSP/host processing",
+    "input_UPLOAD_forward_and_ACK_bytes": 18460,
+    "input_READBACK_request_and_ACK_bytes": 1666,
+    "input_READBACK_data_and_ACK_bytes": 18494,
+    "RESULT_8record_forward_and_ACK_bytes": 12822,
+    "input_plus_RESULT_line_lower_bound_s": 2.715451388888889,
+    "input_readback_plus_RESULT_line_lower_bound_s": 4.465451388888889,
+    "not_a_measured_complete_CPI_runtime": true
+  },
+  "REQ_LIST_01_full_technical_pass": false,
+  "UART_RTL_pass": false,
+  "FPGA_full_chain_resource_fit": "OPEN",
+  "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+  "REQ_RNG_03": "FAIL_4_OF_8",
+  "S04_C02_RISK_PERFORMANCE": "OPEN"
+}

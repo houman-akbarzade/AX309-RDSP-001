@@ -157,3 +157,15 @@ Laboratory CPI-by-CPI operation does not require real-time IQ streaming. The app
 Especially critical: losing the ACK to a COMMIT already received by the host is different from losing COMMIT itself. Issuing an ABORT after such an ambiguous ACK failure could contradict an already committed host transaction. The serial ICD needs idempotent COMMIT replay and explicit terminal-state reconciliation by CPI_ID. The existing S02 2-second **per-packet** timeout cannot be represented as a guaranteed upper bound on the complete CPI cycle. UART serialization, host waits, FPGA cycles and hardware STA must be reported separately.
 
 **Evidence:** engineering/S05-UART-CPI-BY-CPI-PREIMPLEMENTATION-REVIEW-v0.1.md and engineering/S05-UART-CPI-TIMING-EVIDENCE-v0.1.json. No UART RTL implementation, board test, new capacity requirement PASS or architecture-C change is claimed.
+
+## LL-AX309-008 — Approval of a logical target-list contract is distinct from approving its serial transport
+
+**Source:** S05 ICD v1.0 candidate review, 2026-11-12.
+
+The system engineer has already approved 0..702 logical connected-component records, no Top-K and no silent loss. That does not freeze an 8-entry production FIFO, UART result packetization or successful completion of REQ-LIST-01. The reproducible grouping-to-FIFO8 ISim is only a lab valid/ready result.
+
+Packing the current 99-bit RTL record into 13 least-significant-octet-first bytes can preserve every integer field with five explicitly zero high padding bits, but this mapping remains a candidate until byte-level ICD signoff. For proposed eight-record RESULT packets, retain the entire framed packet (up to 125 bytes) until the exact ACK; FIFO handoff is not packet delivery. Likewise, host bytewise full-CPI readback is a distinct prerequisite to FPGA RUN, not implied by 34 individually CRC-valid IQ_UPLOAD packets.
+
+A lost ACK for a COMMIT that the host already accepted creates a genuine terminal-state ambiguity. Per-frame retry exhaustion cannot safely be converted into a contradictory ABORT; an idempotent, persistent CPI_ID-keyed COMMIT reply and status reconciliation need explicit engineer approval. ACK/NACK sequence numbering is another control-plane issue; never settle it silently from the S02 requirement for monotonic data-frame sequences.
+
+**Evidence:** engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md. Neither the ICD candidate nor a packet codec or FPGA UART is qualified in this step.

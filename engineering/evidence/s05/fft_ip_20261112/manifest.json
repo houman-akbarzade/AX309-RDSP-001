@@ -1,0 +1,227 @@
+{
+  "project": "AX309-RDSP-001",
+  "source_baseline": "6f5f760",
+  "recorded_at_utc": "2026-11-12T09:14:05.821966+00:00",
+  "status": "IP_RESOURCE_BENCHMARK_COMPLETE_STRICT_NUMERIC_COMPATIBILITY_FAIL",
+  "measurements": {
+    "legacy": {
+      "lut": 5589,
+      "ff": 1621,
+      "dsp": 8,
+      "ramb8": 0,
+      "ramb16": 0,
+      "scope": "MAP, standalone diagnostic wrapper, not full radar"
+    },
+    "lite_bram": {
+      "lut": 537,
+      "ff": 1040,
+      "dsp": 4,
+      "ramb8": 2,
+      "ramb16": 0,
+      "scope": "MAP, standalone diagnostic wrapper, not full radar"
+    },
+    "lite_dist": {
+      "lut": 665,
+      "ff": 1089,
+      "dsp": 4,
+      "ramb8": 0,
+      "ramb16": 0,
+      "scope": "MAP, standalone diagnostic wrapper, not full radar"
+    },
+    "r2_bram": {
+      "lut": 1043,
+      "ff": 1444,
+      "dsp": 6,
+      "ramb8": 4,
+      "ramb16": 0,
+      "scope": "MAP, standalone diagnostic wrapper, not full radar"
+    }
+  },
+  "lut_reduction_percent": 90.3918411164788,
+  "lite_bram_timing": {
+    "PAR": "PASS",
+    "TRCE_internal_period": "PASS at 20ns",
+    "min_period_ns": 6.691,
+    "slack_ns": 13.309,
+    "external_IO_timing": "NOT_QUALIFIED",
+    "board": "NOT_PROGRAMMED"
+  },
+  "simulation": {
+    "tool": "ISE 14.7 structural ISim",
+    "configs_executed": [
+      "lite_bram",
+      "r2_bram"
+    ],
+    "complex_outputs_per_config": 12288,
+    "strict_C02_bittrue": "FAIL",
+    "complex_mismatches_by_case": [
+      0,
+      138,
+      277
+    ],
+    "max_component_error_lsb_by_case": [
+      0,
+      11,
+      16
+    ],
+    "CFAR_decisions_changed_by_case": [
+      0,
+      2,
+      7
+    ],
+    "reference_cluster_counts": [
+      0,
+      12,
+      18
+    ],
+    "IP_cluster_counts": [
+      0,
+      10,
+      13
+    ],
+    "Pfa_Pd_qualification": "NOT_RUN"
+  },
+  "data_transfer": {
+    "power_46bit_padded6_bytes": 24576,
+    "FFT_50bit_padded7_bytes": 28672,
+    "FFT_50bit_contiguous_bits_bytes": 25600,
+    "UART_payload_only_s": {
+      "power": 2.1333333333333333,
+      "FFT7": 2.488888888888889,
+      "FFT_contiguous": 2.2222222222222223
+    },
+    "CPI_33ms_average_Mbps": {
+      "input": 4.096,
+      "output_FFT7": 6.950787878787879,
+      "output_FFT_contiguous": 6.206060606060605
+    },
+    "continuous_1MSPS_16bit_IQ_in_Mbps": 32,
+    "continuous_output_fft25_IQ_Mbps": 48.484848484848484,
+    "continuous_bidirectional_raw_aggregate_Mbps": 80.48484848484848
+  },
+  "W5500": {
+    "source": "https://docs.wiznet.io/Product/Chip/Ethernet/W5500",
+    "SPI_max_clock_MHz": 80,
+    "note": "SPI gross capacity is not guaranteed application throughput. Shared SPI payload read/write traffic, command/socket overhead and external wiring must be budgeted. UART/IQ RAM and CPI framing do not vanish automatically."
+  },
+  "preserved": {
+    "production_RTL": true,
+    "programmed_bitstream": true,
+    "C02_baseline": true,
+    "open_requirements": true,
+    "engineering_acceptance": true,
+    "progress": true
+  },
+  "generated_products": {
+    "/tmp/ax309-fft-ip-20261112/legacy/legacy_map.ncd": {
+      "bytes": 863542,
+      "sha256": "b0db772c0319343e6830d3e02b38d13fddac1bd8bf4d1475194a9314501f28e1"
+    },
+    "/tmp/ax309-fft-ip-20261112/legacy/fft_probe.ngc": {
+      "bytes": 1929598,
+      "sha256": "4680a0a777a9bbe9bb1ce49eaad4ff5f1baaf9c4892baea9e414fc8dbac14427"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_bram/probe.ncd": {
+      "bytes": 365686,
+      "sha256": "b84d2f47173d9e75ed824440df4124e0f16a696ec3cc895e8759fdd2851f3318"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_bram/probe_map.ncd": {
+      "bytes": 199570,
+      "sha256": "96b6c996b21c91b50e75076f78eef1fb74b171ff16f8ce14bf7a682ec4defac6"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_bram/ip_probe_top.ngc": {
+      "bytes": 25031,
+      "sha256": "fa3acb4c812077ccf687994817fd341eada154ebb1189bbedd6235e3dd215a5e"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_bram/fft32_ip.v": {
+      "bytes": 479537,
+      "sha256": "0325918c120b82cabac31e37cd9b5d36939b87a7b1c9f3eb809bb39242e5bc4b"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_bram/fft32_ip.ngc": {
+      "bytes": 541288,
+      "sha256": "ef050e45cb30dee06940638a81a8db95cf93d0493fd7c90405d0b7f2c2464779"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_dist/probe_map.ncd": {
+      "bytes": 218270,
+      "sha256": "56d9a5aadca2b20dc2e59cce08d068aef0a87171f638dc996bd8907154b76217"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_dist/ip_probe_top.ngc": {
+      "bytes": 24980,
+      "sha256": "acf7e3c432b67154a8a6126880992879af96d6fc74b737b0bdddb8fb2f8b8568"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_dist/fft32_ip.v": {
+      "bytes": 513142,
+      "sha256": "b147fba144800333f0db866b5e372f4af311a97aed161ebc939b0ac00f69ba52"
+    },
+    "/tmp/ax309-fft-ip-20261112/lite_dist/fft32_ip.ngc": {
+      "bytes": 564433,
+      "sha256": "0599708a562d640890eda6759c3a1d20e5963149a7a32b6146e80901107b76a8"
+    },
+    "/tmp/ax309-fft-ip-20261112/r2_bram/probe_map.ncd": {
+      "bytes": 305510,
+      "sha256": "b50eb5900858accab66da556263142fb89b76ae4abfeec4f0fb0cb7a870a4a39"
+    },
+    "/tmp/ax309-fft-ip-20261112/r2_bram/ip_probe_top.ngc": {
+      "bytes": 25480,
+      "sha256": "83baee910e63a2a4c50900a1a2bc2860ac3fc2ec3b526e9e91e42eaa0f192340"
+    },
+    "/tmp/ax309-fft-ip-20261112/r2_bram/fft32_ip.v": {
+      "bytes": 762694,
+      "sha256": "8008d5876965eda1a45a5e3bf8ebecf27c76cb5466e94a7443720f15ae365913"
+    },
+    "/tmp/ax309-fft-ip-20261112/r2_bram/fft32_ip.ngc": {
+      "bytes": 877174,
+      "sha256": "487e4632905155eab7d5ed2a7271d4b07419899bd714b1837fe7e600e18129f8"
+    }
+  },
+  "evidence_sha256": {
+    "legacy/legacy_map.mrp.gz": "1926ac4f5b655940ad94fb6e53e7bd49756d3739eef09341463c72885407bc6a",
+    "legacy/map.log.gz": "1172463c66ba489570987f481cba9a6ec8cdd7f8bdde73cb5c24ce06d59bbc8e",
+    "legacy/ngdbuild.log.gz": "825018a1a6f0a8c7bac7db656e01a8b67ece2517588ec82bcc4c8c7f35f8a4b0",
+    "legacy/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "lite_bram/coregen-run.log.gz": "7fc75725769ef91a6829272cf7890a1c9f01de86aaeeb4d2d81b1fd90d0c467c",
+    "lite_bram/coregen-run2.log.gz": "3478cfb18af484c72cf0267300cae9fdc16179637fcc2b6936290f15c2a9d9fb",
+    "lite_bram/coregen.log.gz": "c5ee90271c602e289d0834650f255bd17f7fe004048f63327f3a861fc550ff8a",
+    "lite_bram/fft-ip-output.txt.gz": "20c32ebe0456ffef7e46f9212a63b129f9b696bcacefc766ca370de6f0b5db72",
+    "lite_bram/fuse.log.gz": "4d84e79eaf14e7589fab521d8af647ca2472fb8fd0e9345ab9ec5872d5548f42",
+    "lite_bram/ip_map.mrp.gz": "45e8e005e5c31c4440c9db51ac34d25b08581cccd6384058025772865ccfa71d",
+    "lite_bram/map-probe.log.gz": "758a8668f3582a793d55b5dacd9135f53d80943726a3fef94c5262a5f4668550",
+    "lite_bram/map.log.gz": "2b022eea84b0b42df13851f85fe1d02f746a933ac55197e2d4c6ba7b93846fcb",
+    "lite_bram/ngdbuild-probe.log.gz": "83366bf9f888a8928467c7a005d859ceca56757bd3b2ba7075b1fdd0a00513d8",
+    "lite_bram/ngdbuild.log.gz": "66f933e490ede78fd235c90e313945a5f78e84003f2e0a1b6da15474247f853d",
+    "lite_bram/numeric-comparison-final.json": "d97b78abcbd2d43152655fa68c90f26d1767fcbad4e868c9a7a0eeeafba35574",
+    "lite_bram/par.log.gz": "9249a4f56afe72f04d4b847a37ff8b951425753d3ac7facfb37984979b21a328",
+    "lite_bram/probe.prj": "337da20c6a627761c26a2738e68014029c603e9fca36d706ecf71ff06f2649d8",
+    "lite_bram/probe.twr.gz": "02db15c45e89597848860891a5f7907e586f30c9e4ebbc427f7b79ecc4f4155c",
+    "lite_bram/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "lite_bram/probe.xst": "959cbca75472451d7467905d6bc1bab2c0e5e636af78c17c41986890bf6ff3e4",
+    "lite_bram/probe_map.mrp.gz": "4cee328b9b51cc9bc63861163b759f719c8a386cfb4ec9079fa20d9ec0492814",
+    "lite_bram/sim.log.gz": "5876306f4cddd3fc130b68181e7906bd1a901707bb4298f0ee6f5cde4ee9a1e1",
+    "lite_bram/sim.prj": "2acab3263dccc1f98ca7528bb916cb72c504245aee34ae1845a66248574cc317",
+    "lite_bram/trce.log.gz": "f1c42910da48dfeedf1cc90182972eab27c8c01b3ed2efdddd00bfdff51a17a6",
+    "lite_bram/xst-probe.log.gz": "d40f9ccd4985ef854aa8065779dc7a143e852cfa3b96b7d7da8dd5169b252bb5",
+    "lite_dist/coregen-run.log.gz": "714a4769eacdfd6d15713e1736d4ab9ef2e3d804ca77f79b4219e0328d783cac",
+    "lite_dist/coregen.log.gz": "6b4ed40944c22ce56ff5801f5405233e87c35bd19826245251d5b695efef8baa",
+    "lite_dist/map-probe.log.gz": "d47942d73cd66b4c82129040fcdf8955657921710f340a2a57fa5592fdb8f9cd",
+    "lite_dist/ngdbuild-probe.log.gz": "2b2d92847e64c92b7160b302f5f0abb16cf6f614b7380ba06cfcb2a203dca3ea",
+    "lite_dist/probe.prj": "4e74cbad46ba929acd7daa6a274e2d292b2e1804c6138294b01723342255b18b",
+    "lite_dist/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "lite_dist/probe.xst": "f4b2363e48bbe5320636d33b1cf2a2fa163624484275e5e2128c9f96191ea325",
+    "lite_dist/probe_map.mrp.gz": "d238e0a085404dcae47c6e30f2b2e16afafd8f7bad46d818e59c9d0aa698ebe3",
+    "lite_dist/xst-probe.log.gz": "dfd4261393b19896c8dd1f47bf379a37cea9123567f8a6bbe9a36faffe9b2fde",
+    "r2_bram/coregen-run.log.gz": "226dc4840dd5f912cbf2ba662fbcf9c08bd766be1328a197126a4deea95bf80b",
+    "r2_bram/coregen.log.gz": "3f640fc25978c6811133fed4640d3978cff49d6f67e0411915f4d53bd7588d4e",
+    "r2_bram/fft-ip-output.txt.gz": "20c32ebe0456ffef7e46f9212a63b129f9b696bcacefc766ca370de6f0b5db72",
+    "r2_bram/fuse.log.gz": "c31e68ca9c0f74b2d3ce0a1e743341b280cb92e7719dda82e350c7bf69d845fc",
+    "r2_bram/map-probe.log.gz": "8eccf7bedfb487502b399b148c072baad6594489e88607ce75fdc2fdc5297576",
+    "r2_bram/ngdbuild-probe.log.gz": "80274f8d87092b0e9b60cbd9a625cb7c51c051dcd7e69c0bc57e2cb4d9ae2089",
+    "r2_bram/numeric-comparison-final.json": "d97b78abcbd2d43152655fa68c90f26d1767fcbad4e868c9a7a0eeeafba35574",
+    "r2_bram/probe.prj": "5acf38d4f0272a9b99d1079f253b4b3f0db8de2a685424aaad93d2557ad3246e",
+    "r2_bram/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "r2_bram/probe.xst": "cf9071147327554b65827f4efb0ef11d5826d8157a9f7fd18037c250be757f6b",
+    "r2_bram/probe_map.mrp.gz": "d604f405c04d40b02ece7ebcb6b9155c1b1af10eb65fb14b5b268861d661df1e",
+    "r2_bram/sim.log.gz": "59523a4d264b98d9d3b195ac9d1afe12fcafd0733d6b5c82b848a7b76f0b23ef",
+    "r2_bram/sim.prj": "b3d62936c834529b102b141cf6dbce125a2e9460eb7e1647b377ed09c7e8e7aa",
+    "r2_bram/xst-probe.log.gz": "a5784e104ceda1d2c7afbe6e58336430e096fa67d116acda7f44390aa9414d48"
+  }
+}

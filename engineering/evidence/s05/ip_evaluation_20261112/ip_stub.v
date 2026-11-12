@@ -1,0 +1,1 @@
+(* box_type="black_box" *) module fft32_ip(input clk,ce,sclr,start,unload,fwd_inv,fwd_inv_we,scale_sch_we,input [24:0] xn_re,xn_im,input [9:0] scale_sch,output rfd,busy,edone,done,dv,ovflo,output [4:0] xn_index,xk_index,output [24:0] xk_re,xk_im);endmodule

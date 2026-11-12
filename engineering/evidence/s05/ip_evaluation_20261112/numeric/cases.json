@@ -1,0 +1,318 @@
+[
+  {
+    "case": 0,
+    "name": "existing_0",
+    "truth": [],
+    "metadata": {
+      "source": "existing immutable vectors",
+      "noise_rms": 0.0
+    },
+    "array_sha256": "c00456eb32e0c5b91fe71e4a7315a5e630aa6557950e93a804064167750aa6b6"
+  },
+  {
+    "case": 1,
+    "name": "existing_1",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 40,
+        "velocity": 2.8125,
+        "amplitude": 0.18
+      }
+    ],
+    "metadata": {
+      "source": "existing immutable vectors",
+      "noise_rms": 0.0
+    },
+    "array_sha256": "2560a05ec96008e484057c1573f38d3b2ad5cfffce980f5e955490346f6c5db8"
+  },
+  {
+    "case": 2,
+    "name": "existing_2",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 35,
+        "velocity": 2.8125,
+        "amplitude": 0.18
+      },
+      {
+        "id": 1,
+        "delay": 80,
+        "velocity": -3.75,
+        "amplitude": 0.12
+      }
+    ],
+    "metadata": {
+      "source": "existing immutable vectors",
+      "noise_rms": 0.0
+    },
+    "array_sha256": "f091dc6943281e5e9586707810bb06a554d18d5ff1f3fdd9c9e197350c715bf4"
+  },
+  {
+    "case": 3,
+    "name": "Single aircraft",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 40,
+        "velocity": 2.8125,
+        "amplitude": 0.18
+      }
+    ],
+    "metadata": {
+      "scenario": "Single aircraft",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "d6f564fe66fb956e4d0fca014c28c651c5a2eb10ff6ff7fdefd56f0b1147004b"
+  },
+  {
+    "case": 4,
+    "name": "Two aircraft",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 35,
+        "velocity": 2.8125,
+        "amplitude": 0.18
+      },
+      {
+        "id": 1,
+        "delay": 80,
+        "velocity": -3.75,
+        "amplitude": 0.12
+      }
+    ],
+    "metadata": {
+      "scenario": "Two aircraft",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "0f904e887642b03182c475378c35a5554f816442c1daf397cbbfb23edb133a79"
+  },
+  {
+    "case": 5,
+    "name": "Crossing trajectories",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 55,
+        "velocity": 2.8125,
+        "amplitude": 0.16
+      },
+      {
+        "id": 1,
+        "delay": 55,
+        "velocity": -3.75,
+        "amplitude": 0.16
+      }
+    ],
+    "metadata": {
+      "scenario": "Crossing trajectories",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "1cc97e5ebee6ca5b7b27c69bd923230ed1347eaabab2a3dd720e13133a5c9230"
+  },
+  {
+    "case": 6,
+    "name": "Multiple aircraft",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 22,
+        "velocity": 2.8125,
+        "amplitude": 0.12
+      },
+      {
+        "id": 1,
+        "delay": 48,
+        "velocity": -3.75,
+        "amplitude": 0.14
+      },
+      {
+        "id": 2,
+        "delay": 78,
+        "velocity": 5.15625,
+        "amplitude": 0.09
+      },
+      {
+        "id": 3,
+        "delay": 99,
+        "velocity": -5.625,
+        "amplitude": 0.11
+      }
+    ],
+    "metadata": {
+      "scenario": "Multiple aircraft",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "a87179c8027fdc9d722b6d43bbdae9a88606034e21aa75c20ad2eec8ed85d1ac"
+  },
+  {
+    "case": 7,
+    "name": "Weak target near strong",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 45,
+        "velocity": 2.8125,
+        "amplitude": 0.26
+      },
+      {
+        "id": 1,
+        "delay": 55,
+        "velocity": 3.75,
+        "amplitude": 0.026
+      }
+    ],
+    "metadata": {
+      "scenario": "Weak target near strong",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "f264e760c8c5a3010248aaceb88be685143cc249ac76978b26c99e9ade006913"
+  },
+  {
+    "case": 8,
+    "name": "Aircraft in clutter",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 65,
+        "velocity": 2.8125,
+        "amplitude": 0.12
+      }
+    ],
+    "metadata": {
+      "scenario": "Aircraft in clutter",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "78527ebb7864beae0560a781ccdd6b6f0d2755ac5d8afc89c72d2918f89646b8"
+  },
+  {
+    "case": 9,
+    "name": "Closely spaced targets",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 50,
+        "velocity": 2.8125,
+        "amplitude": 0.15
+      },
+      {
+        "id": 1,
+        "delay": 52,
+        "velocity": 3.28125,
+        "amplitude": 0.15
+      }
+    ],
+    "metadata": {
+      "scenario": "Closely spaced targets",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "bb1ec503325e57335cdedb51705c65487ed0f602d4a95cf0c3ef3e4c8a1306f2"
+  },
+  {
+    "case": 10,
+    "name": "Low SNR",
+    "truth": [
+      {
+        "id": 0,
+        "delay": 60,
+        "velocity": 2.8125,
+        "amplitude": 0.06
+      }
+    ],
+    "metadata": {
+      "scenario": "Low SNR",
+      "seed": 20261112,
+      "noise_rms": 0.06,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "array_sha256": "9d495b89a66cc58ac4e4095b6b6e95ae6e9f65049509e4b72a191dd92b38fc55"
+  }
+]

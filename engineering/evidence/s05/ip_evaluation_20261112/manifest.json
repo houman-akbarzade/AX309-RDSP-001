@@ -1,0 +1,362 @@
+{
+  "project": "AX309-RDSP-001",
+  "source_baseline": "ff7cf15",
+  "status": "LAB_EVALUATION_COMPLETE_PENDING_ENGINEER_DECISION",
+  "scope": "Numeric comparison to Float64 and resource/timing integration probes; no production RTL or board bitstream update",
+  "environment": {
+    "Python": "3.14.4",
+    "NumPy": "2.3.5",
+    "ISE": "14.7 P.20131013",
+    "simulator": "Structural ISim for FFT outputs; behavioural ISim for arithmetic/controller/table regressions"
+  },
+  "resources": {
+    "power": {
+      "lut": 3768,
+      "ff": 2992,
+      "ramb16": 8,
+      "ramb8": 4,
+      "dsp": 9,
+      "map": "PASS",
+      "timing_errors": 234,
+      "setup_errors": 186,
+      "hold_errors": 48,
+      "min_period_ns": 28.341
+    },
+    "cfar": {
+      "lut": 4145,
+      "ff": 3126,
+      "ramb16": 19,
+      "ramb8": 5,
+      "dsp": 14,
+      "map": "PASS",
+      "timing_errors": 186,
+      "setup_errors": 186,
+      "hold_errors": 0,
+      "min_period_ns": 29.206
+    },
+    "grouping": {
+      "lut": 7212,
+      "ff": 4762,
+      "ramb16": 25,
+      "ramb8": 6,
+      "dsp": 14,
+      "map": "FAIL"
+    },
+    "cfar_pipelined": {
+      "lut": 4024,
+      "ff": 3202,
+      "ramb16": 19,
+      "ramb8": 5,
+      "dsp": 14,
+      "map": "PASS",
+      "timing_errors": 0,
+      "setup_errors": 0,
+      "hold_errors": 0,
+      "min_period_ns": 17.55
+    },
+    "grouping_ram_pipelined": {
+      "lut": 4725,
+      "ff": 3504,
+      "ramb16": 25,
+      "ramb8": 5,
+      "dsp": 14,
+      "map": "PASS",
+      "timing_errors": 18,
+      "setup_errors": 0,
+      "hold_errors": 18,
+      "min_period_ns": 19.417
+    },
+    "grouping_ram_globalclock": {
+      "lut": 4722,
+      "ff": 3504,
+      "ramb16": 25,
+      "ramb8": 5,
+      "dsp": 14,
+      "map": "PASS",
+      "timing_errors": 0,
+      "setup_errors": 0,
+      "hold_errors": 0,
+      "min_period_ns": 19.26
+    }
+  },
+  "resource_scope": {
+    "included": [
+      "MF/MTI/FFT IP/Power/CFAR/Grouping as selected",
+      "R1 UART input and raw-IQ readback",
+      "actual 16896-byte IQ RAM shared with DSP via a mux"
+    ],
+    "excluded": [
+      "UART DSP RUN/RESULT/COMMIT/ABORT serialization",
+      "board-specific physical test-output pin assignment",
+      "external I/O delay qualification",
+      "full hardware end-to-end execution"
+    ],
+    "warning": "Diagnostic output buses retain processing results. This is not a deployable four-pin board top."
+  },
+  "best": {
+    "variant": "grouping_ram_globalclock",
+    "LUT_headroom": 998,
+    "DSP_headroom": 2,
+    "period_constraint_ns": 20,
+    "internal_timing": "PASS with no setup/hold errors; external I/O unqualified"
+  },
+  "numeric_aggregate": {
+    "all_11": {
+      "isolated_FFT": {
+        "fixed": {
+          "complex_RMSE": 2.8900128807377576e-05,
+          "NRMSE_percent": 0.006332168201985788,
+          "case_count": 11,
+          "complex_words": 45056
+        },
+        "ip": {
+          "complex_RMSE": 1.754547601870989e-05,
+          "NRMSE_percent": 0.0038443048498115113,
+          "case_count": 11,
+          "complex_words": 45056
+        }
+      },
+      "end_to_end_source_float": {
+        "fixed": {
+          "complex_RMSE": 5.27118013625952e-05,
+          "NRMSE_percent": 0.011549423162037125,
+          "case_count": 11,
+          "complex_words": 45056
+        },
+        "ip": {
+          "complex_RMSE": 4.7473868619040286e-05,
+          "NRMSE_percent": 0.010401765518287283,
+          "case_count": 11,
+          "complex_words": 45056
+        }
+      },
+      "end_to_end_common_ADC_float": {
+        "fixed": {
+          "complex_RMSE": 3.150033700474918e-05,
+          "NRMSE_percent": 0.006901874264485949,
+          "case_count": 11,
+          "complex_words": 45056
+        },
+        "ip": {
+          "complex_RMSE": 2.077867544620691e-05,
+          "NRMSE_percent": 0.004552707016774454,
+          "case_count": 11,
+          "complex_words": 45056
+        }
+      }
+    },
+    "noisy_development_8": {
+      "isolated_FFT": {
+        "fixed": {
+          "complex_RMSE": 3.1697938239623524e-05,
+          "NRMSE_percent": 0.006535557556982218,
+          "case_count": 8,
+          "complex_words": 32768
+        },
+        "ip": {
+          "complex_RMSE": 2.0395183151993782e-05,
+          "NRMSE_percent": 0.004205128181126537,
+          "case_count": 8,
+          "complex_words": 32768
+        }
+      },
+      "end_to_end_source_float": {
+        "fixed": {
+          "complex_RMSE": 5.933833861538153e-05,
+          "NRMSE_percent": 0.012234505404553682,
+          "case_count": 8,
+          "complex_words": 32768
+        },
+        "ip": {
+          "complex_RMSE": 5.391258043435384e-05,
+          "NRMSE_percent": 0.011115810993173963,
+          "case_count": 8,
+          "complex_words": 32768
+        }
+      },
+      "end_to_end_common_ADC_float": {
+        "fixed": {
+          "complex_RMSE": 3.450895332668093e-05,
+          "NRMSE_percent": 0.007115127545437628,
+          "case_count": 8,
+          "complex_words": 32768
+        },
+        "ip": {
+          "complex_RMSE": 2.3854478211391532e-05,
+          "NRMSE_percent": 0.004918365775895238,
+          "case_count": 8,
+          "complex_words": 32768
+        }
+      }
+    }
+  },
+  "unit_tests": {
+    "mf": "PASS tb_mf_mti_rne: RNE ties, signed endpoints, MF complex MAC, MTI",
+    "mf-full": "PASS tb_mf_pipeline: 64 full 16-tap complex MAC frames exact against frozen integer oracle, prelimit and tags checked",
+    "group": "PASS tb_grouping_8conn: 11 cases, 30602 CUTs, 887 records, independent C05 oracle+union-find, 702 clusters, late merges, exact ties, back-pressure, overflow and protocol guard",
+    "group702": "PASS tb_grouping_fifo8_702: 702/702 independently certified C05 records through 8-slot lossless FIFO, no producer drop, hard-full stall, valid-ready persistence, complete drain; NO UART COMMIT/ACK CLAIM",
+    "uart": "PASS tb_uart_s05_iq_full: test_checks=12 RX_upload_frames=35 IQ_bytes=16896 TX_readback_frames=35 exact_TX_bytes=21754 responses=113 FPGA_outbound_retry=1 PC_codec_byte_oracle=YES ACCELERATED_CPB10",
+    "adapter": "PASS tb_adapter: 15 frames, 480 exact outputs, sparse inputs, continuous reuse and backpressure"
+  },
+  "preserved": {
+    "production_RTL": true,
+    "programmed_bitstream": true,
+    "C02_baseline": true,
+    "REQ_RNG_03": "FAIL unchanged",
+    "REQ_LIST_01": "full acceptance OPEN; logical 702 preserved",
+    "statistical_fixed_point_risk": "OPEN; no Pfa/Pd qualification",
+    "seven_intermediate_contracts": "OPEN",
+    "engineering_acceptance": "UNCHANGED",
+    "progress": "UNCHANGED pending decision/adoption"
+  },
+  "clock_fix": "Opaque FFT netlist received fabric-routed raw IBUF clock in one integration attempt. Explicit shared top BUFG eliminates local IP clock and the 18 DSP cascade hold errors. No timing exception or period relaxation was used.",
+  "source_sha256": {
+    "rtl/experiments/ip_evaluation_20261112/README.md": "9764448e432a5ccc33bbb0174ef16cca199f7a130b2d78b865ac20491208a664",
+    "rtl/experiments/ip_evaluation_20261112/analyze_float.py": "c33f2903866de0c965634d65d1ee4fe4afb8772d4028d04466d6cc7ac8da9d56",
+    "rtl/experiments/ip_evaluation_20261112/build_numeric_vectors.py": "e1f88052e07b1ebb6c17287a60538e942c2a9cfa2eda542a2172f316e08864c3",
+    "rtl/experiments/ip_evaluation_20261112/fft32_ip_adapter.v": "12758c492a11f0aa9f1ea55853743a8a562734cfc74a9bf1d29e3d8573d061c0",
+    "rtl/experiments/ip_evaluation_20261112/grouping_8conn_ram_probe.v": "602ae13a83ff6b006895290a7e7f2e512b965c08c7cb568fa224cba2849664da",
+    "rtl/experiments/ip_evaluation_20261112/mf16_serial_mac_pipelined_probe.v": "cb06afe430edd32e2cd736d2740ec2d8994b79f07a4b7d022449b200f74fb08b",
+    "rtl/experiments/ip_evaluation_20261112/prepare_resource_probes.py": "3d0cc24301047acf152e2f737aa9012cb96e1cdef2d2013cc506eac2c4759248",
+    "rtl/experiments/ip_evaluation_20261112/run_numeric.sh": "8694006d8da8f02dfe129fe56d7765b92fca84bb9913cb63063a9732c524d30e",
+    "rtl/experiments/ip_evaluation_20261112/run_resources.sh": "54f47d339c6f75abf369fe062e584b537e686b740426ae17aed4428282fdeda1",
+    "rtl/experiments/ip_evaluation_20261112/s05_iq_cpi_banked_registered_probe.v": "c65f71b9bdf1875ab88b0f19df31aa23ac972400eb4b054f9d1ae9cf56806c00",
+    "rtl/experiments/ip_evaluation_20261112/tb_adapter.v": "afc1be2c0f7cf81d4688162a69accf28d82e70b90b6c1ba2a760d11747cc63f9",
+    "rtl/experiments/ip_evaluation_20261112/tb_mf_pipeline.v": "d7ac68b6d97f1bf02762c75603df6960683f5c100fcb63b0b5984b8b2c924051",
+    "rtl/experiments/ip_evaluation_20261112/tb_more_ip.v": "b8a474ba2c0c398843908eb788980492f246e38da8e0745bcb18f4386d9fcd89"
+  },
+  "baseline_artifact_sha256": {
+    "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+    "rtl/grouping/grouping_8conn.v": "c2fc13c66be6fa7cb38c925070555c3b18837c0b9724d66436647e59bc46d087",
+    "rtl/mf16/mf16_serial_mac.v": "b86d82080e1aaea805d50c520cf8640bb3efe2766c77f8de49fb8a8d75eafd03",
+    "rtl/uart/s05_iq_cpi_banked.v": "14e7f1357e4d0b548a4dbcabb22ea6a2456431db9a7b838197252c54b3499fc4",
+    "rtl/integration/radar_cpi_core.v": "5e132bd62bb5a6babb3380c445d55ffd9c80c8124ecbcb9a769c69747970b2d9"
+  },
+  "evidence_sha256": {
+    "ip_stub.v": "ff00689abb1a602cc32c944777ad56dc650c15f6f612f1aa2c241386d40ce8d2",
+    "numeric/0_arrays.npz": "c00456eb32e0c5b91fe71e4a7315a5e630aa6557950e93a804064167750aa6b6",
+    "numeric/10_arrays.npz": "9d495b89a66cc58ac4e4095b6b6e95ae6e9f65049509e4b72a191dd92b38fc55",
+    "numeric/1_arrays.npz": "2560a05ec96008e484057c1573f38d3b2ad5cfffce980f5e955490346f6c5db8",
+    "numeric/2_arrays.npz": "f091dc6943281e5e9586707810bb06a554d18d5ff1f3fdd9c9e197350c715bf4",
+    "numeric/3_arrays.npz": "d6f564fe66fb956e4d0fca014c28c651c5a2eb10ff6ff7fdefd56f0b1147004b",
+    "numeric/4_arrays.npz": "0f904e887642b03182c475378c35a5554f816442c1daf397cbbfb23edb133a79",
+    "numeric/5_arrays.npz": "1cc97e5ebee6ca5b7b27c69bd923230ed1347eaabab2a3dd720e13133a5c9230",
+    "numeric/6_arrays.npz": "a87179c8027fdc9d722b6d43bbdae9a88606034e21aa75c20ad2eec8ed85d1ac",
+    "numeric/7_arrays.npz": "f264e760c8c5a3010248aaceb88be685143cc249ac76978b26c99e9ade006913",
+    "numeric/8_arrays.npz": "78527ebb7864beae0560a781ccdd6b6f0d2755ac5d8afc89c72d2918f89646b8",
+    "numeric/9_arrays.npz": "bb1ec503325e57335cdedb51705c65487ed0f602d4a95cf0c3ef3e4c8a1306f2",
+    "numeric/all_new_fixed_fft.hex.gz": "4d2800c6eb71bbe9f2a968fc26e69413f05e7984b6024847e576d2cbd3974f00",
+    "numeric/all_new_mti.hex.gz": "421ec1ca99996f68cc9d9023e6f655b63bb4a0814ec041b04d356fe4e3a56624",
+    "numeric/analysis.log.gz": "5ad0471ea12ed10fc2f77c84991c3e3f4c1a27f7fe61300f5f23842bc0a7932c",
+    "numeric/cases.json": "6e07228b225ec7d763d3e977ba2bb92cdbcdb44f3385d951d36faced4d38a891",
+    "numeric/float-comparison.json": "2794e8f8595c96d8b21ff95d0545ad5ef7167f3e50445da20165346cca06513f",
+    "numeric/fuse.log.gz": "4a3266390d3289af0d8d6ca84b72b014b507669fa53c6514d293fc27ebb805e2",
+    "numeric/more-ip-output.txt.gz": "397c727c7fd54c380da76150fee452632dcf74df331778161cfd6f521afc3a66",
+    "numeric/sim.log.gz": "f681b8136e465f77379cc4656febcef0a5f58cdee836a667d3cfd527787f4f55",
+    "numeric/sim.prj.gz": "c25f78ee1a6f03e967571c8cf3c55f7c28c18a6012482b2257900ac493c47c76",
+    "resources/cfar/ip_resource_top.v": "673fefe92d667f215bcd5c6df366e3e88404929e10b6eb4b172276fb29f0bafd",
+    "resources/cfar/map.log.gz": "d854ee8ac8e40207b926b1bd1e6b16822d009dd605ddba3ee1719df10af97cc4",
+    "resources/cfar/ngdbuild.log.gz": "1045a1523c72c78d42d86c1892473a6eabad0b10657bd83864b27cf4573b5f98",
+    "resources/cfar/par.log.gz": "fc7cd17bc50a3f42cfe47637788e16ce647fb193441512ca58eaef71c6253e9b",
+    "resources/cfar/probe.prj": "fa71b459be9b724002d0cb20536dc1d66ee74e2fe41ab911bf1849da5485a23c",
+    "resources/cfar/probe.srp.gz": "0458d72765f4482a506383577fc848892f290ea769710e01ad45b0f74e656eba",
+    "resources/cfar/probe.twr.gz": "5549da2141d5f715a30a71bfb37b2b39f2d78625d59d10d85c1a3c433eb30574",
+    "resources/cfar/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "resources/cfar/probe.xst": "8f53b48038ef6636e5619a7e2ac615a536e757361b1e7f62680d20cd1ed824eb",
+    "resources/cfar/probe_map.mrp.gz": "8163c65c370e9d9ddd561a509591b3909ea4ab078af7cc6a5f24a6f9e95d6866",
+    "resources/cfar/radar_cpi_core.v": "5e132bd62bb5a6babb3380c445d55ffd9c80c8124ecbcb9a769c69747970b2d9",
+    "resources/cfar/trce.log.gz": "fb81070a03f4fba0cb2d243c4ad58b18abd704641f9c23a631c88c3ae9b10ee8",
+    "resources/cfar/xst.log.gz": "07152bdf16fb986ae7c02b78f6741fc9045c172eae52d782361133499152e828",
+    "resources/cfar_pipelined/ip_resource_top.v": "673fefe92d667f215bcd5c6df366e3e88404929e10b6eb4b172276fb29f0bafd",
+    "resources/cfar_pipelined/map.log.gz": "eda8ba11ee2036c3fa4314485be5c47c227c6b8fbd86747d4df5239b8e38f09d",
+    "resources/cfar_pipelined/ngdbuild.log.gz": "14a2ce89b462f39751230ed44553400cfd5972580c06c1372c78ec4a830f07bf",
+    "resources/cfar_pipelined/par.log.gz": "40223e3c31b089006ea14d807674af84f14973cd40b504f25b8d397364017709",
+    "resources/cfar_pipelined/probe.prj": "10f6e5f12257d22e70a46b6f1c53efb10c5b299bb3762d37aed7c5dd3a2cba2c",
+    "resources/cfar_pipelined/probe.srp.gz": "0e3bc880da6e11a240a594fddb37236670ab975edec1288eb925ee8d5bfd383c",
+    "resources/cfar_pipelined/probe.twr.gz": "1e46b667a4fe2be6ab861376b608886ff04b72b392be5205bbdba864276954ed",
+    "resources/cfar_pipelined/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "resources/cfar_pipelined/probe.xst": "c06bbe7d9cfd2cdf176f243df41e57305152ba9691173970b2b03b892b4bfb56",
+    "resources/cfar_pipelined/probe_map.mrp.gz": "8722ca8cbc072c0528ccd90a7e5a1986061d9a45d86c066b9b1653099468a499",
+    "resources/cfar_pipelined/radar_cpi_core.v": "5e132bd62bb5a6babb3380c445d55ffd9c80c8124ecbcb9a769c69747970b2d9",
+    "resources/cfar_pipelined/trce.log.gz": "43ae9d031356959e43830e00f7864ed076258a608bd5d5ccc1a621386bdf64b7",
+    "resources/cfar_pipelined/xst.log.gz": "24ccbf06bc529bb5bb36b7d8da1405cb169a3f483e92778686bd9c3722827db4",
+    "resources/grouping/ip_resource_top.v": "673fefe92d667f215bcd5c6df366e3e88404929e10b6eb4b172276fb29f0bafd",
+    "resources/grouping/map.log.gz": "fc6c06b1a12783511084c45945bf27cb4ed5361f908b778d7eb402969b0337c0",
+    "resources/grouping/ngdbuild.log.gz": "a0d8f290a1b7672ebd2812ed196908c680aa548e38da19f74b945e06f662142f",
+    "resources/grouping/probe.prj": "2bd4a4a49e9afb2da0b796e5d6bbe7240e40ff3baf1522a5f928d50137b15705",
+    "resources/grouping/probe.srp.gz": "99523c0919a3e60cf8713fd617561043c2cc4e33f8ba2857b418a349296cfa95",
+    "resources/grouping/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "resources/grouping/probe.xst": "64ed140ee9747ffb5fc62d1bc4837bebfe04284e9b699af74623c90327b8f5b0",
+    "resources/grouping/probe_map.mrp.gz": "4b6c99f15b501105056883dfbb300e267b7af77145791560c848cf37942f6c8d",
+    "resources/grouping/radar_cpi_core.v": "5e132bd62bb5a6babb3380c445d55ffd9c80c8124ecbcb9a769c69747970b2d9",
+    "resources/grouping/xst.log.gz": "6f0f654e42118a2ca927ec300b404dcd81bbcf8eb85ee131de1c70d3ee539c72",
+    "resources/grouping_ram_globalclock/ip_resource_top.v": "a8b12dd3cd560088cf34e8a79e616566dac7d72eed9ca7937738ed33383b2718",
+    "resources/grouping_ram_globalclock/map.log.gz": "2d21aedf187956655a322b95abd345e538a6d4f6af249d5e968e6f1d5f9b0753",
+    "resources/grouping_ram_globalclock/ngdbuild.log.gz": "a9832f5a6d2f5930509f5964fabbc98f10b78b815cb61237d4b9792f406d1d54",
+    "resources/grouping_ram_globalclock/par.log.gz": "176eb484febb64abd44e35100bbe995adeffd6d076956f43ef586ea51fddd02e",
+    "resources/grouping_ram_globalclock/probe.prj": "1095d4b0cea9b87e230659aefbe24903755059377da9785fd62ce7d0fbc44d20",
+    "resources/grouping_ram_globalclock/probe.srp.gz": "7831143b876e8d3b8ede5a67f911a049deff93525239a5fff59eeefbbc08fc37",
+    "resources/grouping_ram_globalclock/probe.twr.gz": "03c3422c105a827d81dc13120bd205430bca6b6247673b06997ab70ec7959ee5",
+    "resources/grouping_ram_globalclock/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "resources/grouping_ram_globalclock/probe.xst": "3e24a36b887e0d62da3839f021cf2bd603336894c9d261bf3a53af0232f2a214",
+    "resources/grouping_ram_globalclock/probe_map.mrp.gz": "f62aea5be9b204cbecbe2a731e1af0571dbf5473be214a08efd8c5f94ff7e885",
+    "resources/grouping_ram_globalclock/radar_cpi_core.v": "5e132bd62bb5a6babb3380c445d55ffd9c80c8124ecbcb9a769c69747970b2d9",
+    "resources/grouping_ram_globalclock/trce.log.gz": "05294a5d05868ecb4f5f3c281b581df9729b1a88cca1f5bad1592abb67e5f505",
+    "resources/grouping_ram_globalclock/xst.log.gz": "1518d916d57af23cce68b730a141371f5545c6d03660dbcdd578c4b76ba1a3e7",
+    "resources/grouping_ram_pipelined/ip_resource_top.v": "673fefe92d667f215bcd5c6df366e3e88404929e10b6eb4b172276fb29f0bafd",
+    "resources/grouping_ram_pipelined/map.log.gz": "fc4c21958de7c68336f273d3e0c764735f3172c5e2ff6342021f91c2a67ee1b7",
+    "resources/grouping_ram_pipelined/ngdbuild.log.gz": "0509b74c39ca65c90e43f903b518e930eaf22e2434033870f05bd384d0ce8e02",
+    "resources/grouping_ram_pipelined/par.log.gz": "04ef867e7e420da854a5d0168d226cf431600e226d356c665656425421c6bf62",
+    "resources/grouping_ram_pipelined/probe.prj": "c8fa430d23d8983f68f147bc310293fee3e44968f3ac3c2fd40d4496dbba1869",
+    "resources/grouping_ram_pipelined/probe.srp.gz": "f1d9fb7cf1c4730c72ca1f9117785178c2da77ad024f3f6180b8ec77d7ea5a32",
+    "resources/grouping_ram_pipelined/probe.twr.gz": "e61f3c34567bab3a98396bedf93e087e204ff8c1af7bb4d28b7944bf1f614063",
+    "resources/grouping_ram_pipelined/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "resources/grouping_ram_pipelined/probe.xst": "6969cdd2991005101ecc053729816875683f80ff5c4d24e03f802630de1455b9",
+    "resources/grouping_ram_pipelined/probe_map.mrp.gz": "33a902c34e09d09cf427d896425c2dff98133974dc00ad25a7b486a70ec48fab",
+    "resources/grouping_ram_pipelined/radar_cpi_core.v": "5e132bd62bb5a6babb3380c445d55ffd9c80c8124ecbcb9a769c69747970b2d9",
+    "resources/grouping_ram_pipelined/trce.log.gz": "a819ed688b73240e1181ce2938124754b75c9eb9242527540d98aba9b2764b18",
+    "resources/grouping_ram_pipelined/xst.log.gz": "f0d2b3d3fdbf1b2b4f6dcc39b2db9f445e80e3e050591cd2e75d8de927acd0d4",
+    "resources/power/ip_resource_top.v": "673fefe92d667f215bcd5c6df366e3e88404929e10b6eb4b172276fb29f0bafd",
+    "resources/power/map.log.gz": "2953eb893668904f7b009c0c5fd06b00ee0211de0876841cb375f88658cfac84",
+    "resources/power/ngdbuild.log.gz": "9028b1ce9c0d2d523414e55f7bc9f882fecd2a1f650fe3ccbc38fa11c6de97c6",
+    "resources/power/par.log.gz": "e5d4849a3addb5b85a5d12a394fcb9f1dd94742dfd1aeff8d02e996e58a8c0d6",
+    "resources/power/probe.prj": "cb09a700be72486e22a5d4237a22eab68c1d4ebde9fa6f95a1afdc8b577696f1",
+    "resources/power/probe.srp.gz": "76cb60fe7064a22063b9959c27bcc290dbb2658d628e8f7e89bd5ded50fa5002",
+    "resources/power/probe.twr.gz": "ce25692ceb3a6bdb1cd91c55abbb68e2c47933ee0f170b9a623363cd1756156e",
+    "resources/power/probe.ucf": "c6085cfebf72115955ac30b145b4b9a6cdc0a03c3e44ff476a6f13f9338e1c59",
+    "resources/power/probe.xst": "91d449d7b16dc8ccd2e3f66608b0737e7addcba43d1013422f31c6d048426aed",
+    "resources/power/probe_map.mrp.gz": "bf8695f5e8d008ea805a175523f95e845f06ea4dcdb499f1439bdcb87a0d0d87",
+    "resources/power/radar_cpi_core.v": "e0e287801a25628cb2f0768fbe2e03b3da83707ca93ff667f0f0901e521b875b",
+    "resources/power/trce.log.gz": "4725eb6dd6130470d1b4c5554acc77e22d6c0012426f1d4de8384085cc46194b",
+    "resources/power/xst.log.gz": "d4e94b79a17bc5d597cf5997f884a1bafccc2cbadb3e4f4f0636268fd3cd2865",
+    "uart_shared_probe.v": "93d850d7b42064210ed1a18d8ae894be9f347da15d141f1f0f738f4bb09dba7a",
+    "units/0_ip_rd.hex": "e6d3efbf4e3e1f3513017af3d51f0915b0c644977425c339a07046ab1ff51e66",
+    "units/1_ip_rd.hex": "2cbf9092a7031df32c915c274dfc324c6bd956ee344b75cd6093918d5df52fa1",
+    "units/2_ip_rd.hex": "226783ba74c51addd242237f7d199ebcf1c3383aeb5da65ddda11948e918ea6a",
+    "units/adapter-compile.log.gz": "c36d27c3007b90703eb1876a2376f5150c4afaac3f67a53fd6382d0facc3fe6e",
+    "units/adapter.log.gz": "b77881160286ea54a860b830a18a30caf3eaeac75ff83d2a87914e51f3e1bc7f",
+    "units/adapter.prj": "9e41fb7f6ab455fec872fadd8f2e212eb220e9646131b39387f5b3aaa45c0f59",
+    "units/fuse.log.gz": "c05aaf4960db7309dfc560157feb6321f71138bf68ed7140ae108a41aa2e9d1b",
+    "units/group-compile.log.gz": "0a8559fef4e4357baea2b76ca54400260fd04424d20fa4bbea4cf14b997804fe",
+    "units/group.log.gz": "d3eeec050f99e37f708cc6a93a405da2d059666a9fba1a3bbb5d12708a8d11d2",
+    "units/group.prj": "fcde3465f1eb4d4c271a85352a28c03272af5ebaf772ddaec457ec08c7d9fc27",
+    "units/group702-compile.log.gz": "f6b852ef3e43583568c69cfd0bdd3d55f3e4fdd45e0a176d09e88a996d3d1041",
+    "units/group702.log.gz": "28972c8990e29e940156a659edc893e44bd63267679ec846b38b6a0a60e82272",
+    "units/group702.prj": "e39414ad310656bca4515d7a6b898ff9dd87fe195a99106056008ba688d5d7d4",
+    "units/isim.log.gz": "3d4dd8b344eee20127650b070e0c67403e1318981175af860fa14472b129a459",
+    "units/mf-compile.log.gz": "9b977d5883b5d46e95a6b3f7ef39a58e03bac09ae4a391092244524fc8bd98c6",
+    "units/mf-full-compile.log.gz": "10bdbd71bb1f581c59ab4fc9e9db329098939035afc2f2f404ad75dfa6ac259f",
+    "units/mf-full.log.gz": "e980fcd12e3107582c56f5cfc6ac3153fde0640c97c6b411d3d4a86c7bfc1e79",
+    "units/mf.log.gz": "f13cb3dcde1dd3ad9abd4ff1c593eb77394959fc4a53e27e6d6dda3d481f0b3e",
+    "units/mf.prj": "e9696fd63c1ecf4bb01de68c35c21bc981f6cd3208949c9d431d1d65b841a29b",
+    "units/mf_full.prj": "1ee5e06b5f919b6bd2985d08f516b233b7eeb0a0014b1c88237b4dcd1a2f7780",
+    "units/mf_full_outputs.hex": "6e9099e29aa137a590f3374250aec0d38ed459f969f03071d9ccad9d3677b175",
+    "units/mf_full_prelimit.hex": "ebf31a1b0137946d0c9ed953394b30184a510c138b3f6a7deac09e05ad49de38",
+    "units/mf_full_samples.hex": "5d703a5e3cf8a4c88e685b7b879512ac328a9ef197c98950c66902eefd2e61c6",
+    "units/tb_mf_mti_rne.v": "3de4703ad650691603199289c92dc9fe1a6eee3095c2ea144f5139394b16b749",
+    "units/uart-compile.log.gz": "39b0aea2d7e1acac6d5cc4b8b426ef93ba8de7219743759bebd46d824b4753da",
+    "units/uart.log.gz": "5120ec67f492e5f5bdca7809327197ecb8da5a495e3ccacd3fc2a06b9683128a",
+    "units/uart_registered.prj": "d09851a0b995706fe9cddc99dbfb7f9697f8df228b5386c7664b39e1c6f01368"
+  },
+  "report_sha256": "bccf4743da21003bcb1917c92ae8b4ad65593d7b5b117afb3d843a8f618dbb0a"
+}

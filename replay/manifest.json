@@ -1,12 +1,13 @@
 {
   "canonical": true,
-  "conversation_archive_row_count": 93,
+  "conversation_archive_row_count": 94,
   "conversation_capture_quality_counts": {
-    "EXCERPT": 0,
+    "EXCERPT": 30,
     "FULL": 57,
-    "SUMMARY": 6
+    "SUMMARY": 6,
+    "verbatim": 1
   },
-  "conversation_hash_sha256": "97e46e772779e58ac8ca35c283561b9ed5e5e8b916057dbe9fa6c1af165d15d7",
+  "conversation_hash_sha256": "e78a1ea97ea9e87e7450fc1c282346a5297546fc35f7e20e280d66fbfc67fc03",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "eem_backfill": {
     "approved": 0,
@@ -18,15 +19,23 @@
     "status": "COMPLETE_CANDIDATES_VALIDATED_NOT_PROMOTED",
     "validated": 16
   },
-  "event_count": 139,
-  "events_hash_sha256": "07ee72a01cc57901083a233f39ba47b13e5125b731cdadbc648e470f2dbfea86",
+  "event_count": 140,
+  "events_hash_sha256": "5e706562e68f941dbe6907a9cec182b029a43a00cdb215e20f624231282b3be8",
   "historical_timestamp_policy": "recorded_at_utc is capture time; historical_time_utc remains null when original platform time is unavailable.",
-  "last_event_id": "AX309-E0139",
-  "last_message_ref": "s04-dd1acfba-9829-56d3-904f-e33962347172",
+  "last_event_id": "AX309-E0140",
+  "last_message_ref": "AX309-20261112-R2-engineer",
   "legacy_capture_policy": "Preserve EXCERPT and SUMMARY records as captured; do not reconstruct or upgrade them to FULL.",
   "legacy_projection_generated": false,
   "project_id": "AX309-RDSP-001",
   "schema_version": "0.2.0",
   "timestamps_warning": "Record capture times are not historical chat times",
-  "updated_at_utc": "2026-11-11T19:42:51.060618+00:00"
+  "updated_at_utc": "2026-11-12T08:22:23.958473+00:00",
+  "dialogue_integrity_r2": {
+    "jsonl_parse": "PASS",
+    "identified_id_uniqueness": "PASS",
+    "hashes_present_valid": "PASS",
+    "records_without_identifier": 0,
+    "historical_completeness": "INCOMPLETE: preserve 30 excerpts and 6 summaries",
+    "current_turn": "engineer message verbatim stored; agent final will be appended before reply"
+  }
 }

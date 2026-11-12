@@ -28,7 +28,8 @@ class BoardIQResult:
 
 
 def run_board_iq_smoke(uart: UARTStream, sid: bytes, cpi_id: int = 23,
-                       timeout_s: float = 2.0, max_retries: int = 3) -> BoardIQResult:
+                       timeout_s: float = 2.0, max_retries: int = 3,
+                       raw: bytes | None = None) -> BoardIQResult:
     """Mutates only the explicitly selected CPI. Call on a fresh FPGA/reset.
 
     If interrupted, do not silently continue with another CPI_ID or COMMIT;
@@ -36,7 +37,9 @@ def run_board_iq_smoke(uart: UARTStream, sid: bytes, cpi_id: int = 23,
     """
     from .codec import check_sid
     check_sid(sid)
-    raw = synthetic_iq()
+    raw = synthetic_iq() if raw is None else bytes(raw)
+    if len(raw) != CPI_SIZE:
+        raise PacketError("raw CPI must be exactly 16896 bytes")
     pc = PCSession(sid, mode=0, max_retries=max_retries)
     handshake(uart, pc, wait_s=timeout_s)
     if pc.state != "ACTIVE" or pc.application_locked:

@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/houman/AX309-RDSP-001/pc_link/__main__.py", line 69, in <module>
+    main()
+    ~~~~^^
+  File "/home/houman/AX309-RDSP-001/pc_link/__main__.py", line 62, in main
+    handshake(uart, client, args.timeout)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/houman/AX309-RDSP-001/pc_link/serial_io.py", line 60, in handshake
+    uart.write(pc.timeout())  # identical HELLO/ACTIVATE bytes on retry
+               ~~~~~~~~~~^^
+  File "/home/houman/AX309-RDSP-001/pc_link/session.py", line 92, in timeout
+    raise TimeoutError("handshake retries exhausted")
+TimeoutError: handshake retries exhausted

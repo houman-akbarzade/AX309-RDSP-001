@@ -1,0 +1,91 @@
+{
+  "project": "AX309-RDSP-001",
+  "source_model": "engineering/S05-B-IMPLEMENTATION-VERIFICATION-PROGRESS-v0.1.json",
+  "implementation": {
+    "S05_before_percent": 44,
+    "S05_after_percent": 45,
+    "project_before_percent": 37.0,
+    "project_after_percent": 37.083333333333336,
+    "credit_change": "BOARD_PHYSICAL_LOOPBACK: 0 -> 1 stage point; criterion fulfilled on actual AX309. New core/app work conservatively uncredited until integrated resource fit and package exit criteria are resolved.",
+    "packages": [
+      {
+        "id": "CFAR_GROUPING",
+        "weight": 25,
+        "credit": 25
+      },
+      {
+        "id": "PC_LINK_SOFTWARE",
+        "weight": 10,
+        "credit": 10
+      },
+      {
+        "id": "MATCHED_FILTER",
+        "weight": 15,
+        "credit": 0
+      },
+      {
+        "id": "MTI",
+        "weight": 10,
+        "credit": 0
+      },
+      {
+        "id": "DOPPLER_FFT",
+        "weight": 15,
+        "credit": 0
+      },
+      {
+        "id": "POWER_CHAIN_INTEGRATION",
+        "weight": 10,
+        "credit": 0
+      },
+      {
+        "id": "UART_FPGA",
+        "weight": 10,
+        "credit": 10
+      },
+      {
+        "id": "FULL_DSP_REGRESSION",
+        "weight": 5,
+        "credit": 0
+      }
+    ]
+  },
+  "verification": {
+    "pc_regression": "57 PASS",
+    "full_chain": "3 deterministic CPIs PASS in Icarus 12.0; MF/MTI/FFT/Power every output and final Grouping records exact against frozen C04/C05 models; backpressure exercised",
+    "rounding_equivalence": "8086 PASS",
+    "isim_fft": "PASS zero and impulse, 64 bins",
+    "isim_full_core": "BLOCKED internal compiler assertion VlogExpr.cpp:7741; Icarus fallback used",
+    "gui": "PySide6 reference smoke PASS, native app launched",
+    "reference_scenarios": "8 executed; association 7 PASS, closely spaced FAIL; extra clusters retained"
+  },
+  "engineering_acceptance": {
+    "REQ_LIST_01_logical": "APPROVED_702_NO_TOP_K_NO_SILENT_DROP",
+    "REQ_LIST_01_full": "OPEN",
+    "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "REQ_RNG_03": "FAIL_4_OF_8",
+    "S04_C02_RISK_PERFORMANCE": "OPEN",
+    "seven_DSP_output_schemas": "OPEN_0_OF_7",
+    "complete_architecture_C_XC6SLX9_fit": "OPEN",
+    "final_ICD_v1_signoff": "NOT_AUTOMATICALLY_GRANTED_BY_S05B",
+    "changes_to_engineering_acceptance": false
+  },
+  "hardware": {
+    "jtag_idcode": "0x04001093",
+    "device": "xc6slx9",
+    "cable": "Digilent FT232H / openFPGALoader digilent_hs2 at 1MHz",
+    "programming": "SRAM only; flash unchanged",
+    "uart": "/dev/ttyUSB1",
+    "baud": 115200,
+    "session": "PASS",
+    "full_cpi_iq": "PASS 16896 byte exact, 35 upload + 35 readback packets",
+    "scenarios_iq": [
+      "transport fixture",
+      "Single aircraft",
+      "Two aircraft"
+    ],
+    "dsp": "NOT_PROGRAMMED_NOT_VERIFIED"
+  },
+  "blocker": "DSP core alone 11507/5720 LUT; no full-radar hardware completion",
+  "evidence": "engineering/evidence/s11/bringup-20261112-r2/RESULT.json"
+}

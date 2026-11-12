@@ -1,0 +1,97 @@
+{
+  "project": "AX309-RDSP-001",
+  "baseline_git": "c998e16",
+  "recorded_at_utc": "2026-11-12T08:20:18.440622+00:00",
+  "status": "PARTIAL_IMPLEMENTATION_HARDWARE_DSP_BLOCKED_BY_LUT_FIT",
+  "hardware": {
+    "jtag_idcode": "0x04001093",
+    "device": "xc6slx9",
+    "cable": "Digilent FT232H / openFPGALoader digilent_hs2 at 1MHz",
+    "programming": "SRAM only; flash unchanged",
+    "uart": "/dev/ttyUSB1",
+    "baud": 115200,
+    "session": "PASS",
+    "full_cpi_iq": "PASS 16896 byte exact, 35 upload + 35 readback packets",
+    "scenarios_iq": [
+      "transport fixture",
+      "Single aircraft",
+      "Two aircraft"
+    ],
+    "dsp": "NOT_PROGRAMMED_NOT_VERIFIED"
+  },
+  "verification": {
+    "pc_regression": "57 PASS",
+    "full_chain": "3 deterministic CPIs PASS in Icarus 12.0; MF/MTI/FFT/Power every output and final Grouping records exact against frozen C04/C05 models; backpressure exercised",
+    "rounding_equivalence": "8086 PASS",
+    "isim_fft": "PASS zero and impulse, 64 bins",
+    "isim_full_core": "BLOCKED internal compiler assertion VlogExpr.cpp:7741; Icarus fallback used",
+    "gui": "PySide6 reference smoke PASS, native app launched",
+    "reference_scenarios": "8 executed; association 7 PASS, closely spaced FAIL; extra clusters retained"
+  },
+  "synthesis": {
+    "scope": "DSP core only; external raw IQ read port; UART and raw IQ storage excluded",
+    "initial_lut": 12309,
+    "optimized_lut": 11507,
+    "lut_available": 5720,
+    "registers": 3754,
+    "bram": 18,
+    "dsp48a1": 13,
+    "fit": "FAIL",
+    "combined_uart_dsp_fit": "NOT_RUN; no sums presented as measured fit",
+    "route_timing": "NOT_RUN for DSP; XST success is not fit or timing PASS"
+  },
+  "preserved": [
+    "REQ-RNG-03 FAIL/unresolved",
+    "REQ-LIST-01 final acceptance OPEN; logical capacity 702 approved",
+    "Fixed-point statistical risk OPEN",
+    "Seven intermediate DSP readback contracts OPEN",
+    "Gate-S04 closed by engineer disposition with open items"
+  ],
+  "remaining": [
+    "Resource architecture redesign, especially FFT multiport register storage and Grouping/control logic",
+    "Full UART RUN/RESULT/COMMIT/ABORT/recovery integration",
+    "Integrated board-top synthesis, MAP/PAR/TRCE and timing closure",
+    "Real hardware DSP scenarios and final engineering acceptance"
+  ],
+  "limitations": [
+    "Current app hardware mode intentionally supports IQ transfer/readback only",
+    "GUI path duration is illustration span, each Run generates one CPI",
+    "Reference association tolerance is development scoring, not engineering acceptance",
+    "No Pfa/Pd statistical qualification or REQ-RNG-03 acceptance rerun",
+    "Historical conversation archive remains incomplete"
+  ],
+  "evidence_sha256": {
+    "board-iq.log": "58b2429464a6fe0f4e4cf3a25fdde6c014b9beba94b74345dec60d480eceae50",
+    "board-iq.log.gz": "bceab7fc26bdc63009015655e7ff51e089112884b604f5af273488f1dbfb5ec9",
+    "core-before-rne.srp.gz": "af13c149a16a8a9034597ffc7a4ea973445f982d74fea7f67a014699225d7b0a",
+    "core-optimized.srp.gz": "a23d1965dad6719ca08bebeb5ffcd10cdd13d0a638ccd5a104cdf07e4e870893",
+    "core-xst-optimized.log.gz": "de724ef967d1c22480f23d325d996afbc0719a16013754d9293a2707f6c6b7e8",
+    "desktop-reference.png": "7463f00bfa8d4c2771d61efebe1c10448b0c9c9ade560bf2fe9ec40c5520486a",
+    "final-core-smoke.log": "39c9004c54d204f64014ad3478eb6e632d290ac35e7973e9d6af22c204f868b2",
+    "final-core-smoke.log.gz": "eb7b3837835ad54e8e1dd504f2de3b3e3bc88dc8394d3bb4ccc852cb400579b6",
+    "final-desktop-smoke.log": "ad2d678b91f3f6b1d4f5bbb5a051f6be6f3ddbc15a2b7ddc7aed4fa16cf34d94",
+    "final-desktop-smoke.log.gz": "5c3d543126a29197a3e0788437ff53d55fcdffd3187eca2297194cad7ff1abc2",
+    "gui-hardware-scenarios.json": "c684201832629aea3d9b50b9725e32169f9c7d38acc4133970650f891943d2f4",
+    "gui-hardware-scenarios.log": "6fe52bb3ef4f878e3608ac42a495347ef98ad4fb5241e106f18b701be64d0e7f",
+    "gui-hardware-scenarios.log.gz": "63d245b0fc6a2dd0bb71305bfbee133f3233f1c57e7afbcae318e5ce0e73e342",
+    "gui-smoke.log": "6805aeff3ff313e4b7a4a49fc51aea176e814d29fee9ed277c5307105c5b3316",
+    "gui-smoke.log.gz": "34c154ecc225d1163e8939d6445c33d375d95746d96a939d497b070b82ec5de9",
+    "handshake-before-program.log": "f8bb74a110769b1d6d1e8a83957cd52ec447b622ad5722193f6af7adea72c2ec",
+    "handshake-before-program.log.gz": "02e7707a1cd5c19ee62b5215dde9d81e2d9e1ac8c3d41db8c152d3bbab072060",
+    "isim-fft-compile.log.gz": "47e5284be45f541cc7c0a3e40cd22dcc9110fa50199a827da2b0574f3a72d048",
+    "isim-fft.log.gz": "4770780df3fd7af25979beab87dd6e9c966c4ef1ddff8bbcd2d298a0f55e835c",
+    "isim-full-core-internal-error.log.gz": "c9c49fe2d7126a7916606e8e94815c73563988f84ba6123d175f8ad98c352bb5",
+    "jtag-detect.log": "ba2885be738c547ddf914750c96c815bd3c76089dd1a891fad40ff670c2bab84",
+    "jtag-detect.log.gz": "cee34b48232bdb264e52c7fb7d5f5c87a32fb1226d0be429afd9e4b93765df1d",
+    "pc-regression.log": "9c7dc42c675b60f0c80161f409af6df062badc8c0821a138aa7098ba60f77d38",
+    "pc-regression.log.gz": "615105b5e6030779a90d5a2c2afd9e3205ba0f219e2bc32dc455c6e47acc5eef",
+    "program-sram.log": "0e00bb18bffc3acf6feeca0459f68d1d4134bb3a5aec099f439a67d3a688748b",
+    "program-sram.log.gz": "742418ef3d5a5f29616d59efbd7da825d98c767585a6d2deefa8fb6426071493",
+    "scenario-reference.json": "ea5900f729e04cd639a00cec08328a54f435a44d7d5129b1af3eb393a8cc7ce2"
+  },
+  "programmed_bitstream": {
+    "path": "rtl/build/ise_uart_s05_ax309/uart_s05_ax309_top.bit",
+    "sha256": "616d4f1d10c7327b8fbad511e61eaa4e0e8d64b90ddb3fa5d40a0aeeb55fbfbe",
+    "scope": "UART/IQ only; existing baseline build; not full radar"
+  }
+}

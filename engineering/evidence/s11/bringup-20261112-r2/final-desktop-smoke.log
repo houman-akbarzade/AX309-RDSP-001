@@ -1,0 +1,203 @@
+{
+  "scenarios": [
+    {
+      "scenario": "Single aircraft",
+      "records": 6,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 5,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Two aircraft",
+      "records": 9,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          },
+          {
+            "target": "A2",
+            "matched": true,
+            "record": 6,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 7,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Crossing trajectories",
+      "records": 8,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 3,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          },
+          {
+            "target": "A2",
+            "matched": true,
+            "record": 2,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 6,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Multiple aircraft",
+      "records": 13,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          },
+          {
+            "target": "A2",
+            "matched": true,
+            "record": 4,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          },
+          {
+            "target": "A3",
+            "matched": true,
+            "record": 9,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          },
+          {
+            "target": "A4",
+            "matched": true,
+            "record": 12,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 9,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Weak target near strong",
+      "records": 7,
+      "comparison": {
+        "matches": [
+          {
+            "target": "Strong",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          },
+          {
+            "target": "Weak",
+            "matched": true,
+            "record": 2,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 5,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Aircraft in clutter",
+      "records": 5,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 4,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Closely spaced targets",
+      "records": 5,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 299.792458,
+            "velocity_error_m_s": 0.46875
+          },
+          {
+            "target": "A2",
+            "matched": false
+          }
+        ],
+        "unassociated_record_count": 4,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": false
+      },
+      "saturation": 0
+    },
+    {
+      "scenario": "Low SNR",
+      "records": 5,
+      "comparison": {
+        "matches": [
+          {
+            "target": "A1",
+            "matched": true,
+            "record": 1,
+            "range_error_m": 0.0,
+            "velocity_error_m_s": 0.0
+          }
+        ],
+        "unassociated_record_count": 4,
+        "criterion": "Development association: \u00b12 range bins and \u00b11 Doppler bin; not final engineering acceptance",
+        "all_targets_matched": true
+      },
+      "saturation": 0
+    }
+  ],
+  "smoke": "PASS execution; association failures remain visible"
+}

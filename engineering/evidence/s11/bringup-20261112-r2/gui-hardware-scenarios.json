@@ -1,0 +1,62 @@
+[
+  {
+    "mode": "Hardware",
+    "metadata": {
+      "scenario": "Single aircraft",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "transfer_s": 7.185533434007084,
+    "hardware_iq": {
+      "cpi_id": 23,
+      "iq_bytes": 16896,
+      "iq_sha256": "d523bcfdc4bd8efa2d36ce9bd7a2fb321acba92dd18accc536bcd09b8c940cf2",
+      "upload_packets": 35,
+      "readback_packets": 35,
+      "bytewise_match": true,
+      "board_uart_observed": true
+    },
+    "status": "IQ PASS | DSP NOT VERIFIED (deployed UART/IQ-only design)",
+    "elapsed_s": 10.127892970005632
+  },
+  {
+    "mode": "Hardware",
+    "metadata": {
+      "scenario": "Two aircraft",
+      "seed": 20261112,
+      "noise_rms": 0.002,
+      "input_saturations": 0,
+      "radar": {
+        "fs": 1000000.0,
+        "fc": 10000000000.0,
+        "pri": 0.001,
+        "pulses": 33,
+        "samples": 128,
+        "fft": 32
+      },
+      "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+    },
+    "transfer_s": 7.183615507994546,
+    "hardware_iq": {
+      "cpi_id": 23,
+      "iq_bytes": 16896,
+      "iq_sha256": "0996e969c6dfc6ebc5c0b39c8935e2760733f0d10d0f4e9c90e3d4c3dedcc05f",
+      "upload_packets": 35,
+      "readback_packets": 35,
+      "bytewise_match": true,
+      "board_uart_observed": true
+    },
+    "status": "IQ PASS | DSP NOT VERIFIED (deployed UART/IQ-only design)",
+    "elapsed_s": 10.086186436004937
+  }
+]

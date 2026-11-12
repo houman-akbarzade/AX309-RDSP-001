@@ -48,13 +48,13 @@ module fft32_butterfly (
         {{3{aligned_u_im[39]}},aligned_u_im} - {{1{pair_im[41]}},pair_im};
 
     wire ov_pr, ov_pi, ov_mr, ov_mi;
-    rne_sat_signed #(.IN_W(43),.OUT_W(25)) r_pr
+    rne_sat_fft43 r_pr
         (plus_raw_re,shift_amt,plus_re,ov_pr,pre_plus_re);
-    rne_sat_signed #(.IN_W(43),.OUT_W(25)) r_pi
+    rne_sat_fft43 r_pi
         (plus_raw_im,shift_amt,plus_im,ov_pi,pre_plus_im);
-    rne_sat_signed #(.IN_W(43),.OUT_W(25)) r_mr
+    rne_sat_fft43 r_mr
         (minus_raw_re,shift_amt,minus_re,ov_mr,pre_minus_re);
-    rne_sat_signed #(.IN_W(43),.OUT_W(25)) r_mi
+    rne_sat_fft43 r_mi
         (minus_raw_im,shift_amt,minus_im,ov_mi,pre_minus_im);
 
     assign saturation_mask = {ov_mi,ov_mr,ov_pi,ov_pr};

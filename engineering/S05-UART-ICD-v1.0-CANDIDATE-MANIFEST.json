@@ -206,5 +206,20 @@
     "seven distinct DSP stage outputs remain OPEN until later separate schema approvals",
     "actual UART/transaction RTL and FIFO resource testing remains NOT RUN",
     "Approval for QUERY-triggered exact COMMIT recovery replay after ordinary three-retransmission budget exhaustion"
-  ]
+  ],
+  "link_session_epoch_addendum": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "file": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md",
+    "manifest": "engineering/S05-LINK-SESSION-EPOCH-MANIFEST-v0.1.json",
+    "independent_test_plan": "engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json",
+    "explicit_changes_to_R2_wire_contract_if_approved": [
+      "New SESSION_CONTROL TYPE candidate 0x09 and four bootstrap opcodes",
+      "flags.bit0 epoch tag present and 16-byte session_id prefix on every application/ACK/NACK payload",
+      "R2 ACK 21B becomes 37B and existing IQ/RESULT/STAGE payload maxima change",
+      "Old-epoch ACK rejected before seq handling; new-epoch COMMIT recovery uses newly sequenced QUERY reply"
+    ],
+    "changes_approved": false,
+    "R2_original_21B_ACK_and_34_upload_packet_timing": "STILL_ONLY_R2_MODEL_NOT_ACTIVE_LAB_WIRE_APPROVAL",
+    "no_UART_RTL": true
+  }
 }

@@ -1,0 +1,318 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "source": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md",
+  "status": "TEST_PLAN_ONLY_NO_TESTS_EXECUTED",
+  "protocol_approval": "PENDING_SYSTEM_ENGINEER",
+  "test_count": 20,
+  "test_cases": [
+    {
+      "id": "LS-01",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Fresh HELLO/OFFER/ACTIVATE/READY",
+      "PC_expected": "ACTIVE same new 128-bit epoch, counters zero",
+      "FPGA_expected": "ACTIVE with epoch accepted and counters zero once",
+      "pass_oracle": "No IQ/CPI state side effect",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-02",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Drop OFFER/READY; retry HELLO/ACTIVATE",
+      "PC_expected": "Retry same epoch; never deliver application frames early",
+      "FPGA_expected": "Idempotently resend OFFER/READY without second counter reset",
+      "pass_oracle": "No duplicate SESSION transition",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-03",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Old ACK epoch A seq0 while epoch B has outstanding seq0",
+      "PC_expected": "Ignore old ACK; continue waiting for B ACK",
+      "FPGA_expected": "Ignore old ACK before releasing replay",
+      "pass_oracle": "B replay remains unchanged until B ACK",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-04",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Old-epoch reliable IQ/RESULT/STATUS with valid CRC",
+      "PC_expected": "No old result accepted",
+      "FPGA_expected": "Discard old epoch before seq/application effect",
+      "pass_oracle": "No IQ write, ghost commit or seq increment",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-05",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Delayed ACK after retry; duplicate ACK, stale ACK; malformed ACK and NACK",
+      "PC_expected": "Only exact current ACK completes once",
+      "FPGA_expected": "NACK never releases buffer; reject old/future/mismatch",
+      "pass_oracle": "Outstanding replay safe and monotonic",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-06",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Same-epoch COMMIT ACK lost",
+      "PC_expected": "Deduplicate identical COMMIT bytes/seq",
+      "FPGA_expected": "Repeat original identical COMMIT within approved retry policy",
+      "pass_oracle": "No contradictory ABORT after COMMIT",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-07",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "USB unplug after COMMIT received by PC but its ACK lost; FPGA retained tuple",
+      "PC_expected": "New epoch QUERY, validate prior COMMIT and release once",
+      "FPGA_expected": "OFFER retained COMMIT; new STATUS seq in new epoch; no ABORT",
+      "pass_oracle": "No double-commit, no old ACK acceptance",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-08",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "USB unplug after final RESULT but before COMMIT reaches host",
+      "PC_expected": "Keep provisional invalid until full matched COMMIT",
+      "FPGA_expected": "Offer retained terminal or preterminal state as actually known",
+      "pass_oracle": "No premature host acceptance",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-09",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "COMMIT retry exhaustion during link loss",
+      "PC_expected": "Await resolution, never assume FPGA abort",
+      "FPGA_expected": "TERMINAL_ACK_UNCERTAIN, unchanged terminal COMMIT and CPI_ID",
+      "pass_oracle": "No next CPI until release/recovery",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-10",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "QUERY returns COMMIT but host lost provisional records",
+      "PC_expected": "Explicit HOST_INCOMPLETE; never accept missing records",
+      "FPGA_expected": "Preserve immutable COMMIT; release disposition needs approval",
+      "pass_oracle": "No silent partial result acceptance",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-11",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "FPGA power loss during COMMIT ACK wait, host no COMMIT",
+      "PC_expected": "UNKNOWN/NOT_ACCEPTED and explicit recovery",
+      "FPGA_expected": "OFFER NO_RETAINED_STATE; no historical COMMIT/ABORT",
+      "pass_oracle": "Require fresh IQ after RECOVER_UNKNOWN approval",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-12",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "FPGA power loss after valid host COMMIT before RELEASE",
+      "PC_expected": "Keep durable host-validated result if available; mark FPGA state unverified",
+      "FPGA_expected": "OFFER NO_RETAINED_STATE, never retroactive ABORT",
+      "pass_oracle": "No forged device terminal history",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-13",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Delayed SESSION_HELLO/OFFER/READY from prior epoch",
+      "PC_expected": "Accept only newly generated PC epoch echoed correctly",
+      "FPGA_expected": "Quarantine old application/ACK traffic; no silent state wipe",
+      "pass_oracle": "State protection limitations logged after POR",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-14",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "RELEASE wrong CPI ID/count/outcome, duplicate RELEASE, lost ACK",
+      "PC_expected": "Reject mismatches; resend identical RELEASE if ACK lost",
+      "FPGA_expected": "No clearing unrelated CPI; retain idempotent tombstone",
+      "pass_oracle": "Release only on matched decision and accepted disposition",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-15",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "QUERY while COMMIT outstanding, then new epoch",
+      "PC_expected": "Old epoch ack/retry S; new epoch QUERY with new seq Q",
+      "FPGA_expected": "Old S exact; after new epoch, new STATUS seq T preserving outcome",
+      "pass_oracle": "No out-of-order reliable reply or status mutation",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-16",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "DSP reset during COMMIT, UART parser reset in frame, global reset during IQ",
+      "PC_expected": "No unjustified commit; retry according to retained epoch only",
+      "FPGA_expected": "Protect terminal in DSP reset, discard partial parser bytes, POR loses state",
+      "pass_oracle": "No partial CPI run or false terminal PASS",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-17",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Counter near wrap, reused epoch token, random source failure",
+      "PC_expected": "Do not initiate application data; acquire fresh epoch or fail",
+      "FPGA_expected": "Reject unsupported wrap/reused epoch where tracked",
+      "pass_oracle": "No stale ACK accepted as new",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-18",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "PC wants FRESH while FPGA retains another CPI_ID",
+      "PC_expected": "Reconcile existing CPI; reject mismatch",
+      "FPGA_expected": "OFFER actual retained ID without overwrite",
+      "pass_oracle": "Never silently lose old CPI",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-19",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "35x488 IQ chunks, 35x484 readback aligned, 88 result packets x<=8",
+      "PC_expected": "Exact raw bytes and oracle records before COMMIT",
+      "FPGA_expected": "Strict epoch/CRC/seq/offset/ACK checks; no partial RUN",
+      "pass_oracle": "Full 16896 bytes and 702 records in candidate protocol",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    },
+    {
+      "id": "LS-20",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Unknown STAGE_REQUEST for unapproved seven DSP schemas",
+      "PC_expected": "Reject unknown schema; do not assign guessed format",
+      "FPGA_expected": "Return explicit unsupported/error without data mutation",
+      "pass_oracle": "All seven stage schemas remain OPEN",
+      "required_evidence": [
+        "raw TX/RX frames and CRCs",
+        "session IDs and sequence counters",
+        "state-transition trace",
+        "record/byte accounting",
+        "fault injection and return status"
+      ]
+    }
+  ],
+  "excluded_from_PASS_claims": [
+    "UART RTL",
+    "PC Packetizer/Parser",
+    "CFAR-Grouping historical suite",
+    "REQ-RNG-03 retest",
+    "Fixed-Point statistical campaign",
+    "FPGA board/UCF/STA"
+  ]
+}

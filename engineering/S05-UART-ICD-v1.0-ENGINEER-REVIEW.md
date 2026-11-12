@@ -176,3 +176,10 @@ Host-side invariant: receipt of all target records **without** COMMIT (including
 **Final sign-off dependencies:** engineer approves (1) control-sequence interpretation, delayed/stale response handling and link-session epoch renegotiation; (2) COMMIT replay versus new-sequence QUERY and the scoped post-COMMIT S02 retry exception; (3) reset-domain persistence and power-loss UNKNOWN behavior; (4) numeric wire codes and 13-byte LE/8-record candidate schema already proposed; and (5) readback stage schemas in **separate** approved contracts. The latter seven do not become accepted merely because the transport ICD is signed off. Production FIFO depth, FPGA UART RTL, real link ACK/CRC/COMMIT tests and full device-fit/timing likewise remain unverified.
 
 **Revision outcome:** logically complete target-list policy remains APPROVED; **full REQ-LIST-01 remains OPEN**. Gate-S04 remains CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS; REQ-RNG-03 remains FAIL 4/8 and S04-C02-RISK-PERFORMANCE OPEN. No UART RTL or historical CPI test executed.
+
+
+## 12. Proposed Link Session / Epoch addendum — not merged into an approved wire baseline
+
+The follow-on `engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md` describes a **new, independently reviewable candidate** for safe link-session restart and stale ACK rejection: a reserved SESSION_CONTROL TYPE, HELLO/OFFER/ACTIVATE/READY bootstrap and 128-bit epoch tags in ordinary frames. It includes PC/FPGA transition guards, terminal recovery/RELEASE/UNKNOWN rules and a planned 20-case test matrix.
+
+**Until explicit system-engineer sign-off, these proposed additions do not modify the R2 framed payloads, 21-byte ACK size, 34-packet upload calculation, numerical TYPE definitions or accepted S02 requirements.** The addendum's 35-packet upload/37-byte ACK example is scoped solely to the proposed epoch-tagged candidate. It is neither an approved S02 amendment nor an RTL/board PASS.

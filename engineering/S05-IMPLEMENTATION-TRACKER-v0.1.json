@@ -134,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "System engineer final sign-off of UART ICD v1.0 R2 ACK/stale/session and COMMIT/QUERY/reset rules; then independent PC Packetizer/Parser. No UART RTL before sign-off.",
+  "next_implementation_step": "System engineer reviews proposed S05 Link Session/Epoch addendum (TYPE 0x09, flags/tag, restart, COMMIT/RELEASE/UNKNOWN). No UART RTL or PC Packetizer until final ICD signoff.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -323,7 +323,7 @@
     ],
     "ICD_v1_candidate": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
     "ICD_v1_candidate_manifest": "engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json",
-    "ICD_v1_status": "CONDITIONALLY_ACCEPTED_FOR_FURTHER_SPECIFICATION_NOT_FINAL_SIGNOFF",
+    "ICD_v1_status": "R2_CONDITIONALLY_ACCEPTED_SESSION_EPOCH_ADDENDUM_PROPOSED_NO_FINAL_SIGNOFF",
     "numeric_TYPE_and_COMMAND_codes_approved": false,
     "result_record_13_byte_LE_encoding_approved": false,
     "result_batch_limit_8_approved": false,
@@ -339,6 +339,22 @@
     "post_COMMIT_retry_exhaustion": "NO_CONTRADICTORY_ABORT_R2_CANDIDATE_S02_SCOPED_EXCEPTION_NEEDS_APPROVAL",
     "terminal_persistence": "R2_RESET_DOMAIN_TABLE_PROPOSED_POWER_LOSS_NOT_GUARANTEED",
     "seven_DSP_stage_output_schemas": "ALL_OPEN_0_OF_7_APPROVED",
-    "UART_RX_TX_RTL": "NOT_IMPLEMENTED"
+    "UART_RX_TX_RTL": "NOT_IMPLEMENTED",
+    "link_session_epoch_addendum": {
+      "status": "ENGINEERING_CANDIDATE_PENDING_SYSTEM_ENGINEER",
+      "spec": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md",
+      "manifest": "engineering/S05-LINK-SESSION-EPOCH-MANIFEST-v0.1.json",
+      "test_plan": "engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json",
+      "proposed_session_id_length": 128,
+      "proposed_session_control_TYPE": 9,
+      "proposed_epoch_tag_in_all_active_frames": true,
+      "old_ACK_acceptance_after_new_epoch": "FORBIDDEN_IN_CANDIDATE",
+      "COMMIT_uncertain_recovery": "PROPOSED_QUERY_NEW_EPOCH_NEW_SEQ_SAME_TERMINAL_DECISION",
+      "RELEASE_and_UNKNOWN": "PROPOSED_PENDING_ENGINEER",
+      "PC_packetizer_parser": "NOT_IMPLEMENTED",
+      "UART_RTL": "NOT_IMPLEMENTED",
+      "test_execution": "NOT_RUN_20_PLANNED",
+      "engineer_signoff": false
+    }
   }
 }

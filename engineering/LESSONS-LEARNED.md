@@ -179,3 +179,13 @@ Retransmitting an unacknowledged COMMIT is the **same reliable application packe
 Once COMMIT is decided, exhaustion of its ACK retries creates an ACK-uncertain transport state, not an ABORT decision. The terminal result and packet replay must survive only those **DSP resets** whose state is intentionally held in an independent controller domain. Unpowered registers/BRAM are not a nonvolatile transaction journal; after reconfiguration/global reset/power loss, the FPGA cannot promise durable exactly-once terminal recovery without a separately approved persistent mechanism. A generic STAGE_REQUEST/DATA transport contract likewise does not approve the **seven separate DSP stage output schemas** required by REQ-OBS-01.
 
 **Evidence:** engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md R2 and engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json. Both remain pending final engineer sign-off; no UART RTL, full REQ-LIST-01 PASS or Gate-S04 change.
+
+## LL-AX309-010 — An epoch must be bound to every ACK and payload, not only to a reconnect handshake
+
+**Source:** S05 Link Session/Epoch engineering addendum, 2026-11-12.
+
+A new UART handshake followed by restarting 32-bit sequence counters does not by itself distinguish an old delayed ACK from a new one with the same sequence number. A proposed 128-bit PC-generated session ID included in every active reliable payload and ACK/NACK resolves this ambiguity **within correctly established unique sessions**. This costs payload capacity: proposed 16-byte tags would change 34 IQ_UPLOAD frames to 35 and R2 21-byte ACK frames to 37. Those wire changes require a new explicit S02/S05 engineering approval and cannot be silently treated as existing R2.
+
+After an ACK-uncertain COMMIT, a retry in the original session reuses exactly the original wire frame/sequence; a new link epoch uses a **new** QUERY and newly sequenced STATUS carrying the **same immutable terminal decision**. The FPGA must never turn a previously decided COMMIT into ABORT. RELEASE_CPI must be an explicit separately verified action, with idempotent duplicate handling. FPGA global reset/power loss destroys unprotected volatile terminal history; UNKNOWN is an epistemic limitation, not evidence that a CPI succeeded or failed. A host-only random session token and CRC do not authenticate a malicious endpoint or guarantee safety against replay of an entire stale bootstrap exchange after power loss.
+
+**Evidence:** engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md and engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json (20 planned cases, none executed). Logical REQ-LIST-01 is approved separately from unresolved physical UART/FPGA qualification.

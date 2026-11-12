@@ -1,0 +1,105 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "revision": "SESSION_EPOCH_ADDENDUM_v0.1",
+  "baseline_git": "def322b",
+  "status": "ENGINEERING_CANDIDATE_NOT_APPROVED",
+  "parent_ICD": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
+  "report": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md",
+  "test_matrix": "engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json",
+  "fixed_S02_envelope": {
+    "SOF_hex": "A55AC33C",
+    "version": 1,
+    "header_sequence_bytes": 4,
+    "CRC32": "ISO_HDLC",
+    "payload_max": 512,
+    "frame_overhead": 17
+  },
+  "proposed_new_wire_changes_NOT_APPROVED": {
+    "SESSION_CONTROL_TYPE": 9,
+    "SESSION_control_bootstrap_flags": 0,
+    "SESSION_control_bootstrap_seq": 0,
+    "SESSION_CONTROL_opcode": {
+      "HELLO": 1,
+      "OFFER": 2,
+      "ACTIVATE": 3,
+      "READY": 4
+    },
+    "SESSION_CONTROL_frame_bytes": {
+      "HELLO": 41,
+      "OFFER": 43,
+      "ACTIVATE": 43,
+      "READY": 43
+    },
+    "SESSION_control_acknowledged_by_ARQ": false,
+    "session_id_bytes": 16,
+    "session_id_source": "TRUSTED_PC_OS_CSPRNG_NEW_NONZERO_ON_EVERY_NEW_EPOCH",
+    "active_frame_flags": 1,
+    "active_payload_prefix": "opaque session_id[16] before original per-TYPE fields",
+    "APP_seq_reset": "0_per_direction_once_after_READY",
+    "old_epoch_frames_accepted": false,
+    "active_ack_payload": "session_id[16] + acked_seq LE32; header.seq equal acked_seq",
+    "active_nack_payload": "session_id[16] + expected_seq LE32; header.seq rejected frame seq",
+    "ACK_NACK_frame_bytes": 37,
+    "IQ_UPLOAD_raw_chunk_max_bytes": 488,
+    "IQ_UPLOAD_packets_per_CPI": 35,
+    "RESULT_batch_max_records": 8,
+    "RESULT_max_frame_bytes": 141,
+    "RESULT_packets_for_702": 88,
+    "readback_raw_IQ_max_aligned_bytes": 484,
+    "readback_packets_per_CPI": 35,
+    "COMMIT_old_epoch_retry": "identical_old_wire_and_sequence_only_while_old_epoch_ACTIVE",
+    "COMMIT_new_epoch_query": "new_reliable_sequence_and_epoch_prefix_same_immutable_decision",
+    "RELEASE_CPI_extended_command": "session_id + opcode6 + CPI_ID + host_resolution + expected_outcome + expected_info",
+    "RELEASE_host_resolution": {
+      "VALIDATED_COMMIT": 1,
+      "OBSERVED_ABORT_AND_DISCARDED": 2,
+      "HOST_DISCARDED_INCOMPLETE_COMMIT": 3
+    },
+    "RECOVER_UNKNOWN_opcode": 7,
+    "UNKNOWN_after_global_or_power_reset": "NO_RETAINED_STATE_NOT_RETROACTIVE_COMMIT_OR_ABORT",
+    "link_session_bootstrap_security_assumption": "trusted PC with fresh CSPRNG SID; not cryptographic authentication; power-cycle replay risk not eliminated absolutely"
+  },
+  "analytic_baud_scenario_not_measured": {
+    "baud": 115200,
+    "serial_bits_per_octet": 10,
+    "IQ_UPLOAD_plus_37B_ACK_total_bytes": 19626,
+    "RESULT_702_plus_37B_ACK_total_bytes": 15638,
+    "STAGE_REQUEST_35_plus_37B_ACK_total_bytes": 2835,
+    "STAGE_DATA_35_plus_37B_ACK_total_bytes": 19661,
+    "SESSION_4way_bytes": 170,
+    "not_a_complete_CPI_time": true,
+    "excludes": [
+      "COMMAND/STATUS/COMMIT",
+      "host scheduling",
+      "FPGA processing",
+      "retries",
+      "link loss",
+      "UART turnaround",
+      "extra error/reconciliation"
+    ],
+    "upload_plus_results_line_airtime_min_s": 3.061111111111111,
+    "upload_readback_results_line_airtime_min_s": 5.013888888888889
+  },
+  "approval_gates": {
+    "128bit_epoch_every_active_frame": "OPEN",
+    "SESSION_CONTROL_opcode_TYPE_flags_protocol": "OPEN",
+    "bootstrap_FPGА_boot_nonce_or_trusted_PC_assumption": "OPEN",
+    "stale_old_ACK_policy": "SPECIFIED_PROPOSED_NOT_VERIFIED",
+    "COMMIT_query_after_epoch": "SPECIFIED_PROPOSED_NOT_VERIFIED",
+    "terminal_persistence": "VOLATILE_ONLY_RESET_SCOPE_PROPOSED",
+    "RELEASE_disposition": "OPEN",
+    "UNKNOWN_recovery": "OPEN",
+    "seven_DSP_stage_output_schemas": "OPEN_0_OF_7_APPROVED",
+    "UART_RTL": "NOT_IMPLEMENTED",
+    "PC_packetizer_parser": "NOT_IMPLEMENTED"
+  },
+  "unchanged": {
+    "REQ_LIST_01_logical_policy": "APPROVED_MAX_702_NO_TOP_K_NO_SILENT_DISCARD",
+    "REQ_LIST_01_full_technical_acceptance": "OPEN",
+    "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "REQ_RNG_03": "FAIL_4_OF_8",
+    "S04_C02_RISK_PERFORMANCE": "OPEN",
+    "full_XC6SLX9_fit": "OPEN"
+  }
+}

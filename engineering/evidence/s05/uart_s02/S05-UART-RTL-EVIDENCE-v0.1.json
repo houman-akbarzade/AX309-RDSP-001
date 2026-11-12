@@ -1,0 +1,240 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "baseline_git": "96c8533",
+  "status": "UART_RX_TX_PARSER_ECHO_ISIM_PASS_AND_INDEPENDENT_XST_PASS",
+  "approved_scope": "S02_R1_LAB_FRAMING_ONLY_NO_SESSION_FSM_OR_ARQ_OR_DSP",
+  "hardware": "Xilinx Spartan-6 XC6SLX9-2FTG256C",
+  "nominal_clock_hz": 50000000,
+  "uart_baud": 115200,
+  "UART_8N1": true,
+  "baud_divider_clks_per_bit": 434,
+  "resulting_baud_from_integer_divider_hz": 115207.3732718894,
+  "baud_error_pct": 0.006400409626228232,
+  "ISim": {
+    "tool": "Xilinx ISE14.7 ISim",
+    "status": "PASS",
+    "TB": "rtl/tb/tb_uart_s02_echo.v",
+    "run_command": "bash rtl/tb/run_uart_s02_echo_isim.sh",
+    "golden_generator": "rtl/tools/generate_uart_pc_vectors.py imports pc_link.codec",
+    "valid_frame_cases": 3,
+    "valid_frame_bytes": [
+      41,
+      529,
+      37
+    ],
+    "exact_echo_TX_bytes": 607,
+    "good_checks": 4,
+    "injected_reject_fault_cases": 7,
+    "failure_count": 0,
+    "counters": {
+      "good_count": 3,
+      "crc_error_count": 1,
+      "header_error_count": 2,
+      "length_error_count": 1,
+      "partial_timeout_count": 1,
+      "uart_error_count": 1,
+      "busy_drop_count": 0
+    },
+    "bitwise_checks": [
+      "host RX start/data/stop bit at CPB=434",
+      "independent TX start/data/stop sampling",
+      "exact 607 golden bytes with PC codec CRC",
+      "full maximum length and embedded SOF payload",
+      "CRC, oversized length, version, flags, truncation timeout, stop bit, noise and recovery"
+    ],
+    "not_covered": [
+      "Continuous UART while ECHO busy (drop counter only)",
+      "real baud at board pins",
+      "Session FSM/ARQ"
+    ]
+  },
+  "PC_regression": {
+    "command": "python3 -m unittest discover -s tests -p 'test_s05_pc*.py' -v",
+    "status": "PASS",
+    "run": 55,
+    "pass": 55,
+    "fail": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "XST": {
+    "tool": "Xilinx ISE14.7 XST",
+    "status": "ALL_FOUR_TOPS_ZERO_ERRORS",
+    "run_command": "bash rtl/tools/run_xst_uart_s02.sh",
+    "target": "xc6slx9-2-ftg256",
+    "reports": {
+      "uart_rx_8n1": {
+        "lut": 76,
+        "ff": 36,
+        "RAMB8BWER": 0,
+        "RAMB16BWER": 0,
+        "DSP48A1": 0,
+        "IOB": 14,
+        "minimum_period_ns": 4.261,
+        "maximum_estimated_MHz": 234.687,
+        "xst_errors": 0,
+        "xst_warnings": 7,
+        "kind": "STANDALONE_XST_UNCONSTRAINED_NOT_POST_ROUTE"
+      },
+      "uart_tx_8n1": {
+        "lut": 48,
+        "ff": 24,
+        "RAMB8BWER": 0,
+        "RAMB16BWER": 0,
+        "DSP48A1": 0,
+        "IOB": 14,
+        "minimum_period_ns": 4.344,
+        "maximum_estimated_MHz": 230.203,
+        "xst_errors": 0,
+        "xst_warnings": 7,
+        "kind": "STANDALONE_XST_UNCONSTRAINED_NOT_POST_ROUTE"
+      },
+      "s02_frame_echo": {
+        "lut": 526,
+        "ff": 285,
+        "RAMB8BWER": 1,
+        "RAMB16BWER": 0,
+        "DSP48A1": 0,
+        "IOB": 135,
+        "minimum_period_ns": 8.327,
+        "maximum_estimated_MHz": 120.091,
+        "xst_errors": 0,
+        "xst_warnings": 36,
+        "kind": "STANDALONE_XST_UNCONSTRAINED_NOT_POST_ROUTE"
+      },
+      "uart_s02_echo_top": {
+        "lut": 674,
+        "ff": 341,
+        "RAMB8BWER": 1,
+        "RAMB16BWER": 0,
+        "DSP48A1": 0,
+        "IOB": 117,
+        "minimum_period_ns": 8.438,
+        "maximum_estimated_MHz": 118.511,
+        "xst_errors": 0,
+        "xst_warnings": 51,
+        "kind": "STANDALONE_XST_UNCONSTRAINED_NOT_POST_ROUTE"
+      }
+    },
+    "device_available_LUT": 5720,
+    "device_available_FF": 11440,
+    "device_BRAM_blocks": 32,
+    "device_available_DSP48A1": 16,
+    "echo_buffer_mapping": "525x8-bit synchronous block RAM -> one RAMB8BWER",
+    "output_debug_IOB_warning": "117 top-level IOBs include lab counter/debug ports, not a board pinout",
+    "estimated_frequency_not_place_route": true,
+    "MAP_PAR_or_postroute_timing": "NOT_RUN",
+    "full_chain_fit": "NOT_VERIFIED",
+    "earlier_unsuitable_flattened_memory_synthesis": "REPLACED_BY_BLOCK_RAM_INFERENCE_FINAL_REPORT_ONLY"
+  },
+  "evidence_gzip_files": {
+    "PC-GOLDEN-GENERATOR-v0.1.log.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/PC-GOLDEN-GENERATOR-v0.1.log.gz",
+      "sha256": "05c6533bfd5a0c2e5db537d7e9c15d8d782afde0c30f522add3be31c14e737bd",
+      "uncompressed_sha256": "9cc5f64800f5e118b6115cd9d366157d52351a73a0c0ce8d3ea1691b67820b92"
+    },
+    "ISIM-COMPILE-v0.1.log.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/ISIM-COMPILE-v0.1.log.gz",
+      "sha256": "325d7ae3838e3c585b885db502fedb7fac2f6557b3d009c0e4313f8f07fceea4",
+      "uncompressed_sha256": "a94b6d17b2ad4ce1f9e8d2994fc8e4f57eec868cf2cf8e47157dc9ff22269211"
+    },
+    "ISIM-SERIAL-v0.1.log.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/ISIM-SERIAL-v0.1.log.gz",
+      "sha256": "57ebba75ffa0b70d41bdcb6efe1382edfaaf34d41083e6f8c58409e85854898a",
+      "uncompressed_sha256": "998e33c4dbdb8ee0e2a707fe0fb600b97622f725202ea8ce4cb4b6604f851fd8"
+    },
+    "PC-55-REGRESSION-v0.1.log.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/PC-55-REGRESSION-v0.1.log.gz",
+      "sha256": "651e6ac348fbcf7e3f43d07f010c8b55c835e7a5fdd73e69b702553af066d4d4",
+      "uncompressed_sha256": "9f106f300623cea57d940148890f46fd225d78b6b7a082aff60239a56e443190"
+    },
+    "XST-uart_rx_8n1.srp.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-uart_rx_8n1.srp.gz",
+      "sha256": "c4cd611d7f9c696792329055d9d2961f605971627a7a30cd1180f8d37d5596a6",
+      "uncompressed_sha256": "c9842cf92339272bf9692c4b1b6846bd80d0a88bcfcbffe916cdc4728140c4c6"
+    },
+    "XST-uart_rx_8n1.ngc.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-uart_rx_8n1.ngc.gz",
+      "sha256": "229ac878f6fa9398f224766a294b54df38bfeffc4611c886283c56f78af83756",
+      "uncompressed_sha256": "281ed0de290ad0f2a0b805986a9b82688ae9b056325838259180605e47969b38"
+    },
+    "XST-uart_tx_8n1.srp.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-uart_tx_8n1.srp.gz",
+      "sha256": "aae3359cf75d2e0436e932dba92c059c16692c8a4f80a1c1ebe14deb37970a9b",
+      "uncompressed_sha256": "99cdfc4d490b768811f06a5e9825083cd75223594a11ce34f9b74af36b432af3"
+    },
+    "XST-uart_tx_8n1.ngc.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-uart_tx_8n1.ngc.gz",
+      "sha256": "4a3194ee2437f81c738d67069f9e86d146e1cf66543f591376201dc362fb2ae9",
+      "uncompressed_sha256": "feaf8261b19b817aa6c6e5697026ec30cb0527161177293b12e7360cb4e25a19"
+    },
+    "XST-s02_frame_echo.srp.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-s02_frame_echo.srp.gz",
+      "sha256": "b1e031c675b6c798262487d55f2c42aa5556cc347b917468971da7c08fbbf980",
+      "uncompressed_sha256": "2c1300cac6b7defb7502f5ebbb5d9626d7d18c59b61a1ebab2c67ccebb164f9f"
+    },
+    "XST-s02_frame_echo.ngc.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-s02_frame_echo.ngc.gz",
+      "sha256": "ebd3f1432f9c9fad06c5247726c8f6f280ec2fa4d76d7db4f7bc428f76857d33",
+      "uncompressed_sha256": "367edf413dbb43d110e5c9d0797df843e353a47a84048696e77497fcbb19b30d"
+    },
+    "XST-uart_s02_echo_top.srp.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-uart_s02_echo_top.srp.gz",
+      "sha256": "d0796d82635ffc4b6902b53c5023379af099711aa051ba86e3b22802c798bd48",
+      "uncompressed_sha256": "e69ec2a15cb8f94239863e0c59682f00249e715de5304d77a9ecd0c5a0f5787e"
+    },
+    "XST-uart_s02_echo_top.ngc.gz": {
+      "compressed_path": "engineering/evidence/s05/uart_s02/XST-uart_s02_echo_top.ngc.gz",
+      "sha256": "47d6bc345b77dc30f7202b5a202c512890010ab7c68d2a284a27d003bcb9c6a6",
+      "uncompressed_sha256": "bb748971b93d4fa256f1b746d525b856a1bbb5152eddea1ae0c7bb409615de86"
+    }
+  },
+  "source_sha256": {
+    "rtl/uart/uart_rx_8n1.v": "dbc893a83aa8d318797cd4bddf4ab9ee11527f45a29b99b809e7b12809de0e37",
+    "rtl/uart/uart_tx_8n1.v": "2e655a7e0fd7c76acf302d765d926e3dc11de190dc3ee3b9275151f7642cf6a4",
+    "rtl/uart/s02_frame_echo.v": "4ff5de80ffe459c3d852a67836638778599706dd9707112f8ce85069963b018c",
+    "rtl/uart/uart_s02_echo_top.v": "567e257305690932f18d2470207ae151c6e9fc657c338bddd543fdf2ef0abd4e",
+    "rtl/uart/README.md": "2a5eb71f08fa35694250e88390133253c83b48829c81ad11582d9e948e79910c",
+    "rtl/tb/tb_uart_s02_echo.v": "ab840c732423b4671a8d918d600997617331da212903437fcbc7d8dc89886c46",
+    "rtl/tb/uart_s02_echo.prj": "18da68a45d796a7c5e5391ba3e587b31603731726710f65c6767c308b320afda",
+    "rtl/tb/run_uart_s02_echo_isim.sh": "2adb6b2607571af318812167acf31244607cf73f887f474e43f4b710c8f4e5ac",
+    "rtl/tools/run_xst_uart_s02.sh": "725e20beb1a17a270d848c7dbd69ada01dcce92512679853b41b5169277400ba",
+    "rtl/tools/generate_uart_pc_vectors.py": "c2336d409337876cc406b9b4e4ac59a1c6b8e0832ed26c837ab5af8b5bac356e",
+    "pc_link/codec.py": "796a56dd4a91341932b76f3e9292da5524f49123cc314728d370641f1b8f6a61",
+    "pc_link/iq.py": "660123228e4a7068e36485d5c30e3a8d77c6d464f1dca191ab19883dc6083e08",
+    "rtl/tb/vectors/uart_pc/manifest.json": "51876494daf473224ae4dad93c9d39cc6fa0ee94047df961743536c406f7fb98"
+  },
+  "golden_mem_sha256": {
+    "rtl/tb/vectors/uart_pc/after.mem": "62de2f8b84495642da11cd205331da37c0360d24866e6412f51c63892e92b435",
+    "rtl/tb/vectors/uart_pc/bad_crc.mem": "afd7afd52ff36932cf44bf9926b27bed3e9bacc58ce05b76b4ddedcdbda8297c",
+    "rtl/tb/vectors/uart_pc/bad_flags.mem": "5c381cc1f376c5a040b4b7208b14ae085f08cd4a86b8d5bf09b67fa647a27c68",
+    "rtl/tb/vectors/uart_pc/bad_length.mem": "cb841e21ce4192b323ebe49837a8d2d0adf38c41b1406bc2d7ce08f39b5c4e4c",
+    "rtl/tb/vectors/uart_pc/bad_version.mem": "6376423ea49665b3282be32d5581b7d673eeab810926788f5a8641bb3a8b5a34",
+    "rtl/tb/vectors/uart_pc/expected_echo.mem": "248ea06073eb9cb5fbefa7f66a9614a0bf8a3a5f2f50d70d9eba9e9fae2c56d5",
+    "rtl/tb/vectors/uart_pc/hello.mem": "ab4f90ec137da624f759fae9ab623941a4c70f2d9200b244d56f76592daf1a77",
+    "rtl/tb/vectors/uart_pc/iq_529.mem": "dedc2bdc085bc7ac5a0b885e543dc1e58a21b6698fd9814ac3cfa449babd26be",
+    "rtl/tb/vectors/uart_pc/noise.mem": "0a921e31eff272ff02c076a38bbcfefa70c9372a25c768e62e899c0fba5ddfbf",
+    "rtl/tb/vectors/uart_pc/truncated.mem": "bea1849269914c24bf75f6cdbfae3659dcf75698dfdb8872bc80ab989defec8e"
+  },
+  "not_implemented": [
+    "Session FSM",
+    "ARQ and real ACK/NACK generation",
+    "Frame Controller",
+    "Radar DSP chain integration",
+    "CP2102GM physical UART test",
+    "UCF board pin constraints",
+    "MAP/PAR",
+    "Post-route 50MHz timing",
+    "Seven DSP stage schemas",
+    "Real 702 record source"
+  ],
+  "project_status_unchanged": {
+    "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "REQ_RNG_03": "FAIL_4_OF_8",
+    "S04_C02_RISK_PERFORMANCE": "OPEN",
+    "REQ_LIST_01_logical": "APPROVED_UP_TO_702_NO_TOP_K",
+    "REQ_LIST_01_full": "OPEN",
+    "full_FPGA_architecture_C": "OPEN"
+  }
+}

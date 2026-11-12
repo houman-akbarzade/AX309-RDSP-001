@@ -122,7 +122,7 @@
     "REQ-UART-01": "APPROVED_S02_TRANSPORT_PRIMITIVES_ONLY_ICD_PENDING",
     "REQ-LIST-01": "LOGICAL_APPROVED_PHYSICAL_AND_HOST_UART_NOT_PASS",
     "host_packet_codec": "SOFTWARE_UNITTEST_55_OF_55_PASS",
-    "UART_serial_ISim": "NOT_RUN",
+    "UART_serial_ISim": "PASS_S02_PHY_PARSER_ECHO_PC_ORACLE_607_BYTES_ONLY",
     "FPGA_frame_controller": "NOT_IMPLEMENTED",
     "full_FPGA_resource_fit": "OPEN",
     "revision": "R2",
@@ -152,7 +152,10 @@
       "lab_implementation": "PC_CODEC_AND_FAKE_SERIAL_SIM_IMPLEMENTED",
       "actual_20_case_R1_full_matrix": "NOT_RUN_IN_FULL",
       "software_unit_evidence": "engineering/evidence/s05/pc_link/PC-LINK-SOFTWARE-EVIDENCE-v0.1.json"
-    }
+    },
+    "UART_RTL_evidence": "engineering/evidence/s05/uart_s02/S05-UART-RTL-EVIDENCE-v0.1.json",
+    "UART_frame_parser": "IMPLEMENTED_SYNTHESIZABLE_CRC32",
+    "UART_real_ACK_ARQ": "NOT_IMPLEMENTED"
   },
   "PC_S05_UART_software_verification": {
     "test_status": "SOFTWARE_PASS_55_TESTS",
@@ -163,5 +166,18 @@
     "FPGA_board_or_RTL_status": "NOT_RUN_NOT_IMPLEMENTED",
     "REQ_LIST_01_logical_policy": "APPROVED",
     "REQ_LIST_01_technical": "OPEN"
+  },
+  "S05_UART_RX_TX_PARSER_independent_verification": {
+    "status": "ISIM_PASS_XST_PASS_NOT_BOARD",
+    "scope": "S02_8N1_RX_TX_FRAMING_ECHO_NO_SESSION_FSM_OR_ARQ",
+    "evidence": "engineering/evidence/s05/uart_s02/S05-UART-RTL-EVIDENCE-v0.1.json",
+    "ISim": "3_VALID_FRAMES_607_EXACT_TX_BYTES_7_FAULT_SCENARIOS",
+    "source_oracle": "pc_link.codec",
+    "synthesis": "TOP_674_LUT_341_FF_1_RAMB8_0_DSP",
+    "S02": "UNCHANGED",
+    "S04": "UNCHANGED",
+    "REQ_LIST_01": "LOGICAL_APPROVED_FULL_TECHNICAL_OPEN",
+    "seven_DSP_stages": "OPEN_0_OF_7_APPROVED",
+    "full_FPGA_fit": "OPEN"
   }
 }

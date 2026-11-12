@@ -1,0 +1,41 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "oracle": "pc_link.codec.Frame.encode and bootstrap, direct import",
+  "simulator": "ISim, serial 8N1, 50MHz/115200 => 434 clocks per bit",
+  "status": "GENERATED_REFERENCE_BYTES_NOT_RTL_TEST_RESULT",
+  "session_id": "00112233445566778899aabbccddeeff",
+  "frame_sizes": {
+    "hello": 41,
+    "iq_529": 529,
+    "after": 37,
+    "bad_crc": 41,
+    "bad_version": 41,
+    "bad_flags": 41,
+    "bad_length": 13,
+    "truncated": 20,
+    "noise": 13,
+    "expected_echo": 607
+  },
+  "byte_sha256": {
+    "hello": "510d808e63b9fa3882cf7c783f74571fea97285ac2f29f499e539ee35de251a7",
+    "iq_529": "1d5df1aefff93ebd37d7944f5840c1fdf6b36f0ba59bb36d4d7feb3bc911da55",
+    "after": "55e09d11595fce098c825b96e3efc1a60dcc973b86c09d41db836e415b3ab9d8",
+    "bad_crc": "2a9d682df9c50f1cfe0250a3a068ac4e21eb5d6836f21116dea9e1989587eb99",
+    "bad_version": "3b9ea560deb259fe4b834ae1109ea702a7f22a881578cbc7bf7fb8012718db70",
+    "bad_flags": "b4ef875b3c8b1587340e0fab50fb5f474bc7fe5b90b1397c319cc001f87d88e3",
+    "bad_length": "31f678dafcaba64c48e1da8d48d21f5be090e7600540034ec959f448a86ed5df",
+    "truncated": "adc029f3806a5296f0db6b6573ed6767cae10259e990178ef3f93c5532fa344e",
+    "noise": "338f8222d3e234a48992d8d84e7cb263e96f36ec9144d8f30e0fb148b02a4c0f",
+    "expected_echo": "5805f27e26f0a8e4a543376bdd44ad5c350bce0aecd1a2c876fbce74860ecfc5"
+  },
+  "valid_crc": {
+    "hello": true,
+    "iq_529": true,
+    "after": true
+  },
+  "independent_pc_IQ_payload_SOF_offset": 100,
+  "RX_frame_count_expected": 3,
+  "TX_byte_count_expected": 607,
+  "not_covered": "Not Session FSM/ARQ/CPI/board; echo only"
+}

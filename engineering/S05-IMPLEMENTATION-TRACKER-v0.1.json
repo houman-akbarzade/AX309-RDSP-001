@@ -134,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "After PC software 55/55 tests, use pc_link golden frames to implement independent UART RTL 8N1 RX/TX, S02 SOF/CRC/parser, R1 session handshake and ARQ; verify ISim serial bit-level before board/UCF. Do not reopen accepted S04 tests.",
+  "next_implementation_step": "Use real UART/S02 echo RTL golden PC vectors as hardware baseline; implement Session/Epoch FSM + real ACK/NACK/ARQ without changing S02 or S04, then CPI input/readback and transaction controller after independent ISim. No full chain PASS yet.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -339,7 +339,7 @@
     "post_COMMIT_retry_exhaustion": "NO_CONTRADICTORY_ABORT_R2_CANDIDATE_S02_SCOPED_EXCEPTION_NEEDS_APPROVAL",
     "terminal_persistence": "R2_RESET_DOMAIN_TABLE_PROPOSED_POWER_LOSS_NOT_GUARANTEED",
     "seven_DSP_stage_output_schemas": "ALL_SEVEN_OPEN_NOT_APPROVED",
-    "UART_RX_TX_RTL": "NOT_IMPLEMENTED",
+    "UART_RX_TX_RTL": "IMPLEMENTED_SYNTHESIZABLE_115200_8N1_50MHZ_NOMINAL",
     "link_session_epoch_addendum": {
       "status": "R1_PROPOSED_PENDING_SYSTEM_ENGINEER_FINAL_REVIEW",
       "baseline": "b217849",
@@ -367,7 +367,16 @@
     "software_FPGA_simulator": "IMPLEMENTED_PYTHON_ONLY_NO_FPGA_RTL",
     "laboratory_R1_direction": "AUTHORIZED_FOR_PC_SOFTWARE_IMPLEMENTATION_NOT_FINAL_ICD_PASS",
     "host_journal_release_unknown": "BLOCKED_PENDING_DURABILITY_CONTRACT",
-    "board_UART_test": "NOT_RUN"
+    "board_UART_test": "NOT_RUN",
+    "UART_S02_frame_parser_RTL": "IMPLEMENTED_CRC32_0_TO_512_AND_FRAME_ECHO",
+    "UART_RX_TX_RTL_ISim": "PASS_INDEPENDENT_PC_ORACLE_3_FRAMES_607_BYTES",
+    "UART_RTL_synthesis": "XST_ALL_FOUR_TOPS_ZERO_ERRORS_UART_INTEGRATED_674_LUT_341_FF_1_RAMB8",
+    "UART_RTL_evidence": "engineering/evidence/s05/uart_s02/S05-UART-RTL-EVIDENCE-v0.1.json",
+    "UART_RTL_lab_echo_only": true,
+    "UART_RTL_session_FSM": "NOT_IMPLEMENTED",
+    "UART_RTL_ARQ": "NOT_IMPLEMENTED",
+    "UART_RX_TX_frame_controller": "NOT_IMPLEMENTED",
+    "UART_RTL_postroute": "NOT_RUN"
   },
   "pc_uart_software_reference": {
     "status": "PC_SOFTWARE_IMPLEMENTED_UNITTEST_PASS",
@@ -398,5 +407,26 @@
       "seven DSP stage schemas",
       "S04 numerical qualification"
     ]
+  },
+  "S05_UART_S02_PHY_PARSER": {
+    "status": "SYNTHESIZABLE_RTL_ISIM_PASS_XST_PASS",
+    "source": [
+      "rtl/uart/uart_rx_8n1.v",
+      "rtl/uart/uart_tx_8n1.v",
+      "rtl/uart/s02_frame_echo.v",
+      "rtl/uart/uart_s02_echo_top.v"
+    ],
+    "source_golden": "rtl/tools/generate_uart_pc_vectors.py imports pc_link.codec",
+    "golden_vectors": "rtl/tb/vectors/uart_pc",
+    "TB": "rtl/tb/tb_uart_s02_echo.v",
+    "ISim": "PASS_3_VALID_PC_CODEC_FRAMES_41_529_37_BYTES_607_EXACT_TX_BITS",
+    "injected_faults": "PASS_7_REJECTED_OR_RECOVERED_SCENARIOS",
+    "PC_regression": "PASS_55_OF_55",
+    "XST": "PASS_RX_TX_PARSER_AND_CONNECTED_TOP_674_LUT_341_FF_1_RAMB8",
+    "evidence": "engineering/evidence/s05/uart_s02/S05-UART-RTL-EVIDENCE-v0.1.json",
+    "scope": "PHYSICAL_UART_AND_S02_FRAMING_TEST_ECHO_NO_R1_SESSION_STATE_OR_ARQ",
+    "board": "NOT_RUN",
+    "MAP_PAR_STA": "NOT_RUN",
+    "whole_radar_fit": "NOT_VERIFIED"
   }
 }

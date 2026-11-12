@@ -127,3 +127,11 @@ The connected CFAR–Grouping block alone uses 76% LUT; clock and full-chain res
 **Process lesson:** freeze the external record-list capacity/overflow policy before building the controller. Preserve separately (1) measured XST resource results, (2) symbolic memory-lifetime feasibility, and (3) completed integrated hardware qualification. Only the third establishes design fit.
 
 **Evidence:** engineering/S05-REQ-LIST-01-DECISION-PACKAGE-v0.1.md, engineering/S05-RESOURCE-LIFETIME-AND-RECOVERY-v0.1.md, engineering/S05-RESOURCE-PROBE-EVIDENCE-v0.1.json. Gate-S04 and its carried technical items are unchanged.
+
+## LL-AX309-005 — Component-count ceiling is not a full-record buffering requirement
+
+**Evidence:** S05 exact 702-component theorem and isolated XST record-store probes, 2026-11-12.
+
+In a 107x26 nonwrapped 8-connected CUT graph, partitioning into at-most-2x2 cliques proves no more than 54x13=702 distinct components; a checkerboard-like alarm placement attains 702 singleton components. A proven *logical count* does not require a 702-record FPGA output RAM. Isolated XST memory probes use 6 BRAM for 702x99 records, versus 0 BRAM and 70 LUT/99 FF for an eight-record distributed store; neither is a complete streaming FIFO or UART implementation. When internal tables already preserve 702 grouping labels, additional full record buffering may be avoidable.
+
+A lossless back-pressured output stream still needs transactional CPI semantics: records are provisional until CPI_COMMIT, and any CPI_ABORT or lost link before COMMIT invalidates the entire CPI. No Top-K or silent discard can be used to mask FIFO overflow. A data-path reset cannot unsend UART bytes, so host-side rollback must be part of the contract. Keep exact mathematical bounds, physical-storage cost, packet reliability and end-to-end acceptance as separate verification categories. No final REQ-LIST-01 PASS is implied.

@@ -1,0 +1,39 @@
+{
+  "project": "AX309-RDSP-001",
+  "date": "2026-11-12",
+  "decision_id": "S05-REQ-LIST-01-CONDITIONAL-001",
+  "authority": "Project system engineer",
+  "decision": "CONDITIONAL_DESIGN_DIRECTION_NOT_REQUIREMENT_PASS",
+  "approved_conditionally": {
+    "all_valid_clusters_must_be_preserved": true,
+    "top_k_selection_allowed": false,
+    "silent_record_drop_allowed": false,
+    "physically_buffer_702_simultaneously_required": false,
+    "streaming_with_small_fifo_allowed_if_proven_lossless": true,
+    "unexpected_fatal_overflow_must_invalidate_CPI": true,
+    "host_records_provisional_until_commit": true,
+    "host_discard_on_abort_or_disconnect_before_commit": true,
+    "coordinated_abort_reset_preserve_fault": true
+  },
+  "mathematical_702_bound": {
+    "status": "PROVED",
+    "CUT_grid": "107x26",
+    "graph": "8-adjacent induced graph on alarmed valid CUTs, no wrapping",
+    "exact_maximum_component_count": 702,
+    "proof": "engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md",
+    "constructive_checks": "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json"
+  },
+  "pending_final_approval": [
+    "FIFO depth and actual resource/port timing",
+    "CPI_START/TARGET_RECORDS/CPI_COMMIT/CPI_ABORT UART packet encoding and host acknowledgment rules",
+    "Lossless valid/ready and retransmission acceptance tests",
+    "Abort/Reset watchdog bounds and next-CPI recovery",
+    "Integrated full-chain memory reuse, LUT/BRAM, STA and board feasibility"
+  ],
+  "REQ_LIST_01_technical_status": "OPEN_NOT_PASS",
+  "existing_S04_gate": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+  "REQ_RNG_03_technical_status": "FAIL_4_OF_8",
+  "S04_C02_RISK_PERFORMANCE_technical_status": "OPEN",
+  "no_historical_CPI_retest": true,
+  "no_numerical_architecture_change": true
+}

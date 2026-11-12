@@ -1,6 +1,6 @@
 # AX309-RDSP-001 | S05 REQ-LIST-01 Engineer Decision Package v0.1
 
-**Status: AWAITING SYSTEM-ENGINEER DECISION.** Baseline bbcac98. No numerical architecture or approved acceptance criterion changed.
+**Status: CONDITIONAL_ENGINEER_DIRECTION_RECORDED; FINAL_REQUIREMENT_APPROVAL_PENDING.** Baseline bbcac98. No numerical architecture or approved acceptance criterion changed.
 
 ## 1. Approved contract
 
@@ -29,3 +29,11 @@ The RTL's tested fail-stop internal capacity diagnostic is **not** automatic acc
 Until approved, **REQ-LIST-01 = OPEN_ENGINEERING_DECISION_REQUIRED**. The Frame Controller must not hard-code an unapproved smaller capacity, silently select targets or treat internal fail-stop as full requirement PASS.
 
 **References:** engineering/S02-requirements-matrix-APPROVED-AMENDMENT-v1.1.json; engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json; decisions/S02-decisions.json S02-D22; rtl/grouping/grouping_8conn.v; engineering/S05-GROUPING-RTL-VERIFICATION-REPORT-v0.1.md.
+
+## 4. Superseding conditional system-engineer direction — 2026-11-12
+
+The system engineer endorsed the **principle** of Option A conditionally, NOT unconditional REQ-LIST-01 acceptance. No Top-K, silent discard or successful publication of partial CPI results is permitted. Logical completeness of all valid components is required, but physically retaining all 702 component records simultaneously on FPGA is **not** required. Streaming with a smaller FIFO is allowed only if all accepted records are delivered exactly once, back-pressure cannot silently lose data or deadlock, and the host treats CPI records as provisional until CPI_COMMIT. CPI_ABORT or loss of connection before COMMIT invalidates the CPI. Details of the actual UART type values, FIFO depth, retransmission protocol and timeout remain open.
+
+The exact maximum 702 is now **mathematically proved** for the approved 107x26 nonwrapped 8-connected CUT graph; see engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md and engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json.
+
+Only isolated storage probes were synthesized, not a production FIFO/transaction engine. Full XC6SLX9 fit remains OPEN. The remaining decisions concern the final transaction/ICD and queue implementation, not repeated approval of the no-Top-K principle. REQ-LIST-01 technical status remains OPEN until required RTL/transport acceptance tests pass.

@@ -1,0 +1,55 @@
+{
+  "project": "AX309-RDSP-001",
+  "scope": "Mathematical 702 proof and three isolated 99-bit record storage XST probes; NOT production FIFO or full-system fit",
+  "date": "2026-11-12",
+  "baseline": "640c819",
+  "mathematical_proof": "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json",
+  "system_engineer_direction": "decisions/S05-REQ-LIST-01-CONDITIONAL-DIRECTION-2026-11-12.json",
+  "report": "engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md",
+  "probe_results": {
+    "target_record_store702_probe-XST-v0.1.srp.gz": {
+      "bram": 6,
+      "LUT": 0,
+      "FF": 0,
+      "IOB": 221,
+      "errors": 0,
+      "warnings": 2,
+      "exceeds_board_IO_count": true
+    },
+    "target_record_store8_distributed_probe-XST-v0.1.srp.gz": {
+      "bram": 0,
+      "LUT": 70,
+      "FF": 99,
+      "IOB": 207,
+      "errors": 0,
+      "warnings": 1,
+      "exceeds_board_IO_count": true
+    },
+    "target_record_store8_probe-XST-v0.1.srp.gz": {
+      "bram": 2,
+      "LUT": 0,
+      "FF": 0,
+      "IOB": 207,
+      "errors": 0,
+      "warnings": 1,
+      "exceeds_board_IO_count": true
+    }
+  },
+  "proven_exact_component_bound": 702,
+  "production_FIFO_synthesis": "NOT_RUN",
+  "production_flow_control_verification": "NOT_RUN",
+  "transactional_UART_verification": "NOT_RUN",
+  "full_radar_FPGA_fit": "OPEN",
+  "source_and_evidence_sha256": {
+    "engineering/s05_component_bound_proof_v0.py": "72740e08328fe382be2041133665158c7ffe3f26caeacb7114add718256fc5c1",
+    "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json": "c51d323e3de6e72e0f9e4d983ad882d30e9a7dcf744007de5d027aeb2277f27f",
+    "rtl/tools/resource_probe/target_record_store_probe.v": "196af50f9550ed2ff5b762c4285aa2d0dea2e3f5a112f525b55191ad206c04f8",
+    "rtl/tools/resource_probe/target_record_store8_probe.v": "ba0ff2d6beaabd715d12b7de6b4ebedf599c70b2a499c0bd48cdff92af176d5b",
+    "rtl/tools/resource_probe/target_record_store702_probe.v": "360b0fab7cc1b87c13249f0d80a5929f5fd9aaa6cf01ba897f251b4f2d27e837",
+    "rtl/tools/resource_probe/target_record_store8_distributed_probe.v": "9db894146ad37a044c276fc63ca12632fe287c01bcf46e81af10868ce50a695a",
+    "rtl/tools/resource_probe/run_xst_record_stores.sh": "3923c8b8dc652f4dcee2311e4ee57b4d5e099cd53467a485734da8522be586ca",
+    "engineering/evidence/s05/list_capacity/target_record_store702_probe-XST-v0.1.srp.gz": "9580b0f071fd57bcfd41c74c8efae814f7382acf8a074847c841d257d4df9dc4",
+    "engineering/evidence/s05/list_capacity/target_record_store8_distributed_probe-XST-v0.1.srp.gz": "cc429ee59345bc0730be424409e18355b3abdd86ebd510842b44f85cfb09b152",
+    "engineering/evidence/s05/list_capacity/target_record_store8_probe-XST-v0.1.srp.gz": "c4309589fd24abf2f4b6fb420172e53595c75f67838625637fefceeff8bb1e0f"
+  }
+}

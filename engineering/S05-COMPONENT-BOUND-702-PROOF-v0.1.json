@@ -1,0 +1,20 @@
+{
+  "project": "AX309-RDSP-001",
+  "definition": "Induced 8-neighbour (king) graph on alarmed CUT vertices only, R=3..109, unshifted Doppler=3..28, with no boundary wrapping",
+  "valid_vertices": 2782,
+  "r_size": 107,
+  "b_size": 26,
+  "upper_bound": "Partition into disjoint at-most-2x2 cliques: ceil(107/2)*ceil(26/2)=54*13=702; any distinct 8-connected components provide one mutually nonadjacent representative each",
+  "blocks": 702,
+  "r_tile_count": 54,
+  "b_tile_count": 13,
+  "attaining_construction": "Alarms at (r,b)=(3+2i,3+2j), 0<=i<=53, 0<=j<=12; all 702 vertices mutually nonadjacent and each forms an isolated component",
+  "constructed_isolated_components": 702,
+  "maximum_components_exact": 702,
+  "outside_cut_participation": false,
+  "doppler_wrap": false,
+  "checked_partition_covers_domain": true,
+  "checked_every_block_forms_clique": true,
+  "checked_construction_independent": true,
+  "note": "Mathematical proof is general over all 2^2782 alarm masks. Program verifies constructive partition/independence, not a radar qualification campaign."
+}

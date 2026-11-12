@@ -69,3 +69,11 @@ When implementing the controller, independently test injected grouping overflow 
 **Conclusion:** independent memory allocations cannot fit within 32 BRAM. An unmodified numerical Architecture C could potentially fit with explicit shared-memory scheduling, but this has only symbolic address-lifetime support; end-to-end RTL resource feasibility remains OPEN, especially given 76% measured LUT usage and unclosed timing. Any numerical architecture/FPGA change requires a separate engineer decision.
 
 Gate-S04 remains CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS; REQ-RNG-03 remains FAIL (4/8), S04-C02-RISK-PERFORMANCE remains OPEN. No accepted CPI or previous S05 campaign has been rerun.
+
+## 6. Follow-up exact component bound and streaming-output resource probe (2026-11-12)
+
+The maximal 8-connected component count for the nonwrapped 107x26 valid CUT grid is now **proved exactly 702** by an upper-bound 2x2-clique partition and a 702-cell independent-set construction. This is a *logical completeness* bound and does not imply simultaneous storage of 702 full records.
+
+Isolated 99-bit-record storage XST probes report: a full 702-record RAM used **6 BRAM**; an eight-record block RAM used **2 BRAM**; an eight-record distributed RAM used **0 BRAM, 70 LUT and 99 FF**. All probe tops have excessive independent 99-bit external I/O counts, and the 702 RAM also has an address-range warning, so these are memory-inference observations, NOT deployable complete FIFOs or full FPGA fit. See engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md and engineering/S05-REQ-LIST-01-BOUND-EVIDENCE-v0.1.json.
+
+The system engineer conditionally endorses no Top-K, no silent discard and provisional records with CPI_START, CPI_COMMIT and CPI_ABORT semantics, subject to later flow-control and UART-ICD validation. REQ-LIST-01 remains OPEN; no complete Frame Controller or production FIFO is implemented by this assessment.

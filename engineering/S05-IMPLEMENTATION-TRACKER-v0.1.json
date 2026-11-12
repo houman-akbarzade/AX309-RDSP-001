@@ -124,7 +124,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "Await system-engineer decision for REQ-LIST-01 and shared-memory/host replay policy; then implement safe abort/reset and shared-memory controller without changing Architecture C.",
+  "next_implementation_step": "Engineering approval of final transactional list/ICD and FIFO design; then implement lossless stream with CPI_COMMIT/ABORT, reset recovery, shared-memory integration and full-chain resource closure.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -187,11 +187,21 @@
     "full_chain_pass": false
   },
   "REQ_LIST_01": {
-    "status": "OPEN_ENGINEERING_DECISION_REQUIRED",
+    "status": "CONDITIONAL_ENGINEER_DIRECTION_BOUND_PROVED_FINAL_PASS_PENDING",
     "decision_package": "engineering/S05-REQ-LIST-01-DECISION-PACKAGE-v0.1.md",
     "recommended": "STREAM_ALL_UP_TO_702_NO_TRUNCATION_FAIL_WHOLE_CPI_ON_FATAL",
     "approved": false,
-    "no_new_RTL_contract": true
+    "no_new_RTL_contract": true,
+    "conditionally_endorsed": true,
+    "exact_component_upper_bound_proven": 702,
+    "proof": "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json",
+    "comparison": "engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md",
+    "evidence": "engineering/S05-REQ-LIST-01-BOUND-EVIDENCE-v0.1.json",
+    "engineer_decision": "decisions/S05-REQ-LIST-01-CONDITIONAL-DIRECTION-2026-11-12.json",
+    "physical_702_record_store_required": false,
+    "no_top_k_or_silent_drop": true,
+    "transactional_output_accepted_as_direction_not_tested": true,
+    "external_FIFO_depth_and_ICD_approved": false
   },
   "resource_lifetime_audit": {
     "status": "INDEPENDENT_XST_PROBES_COMPLETE_AND_SYMBOLIC_LIFETIME_PASS_FULL_SYSTEM_FIT_OPEN",
@@ -216,5 +226,17 @@
     ],
     "report": "engineering/S05-RESOURCE-LIFETIME-AND-RECOVERY-v0.1.md",
     "not_approved": "Exact watchdog, reset pulse cycles and UART status/packet codes"
+  },
+  "record_storage_feasibility": {
+    "scope": "ISOLATED_STORAGE_PROBES_ONLY",
+    "full_702_entries_bram": 6,
+    "stream_8_entries_bram_style_bram": 2,
+    "stream_8_entries_distributed_bram": 0,
+    "stream_8_entries_distributed_LUT": 70,
+    "stream_8_entries_distributed_FF": 99,
+    "IOB_warning_all_probes": true,
+    "production_FIFO_implemented": false,
+    "full_chain_resource_fit": "OPEN",
+    "evidence": "engineering/S05-REQ-LIST-01-BOUND-EVIDENCE-v0.1.json"
   }
 }

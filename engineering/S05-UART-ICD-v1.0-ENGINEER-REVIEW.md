@@ -183,3 +183,10 @@ Host-side invariant: receipt of all target records **without** COMMIT (including
 The follow-on `engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md` describes a **new, independently reviewable candidate** for safe link-session restart and stale ACK rejection: a reserved SESSION_CONTROL TYPE, HELLO/OFFER/ACTIVATE/READY bootstrap and 128-bit epoch tags in ordinary frames. It includes PC/FPGA transition guards, terminal recovery/RELEASE/UNKNOWN rules and a planned 20-case test matrix.
 
 **Until explicit system-engineer sign-off, these proposed additions do not modify the R2 framed payloads, 21-byte ACK size, 34-packet upload calculation, numerical TYPE definitions or accepted S02 requirements.** The addendum's 35-packet upload/37-byte ACK example is scoped solely to the proposed epoch-tagged candidate. It is neither an approved S02 amendment nor an RTL/board PASS.
+
+
+## 14. Link Session/Epoch R1 candidate — separately proposed, not merged into approved R2
+
+The corrected standalone addendum is `engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-R1-v0.1.md` (revises retained v0.1). It adds explicit four-message loss/duplicate/USB-disconnect transitions, a contract-level once-only activation invariant preventing counter reset after a lost READY, trusted-laboratory restart assumptions, a fail-closed HOST_DISCARDED_INCOMPLETE_COMMIT release disposition, UNKNOWN host-history reconciliation, candidate 2-second/three-retry/12-second handshake budgeting, and 20 observable planned tests. ACTIVATE and READY now echo the OFFER cpi_valid field; R1 candidate full-frame lengths are **41/43/44/44 B**, not the historical v0.1 **41/43/43/43 B**.
+
+**No byte-level R1 TYPE, flags, nonce, reset behavior, release disposition or timeout is approved merely by documenting it.** This R2 parent remains CONDITIONALLY_ACCEPTED_FOR_FURTHER_SPECIFICATION_NOT_FINAL_SIGNOFF, and 21-byte ACK/34-frame input timing still belongs strictly to the original untagged R2 proposal. The R1 37-byte tagged ACK/35-frame IQ model is a **separate unapproved alternative**. Seven DSP stage-output schemas, full REQ-LIST-01 and UART RTL acceptance remain OPEN.

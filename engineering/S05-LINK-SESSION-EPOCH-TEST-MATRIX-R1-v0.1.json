@@ -1,0 +1,642 @@
+{
+  "project": "AX309-RDSP-001",
+  "stage": "S05",
+  "revision": "R1",
+  "baseline_git": "b217849",
+  "source": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-R1-v0.1.md",
+  "revises": "engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json",
+  "status": "TEST_PLAN_ONLY_20_CASES_NOT_EXECUTED",
+  "protocol_approval": "PENDING_SYSTEM_ENGINEER",
+  "tested_cases": 0,
+  "test_count": 20,
+  "cases": [
+    {
+      "id": "LS-01",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Fresh HELLO/OFFER/ACTIVATE/READY",
+      "PC_expected": "ACTIVE same new 128-bit epoch, counters zero",
+      "FPGA_expected": "ACTIVE with epoch accepted and counters zero once",
+      "pass_oracle": "No IQ/CPI state side effect",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "NO_PORT; no active CPI",
+      "initial_FPGA_state": "NO_SESSION; no retained CPI",
+      "injected_fault_or_action": "None; valid four-message R1 bootstrap",
+      "PC_transition_or_action": "NO_PORT->HELLO_WAIT_OFFER->OFFER_CHECKED->ACTIVATE_WAIT_READY->ACTIVE; app seq0 only after valid READY",
+      "FPGA_transition_or_action": "NO_SESSION->NEGOTIATING->ACTIVE; exactly one activation",
+      "observable_pass_checks": [
+        "wire_lengths=41,43,44,44",
+        "same opaque SID in four messages",
+        "valid CRC and snapshot echo including cpi_valid",
+        "FPGA activation_count=1",
+        "PC/FPGA tx_next=rx_expected=0 until first data",
+        "no CPI run"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-02",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Drop OFFER/READY; retry HELLO/ACTIVATE",
+      "PC_expected": "Retry same epoch; never deliver application frames early",
+      "FPGA_expected": "Idempotently resend OFFER/READY without second counter reset",
+      "pass_oracle": "No duplicate SESSION transition",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "HELLO_WAIT_OFFER or ACTIVATE_WAIT_READY",
+      "initial_FPGA_state": "NO_SESSION, NEGOTIATING or ACTIVE",
+      "injected_fault_or_action": "Four independent subcases: lost HELLO, lost OFFER, lost ACTIVATE, lost READY; each followed by exact request retry",
+      "PC_transition_or_action": "lost HELLO/OFFER -> resend byte-identical HELLO; lost ACTIVATE/READY -> resend byte-identical ACTIVATE, never produce application data before READY",
+      "FPGA_transition_or_action": "lost HELLO no effect; lost OFFER re-OFFER frozen snapshot; lost ACTIVATE activate first valid retry; lost READY re-READY with no counter reinit",
+      "observable_pass_checks": [
+        "one lost message at a time",
+        "before-first-ACTIVATE activation_count=0",
+        "after-first-valid-ACTIVATE activation_count=1 through any replay",
+        "READY replay bytes and CRC exactly equal cached READY",
+        "if duplicate ACTIVATE after first app frame, rx_expected/tx_next unchanged",
+        "no ghost IQ/COMMIT"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted.",
+      "subcases": [
+        {
+          "name": "HELLO_LOST",
+          "observation": "FPGA remains NO_SESSION until identical HELLO retry; then OFFER; activation_count 0 until ACTIVATE"
+        },
+        {
+          "name": "OFFER_LOST",
+          "observation": "PC resends HELLO; OFFER wire bytes identical; FPGA still NEGOTIATING; no app seq reset"
+        },
+        {
+          "name": "ACTIVATE_LOST",
+          "observation": "FPGA NEGOTIATING until same ACTIVATE retransmitted; counters initialized exactly once"
+        },
+        {
+          "name": "READY_LOST",
+          "observation": "FPGA already ACTIVE and activation_count=1; retries only retransmit cached READY; after injecting a later duplicate ACTIVATE with tx_next>0 counters remain unchanged"
+        }
+      ]
+    },
+    {
+      "id": "LS-03",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Old ACK epoch A seq0 while epoch B has outstanding seq0",
+      "PC_expected": "Ignore old ACK; continue waiting for B ACK",
+      "FPGA_expected": "Ignore old ACK before releasing replay",
+      "pass_oracle": "B replay remains unchanged until B ACK",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "ACTIVE sid=B",
+      "initial_FPGA_state": "ACTIVE sid=B with outstanding seq=0",
+      "injected_fault_or_action": "Inject ACK sid=A old, header.seq=0, payload.ackseq=0, with valid S02 CRC",
+      "PC_transition_or_action": "Never infer acknowledgement of B from old control",
+      "FPGA_transition_or_action": "Reject before ack/sequence side effect",
+      "observable_pass_checks": [
+        "retained B replay bytes SHA unchanged",
+        "B outstanding_seq=0",
+        "no counter increment or record dequeue",
+        "only ACK with sid=B can advance once"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-04",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Old-epoch reliable IQ/RESULT/STATUS with valid CRC",
+      "PC_expected": "No old result accepted",
+      "FPGA_expected": "Discard old epoch before seq/application effect",
+      "pass_oracle": "No IQ write, ghost commit or seq increment",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "ACTIVE B",
+      "initial_FPGA_state": "ACTIVE B",
+      "injected_fault_or_action": "Replay valid-CRC old-session A IQ_UPLOAD, RESULT and STATUS with coincident seq",
+      "PC_transition_or_action": "Reject old RESULT/STATUS; no provisional commit",
+      "FPGA_transition_or_action": "Reject old IQ before memory writes; keep expected seq",
+      "observable_pass_checks": [
+        "IQ raw memory hash unchanged",
+        "accepted packet count unchanged",
+        "expected seq unchanged",
+        "host accepted records unchanged",
+        "old epoch mismatch diagnostic"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-05",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Delayed ACK after retry; duplicate ACK, stale ACK; malformed ACK and NACK",
+      "PC_expected": "Only exact current ACK completes once",
+      "FPGA_expected": "NACK never releases buffer; reject old/future/mismatch",
+      "pass_oracle": "Outstanding replay safe and monotonic",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "ACTIVE with outstanding reliable packet",
+      "initial_FPGA_state": "ACTIVE with matching delayed ACK/NACK flow",
+      "injected_fault_or_action": "Delay exact ACK after retry; duplicate exact ACK; ACK header != payload; old/future ACK; expected_seq variants for NACK",
+      "PC_transition_or_action": "Only exact current ACK can complete packet once",
+      "FPGA_transition_or_action": "NACK does not release replay; duplicate/outdated controls ignored",
+      "observable_pass_checks": [
+        "ACK verified sid+header.seq+payload ackseq+CRC",
+        "completion_count<=1",
+        "replay buffer retained until exact ACK",
+        "new packet seq unchanged on invalid ACK",
+        "NACK expected=current may cause identical replay within budget"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-06",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Same-epoch COMMIT ACK lost",
+      "PC_expected": "Deduplicate identical COMMIT bytes/seq",
+      "FPGA_expected": "Repeat original identical COMMIT within approved retry policy",
+      "pass_oracle": "No contradictory ABORT after COMMIT",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "COMMIT frame valid at PC, ACK intentionally lost",
+      "initial_FPGA_state": "STATUS COMMIT S outstanding in same epoch",
+      "injected_fault_or_action": "Lose first COMMIT ACK; inject retry under <=3 S02 retransmissions",
+      "PC_transition_or_action": "Idempotent commit; ACK duplicate S",
+      "FPGA_transition_or_action": "Retransmit byte-for-byte identical wire S, never allocate T",
+      "observable_pass_checks": [
+        "SHA256(original_COMMIT_wire)==SHA256(retry_wire)",
+        "original/retry seq identical",
+        "host_commit_count==1",
+        "immutable outcome COMMIT",
+        "no ABORT"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-07",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "USB unplug after COMMIT received by PC but its ACK lost; FPGA retained tuple",
+      "PC_expected": "New epoch QUERY, validate prior COMMIT and release once",
+      "FPGA_expected": "OFFER retained COMMIT; new STATUS seq in new epoch; no ABORT",
+      "pass_oracle": "No double-commit, no old ACK acceptance",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Durably accepted COMMIT of CPI N, ACK lost",
+      "initial_FPGA_state": "CPI N immutable COMMIT, ACK uncertain, still powered",
+      "injected_fault_or_action": "Physically unplug USB between PC COMMIT receipt and FPGA ACK arrival; reconnect new SID B",
+      "PC_transition_or_action": "Freeze journal, fresh SID B, OFFER snapshot validated, QUERY seq0 new epoch, verify replayed COMMIT N, release explicitly",
+      "FPGA_transition_or_action": "Preserve terminal tuple across link loss, reject old SID A ACK, reply QUERY with fresh FPGA seq in B carrying identical COMMIT(N,count)",
+      "observable_pass_checks": [
+        "SID_B != SID_A",
+        "no same-old-wire COMMIT in B",
+        "new STATUS frame seq0 with SID_B",
+        "terminal CPI/count bitwise equal original",
+        "exactly one host commit",
+        "no ABORT",
+        "RELEASE gating new CPI"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-08",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "USB unplug after final RESULT but before COMMIT reaches host",
+      "PC_expected": "Keep provisional invalid until full matched COMMIT",
+      "FPGA_expected": "Offer retained terminal or preterminal state as actually known",
+      "pass_oracle": "No premature host acceptance",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "702 provisional RESULT records, COMMIT not received",
+      "initial_FPGA_state": "terminal COMMIT decided or preterminal according to injection",
+      "injected_fault_or_action": "Disconnect USB immediately after last result before COMMIT",
+      "PC_transition_or_action": "Remain HOST_UNCOMMITTED; if later QUERY yields COMMIT and exact 0..N-1 then commit, else invalidate",
+      "FPGA_transition_or_action": "Offer actual retained state, preserve decision; no speculative second-CPI start",
+      "observable_pass_checks": [
+        "host accepted_success=0 before COMMIT",
+        "provisional IDs and count recorded",
+        "new epoch QUERY verified",
+        "no ghost commit before verified terminal response"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-09",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "COMMIT retry exhaustion during link loss",
+      "PC_expected": "Await resolution, never assume FPGA abort",
+      "FPGA_expected": "TERMINAL_ACK_UNCERTAIN, unchanged terminal COMMIT and CPI_ID",
+      "pass_oracle": "No next CPI until release/recovery",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "USB down/COMMIT missing ACK",
+      "initial_FPGA_state": "COMMIT S decided/outstanding",
+      "injected_fault_or_action": "Exhaust initial+3 retries without ACK",
+      "PC_transition_or_action": "Do not infer ABORT from silence; recover by query when link returns",
+      "FPGA_transition_or_action": "TERMINAL_ACK_UNCERTAIN, preserve COMMIT tuple, do not release/open new CPI",
+      "observable_pass_checks": [
+        "send_attempts_original_regular_ARQ<=4",
+        "COMMIT decision count immutable",
+        "ABORT_emitted_for_same_CPI=0",
+        "blocked_new_CPI=1",
+        "later query reports same tuple"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-10",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "QUERY returns COMMIT but host lost provisional records",
+      "PC_expected": "Explicit HOST_INCOMPLETE; never accept missing records",
+      "FPGA_expected": "Preserve immutable COMMIT; release disposition needs approval",
+      "pass_oracle": "No silent partial result acceptance",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Provisional set missing one or more IDs; FPGA COMMIT decided",
+      "initial_FPGA_state": "immutable COMMIT retained across reconnect",
+      "injected_fault_or_action": "QUERY returns COMMIT while host record IDs incomplete, choose explicit candidate host_resolution=3",
+      "PC_transition_or_action": "Do not accept partial result; only after approved policy log durable FAILED_RESULT_DELIVERY with missing IDs and explicit disposition, then request RELEASE",
+      "FPGA_transition_or_action": "Verify CPI/count/outcome and approved host_discard resolution, record immutable COMMIT tombstone, ACK RELEASE idempotently",
+      "observable_pass_checks": [
+        "host_success=0",
+        "failure journal durable before RELEASE TX",
+        "immutable FPGA COMMIT preserved",
+        "tombstone resolution=3",
+        "wrong release rejected",
+        "no next CPI before release reconciliation"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted.",
+      "requires_engineer_approval_for_execution": true
+    },
+    {
+      "id": "LS-11",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "FPGA power loss during COMMIT ACK wait, host no COMMIT",
+      "PC_expected": "UNKNOWN/NOT_ACCEPTED and explicit recovery",
+      "FPGA_expected": "OFFER NO_RETAINED_STATE; no historical COMMIT/ABORT",
+      "pass_oracle": "Require fresh IQ after RECOVER_UNKNOWN approval",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Only provisional records, no valid COMMIT",
+      "initial_FPGA_state": "COMMIT sent/ACK uncertain",
+      "injected_fault_or_action": "FPGA power loss, then reconnect",
+      "PC_transition_or_action": "HOST_UNKNOWN_NOT_ACCEPTED, discard provisional, durable failure record; never invent success; send RECOVER_UNKNOWN only under approved policy",
+      "FPGA_transition_or_action": "OFFER kind0,cpi_valid0; never report lost CPI COMMIT or ABORT; accept new upload only after recovery",
+      "observable_pass_checks": [
+        "snapshot_kind=0",
+        "cpi_valid=0",
+        "host_commit_count=0",
+        "no historical STATUS COMMIT/ABORT",
+        "new upload full 16896 bytes after recovery"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted.",
+      "requires_engineer_approval_for_execution": true
+    },
+    {
+      "id": "LS-12",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "FPGA power loss after valid host COMMIT before RELEASE",
+      "PC_expected": "Keep durable host-validated result if available; mark FPGA state unverified",
+      "FPGA_expected": "OFFER NO_RETAINED_STATE, never retroactive ABORT",
+      "pass_oracle": "No forged device terminal history",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Valid COMMIT, complete record IDs, durable commit journal flushed",
+      "initial_FPGA_state": "COMMIT decided awaiting RELEASE",
+      "injected_fault_or_action": "Global FPGA reset/power loss; then new epoch",
+      "PC_transition_or_action": "Retain historical host-validated result and annotate BOARD_TERMINAL_UNKNOWN; no duplicate host success",
+      "FPGA_transition_or_action": "Offer UNKNOWN, no old terminal claim; only explicit RECOVER_UNKNOWN and fresh CPI",
+      "observable_pass_checks": [
+        "host durable committed digest persists across PC restart",
+        "FPGA snapshot0",
+        "board never invents ABORT",
+        "new CPI ID different"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted.",
+      "requires_engineer_approval_for_execution": true
+    },
+    {
+      "id": "LS-13",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Delayed SESSION_HELLO/OFFER/READY from prior epoch",
+      "PC_expected": "Accept only newly generated PC epoch echoed correctly",
+      "FPGA_expected": "Quarantine old application/ACK traffic; no silent state wipe",
+      "pass_oracle": "State protection limitations logged after POR",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "HELLO_WAIT_OFFER, ACTIVATE_WAIT_READY or ACTIVE",
+      "initial_FPGA_state": "NEGOTIATING or ACTIVE with SID A",
+      "injected_fault_or_action": "USB disconnect midway HELLO/OFFER, ACTIVATE/READY; inject stale OFFER/READY/HELLO/ACTIVATE after new SID B; test reenumeration/purge",
+      "PC_transition_or_action": "Close handle, purge, observe quiet guard, generate B and reject stale A replies; if ready outcome unknown, do not assume FPGA unactivated",
+      "FPGA_transition_or_action": "Quarantine A reliable frames after B negotiation; preserve terminal and report actual snapshot",
+      "observable_pass_checks": [
+        "new SID_B differs from SID_A",
+        "old OFFER/READY rejected at PC",
+        "no old ACTIVATE counter reinit",
+        "no silent CPI reset",
+        "purge/quiet guard log present",
+        "historical bootstrap replay-after-powerloss limitation noted"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted.",
+      "subcases": [
+        {
+          "name": "USB_DROP_HELLO_OFFER",
+          "observation": "New B HELLO restarts pending negotiation without releasing protected CPI"
+        },
+        {
+          "name": "USB_DROP_ACTIVATE_READY",
+          "observation": "FPGA may be ACTIVE A; B OFFER reflects actual retained snapshot; no old-session ACK applied"
+        },
+        {
+          "name": "STALE_OLD_READY",
+          "observation": "Old A READY cannot put PC ACTIVE B"
+        },
+        {
+          "name": "STALE_COMPLETE_HANDSHAKE_AFTER_POR",
+          "observation": "Under unprovable stale bootstrap precondition, lab trust test fails/operation blocked; no cryptographic guarantee claimed"
+        }
+      ]
+    },
+    {
+      "id": "LS-14",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "RELEASE wrong CPI ID/count/outcome, duplicate RELEASE, lost ACK",
+      "PC_expected": "Reject mismatches; resend identical RELEASE if ACK lost",
+      "FPGA_expected": "No clearing unrelated CPI; retain idempotent tombstone",
+      "pass_oracle": "Release only on matched decision and accepted disposition",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Prepared RELEASE for decided CPI",
+      "initial_FPGA_state": "DECIDED_COMMIT or DECIDED_ABORT with retained tuple",
+      "injected_fault_or_action": "Wrong CPI, expected count/outcome; duplicate release; release ACK lost; inject host_resolution=3 without approved durable failure",
+      "PC_transition_or_action": "Send valid RELEASE only with journaled resolution; retry exact seq if no ACK; do not call failed delivery success",
+      "FPGA_transition_or_action": "Reject mismatches and unapproved disposition, only one tombstone on exact command, re-ACK duplicate",
+      "observable_pass_checks": [
+        "wrong_release_accepted=0",
+        "immutable terminal tuple unchanged",
+        "valid release tombstone once",
+        "next CPI gated until resolution",
+        "failed delivery host_success=0"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-15",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "QUERY while COMMIT outstanding, then new epoch",
+      "PC_expected": "Old epoch ack/retry S; new epoch QUERY with new seq Q",
+      "FPGA_expected": "Old S exact; after new epoch, new STATUS seq T preserving outcome",
+      "pass_oracle": "No out-of-order reliable reply or status mutation",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "COMMIT S outstanding, asks QUERY Q; optionally new SID B",
+      "initial_FPGA_state": "Same-epoch S outstanding or new epoch",
+      "injected_fault_or_action": "QUERY before ACK of S; then establish new epoch and repeat QUERY",
+      "PC_transition_or_action": "Same epoch expect replay S; in B QUERY Q new and STATUS T new, with original semantic outcome",
+      "FPGA_transition_or_action": "Never overtake S with new T in same stream; after new epoch use new seq T and SID B",
+      "observable_pass_checks": [
+        "old replay wire hash identical",
+        "no out-of-order fresh status while S outstanding",
+        "new_epoch_STATUS.SID=B",
+        "new seq T, terminal CPI/count same"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-16",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "DSP reset during COMMIT, UART parser reset in frame, global reset during IQ",
+      "PC_expected": "No unjustified commit; retry according to retained epoch only",
+      "FPGA_expected": "Protect terminal in DSP reset, discard partial parser bytes, POR loses state",
+      "pass_oracle": "No partial CPI run or false terminal PASS",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Upload in progress; separate tests with valid COMMIT during DSP reset",
+      "initial_FPGA_state": "ACTIVE upload, COMMIT or UART parser mid-frame",
+      "injected_fault_or_action": "Reset global during IQ; DSP-only reset during terminal; parser-only reset mid-byte frame",
+      "PC_transition_or_action": "Incomplete/global reset => UNKNOWN and reupload; DSP only => preserved COMMIT; parser reset => retry frame",
+      "FPGA_transition_or_action": "Global wipes volatile session, DSP protects tuple and epoch, parser discards incomplete frame without advancing seq",
+      "observable_pass_checks": [
+        "no RUN if byte_coverage<16896",
+        "saved CPI/count and seq across DSP reset",
+        "partial parser CRC never accepted",
+        "global reset snapshot UNKNOWN"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-17",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Counter near wrap, reused epoch token, random source failure",
+      "PC_expected": "Do not initiate application data; acquire fresh epoch or fail",
+      "FPGA_expected": "Reject unsupported wrap/reused epoch where tracked",
+      "pass_oracle": "No stale ACK accepted as new",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "ACTIVE near 0xFFFFFFFF next seq or new SID identical to retired SID",
+      "initial_FPGA_state": "Retired SID history or source of epoch unavailable",
+      "injected_fault_or_action": "Counter wrap, nonce generator unavailable/returns duplicate/zero",
+      "PC_transition_or_action": "Refuse reuse and ordinary frames; record session-failure condition",
+      "FPGA_transition_or_action": "Reject unsupported wrap/retired SID within retained history, demand new negotiation",
+      "observable_pass_checks": [
+        "no wrapped seq accepted",
+        "no duplicate SID accepted while history survives",
+        "failed nonce source blocks new HELLO",
+        "no false ACK"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-18",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "PC wants FRESH while FPGA retains another CPI_ID",
+      "PC_expected": "Reconcile existing CPI; reject mismatch",
+      "FPGA_expected": "OFFER actual retained ID without overwrite",
+      "pass_oracle": "Never silently lose old CPI",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Requests FRESH for CPI X",
+      "initial_FPGA_state": "Retains different CPI Y (possibly COMMIT)",
+      "injected_fault_or_action": "HELLO prior CPI mismatch; offer Y",
+      "PC_transition_or_action": "Do not activate FRESH/overwrite Y; reconcile Y first",
+      "FPGA_transition_or_action": "Reply actual Y snapshot, reject inconsistent ACTIVATE",
+      "observable_pass_checks": [
+        "Y CPI_ID and immutable tuple unchanged",
+        "no new upload X",
+        "no implicit release or abort"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-19",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "35x488 IQ chunks, 35x484 readback aligned, 88 result packets x<=8",
+      "PC_expected": "Exact raw bytes and oracle records before COMMIT",
+      "FPGA_expected": "Strict epoch/CRC/seq/offset/ACK checks; no partial RUN",
+      "pass_oracle": "Full 16896 bytes and 702 records in candidate protocol",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "New active epoch with complete known IQ and synthetic 702 independent result records",
+      "initial_FPGA_state": "Controlled packet loop reference only, not UART RTL",
+      "injected_fault_or_action": "Boundary length, CRC bit flip, stale epoch, padding nonzero, wrong seq, missing chunk; full valid transactions",
+      "PC_transition_or_action": "Exact binary byte/count and stage readback match before RUN; RESULT 702 unique ordered IDs and COMMIT count",
+      "FPGA_transition_or_action": "Strict S02 CRC length and SID before app effect; full 16896-byte coverage; refuse RUN if incomplete",
+      "observable_pass_checks": [
+        "SOF A55AC33C version1 CRC check 123456789=CBF43926",
+        "handshake frames 41/43/44/44",
+        "IQ packet_count35=34*488+304",
+        "readback packet_count35=34*484+440",
+        "RESULT packets88=87*8+6",
+        "13-byte record padding 5 zero",
+        "max payload <=512"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    },
+    {
+      "id": "LS-20",
+      "status": "PLANNED_NOT_RUN",
+      "stimulus": "Unknown STAGE_REQUEST for unapproved seven DSP schemas",
+      "PC_expected": "Reject unknown schema; do not assign guessed format",
+      "FPGA_expected": "Return explicit unsupported/error without data mutation",
+      "pass_oracle": "All seven stage schemas remain OPEN",
+      "required_evidence": [
+        "serialized wire hex + CRC validation and timestamp",
+        "PC/FPGA transport state trace with epoch and application tx/rx sequence before and after injection",
+        "CPI_ID immutable terminal decision/count, replay-image hash and FIFO/app counters if relevant",
+        "host journal entry including durable flush status for recovery cases",
+        "injection trace plus explicit satisfied/failed oracle assertions"
+      ],
+      "approval": "PROPOSED_SPEC_NOT_IMPLEMENTED",
+      "initial_PC_state": "Active epoch; requests unapproved intermediate stage schema",
+      "initial_FPGA_state": "No schema among seven DSP outputs approved",
+      "injected_fault_or_action": "Probe seven DSP readback stage selectors and raw IQ selector separately",
+      "PC_transition_or_action": "Do not treat raw IQ schema as DSP stage result",
+      "FPGA_transition_or_action": "Reject unsupported stage output requests; preserve numeric values and stage state",
+      "observable_pass_checks": [
+        "seven stage output statuses remain OPEN 0/7 approved",
+        "unsupported requests produce explicit no-data",
+        "no guessed stage id or byte schema"
+      ],
+      "observability_notes": "Require timestamped raw wire+CRC, reset counters, session IDs, CPI tuple, complete input/output counts and captured host journal; no PASS asserted."
+    }
+  ],
+  "independent_oracle": "All observable_pass_checks and subcase observations must be evaluated against timestamped traces, no assumed PASS.",
+  "explicit_handshake_loss_subtests": 4,
+  "explicit_mid_handshake_disconnect_subtests": 2,
+  "not_claimed": [
+    "Protocol RTL PASS",
+    "PC Packetizer/Parser PASS",
+    "board UART PASS",
+    "REQ-LIST-01 full technical PASS",
+    "full system FPGA fit",
+    "any renewed S04 test"
+  ]
+}

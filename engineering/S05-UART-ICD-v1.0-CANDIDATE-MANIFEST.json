@@ -208,10 +208,10 @@
     "Approval for QUERY-triggered exact COMMIT recovery replay after ordinary three-retransmission budget exhaustion"
   ],
   "link_session_epoch_addendum": {
-    "status": "PROPOSED_NOT_APPROVED",
-    "file": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md",
-    "manifest": "engineering/S05-LINK-SESSION-EPOCH-MANIFEST-v0.1.json",
-    "independent_test_plan": "engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json",
+    "status": "R1_PROPOSED_NOT_APPROVED",
+    "file": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-R1-v0.1.md",
+    "manifest": "engineering/S05-LINK-SESSION-EPOCH-MANIFEST-R1-v0.1.json",
+    "independent_test_plan": "engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-R1-v0.1.json",
     "explicit_changes_to_R2_wire_contract_if_approved": [
       "New SESSION_CONTROL TYPE candidate 0x09 and four bootstrap opcodes",
       "flags.bit0 epoch tag present and 16-byte session_id prefix on every application/ACK/NACK payload",
@@ -220,6 +220,22 @@
     ],
     "changes_approved": false,
     "R2_original_21B_ACK_and_34_upload_packet_timing": "STILL_ONLY_R2_MODEL_NOT_ACTIVE_LAB_WIRE_APPROVAL",
-    "no_UART_RTL": true
+    "no_UART_RTL": true,
+    "wire_audit": "engineering/S05-LINK-SESSION-EPOCH-R1-WIRE-AUDIT-v0.1.json",
+    "previous_v0_1": "engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md",
+    "R1_activation_ready_frame_bytes": 44,
+    "R1_four_handshake_frame_bytes": [
+      41,
+      43,
+      44,
+      44
+    ],
+    "R1_lost_READY_double_seq_reset_prohibited": "PROVED_AS_CONTRACT_INVARIANT_ONLY_NO_RTL_TEST",
+    "R1_unknown_or_discard_release": "PROPOSED_NEW_DISPOSITION_NO_SIGNOFF",
+    "R1_timeouts": "2s_and_3_retrans_per_leg_12s_negotiation_lease_2s_quiet_guard_ALL_PROPOSED",
+    "twenty_cases_planned": true,
+    "twenty_cases_executed": 0,
+    "full_seven_DSP_output_schemas": "OPEN",
+    "no_UART_RTL_or_PC_code": true
   }
 }

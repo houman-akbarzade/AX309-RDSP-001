@@ -189,3 +189,15 @@ A new UART handshake followed by restarting 32-bit sequence counters does not by
 After an ACK-uncertain COMMIT, a retry in the original session reuses exactly the original wire frame/sequence; a new link epoch uses a **new** QUERY and newly sequenced STATUS carrying the **same immutable terminal decision**. The FPGA must never turn a previously decided COMMIT into ABORT. RELEASE_CPI must be an explicit separately verified action, with idempotent duplicate handling. FPGA global reset/power loss destroys unprotected volatile terminal history; UNKNOWN is an epistemic limitation, not evidence that a CPI succeeded or failed. A host-only random session token and CRC do not authenticate a malicious endpoint or guarantee safety against replay of an entire stale bootstrap exchange after power loss.
 
 **Evidence:** engineering/S05-LINK-SESSION-EPOCH-ADDENDUM-v0.1.md and engineering/S05-LINK-SESSION-EPOCH-TEST-MATRIX-v0.1.json (20 planned cases, none executed). Logical REQ-LIST-01 is approved separately from unresolved physical UART/FPGA qualification.
+
+## LL-AX309-011 — Lost READY requires single-shot activation, not merely a duplicate message ACK
+
+**Evidence:** S05 Link Session/Epoch R1 engineering specification, 2026-11-12.
+
+In a four-message HELLO/OFFER/ACTIVATE/READY handshake, the FPGA can become ACTIVE on receipt of ACTIVATE **before** the PC knows READY arrived. Losing READY can cause the PC to resend ACTIVATE, but the FPGA must have an `activated_once(session_id)` latch and a cached READY. The retry can retransmit READY only; it cannot reset the already active directional sequence counters, accepted data or CPI decision. This is a contract-level inductive invariant, not an RTL PASS.
+
+The OFFER snapshot needs a complete echo: R1 adds the previously absent `cpi_valid` byte to ACTIVATE and READY, changing the four-frame handshake to 41/43/44/44 bytes. Session IDs and serial CRC offer logical separation from stale old-epoch frames only under a **trusted single-PC and fresh-nonce** laboratory model; a PC nonce cannot authenticate a device that rebooted and lost all its terminal history.
+
+A COMMIT known to the FPGA may coexist with a host result marked `FAILED_RESULT_DELIVERY` because the host's provisional record list is incomplete. A proposed `HOST_DISCARDED_INCOMPLETE_COMMIT` RELEASE may allow lab recovery **only after** a durable failure record and explicit engineer approval, never as a successful target list or a reversal of immutable FPGA COMMIT. Conversely, after FPGA power loss, a separately durable host COMMIT may remain a valid historical host result while the FPGA correctly reports UNKNOWN. A host with unvalidated provisional records must discard them.
+
+Handshake times (2-second wait, three retries, 12-second pending lease and 2-second receive-quiet guard) are **engineering proposals**, not proven USB latency limits or a whole-CPI deadline. The 20-case R1 observable test matrix is not executed; a structural CRC/length audit is not packet/RTL qualification.

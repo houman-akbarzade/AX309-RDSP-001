@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "record_id": 0,
+      "range_bin": 40,
+      "doppler_bin": 16,
+      "signed_doppler_bin": -16,
+      "power_stored_integer": 70368744177663,
+      "cluster_cells": 4,
+      "tie_flag": true,
+      "max_equal_power_cells": 4
+    },
+    {
+      "record_id": 1,
+      "range_bin": 80,
+      "doppler_bin": 3,
+      "signed_doppler_bin": 3,
+      "power_stored_integer": 70368744177663,
+      "cluster_cells": 5,
+      "tie_flag": true,
+      "max_equal_power_cells": 5
+    },
+    {
+      "record_id": 2,
+      "range_bin": 109,
+      "doppler_bin": 28,
+      "signed_doppler_bin": -4,
+      "power_stored_integer": 70368744177663,
+      "cluster_cells": 1,
+      "tie_flag": false,
+      "max_equal_power_cells": 1
+    }
+  ],
+  "comparison": {
+    "Python": {
+      "hardware_clusters": 3,
+      "reference_clusters": 3,
+      "common_peak_coordinates": 3,
+      "hardware_only_peaks": [],
+      "reference_only_peaks": [],
+      "record_signatures_exact": true
+    },
+    "MATLAB": {
+      "hardware_clusters": 3,
+      "reference_clusters": 3,
+      "common_peak_coordinates": 3,
+      "hardware_only_peaks": [],
+      "reference_only_peaks": [],
+      "record_signatures_exact": true
+    }
+  },
+  "programming": {
+    "image": "grouping",
+    "sha256": "b31cbd40c0fa2c3766e4a85ece41af6575f19a25b6f18631edf951ebf8cf61b3",
+    "program_log": "empty\nwrite to ram\nJtag frequency : requested 1.00MHz\u0000   -> real 1.00MHz\u0000  \nOpen file DONE\nParse file DONE\nload program\n\nLoad SRAM: [================                                  ] 31.99%\nLoad SRAM: [===================================               ] 68.99%\nLoad SRAM: [==================================================] 100.00%\nDone\nShift IR 35\nir: 1 isc_done 1 isc_ena 0 init 1 done 1\n"
+  },
+  "status": {
+    "target": 6,
+    "state": 3,
+    "flags": 0,
+    "input_words": 4096,
+    "output_words": 6
+  }
+}

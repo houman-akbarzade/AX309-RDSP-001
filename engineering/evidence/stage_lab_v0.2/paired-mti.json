@@ -1,0 +1,219 @@
+{
+  "version": "0.2.0",
+  "target": 2,
+  "entry": 1,
+  "input_mode": "Software previous-stage",
+  "origin": {
+    "origin": "Software Float FFT/chain (no IP model)",
+    "input_quantization_RMSE": 1.2256846631511038e-05,
+    "input_clips": 0
+  },
+  "metadata": {
+    "scenario": "Two aircraft",
+    "seed": 20261112,
+    "noise_rms": 0.002,
+    "input_saturations": 0,
+    "radar": {
+      "fs": 1000000.0,
+      "fc": 10000000000.0,
+      "pri": 0.001,
+      "pulses": 33,
+      "samples": 128,
+      "fft": 32
+    },
+    "note": "Single CPI: narrowband stop-and-hop; range is quantized to sample delay. Tangential trajectories are commanded illustration only."
+  },
+  "metrics": {
+    "Python Float": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    },
+    "MATLAB Float": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "MATLAB Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "full_chain_metrics": {},
+  "transport": [
+    {
+      "stage": 2,
+      "input_stage": 1,
+      "input_sha256": "167614ab7bdbc5232b7be9dfd57df4560abcf5b8531ccd79fced2edcf81e5d4d",
+      "output_sha256": "8a1f1bb31c6a6d3c660446ac4f6a440cc16005e0e9ec31cf118cdf03f101835d",
+      "elapsed_s": 1.3617494770005578,
+      "status": {
+        "target": 2,
+        "state": 3,
+        "flags": 0,
+        "input_words": 256,
+        "output_words": 128
+      },
+      "programming": {
+        "image": "mti",
+        "sha256": "4c829d9bd2372a2ac652fffc8c80f97b5390ac25d0d0f87a48b611803dee39c4",
+        "program_log": "empty\nwrite to ram\nJtag frequency : requested 1.00MHz\u0000   -> real 1.00MHz\u0000  \nOpen file DONE\nParse file DONE\nload program\n\nLoad SRAM: [================                                  ] 31.99%\nLoad SRAM: [===================================               ] 68.99%\nLoad SRAM: [==================================================] 100.00%\nDone\nShift IR 35\nir: 1 isc_done 1 isc_ena 0 init 1 done 1\n"
+      },
+      "trace": [
+        {
+          "sequence": 0,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "a69dc9fbf4d075bddb36009a232822ebb8036ad0e9c81ba9021f143d4f91b9ad",
+          "response_sha256": "ec9d8d55e4cb742186ccc6f78e4454e1321fcb05305dbe1d910f28b7dfeb98ef"
+        },
+        {
+          "sequence": 1,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "4e07752c17abaf1e2e9413c7b2aa302de4981c5960858663580abd544788bcc7",
+          "response_sha256": "6c40ab5a61c9518a20dbcf3b3ae42ba1f843af6a95287ccd4fb3dc7df54603d9"
+        },
+        {
+          "sequence": 2,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "badacb7c09a3897182192dffa1b66ceda517345c8f2d6aa5da5d835a0dca6a1f",
+          "response_sha256": "d27b8bf3a77600925c949a049e48475e911a9681a66e0876048053b03a864ff5"
+        },
+        {
+          "sequence": 3,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "91998fe3972ae67ee97a85988f9e8ac3e821a454304db34292e1aca1bc6983e7",
+          "response_sha256": "8a731dea34f0d954071055fdacb3b3c2acf28752f16fda60a7ddad02aa7167d5"
+        },
+        {
+          "sequence": 4,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "fdea329fc86ad47363bc25da80d53c4a3373c14fad9b08ab6b9155fb4611ea33",
+          "response_sha256": "61df24236fad19ba47880518b4e7b24d775604047f98fbb1822136436776b6c4"
+        },
+        {
+          "sequence": 5,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "8acdb4ae4685e9ef5c8e324b1a3738a632363b660e6c6fc5878c28581d2e2756",
+          "response_sha256": "59c017e334050a73aebcee1de28bbc26de7bb9543201ad3d393f5ad33fd8ad1b"
+        },
+        {
+          "sequence": 6,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "f97d8f8d9bf608ef50cb55f44922da40e02dbd118a886f5dde797e59bcc7587e",
+          "response_sha256": "7a08ea4b4ceaa68a7f850889c6def318423933bee3b38a2c49ab46035c07f5a9"
+        },
+        {
+          "sequence": 7,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "b4c67c2364cefe47894cdef4b4853d4d45be2b576b1720400a71e7bb0b2db3cc",
+          "response_sha256": "4e00516f19ae952b48a33d3cbdd5896027f683e1a0c97069ce1133c59aab0a5c"
+        },
+        {
+          "sequence": 8,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "50651316b31316dcff9697f44d9881bad9ac2e710f8de005cb99d1c57cb9ef8b",
+          "response_sha256": "7ddcfe1f7bcf8f0e1b7a70f4266287e585e4348b967acbb225ec6e87b13e6af7"
+        },
+        {
+          "sequence": 9,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "a42dff9b520471f1c002f5595ab3ad136ef8ee25a0812d37a6efb9de92684162",
+          "response_sha256": "0cdf7c8d05d3ba1612964996a8cd2d8cdae77882ba09290e9b55b8baaf3bf3cf"
+        },
+        {
+          "sequence": 10,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "ec9ef6cdfc9b57e459b6913a568ef8a6f799735d146d20043d5727b3c6fd7ab1",
+          "response_sha256": "1e54129c73002063eeb3a8d49d001ca9a08712c2053b208e10945ef147454592"
+        },
+        {
+          "sequence": 11,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "deb7bf21da8933c80ea8eddabe9485c94d09cca5fc7849f2416d26cacc4d299c",
+          "response_sha256": "871248339602c453bf33b334f2a24c5ef4934a10657f0fdd10017d9c7342fd14"
+        },
+        {
+          "sequence": 12,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "96fb5c0091f8d031dc9ee693fc345919a7ccdde0d3fa46d97be92addadd69455",
+          "response_sha256": "a6c999691ef7367e1e737889a63f80be875b61017c9874e5aa445495d64ce2bd"
+        },
+        {
+          "sequence": 13,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "a534f5e25ff1aafed141dde08b64b7f4bb9f9b4da11755cc425a30ac8a49b27f",
+          "response_sha256": "d11c659d0c2cb9e63efd2d116bd7fdc6205f62cbf617829d63dc4bec999d7fea"
+        },
+        {
+          "sequence": 14,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "fff93fc1b6afef16921e1ccc3925c9be3e1c918a2c5dc7bf9d63e01843811bd6",
+          "response_sha256": "9887393c7210aff1d2df666263ff6805c8fd888de3956c63ebc26030d25e57e7"
+        },
+        {
+          "sequence": 15,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "a3c9a0e03227688f05a24a03a46c38fc8ba2aa2296bf672a606abf79963d313f",
+          "response_sha256": "3ee1726c2ab1cd5548eeab6b65932a85887236622428e3c6960f5de646dcf200"
+        },
+        {
+          "sequence": 16,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "16ca3bfd137d01996e23a5a113e75dd1aec29f3e1a6bf93d723794659d96651c",
+          "response_sha256": "2e4477dd32ed03c3c00bd305213ee7316791c59fd50a1eba26b1a345845e4ed0"
+        }
+      ]
+    }
+  ],
+  "elapsed_s": 17.39517100599187,
+  "source_entry": 1,
+  "journal": "/home/houman/AX309-RDSP-001-stage-lab/engineering/evidence/stage_lab_v0.2/runs/20261112T163417-target2"
+}

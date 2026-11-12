@@ -1,0 +1,177 @@
+{
+  "version": "0.2.0",
+  "target": 1,
+  "entry": 0,
+  "input_mode": "File raw PRI/CPI through hardware",
+  "origin": {
+    "origin": "User file",
+    "path": "/home/houman/AX309-RDSP-001-stage-lab/rtl/build/stage_lab/file-tests/one-pri.npy",
+    "sha256": "d76ff4a70653cd43d22ac88227b95c50415035792717c373ca66c7fa0640d838",
+    "input_quantization_RMSE": 1.2291687236184796e-05
+  },
+  "metadata": {
+    "scenario": "User file",
+    "truth": "Not supplied"
+  },
+  "metrics": {
+    "Python Float": {
+      "RMSE": 1.2555745966747858e-05,
+      "NRMSE_percent": 0.002118276204719328,
+      "max_abs_error": 2.058603927845664e-05,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "full_chain_metrics": {
+    "Python Float": {
+      "RMSE": 1.2555745966747858e-05,
+      "NRMSE_percent": 0.002118276204719328,
+      "max_abs_error": 2.058603927845664e-05,
+      "units": "normalized amplitude",
+      "exact_integer": null
+    },
+    "Python Fixed": {
+      "RMSE": 0.0,
+      "NRMSE_percent": 0.0,
+      "max_abs_error": 0.0,
+      "units": "normalized amplitude",
+      "exact_integer": true
+    }
+  },
+  "transport": [
+    {
+      "stage": 1,
+      "input_stage": 0,
+      "input_sha256": "dd21cc7328400abf27f01f827389ef2f12d8099db17846ed5c5bc110135e3df1",
+      "output_sha256": "5a5aefd5345707752d05c952453b550d56a00aad20094fe20e413ff386533be7",
+      "elapsed_s": 0.9561348389979685,
+      "status": {
+        "target": 1,
+        "state": 3,
+        "flags": 0,
+        "input_words": 128,
+        "output_words": 128
+      },
+      "programming": {
+        "image": "mf",
+        "sha256": "1903b2f10c9cf24325a41b597b65b251fb5c3fbb1ded066ca0837cb3231bc38c",
+        "program_log": "empty\nwrite to ram\nJtag frequency : requested 1.00MHz\u0000   -> real 1.00MHz\u0000  \nOpen file DONE\nParse file DONE\nload program\n\nLoad SRAM: [================                                  ] 31.99%\nLoad SRAM: [===================================               ] 68.99%\nLoad SRAM: [==================================================] 100.00%\nDone\nShift IR 35\nir: 1 isc_done 1 isc_ena 0 init 1 done 1\n"
+      },
+      "trace": [
+        {
+          "sequence": 0,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "7e4747ae7da230f6acae52f0fccfb9432d1ad36fd076797b2483b101e51e9f21",
+          "response_sha256": "4fa00251bc86d05be4248a65edcb408fd0d21c999ccdda79cbc70ccb2462f81a"
+        },
+        {
+          "sequence": 1,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "58d8c105108dde419b28894493a81136c80919fc79f0231bef8a1501292c24c2",
+          "response_sha256": "f72f6f911834b0809c644efcb22c3fb64b4860e90052edc50579c772538dd6ae"
+        },
+        {
+          "sequence": 2,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "777b04d9a4533291b292216647c4cb3cd388c224a8907a967add0c94c00343e2",
+          "response_sha256": "c84f03a0edc6cb07574a6e23a3a00f5e0f5ca84f3066a947d4e50fe3322417c2"
+        },
+        {
+          "sequence": 3,
+          "kind": 2,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "8babeb5860b8677df13e02aa00c4ddef22a769783fdbfac85724f190cecf1c49",
+          "response_sha256": "d23632d9974063e9ec5f2c7c2ed7d106ab13456463baa29b39d6dd1ffcd118fb"
+        },
+        {
+          "sequence": 4,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "6042a3b7654fab0be90eb21a68654585517c9d52f8660bd6fb4d31187b30e46e",
+          "response_sha256": "6d0618224cfe08a986f406f1467b1ec286452131f6f87c27d0b858317334d6ca"
+        },
+        {
+          "sequence": 5,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "74ca39150887e587d8e72635421e95ff167fcb413b0744ce107005a5a4f81240",
+          "response_sha256": "baf71c2fee47d8b0be7041c90773eae97cbcca08a72c18c48f584f463a880ccf"
+        },
+        {
+          "sequence": 6,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "97bb774384f520d722721de75616deed8c73f5b9b316e7a059c9b99d206e5839",
+          "response_sha256": "07127d162f294b2590fa1b084efef86ac619f60abfbcdcd61b0c4e8b55b95e60"
+        },
+        {
+          "sequence": 7,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "68bf2afbe744753759f63a256c4591cd3057c02a15ae40c7d21dbf98383741d4",
+          "response_sha256": "1c5d630ec3db1b13a226d44ec01a01a1b9aabddac5a39e8e874cd47dd9bad318"
+        },
+        {
+          "sequence": 8,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "5bcfadf174e45eb93497260d11e82179b508c6ffa4734cbb76e99349967f6010",
+          "response_sha256": "9cc7c729961f89fe8670aedc73638ee94bd43e091220d04e87833885b82b138a"
+        },
+        {
+          "sequence": 9,
+          "kind": 1,
+          "attempt": 0,
+          "response_type": 6,
+          "request_sha256": "2d076e087c680316b96a13e6085e31562b6cec3e7de7334dc8d7c085d1a28389",
+          "response_sha256": "86c4813775fc08e02fa8f18cb86d06d2be5267941a42949aab74cbb543bac844"
+        },
+        {
+          "sequence": 10,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "9d783aa522e9168a0555c287f416604a45b5329380e97adb67919b40c438b3a2",
+          "response_sha256": "e66628d1557a7507e39fc61378c4161d19a087914d65c921edc3e5e747922c9c"
+        },
+        {
+          "sequence": 11,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "1372965ee3e54c8ec26a533ada024388de7500d5484c205e6325c8729ba469a2",
+          "response_sha256": "11f57bd0ec64d8bfd132b97a86210b020e103821d7eef0c0bfd6f90528c31d8c"
+        },
+        {
+          "sequence": 12,
+          "kind": 3,
+          "attempt": 0,
+          "response_type": 4,
+          "request_sha256": "7e21ade61dca68f0b939da27f6a533a7991b436509c107fde262aef67447a219",
+          "response_sha256": "b7c0155bce93007ac9dd5a9d3fa9ec695278cd628a6081f41b5ef4c395418e7c"
+        }
+      ]
+    }
+  ],
+  "elapsed_s": 3.865344443998765,
+  "source_entry": 0
+}

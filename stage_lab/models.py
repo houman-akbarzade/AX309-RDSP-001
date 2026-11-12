@@ -113,9 +113,9 @@ def compare(got,ref,target,fixed):
  elif target==5:
   return dict(decision_mismatches=int(np.count_nonzero(got[1]!=ref[1])),extra_alarms_vs_reference=int(np.count_nonzero(got[1]&~ref[1])),missing_alarms_vs_reference=int(np.count_nonzero(~got[1]&ref[1])),valid_CUTs=2782,exact_decisions=bool(np.array_equal(got[1],ref[1])))
  else:
-  fields=['range_bin','doppler_bin','cluster_cells']
+  fields=['record_id','range_bin','doppler_bin','signed_doppler_bin','cluster_cells']
   if fixed:fields+=['power_stored_integer','tie_flag','max_equal_power_cells']
   gpeaks={(int(r['range_bin']),int(r['doppler_bin'])) for r in got};rpeaks={(int(r['range_bin']),int(r['doppler_bin'])) for r in ref}
-  return dict(hardware_clusters=len(got),reference_clusters=len(ref),common_peak_coordinates=len(gpeaks&rpeaks),hardware_only_peaks=sorted(gpeaks-rpeaks),reference_only_peaks=sorted(rpeaks-gpeaks),record_signatures_exact=[[r[k] for k in fields] for r in got]==[[r[k] for k in fields] for r in ref])
+  return dict(hardware_clusters=len(got),reference_clusters=len(ref),compared_fields=fields,common_peak_coordinates=len(gpeaks&rpeaks),hardware_only_peaks=sorted(gpeaks-rpeaks),reference_only_peaks=sorted(rpeaks-gpeaks),record_signatures_exact=[[r[k] for k in fields] for r in got]==[[r[k] for k in fields] for r in ref])
  err=a-b;rmse=float(np.sqrt(np.mean(np.abs(err)**2)));rms=float(np.sqrt(np.mean(np.abs(b)**2)))
  return dict(RMSE=rmse,NRMSE_percent=100*rmse/rms if rms else None,max_abs_error=float(np.max(np.abs(err))),units='normalized amplitude' if target<=3 else 'normalized Power',exact_integer=bool(np.array_equal(np.asarray(got),np.asarray(ref))) if fixed else None)

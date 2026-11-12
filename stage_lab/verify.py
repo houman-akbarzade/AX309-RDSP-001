@@ -88,6 +88,7 @@ def board(target,kind='scenario'):
  ref=reference(a,target-1,target,True);metrics=compare(got,ref,target,True)
  exact=metrics.get('exact_integer',metrics.get('exact_decisions',metrics.get('record_signatures_exact')))
  if not exact:raise RuntimeError(f'Hardware mismatch {target}: {metrics}')
+ if not np.array_equal(r['output'],expected_words(ref,target)):raise RuntimeError('Physical output word mismatch including IDs, sign, flags or padding')
  meta=dict(target=target,kind=kind,source=info,metrics=metrics,status=r['status'],elapsed_s=r['elapsed_s'],input_sha256=r['input_sha256'],output_sha256=r['output_sha256'],programming=r['programming'],trace=r['trace'])
  persist(E/f'board-{target}-{kind}.json',meta)
  np.savez_compressed(E/f'board-{target}-{kind}.npz',input=encode(a,target-1),echo=r['input_echo'],output=r['output'])

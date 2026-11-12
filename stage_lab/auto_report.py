@@ -1,5 +1,5 @@
 """Human reports and deterministic SVGs, built only from captured hardware arrays."""
-import html,json
+import html,json,re
 from pathlib import Path
 import numpy as np
 from .models import decode,reference
@@ -12,6 +12,7 @@ def fmt(x):
  return 'تعریف‌نشده' if x is None else f'{x:.6g}' if isinstance(x,(int,float)) else str(x)
 def esc(x):return html.escape(str(x))
 def page(title,body):
+ body=re.sub(r'<img src="([^"]+\.svg)"[^>]*>',lambda m:'<a href="'+m.group(1)+'">'+m.group(0)+'</a>',body)
  return '<!doctype html><html dir="rtl"><meta charset="UTF-8"><style>body{font-family:"B Nazanin","DejaVu Sans";font-size:18px;line-height:1.7;background:#142338;color:#ecf2fa;margin:26px}h1,h2,h3,a{color:#75d8fa}article{background:#20354c;padding:18px;margin:16px 0;border-right:4px solid #75d8fa}table{border-collapse:collapse;width:100%;margin:14px 0}td,th{border:1px solid #567088;padding:7px}img{max-width:100%;height:auto}small{color:#b9cbdd}.ok{color:#72e0b2}.warn{color:#ffca68}</style><title>'+esc(title)+'</title><h1>'+esc(title)+'</h1>'+body+'</html>'
 def table(headers,rows):
  return '<table><tr>'+''.join('<th>'+esc(v)+'</th>' for v in headers)+'</tr>'+''.join('<tr>'+''.join('<td>'+esc(v)+'</td>' for v in row)+'</tr>' for row in rows)+'</table>'

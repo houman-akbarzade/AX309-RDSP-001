@@ -6,6 +6,7 @@ from PySide6.QtCore import Qt,QUrl,QByteArray
 from PySide6.QtGui import QFont
 from PySide6.QtSvgWidgets import QSvgWidget
 from PySide6.QtWidgets import QApplication,QMainWindow,QWidget,QVBoxLayout,QHBoxLayout,QFormLayout,QComboBox,QSpinBox,QDoubleSpinBox,QPushButton,QLabel,QTextBrowser,QLineEdit,QTableWidget,QTableWidgetItem,QFileDialog,QScrollArea,QSplitter
+from .figure_viewer import ReportBrowser
 from .auto_cases import SCENARIOS,spec
 from .auto_suite import AutoWorker,plan
 from .models import ROOT
@@ -37,7 +38,7 @@ class Cockpit(QMainWindow):
   self.expert=QPushButton('عیب‌یابی پیشرفته: نقاط تزریق و برداشت');self.expert.clicked.connect(self.open_advanced);form.addRow(self.expert)
   self.help_button=QPushButton('راهنمای دو حالت و گزارش‌ها');self.help_button.clicked.connect(self.show_help);form.addRow(self.help_button)
   right=QWidget();rl=QVBoxLayout(right);split.addWidget(right);self.scene=QSvgWidget();self.scene.setMinimumHeight(200);self.scene.setMaximumHeight(270);rl.addWidget(self.scene)
-  self.report=QTextBrowser();self.report.setFont(QFont('B Nazanin',17));self.report.setLayoutDirection(Qt.RightToLeft);rl.addWidget(self.report,1)
+  self.report=ReportBrowser();self.report.setFont(QFont('B Nazanin',17));self.report.setLayoutDirection(Qt.RightToLeft);rl.addWidget(self.report,1)
   self.setStyleSheet('QWidget{background:#17283d;color:#e7edf8} QComboBox,QLineEdit,QSpinBox,QDoubleSpinBox,QTableWidget,QTextBrowser{background:#223952;padding:4px} QPushButton{background:#176d92;padding:9px} QHeaderView::section{background:#29445e;color:white}')
   self.mode.currentIndexChanged.connect(self.mode_changed);self.level.currentIndexChanged.connect(self.mode_changed);self.repeats.valueChanged.connect(self.mode_changed);self.scenario.currentTextChanged.connect(self.update_targets);self.noise.valueChanged.connect(self.draw_scene)
   self.update_targets();self.mode_changed();self.show_help()

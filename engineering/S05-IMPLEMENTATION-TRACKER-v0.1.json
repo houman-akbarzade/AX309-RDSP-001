@@ -134,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "Obtain system engineer signoff on S05-UART-ICD-v1.0-ENGINEER-REVIEW.md, especially TYPE/ACK numbering and lost COMMIT ACK reconciliation. Then implement independent PC Packetizer/Parser golden codec and tests, before any UART/Frame Controller RTL.",
+  "next_implementation_step": "System engineer final sign-off of UART ICD v1.0 R2 ACK/stale/session and COMMIT/QUERY/reset rules; then independent PC Packetizer/Parser. No UART RTL before sign-off.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -220,7 +220,7 @@
     "lab_contract": "engineering/S05-LOSSLESS-STREAM-EXECUTABLE-CONTRACT-v0.1.md",
     "fully_implemented_UART_and_host_transaction": false,
     "logical_policy_acceptance": "APPROVED_ALL_0_TO_702_NO_TOP_K_NO_SILENT_DISCARD",
-    "physical_FIFO_and_transport": "PENDING_ACTUAL_ICD_APPROVAL_AND_RTL_QUALIFICATION",
+    "physical_FIFO_and_transport": "OPEN_FIFO_DEPTH_REPLAY_ARQ_RTL_AND_END_TO_END_TESTING",
     "full_technical_acceptance": "OPEN_NOT_PASS",
     "ICD_v1_candidate": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
     "ICD_v1_signed_off": false,
@@ -323,7 +323,7 @@
     ],
     "ICD_v1_candidate": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
     "ICD_v1_candidate_manifest": "engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json",
-    "ICD_v1_status": "CANDIDATE_FOR_ENGINEER_SIGNOFF_NOT_APPROVED",
+    "ICD_v1_status": "CONDITIONALLY_ACCEPTED_FOR_FURTHER_SPECIFICATION_NOT_FINAL_SIGNOFF",
     "numeric_TYPE_and_COMMAND_codes_approved": false,
     "result_record_13_byte_LE_encoding_approved": false,
     "result_batch_limit_8_approved": false,
@@ -332,6 +332,13 @@
     "lost_COMMIT_ACK_terminal_reconciliation_approved": false,
     "reference_PC_packetizer_parser": "NOT_IMPLEMENTED_PENDING_ENGINEER_SIGNOFF",
     "FPGA_UART_RTL": "NOT_IMPLEMENTED",
-    "ICD_v1_signed_off": false
+    "ICD_v1_signed_off": false,
+    "ICD_v1_revision": "R2",
+    "ACK_NACK_delayed_duplicate_stale_rules": "R2_PROPOSED_PENDING_ENGINEER_APPROVAL",
+    "COMMIT_original_wire_retransmit_vs_new_query_sequence": "R2_SPECIFIED_PENDING_ENGINEER_APPROVAL",
+    "post_COMMIT_retry_exhaustion": "NO_CONTRADICTORY_ABORT_R2_CANDIDATE_S02_SCOPED_EXCEPTION_NEEDS_APPROVAL",
+    "terminal_persistence": "R2_RESET_DOMAIN_TABLE_PROPOSED_POWER_LOSS_NOT_GUARANTEED",
+    "seven_DSP_stage_output_schemas": "ALL_OPEN_0_OF_7_APPROVED",
+    "UART_RX_TX_RTL": "NOT_IMPLEMENTED"
   }
 }

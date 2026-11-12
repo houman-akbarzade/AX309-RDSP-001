@@ -1,7 +1,7 @@
 # AX309-RDSP-001 | S05 UART ICD v1.0 — ENGINEER REVIEW CANDIDATE
 
-**Status:** PROPOSED_NOT_APPROVED. The suffix "v1.0" denotes a complete **candidate for sign-off**, not an enacted or verified protocol.
-**Baseline:** `c5160db`. **Date:** 2026-11-12. **Owner of approval:** System engineer.
+**Status:** REVISED_CANDIDATE_CONDITIONALLY_ACCEPTED_FOR_SPECIFICATION_NOT_SIGNED_OFF. The suffix "v1.0" denotes a **candidate for final engineering sign-off**, not an enacted or verified protocol. Detailed revision R2 rules in Sections 9–11 supersede the shorter descriptions in Sections 3 and 6 where necessary.
+**Baseline:** `32e36ab` (earlier candidate derived from `c5160db`). **Date:** 2026-11-12. **Owner of approval:** System engineer. **Revision:** R2, conditional specification review.
 
 ## 1. Authority, separation of decisions and constraints
 
@@ -57,7 +57,7 @@ Normative IQ bytes: 33 pulses x 128 complex samples, pulse-major, I then Q, sign
 
 For v1, **proposed verification** is exact 16,896-byte host readback, not an invented FPGA SHA-256 obligation. Candidate STAGE_REQUEST payload: `CPI_ID:u32LE | stage_id:u8 | offset:u32LE | byte_count:u16LE` (11 bytes); `stage_id=0x00` means **input IQ in its original byte ordering**. Candidate STAGE_DATA payload: `CPI_ID:u32LE | stage_id:u8 | offset:u32LE | byte_chunk[1..500]` (9 bytes prefix, up to 500 bytes IQ), each with frame CRC/seq. Request 34 sequential chunks with four-byte-aligned offsets/counts: 33 x 500 plus final 396 bytes. Host compares all bytes with the source 16,896-byte vector. Only after byte-for-byte equality does PC send HOST_VERIFIED_INPUT, then RUN_CPI. FPGA itself also checks exact reassembly/coverage and cannot RUN earlier.
 
-**Implementation dependency:** the FPGA must preserve uploaded IQ until readback completion; stage request/reply, accepted packet ACK and the replay image must not overwrite live received IQ. S02 also requires access to all seven DSP stage outputs, which need separately accepted stage_id/schema definitions; this v1 proposal reserves the STAGE interface but **does not freeze other stage byte schemas**.
+**Implementation dependency:** The FPGA must preserve uploaded IQ until readback completion. S02 REQ-OBS-01 separately requires all **seven FPGA processing-function outputs** to be available for segmented readback. All seven DSP stage-output schemas (IDs, dimensions, bit widths, signedness, element order, scaling, flags, buffer lifetime and wire encoding) remain **OPEN for separate specification and approval**. The proposed stage_id=0x00 is **only raw-input-IQ readback**, not an approved DSP-stage schema.
 
 ## 5. FPGA -> PC: 99-bit record wire image and RESULT batching (candidate v1)
 
@@ -88,10 +88,10 @@ A fatal DSP error *before COMMIT* latches CPI_ID/error outside the shared DSP re
 ## 7. Sign-off and verification entry criteria
 
 **Sign-off requested (all currently NOT approved):**
-1. TYPE/opcode/STATUS codes, ACK/NACK control-sequence interpretation and flags.
+1. TYPE/opcode/STATUS codes, ACK/NACK delayed/duplicate/stale response rules, no ACK-of-ACK control-sequence interpretation, session epoch/rollover and flags.
 2. 13-byte LE/zero-pad record encoding, RESULT max K=8 and 125-byte maximum framed RESULT image.
 3. 500-byte readback data chunks, input-IQ bytewise verification and PC HOST_VERIFIED_INPUT command.
-4. Commit/abort terminal state and lost-COMMIT-ACK reconciliation exception to S02 retry-exhaustion behavior.
+4. Original COMMIT exact-frame replay versus fresh QUERY response, immutable terminal decision, scoped post-COMMIT retry exception, DSP-reset persistence versus unguaranteed global/power reset, UNKNOWN recovery and release semantics.
 5. Internal production FIFO depth remains a separate engineering implementation choice after actual integrated resource/serial-flow tests; selecting K=8 records per RESULT **does not itself approve FIFO depth 8**.
 
 After engineer sign-off, create a **PC Packetizer/Parser reference** with golden byte vectors and independent checks for CRC, exact field serialization, IQ upload/reassembly, duplicate, reorder, retry exhaustion, ID mixing, incomplete readback, 702 records, provisional COMMIT/ABORT and lost COMMIT ACK. Only then implement UART RX/TX/ARQ in RTL and perform real serial ISim, measured XST/MAP/PAR and board validation. Historical S04 and previously successful S05 campaigns are not to be rerun.
@@ -116,3 +116,63 @@ At 115200 baud, 8N1, with no retries/host latency/processing, no START/COMMIT/ST
 The readback illustration uses 33×500B plus 396B last IQ stage-data chunk, 9-byte STAGE_DATA prefix, and 11-byte STAGE_REQUEST body; these are proposed, not S02 frozen bytes. The total is a **lower bound** even for the candidate ICD because it excludes command/status/COMMIT frames, UART idle/turnaround, host verification CPU time, FPGA processing time, injected retries and potential packet scheduling. There is no approved maximum whole-CPI wait or measured CPI/s.
 
 **Candidate data for automated review:** `engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json`. Numeric codes and wire layouts there are explicitly **unapproved** pending system-engineer sign-off.
+
+
+## 9. Revision R2 — precise ACK/NACK sequence contract (supersedes Section 3 where narrower)
+
+**Status: candidate requiring engineer approval as an explicit S02 interpretation.** Reliable application packets in the PC-to-FPGA and FPGA-to-PC directions each use a separate monotonically increasing unsigned 32-bit sequence number. The application packet types are COMMAND, IQ_UPLOAD, STAGE_REQUEST, STAGE_DATA, RESULT and STATUS. A new application packet gets a fresh sequence in its sender's direction. A retry reuses the same full wire frame and **same sequence**. At most one reliable packet per direction is outstanding; traffic in the opposite direction may have its own independent outstanding packet.
+
+ACK and NACK are control replies, not application packets. They **do not** consume application sequence numbers and are **never themselves acknowledged** (prevents ACK-of-ACK). In this candidate ACK frame, the four-byte header sequence and four-byte little-endian ACK payload both equal the triggering accepted application sequence. In NACK, the header sequence is the rejected incoming application sequence, and the four-byte little-endian payload is the receiver's expected application sequence. Both have the same S02 CRC, envelope and strict length/version/flags checks as other frames; with four-byte control payload, total wire length is 21 bytes.
+
+| Control event | Exact proposed action |
+|---|---|
+| Valid ACK: header sequence and payload sequence both equal the sender's **currently outstanding** reliable sequence in that direction and current valid link session | Accept once, release its retained replay frame, advance to next sequence |
+| Correct but delayed ACK for the same still-outstanding frame after retransmission | Accept exactly once and stop retrying; later duplicates cannot advance twice |
+| Duplicate ACK for an already completed frame, stale ACK for prior CPI or no frame outstanding | Ignore and log; never release the current replay image |
+| ACK for future/unknown sequence, mismatch between its header/payload, or wrong active link session | Reject/ignore; never treat as confirmation |
+| NACK header refers to the current outstanding frame and expected sequence equals its sequence | May retransmit **identical retained frame**, subject to existing retry budget; never allocate a new sequence |
+| NACK with stale/future header, or expected sequence different from outstanding (even if receiver claims next sequence) | Ignore/log as diagnostic; do **not** infer ACK or release retained bytes. Wait for exact ACK or bounded retry. A receiver that sees a true duplicate must return an exact ACK |
+| Valid duplicate application frame: equal to the immediately previously accepted wire frame, same sequence and CRC-protected contents | Re-ACK that sequence without applying IQ writes, record reception, RUN, COMMIT or other side effects again |
+| Future/out-of-order application sequence | Do not apply; send NACK with the current expected sequence (when frame integrity permits) |
+| Stale application packet that is not the identical last accepted frame; cross-CPI mismatch; corrupt packet | Do not apply; respond according to safe NACK/resynchronization rules |
+| ACK or NACK after link session identity has been lost | Discard as stale, even if the raw 32-bit sequence happens to match |
+
+**No rollover assumption:** The reliable sequence is not reset between CPIs or by a DSP-only reset; 32-bit sequence reuse/wrap is not authorized while delayed old controls may exist. Once a link-session identity or counters are lost (USB reconnect, FPGA reconfiguration, etc.), quarantine in-flight control frames and inhibit application effects until an explicit **new link-session/epoch handshake** has completed. Its exact wire encoding, how to drain stale USB/UART bytes and recovery from counter exhaustion are **OPEN for engineering sign-off**. Without a unique session binding, a numerically matching stale ACK after sequence reuse is not distinguishable; the ICD makes **no unqualified cross-power-cycle anti-replay claim**. CRC is an error detector, not cryptographic authentication.
+
+**Required later independent fault tests:** delayed current ACK after multiple retries, duplicate ACK before/after advancing, stale ACK for previous packet/CPI, forged mismatch of ACK header and payload, current/stale/future NACK, duplicate accepted data frame, future sequence, partial/corrupt control frame, and link loss/resync with delayed old responses. No UART/PC implementation test is claimed here.
+
+## 10. Revision R2 — COMMIT outstanding-frame retransmit vs QUERY reply (supersedes Section 6 where narrower)
+
+The final **application decision** for CPI_ID is immutable after being selected: outcome COMMIT with final count 0..702, or outcome ABORT with reason. Transport delivery and knowledge of delivery are separate states. The application may decide COMMIT only after successful generation and link-layer delivery/ACK eligibility of every RESULT record; local grouping_done or empty FIFO is not sufficient.
+
+| Path | Reliability sequence | Wire identity | Host effect |
+|---|---|---|---|
+| First FPGA-to-PC STATUS/CPI_COMMIT | Newly allocated FPGA-to-PC application sequence **S** | Retained fully serialized frame, including CPI_ID and exact count | Host validates all contiguous record IDs, integrity and CPI_ID before committing |
+| **Retry** of still-outstanding COMMIT after missing ACK | **Same S** | **Exactly identical bytes**: SOF, TYPE, flags, S, length, CPI_ID/count and CRC | Host re-ACKs if already accepted; no second application of COMMIT |
+| PC sends a new COMMAND/QUERY_CPI_STATUS(CPI_ID) | Newly allocated **PC-to-FPGA** application sequence **Q** | **New** reliable request frame | Query does not modify terminal decision |
+| FPGA replies to QUERY after resolving its outstanding frame or following an explicitly authorized link-session reconciliation | Newly allocated **FPGA-to-PC** application sequence **T**, distinct from S within the same ordered session | **New** STATUS reply frame/CRC, but **identical immutable semantic terminal decision**: same CPI_ID, COMMIT/count or ABORT/reason | Host validates the same decision idempotently and requires complete records before accepting COMMIT |
+| Query while COMMIT S still outstanding on the same FPGA-to-PC Stop-and-Wait stream | **No second concurrent FPGA-to-PC frame** | ACK the new PC query on its own control channel, then replay **exact original COMMIT frame S** (same wire image and sequence); do **not** mislabel it as a new-sequence QUERY reply. Once S receives an exact ACK, send the **deferred reply to that QUERY** with fresh reliable sequence T and the same immutable decision. If S cannot be acknowledged, hold TERMINAL_ACK_UNCERTAIN until separately approved link-session reconciliation | Never allocate a new FPGA-to-PC reliable sequence that overtakes S |
+
+**Retry exhaustion after COMMIT:** After the initial COMMIT and up to three identical retransmissions, if no exact ACK is received, set a separate **TERMINAL_ACK_UNCERTAIN** transport substate, retain the original CPI_ID/decision/count and the current replay information, and block the next CPI until reconciliation. **Never emit a contradictory CPI_ABORT for this CPI_ID.** This is a requested scoped exception to S02's general retry-exhaustion-to-ABORT rule. A pre-COMMIT fatal error still follows normal abort behavior. The same immutable decided COMMIT must be returned by future status queries, never converted to ABORT because of a serial timeout.
+
+Host-side invariant: receipt of all target records **without** COMMIT (including disconnection after the final record) leaves the results uncommitted. A newly sequenced query reply containing the original COMMIT decision can complete a CPI **only** when the host still has the entire validated provisional record set and checks exact IDs 0..count−1; otherwise the host must report unresolved/invalid local delivery rather than fabricate acceptance. Identical duplicate COMMIT is harmless; conflicting COMMIT/ABORT for the same CPI_ID is always an error.
+
+**Outstanding-terminal ordering:** The above QUERY-triggered recovery replay of S after the normal retry budget is exhausted is a **separately proposed reconciliation action**, not an unbounded ordinary ARQ retry. Its exception to S02's three-retransmission limit requires express sign-off. A fresh QUERY status reply may not bypass an outstanding COMMIT in the same reliable FPGA-to-PC sequence space. A recovery mechanism must first resolve/reconcile the old outstanding sequence, or establish a separately approved new session epoch; a new query response must then receive a **fresh** valid sequence in that epoch. The epoch/session control wire schema is OPEN, not silently assumed.
+
+## 11. Revision R2 — persistence/recovery boundaries and seven OPEN stage schemas
+
+| Boundary | What must persist (proposed implementation contract) | Safe recovery |
+|---|---|---|
+| **DSP-only reset or coordinated pipeline Abort/Reset**, with transport/transaction controller powered and not reset | CPI_ID, immutable terminal outcome/count/reason (once decided), first error, reliable seq counters, last accepted seq, outstanding complete wire-image replay, and COMMIT-ACK uncertainty in a **separate reset domain** | Pipeline may reset without losing the transaction decision. Preserve COMMIT even if a late pipeline fault occurs |
+| **UART byte-parser soft resynchronization**, with transport-state domain retained | Same session ID/state, sequences, outstanding replay, decided terminal result; only partial byte-frame parser state may be cleared | Discard incomplete byte frame; retransmit outstanding frame without new sequence or changed bytes |
+| **USB disconnect / CP2102 re-enumeration**, transport state retained in FPGA but link epoch potentially invalid | Immutable terminal CPI state remains in volatile protected domain; old wire-session ACK validity does **not** persist | Quarantine stale controls, perform newly approved link-session handshake and QUERY; do not advance old replay from a stale ACK |
+| **FPGA global reset, reconfiguration, power loss, or loss of protected terminal-state bank** | **Not guaranteed**: FPGA registers/BRAM are volatile; no approved nonvolatile journal exists | Do not invent success/ABORT from missing state. Return UNKNOWN/UNRECOVERABLE when safe protocol permits; host may rely only on its own durable verified transaction record. Require session reconciliation and a new fully verified CPI before processing; old CPI_ID must not be casually reused |
+| **Confirmed terminal agreement and explicit host RELEASE_CPI** | Retain until RELEASE/validated reconciliation, then eligible for retirement | Only then permit next CPI_ID. Do not reuse a retired CPI_ID within an ambiguous old session without a separately approved generation/epoch rule |
+
+**Explicit guarantee limit:** A powered register retained across internal resets is **not** nonvolatile storage. Cross-power-cycle exactly-once COMMIT cannot be guaranteed without an approved durable journal or host-owned transaction reconciliation protocol. How long to retain terminal state, UNKNOWN status code, epoch handshake, durable host log/retention and safe retry after permanent link loss remain **open implementation/ICD approval items**. No FPGA resource or recovery RTL evidence exists yet.
+
+**S02 REQ-OBS-01: seven separate DSP stage-output schemas remain OPEN.** For each of the seven mandatory FPGA processing functions, the project must separately approve the stage identifier, output dimensions and coordinate/order convention, data word widths and signedness, scale/rounding/saturation flags, serialization/endian, version, segmented offsets, retained lifetime or deterministic rerun, and an independent bit-true oracle. The proposed stage_id 0x00 in Section 4 is **only a raw input-IQ readback selector**. Neither that selector nor the generic STAGE_REQUEST/STAGE_DATA envelope approves **any** of the seven DSP-stage payload schemas. Do not enumerate/freeze invented stage IDs here. These schemas remain S05 specification work before their functional/board readback acceptance.
+
+**Final sign-off dependencies:** engineer approves (1) control-sequence interpretation, delayed/stale response handling and link-session epoch renegotiation; (2) COMMIT replay versus new-sequence QUERY and the scoped post-COMMIT S02 retry exception; (3) reset-domain persistence and power-loss UNKNOWN behavior; (4) numeric wire codes and 13-byte LE/8-record candidate schema already proposed; and (5) readback stage schemas in **separate** approved contracts. The latter seven do not become accepted merely because the transport ICD is signed off. Production FIFO depth, FPGA UART RTL, real link ACK/CRC/COMMIT tests and full device-fit/timing likewise remain unverified.
+
+**Revision outcome:** logically complete target-list policy remains APPROVED; **full REQ-LIST-01 remains OPEN**. Gate-S04 remains CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS; REQ-RNG-03 remains FAIL 4/8 and S04-C02-RISK-PERFORMANCE OPEN. No UART RTL or historical CPI test executed.

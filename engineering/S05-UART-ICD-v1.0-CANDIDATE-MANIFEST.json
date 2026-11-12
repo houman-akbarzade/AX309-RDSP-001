@@ -1,9 +1,9 @@
 {
   "project": "AX309-RDSP-001",
   "candidate": "S05-UART-ICD-v1.0",
-  "status": "ENGINEER_REVIEW_PENDING_NOT_APPROVED",
+  "status": "CONDITIONALLY_ACCEPTED_FOR_FURTHER_SPECIFICATION_FINAL_SIGNOFF_PENDING",
   "source": "engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md",
-  "baseline_git": "c5160db",
+  "baseline_git": "32e36ab",
   "already_approved": {
     "lab_transport": "CP2102GM_USB_UART_CPI_BY_CPI_STOP_AND_WAIT",
     "logical_target_list": "ALL_0_TO_702_COMPONENTS_NO_TOP_K_NO_SILENT_DROP",
@@ -55,11 +55,11 @@
     }
   },
   "uncertainties_needing_engineering_signoff": [
-    "TYPE/opcode/STATUS numeric codes and ACK/NACK numbering exception",
-    "RESULT byte schema and packing, FIFO/replay buffer separation",
-    "IQ readback message schema and host verified gate",
-    "COMMIT ACK-loss reconciliation vs S02 retry-exhaustion abort rule",
-    "status reason codes, production UART and FIFO resource/clock tests"
+    "Approve R2 ACK/NACK control-sequence exception, stale response rules, session handshake, counter reuse/wrap",
+    "Approve R2 immutable COMMIT retry/QUERY response distinction and post-COMMIT retry-exhaustion exception to S02",
+    "Approve R2 protected reset-domain, terminal retention and UNKNOWN after global/power reset (nonvolatile guarantee not offered)",
+    "Approve candidate TYPE/opcode/STATUS values and 13-byte LE record/RESULT max8/readback lab wire schema",
+    "Finalize link epoch/session handshake, retention duration, ABORT error codes, production FIFO/replay and complete UART test contract"
   ],
   "timing_scenario": {
     "assumptions": "nominal 115200 baud 8N1, 21B ACK frame with 4B ack_seq, 34 upload packets, 34 request/response IQ readback packets, 88 results packets <=8 records; no retries, no extra COMMAND/STATUS, no DSP/host processing",
@@ -76,5 +76,135 @@
   "FPGA_full_chain_resource_fit": "OPEN",
   "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
   "REQ_RNG_03": "FAIL_4_OF_8",
-  "S04_C02_RISK_PERFORMANCE": "OPEN"
+  "S04_C02_RISK_PERFORMANCE": "OPEN",
+  "revision": "R2",
+  "prior_candidate_baseline": "c5160db",
+  "engineer_direction": {
+    "conditionally_accepted_for_further_specification": true,
+    "final_ICD_v1_signoff": false,
+    "UART_RTL_authorized": false,
+    "PC_packetizer_parser_execution_authorized_at_this_stage": false,
+    "lab_baseline_preferences_only": {
+      "record_encoding": "13-byte LE packed 99-bit record, five high zero padding bits",
+      "RESULT_max_records_per_packet": 8,
+      "replay": "complete wire frame retained through matching ACK",
+      "FIFO8": "laboratory starting point, not approved final physical depth",
+      "IQ_validation": "full 16896-byte readback",
+      "COMMIT": "immutable CPI_ID-keyed terminal decision and explicit reconciliation"
+    }
+  },
+  "control_sequence_R2": {
+    "status": "PROPOSED_PENDING_S02_SEQUENCE_INTERPRETATION_APPROVAL",
+    "reliable_directions": [
+      "PC_TO_FPGA",
+      "FPGA_TO_PC"
+    ],
+    "reliable_application_types": [
+      "COMMAND",
+      "IQ_UPLOAD",
+      "STAGE_REQUEST",
+      "STAGE_DATA",
+      "RESULT",
+      "STATUS"
+    ],
+    "sequence": "u32 independent per direction, new reliable frame gets next number; retransmission identical wire and same seq; no CPI or DSP reset restart",
+    "one_outstanding_reliable_frame_per_direction": true,
+    "ACK_NACK_consume_reliable_sequence": false,
+    "ACK_NACK_require_ack": false,
+    "ack": {
+      "header_seq": "acked_seq",
+      "payload": "acked_seq:u32LE",
+      "wire_frame_bytes": 21,
+      "accept_if": "frame CRC/version/type/flags/length valid, header_seq == payload_seq == current outstanding seq AND same link session",
+      "duplicate_or_delayed_current": "accept once, cancel retry; further identical ACK ignored",
+      "stale_previous_or_future": "ignore, log, never release current replay",
+      "while_no_outstanding": "ignore",
+      "header_payload_mismatch": "reject",
+      "cross_CPI_or_session": "reject"
+    },
+    "nack": {
+      "header_seq": "rejected_application_seq",
+      "payload": "expected_application_seq:u32LE",
+      "wire_frame_bytes": 21,
+      "current_expected": "only retransmit same outstanding packet if header and expected both equal current outstanding seq, bounded retry",
+      "stale_or_future": "ignore, never infer acceptance from NACK",
+      "expected_is_outstanding_plus_one": "do_not_treat_as_ACK; accepted duplicate will generate exact ACK"
+    },
+    "incoming_application_duplicate": "only byte-identical already-accepted last application packet may be ACKed without side effects",
+    "incoming_future_or_conflicting": "reject/NACK when valid; no app side effect",
+    "session_rule": "never restart seq between CPI or DSP-only reset; link/session identity and safe counter reset/rollover handshake mandatory before reuse; NOT YET SPECIFIED",
+    "required_fault_test_cases": [
+      "delayed_current_ACK_after_retry",
+      "duplicate_ACK",
+      "stale_ACK_prior_packet_or_CPI",
+      "ACK_header_payload_mismatch",
+      "stale_and_future_NACK",
+      "NACK_expected_current",
+      "duplicate_reliable_frame",
+      "out_of_order_frame",
+      "reset_session_stale_control"
+    ]
+  },
+  "terminal_commit_R2": {
+    "status": "PROPOSED_PENDING_SIGNOFF_S02_SCOPED_RETRY_EXCEPTION",
+    "terminal_decision": "immutable (CPI_ID, COMMIT,count) or (CPI_ID,ABORT,reason) once decided",
+    "original_COMMIT_frame": "new FPGA_TO_PC seq S, whole wire retained through exact ACK",
+    "outstanding_COMMIT_retry": "exact identical wire image and S; never new seq",
+    "QUERY_CPI_STATUS": "new PC_TO_FPGA reliable sequence Q; does not mutate immutable terminal outcome",
+    "QUERY_reply": "new FPGA_TO_PC reliable sequence T only after earlier outstanding FPGA frame resolved or approved new link-session reconciliation; same immutable CPI_ID/outcome/count but NOT same wire image",
+    "QUERY_during_outstanding_COMMIT": "ACK incoming QUERY control response, replay original outstanding S bytes and S, on valid S ACK emit deferred query STATUS with fresh FPGA reliable T and same immutable terminal result; never overtake S",
+    "retry_exhaustion_after_COMMIT": "TERMINAL_ACK_UNCERTAIN, preserve immutable COMMIT and CPI_ID/count; BLOCK_NEXT_CPI; NO_ABORT",
+    "retry_exhaustion_before_COMMIT": "normal S02 explicit ABORT may apply",
+    "never_abort_after_commit_decision": true,
+    "host_commit_guard": "exact matching CPI_ID, all distinct contiguous IDs 0..N-1, CRC and ordered packets; replayed terminal decision idempotent",
+    "no_COMMIT_at_host": "uncommitted, even if all targets arrived",
+    "link_loss_after_last_record_before_COMMIT": "invalid_uncommitted_at_host",
+    "new_CPI_gate": "terminal outcome reconciled, explicit release and fresh unique CPI_ID",
+    "post_retry_budget_QUERY_recovery_replay": "SEPARATELY_PROPOSED_RECONCILIATION_ACTION_REQUIRES_SCOPED_S02_SIGNOFF_NOT_UNBOUNDED_ARQ"
+  },
+  "persistence_R2": {
+    "status": "PROPOSED_RESET_DOMAIN_CONTRACT_NOT_IMPLEMENTED",
+    "DSP_only_reset": "retain CPI_ID, first fault, immutable terminal result/count/reason, seq/last accepted, replay bytes, ACK uncertainty outside DSP reset",
+    "UART_parser_soft_reset": "retain transaction and reliable transport session/counters/replay; discard partial byte frame only",
+    "USB_disconnect_or_CP2102_reenumeration": "retain protected volatile terminal state if powered but treat old link session ACK invalid; explicit new epoch handshake before replay release",
+    "FPGA_global_reset_or_reconfiguration": "volatile state not guaranteed; UNKNOWN/UNRECOVERABLE, no invented COMMIT or ABORT",
+    "power_loss": "no nonvolatile persistence approved; no exactly-once durable COMMIT guarantee",
+    "host_durable_log": "not specified or proven; any cross-power recovery needs separate durable host agreement",
+    "safe_release": "after verified reconciliation and explicit host RELEASE_CPI",
+    "unknown_after_restart": "return UNKNOWN when permitted; require fresh verified CPI and safe CPI_ID/session policy",
+    "reset_counters_reuse": "requires session epoch handshake and stale byte purge not yet approved",
+    "retention_duration_and_aging_policy": "OPEN_ENGINEERING_DECISION"
+  },
+  "stage_output_schemas": {
+    "source_requirement": "REQ-OBS-01",
+    "mandatory_processing_function_outputs": 7,
+    "approved_DSP_stage_output_schema_count": 0,
+    "all_seven_DSP_stage_output_schemas": "OPEN",
+    "stage_id_assignments": "NOT_APPROVED",
+    "required_per_stage_fields": [
+      "stage_id",
+      "shape",
+      "coordinate_convention",
+      "word_width",
+      "signedness",
+      "scaling",
+      "rounding_and_saturation_flags",
+      "byte_order",
+      "schema_version",
+      "segmented_offset",
+      "data_lifetime_or_deterministic_rerun",
+      "independent_bit_true_reference"
+    ],
+    "raw_IQ_readback_stage_0": "CANDIDATE_RAW_INPUT_ONLY_NOT_ONE_OF_SEVEN_DSP_STAGE_SCHEMAS",
+    "generic_STAGE_REQUEST_DATA_envelope": "DOES_NOT_APPROVE_SEVEN_DSP_SCHEMAS"
+  },
+  "signoff_required_R2": [
+    "ACK/NACK exact and stale/duplicate rules, control-sequence exception and new link-session epoch/rollover",
+    "COMMIT identical wire retransmission versus fresh QUERY response sequence, no contradictory ABORT after terminal decision",
+    "which terminal regs and replay survive DSP reset, parser reset, link disconnect, and limitations for global reset/power loss",
+    "numeric wire codes/RESULT 13-byte endian/8-record lab baseline and readback mapping",
+    "seven distinct DSP stage outputs remain OPEN until later separate schema approvals",
+    "actual UART/transaction RTL and FIFO resource testing remains NOT RUN",
+    "Approval for QUERY-triggered exact COMMIT recovery replay after ordinary three-retransmission budget exhaustion"
+  ]
 }

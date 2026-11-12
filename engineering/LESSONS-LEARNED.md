@@ -169,3 +169,13 @@ Packing the current 99-bit RTL record into 13 least-significant-octet-first byte
 A lost ACK for a COMMIT that the host already accepted creates a genuine terminal-state ambiguity. Per-frame retry exhaustion cannot safely be converted into a contradictory ABORT; an idempotent, persistent CPI_ID-keyed COMMIT reply and status reconciliation need explicit engineer approval. ACK/NACK sequence numbering is another control-plane issue; never settle it silently from the S02 requirement for monotonic data-frame sequences.
 
 **Evidence:** engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md. Neither the ICD candidate nor a packet codec or FPGA UART is qualified in this step.
+
+## LL-AX309-009 — COMMIT retransmission, status query and reset-domain persistence are separate protocol contracts
+
+**Source:** S05 UART ICD v1.0 R2 engineer-review revision, 2026-11-12.
+
+Retransmitting an unacknowledged COMMIT is the **same reliable application packet** with unchanged sequence and wire image. Responding to an independently sequenced QUERY_CPI_STATUS is a **new reliable packet** with a new sequence but the same immutable CPI_ID/terminal outcome/count, and must not overtake an outstanding COMMIT on a Stop-and-Wait direction. A stale/duplicate ACK may never acknowledge a different outstanding packet, even if it arrives after a retry or the next CPI starts. Session/counter reuse after link reset needs an explicit epoch protocol.
+
+Once COMMIT is decided, exhaustion of its ACK retries creates an ACK-uncertain transport state, not an ABORT decision. The terminal result and packet replay must survive only those **DSP resets** whose state is intentionally held in an independent controller domain. Unpowered registers/BRAM are not a nonvolatile transaction journal; after reconfiguration/global reset/power loss, the FPGA cannot promise durable exactly-once terminal recovery without a separately approved persistent mechanism. A generic STAGE_REQUEST/DATA transport contract likewise does not approve the **seven separate DSP stage output schemas** required by REQ-OBS-01.
+
+**Evidence:** engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md R2 and engineering/S05-UART-ICD-v1.0-CANDIDATE-MANIFEST.json. Both remain pending final engineer sign-off; no UART RTL, full REQ-LIST-01 PASS or Gate-S04 change.

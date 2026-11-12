@@ -1,0 +1,109 @@
+{
+  "project": "AX309-RDSP-001",
+  "method": "Analytical 8N1 UART line serialization, NOT UART RTL/board measurement",
+  "normative_source": "engineering/S02-engineering-contracts-APPROVED-AMENDMENT-v1.1.md",
+  "normative_source_sha256": "76e35f0b120cd550dded79a3ba8fa80a0b1263590bdbef30986570bec12dbd44",
+  "approved_constants": {
+    "pulses": 33,
+    "fast_time_samples_per_pulse": 128,
+    "I_bits": 16,
+    "Q_bits": 16,
+    "IQ_order": "pulse major, each complex sample I then Q, little-endian two's-complement signed Q1.15",
+    "CPI_input_bytes": 16896,
+    "initial_nominal_baud": 115200,
+    "uart_bits_per_octet_8N1": 10,
+    "UART_SOF_hex": "A55AC33C",
+    "UART_version": 1,
+    "maximum_payload_bytes": 512,
+    "frame_overhead_bytes": 17,
+    "IQ_UPLOAD_CPI_ID_bytes": 4,
+    "IQ_UPLOAD_offset_bytes": 4,
+    "per_frame_nominal_ARQ_timeout_s": 2,
+    "max_retransmissions_after_initial": 3
+  },
+  "non_approved_calculation_assumptions": [
+    "ACK packet assumed empty, exactly 17 bytes each; actual ACK payload may be longer",
+    "RESULT example includes 4-byte CPI_ID followed by complete 13-byte records",
+    "13-byte record byte packing, padding/endianness and UART TYPE values NOT APPROVED",
+    "UART is at 115200 baud on board (unverified)",
+    "No retransmissions, NACK, initial command, FINAL COMMIT, ABORT, CPI digest/readback, processing time, host latency or stalls",
+    "No physical result packet/replay buffering implemented"
+  ],
+  "raw_line_octets_per_second": 11520.0,
+  "IQ_UPLOAD": {
+    "packet_count": 34,
+    "payload_data_bytes": 16896,
+    "metadata_bytes": 272,
+    "frame_overhead_bytes": 578,
+    "forward_transmitted_bytes": 17746,
+    "ack_assumed_zero_payload_bytes": 578,
+    "both_directions_bytes_no_retries": 18324,
+    "forward_airtime_s": 1.5404513888888889,
+    "ack_airtime_s": 0.05017361111111111,
+    "airtime_with_empty_acks_s": 1.590625,
+    "iq_bytes_per_full_packet": 504,
+    "full_packets": 33,
+    "last_chunk_bytes": 264
+  },
+  "RESULT_max_702_components": {
+    "record_bits": 99,
+    "per_record_packed_octets": 13,
+    "record_count": 702,
+    "candidate_batch_scenarios": {
+      "result_batch_39": {
+        "packet_count": 18,
+        "payload_data_bytes": 9126,
+        "metadata_bytes": 72,
+        "frame_overhead_bytes": 306,
+        "forward_transmitted_bytes": 9504,
+        "ack_assumed_zero_payload_bytes": 306,
+        "both_directions_bytes_no_retries": 9810,
+        "forward_airtime_s": 0.825,
+        "ack_airtime_s": 0.0265625,
+        "airtime_with_empty_acks_s": 0.8515625
+      },
+      "result_batch_8": {
+        "packet_count": 88,
+        "payload_data_bytes": 9126,
+        "metadata_bytes": 352,
+        "frame_overhead_bytes": 1496,
+        "forward_transmitted_bytes": 10974,
+        "ack_assumed_zero_payload_bytes": 1496,
+        "both_directions_bytes_no_retries": 12470,
+        "forward_airtime_s": 0.9526041666666667,
+        "ack_airtime_s": 0.12986111111111112,
+        "airtime_with_empty_acks_s": 1.0824652777777777
+      },
+      "result_batch_1": {
+        "packet_count": 702,
+        "payload_data_bytes": 9126,
+        "metadata_bytes": 2808,
+        "frame_overhead_bytes": 11934,
+        "forward_transmitted_bytes": 23868,
+        "ack_assumed_zero_payload_bytes": 11934,
+        "both_directions_bytes_no_retries": 35802,
+        "forward_airtime_s": 2.071875,
+        "ack_airtime_s": 1.0359375,
+        "airtime_with_empty_acks_s": 3.1078125
+      }
+    }
+  },
+  "two_phase_fault_free_lower_bound_with_empty_acks_s": {
+    "result_batch_39": 2.4421875,
+    "result_batch_8": 2.673090277777778,
+    "result_batch_1": 4.6984375
+  },
+  "roundtrip_bytewise_readback_illustration": {
+    "assumes_stage_data_8_byte_metadata_NOT_APPROVED": true,
+    "additional_airtime_s_at_least_if_similar_34_packet_readback": 1.590625,
+    "full_readback_packet_schema_must_be_approved": true
+  },
+  "per_512_payload_max_529_byte_frame_airtime_s": 0.04592013888888889,
+  "failed_packet_nominal_four_2_s_ack_waits_s": 8,
+  "failed_packet_note": "Approximately 8 s ACK waiting after four attempts if each times out, PLUS physical serial/transmission and error handling; not a whole CPI bound.",
+  "CPI_processing_cycles_measured": false,
+  "FPGA_UART_TX_RX_resource_measured": false,
+  "full_cycle_upper_bound": "NOT_ESTABLISHED",
+  "continuous_IQ_real_time_required": false,
+  "REQ_LIST_01_technical_PASS": false
+}

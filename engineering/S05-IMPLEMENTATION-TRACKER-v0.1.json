@@ -134,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "Engineering approval of packet staging and replay policy, FIFO depth and transactional UART TYPE/ACK semantics; then implement and verify physical UART flow control and COMMIT/ABORT before full Frame Controller.",
+  "next_implementation_step": "System engineer review of S05 bidirectional UART ICD/replay/verification/COMMIT reconciliation; after approval, staged host packet codec, serial UART RX/TX and packet ARQ before full CPI Frame Controller.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -272,5 +272,48 @@
     "production_FIFO_depth_finalized": false,
     "report": "engineering/S05-LOSSLESS-STREAM-EXECUTABLE-CONTRACT-v0.1.md",
     "evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json"
+  },
+  "uart_cpi_by_cpi": {
+    "decision_status": "ENGINEER_AUTHORIZED_LAB_BATCH_UART_STOP_AND_WAIT",
+    "decision_record": "decisions/S05-UART-CPI-BY-CPI-DIRECTION-2026-11-12.json",
+    "preimplementation_review": "engineering/S05-UART-CPI-BY-CPI-PREIMPLEMENTATION-REVIEW-v0.1.md",
+    "draft_ICD": "engineering/S05-UART-BIDIRECTIONAL-ICD-DRAFT-v0.1.md",
+    "analytical_timing": "engineering/S05-UART-CPI-TIMING-EVIDENCE-v0.1.json",
+    "S02_contract": "engineering/S02-engineering-contracts-APPROVED-AMENDMENT-v1.1.md",
+    "UART_TX_RX_RTL": "NOT_IMPLEMENTED",
+    "UART_packetizer_CRC_parser_RTL": "NOT_IMPLEMENTED",
+    "UART_ACK_ARQ_RTL": "NOT_IMPLEMENTED",
+    "IQ_CPI_assembler_verification_RTL": "NOT_IMPLEMENTED",
+    "CPI_COMMIT_ABORT_RTL": "NOT_IMPLEMENTED",
+    "full_Frame_Controller_RTL": "NOT_IMPLEMENTED",
+    "on_board_verification": "NOT_RUN",
+    "hardware_pins": "C11_RXD_D12_TXD_USER_AND_S01_MANUAL_SOURCE_NOT_BOARD_VERIFIED",
+    "nominal_baud": 115200,
+    "S02_ARQ_timeout_s_per_frame": 2,
+    "S02_max_retries_after_initial": 3,
+    "input_IQ_bytes": 16896,
+    "input_max_504_byte_chunks": 34,
+    "output_logical_max": 702,
+    "required_FPGA_functions": [
+      "MF16",
+      "MTI",
+      "FFT32",
+      "Power",
+      "CA-CFAR",
+      "8conn Grouping"
+    ],
+    "tracking_FPGA": "OUT_OF_SCOPE",
+    "final_UART_ICD_approved": false,
+    "production_FIFO_depth_approved": false,
+    "full_chain_FPGА_resource_fit": "OPEN",
+    "full_cpi_cycle_rate_measured": false,
+    "new_RTL_implementation_this_review": false,
+    "decision_dependencies": [
+      "numeric TYPE/flags + record packing/schema for output and status",
+      "RESULT packet batching and retransmission-safe copy / FIFO depth",
+      "full-CPI upload readback or digest schema",
+      "lost COMMIT ACK terminal reconciliation",
+      "resource/port/IO/STA feasibility; external SDRAM only as conditional alternative"
+    ]
   }
 }

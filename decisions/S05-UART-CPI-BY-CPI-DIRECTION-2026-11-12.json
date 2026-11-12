@@ -1,0 +1,60 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S05-UART-CPI-BY-CPI-DIRECTION-2026-11-12",
+  "date": "2026-11-12",
+  "authority": "Project system engineer",
+  "status": "APPROVED_ARCHITECTURAL_DIRECTION_WITH_UART_ICD_AND_FULL_RTL_ENTRY_GATES_OPEN",
+  "baseline_commit": "df14f10",
+  "transport": {
+    "physical_link": "existing AX309 CP2102GM USB-to-UART",
+    "usage": "laboratory CPI-by-CPI/Stop-and-Wait",
+    "continuous_raw_IQ_stream_required": false,
+    "FPGA_RXD_pin_user_and_S01_manual_reference": "C11",
+    "FPGA_TXD_pin_user_and_S01_manual_reference": "D12",
+    "actual_board_revision_pin_and_baud_verification_status": "OPEN",
+    "VGA_for_host_data": "PROHIBITED",
+    "new_USB_FIFO_hardware_purchase_required": false,
+    "next_CPI_only_after_accepted_previous_transaction": true
+  },
+  "FPGA_processing": {
+    "matched_filter": "REQUIRED",
+    "MTI": "REQUIRED",
+    "Doppler_FFT": "REQUIRED",
+    "power": "REQUIRED",
+    "CA_CFAR": "REQUIRED",
+    "8_connected_clustering": "REQUIRED",
+    "tracking": "OUT_OF_SCOPE",
+    "moving_clustering_to_PC": "NOT_AUTHORIZED",
+    "numerical_architecture_C_changes": "NOT_AUTHORIZED"
+  },
+  "logical_target_output": {
+    "maximum_valid_8_connected_clusters": 702,
+    "top_k_allowed": false,
+    "silent_drop_allowed": false,
+    "streaming_permitted": true,
+    "physical_FIFO_depth_selected": false,
+    "REQ_LIST_01_technical_status": "OPEN_NOT_PASS"
+  },
+  "transactional_criteria": {
+    "each_CPI_has_ID": true,
+    "COMMIT_contains_CPI_ID_and_record_count": true,
+    "host_checks_exact_contiguous_record_IDs": true,
+    "pre_COMMIT_records_provisional": true,
+    "disconnect_before_COMMIT_invalidates": true,
+    "CPI_error_abort_and_reset_recovery_required": true,
+    "actual_UART_TYPE_numeric_values_approved": false,
+    "ACK_replay_and_commit_ack_reconciliation_approved": false
+  },
+  "pre_implementation_gate": {
+    "extract_S02_S05_contracts": "AUTHORIZED",
+    "prepare_bidirectional_UART_ICD_DRAFT": "AUTHORIZED",
+    "analytical_timing_and_resource_risk_review": "AUTHORIZED",
+    "define_validation_plan": "AUTHORIZED",
+    "broad_UART_or_Frame_Controller_RTL_implementation_before_engineer_review": "NOT_AUTHORIZED",
+    "unapproved_FIFO_depth_or_SDRAM_selection": "NOT_AUTHORIZED"
+  },
+  "device_resource_state": "FULL_CHAIN_FIT_OPEN",
+  "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+  "REQ_RNG_03": "FAIL_4_OF_8",
+  "S04_C02_RISK_PERFORMANCE": "OPEN"
+}

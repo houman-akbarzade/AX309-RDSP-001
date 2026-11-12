@@ -147,3 +147,13 @@ Producer and UART line rates differ greatly. At hypothetical 50 MHz Grouping's f
 CPI_START/RECORDS/COMMIT/ABORT must be transactional: host records remain provisional, COMMIT includes CPI_ID and count, host checks complete contiguous record IDs, and link loss after the final record but before COMMIT leaves the CPI invalid. A local empty FIFO and a grouping-done pulse are NOT a CPI_COMMIT. S02 per-packet timeout/retry is a transport obligation, not a proved whole-CPI timeout.
 
 XST mapped the grouping+FIFO prototype using 6 BRAM and 4,016 LUT, but the stand-alone 195-I/O test interface exceeds the 186 pin budget. Treat this as isolated logic synthesis, not deployable top-level FPGA resource/timing acceptance. Do not change Gate-S04 carryover status, numerical Architecture C or target resolution claims.
+
+## LL-AX309-007 — Packet acceptance, CPI verification and host COMMIT are separate gates
+
+**Source:** S05 CPI-by-CPI UART architecture review, 2026-11-12.
+
+Laboratory CPI-by-CPI operation does not require real-time IQ streaming. The approved 16,896-byte IQ input requires 34 UART frames at 504 data bytes each under the 512-byte payload maximum. Per-frame CRC/sequence ACK does not by itself satisfy the separate full-CPI readback-or-digest verification prerequisite to RUN. In the output direction, an accepted grouping valid/ready FIFO record is not proof that a UART packet has been ACKed: retaining a retransmission-safe packet until ACK prevents loss when the link retries. On the PC, a valid COMMIT with CPI_ID and a record count is a necessary but insufficient condition; record IDs and packet integrity must be complete.
+
+Especially critical: losing the ACK to a COMMIT already received by the host is different from losing COMMIT itself. Issuing an ABORT after such an ambiguous ACK failure could contradict an already committed host transaction. The serial ICD needs idempotent COMMIT replay and explicit terminal-state reconciliation by CPI_ID. The existing S02 2-second **per-packet** timeout cannot be represented as a guaranteed upper bound on the complete CPI cycle. UART serialization, host waits, FPGA cycles and hardware STA must be reported separately.
+
+**Evidence:** engineering/S05-UART-CPI-BY-CPI-PREIMPLEMENTATION-REVIEW-v0.1.md and engineering/S05-UART-CPI-TIMING-EVIDENCE-v0.1.json. No UART RTL implementation, board test, new capacity requirement PASS or architecture-C change is claimed.

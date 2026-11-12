@@ -1,12 +1,12 @@
 {
   "canonical": true,
-  "conversation_archive_row_count": 110,
+  "conversation_archive_row_count": 112,
   "conversation_capture_quality_counts": {
     "EXCERPT": 36,
     "FULL": 57,
-    "verbatim": 17
+    "verbatim": 19
   },
-  "conversation_hash_sha256": "8dd1f44d4d290bf286766184e7a5a752f458c0c1a1a6834824d57b0cd09a2695",
+  "conversation_hash_sha256": "aeb87577825c9bce1a4ae6eaae22667dde4391fb21990169799f2601d8237f9f",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "eem_backfill": {
     "approved": 0,
@@ -18,17 +18,17 @@
     "status": "COMPLETE_CANDIDATES_VALIDATED_NOT_PROMOTED",
     "validated": 16
   },
-  "event_count": 143,
-  "events_hash_sha256": "3f01e253b696d2ea07cef214b992b7ab696ba3e9e90f41cea16d7af29123c274",
+  "event_count": 144,
+  "events_hash_sha256": "72c54c267f570f1413b02fac61b1ea7e8cd46b76ec651cc23a3840dd59e15586",
   "historical_timestamp_policy": "recorded_at_utc is capture time; historical_time_utc remains null when original platform time is unavailable.",
-  "last_event_id": "AX309-E0143",
-  "last_message_ref": "AX309-20261112-STAGE-TEST-FEASIBILITY-agent",
+  "last_event_id": "AX309-E0144",
+  "last_message_ref": "AX309-20261112-STAGE-LAB-IMPLEMENT-agent-final",
   "legacy_capture_policy": "Preserve EXCERPT and SUMMARY records as captured; do not reconstruct or upgrade them to FULL.",
   "legacy_projection_generated": false,
   "project_id": "AX309-RDSP-001",
   "schema_version": "0.2.0",
   "timestamps_warning": "Record capture times are not historical chat times",
-  "updated_at_utc": "2026-11-12T15:50:00.125245+00:00",
+  "updated_at_utc": "2026-11-12T17:28:48.066753+00:00",
   "dialogue_integrity_r2": {
     "jsonl_parse": "PASS",
     "identified_id_uniqueness": "PASS",
@@ -56,5 +56,13 @@
     "physical_board": "PASS finite 9 CPI development set",
     "historical_gates": "UNCHANGED",
     "historical_dialogue_gaps": "PRESERVED_NOT_RECONSTRUCTED"
+  },
+  "stage_lab_v0_2": {
+    "source_commit": "e52c432",
+    "branch": "feature/stage-lab-v0.2",
+    "stable_tag": "stable/full-ip-uart-gui-v0.1",
+    "scope": "Verified finite lab development suite, not statistical acceptance",
+    "current_exchange": "Verbatim user/final readback and hash verified",
+    "historical_dialogue_gaps": "Preserved; no reconstruction"
   }
 }

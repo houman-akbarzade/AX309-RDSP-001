@@ -135,3 +135,15 @@ The connected CFAR–Grouping block alone uses 76% LUT; clock and full-chain res
 In a 107x26 nonwrapped 8-connected CUT graph, partitioning into at-most-2x2 cliques proves no more than 54x13=702 distinct components; a checkerboard-like alarm placement attains 702 singleton components. A proven *logical count* does not require a 702-record FPGA output RAM. Isolated XST memory probes use 6 BRAM for 702x99 records, versus 0 BRAM and 70 LUT/99 FF for an eight-record distributed store; neither is a complete streaming FIFO or UART implementation. When internal tables already preserve 702 grouping labels, additional full record buffering may be avoidable.
 
 A lossless back-pressured output stream still needs transactional CPI semantics: records are provisional until CPI_COMMIT, and any CPI_ABORT or lost link before COMMIT invalidates the entire CPI. No Top-K or silent discard can be used to mask FIFO overflow. A data-path reset cannot unsend UART bytes, so host-side rollback must be part of the contract. Keep exact mathematical bounds, physical-storage cost, packet reliability and end-to-end acceptance as separate verification categories. No final REQ-LIST-01 PASS is implied.
+
+## LL-AX309-006 — A lossless FIFO still requires retransmission-safe transport and CPI commit
+
+**Evidence:** S05 grouping-to-FIFO prototype and host transaction semantic checks, 2026-11-12.
+
+Grouping output can be stopped without loss: its approved S_OUTPUT state holds record data and ID until READY. A test-only eight-entry distributed FIFO reached hard-full, held the producer for 60,000 consecutive clock cycles and later delivered 702/702 independently oracle-certified component records in order. FIFO depth eight is a validated laboratory choice, NOT an optimal or signed-off production depth.
+
+Producer and UART line rates differ greatly. At hypothetical 50 MHz Grouping's fastest observed output interval is 1,407 cycles, whereas S02's nominal 115200 8N1 UART can carry at most 11,520 gross bytes/sec. A queue alone cannot preserve records during UART retries unless the unacknowledged record or packet is retained elsewhere. **Only ACK, not UART byte transmission, frees the last recoverable copy of an output record.**
+
+CPI_START/RECORDS/COMMIT/ABORT must be transactional: host records remain provisional, COMMIT includes CPI_ID and count, host checks complete contiguous record IDs, and link loss after the final record but before COMMIT leaves the CPI invalid. A local empty FIFO and a grouping-done pulse are NOT a CPI_COMMIT. S02 per-packet timeout/retry is a transport obligation, not a proved whole-CPI timeout.
+
+XST mapped the grouping+FIFO prototype using 6 BRAM and 4,016 LUT, but the stand-alone 195-I/O test interface exceeds the 186 pin budget. Treat this as isolated logic synthesis, not deployable top-level FPGA resource/timing acceptance. Do not change Gate-S04 carryover status, numerical Architecture C or target resolution claims.

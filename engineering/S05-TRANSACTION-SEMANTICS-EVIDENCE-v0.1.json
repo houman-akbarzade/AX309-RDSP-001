@@ -1,0 +1,17 @@
+{
+  "scope": "abstract host transaction-state policy only; no FPGA UART, FIFO, CRC, ACK or timeout",
+  "semantics": "CPI_START -> TARGET_RECORDS -> CPI_COMMIT or CPI_ABORT; provisional until exact count verified",
+  "cases": {
+    "full_702_commit_after_exact_count": "PASS",
+    "duplicate_identical_idempotent_conflicting_rejected": "PASS",
+    "mismatched_commit_count_rejected": "PASS",
+    "abort_after_commit_rejected": "PASS",
+    "all_records_arrived_but_link_lost_before_commit_invalid": "PASS",
+    "abort_after_partial_records_rolls_back": "PASS",
+    "empty_cpi_zero_count_commit": "PASS",
+    "missing_record_id_rejects_commit": "PASS"
+  },
+  "passed": 8,
+  "tests_are_not_complete_link_verification": true,
+  "REQ_LIST_01": "OPEN_NOT_PASS"
+}

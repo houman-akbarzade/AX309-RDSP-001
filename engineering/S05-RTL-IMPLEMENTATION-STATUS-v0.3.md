@@ -45,3 +45,13 @@ Evidence and exact source hashes: engineering/S05-GROUPING-EVIDENCE-MANIFEST-v0.
 - Gate-S04 is still CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS, REQ-RNG-03 FAIL 4/8 and Fixed-Point statistical performance OPEN. No accepted historical test was rerun.
 
 **Evidence:** engineering/S05-CFAR-GROUPING-INTEGRATION-REPORT-v0.1.md and engineering/evidence/s05/cfar_grouping. This is subsystem-level PASS, not complete-system or hardware PASS.
+
+## REQ-LIST-01 logical-policy approval and 702-record transport prototype (2026-11-12)
+
+The system engineer explicitly approved logical Option A: exact mathematical maximum 702 components, no Top-K, no silent record drop, variable-length streaming permissible. Production FIFO depth and UART packet/ACK/commit/abort ICD are **NOT approved**, and technical REQ-LIST-01 remains OPEN.
+
+A new grouping_8conn -> eight-record distributed valid/ready FIFO -> mock-host integration was implemented and separately tested against the unchanged prior C05/independent-union-find 702-component golden. **ISim PASS**: 2782 CUTs, 702/702 exact record matches, full occupancy 8, forced 60000-cycle full-FIFO stall, no dropped/duplicated records and local completion only after both generation and FIFO drain. An independent abstract host-state checker PASSed eight cases including missing COMMIT and wrong record count.
+
+**XST logical synthesis completed** with 0 errors, 1 IOB overbudget warning: 4016 LUT, 1769 FF, 6 BRAM, 195 IOB > 186 on XC6SLX9, unconstrained 9.990 ns estimated minimum period. The diagnostic parallel output interface cannot be placed as a physical board top. No real UART/ACK/retry/CRC or CPI_COMMIT/ABORT RTL, full-chain synthesis, physical pin fit or post-route timing is claimed.
+
+Contract and audit: engineering/S05-LOSSLESS-STREAM-EXECUTABLE-CONTRACT-v0.1.md and engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json. Frame Controller and final REQ-LIST-01 acceptance remain pending. Gate-S04 and all carried dispositions unchanged.

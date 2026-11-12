@@ -63,24 +63,36 @@
     "evidence": "engineering/S05-CFAR-GROUPING-INTEGRATION-EVIDENCE-v0.1.json"
   },
   "REQ_LIST_01_pending_decision": {
-    "status": "CONDITIONAL_ENGINEER_DIRECTION_LOGGED_TECHNICAL_PASS_PENDING",
-    "source": "engineering/S05-REQ-LIST-01-DECISION-PACKAGE-v0.1.md",
+    "status": "LOGICAL_OPTION_A_APPROVED_OUTPUT_FIFO_UART_IMPLEMENTATION_FINAL_ACCEPTANCE_OPEN",
+    "source": "decisions/S05-REQ-LIST-01-LOGICAL-POLICY-APPROVAL-2026-11-12.json",
     "approved_rule": "S02-D22 variable length count/IDs, explicit overflow, deterministic selection and no silent drops",
-    "open_capacity_and_selection": "Proposed 702/no truncation; engineer decision pending",
+    "open_capacity_and_selection": "Logical all components up to 702 approved, Top-K forbidden, no silent discard. Physical FIFO depth and UART ACK/replay ICD pending.",
     "exact_702_bound": "MATHEMATICALLY_PROVED",
     "exact_702_evidence": "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json",
     "physical_list_buffer_required": false,
     "top_k_allowed": false,
     "transaction_commit_required": true,
     "transaction_abort_required": true,
-    "output_streaming_transport_verified": false,
-    "required_decision": "Final FIFO/ICD and flow-control acceptance before declaring REQ-LIST-01 PASS",
-    "report": "engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md"
+    "output_streaming_transport_verified": "LAB_GROUPING_TO_FIFO_MOCK_HOST_ONLY_702_MATCHED",
+    "required_decision": "Approve actual packet staging/replay, FIFO depth, CPI_COMMIT/ABORT UART ICD, and error/timeout scheme before technical REQ-LIST-01 PASS.",
+    "report": "engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md",
+    "logical_policy_approved": true,
+    "full_technical_PASS": false,
+    "lab_evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json",
+    "abstract_host_commit_rollback_semantics": "PASS_8_POLICY_CASES_NON_RTL",
+    "uart_transaction_verified": false
   },
   "resource_and_abort_risks": {
     "state": "OPEN_FULL_CHAIN_FEASIBILITY_AND_CONTROLLER_RECOVERY_NOT_IMPLEMENTED",
     "evidence": "engineering/S05-RESOURCE-PROBE-EVIDENCE-v0.1.json",
     "symbolic_lifetime": "engineering/S05-MEMORY-LIFETIME-SYMBOLIC-EVIDENCE-v0.1.json",
     "report": "engineering/S05-RESOURCE-LIFETIME-AND-RECOVERY-v0.1.md"
+  },
+  "streaming_702_test": {
+    "S05_lab_test": "PASS_702_RECORDS_2782_CUTS_FIFO8_60000_CYCLE_STALL",
+    "record_integrity": "702_OF_702_EXACT_APPROVED_ORACLE",
+    "synthesis": "0_ERRORS_1_WARNING_195_OF_186_IOB_UNPLACEABLE_STANDALONE_PORTS",
+    "evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json",
+    "full_transport_UART": "NOT_RUN"
   }
 }

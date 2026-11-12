@@ -78,6 +78,16 @@
       "RTL": "rtl/integration/cfar_grouping_subsystem.v",
       "evidence": "engineering/S05-CFAR-GROUPING-INTEGRATION-EVIDENCE-v0.1.json",
       "note": "full radar chain and post-route timing not qualified"
+    },
+    {
+      "id": "S05-WP10",
+      "name": "Grouping output to eight-entry valid/ready distributed FIFO lab prototype",
+      "status": "RTL_IMPLEMENTED_ISIM_702_ORACLE_PASS_XST_0_ERRORS_IOB_OVERBUDGET",
+      "rtl": "rtl/integration/grouping_fifo8_subsystem.v",
+      "fifo": "rtl/transport/record_fifo8.v",
+      "testbench": "rtl/tb/tb_grouping_fifo8_702.v",
+      "evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json",
+      "scope_limit": "Only grouping output and mocked host handshakes; no real UART/ARQ/COMMIT circuit, final production FIFO depth, top-level FPGA fit or timing closure."
     }
   ],
   "unit_test_suite": {
@@ -124,7 +134,7 @@
       "technical_result": "Fixed-Point statistical qualification incomplete; no PASS claim."
     }
   ],
-  "next_implementation_step": "Engineering approval of final transactional list/ICD and FIFO design; then implement lossless stream with CPI_COMMIT/ABORT, reset recovery, shared-memory integration and full-chain resource closure.",
+  "next_implementation_step": "Engineering approval of packet staging and replay policy, FIFO depth and transactional UART TYPE/ACK semantics; then implement and verify physical UART flow control and COMMIT/ABORT before full Frame Controller.",
   "prohibited_during_s05": "No REQ-RNG-03 retest, CPI reprocessing, threshold tuning, architecture C change, Fixed-Point contract change or statistical Fixed-Point campaign under the current S04 transition authorization.",
   "grouping_8conn": {
     "status": "IMPLEMENTED_SIM_PASS_ORACLE_PASS_XST_PASS",
@@ -187,7 +197,7 @@
     "full_chain_pass": false
   },
   "REQ_LIST_01": {
-    "status": "CONDITIONAL_ENGINEER_DIRECTION_BOUND_PROVED_FINAL_PASS_PENDING",
+    "status": "LOGICAL_POLICY_ENGINEER_APPROVED_STREAM_LAB_PASS_TECHNICAL_ACCEPTANCE_OPEN",
     "decision_package": "engineering/S05-REQ-LIST-01-DECISION-PACKAGE-v0.1.md",
     "recommended": "STREAM_ALL_UP_TO_702_NO_TRUNCATION_FAIL_WHOLE_CPI_ON_FATAL",
     "approved": false,
@@ -197,11 +207,18 @@
     "proof": "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json",
     "comparison": "engineering/S05-REQ-LIST-01-BOUND-TRANSPORT-COMPARISON-v0.1.md",
     "evidence": "engineering/S05-REQ-LIST-01-BOUND-EVIDENCE-v0.1.json",
-    "engineer_decision": "decisions/S05-REQ-LIST-01-CONDITIONAL-DIRECTION-2026-11-12.json",
+    "engineer_decision": "decisions/S05-REQ-LIST-01-LOGICAL-POLICY-APPROVAL-2026-11-12.json",
     "physical_702_record_store_required": false,
     "no_top_k_or_silent_drop": true,
     "transactional_output_accepted_as_direction_not_tested": true,
-    "external_FIFO_depth_and_ICD_approved": false
+    "external_FIFO_depth_and_ICD_approved": false,
+    "logical_policy_approved": true,
+    "physical_FIFO_depth_approved": false,
+    "transactional_UART_ICD_approved": false,
+    "lossless_stream_lab": "PASS_702_OF_702_AT_DEPTH8_WITH_60000_CYCLE_FIFO_FULL",
+    "lab_evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json",
+    "lab_contract": "engineering/S05-LOSSLESS-STREAM-EXECUTABLE-CONTRACT-v0.1.md",
+    "fully_implemented_UART_and_host_transaction": false
   },
   "resource_lifetime_audit": {
     "status": "INDEPENDENT_XST_PROBES_COMPLETE_AND_SYMBOLIC_LIFETIME_PASS_FULL_SYSTEM_FIT_OPEN",
@@ -238,5 +255,22 @@
     "production_FIFO_implemented": false,
     "full_chain_resource_fit": "OPEN",
     "evidence": "engineering/S05-REQ-LIST-01-BOUND-EVIDENCE-v0.1.json"
+  },
+  "uart_transaction_and_output": {
+    "status": "ABSTRACT_HOST_SEMANTICS_8_TESTS_PASS_HARDWARE_UART_NOT_IMPLEMENTED",
+    "CPI_id_required": true,
+    "COMMIT_count_and_contiguous_IDs_required": true,
+    "disconnect_before_COMMIT_invalidates_CPI": true,
+    "provisional_record_storage_on_host": true,
+    "S02_nominal_timeout_seconds_per_frame": 2,
+    "S02_max_retransmissions": 3,
+    "full_CPI_max_wait_seconds_approved": false,
+    "proposed_packet_batch_sizes": [
+      8,
+      39
+    ],
+    "production_FIFO_depth_finalized": false,
+    "report": "engineering/S05-LOSSLESS-STREAM-EXECUTABLE-CONTRACT-v0.1.md",
+    "evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json"
   }
 }

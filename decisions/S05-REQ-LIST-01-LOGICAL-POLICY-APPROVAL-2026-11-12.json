@@ -1,0 +1,41 @@
+{
+  "project": "AX309-RDSP-001",
+  "authority": "Project system engineer",
+  "date": "2026-11-12",
+  "decision_id": "S05-REQ-LIST-01-LOGICAL-OPTION-A-APPROVED",
+  "decision": "LOGICAL_OPTION_A_APPROVED_OUTPUT_PROTOCOL_AND_FIFO_NOT_YET_APPROVED",
+  "logical_component_capacity": 702,
+  "capacity_proof": "engineering/S05-COMPONENT-BOUND-702-PROOF-v0.1.json",
+  "must_preserve_all_valid_components": true,
+  "top_k_allowed": false,
+  "silent_drop_allowed": false,
+  "physical_full_list_buffer_required": false,
+  "streaming_permitted_subject_to_losslessness": true,
+  "CPI_transaction": {
+    "CPI_ID_required": true,
+    "records_provisional_until_commit": true,
+    "COMMIT_count_required": true,
+    "host_must_check_exact_record_count_and_contiguous_ids": true,
+    "lost_link_after_last_record_before_commit": "CPI_INVALID",
+    "fatal_overflow": "CPI_ABORT_OR_NO_COMMIT_INVALIDATION",
+    "production_uart_TYPE_values_approved": false
+  },
+  "pending_implementation_approvals": [
+    "FIFO depth and packet replay storage",
+    "UART serialization and stop-and-wait transport/ACK/timeout ICD",
+    "lossless integrated real UART simulation, injected faults, and board readback",
+    "full XC6SLX9 system fit and post-route timing"
+  ],
+  "lab_prototype": {
+    "depth": 8,
+    "approved_production_depth": false,
+    "ISim": "PASS_702_OF_702_WITH_60000_CYCLE_FULL_FIFO_PAUSE",
+    "host_transaction_checker": "PASS_8_ABSTRACT_POLICY_CASES",
+    "XST": "SYNTHESIS_COMPLETED_IOB_OVERBUDGET_NOT_BOARD_PLACEABLE",
+    "evidence": "engineering/S05-LOSSLESS-STREAM-EVIDENCE-v0.1.json"
+  },
+  "technical_REQ_LIST_01": "OPEN_NOT_PASS",
+  "Gate_S04": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+  "REQ_RNG_03": "FAIL_4_OF_8",
+  "S04_C02_RISK_PERFORMANCE": "OPEN"
+}

@@ -1,13 +1,12 @@
 {
   "canonical": true,
-  "conversation_archive_row_count": 105,
+  "conversation_archive_row_count": 108,
   "conversation_capture_quality_counts": {
-    "EXCERPT": 30,
+    "EXCERPT": 36,
     "FULL": 57,
-    "SUMMARY": 6,
-    "verbatim": 12
+    "verbatim": 15
   },
-  "conversation_hash_sha256": "6d370dfc8ced9d0be023452dea5f51231c6b6ffbc11ed48f65662621f186d93e",
+  "conversation_hash_sha256": "107afe03a8fc4778c65487a7cf881cfcd5d6d84e7670d9e7b6bcf35bfdbb7e17",
   "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
   "eem_backfill": {
     "approved": 0,
@@ -19,17 +18,17 @@
     "status": "COMPLETE_CANDIDATES_VALIDATED_NOT_PROMOTED",
     "validated": 16
   },
-  "event_count": 141,
-  "events_hash_sha256": "5cbe7ad3207570034c79e0ae8f584665268e45bb049c3e66a666e752e8654d29",
+  "event_count": 142,
+  "events_hash_sha256": "24708ab7cc689a3e154ba5e9df71931971e075c9002fbb38a3e714b00fd6edec",
   "historical_timestamp_policy": "recorded_at_utc is capture time; historical_time_utc remains null when original platform time is unavailable.",
-  "last_event_id": "AX309-E0141",
-  "last_message_ref": "AX309-20261112-IP-EVALUATION-agent-final",
+  "last_event_id": "AX309-E0142",
+  "last_message_ref": "AX309-20261112-FULL-INTEGRATION-agent-final",
   "legacy_capture_policy": "Preserve EXCERPT and SUMMARY records as captured; do not reconstruct or upgrade them to FULL.",
   "legacy_projection_generated": false,
   "project_id": "AX309-RDSP-001",
   "schema_version": "0.2.0",
   "timestamps_warning": "Record capture times are not historical chat times",
-  "updated_at_utc": "2026-11-12T10:22:27.454942+00:00",
+  "updated_at_utc": "2026-11-12T15:33:28.901075+00:00",
   "dialogue_integrity_r2": {
     "jsonl_parse": "PASS",
     "identified_id_uniqueness": "PASS",
@@ -49,5 +48,13 @@
     "new_candidate": "EXP-AX309-017",
     "engineer_approval": null
   },
-  "IP_evaluation_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical excerpts/summaries remain incomplete."
+  "IP_evaluation_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical excerpts/summaries remain incomplete.",
+  "full_ip_integration": {
+    "source_commit": "b88c5b8",
+    "report": "engineering/FULL-IP-UART-GUI-INTEGRATION-20261112.md",
+    "current_requests_and_final": "VERBATIM_HASH_VERIFIED",
+    "physical_board": "PASS finite 9 CPI development set",
+    "historical_gates": "UNCHANGED",
+    "historical_dialogue_gaps": "PRESERVED_NOT_RECONSTRUCTED"
+  }
 }

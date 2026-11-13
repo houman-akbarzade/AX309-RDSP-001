@@ -1,0 +1,29 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "GATE-S05-ARCHITECTURE-INTERFACES-APPROVED-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit approval in current conversation",
+  "status": "GATE_S05_CLOSED_PASS_SCOPED_LAB_ARCHITECTURE_AND_INTERFACES",
+  "approved_package": "engineering/S05-GATE-READINESS-20261114.md",
+  "architecture": "decisions/S05-FINAL-FFT-IP-ARCHITECTURE-2026-11-14.json",
+  "numeric_reference": "FFT-IP-corresponding bit-accurate reference for the selected Xilinx configuration; legacy C02 preserved historically",
+  "functional_mapping": "engineering/S05-FFT-IP-AS-BUILT-TRACE-v1.0.md",
+  "uart_icd": "engineering/S05-UART-AS-BUILT-ICD-v1.0.md",
+  "s01_s02_amendment": "engineering/S01-S02-RANGE-MATRIX-LIST-OBS-AMENDMENT-v1.0.md",
+  "recovery_policy": "decisions/S05-LAB-FAIL-CLOSED-RECOVERY-20261114.json",
+  "entry_gate": "decisions/GATE-S04-FINAL-ACCEPTANCE-20261114.json",
+  "scope": "Architecture and interface definition for the existing FPGA FFT-IP laboratory implementation, with separate Stage Lab readback configurations and scoped fail-closed recovery",
+  "downstream_owners": {
+    "S06_S07_S10": "RTL/PC integration and numerical equivalence evidence",
+    "S08_S09": "resource mapping, applied constraints, and timing acceptance",
+    "S11": "physical UART/fault behavior, stage observability, bit-true and statistical board qualification"
+  },
+  "not_claimed": [
+    "S06-S11 Gate approval",
+    "S11 physical-board acceptance or automatic session recovery",
+    "continuous real-time input or W5500",
+    "FFT-IP two-target resolution inferred from old C02 evidence",
+    "general Pd/Pfa outside the accepted S04 model populations"
+  ],
+  "historical_integrity": "Earlier S05 DIT and R2/R1 candidate documents remain as history; this decision selects the versioned as-built definition for current S05."
+}

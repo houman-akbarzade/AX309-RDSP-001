@@ -117,3 +117,10 @@ The later [37-page PDF recovery](engineering/audit/PDF-CONVERSATION-RECOVERY.md)
 Current stepwise review: [S03 approval and S04 carryovers](engineering/audit/S03-S04-STEPWISE-REVIEW.md). This records prior evidence, not a new test execution or automatic stage advancement.
 
 Current requirement amendment: [REQ-RNG-03 Power-only scope](engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md), explicitly directed by the engineer. This changes the measurement point without changing stable processing code or rewriting historical results.
+
+
+## Current S04 review update: approved Power peaks and statistical carryover (2026-11-13)
+
+The engineer approved two distinct Power peaks under the prior proposed noise-free criterion. Read-only archived-data reassessment gives **Float PASS8/8 and selected-C/C02 Fixed PASS8/8**, with no additional3dB valley condition. Current authority: decisions/REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-20261113.json; normative limited amendment: engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md. Earlier pending statements above are historical snapshots superseded for this scoped item. Historical final-record FAIL4/8 remains unchanged. Final FFT-IP/board resolution is not inferred.
+
+Fixed-Point statistical performance remains **OPEN_NOT_STATISTICALLY_QUALIFIED**: no completed accepted qualifying campaign was located, and no statistical FAIL of Fixed-Point is established by that absence. See engineering/audit/S04-FIXED-POINT-STATISTICAL-QUALIFICATION-REVIEW-v1.0.md for the proposed bounded protocol. Current requirement review v4 and decision queue v4 apply. No code, model, test, historical result or Gate was changed; no new engineering campaign was run. Documentation progress does not imply engineering statistical completion.

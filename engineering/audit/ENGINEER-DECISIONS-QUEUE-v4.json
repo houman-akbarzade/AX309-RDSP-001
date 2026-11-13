@@ -1,0 +1,26 @@
+{
+  "workflow": "OWNER_STEPWISE_REVIEW",
+  "current_stage": "S04",
+  "supersedes_current_order": "engineering/audit/ENGINEER-DECISIONS-QUEUE-v3.json",
+  "items": [
+    {
+      "order": 1,
+      "requirement": "REQ-RNG-03",
+      "state": "RESOLVED_SCOPED_FLOAT_C02_POWER_PASS8_OF8",
+      "authority": "decisions/REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-20261113.json"
+    },
+    {
+      "order": 2,
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "state": "OPEN_NOT_STATISTICALLY_QUALIFIED",
+      "next_decision": "Choose numeric baseline, then approve locked statistical protocol and bounded isolated execution",
+      "proposal": "engineering/audit/S04-FIXED-POINT-STATISTICAL-QUALIFICATION-REVIEW-v1.0.md"
+    },
+    {
+      "order": 3,
+      "stage": "S05_and_later",
+      "state": "Await owner continuation; final IP as-built acceptance remains pending"
+    }
+  ],
+  "Gates_unchanged": true
+}

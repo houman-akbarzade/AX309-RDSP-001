@@ -20,7 +20,7 @@ This current audit view supersedes outdated status summaries for review purposes
 | S01 Problem Definition | Approved historical baseline; mission addenda preserve later scope | Problem defined | Approved source artifact identified | APPROVED, decisions/GATE-S01-approved-baseline.json |
 | S02 Requirements and Acceptance | 22 approved rows and limited amendments; current scoped audit refreshed | Contracts established | Requirement acceptance differs from specification approval | APPROVED, decisions/GATE-S02-approved-baseline.json |
 | S03 Functional Reference | Source, failures, statistical protocols/results and retention limits recorded | Python floating reference completed | Accepted model scope; scoped Pfa/Pd and deterministic tests | APPROVED, decisions/GATE-S03-approved-baseline.json |
-| S04 Bit-True Fixed-Point | C01–C08 and carryover decisions retained | Historical selected-C numerical model completed in accepted bounded scope | Bounded deterministic evidence; historical record-domain RNG03 FAIL retained, revised Power acceptance pending; statistical risk OPEN | CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS |
+| S04 Bit-True Fixed-Point | C01–C08 and carryover decisions retained | Historical selected-C numerical model completed in accepted bounded scope | Bounded deterministic evidence; historical record-domain RNG03 FAIL retained, revised archived Float/C02 Power PASS8/8 each; statistical risk OPEN | CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS |
 | S05 Architecture and Interfaces | Historical architecture plus recovered IP as-built report and Lab scope | Full laboratory architecture implemented | Source/evidence manifests and configuration-specific results | Entry/development authorized; FINAL_GATE_NOT_LOCATED |
 | S06 RTL and Testbench | Main sources and pinned Lab sources/testbench archives documented | RTL exists and full laboratory chain implemented | Finite source/oracle/self-checking TB evidence | FINAL_GATE_NOT_LOCATED |
 | S07 RTL Simulation | ISim and historical alternative-simulator distinctions retained | Simulation executed historically | Finite self-checking cases PASS; no universal coverage assertion | FINAL_GATE_NOT_LOCATED |
@@ -39,7 +39,7 @@ A direction to implement, “continue”, a successful tool report and a stage a
 3. Sixteen original Git-backed Lab messages were recovered. Five copied-text fragments and ten PDF missing/source-variant fragments remain explicitly excerpts. Source variants are not claimed to be distinct original platform turns.
 4. Two original Lab events were appended. Original canonical prefixes remain unchanged.
 5. The 37-page PDF, extracted text and embedded stationary-question image were preserved. Page references and hashes identify source content.
-6. A current 22-row requirement evidence audit replaces the earlier “not reassessed” snapshot for current review: REQUIREMENTS-CURRENT-AUDIT-v3.json. All sufficiency statements are scope-specific.
+6. A current 22-row requirement evidence audit replaces the earlier “not reassessed” snapshot for current review: REQUIREMENTS-CURRENT-AUDIT-v4.json. All sufficiency statements are scope-specific.
 
 The PC-offload ideas are recorded as alternatives/experiments. The observed final laboratory allocation retains Power, CFAR and Grouping on FPGA. W5500 is a future intention. The FFT-IP numerical/overflow differences from C02 are retained and formal as-built numerical disposition remains pending.
 
@@ -107,3 +107,10 @@ A further read-only inspection finds two pre-grouping local Power maxima in each
 ## Current normative REQ-RNG-03 scope amendment
 
 The explicit engineer decision REQ-RNG-03-POWER-SCOPE-AMENDMENT-001 now limits range-separability acceptance to Power output, before CFAR/Grouping. Old final-record failure and the associated grouping-policy finding remain historical under the former criterion. Multi-peak Grouping redesign is no longer required solely for revised RNG03; it remains optional/unapproved. Quantitative Power acceptance is pending; no new PASS is declared. See the S02 limited v1.3 amendment and REQ-RNG-03-POWER-SCOPE-IMPACT-REVIEW.md. Fixed-Point statistical qualification remains OPEN and Gates unchanged.
+
+
+## Current S04 review update: approved Power peaks and statistical carryover (2026-11-13)
+
+The engineer approved two distinct Power peaks under the prior proposed noise-free criterion. Read-only archived-data reassessment gives **Float PASS8/8 and selected-C/C02 Fixed PASS8/8**, with no additional3dB valley condition. Current authority: decisions/REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-20261113.json; normative limited amendment: engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md. Earlier pending statements above are historical snapshots superseded for this scoped item. Historical final-record FAIL4/8 remains unchanged. Final FFT-IP/board resolution is not inferred.
+
+Fixed-Point statistical performance remains **OPEN_NOT_STATISTICALLY_QUALIFIED**: no completed accepted qualifying campaign was located, and no statistical FAIL of Fixed-Point is established by that absence. See engineering/audit/S04-FIXED-POINT-STATISTICAL-QUALIFICATION-REVIEW-v1.0.md for the proposed bounded protocol. Current requirement review v4 and decision queue v4 apply. No code, model, test, historical result or Gate was changed; no new engineering campaign was run. Documentation progress does not imply engineering statistical completion.

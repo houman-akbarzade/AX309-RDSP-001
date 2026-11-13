@@ -1,0 +1,62 @@
+{
+  "schema_version": "limited-requirement-overlay-v1",
+  "version": "v1.4-REQ-RNG-03-POWER-PEAKS",
+  "project_id": "AX309-RDSP-001",
+  "status": "ENGINEER_APPROVED_CRITERION_SCOPED_MODEL_PASS",
+  "base_matrix": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+  "base_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+  "authority_decision": "decisions/REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-20261113.json",
+  "authority_decision_sha256": "7b3030572a842988cc0b6d14bbacdb437db944ae44742dfa751bba3e729346da",
+  "normative_scope_document": "engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md",
+  "normative_scope_sha256": "0d10e93c1e9f130875251ea726ccd57420a1fd25758bc19e2289d0682f46e1ea",
+  "affected_requirement_ids": [
+    "REQ-RNG-03"
+  ],
+  "unchanged_other_requirement_ids": [
+    "REQ-IO-01",
+    "REQ-LFM-01",
+    "REQ-SNR-01",
+    "REQ-RNG-01",
+    "REQ-MF-01",
+    "REQ-RNG-02",
+    "REQ-MTI-01",
+    "REQ-DOP-01",
+    "REQ-CFAR-01",
+    "REQ-CFAR-02",
+    "REQ-PD-01",
+    "REQ-SCR-01",
+    "REQ-DET-01",
+    "REQ-MATCH-01",
+    "REQ-POWER-01",
+    "REQ-LIST-01",
+    "REQ-OBS-01",
+    "REQ-UART-01",
+    "REQ-RES-01",
+    "REQ-TIME-01",
+    "REQ-EVID-01"
+  ],
+  "changes": {
+    "measurement_point": "Power output after FFT, before CFAR/Grouping",
+    "verification_product": "Power-map/range-profile separability",
+    "not_acceptance_conditions_of_this_requirement": [
+      "Separate CFAR components",
+      "Separate final cluster/target records"
+    ],
+    "quantitative_resolved_definition": "Two strict distinct local maxima, <=1 sample from each truth, lower intervening sample; no3dB requirement",
+    "result_status": "PASS_ARCHIVED_FLOAT_AND_C02_8_OF_8_EACH"
+  },
+  "historical_outcome": {
+    "criterion": "Final-record two-target separation",
+    "pass_count": 4,
+    "mandatory_count": 8,
+    "status": "FAIL",
+    "source": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json"
+  },
+  "no_Gate_or_source_change": true,
+  "supersedes_current_overlay": "engineering/S02-REQ-RNG-03-POWER-SCOPE-OVERLAY-v1.3.json",
+  "reassessment": {
+    "path": "engineering/audit/REQ-RNG-03-POWER-APPROVED-REASSESSMENT-v1.0.json",
+    "sha256": "b7683338be52d85b6976f40cb3afe83d5d512feee06e2b578008a6cedb6f006a",
+    "source_git_commit": "71af24e0ac7e75c68679f1a81f67940cdd5902da"
+  }
+}

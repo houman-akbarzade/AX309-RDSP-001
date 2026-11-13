@@ -1,0 +1,485 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-13T16:55:30.088701+00:00",
+  "source_git_commit": "71af24e0ac7e75c68679f1a81f67940cdd5902da",
+  "method": "Read-only evaluation of archived Power NPZ arrays; no signal generation, project model execution or board run",
+  "authority_decision": "REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-001",
+  "sources": [
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2",
+      "source_git_commit": "71af24e0ac7e75c68679f1a81f67940cdd5902da"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-INPUTS-v1.0.npz",
+      "sha256": "c06ae8b87d0f87c80cb7a275af514d6e8f9cdb5628ba7adb9d38c1294a8f2940",
+      "source_git_commit": "71af24e0ac7e75c68679f1a81f67940cdd5902da"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-FLOAT-OUTPUTS-v1.0.npz",
+      "sha256": "363eb534f5c0f1f53ac324306366d82177d8ed976a38708ea6064dc40cec01ea",
+      "source_git_commit": "71af24e0ac7e75c68679f1a81f67940cdd5902da"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-FIXED-OUTPUTS-v1.0.npz",
+      "sha256": "96c2d0d8b727f7ada6d016f91376a3b0d508b9999151ff63771ca55ff6119152",
+      "source_git_commit": "71af24e0ac7e75c68679f1a81f67940cdd5902da"
+    }
+  ],
+  "criterion": {
+    "observation_point": "Power before CFAR/Grouping",
+    "strict_local_maximum": "P[i]>P[i-1] and P[i]>P[i+1]",
+    "association": "One distinct ordered peak per truth range, absolute error <=1 sample",
+    "valley": "At least one intervening sample strictly below both peaks",
+    "minimum_valley_dB": null,
+    "mandatory": "D4 and D5, relative phases 0/90/180/270 degrees",
+    "population": "Equal-amplitude .18 target pair, no noise/clutter, common natural Doppler bin4, g1; original archived source only"
+  },
+  "summary": {
+    "Float": "PASS 8/8",
+    "Fixed_C02": "PASS 8/8",
+    "combined": "PASS 8/8 paired cases"
+  },
+  "rows": [
+    {
+      "case_id": "RNG_D4_PHASE_000",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          41
+        ],
+        [
+          43
+        ]
+      ],
+      "matched_peak_pair": [
+        41,
+        43
+      ],
+      "powers": [
+        7854.437190260212,
+        7854.437190260212
+      ],
+      "intervening_minimum": 7783.73593367599,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_090",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          44
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        44
+      ],
+      "powers": [
+        5230.675779242048,
+        5230.675779242048
+      ],
+      "intervening_minimum": 3891.8679668379964,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_180",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          44
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        44
+      ],
+      "powers": [
+        2976.52203220322,
+        2976.52203220322
+      ],
+      "intervening_minimum": 6.656447333298565e-29,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_270",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          44
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        44
+      ],
+      "powers": [
+        5230.675779242048,
+        5230.675779242046
+      ],
+      "intervening_minimum": 3891.8679668379946,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_000",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        6129.881544468367,
+        6129.881544468367
+      ],
+      "intervening_minimum": 5241.963842229129,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_090",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        5035.533432712712,
+        5035.533432712712
+      ],
+      "intervening_minimum": 2746.1826075385093,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_180",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        3941.185320957054,
+        3941.185320957055
+      ],
+      "intervening_minimum": 250.40137284789364,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_270",
+      "model": "Float",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        5035.533432712712,
+        5035.53343271271
+      ],
+      "intervening_minimum": 2746.1826075385093,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_000",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          41
+        ],
+        [
+          43
+        ]
+      ],
+      "matched_peak_pair": [
+        41,
+        43
+      ],
+      "powers": [
+        7853.373156785965,
+        7853.373156785965
+      ],
+      "intervening_minimum": 7782.721071720123,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_090",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          44
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        44
+      ],
+      "powers": [
+        5230.07124042511,
+        5230.008268594742
+      ],
+      "intervening_minimum": 3891.428474009037,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_180",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          44
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        44
+      ],
+      "powers": [
+        2976.0159659981728,
+        2976.0159659981728
+      ],
+      "intervening_minimum": 0.0,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D4_PHASE_270",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        44
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          44
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        44
+      ],
+      "powers": [
+        5230.008268594742,
+        5230.07124042511
+      ],
+      "intervening_minimum": 3891.428474009037,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_000",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        6129.204143583775,
+        6129.204143583775
+      ],
+      "intervening_minimum": 5241.502478182316,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_090",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        5034.959333062172,
+        5034.979984819889
+      ],
+      "intervening_minimum": 2745.896427631378,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_180",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        3940.6186496019363,
+        3940.6186496019363
+      ],
+      "intervening_minimum": 250.38024485111237,
+      "result": "PASS"
+    },
+    {
+      "case_id": "RNG_D5_PHASE_270",
+      "model": "Fixed_C02",
+      "truth_range_bins": [
+        40,
+        45
+      ],
+      "natural_doppler_bin": 4,
+      "strict_maxima_in_truth_windows": [
+        [
+          40
+        ],
+        [
+          45
+        ]
+      ],
+      "matched_peak_pair": [
+        40,
+        45
+      ],
+      "powers": [
+        5034.979984819889,
+        5034.959333062172
+      ],
+      "intervening_minimum": 2745.896427631378,
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "No claim of resolution in noise or arbitrary phase/amplitude/spacing populations",
+    "Final FFT-IP numeric path and hardware are not qualified by these C02 archives",
+    "Historical final-cluster-record FAIL4/8 is preserved and not relabeled",
+    "Missing complete internal-overflow telemetry in some historical cases is not filled by this Power-property reassessment"
+  ],
+  "test_execution": false,
+  "gate_change": false
+}

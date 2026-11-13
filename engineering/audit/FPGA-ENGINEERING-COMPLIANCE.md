@@ -1,6 +1,6 @@
 # FPGA Engineering Repository Compliance Audit
 
-Latest reconciled status: [CURRENT-PROJECT-STATUS.md](CURRENT-PROJECT-STATUS.md). Earlier sections below are historical audit checkpoints. The current 22-row scope assessment is REQUIREMENTS-CURRENT-AUDIT-v3.json, including the explicit Power-only RNG03 amendment.
+Latest reconciled status: [CURRENT-PROJECT-STATUS.md](CURRENT-PROJECT-STATUS.md). Earlier sections below are historical audit checkpoints. The current 22-row scope assessment is REQUIREMENTS-CURRENT-AUDIT-v4.json, including the explicit Power-only RNG03 amendment.
 
 Project: AX309-RDSP-001  
 Audit date: 2026-11-13  
@@ -157,3 +157,10 @@ The owner hypothesized that CFAR retained close targets but grouping merged them
 ## Explicit engineer amendment: REQ-RNG-03 Power only
 
 The owner formally changes the range-separability observation point to Power, excluding CFAR/Grouping record multiplicity from this requirement. A limited normative S02 v1.3 overlay and source-backed decision are recorded. S02–S04 impact recommendations preserve old signatures/results, update current carryover interpretation and keep separate output/statistical obligations intact. Proposed Power predicates have different archived-data outcomes (two-local-peak8/8 vs illustrative3dB2/8); no numerical acceptance rule or new PASS was silently approved.
+
+
+## Current S04 review update: approved Power peaks and statistical carryover (2026-11-13)
+
+The engineer approved two distinct Power peaks under the prior proposed noise-free criterion. Read-only archived-data reassessment gives **Float PASS8/8 and selected-C/C02 Fixed PASS8/8**, with no additional3dB valley condition. Current authority: decisions/REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-20261113.json; normative limited amendment: engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md. Earlier pending statements above are historical snapshots superseded for this scoped item. Historical final-record FAIL4/8 remains unchanged. Final FFT-IP/board resolution is not inferred.
+
+Fixed-Point statistical performance remains **OPEN_NOT_STATISTICALLY_QUALIFIED**: no completed accepted qualifying campaign was located, and no statistical FAIL of Fixed-Point is established by that absence. See engineering/audit/S04-FIXED-POINT-STATISTICAL-QUALIFICATION-REVIEW-v1.0.md for the proposed bounded protocol. Current requirement review v4 and decision queue v4 apply. No code, model, test, historical result or Gate was changed; no new engineering campaign was run. Documentation progress does not imply engineering statistical completion.

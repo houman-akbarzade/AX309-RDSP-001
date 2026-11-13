@@ -1,0 +1,1606 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -v 10 -u 20 -s 2
+radar_ip_ax309_top.ncd -o
+/home/houman/AX309-RDSP-001-docs-audit/engineering/audit/S09-unconstrained-audit-20261114.twr
+radar_ip_ax309_top.pcf
+
+Design file:              radar_ip_ax309_top.ncd
+Physical constraint file: radar_ip_ax309_top.pcf
+Device,package,speed:     xc6slx9,ftg256,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report, limited to 10 items per constraint
+                          unconstrained path report, limited to 20 items
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3386 - Intersecting Constraints found and resolved.  For more 
+   information, see the TSI report.  Please consult the Xilinx Command Line 
+   Tools User Guide for information on generating a TSI report.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_clk50 = PERIOD TIMEGRP "clk50_group" 20 ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 784082425 paths analyzed, 21617 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  19.402ns.
+--------------------------------------------------------------------------------
+Slack:                  0.598ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/selected_root_8 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.346ns (Levels of Logic = 14)
+  Clock Path Skew:      -0.021ns (0.317 - 0.338)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/selected_root_8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.BMUX     Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X14Y41.B3      net (fanout=1)        1.184   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<62>
+    SLICE_X14Y41.COUT    Topcyb                0.448   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<23>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lut<21>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<23>
+    SLICE_X14Y42.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<23>
+    SLICE_X14Y42.AMUX    Tcina                 0.240   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X15Y37.A4      net (fanout=4)        0.777   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<24>
+    SLICE_X15Y37.A       Tilo                  0.259   u_link/u_core/u_detect/u_grouping/best_stat<71>
+                                                       u_link/u_core/u_detect/u_grouping/state__n1323_inv23
+    SLICE_X19Y36.C5      net (fanout=2)        0.676   u_link/u_core/u_detect/u_grouping/state__n1323_inv2
+    SLICE_X19Y36.C       Tilo                  0.259   u_link/u_core/u_detect/u_grouping/current_power<23>
+                                                       u_link/u_core/u_detect/u_grouping/state__n1442_inv1
+    SLICE_X11Y37.CE      net (fanout=3)        1.123   u_link/u_core/u_detect/u_grouping/_n1442_inv
+    SLICE_X11Y37.CLK     Tceck                 0.408   u_link/u_core/u_detect/u_grouping/selected_root<9>
+                                                       u_link/u_core/u_detect/u_grouping/selected_root_8
+    -------------------------------------------------  ---------------------------
+    Total                                     19.346ns (11.214ns logic, 8.132ns route)
+                                                       (58.0% logic, 42.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.620ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/selected_root_8 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.324ns (Levels of Logic = 14)
+  Clock Path Skew:      -0.021ns (0.317 - 0.338)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/selected_root_8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P37       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C20      net (fanout=1)        1.271   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P37_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.BMUX     Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X14Y41.B3      net (fanout=1)        1.184   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<62>
+    SLICE_X14Y41.COUT    Topcyb                0.448   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<23>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lut<21>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<23>
+    SLICE_X14Y42.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<23>
+    SLICE_X14Y42.AMUX    Tcina                 0.240   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X15Y37.A4      net (fanout=4)        0.777   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_cy<24>
+    SLICE_X15Y37.A       Tilo                  0.259   u_link/u_core/u_detect/u_grouping/best_stat<71>
+                                                       u_link/u_core/u_detect/u_grouping/state__n1323_inv23
+    SLICE_X19Y36.C5      net (fanout=2)        0.676   u_link/u_core/u_detect/u_grouping/state__n1323_inv2
+    SLICE_X19Y36.C       Tilo                  0.259   u_link/u_core/u_detect/u_grouping/current_power<23>
+                                                       u_link/u_core/u_detect/u_grouping/state__n1442_inv1
+    SLICE_X11Y37.CE      net (fanout=3)        1.123   u_link/u_core/u_detect/u_grouping/_n1442_inv
+    SLICE_X11Y37.CLK     Tceck                 0.408   u_link/u_core/u_detect/u_grouping/selected_root<9>
+                                                       u_link/u_core/u_detect/u_grouping/selected_root_8
+    -------------------------------------------------  ---------------------------
+    Total                                     19.324ns (11.214ns logic, 8.110ns route)
+                                                       (58.0% logic, 42.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.620ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMB (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.289ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.056ns (0.687 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMB
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y41.A5      net (fanout=5)        0.729   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y41.AMUX    Tilo                  0.337   u_link/u_core/u_detect/u_scanner/cut_power<7>
+                                                       u_link/u_core/u_detect/u_grouping/curr_we1
+    SLICE_X12Y19.CE      net (fanout=10)       1.844   u_link/u_core/u_detect/u_grouping/curr_we_0
+    SLICE_X12Y19.CLK     Tceck                 0.369   u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMB
+    -------------------------------------------------  ---------------------------
+    Total                                     19.289ns (11.066ns logic, 8.223ns route)
+                                                       (57.4% logic, 42.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.620ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.289ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.056ns (0.687 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y41.A5      net (fanout=5)        0.729   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y41.AMUX    Tilo                  0.337   u_link/u_core/u_detect/u_scanner/cut_power<7>
+                                                       u_link/u_core/u_detect/u_grouping/curr_we1
+    SLICE_X12Y19.CE      net (fanout=10)       1.844   u_link/u_core/u_detect/u_grouping/curr_we_0
+    SLICE_X12Y19.CLK     Tceck                 0.369   u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD
+    -------------------------------------------------  ---------------------------
+    Total                                     19.289ns (11.066ns logic, 8.223ns route)
+                                                       (57.4% logic, 42.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.620ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMC (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.289ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.056ns (0.687 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMC
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y41.A5      net (fanout=5)        0.729   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y41.AMUX    Tilo                  0.337   u_link/u_core/u_detect/u_scanner/cut_power<7>
+                                                       u_link/u_core/u_detect/u_grouping/curr_we1
+    SLICE_X12Y19.CE      net (fanout=10)       1.844   u_link/u_core/u_detect/u_grouping/curr_we_0
+    SLICE_X12Y19.CLK     Tceck                 0.369   u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMC
+    -------------------------------------------------  ---------------------------
+    Total                                     19.289ns (11.066ns logic, 8.223ns route)
+                                                       (57.4% logic, 42.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.620ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMA (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.289ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.056ns (0.687 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMA
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y41.A5      net (fanout=5)        0.729   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y41.AMUX    Tilo                  0.337   u_link/u_core/u_detect/u_scanner/cut_power<7>
+                                                       u_link/u_core/u_detect/u_grouping/curr_we1
+    SLICE_X12Y19.CE      net (fanout=10)       1.844   u_link/u_core/u_detect/u_grouping/curr_we_0
+    SLICE_X12Y19.CLK     Tceck                 0.369   u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row9_RAMA
+    -------------------------------------------------  ---------------------------
+    Total                                     19.289ns (11.066ns logic, 8.223ns route)
+                                                       (57.4% logic, 42.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.621ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMA (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.286ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.058ns (0.685 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMA
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y38.B3      net (fanout=5)        0.872   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y38.BMUX    Tilo                  0.337   u_link/u_core/u_detect/u_grouping/row_index<3>
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<0>2
+    SLICE_X16Y20.D1      net (fanout=10)       2.282   u_link/u_core/u_detect/u_grouping/curr_addr<0>
+    SLICE_X16Y20.CLK     Tas                  -0.215   u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMA
+    -------------------------------------------------  ---------------------------
+    Total                                     19.286ns (10.482ns logic, 8.804ns route)
+                                                       (54.4% logic, 45.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.621ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.286ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.058ns (0.685 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y38.B3      net (fanout=5)        0.872   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y38.BMUX    Tilo                  0.337   u_link/u_core/u_detect/u_grouping/row_index<3>
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<0>2
+    SLICE_X16Y20.D1      net (fanout=10)       2.282   u_link/u_core/u_detect/u_grouping/curr_addr<0>
+    SLICE_X16Y20.CLK     Tas                  -0.215   u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD
+    -------------------------------------------------  ---------------------------
+    Total                                     19.286ns (10.482ns logic, 8.804ns route)
+                                                       (54.4% logic, 45.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.621ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMB (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.286ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.058ns (0.685 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMB
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y38.B3      net (fanout=5)        0.872   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y38.BMUX    Tilo                  0.337   u_link/u_core/u_detect/u_grouping/row_index<3>
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<0>2
+    SLICE_X16Y20.D1      net (fanout=10)       2.282   u_link/u_core/u_detect/u_grouping/curr_addr<0>
+    SLICE_X16Y20.CLK     Tas                  -0.215   u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMB
+    -------------------------------------------------  ---------------------------
+    Total                                     19.286ns (10.482ns logic, 8.804ns route)
+                                                       (54.4% logic, 45.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  0.621ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 (DSP)
+  Destination:          u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMC (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      19.286ns (Levels of Logic = 13)
+  Clock Path Skew:      -0.058ns (0.685 - 0.743)
+  Source Clock:         clk_g rising at 0.000ns
+  Destination Clock:    clk_g rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1 to u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMC
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    DSP48_X0Y9.P40       Tdspcko_P_A1REG       4.572   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1
+    DSP48_X0Y10.C23      net (fanout=1)        1.293   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_P40_to_u_cfar_compare/Mmult_n0015_submult_11
+    DSP48_X0Y10.P0       Tdspdo_C_P            3.141   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_11
+    SLICE_X12Y36.A5      net (fanout=1)        1.550   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_submult_1_17
+    SLICE_X12Y36.COUT    Topcya                0.474   u_link/u_core/u_detect/u_grouping/current_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_lut<19>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<22>
+    SLICE_X12Y37.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/cut_power<11>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<26>
+    SLICE_X12Y38.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_grouping/current_power<7>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.CIN     net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<30>
+    SLICE_X12Y39.COUT    Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<34>
+    SLICE_X12Y40.BMUX    Tcinb                 0.310   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd1_cy<38>
+    SLICE_X8Y39.C3       net (fanout=2)        1.347   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd_511
+    SLICE_X8Y39.COUT     Topcyc                0.328   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_lut<51>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.CIN      net (fanout=1)        0.082   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<52>
+    SLICE_X8Y40.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<56>
+    SLICE_X8Y41.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<60>
+    SLICE_X8Y42.COUT     Tbyp                  0.093   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.CIN      net (fanout=1)        0.003   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<64>
+    SLICE_X8Y43.DMUX     Tcind                 0.320   u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mmult_n0015_Madd2_cy<68>
+    SLICE_X14Y42.A2      net (fanout=1)        1.278   u_link/u_core/u_detect/u_scanner/u_cfar_compare/n0015<68>
+    SLICE_X14Y42.CMUX    Topac                 0.657   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1_l1
+                                                       u_link/u_core/u_detect/u_scanner/u_cfar_compare/Mcompar_alarm_lutdi24
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<4>1_cy
+    SLICE_X13Y38.B3      net (fanout=5)        0.872   u_link/u_core/u_detect/u_grouping/state_curr_addr<0>1
+    SLICE_X13Y38.BMUX    Tilo                  0.337   u_link/u_core/u_detect/u_grouping/row_index<3>
+                                                       u_link/u_core/u_detect/u_grouping/state_curr_addr<0>2
+    SLICE_X16Y20.D1      net (fanout=10)       2.282   u_link/u_core/u_detect/u_grouping/curr_addr<0>
+    SLICE_X16Y20.CLK     Tas                  -0.215   u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMD_O
+                                                       u_link/u_core/u_detect/u_grouping/Mram_curr_row10_RAMC
+    -------------------------------------------------  ---------------------------
+    Total                                     19.286ns (10.482ns logic, 8.804ns route)
+                                                       (54.4% logic, 45.6% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clk50 = PERIOD TIMEGRP "clk50_group" 20 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_grouping/Mram_parent/CLKA
+  Logical resource: u_link/u_core/u_detect/u_grouping/Mram_parent/CLKA
+  Location pin: RAMB16_X1Y14.CLKA
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_grouping/Mram_parent/CLKB
+  Logical resource: u_link/u_core/u_detect/u_grouping/Mram_parent/CLKB
+  Location pin: RAMB16_X1Y14.CLKB
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: u_link/u_core/u_fft/u_ip/blk0000020f/blk0000022a/CLKAWRCLK
+  Logical resource: u_link/u_core/u_fft/u_ip/blk0000020f/blk0000022a/CLKAWRCLK
+  Location pin: RAMB8_X0Y30.CLKAWRCLK
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKB)
+  Physical resource: u_link/u_core/u_fft/u_ip/blk0000020f/blk0000022a/CLKBRDCLK
+  Logical resource: u_link/u_core/u_fft/u_ip/blk0000020f/blk0000022a/CLKBRDCLK
+  Location pin: RAMB8_X0Y30.CLKBRDCLK
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem10/CLKA
+  Logical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem10/CLKA
+  Location pin: RAMB16_X0Y22.CLKA
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem10/CLKB
+  Logical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem10/CLKB
+  Location pin: RAMB16_X0Y22.CLKB
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem11/CLKA
+  Logical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem11/CLKA
+  Location pin: RAMB16_X0Y26.CLKA
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem11/CLKB
+  Logical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem11/CLKB
+  Location pin: RAMB16_X0Y26.CLKB
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem12/CLKAWRCLK
+  Logical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem12/CLKAWRCLK
+  Location pin: RAMB8_X0Y15.CLKAWRCLK
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+Slack: 16.430ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
+  Physical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem12/CLKBRDCLK
+  Logical resource: u_link/u_core/u_detect/u_scanner/Mram_power_mem12/CLKBRDCLK
+  Location pin: RAMB8_X0Y15.CLKBRDCLK
+  Clock network: clk_g
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained OFFSET IN BEFORE analysis for clock "clk_g" 
+
+ 4 paths analyzed, 4 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Minimum allowable offset is   1.944ns.
+--------------------------------------------------------------------------------
+Offset:                 1.944ns (data path - clock path + uncertainty)
+  Source:               reset_n (PAD)
+  Destination:          reset_pipe_2 (FF)
+  Destination Clock:    clk_g rising at 0.000ns
+  Data Path Delay:      5.015ns (Levels of Logic = 1)
+  Clock Path Delay:     3.096ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.025ns
+
+  Clock Uncertainty:          0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: reset_n to reset_pipe_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    L3.I                 Tiopi                 1.590   reset_n
+                                                       reset_n
+                                                       reset_n_IBUF
+                                                       ProtoComp176.IINV
+                                                       ProtoComp176.IMUX
+    SLICE_X4Y22.SR       net (fanout=2)        3.153   reset_n_inv
+    SLICE_X4Y22.CLK      Trck                  0.272   reset_pipe<2>
+                                                       reset_pipe_2
+    -------------------------------------------------  ---------------------------
+    Total                                      5.015ns (1.862ns logic, 3.153ns route)
+                                                       (37.1% logic, 62.9% route)
+
+  Minimum Clock Path at Slow Process Corner: clk50 to reset_pipe_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.344   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.707   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.197   u_global_clock
+                                                       u_global_clock
+    SLICE_X4Y22.CLK      net (fanout=1169)     0.848   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      3.096ns (1.541ns logic, 1.555ns route)
+                                                       (49.8% logic, 50.2% route)
+
+--------------------------------------------------------------------------------
+Offset:                 1.854ns (data path - clock path + uncertainty)
+  Source:               reset_n (PAD)
+  Destination:          reset_pipe_0 (FF)
+  Destination Clock:    clk_g rising at 0.000ns
+  Data Path Delay:      4.941ns (Levels of Logic = 1)
+  Clock Path Delay:     3.112ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.025ns
+
+  Clock Uncertainty:          0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: reset_n to reset_pipe_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    L3.I                 Tiopi                 1.590   reset_n
+                                                       reset_n
+                                                       reset_n_IBUF
+                                                       ProtoComp176.IINV
+                                                       ProtoComp176.IMUX
+    SLICE_X2Y19.SR       net (fanout=2)        3.091   reset_n_inv
+    SLICE_X2Y19.CLK      Trck                  0.260   reset_pipe<1>
+                                                       reset_pipe_0
+    -------------------------------------------------  ---------------------------
+    Total                                      4.941ns (1.850ns logic, 3.091ns route)
+                                                       (37.4% logic, 62.6% route)
+
+  Minimum Clock Path at Slow Process Corner: clk50 to reset_pipe_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.344   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.707   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.197   u_global_clock
+                                                       u_global_clock
+    SLICE_X2Y19.CLK      net (fanout=1169)     0.864   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      3.112ns (1.541ns logic, 1.571ns route)
+                                                       (49.5% logic, 50.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 1.840ns (data path - clock path + uncertainty)
+  Source:               reset_n (PAD)
+  Destination:          reset_pipe_1 (FF)
+  Destination Clock:    clk_g rising at 0.000ns
+  Data Path Delay:      4.927ns (Levels of Logic = 1)
+  Clock Path Delay:     3.112ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.025ns
+
+  Clock Uncertainty:          0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: reset_n to reset_pipe_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    L3.I                 Tiopi                 1.590   reset_n
+                                                       reset_n
+                                                       reset_n_IBUF
+                                                       ProtoComp176.IINV
+                                                       ProtoComp176.IMUX
+    SLICE_X2Y19.SR       net (fanout=2)        3.091   reset_n_inv
+    SLICE_X2Y19.CLK      Trck                  0.246   reset_pipe<1>
+                                                       reset_pipe_1
+    -------------------------------------------------  ---------------------------
+    Total                                      4.927ns (1.836ns logic, 3.091ns route)
+                                                       (37.3% logic, 62.7% route)
+
+  Minimum Clock Path at Slow Process Corner: clk50 to reset_pipe_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.344   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.707   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.197   u_global_clock
+                                                       u_global_clock
+    SLICE_X2Y19.CLK      net (fanout=1169)     0.864   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      3.112ns (1.541ns logic, 1.571ns route)
+                                                       (49.5% logic, 50.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 0.031ns (data path - clock path + uncertainty)
+  Source:               uart_rxd (PAD)
+  Destination:          u_link/u_rx/sync_a (FF)
+  Destination Clock:    clk_g rising at 0.000ns
+  Data Path Delay:      1.773ns (Levels of Logic = 2)
+  Clock Path Delay:     1.767ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.025ns
+
+  Clock Uncertainty:          0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Fast Process Corner: uart_rxd to u_link/u_rx/sync_a
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C11.I                Tiopi                 0.887   uart_rxd
+                                                       uart_rxd
+                                                       uart_rxd_IBUF
+                                                       ProtoComp175.IMUX.1
+    ILOGIC_X8Y61.D       net (fanout=1)        0.129   uart_rxd_IBUF
+    ILOGIC_X8Y61.CLK0    Tidock                0.757   u_link/u_rx/sync_a
+                                                       ProtoComp178.D2OFFBYP_SRC
+                                                       u_link/u_rx/sync_a
+    -------------------------------------------------  ---------------------------
+    Total                                      1.773ns (1.644ns logic, 0.129ns route)
+                                                       (92.7% logic, 7.3% route)
+
+  Minimum Clock Path at Fast Process Corner: clk50 to u_link/u_rx/sync_a
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 0.763   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.257   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.059   u_global_clock
+                                                       u_global_clock
+    ILOGIC_X8Y61.CLK0    net (fanout=1169)     0.688   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      1.767ns (0.822ns logic, 0.945ns route)
+                                                       (46.5% logic, 53.5% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained OFFSET OUT AFTER analysis for clock "clk_g" 
+
+ 1 path analyzed, 1 endpoint analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Maximum allowable offset is   9.216ns.
+--------------------------------------------------------------------------------
+Offset:                 9.216ns (clock path + data path + uncertainty)
+  Source:               u_link/u_tx/tx_pin (FF)
+  Destination:          uart_txd (PAD)
+  Source Clock:         clk_g rising at 0.000ns
+  Data Path Delay:      4.500ns (Levels of Logic = 1)
+  Clock Path Delay:     4.691ns (Levels of Logic = 2)
+  Clock Uncertainty:    0.025ns
+
+  Clock Uncertainty:          0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Clock Path at Slow Process Corner: clk50 to u_link/u_tx/tx_pin
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    OLOGIC_X11Y60.CLK0   net (fanout=1169)     2.041   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.691ns (1.766ns logic, 2.925ns route)
+                                                       (37.6% logic, 62.4% route)
+
+  Maximum Data Path at Slow Process Corner: u_link/u_tx/tx_pin to uart_txd
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X11Y60.OQ     Tockq                 1.080   u_link/u_tx/tx_pin
+                                                       u_link/u_tx/tx_pin
+    D12.O                net (fanout=1)        0.438   u_link/u_tx/tx_pin
+    D12.PAD              Tioop                 2.982   uart_txd
+                                                       uart_txd_OBUF
+                                                       uart_txd
+    -------------------------------------------------  ---------------------------
+    Total                                      4.500ns (4.062ns logic, 0.438ns route)
+                                                       (90.3% logic, 9.7% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained path analysis 
+
+ 4376 paths analyzed, 4376 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Maximum delay is   4.695ns.
+--------------------------------------------------------------------------------
+Delay:                  4.695ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_rx/sync_a (FF)
+  Data Path Delay:      4.695ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_rx/sync_a
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    ILOGIC_X8Y61.CLK0    net (fanout=1169)     2.045   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.695ns (1.766ns logic, 2.929ns route)
+                                                       (37.6% logic, 62.4% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.691ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_tx/tx_pin (FF)
+  Data Path Delay:      4.691ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_tx/tx_pin
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    OLOGIC_X11Y60.CLK0   net (fanout=1169)     2.041   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.691ns (1.766ns logic, 2.925ns route)
+                                                       (37.6% logic, 62.4% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/iq_write_data_26 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/iq_write_data_26
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X2Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/reply_number_0 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/reply_number_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X3Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/iq_write_data_27 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/iq_write_data_27
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X2Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_rx/data_out_6 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_rx/data_out_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X0Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/iq_write_data_24 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/iq_write_data_24
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X2Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_parser/header_sequence_26 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_parser/header_sequence_26
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X1Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_parser/header_sequence_25 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_parser/header_sequence_25
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X1Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_parser/header_sequence_24 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_parser/header_sequence_24
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X1Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_rx/data_out_7 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_rx/data_out_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X0Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/reply_number_3 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/reply_number_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X3Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_rx/data_out_5 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_rx/data_out_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X0Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_rx/data_out_4 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_rx/data_out_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X0Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/iq_write_data_25 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/iq_write_data_25
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X2Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/reply_number_2 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/reply_number_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X3Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_parser/header_sequence_27 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_parser/header_sequence_27
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X1Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.164ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_session/reply_number_1 (FF)
+  Data Path Delay:      4.164ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_session/reply_number_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X3Y15.CLK      net (fanout=1169)     1.514   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.164ns (1.766ns logic, 2.398ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.163ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_core/u_fft/u_ip/blk000000ec (FF)
+  Data Path Delay:      4.163ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_core/u_fft/u_ip/blk000000ec
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X0Y49.CLK      net (fanout=1169)     1.513   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.163ns (1.766ns logic, 2.397ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Delay:                  4.163ns (data path)
+  Source:               clk50 (PAD)
+  Destination:          u_link/u_core/u_fft/u_ip/blk000000d3 (FF)
+  Data Path Delay:      4.163ns (Levels of Logic = 2)
+
+  Maximum Data Path at Slow Process Corner: clk50 to u_link/u_core/u_fft/u_ip/blk000000d3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    T8.I                 Tiopi                 1.557   clk50
+                                                       clk50
+                                                       clk50_IBUFG
+                                                       ProtoComp175.IMUX
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.884   clk50_IBUFG
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   u_global_clock
+                                                       u_global_clock
+    SLICE_X0Y49.CLK      net (fanout=1169)     1.513   clk_g
+    -------------------------------------------------  ---------------------------
+    Total                                      4.163ns (1.766ns logic, 2.397ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk50
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+reset_n     |    1.944(R)|      SLOW  |   -0.367(R)|      SLOW  |clk_g             |   0.000|
+uart_rxd    |    0.031(R)|      FAST  |    1.767(R)|      SLOW  |clk_g             |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clk50 to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+uart_txd    |         9.216(R)|      SLOW  |         4.034(R)|      FAST  |clk_g             |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk50
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk50          |   19.402|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 784086806 paths, 0 nets, and 26942 connections
+
+Design statistics:
+   Minimum period:  19.402ns{1}   (Maximum frequency:  51.541MHz)
+   Maximum combinational path delay:   4.695ns
+   Minimum input required time before clock:   1.944ns
+   Maximum output delay after clock:   9.216ns
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Sat Nov 14 01:33:35 2026 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 511 MB
+
+
+

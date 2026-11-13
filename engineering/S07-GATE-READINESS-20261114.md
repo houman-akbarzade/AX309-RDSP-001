@@ -1,0 +1,14 @@
+# S07 RTL Simulation Gate readiness — 2026-11-14
+
+Status: READY_FOR_ENGINEER_DECISION within finite, selected FFT-IP laboratory scope; no Gate-S07 approval yet. Entry: decisions/GATE-S06-RTL-TESTBENCH-APPROVED-20261114.json. Review is read-only; no simulator, FPGA programming or hardware-campaign change.
+
+| Simulation evidence | Verified finding | Claim limit |
+|---|---|---|
+| Full-chain FFT-IP/UART structural ISim | Archived sim.log contains PASS for two complete CPI, exact Power and final records against the generated independent IP/C05 expected data, premature/duplicate RUN, lost IQ/RESULT/COMMIT ACK, RELEASE/reuse, 72,123 expected UART bytes. The manifest identifies ISE 14.7, structural vendor IP and archived input/action/expected vectors. | Two finite cases; no statistical Pd/Pfa, generalized protocol fault proof or physical serial acceptance. |
+| Core stage oracle bench | tb_radar_cpi_core.v checks MF/MTI/FFT-IP, all 4096 Power words and final records with ready/backpressure; failure paths and timeout are explicit. | Testbench and its fixed vectors exist; this review did not claim a new execution beyond retained logs. |
+| Stage Lab ISim | simulation-results.json lists nine exact finite stage/edge cases (MF, MTI, FFT, Power, CFAR, Grouping). Ten individual archived sim.log files, including UART, have explicit PASS and no FAIL. UART log covers corrupt CRC, duplicate CONFIG/upload/read/RUN, premature RUN NACK, complete echo and 4096 Power words, 75,627 bytes. | Separate stage images and protocol, not simultaneous outputs of the full-chain image. |
+| Evidence integrity | Full-IP current source manifest 55/55 matches. Stage Lab 249/249 archived evidence hashes match in its original pinned workspace. Stage Lab source manifest at e52c432 matches 25/26; release.json is the single mismatch, a release metadata file changed across later work. | Metadata mismatch must be disclosed at delivery; it does not alter the archived simulation log bytes or the pinned RTL evidence. Do not claim 26/26 source identity. |
+
+S07 acceptance is limited to these finite RTL simulation cases and selected FPGA numerical configuration. The historical C02 FFT bit-true mismatch is expected under approved FFT-IP architecture and is not an S07 failure. Exhaustive coverage, automatic recovery beyond the approved fail-closed scope, statistical performance, synthesis/resource fit, constrained external timing and physical board behavior are not accepted here. S08/S09/S11 retain those obligations. If a future S07 claim requires broader scenario coverage, define its vectors and oracle before testing; do not infer them from PASS logs.
+
+Recommendation: close S07 for the retained finite simulation scope, with the release metadata discrepancy documented as a nonblocking provenance item. Obtain explicit system-engineer Gate decision before marking CLOSED.

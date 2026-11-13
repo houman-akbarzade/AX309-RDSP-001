@@ -1,0 +1,352 @@
+{
+  "schema_version": "retrospective-direction-register-v1",
+  "project_id": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-13T15:22:43.251304+00:00",
+  "author_role": "Documentary auditor; original direction authority remains engineer",
+  "records": [
+    {
+      "id": "HD-001",
+      "title": "Desktop hardware demonstrator and UART/GUI mission extension",
+      "record_type": "HISTORICAL_MISSION_DIRECTION",
+      "initiating_engineer_message_ids": [
+        "AX309-EXPORT-MISSION-20261113"
+      ],
+      "related_agent_message_ids": [],
+      "message_text_hashes": {
+        "AX309-EXPORT-MISSION-20261113": "de234c29be3fa9786c49f481d6f5d5da1286844ac62e2c39ef452ae4bb743b4a"
+      },
+      "evidence": [
+        {
+          "path": "engineering/FULL-IP-UART-GUI-INTEGRATION-20261112.md",
+          "sha256": "d821c03dfe62aaf1f39f6370af4ec32d844f36c45dd8b4856c4e5aa08596a1ae"
+        }
+      ],
+      "scope_and_disposition": "User-directed synthetic IQ, actual FPGA processing, UART upload/readback/results, GUI and eight scenarios; Hardware/Reference/Demo distinctions. Source is partial; original S01 baseline is preserved.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-002",
+      "title": "Investigate Grouping offload and UART resource reduction",
+      "record_type": "FEASIBILITY_REQUEST_NOT_FINAL_ALLOCATION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-FEASIBILITY-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-FEASIBILITY-agent-final"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-FEASIBILITY-engineer": "2e48b99bdd5e6eff27f6e1bdaf37dd5d42ca6578994af1bfcc062e7a61ba70bb",
+        "AX309-20261112-FEASIBILITY-agent-final": "c07fd5c7f41814b242cc167be5bbb2d7a57087d47f82586f7012ba7369875115"
+      },
+      "evidence": [
+        {
+          "path": "engineering/FEASIBILITY-REPORT-20261112.md",
+          "sha256": "c07fd5c7f41814b242cc167be5bbb2d7a57087d47f82586f7012ba7369875115"
+        }
+      ],
+      "scope_and_disposition": "Owner requests measurement and approval before applying alternatives; offload is not recorded as final project allocation.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-003",
+      "title": "Investigate FFT IP and DSP resource use",
+      "record_type": "ENGINEER_TECHNICAL_QUESTION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-FFT-IP-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-FFT-IP-agent-final"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-FFT-IP-engineer": "b344c89b03f6c1b70ff95833a88cbec6b2cc14d544904ffc4d78efd822597a54",
+        "AX309-20261112-FFT-IP-agent-final": "be4263d32a8c25e701864e654dd0b071936c9828984b8d9466e5e7d2bc8eb1cb"
+      },
+      "evidence": [
+        {
+          "path": "engineering/FFT-IP-TRIAL-REPORT-20261112.md",
+          "sha256": "5a27d5bc08542a998f5b0762ede758ecb56c80769da864cab7732cd43a586c11"
+        }
+      ],
+      "scope_and_disposition": "Question initiates IP-versus-custom study; no silent acceptance of numerical differences.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-004",
+      "title": "Investigate CFAR and Power PC offload",
+      "record_type": "ALTERNATIVES_AND_EXPERIMENT_AUTHORIZATION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-CFAR-PC-engineer",
+        "AX309-20261112-IP-TRIAL-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-CFAR-PC-agent-final",
+        "AX309-20261112-IP-TRIAL-agent-final"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-CFAR-PC-engineer": "60a0032bc34dee19369c6617fda18946fcb98e2f9ebef1b5e43992836889b078",
+        "AX309-20261112-IP-TRIAL-engineer": "e055299ede035618687e6ef9792d83921b777678b26445962ff4dc0f1f24be1b",
+        "AX309-20261112-CFAR-PC-agent-final": "2d7a9451425f4aa5881a6acf62e01114d3c0fd74cbcb4f6205eb8638e2eb2624",
+        "AX309-20261112-IP-TRIAL-agent-final": "5a27d5bc08542a998f5b0762ede758ecb56c80769da864cab7732cd43a586c11"
+      },
+      "evidence": [
+        {
+          "path": "engineering/CFAR-PC-FEASIBILITY-20261112.md",
+          "sha256": "2d7a9451425f4aa5881a6acf62e01114d3c0fd74cbcb4f6205eb8638e2eb2624"
+        },
+        {
+          "path": "engineering/FFT-IP-TRIAL-REPORT-20261112.md",
+          "sha256": "5a27d5bc08542a998f5b0762ede758ecb56c80769da864cab7732cd43a586c11"
+        }
+      ],
+      "scope_and_disposition": "Owner discusses PC offload and authorizes ISE FFT-IP trials. Future W5500 is a stated intention, not implemented Ethernet or real-time acceptance.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-005",
+      "title": "Compare both FFT implementations against Float and assess restored full FPGA chain",
+      "record_type": "EVALUATION_DIRECTION_FINAL_NUMERIC_ACCEPTANCE_NOT_EXPLICIT",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-IP-EVALUATION-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-IP-EVALUATION-agent-final"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-IP-EVALUATION-engineer": "b35b62d40cc4467509ddbd97c8ad8ed385fe39cc355281e1de808d20db95fea4",
+        "AX309-20261112-IP-EVALUATION-agent-final": "097e5cf651842907dfee39b2fc4a01c259fda2112aa381b3090a49bc25fc2d84"
+      },
+      "evidence": [
+        {
+          "path": "engineering/IP-FLOAT-AND-FULL-CHAIN-EVALUATION-20261112.md",
+          "sha256": "bccf4743da21003bcb1917c92ae8b4ad65593d7b5b117afb3d843a8f618dbb0a"
+        }
+      ],
+      "scope_and_disposition": "Owner prefers IP provisionally and requests RMSE and final clustering comparison to Float before final decision. Do not convert this into final numerical-baseline approval.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-006",
+      "title": "Complete full hardware/GUI integration",
+      "record_type": "EXPLICIT_IMPLEMENTATION_DIRECTION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-FULL-INTEGRATION-engineer",
+        "AX309-20261112-FULL-INTEGRATION-continue-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-FULL-INTEGRATION-agent-final"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-FULL-INTEGRATION-engineer": "acf60d40ab797e3b74c1d7152cbb53bf3e99b19003393a4d2c684632b671d609",
+        "AX309-20261112-FULL-INTEGRATION-continue-engineer": "8dec7895d6e935e751b4781a83afe7a8249a098e10be8520200078f870453d49",
+        "AX309-20261112-FULL-INTEGRATION-agent-final": "fe3a7d0b864b79c8c5632cafeb5db9734318fc9e5f0584b3f9ee78f6ae448b01"
+      },
+      "evidence": [
+        {
+          "path": "engineering/FULL-IP-UART-GUI-INTEGRATION-20261112.md",
+          "sha256": "d821c03dfe62aaf1f39f6370af4ec32d844f36c45dd8b4856c4e5aa08596a1ae"
+        }
+      ],
+      "scope_and_disposition": "Owner directs completion and real hardware results. Later report retains full MF/MTI/FFT-IP/Power/CFAR/Grouping on FPGA. Implementation authority differs from final C02-compatibility or Gate acceptance.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-007",
+      "title": "Assess independent stage injection/readback",
+      "record_type": "FEASIBILITY_ONLY_AT_THIS_POINT",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-STAGE-TEST-FEASIBILITY-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-STAGE-TEST-FEASIBILITY-agent"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-STAGE-TEST-FEASIBILITY-engineer": "d56e7ac8761d37bb6ca911795a0399f65cfbded681db72d309e4958646480046",
+        "AX309-20261112-STAGE-TEST-FEASIBILITY-agent": "e4c6d6d4fb7dcfa670021f8ac2a52a1a9fc65b3f59b20f667e79a406bf443f1d"
+      },
+      "evidence": [],
+      "scope_and_disposition": "First request explicitly says assess feasibility and do not implement yet.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-008",
+      "title": "Authorize isolated Stage Lab and software Float injection",
+      "record_type": "EXPLICIT_IMPLEMENTATION_AUTHORIZATION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-STAGE-LAB-IMPLEMENT-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-STAGE-LAB-IMPLEMENT-agent-final"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-STAGE-LAB-IMPLEMENT-engineer": "4841b31096977db799ab2ec99ab21be216584d96c6135b55fac43500a6285bfd",
+        "AX309-20261112-STAGE-LAB-IMPLEMENT-agent-final": "fc50edc644aaf78c2bb805c48a661a20a0174c7aa3311bcbfd39308292a460f4"
+      },
+      "evidence": [
+        {
+          "path": "engineering/STAGE-LAB-v0.2-IMPLEMENTATION-REPORT.md",
+          "sha256": "23e9120c2b36886e39fe32905cd9d62f9b2f62c58e1bfb554cac62d01ba0140a"
+        }
+      ],
+      "scope_and_disposition": "Later instruction explicitly authorizes implementation with version preservation; software Float outputs after FFT isolate Power/CFAR errors without injecting the IP-matched FFT model.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-009",
+      "title": "Improve GUI controls, units, axes and data comparisons",
+      "record_type": "EXPLICIT_GUI_CHANGE_DIRECTION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-STAGE-GUI-021-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-STAGE-GUI-021-agent-final",
+        "AX309-20261112-STAGE-AXES-EXPLAIN-agent"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-STAGE-GUI-021-engineer": "1af9a19bb40bc33eab8a4ba95f783d7460b651a9f97e61165feb67fce1188c86",
+        "AX309-20261112-STAGE-GUI-021-agent-final": "248b1fb08911dffccd61914033e3edee87a9eb05962bda95319712426eadede5",
+        "AX309-20261112-STAGE-AXES-EXPLAIN-agent": "33513ea8f4c69714d94562c7e102e2c6a20393dbee93521f5d1016ad08f1723b"
+      },
+      "evidence": [
+        {
+          "path": "engineering/STAGE-LAB-v0.2.1-GUI-REPORT.md",
+          "sha256": "172ae6df583ed849e0213f69ec901389e54db45c897a4dfeb8016550fde40ef1"
+        }
+      ],
+      "scope_and_disposition": "Axes/units and PRI-versus-Doppler semantics, target velocity, arbitrary noise RMS, records and user guide requested.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-010",
+      "title": "Two-mode automatic suite and stationary/slow/moving MTI",
+      "record_type": "PROPOSAL_THEN_EXPLICIT_IMPLEMENTATION",
+      "initiating_engineer_message_ids": [
+        "AX309-20261112-AUTO-TEST-PROPOSAL-engineer",
+        "AX309-20261112-AUTO-LAB-IMPLEMENT-engineer",
+        "AX309-20261112-AUTO-LAB-CONTINUE-2"
+      ],
+      "related_agent_message_ids": [
+        "AX309-20261112-AUTO-TEST-PROPOSAL-agent",
+        "AX309-EXPORT-AUTO-LAB-REPORT-20261113"
+      ],
+      "message_text_hashes": {
+        "AX309-20261112-AUTO-TEST-PROPOSAL-engineer": "9b07fcc669bb03adc23aad8e3f31c0eeceec7e7784d348cb98bc00660ce371c7",
+        "AX309-20261112-AUTO-LAB-IMPLEMENT-engineer": "a168af9824bdc000ebdb66fb9ed042fa701566d9653baa0d1c426f0df6d10d99",
+        "AX309-20261112-AUTO-LAB-CONTINUE-2": "3302d3011de2b580db2cedb67bca80386b70e4fa108c3a798c937a8802934ffa",
+        "AX309-20261112-AUTO-TEST-PROPOSAL-agent": "480dab48dd79f31d12773f6c4a0da2088a6b1d859f1ffb9e29c9d5b357371f51",
+        "AX309-EXPORT-AUTO-LAB-REPORT-20261113": "bf837d12122e08ee4d087fbadd64336154d2ef698f56c7b078ad1f8aca3deacc"
+      },
+      "evidence": [
+        {
+          "path": "engineering/AUTO-LAB-v0.3-REPORT.md",
+          "sha256": "68be74b0bd2173600dd380ffded1d07f0c548d5e22ea80904df09cd2fd3e5485"
+        }
+      ],
+      "scope_and_disposition": "Two modes and concise charted reports follow owner proposal and later implementation instruction; three-CPI mechanism tests do not become statistical qualification.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-011",
+      "title": "Paired radar maps and actual MATLAB reference comparisons",
+      "record_type": "EXPLICIT_REPORT_CHANGE_DIRECTION",
+      "initiating_engineer_message_ids": [
+        "AX309-PAIRED-MAPS-20261113-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-PAIRED-MAPS-20261113-agent"
+      ],
+      "message_text_hashes": {
+        "AX309-PAIRED-MAPS-20261113-engineer": "e7e5c255a73651f8c0e3d48c5d46bbf25f052ff9ae9d0cc5359eaee1506de579",
+        "AX309-PAIRED-MAPS-20261113-agent": "105c655348d92e434929a9055ee9909e50698442397fe7610b8ec015daf5282d"
+      },
+      "evidence": [
+        {
+          "path": "engineering/evidence/auto_lab_v0.3/paired-map-validation.json",
+          "sha256": "117a98cb2beb4fb2cf91b29a7f6b0c7c8774307efcbd0f11e0309d8f24c39d94"
+        }
+      ],
+      "scope_and_disposition": "Owner asks side-by-side FPGA/reference maps with shared scale and units; reference recomputation is distinct from new board acquisition.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-012",
+      "title": "Correct blank Qt SVG maps",
+      "record_type": "DEFECT_REPORT_AND_RECORDED_REPAIR",
+      "initiating_engineer_message_ids": [
+        "AX309-QT-SVG-FIX-20261113-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-QT-SVG-FIX-20261113-agent"
+      ],
+      "message_text_hashes": {
+        "AX309-QT-SVG-FIX-20261113-engineer": "c9f115eb920dcbcde9532454aabe98739be86cf0e15e26d82ad46496caf731a7",
+        "AX309-QT-SVG-FIX-20261113-agent": "6881f85d0c44ac7320f51303f7b7cabe0bd0dfdedd5146b751a224d3b45d1614"
+      },
+      "evidence": [
+        {
+          "path": "engineering/evidence/auto_lab_v0.3/qt-render-validation.json",
+          "sha256": "548a80c22ac4ecbd72deece44b989948c567dcebbce2bc08afce19b2f9624ebe"
+        }
+      ],
+      "scope_and_disposition": "Blank display is traced to nested SVG incompatibility; later report says 37 paired maps checked in Qt. No inference of DSP data change.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    },
+    {
+      "id": "HD-013",
+      "title": "Add large vector figure viewer and zoom",
+      "record_type": "EXPLICIT_USABILITY_CHANGE_DIRECTION",
+      "initiating_engineer_message_ids": [
+        "AX309-ZOOM-20261113-engineer"
+      ],
+      "related_agent_message_ids": [
+        "AX309-ZOOM-20261113-agent"
+      ],
+      "message_text_hashes": {
+        "AX309-ZOOM-20261113-engineer": "01689298b272ce438a7a045bae6a51c6deb944eacffa5c06bfc70793baa67862",
+        "AX309-ZOOM-20261113-agent": "72898fbc689eced29977dd7691cc7e838a2a93c3f58b6be265eb2f9fec5e8070"
+      },
+      "evidence": [],
+      "scope_and_disposition": "Owner asks larger/zoomable figures; source commit 6c86a2e adds viewer. This is a presentation feature, not radar performance acceptance.",
+      "original_decision_time_utc": null,
+      "original_time_policy": "Refer to authentic source recording metadata; original platform decision time unavailable",
+      "is_new_gate_decision": false,
+      "approved_requirement_baseline_modified": false
+    }
+  ],
+  "provenance_policy": "Historical questions, options, execution authorization, implementation outcomes and formal acceptance are distinct. No implicit approval is promoted to a Gate or requirement waiver."
+}

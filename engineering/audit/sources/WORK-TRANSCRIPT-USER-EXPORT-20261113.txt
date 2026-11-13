@@ -1,0 +1,287 @@
+# AX309-RDSP-001 — Autonomous FPGA Radar Implementation, Hardware Validation & Desktop Application
+
+## 1. Your mission
+
+You are the lead implementation agent responsible for completing the existing AX309-RDSP-001 radar signal-processing project.
+
+
+
+
+دسترسی به کامپیوتر من از طریق ریموت دسکتاپ کامندر برقراره لطفا از همین طریق کار را انجام بده
+اتصالات سخت افزار برقراره
+
+Your objective is to deliver a **working FPGA-based radar signal-processing demonstrator**, connected to a desktop application that generates realistic synthetic radar scenarios, transfers IQ samples to the AX309 hardware, receives the FPGA processing results, and displays them graphically.
+
+**Your primary priority is working implementation, not documentation or excessive analysis.**
+
+Work autonomously through implementation, integration, testing, debugging, and hardware validation. Do not stop after producing a plan, design review, or partial code.
+
+Continue making progress until the deliverable is operational or a genuine hardware, tool, or technical blocker prevents further work.
+
+## 2. Development environment and project baseline
+
+The development computer runs Linux and has been used for Xilinx ISE, ISim, XST, MAP, PAR, TRCE, and Bitstream generation.
+
+Project repository:
+
+/home/houman/AX309-RDSP-001
+
+Current baseline:
+
+- Branch: master
+- Latest reported commit: 9aee139
+- Previous baseline: a061671
+- FPGA: Xilinx Spartan-6 XC6SLX9
+- Board: AX309
+- UART: CP2102GM, nominally 115200 baud, 8N1
+- FPGA clock: 50 MHz, subject to verification against the actual board configuration
+
+First verify the repository, Git status, project files, existing evidence, installed tools, and connected hardware.
+
+Use the latest engineering decisions, requirements, ICDs, test vectors, manifests, and verified RTL as the authoritative project baseline.
+
+Do not assume that previously reported tests are sufficient. Perform one focused technical review, reproduce the critical tests, and identify only defects that could prevent implementation or invalidate the results.
+
+Do not restart the project from scratch.
+
+## 3. Engineering authority and autonomy
+
+You are authorized to make ordinary implementation decisions, including:
+
+- RTL architecture and module integration
+- State-machine design
+- Memory scheduling and buffering
+- Pipeline organization
+- Resource optimization
+- Desktop application architecture
+- Testbench implementation
+- Debugging and corrective modifications
+- Build and synthesis configuration
+- Development-time engineering trade-offs
+
+You should make these decisions without repeatedly requesting approval.
+
+However, do not silently modify mandatory radar requirements, reduce required processing functionality, fabricate verification results, or declare unresolved safety-critical or correctness issues accepted.
+
+Where an existing requirement is infeasible on the XC6SLX9, quantify the limitation and implement the best compliant solution possible. Escalate only decisions that require a genuine change to the approved requirements.
+
+Preserve all important previous engineering decisions and known unresolved issues.
+
+## 4. Primary deliverable: desktop radar application
+
+Create a locally executable Linux desktop application for this project.
+
+Prefer Python with PySide6 or another suitable mature GUI framework, unless an existing project implementation offers a better option.
+
+The application must have a convenient launcher and a clear, professional interface.
+
+When launched, it should display a selection of synthetic radar flight scenarios.
+
+### Scenario library
+
+Implement at least these scenarios:
+
+1. **Single aircraft:** one moving target with configurable range and radial velocity.
+2. **Two aircraft:** targets at different ranges and velocities.
+3. **Crossing trajectories:** two targets with intersecting displayed paths.
+4. **Multiple aircraft:** several targets with different amplitudes, ranges, and Doppler frequencies.
+5. **Weak target near a strong target:** evaluation of dynamic range and detection behavior.
+6. **Aircraft in clutter:** moving targets in the presence of stationary clutter and noise.
+7. **Closely spaced targets:** evaluation of range/Doppler resolution.
+8. **Low-SNR scenario:** detection performance near the configured CFAR threshold.
+
+Provide a few useful adjustable parameters, such as target range, radial velocity, target amplitude or RCS model, noise level, and scenario duration.
+
+Scenarios must use physically consistent radar signal models.
+
+Use the actual radar parameters and sampling constraints recorded in the project. Do not silently invent a different waveform or processing configuration.
+
+Where the existing CPI format cannot represent a requested scenario, adjust the scenario to the available measurement space or clearly identify the limitation.
+
+### Application workflow
+
+When the user selects a scenario and presses **Run**:
+
+1. Generate the synthetic radar IQ samples.
+2. Display the scenario's reference target information.
+3. Establish a valid UART session with the FPGA.
+4. Transfer the IQ data using the implemented protocol.
+5. Confirm successful reception and CPI integrity.
+6. Trigger the actual FPGA radar-processing pipeline.
+7. Retrieve the FPGA-generated results.
+8. Decode and display the detections.
+9. Compare the detections with the known scenario ground truth.
+10. Display relevant execution statistics and errors.
+
+### Required visualization
+
+Include:
+
+- Scenario selection panel
+- Target trajectory visualization
+- Range-Doppler map, when supported by available FPGA output
+- Detected targets table
+- Range and radial velocity estimates
+- Detection markers and target grouping
+- Comparison between ground truth and FPGA results
+- UART connection and FPGA status
+- Processing and transfer time
+- Clear PASS/FAIL/NOT VERIFIED indicators
+
+Distinguish between commanded trajectories and actual radar-observable quantities.
+
+For example, a single stationary monostatic radar cannot uniquely determine full two-dimensional aircraft trajectories from range and radial velocity alone. The application may display known simulated trajectories, but it must not misrepresent those trajectories as independently estimated by the FPGA.
+
+## 5. Critical rule: FPGA processing must be real
+
+The application must distinguish three operating modes:
+
+**Hardware Mode**
+
+Actual IQ data is transferred to the FPGA. The FPGA performs the implemented radar processing. Results are received from the FPGA and displayed.
+
+**Reference Mode**
+
+The desktop application runs the existing reference processing model for comparison and debugging.
+
+**Demo Mode**
+
+The application displays synthetic or prerecorded results without requiring hardware.
+
+These modes must be clearly identified in the user interface.
+
+Never present PC-generated detection results as if they came from the FPGA.
+
+The primary acceptance target is **Hardware Mode**.
+
+## 6. Complete the radar-processing chain
+
+Inspect the existing RTL and integrate the approved processing pipeline:
+
+Matched Filter → MTI2 → Doppler FFT32 → Power → CFAR → Grouping
+
+Reuse verified modules and existing test infrastructure wherever possible.
+
+Complete the necessary:
+
+- Dataflow control
+- Frame/CPI controller
+- Fixed-point interfaces
+- BRAM management
+- Module sequencing
+- Output record generation
+- UART result transmission
+- Error and completion signaling
+
+Respect the XC6SLX9 resource limits.
+
+The previously reported UART/IQ implementation uses approximately:
+
+- 2125 LUT
+- 1592 FF
+- 10 BRAM
+
+These numbers are for the communication and IQ subsystem only, not the complete radar.
+
+The previously reported CFAR/Grouping resource consumption must also be considered.
+
+**Do not add standalone resource estimates and assume the combined design fits.**
+
+Perform actual integrated synthesis, placement, routing, and timing analysis.
+
+If the design exceeds available resources, prioritize architecture-level optimization, BRAM reuse, time-multiplexed processing, and elimination of unnecessary duplication.
+
+Do not silently move mandatory FPGA processing stages to the PC.
+
+## 7. Hardware bring-up
+
+The AX309 board and its programming/communication interfaces are being connected to the development computer.
+
+You must actively inspect available USB, serial, and JTAG devices.
+
+Perform the following:
+
+1. Detect the connected AX309 and CP2102GM interfaces.
+2. Identify the actual serial device.
+3. Verify the board clock, reset, voltage levels, and pin assignments using trustworthy project or board documentation.
+4. Verify the UCF constraints.
+5. Generate the required FPGA programming file.
+6. Program the FPGA using the available Xilinx-compatible tools.
+7. Perform a basic UART communication test.
+8. Validate Session HELLO/OFFER/ACTIVATE/READY.
+9. Transfer a complete CPI.
+10. Read back and verify the IQ data.
+11. Execute the actual DSP processing.
+12. Retrieve and display the results.
+
+If JTAG or serial access fails, investigate permissions, drivers, cable connectivity, programming tools, and port configuration.
+
+Do not guess pin assignments.
+
+Do not perform irreversible firmware, flash, or hardware configuration changes without appropriate confirmation.
+
+Prefer volatile FPGA programming for initial tests.
+
+## 8. Verification strategy: practical and risk-based
+
+Avoid excessive test development.
+
+Use the smallest test set that provides convincing evidence for the operational requirements.
+
+Prioritize:
+
+- Correct UART communication
+- Session integrity
+- Complete IQ transfer
+- Correct memory contents
+- Correct DSP results
+- No silent data loss
+- Resource fit
+- Timing closure
+- Successful operation on the actual board
+
+Run existing regression tests after meaningful changes.
+
+Do not create large test matrices merely to increase test counts.
+
+A few well-designed end-to-end tests are more valuable than hundreds of tests that do not exercise the actual FPGA processing chain.
+
+Nevertheless, do not bypass essential correctness tests.
+
+For every major processing stage, compare representative FPGA outputs against the approved reference model using consistent fixed-point assumptions.
+
+For complete scenarios, evaluate detection performance against ground truth.
+
+Do not mark a test PASS unless it was exe
+…
+از طریق ریموت دسکتاپ کامندر متصل شدم. پروژه هنوز عملیاتی نشده است.
+
+مخزن و baseline 9aee139 تأیید شد.
+هر دو رابط USB شناسایی شدند؛ UART روی /dev/ttyUSB1 است.
+۵۷ آزمون ارتباطی نرم‌افزار اجرا شد؛ همگی PASS.
+دسترسی UART به‌علت مجوزهای لینوکس BLOCKED است.
+شناسایی JTAG با iMPACT شکست خورد؛ FPGA پروگرام نشد.
+طرح فعلی انتقال و بازخوانی IQ دارد؛ زنجیره کامل DSP هنوز به آن متصل نیست. برنامه دسکتاپ نیز در این نوبت ساخته نشد.
+شواهد در مخزن با commit نهایی c998e16 ثبت شد. درصد پیشرفت و پذیرش مهندسی افزایش نیافت. ثبت کامل متن گفتگو نیز BLOCKED باقی ماند.
+
+برای بازکردن دسترسی UART در نشست فعلی، در ترمینال لپ‌تاپ اجرا کن:
+
+sudo setfacl -m u:houman:rw /dev/ttyUSB1
+
+اجرای sudo از طریق کامندر به‌صراحت در تنظیمات ابزار مسدود است؛ این بخش به اجرای محلی تو نیاز دارد. پس از آن، رفع مشکل شناسایی کابل JTAG همچنان لازم است.
+
+انجام دادم
+مجوز درست شد و ارتباط واقعی برد راه افتاد.
+
+JTAG شناسایی و FPGA به‌صورت موقت پروگرام شد.
+انتقال و بازخوانی کامل ۱۶٬۸۹۶ بایت IQ روی برد PASS شد؛ سناریوهای تک‌هدف و دوهدف نیز همین آزمون را گذراندند.
+برنامه AX309 Radar Lab با هشت سناریو ساخته شد؛ اکنون باز است و میانبر دسکتاپ دارد.
+زنجیره کامل DSP در شبیه‌سازی، برای سه CPI با مدل عددصحیح دقیقاً تطبیق کرد.
+مانع فعلی: هسته DSP پس از بهینه‌سازی هنوز ۱۱٬۵۰۷ LUT می‌خواهد؛ ظرفیت تراشه ۵٬۷۲۰ LUT است. بنابراین Hardware فعلاً فقط UART/IQ را اجرا می‌کند و DSP واقعی روی برد هنوز تأیید نشده است. ادامه نیازمند بازطراحی مصرف منابع است.
+
+کد و شواهد در commit abf9389 ثبت شد. تحویل کامل پروژه همچنان BLOCKED است.
+
+
+
+
+

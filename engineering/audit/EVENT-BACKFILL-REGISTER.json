@@ -1,0 +1,68 @@
+{
+  "records": [
+    {
+      "event_id": "AX309-E0144",
+      "source_commit": "1d9e709a37cb4112475b8654e9490c0f990471da",
+      "source_record": {
+        "event_id": "AX309-E0144",
+        "sequence": 144,
+        "recorded_at_utc": "2026-11-12T17:28:48.066753+00:00",
+        "stage": "S11",
+        "actor": "fpga-engineering",
+        "event_type": "versioned_stage_lab_development_suite_verified",
+        "summary": "Separate v0.2 stage test application/RTL images implemented and physically tested for MF/MTI/FFT/Power/CFAR/Grouping. Downstream injection uses software Float FFT/Power/CFAR, not the IP bit-accurate FFT model. Actual Python/MATLAB comparisons, CRC/duplicate serial ISim, 702 records, 72-bit CFAR boundary, independent PRI/pair, raw hardware prefix, files and stable rollback verified. Seven images close 50MHz timing. Stable source/GUI preserved; no statistical or historical gate promotion.",
+        "source_git_commit": "e52c432",
+        "evidence_refs": [
+          "engineering/evidence/stage_lab_v0.2/manifest.json",
+          "engineering/evidence/stage_lab_v0.2/complete-output-word-verification.json",
+          "engineering/evidence/stage_lab_v0.2/stable-rollback-verification.json"
+        ],
+        "artifact_refs": [
+          "stage_lab",
+          "rtl/stage_lab",
+          "engineering/STAGE-LAB-v0.2-IMPLEMENTATION-REPORT.md"
+        ],
+        "decision_refs": [],
+        "engineer_message_refs": [
+          "AX309-20261112-STAGE-LAB-IMPLEMENT-engineer"
+        ],
+        "preceding_agent_message_refs": [
+          "AX309-20261112-STAGE-TEST-FEASIBILITY-agent"
+        ],
+        "report_message_ref": "AX309-20261112-STAGE-LAB-IMPLEMENT-agent-final",
+        "engineer_decision": "Explicitly authorized separate-version implementation including Power and software FFT injection; no approval of statistical acceptance or merge into stable master"
+      }
+    },
+    {
+      "event_id": "AX309-E0145",
+      "source_commit": "aba0ccca05be5266b59865e4c1944fa4e0b58922",
+      "source_record": {
+        "event_id": "AX309-E0145",
+        "sequence": 145,
+        "recorded_at_utc": "2026-11-12T18:40:45.389168+00:00",
+        "stage": "S11",
+        "actor": "fpga-engineering",
+        "event_type": "stage_lab_gui_021_verified",
+        "summary": "Dimensioned plots; independent PRI/bin/range-cell controls; range/PRI/Doppler/velocity maps and software comparisons; all-stage data and 702-cluster tables; readable metrics; exploratory threshold comparison; editable individual target velocities and fractional complex-noise RMS; dynamic SVG architecture/scenarios and B Nazanin guide. Presentation QA on all six actual captures and fresh physical Power run with all four Python/MATLAB references passed. Original RTL and production DSP unchanged.",
+        "source_git_commit": "79b41f4",
+        "evidence_refs": [
+          "engineering/evidence/stage_lab_v0.2.1/manifest.json"
+        ],
+        "artifact_refs": [
+          "stage_lab",
+          "engineering/STAGE-LAB-v0.2.1-GUI-REPORT.md"
+        ],
+        "decision_refs": [],
+        "engineer_message_refs": [
+          "AX309-20261112-STAGE-GUI-021-engineer"
+        ],
+        "preceding_agent_message_refs": [
+          "AX309-20261112-STAGE-LAB-IMPLEMENT-agent-final"
+        ],
+        "report_message_ref": "AX309-20261112-STAGE-GUI-021-agent-final",
+        "engineer_decision": "Requested implementation of GUI corrections; no statistical acceptance, stable merge or gate promotion inferred"
+      }
+    }
+  ],
+  "policy": "Original source records copied unchanged; no new historical event invented"
+}

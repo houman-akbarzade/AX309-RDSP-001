@@ -105,3 +105,7 @@ Documentation preparation is in progress. This branch has not been published and
 ## Existing-work recovery update
 
 The engineer authorized recovery of completed Stage Lab work. Read [the as-built review package](engineering/audit/EXISTING-WORK-RECOVERY-AND-AS-BUILT-REVIEW.md) for recovered S05–S11 evidence and the exact pending configuration decision. The audit independently checked 94 retained case archives and 184 exact Fixed-reference comparisons without executing project models or tests. These are finite archived-evidence results, not new engineering execution or automatic gate approval.
+
+## Engineering history and mission changes
+
+Read [the engineering development history](engineering/ENGINEERING-DEVELOPMENT-HISTORY.md), [the mission/scope addendum](engineering/MISSION-EVOLUTION-LAB-ADDENDUM-20261113.md), and [the source-backed historical direction register](decisions/HISTORICAL-DEVELOPMENT-DIRECTIONS-20261113.json). They distinguish the owner’s proposals, execution authorizations, observed outcomes and formal acceptance. Original baselines and failed evidence remain intact. Dialogue recovery is partial and preserves explicit source gaps.

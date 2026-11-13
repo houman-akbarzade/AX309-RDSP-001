@@ -1,0 +1,68 @@
+{
+  "scope": "Independent arithmetic on retained count vector, no CPI generation or reference execution",
+  "N": 20000,
+  "valid_integer_counts": true,
+  "total_alarms": 55919,
+  "mean_rate": 0.0010050143781452192,
+  "sample_variance": 5.117254786058101e-07,
+  "EB_upper": 0.0014491445035750084,
+  "acceptance_limit": 0.0015,
+  "reported_upper": 0.0014491445035750084,
+  "matches_report": true,
+  "manifest_checks": [
+    {
+      "path": "engineering/S02-C-CFAR-02-CONTRACT-APPROVED-v1.2.md",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-engineering-contracts-FINAL-PROPOSED-v1.0.md",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-22-requirement-audit-FINAL-v1.0.json",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-Gate-readiness-FINAL-PROPOSED-v1.0.md",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-engineering-contracts-APPROVED-AMENDMENT-v1.1.md",
+      "match": true
+    },
+    {
+      "path": "engineering/S02-requirements-matrix-APPROVED-AMENDMENT-v1.1.json",
+      "match": true
+    },
+    {
+      "path": "engineering/S03-C04-FINAL-Pfa-20000CPI-EmpiricalBernstein-v1.2.json",
+      "match": true
+    },
+    {
+      "path": "engineering/S03-C04-FINAL-Pfa-20000CPI-EXECUTION-CLAIM-v1.2.json",
+      "match": true
+    },
+    {
+      "path": "engineering/S03-C04-FINAL-Pfa-EB-20000CPI-result-report-v1.2.md",
+      "match": true
+    },
+    {
+      "path": "s03_reference/c04_eb_final_once.py",
+      "match": true
+    }
+  ],
+  "audit_status": "EVIDENCE_SUFFICIENT",
+  "limits": [
+    "Software noise-only bounded-CPI scope",
+    "No proof of physical population transfer or fixed-point acceptance",
+    "Independent-CPI assumptions remain the approved experiment design, not proven from count vector"
+  ]
+}

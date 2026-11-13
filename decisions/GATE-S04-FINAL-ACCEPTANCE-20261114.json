@@ -1,0 +1,39 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "GATE-S04-FINAL-ACCEPTANCE-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit current-conversation approval",
+  "status": "GATE_S04_CLOSED_ALL_S04_ITEMS_RESOLVED_SCOPED_PASS",
+  "supersedes_current_disposition_of": [
+    "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json",
+    "engineering/S04-C08-GATE-DISPOSITION-v1.2.md"
+  ],
+  "items": {
+    "REQ-RNG-03": {
+      "current_criterion": "Approved S02 Power-only two-distinct-peaks amendment v1.4",
+      "model_evidence": "Float 8/8 and historical fixed C02 8/8 mandatory noise-free cases",
+      "disposition": "CLOSED_PASS_IN_APPROVED_MODEL_TEST_POPULATION",
+      "historical": "Former final-Grouping-record criterion FAIL 4/8 preserved as a historical result, not current REQ-RNG-03 disposition",
+      "new_IP_and_board": "No automatic FFT-IP or physical-board resolution PASS; any corresponding qualification belongs to selected implementation/later stage"
+    },
+    "S04-C02-RISK-PERFORMANCE": {
+      "model_evidence": "Independently reviewed FFT-IP bit-accurate model: Pd 1000/1000, one-sided 95% lower 0.9970087504549047; Pfa 20000 noise-only CPI, one-sided 95% upper 0.001452904715042641",
+      "criterion": "Pd lower >=0.90 and Pfa upper <=0.0015, in the frozen test populations",
+      "disposition": "CLOSED_PASS_SCOPED_FFT_IP_MODEL_STATISTICAL_QUALIFICATION",
+      "historical": "Earlier OPEN_NOT_EXECUTED and Selected-C smoke reuse findings retained",
+      "board": "Physical Pd/Pfa, implementation/model equivalence and overflow telemetry are S11 matters, not S04 gate conditions"
+    }
+  },
+  "gate": "S04 no longer carries either of the two earlier open technical items under their revised/current criteria; S05 remains authorized",
+  "not_claimed": [
+    "No physical-board acceptance",
+    "No general Pd/Pfa outside declared populations",
+    "No FFT-IP two-target Power-resolution result inferred from historical C02",
+    "No erasure of historical 4/8 Grouping record result"
+  ],
+  "support": [
+    "engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md",
+    "engineering/audit/REQ-RNG-03-POWER-APPROVED-REASSESSMENT-v1.0.json",
+    "engineering/audit/S04-STATISTICAL-INDEPENDENT-REVIEW-20261114.md"
+  ]
+}

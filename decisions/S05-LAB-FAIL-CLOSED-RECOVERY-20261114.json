@@ -1,0 +1,18 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S05-LAB-FAIL-CLOSED-RECOVERY-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit approval in current conversation",
+  "status": "APPROVED_LIMITED_LAB_RECOVERY_POLICY",
+  "selected_scope": "No automatic same-CPI recovery after link interruption or FPGA power/reset loss in the present laboratory configuration",
+  "rules": [
+    "An incomplete or provisional CPI is never accepted as success after interruption; persist the failure/unknown journal and discard provisional output from accepted results.",
+    "A CPI already fully validated and durably committed by the host retains that host result; after FPGA state loss, mark device terminal state unknown rather than fabricate an FPGA COMMIT/ABORT.",
+    "Do not silently release an FPGA-retained undecided or terminal transaction. Reconcile if safely possible; otherwise stop and require controlled reset/reprogramming before a fresh session and CPI.",
+    "A new CPI requires a new session and full IQ upload/readback verification. It shall have a new CPI identity; no partial previous IQ or record set is reused.",
+    "The unused RECOVER_UNKNOWN enum and broader R1 proposal are not accepted as implemented recovery."
+  ],
+  "S05_acceptance": "Document the fail-closed stop/manual-controlled-reset design and its limits; S11 tests fault handling and actual board behavior",
+  "support": "engineering/audit/S05-UART-AS-BUILT-RECONCILIATION-20261114.md",
+  "exclusions": "No automatic recovery, no unverified replay, no power-loss guarantee for FPGA volatile terminal state"
+}

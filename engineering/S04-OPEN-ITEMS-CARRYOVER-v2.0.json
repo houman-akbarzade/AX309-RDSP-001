@@ -1,0 +1,27 @@
+{
+  "project": "AX309-RDSP-001",
+  "register": "S04-OPEN-ITEMS-CARRYOVER-v2.0",
+  "date_local": "2026-11-14",
+  "supersedes_current_status_of": "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json",
+  "authority": "decisions/GATE-S04-FINAL-ACCEPTANCE-20261114.json",
+  "remaining_S04_gate_items": [],
+  "closed_former_items": [
+    {
+      "id": "REQ-RNG-03",
+      "disposition": "PASS_APPROVED_POWER_CRITERION_FLOAT_AND_C02_8_OF_8",
+      "scope": "archived noise-free two-target model population; historical final-record 4/8 remains traceable",
+      "evidence": "engineering/audit/REQ-RNG-03-POWER-APPROVED-REASSESSMENT-v1.0.json"
+    },
+    {
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "disposition": "PASS_SCOPED_FFT_IP_MODEL_PD_PFA_STATISTICS",
+      "scope": "fixed model, frozen Pd/Pfa populations and intervals, not physical hardware",
+      "evidence": "engineering/audit/S04-STATISTICAL-INDEPENDENT-REVIEW-20261114.md"
+    }
+  ],
+  "downstream_not_S04": [
+    "Selected FFT-IP implementation equivalence and any two-target Power-resolution claim for that implementation",
+    "Physical board Pd/Pfa, input/output equivalence and overflow telemetry in S11"
+  ],
+  "historical_integrity": "Version 1.0 is retained as the correct 2026-11-12 snapshot; no prior result or decision is rewritten."
+}

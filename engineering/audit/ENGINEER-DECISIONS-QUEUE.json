@@ -1,0 +1,35 @@
+{
+  "status": "PENDING_ENGINEER_DECISIONS",
+  "items": [
+    {
+      "priority": 1,
+      "proposal": "engineering/audit/AS-BUILT-DISPOSITION-PROPOSAL.json",
+      "decision": "Recognize existing FFT-IP laboratory as-built configuration with fixed hashes and explicit limits",
+      "ready_for_owner_review": true,
+      "gate_closure_included": false
+    },
+    {
+      "priority": 2,
+      "decision": "Review scoped S05–S11 closure packages after configuration disposition; do not infer from implementation directions",
+      "ready_for_owner_review": "Existing evidence packages available; final configuration/ICD/coverage adjudication required",
+      "gate_closure_included": false
+    },
+    {
+      "priority": 3,
+      "decision": "Disposition preserved failed/open requirements without hiding their measured outcome",
+      "items": [
+        "REQ-RNG-03 4/8 FAIL",
+        "Fixed-point statistical qualification OPEN",
+        "LIST/OBS/UART/ICD/TIME/complete STA coverage acceptance"
+      ],
+      "new_test_authorized": false
+    },
+    {
+      "priority": 4,
+      "decision": "Approve canonical metadata/reference replacements and final S12 merge/publication after final review",
+      "ready_for_owner_review": false,
+      "publication_authorized": false
+    }
+  ],
+  "no_engineering_decision_created_by_this_queue": true
+}

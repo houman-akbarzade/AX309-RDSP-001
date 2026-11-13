@@ -1,5 +1,7 @@
 # FPGA Engineering Repository Compliance Audit
 
+Latest reconciled status: [CURRENT-PROJECT-STATUS.md](CURRENT-PROJECT-STATUS.md). Earlier sections below are historical audit checkpoints. The current 22-row scope assessment is REQUIREMENTS-CURRENT-AUDIT-v2.json.
+
 Project: AX309-RDSP-001  
 Audit date: 2026-11-13  
 Protected main HEAD: d45d350803c418f86cfc4fbfa098a9140daeedf5  

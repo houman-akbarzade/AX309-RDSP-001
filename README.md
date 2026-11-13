@@ -1,5 +1,7 @@
 # AX309-RDSP-001
 
+Current engineering and acceptance status: [current project status](engineering/audit/CURRENT-PROJECT-STATUS.md). This separates completed laboratory work from formal Gate closure and outstanding requirements.
+
 A laboratory FPGA radar DSP project for the ALINX AX309 (Xilinx Spartan-6 XC6SLX9-2FTG256C), developed with Xilinx ISE 14.7. The host supplies synthetic complex IQ in batches. The FPGA processes the batch and returns Power-map and cluster results over USB-UART.
 
 This is a development and verification platform. The retained physical-board results do not establish operational radar acceptance, real-time acquisition, or general detection performance.

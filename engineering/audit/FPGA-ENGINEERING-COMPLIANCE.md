@@ -149,3 +149,7 @@ The user-designated Downloads PDF (37 pages; SHA-256 226a1fb950226b51c5e5921f698
 ## Stepwise S03–S04 review
 
 The owner requests requirement-by-requirement stage review before advancing. S03 existing scoped approval was confirmed with 7/7 pinned artifact hashes matching. The S04 eight-case archive still has four mandatory PASS and four FAIL; an independent read-only component inspection of the retained masks finds joined target-neighborhood components in every failed Float/Fixed case. No new signal-chain or statistical test ran. Later Lab evidence does not close either S04 carryover. See S03-S04-STEPWISE-REVIEW.md and its pinned JSON/diagnostic.
+
+## S04 extractor compatibility finding
+
+The owner hypothesized that CFAR retained close targets but grouping merged them. Retained Power/mask inspection supports this for all four failed mandatory cases: both local maxima survive CFAR, while connected-component reduction keeps one record per region. Exact observations, shallow-valley limitations and a change-controlled candidate direction are recorded separately. EXP-AX309-019 is CANDIDATE only. No criterion, code, Gate or historical result was changed.

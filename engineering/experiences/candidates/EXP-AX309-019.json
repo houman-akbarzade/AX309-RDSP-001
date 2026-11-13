@@ -1,0 +1,82 @@
+{
+  "schema_version": "eem-experience-v1",
+  "id": "EXP-AX309-019",
+  "title": "A connected detection region need not represent one physical target",
+  "project": "AX309-RDSP-001",
+  "stage": "S04 requirement-to-grouping compatibility review",
+  "category": "requirements-allocation-and-target-extraction",
+  "tags": [
+    "CFAR",
+    "connected-components",
+    "multiple-peaks",
+    "range-resolution",
+    "contract-compatibility"
+  ],
+  "origin": "current_project_audit",
+  "state": "CANDIDATE",
+  "observed_problem": "Four paired-target cases fail the final two-record criterion despite two local Power maxima both surviving CFAR. Detected cells connect the maxima into one component in both stored Float and selected-C Fixed outputs.",
+  "initial_faulty_assumption_or_design_decision": "Design simplification: emit only the maximum-Power record of each eight-connected detected region. This policy does not preserve multiplicity when a region contains two eligible peaks.",
+  "observable_consequence": "The tested component reducer emits one nearby record and the paired-target requirement remains FAIL4/8, while its deterministic oracle equivalence can still PASS.",
+  "assessed_root_cause": "A requirement-to-extractor compatibility gap for the retained connected masks. Not evidence of a coding error in the approved grouping algorithm or proof of general physical resolvability.",
+  "chosen_corrective_method": "Proposed only: retain CFAR and investigate multi-peak extraction/deblending per region with independently specified spacing/prominence/plateau and record semantics. No implementation selected or approved.",
+  "alternatives_and_negative_results": [
+    "Retain old component policy and explicitly carry resolution limitation; no automatic PASS",
+    "A new3dB valley rule would reject the four observed failed examples and is not the approved historical criterion",
+    "Blindly emitting every local maximum risks false targets from noise/sidelobes"
+  ],
+  "repeatable_validation": "Check pinned output archives, inspect Power profiles at natural Doppler4 and retained CFAR masks; compare to accepted eight-connected single-maximum policy. Existing standalone diagnostic JSONs record the observations. Do not run historical mutating validators.",
+  "generalizable_lesson": "Validate the mapping from detection regions to target records against required target multiplicity. Bit-true agreement with an oracle proves implementation consistency, not suitability of the selected extraction contract.",
+  "applicability": "Post-CFAR target extraction where adjacent detections can bridge multiple local peaks.",
+  "non_applicability": "Does not prove every local maximum is a separate target, guarantee resolution in noise, prescribe a universal valley threshold, or invalidate connected components as region formation.",
+  "safety_contract_constraints": "Stable code, approved criteria, historical PASS/FAIL, Gate states and output-capacity acceptance unchanged. Further design/tests require explicit bounded authorization.",
+  "author_role": "Source-based FPGA/DSP auditor",
+  "reviewer_role": "Pending engineer review; no independent human review claimed",
+  "recorded_at_utc": "2026-11-13T16:14:46.452334+00:00",
+  "time_provenance": "Current archive-analysis time, not original experiment time",
+  "evidence": [
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-FLOAT-OUTPUTS-v1.0.npz",
+      "sha256": "363eb534f5c0f1f53ac324306366d82177d8ed976a38708ea6064dc40cec01ea",
+      "git_commit": "f06b611872cd2f93f2fa30753d514dac5e23358e"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-FIXED-OUTPUTS-v1.0.npz",
+      "sha256": "96c2d0d8b727f7ada6d016f91376a3b0d508b9999151ff63771ca55ff6119152",
+      "git_commit": "f06b611872cd2f93f2fa30753d514dac5e23358e"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2",
+      "git_commit": "f06b611872cd2f93f2fa30753d514dac5e23358e"
+    },
+    {
+      "path": "decisions/S04-C05-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+      "sha256": "78d35bdf2e0edbb46bc7256939a505cafdd5f210b9536737c25b8b0b0cdee0de",
+      "git_commit": "f06b611872cd2f93f2fa30753d514dac5e23358e"
+    },
+    {
+      "path": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+      "sha256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+      "git_commit": "f06b611872cd2f93f2fa30753d514dac5e23358e"
+    }
+  ],
+  "supplementary_uncommitted_at_authoring": [
+    {
+      "path": "engineering/audit/S04-RNG03-PREGROUPING-PEAK-DIAGNOSTIC.json",
+      "sha256": "9f4d521426cc3ff54efc8ae37de6f8c96d550c0689cf401d359d113c3bc488f8",
+      "git_commit": null
+    },
+    {
+      "path": "engineering/audit/S04-GROUPING-POLICY-COMPATIBILITY-PROPOSAL.md",
+      "sha256": "ba1d2f551ae5cdc391d58f8a45506b1f4ab4a9b883cf5114afca80dcd02dde73",
+      "git_commit": null
+    }
+  ],
+  "prior_lesson_links": [
+    "EXP-AX309-016",
+    "EXP-AX309-008"
+  ],
+  "superseding_lesson_links": [],
+  "plugin_release_provenance": null,
+  "engineer_approval": null
+}

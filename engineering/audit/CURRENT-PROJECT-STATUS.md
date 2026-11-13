@@ -99,3 +99,7 @@ Repository Documentation & Compliance Progress: substantial recovery and organiz
 Engineering Project Progress: actual laboratory implementation reaches S11 activity. Historical Gate closure reaches S04 with open items. The old 33.33% Gate-weighted and 37.0833% R2 implementation tracker are historical metrics for different earlier states; neither is a defensible current functional-completion percentage. No new numeric progress is inferred from documentation.
 
 Current status is not READY_FOR_GITHUB_REVIEW and not final S12 acceptance.
+
+## Current S04 grouping-policy diagnosis
+
+A further read-only inspection finds two pre-grouping local Power maxima in each of the four failed mandatory cases; both survive CFAR, but share a connected region. The accepted one-record-per-region policy explains loss of separate target records in these cases. This is a contract/performance compatibility finding, not a demonstrated implementation bug or a new PASS. A multi-peak candidate is documented in S04-GROUPING-POLICY-COMPATIBILITY-PROPOSAL.md; no stable source changed.

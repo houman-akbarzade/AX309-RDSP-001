@@ -1,0 +1,16 @@
+# S06 RTL and Testbench Gate readiness — 2026-11-14
+
+Status: READY_FOR_ENGINEER_DECISION within selected FFT-IP laboratory design; no Gate-S06 approval yet. Baseline: decisions/GATE-S05-ARCHITECTURE-INTERFACES-APPROVED-20261114.json. This review is read-only; no simulation, FPGA programming or modification of running hardware campaign.
+
+| S06 criterion | Finding | Evidence and next-stage boundary |
+|---|---|---|
+| Selected synthesizable full-chain RTL present | PASS | rtl/integration/radar_cpi_core.v, cfar_grouping_subsystem.v, MF/MTI/FFT-IP adapter/Power/CFAR/Grouping, UART framing/session/IQ/reply/top, and clock/pin UCF. The selected IP XCO is committed; generated vendor products are reproducible with ISE CoreGen, not falsely represented as hand-written RTL. |
+| Selected source identity | PASS | Full-IP manifest has 55/55 current source hashes matching (independently recalculated here), no missing/mismatched source. Stage Lab remains at pinned commit 6c86a2e with separate image/build sources; its untracked test captures were not added to this Gate. |
+| Self-checking numerical testbench | PASS at availability/finite evidence | rtl/tb/tb_radar_cpi_core.v checks MF, MTI, FFT-IP, all 4096 Power cells and complete final records on three CPI vectors with record backpressure and explicit FAIL/timeout. Scripts generate vectors and vendor IP before ISim. |
+| UART/full-chain testbench | PASS at availability/finite evidence | rtl/tb/run_dsp_uart_isim.sh generates inputs and checks PASS/no FAIL. Archived structural-IP ISim log records two full CPI, exact Power and records, premature/duplicate RUN, lost IQ/RESULT/COMMIT ACK, RELEASE/reuse and 72123 checked bytes. This is finite S07 evidence, not a new exhaustive S06 performance claim. |
+| Isolated stage tests and edge fixtures | PASS at availability | Stage Lab manifest pins separate image sources; archived ISim results cover six engines and specified Power, CFAR and 702-record Grouping cases. CoreGen dependency and separately programmed configurations remain explicit. |
+| RTL-to-S05 interfaces | PASS for current lab scope | Main core streams 99-bit records via valid/ready and keeps Power map; current full-chain UART exposes IQ, Power and RESULT. Six isolated readbacks use distinct Stage Lab images. The approved fail-closed recovery policy excludes unimplemented automatic RECOVER_UNKNOWN. |
+
+No S06 blocker was found in source completeness or testbench availability. Complete requirement scenario coverage, independent numerical equality to the FFT-IP model across larger populations, protocol negative-case closure, synthesis fit/STA and physical board behavior belong to S07–S11. Do not label testbench existence alone as their PASS. Historical source comments calling the core 'C02' or older DIT architecture are stale descriptions; actual adapter/source configuration and the S05 decision select FFT-IP. A cleanup of those comments is desirable but does not change the compiled design or block S06.
+
+Decision requested: approve S06 as RTL/testbench preparation COMPLETE for this selected configuration and advance to separate S07 simulation review. Do not rewrite old results or merge audit worktree to master by this Gate decision.

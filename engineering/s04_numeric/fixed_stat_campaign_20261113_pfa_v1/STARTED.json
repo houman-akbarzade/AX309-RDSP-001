@@ -1,0 +1,24 @@
+{
+  "N": 20000,
+  "binary_input": "RNE Q1.15 with g=5 noise, g=1 target",
+  "censoring": "none; any input clip/internal saturation remains in denominator and invalidates formal candidate eligibility",
+  "cfar": "40*Pcut*65536 > 490007*SUM40; 2782 CUT per CPI",
+  "criterion": "Pfa CPI-level empirical Bernstein 95pct <= 0.0015, N=20000",
+  "master_seed": 841120261,
+  "mode": "FULL_FIXED_SAMPLE_SOFTWARE_CANDIDATE_NOT_OFFICIAL_ACCEPTANCE",
+  "model": "selected-C Python bittrue reference; not FFT-IP/RTL/board",
+  "profile": "pfa",
+  "repository_head": "3645b74089d7e2f18dcc072e06c127266d2e10f5",
+  "seed_derivation": "SeedSequence([master,index,941]); index 0..N-1",
+  "seed_namespace": 941,
+  "source_sha256": {
+    "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+    "engineering/s04_numeric/fixed_pd_pfa_campaign_v1.py": "eaf59feda65b22daa3fd9f7e189fd6565db199be989d5d3ad72e11b76db2d670",
+    "engineering/s04_numeric/fixed_pd_pfa_diagnostic_v1.py": "84b5975b2e70cd9c556a0060530fcb206813ee64c6e766163ae849cf08c0750f",
+    "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+    "engineering/s04_numeric/s04_c05_native_integer_v1.py": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+    "s03_reference/model.py": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+    "s03_reference/pd_acceptance_candidate.py": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea"
+  },
+  "started_utc": "2026-11-13T17:26:50.266120+00:00"
+}

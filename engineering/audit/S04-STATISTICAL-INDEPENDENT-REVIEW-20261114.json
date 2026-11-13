@@ -1,0 +1,400 @@
+{
+  "project_id": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-13T20:21:27.092489+00:00",
+  "review_source_commit": "1fea780172321bf7761706e234af5bb3d8686ac3",
+  "reviewer_role": "AI-assisted technical evidence reviewer; engineer retains acceptance authority",
+  "method": "Read source, Git and complete archived RAW; independently recompute CP and CPI-level EB; source/raw hash and index checks. No engineering rerun.",
+  "results": [
+    {
+      "campaign": "fixed_stat_campaign_20261113_pd_v1",
+      "profile": "pd",
+      "N": 1000,
+      "raw_count": 1000,
+      "indices_contiguous": true,
+      "raw_hash_verified": true,
+      "input_hashes_unique": true,
+      "archived_sources": [
+        {
+          "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+          "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_pd_pfa_campaign_v1.py",
+          "sha256": "eaf59feda65b22daa3fd9f7e189fd6565db199be989d5d3ad72e11b76db2d670",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_pd_pfa_diagnostic_v1.py",
+          "sha256": "84b5975b2e70cd9c556a0060530fcb206813ee64c6e766163ae849cf08c0750f",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+          "sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+          "sha256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/model.py",
+          "sha256": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/pd_acceptance_candidate.py",
+          "sha256": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea",
+          "verified": true
+        }
+      ],
+      "archives": [
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pd_v1/STARTED.json",
+          "sha256": "a9512c9a5364676a5ac86ebbee88202970c0de5ed00fae40f4872bedb9bbb12c"
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pd_v1/RESULT.json",
+          "sha256": "b41820b1e0a9da80820d0571580829a25c016d155d223209d486ab0f2760de6f"
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pd_v1/RAW.jsonl",
+          "sha256": "b6662872c73ab8b20c0dee2144151596aaa62d4d2f9febb5aa8f9e0d92347dea"
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pd_v1/CHECKPOINT.json",
+          "sha256": "9e94d881a018d72e3b3961defc59e42ff6a3354a6221be4b425d0e125ef3f568"
+        }
+      ],
+      "reported_status": "PASS_CANDIDATE",
+      "sum_alarm_count": 15629,
+      "master_seed": 841120262,
+      "seed_namespace": 941,
+      "new_model_run": false,
+      "success_D": 1000,
+      "lower95_CP": 0.9970087504549047,
+      "criterion": ".90 lower95, N1000, k>=916",
+      "independent_statistical_result": "PASS",
+      "other_counts": {
+        "R": 1000,
+        "V": 1000,
+        "J": 1000
+      },
+      "known_preflight_overlap_indices": [
+        0,
+        1,
+        2
+      ],
+      "independent_acceptance_recommendation": "Supplementary evidence; disclose reused3 smoke CPIs, no formal independent-protocol acceptance inferred"
+    },
+    {
+      "campaign": "fixed_stat_campaign_20261113_pfa_v1",
+      "profile": "pfa",
+      "N": 20000,
+      "raw_count": 20000,
+      "indices_contiguous": true,
+      "raw_hash_verified": true,
+      "input_hashes_unique": true,
+      "archived_sources": [
+        {
+          "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+          "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_pd_pfa_campaign_v1.py",
+          "sha256": "eaf59feda65b22daa3fd9f7e189fd6565db199be989d5d3ad72e11b76db2d670",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_pd_pfa_diagnostic_v1.py",
+          "sha256": "84b5975b2e70cd9c556a0060530fcb206813ee64c6e766163ae849cf08c0750f",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+          "sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+          "sha256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/model.py",
+          "sha256": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/pd_acceptance_candidate.py",
+          "sha256": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea",
+          "verified": true
+        }
+      ],
+      "archives": [
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pfa_v1/STARTED.json",
+          "sha256": "65382e87d9c9e2469d30ae58a6b52517edc6d9654154282d30e2a3e8d3ea5988"
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pfa_v1/RESULT.json",
+          "sha256": "a1a28f90da0d42e03bbe12fda3adae1892116d40f1151919073568865a4e34aa"
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pfa_v1/RAW.jsonl",
+          "sha256": "230eac9f181f8688754f2c8b722aff3cff036422056aa7f8100dd028c5bc23af"
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_stat_campaign_20261113_pfa_v1/CHECKPOINT.json",
+          "sha256": "5f5204c73ea4d1c2a083d2e91ffa2e062e8a3fd8c69eff3eb6e5c83378710cde"
+        }
+      ],
+      "reported_status": "PASS_CANDIDATE",
+      "sum_alarm_count": 55429,
+      "master_seed": 841120261,
+      "seed_namespace": 941,
+      "new_model_run": false,
+      "mean_Pfa": 0.0009962077641984183,
+      "variance_CPI": 5.087666603384012e-07,
+      "upper95_EB": 0.0014402981113345271,
+      "criterion": "U95<=.0015, N20000, independent CPI unit",
+      "independent_statistical_result": "PASS",
+      "known_preflight_overlap_indices": [
+        0,
+        1,
+        2
+      ],
+      "independent_acceptance_recommendation": "Supplementary evidence; disclose reused3 smoke CPIs, no formal independent-protocol acceptance inferred"
+    },
+    {
+      "campaign": "fft_ip_stat_campaign_20261113_pd_v1",
+      "profile": "pd",
+      "N": 1000,
+      "raw_count": 1000,
+      "indices_contiguous": true,
+      "raw_hash_verified": true,
+      "input_hashes_unique": true,
+      "archived_sources": [
+        {
+          "path": "/opt/Xilinx/14.7/ISE_DS/ISE/sysgen/lib/lin64/libIp_xfft_v7_1_bitacc_cmodel.so",
+          "sha256": "4a8f02f24f269bc947d5f0d3e89a73916f763b8491c7a0f4e68b4bee88a994a9",
+          "verified": true
+        },
+        {
+          "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+          "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_fullchain_v1.py",
+          "sha256": "4b45de0ba866d104bac4994af290cc3f9e4ab5d6566c39dadb2014a033edd27b",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_pd_pfa_campaign_v1.py",
+          "sha256": "9d99dc96ddcb1c4055dd143774cdbd010333acb1e39b6a0cb67f6adc465054f5",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_pd_pfa_diagnostic_v1.py",
+          "sha256": "84b5975b2e70cd9c556a0060530fcb206813ee64c6e766163ae849cf08c0750f",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+          "sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+          "sha256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/model.py",
+          "sha256": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/pd_acceptance_candidate.py",
+          "sha256": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea",
+          "verified": true
+        }
+      ],
+      "archives": [
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pd_v1/STARTED.json",
+          "sha256": "2d22eb52fd72e30556345af86a5849e52536b2c8b1881e30829ea32f358b6f67"
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pd_v1/RESULT.json",
+          "sha256": "9fc39bab914935e30b43ba5348d3e68f7bd95500976e455bba241f87adf11ba5"
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pd_v1/RAW.jsonl",
+          "sha256": "e8d20a9a0643cc3e5885433f5e25525e5b3c58008402129365ec85d655886d1b"
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pd_v1/CHECKPOINT.json",
+          "sha256": "813f8cf8211b03bb0d2af6ad69a2ed75045def546c9081c7f233f206d2d8bf5a"
+        }
+      ],
+      "reported_status": "PASS_CANDIDATE",
+      "sum_alarm_count": 15640,
+      "master_seed": 992611141,
+      "seed_namespace": 811,
+      "new_model_run": false,
+      "success_D": 1000,
+      "lower95_CP": 0.9970087504549047,
+      "criterion": ".90 lower95, N1000, k>=916",
+      "independent_statistical_result": "PASS",
+      "other_counts": {
+        "R": 1000,
+        "V": 1000,
+        "J": 1000
+      },
+      "independent_acceptance_recommendation": "Recommend scoped S04 model-level statistical acceptance; engineer decision pending; no blanket FPGA equivalence"
+    },
+    {
+      "campaign": "fft_ip_stat_campaign_20261113_pfa_v1",
+      "profile": "pfa",
+      "N": 20000,
+      "raw_count": 20000,
+      "indices_contiguous": true,
+      "raw_hash_verified": true,
+      "input_hashes_unique": true,
+      "archived_sources": [
+        {
+          "path": "/opt/Xilinx/14.7/ISE_DS/ISE/sysgen/lib/lin64/libIp_xfft_v7_1_bitacc_cmodel.so",
+          "sha256": "4a8f02f24f269bc947d5f0d3e89a73916f763b8491c7a0f4e68b4bee88a994a9",
+          "verified": true
+        },
+        {
+          "path": "engineering/S04-C02-SELECTED-C-EXECUTABLE-ARITHMETIC-CONTRACT-v1.0.json",
+          "sha256": "c7991b50a010a5646b6d2baa9b0eb86874fcc0d101fe9bb54c9ea575be06c856",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_fullchain_v1.py",
+          "sha256": "4b45de0ba866d104bac4994af290cc3f9e4ab5d6566c39dadb2014a033edd27b",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_pd_pfa_campaign_v1.py",
+          "sha256": "9d99dc96ddcb1c4055dd143774cdbd010333acb1e39b6a0cb67f6adc465054f5",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/fixed_pd_pfa_diagnostic_v1.py",
+          "sha256": "84b5975b2e70cd9c556a0060530fcb206813ee64c6e766163ae849cf08c0750f",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py",
+          "sha256": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+          "verified": true
+        },
+        {
+          "path": "engineering/s04_numeric/s04_c05_native_integer_v1.py",
+          "sha256": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/model.py",
+          "sha256": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b",
+          "verified": true
+        },
+        {
+          "path": "s03_reference/pd_acceptance_candidate.py",
+          "sha256": "aa0661b52aa56a1da3b3b41332f0927eba58f4fcddace12a391c2488404784ea",
+          "verified": true
+        }
+      ],
+      "archives": [
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pfa_v1/STARTED.json",
+          "sha256": "d2448fe754ad0d339fcc29593f08510ca04e22e895aff943d7c7688f7c0a23a5"
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pfa_v1/RESULT.json",
+          "sha256": "5220debfc2f2c228f637bf8a8b6e4b9a1db75f9e55bc010fa4d6f4ee4e87058a"
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pfa_v1/RAW.jsonl",
+          "sha256": "12401023813ce971258310485e3ea33dffaefde429c00fa8a8f206d034f898d0"
+        },
+        {
+          "path": "engineering/s04_numeric/fft_ip_stat_campaign_20261113_pfa_v1/CHECKPOINT.json",
+          "sha256": "f45c044f62a95450b4bbd466ca5dfebe1d456c072132711ca0d4b4e74507e4a0"
+        }
+      ],
+      "reported_status": "PASS_CANDIDATE",
+      "sum_alarm_count": 56122,
+      "master_seed": 992611142,
+      "seed_namespace": 811,
+      "new_model_run": false,
+      "mean_Pfa": 0.0010086628324946082,
+      "variance_CPI": 5.200841873741215e-07,
+      "upper95_EB": 0.001452904715042641,
+      "criterion": "U95<=.0015, N20000, independent CPI unit",
+      "independent_statistical_result": "PASS",
+      "independent_acceptance_recommendation": "Recommend scoped S04 model-level statistical acceptance; engineer decision pending; no blanket FPGA equivalence"
+    }
+  ],
+  "hardware_snapshot": {
+    "recorded_at_utc": "2026-11-13T20:21:27.092489+00:00",
+    "mode": "READ_ONLY_COMPLETED_PREFIX_SNAPSHOT",
+    "profile": "pd",
+    "checked_completed_prefix": 118,
+    "total_planned": 1000,
+    "D_successes_in_checked_prefix": 118,
+    "final_result_exists": false,
+    "Pfa_started": false,
+    "running_process_observed": 47221,
+    "completed_capture_hashes_verified": true,
+    "independent_alarm_recount_verified_in_prior_read": true,
+    "IQ_and_Power_NPZ_roundtrip_verified_in_prior_read": true,
+    "not_final_acceptance": true,
+    "runner": {
+      "path": "engineering/s04_numeric/hardware_pd_pfa_capture_v1.py",
+      "sha256": "bb071395f6a4b72cc804e6550221381835b885a081fd4a81a160bcd839dc8b38"
+    },
+    "driver": {
+      "path": "pc_link/board_dsp.py",
+      "sha256": "26284c2a5184623dec2ec2afb69aaa5627ed6aa268ce8ccc1920f420114dd42f"
+    },
+    "start_manifest": {
+      "path": "engineering/s04_numeric/hardware_stat_campaign_20261113_pd_v1/STARTED.json",
+      "sha256": "50f50b87164e10dc190990f00ef8052a0908e91a3435ee6bd878865f1c05eb04"
+    },
+    "caveats": [
+      "Pfa is C05 reconstruction from actual downloaded FPGA Power, not direct RTL mask readback",
+      "internal_events=0 is hardcoded, not measured hardware overflow telemetry",
+      "Disk bitstream hash is a local artifact identity, not independent readback attestation of loaded SRAM image",
+      "Full input IQ, Power map, final records and journal are archived; MF/MTI/FFT intermediate outputs are not captured in this campaign",
+      "Transport retries of identical frames are distinct from sample replacement; no sample replacement is allowed"
+    ],
+    "result_not_modified": true,
+    "UART_not_opened": true
+  },
+  "protection": [
+    {
+      "repository": "main",
+      "file_count": 1361,
+      "all_entry_hashes_unchanged": true,
+      "HEAD": "d45d350803c418f86cfc4fbfa098a9140daeedf5"
+    },
+    {
+      "repository": "stage_lab",
+      "file_count": 2961,
+      "all_entry_hashes_unchanged": true,
+      "HEAD": "6c86a2e16b283d2cef82fd7be351b0b34ff95d74"
+    }
+  ],
+  "historical_gate_unchanged": true,
+  "current_technical_recommendation": "Accept FFT-IP model-level Pd and Pfa in exactly declared population after engineer decision; preserve S11 pending",
+  "dialogue_provenance": "Current pasted context is preserved; intervening other-chat full dialogue not supplied and not fabricated"
+}

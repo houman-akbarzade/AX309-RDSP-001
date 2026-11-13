@@ -1,0 +1,9 @@
+# S07 Stage Lab release metadata Hash resolution — 2026-11-14
+
+The Stage Lab v0.2 manifest declares source_commit e52c432 and lists SHA-256 1d453d01d1d3523b4593a00477765f632f6e6a6c227d72b6c535ad428e1ad2d6 for stage_lab/release.json. A direct Git-history search shows that exact release.json content first appears in later commit 1d9e709, not e52c432. The two added JSON fields were source_commit="e52c432" and release_tag="lab/stage-lab-v0.2.0". The source_commit value identifies the code baseline while the release metadata was finalized in the following documentation commit. The manifest combines those two moments in one source list, so a literal check of all entries against its single declared source_commit gives 25/26, with release.json as the only mismatch.
+
+This is a **manifest chronology error for a metadata file**, not an unexplained hash corruption: the expected hash has a matching committed Git object, and the exact two-field difference is visible in Git diff e52c432..1d9e709. Current HEAD has further legitimate v0.3 metadata changes, so it must not be compared as if it were the frozen v0.2 snapshot. None of the 25 other source entries changed in the pinned check. All 249 Stage Lab archived evidence files match their manifest hashes in the original Stage Lab worktree, including simulation logs and vectors.
+
+Final-report wording: “The Stage Lab v0.2 source manifest points to code commit e52c432 but records release.json as finalized in subsequent commit 1d9e709. The release metadata differs by the added source_commit and release_tag fields; 25/26 entries match e52c432 and the 26th matches 1d9e709. All 249 archived evidence hashes match. The discrepancy does not alter the simulation result, and it remains documented rather than silently rewriting the historical manifest.”
+
+Verification was read-only; no manifest, source, historical result, test or FPGA image was changed.

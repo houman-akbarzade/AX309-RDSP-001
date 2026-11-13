@@ -1,0 +1,22 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "GATE-S07-RTL-SIMULATION-APPROVED-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit current-conversation approval",
+  "status": "GATE_S07_CLOSED_PASS_FINITE_SIMULATION_SCOPE",
+  "approved_package": "engineering/S07-GATE-READINESS-20261114.md",
+  "entry": "decisions/GATE-S06-RTL-TESTBENCH-APPROVED-20261114.json",
+  "evidence": [
+    "engineering/evidence/s10/full_ip_20261112/simulation/sim.log.gz",
+    "engineering/evidence/stage_lab_v0.2/simulation-results.json",
+    "engineering/evidence/stage_lab_v0.2/simulation/uart/sim.log.gz"
+  ],
+  "provenance_note": "engineering/audit/S07-STAGE-LAB-RELEASE-HASH-RESOLUTION-20261114.md",
+  "scope": "Two full FFT-IP/UART CPI in structural ISim and retained finite isolated stage/edge/protocol simulations",
+  "next_stage": "S08 synthesis and mapping evidence review",
+  "not_claimed": [
+    "Exhaustive scenario or protocol coverage",
+    "S08/S09 resource and timing acceptance",
+    "S11 physical-board or statistical acceptance"
+  ]
+}

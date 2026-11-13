@@ -1,0 +1,16 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S01-S02-RANGE-MATRIX-LIST-CLARIFICATION-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit approval in current conversation",
+  "status": "APPROVED_LIMITED_AMENDMENT",
+  "approved_proposal": "engineering/audit/S05-RANGE-MATRIX-TARGET-LIST-AMENDMENT-PROPOSAL-20261114.md",
+  "normative_amendment": "engineering/S01-S02-RANGE-MATRIX-LIST-OBS-AMENDMENT-v1.0.md",
+  "scope": [
+    "Logical range data formation may use deterministic recomputation instead of persistent complete MF matrix.",
+    "FPGA grouping records constitute the target-list output; host may convert range/bin to physical units under a recorded contract.",
+    "Six selected processing readbacks plus verified raw IQ map the seven S01 functions without requiring seven independent output ports.",
+    "Complete bit-true comparisons and repeatability, lossless target list, and S11 physical acceptance remain binding."
+  ],
+  "gate_effect": "No automatic S05 or S11 PASS and no change to historical S04 decision."
+}

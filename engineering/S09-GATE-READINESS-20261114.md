@@ -1,6 +1,6 @@
 # S09 Gate readiness — routed timing and constraint coverage
 
-Date: 2026-11-14. Status: **NOT READY FOR UNQUALIFIED APPROVAL**.
+Date: 2026-11-14. Status: **READY FOR ENGINEER REVIEW WITH DOCUMENTED ASYNCHRONOUS-BOUNDARY DISPOSITION**.
 
 Basis: archived full-chain ISE 14.7 PAR/TRCE in `engineering/evidence/s10/full_ip_20261112/implementation/`, selected `rtl/uart/AX309_UART_S05.ucf`, and additional TRCE `engineering/audit/S09-unconstrained-audit-20261114.twr` generated from the existing placed-and-routed NCD/PCF with `trce -v 10 -u 20 -s 2`. No new PAR or bitstream was generated.
 
@@ -13,3 +13,7 @@ Basis: archived full-chain ISE 14.7 PAR/TRCE in `engineering/evidence/s10/full_i
 | Warning disposition | PAR has 39 warnings, including 37 loadless outputs already logged at S08. No timing error inferred from their count. | Tracked, not independently blocking if unchanged |
 
 The original TRCE's “All constraints were met” refers to the applied 20 ns clock constraint, not exhaustive coverage. S09 acceptance requires nonnegative WNS and no unconstrained intended functional clocks or critical paths. Until the asynchronous-boundary and clock-distribution classifications are explicitly reviewed, ask the engineer for no final S09 Gate approval. Physical UART performance and board acceptance belong to S11.
+
+## Follow-up 2026-11-14
+
+A full -u 5000 review classified all 4376 reported unconstrained-path entries as clk50 PAD to clock-pin distribution (4131 FF, 236 RAM, 9 DSP), not functional data paths. The five OFFSET I/O entries are asynchronous reset/UART boundaries with RTL synchronization/serial sampling rationale. See `engineering/audit/S09-UNCONSTRAINED-PATH-DISPOSITION-20261114.md`. This later classification supersedes the OPEN classifications above; it does not alter the archived initial finding. S09 timing evidence is ready for engineer Gate review under this explicit interpretation.

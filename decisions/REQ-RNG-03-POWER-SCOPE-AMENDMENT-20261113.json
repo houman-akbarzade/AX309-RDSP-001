@@ -1,0 +1,73 @@
+{
+  "schema_version": "engineering-scope-amendment-v1",
+  "decision_id": "REQ-RNG-03-POWER-SCOPE-AMENDMENT-001",
+  "project_id": "AX309-RDSP-001",
+  "recorded_at_utc": "2026-11-13T16:35:18.372229+00:00",
+  "original_platform_message_time_utc": null,
+  "authority": "Project engineer, explicit current user decision",
+  "stage_of_review": "S04",
+  "affected_baseline_stage": "S02",
+  "disposition": "APPROVED_POWER_OUTPUT_SCOPE_ONLY",
+  "engineer_message_id": "AX309-20261113-RNG03-POWER-SCOPE-engineer",
+  "engineer_message_text_sha256": "b1744350bc7a656cf4db3ab564729540786aac36b5b8bc57b98404003691f1de",
+  "preceding_agent_rationale_message_ids": [
+    "AX309-AUDIT-20261113-GROUPING-POLICY-agent",
+    "AX309-AUDIT-20261113-RESOLUTION-NOTE-agent"
+  ],
+  "approved_artifact": "engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md",
+  "approved_artifact_sha256": "3db280c9b6fb21204bf2df9e447704c40449af3edec3bb412865d9c9af7d0b8b",
+  "approved_change": {
+    "requirement_id": "REQ-RNG-03",
+    "observation_point": "Power output after Doppler FFT and before CFAR/Grouping",
+    "excluded_from_this_requirement": [
+      "Two separate CFAR connected regions",
+      "Two final target/cluster records"
+    ],
+    "other_requirement_acceptance_changed": false
+  },
+  "not_approved_by_this_decision": [
+    "Specific new peak/valley acceptance rule",
+    "3dB valley threshold",
+    "Retrospective Power-domain PASS",
+    "New statistical or physical qualification",
+    "Waveform/algorithm/RTL/test changes",
+    "Any new Gate closure",
+    "Merge or publication"
+  ],
+  "old_result": {
+    "criterion": "Separate matched final target records",
+    "status": "FAIL",
+    "passed": 4,
+    "mandatory": 8,
+    "historical_result_preserved": true
+  },
+  "current_revised_requirement_status": "APPROVED_SCOPE_ACCEPTANCE_CRITERION_AND_DISPOSITION_PENDING",
+  "effective_precedence": "Supersedes only CFAR/cluster-record separability as the assessment point of REQ-RNG-03 from this decision onward. All historical outcomes and independent requirements remain intact.",
+  "reference_snapshot_commit": "6564f56be82aefd16ad00786f494707b32a49905",
+  "references": [
+    {
+      "path": "engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json",
+      "sha256": "06141a707a24ffcf08aa21dfa3a6e3f48d699b5234bb025b217f10abcd921da9"
+    },
+    {
+      "path": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2"
+    },
+    {
+      "path": "decisions/S04-C05-INDEPENDENT-ENGINEER-SIGNOFF-v1.0.md",
+      "sha256": "78d35bdf2e0edbb46bc7256939a505cafdd5f210b9536737c25b8b0b0cdee0de"
+    },
+    {
+      "path": "decisions/S04-C08-S05-TRANSITION-2026-11-12.json",
+      "sha256": "2e6742a44e718d1b490022588d1b4e2c575defeb27338f7370b2549d32c4617d"
+    },
+    {
+      "path": "engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md",
+      "sha256": "3db280c9b6fb21204bf2df9e447704c40449af3edec3bb412865d9c9af7d0b8b"
+    }
+  ]
+}

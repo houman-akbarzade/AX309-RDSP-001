@@ -1,0 +1,497 @@
+{
+  "recorded_at_utc": "2026-11-13T16:38:36.214072+00:00",
+  "supersedes_for_current_review": "engineering/audit/REQUIREMENTS-CURRENT-AUDIT-v2.json",
+  "note": "EVIDENCE_SUFFICIENT means the stated scoped claim is documented; it is not blanket requirement/Gate PASS. Approved numeric baseline unchanged. Original traceability snapshot preserved.",
+  "rows": [
+    {
+      "requirement_id": "REQ-IO-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Identical vector bytes and no undetected corruption",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "Finite board IQ byte readback and finite Lab input-word hashes",
+      "evidence": [
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        }
+      ],
+      "limitations": "Complete negative-case qualification and final transport acceptance not inferred.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-LFM-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Document precise chirp phase, index, time support and quantization; bit-true numerical equality later",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 chirp support/phase, direct MF and accepted reference scope",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        }
+      ],
+      "limitations": "Reference-model scope; not a new hardware waveform/population acceptance.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-SNR-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Exact theoretical sigma² convention and stage reference; empirical tolerance/test length specified",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 SNR definition and real/imag noise-variance tests",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        }
+      ],
+      "limitations": "Model convention verified; do not transfer population claims to physical hardware.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-RNG-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "For integer delay k and 16-sample echo, full containment iff 0<=k<=112; not equivalent to CFAR valid domain",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 boundary MF across all 113 contained integer delays",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        }
+      ],
+      "limitations": "This is full-echo containment and reference indexing, not two-target resolution.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-MF-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Zero peak-index error in declared valid MF bin set",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 zero-error MF/index tests and finite Lab Fixed equality",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        }
+      ],
+      "limitations": "No exhaustive physical-input-space acceptance inferred.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-RNG-02",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Define pass fraction and confidence criterion before stochastic tests",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "S03 fixed-scene range scoring and finite board associations",
+      "evidence": [
+        {
+          "path": "engineering/S03-Pd-MAIN-1000CPI-v1/RESULT.json",
+          "sha256": "ee0caae031c1e3dd96264232f07d7a57db4745f2482ec72357df2ba85cbbb510"
+        },
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        }
+      ],
+      "limitations": "One accepted fixed scene does not establish all population/scene range-accuracy conditions.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-RNG-03",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Freeze resolved-pair definition, equal received power, success criterion",
+      "audit_result_for_stated_scope": "CRITERION_NOT_DEFINED",
+      "supported_scope": "Engineer-approved Power-only observation point; exact operational acceptance predicate pending",
+      "evidence": [
+        {
+          "path": "decisions/S04-C08-S05-TRANSITION-2026-11-12.json",
+          "sha256": "2e6742a44e718d1b490022588d1b4e2c575defeb27338f7370b2549d32c4617d"
+        },
+        {
+          "path": "decisions/REQ-RNG-03-POWER-SCOPE-AMENDMENT-20261113.json",
+          "sha256": "7704dc927e754b1511b8d758e95f899a8ecf3cb0e57f4fcc963e2927cc0b8780"
+        },
+        {
+          "path": "engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md",
+          "sha256": "3db280c9b6fb21204bf2df9e447704c40449af3edec3bb412865d9c9af7d0b8b"
+        },
+        {
+          "path": "engineering/audit/REQ-RNG-03-POWER-CANDIDATE-CRITERIA-REVIEW.json",
+          "sha256": "214939ea46cc064ae56e8376d39a8fbc6d27a94df2814fd5b283be4ab567b251"
+        }
+      ],
+      "limitations": "Historical final-record result remains FAIL4/8. Retained Float/C02 Power supports8/8 under proposed two-local-peak criterion and2/8 under illustrative3dB criterion. Neither criterion nor new PASS is approved.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit",
+      "current_scope_document": "engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md",
+      "current_scope_decision": "decisions/REQ-RNG-03-POWER-SCOPE-AMENDMENT-20261113.json",
+      "historical_result": "FAIL_4_OF_8_UNDER_PREVIOUS_RECORD_DOMAIN_CRITERION"
+    },
+    {
+      "requirement_id": "REQ-MTI-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Bit-true outputs exact; numeric dB suppression tolerance derived from architecture",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 DC/Nyquist tests and finite stationary/slow/moving Lab evidence",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        },
+        {
+          "path": "engineering/evidence/auto_lab_v0.3/release-validation.json",
+          "sha256": "3b2b4c6714aef3098579427ff6c76de7620157f1071fac65d6b7ef1c0bcbf915"
+        }
+      ],
+      "limitations": "Scoped functional/numeric result; blanket physical suppression qualification not inferred.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-DOP-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "For eligible isolated-dominant targets only, |estimated_velocity - nearest_true_bin_velocity| <=0.234375 m/s using agreed nominal c_ref; output tie and zero-power states always deterministic bit-exact with flags; ineligible separately logged.",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 signed/on/off-bin/tie reference tests and finite FFT Lab equality",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        }
+      ],
+      "limitations": "Accuracy claims restricted to declared eligible isolated-target/reference cases.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-CFAR-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "7x7 CA-CFAR excluding central 3x3, 40 training cells, CUT k=3..109 and b=3..28, linear power threshold strict greater-than; bittrue match; alpha calibration on disjoint S03 data and quantization in S04.",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 geometry/strict comparison/manual 40-cell sum; finite Lab decision equality",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        }
+      ],
+      "limitations": "Finite verified configurations; not general statistical acceptance.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-CFAR-02",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "APPROVED: after frozen baseline SHA checks and preflight 16/16, engineer_message_30 authorizes one fixed final trial of exactly 20000 fresh independent noise-only CPI; PASS if valid EB U<=.0015, FAIL if valid U>.0015, INCONCLUSIVE/BLOCKED for missing CPI/nonfinite/integrity/independence failures, no top-up.",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "Approved S03 noise-only N=20000 Pfa aggregate independently recalculated",
+      "evidence": [
+        {
+          "path": "engineering/audit/PFA-ARCHIVED-ARITHMETIC-REVIEW.json",
+          "sha256": "80cc56c7cb918b09f0ce3d47295f7e9b318752ab7f6536c60eb0b5b1f0a4fe7c"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        }
+      ],
+      "limitations": "Software model only; Fixed-Point/IP/physical statistical qualification remains OPEN.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-PD-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Design target only until model reference feasibility and confidence/test definition; report 0/10dB without minima",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "Approved S03 fixed-scene N=1000 Pd aggregate independently checked",
+      "evidence": [
+        {
+          "path": "engineering/audit/ARCHIVED-AGGREGATE-REVIEW.json",
+          "sha256": "e260b679ee189afff6028e306615964551cf795c6a7753b59d15184a6ad290a5"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        }
+      ],
+      "limitations": "SNR20 single on-bin no-clutter model; full original IQ/power arrays not archived.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-SCR-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Declared SCR relative to specified region, numerical generator tolerance fixed",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "Explicit owner-accepted eleven-case S04 scope",
+      "evidence": [
+        {
+          "path": "decisions/S04-C08-S05-TRANSITION-2026-11-12.json",
+          "sha256": "2e6742a44e718d1b490022588d1b4e2c575defeb27338f7370b2549d32c4617d"
+        },
+        {
+          "path": "engineering/s04_numeric/req_scr01_v1/REQ-SCR-01-RESULTS-v1.0.json",
+          "sha256": "8039f7cb5b975059ffbbf379d85a740f06cba88447a008952f26c76f2ab2fc2a"
+        }
+      ],
+      "limitations": "Accepted historical eleven-case scope; not automatically physical/IP statistical acceptance.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-DET-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Zero deterministic bit mismatches, no many-to-one truth association",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 grouping/tie and one-to-one rules; finite Lab/board records",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        },
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        }
+      ],
+      "limitations": "Equality to stored references in measured cases; not final all-scenario detection acceptance.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-MATCH-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Association gate 2 range samples and 1 velocity bin is for one-to-one attribution only; clean range tolerance zero and conditional velocity <=half-bin are independent performance criteria. A detected target may be matched but fail estimator tolerance.",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "S03 one-to-one assignment unit evidence",
+      "evidence": [
+        {
+          "path": "engineering/S03-unit-tests-v0.5.log",
+          "sha256": "f25a8371a79157434f6f3ecb8f31f469c04ba87164fd6373ed5117b22408d1e6"
+        },
+        {
+          "path": "decisions/GATE-S03-approved-baseline.json",
+          "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+        }
+      ],
+      "limitations": "Association gates are distinct from estimator acceptance tolerances.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-POWER-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Exact bit-true output and documented sample extraction point",
+      "audit_result_for_stated_scope": "EVIDENCE_SUFFICIENT",
+      "supported_scope": "Finite archived Power Fixed equality and nine-case integrated board records",
+      "evidence": [
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        },
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        }
+      ],
+      "limitations": "Scaling/configuration-specific archived comparisons; no unbounded-input claim.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-LIST-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "No silent discard, explicit overflow signal, deterministic record selection",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "702 logical policy approved; finite capacity and board records retained",
+      "evidence": [
+        {
+          "path": "decisions/S05-REQ-LIST-01-LOGICAL-POLICY-APPROVAL-2026-11-12.json",
+          "sha256": "656d7ea04dab556f298b3bbb29efbc2bfe3de8d92ac193738f6cd6c9627a8f8a"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        },
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        }
+      ],
+      "limitations": "Full final transport maximum-capacity/error/recovery acceptance remains OPEN.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-OBS-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Full stage output recoverable and bitwise equal across equivalent runs",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "Per-stage Lab observability implemented and archived",
+      "evidence": [
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        },
+        {
+          "path": "engineering/STAGE-LAB-v0.2-IMPLEMENTATION-REPORT.md",
+          "sha256": "23e9120c2b36886e39fe32905cd9d62f9b2f62c58e1bfb554cac62d01ba0140a"
+        }
+      ],
+      "limitations": "Separate injection images are not proof of every finalized seven-output contract in one continuous full-chain image.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-UART-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Tested faults detected, no silently accepted injected error, recover or explicit failure",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "Finite protocol ISim and real board COMMIT/RELEASE evidence",
+      "evidence": [
+        {
+          "path": "engineering/evidence/s10/full_ip_20261112/manifest.json",
+          "sha256": "1800739eddec93d93eadb6b47c0300422d344c5753d159f678c2d3b139b8bdb3"
+        },
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        }
+      ],
+      "limitations": "New-SID interrupted-session recovery unsupported; final ICD disposition pending.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-RES-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "No physical overuse in DSP/BRAM/LUT/FF and all timing constraints pass; per-resource margin after architecture",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "Final IP full-chain MAP fit and applied 20ns internal timing evidence",
+      "evidence": [
+        {
+          "path": "engineering/evidence/s10/full_ip_20261112/manifest.json",
+          "sha256": "1800739eddec93d93eadb6b47c0300422d344c5753d159f678c2d3b139b8bdb3"
+        }
+      ],
+      "limitations": "Complete external/unconstrained-path review and final numeric configuration acceptance remain open.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-TIME-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "No silent cycle counter rollover; separately reported FPGA processing and host transport; no real-time deadline",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "Host transfer/wait/elapsed timings recorded in retained board journals",
+      "evidence": [
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        }
+      ],
+      "limitations": "Host timings alone do not establish every required FPGA cycle-counter/rollover measurement.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    },
+    {
+      "requirement_id": "REQ-EVID-01",
+      "approved_matrix_source": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+      "approved_matrix_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+      "acceptance_rule_from_original_row": "Stage & integrated evidence from physical AX309; Python reference not substitute for RTL",
+      "audit_result_for_stated_scope": "EVIDENCE_INCOMPLETE",
+      "supported_scope": "Physical full-chain and separate block evidence exist",
+      "evidence": [
+        {
+          "path": "engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json",
+          "sha256": "11cd7b7b87c6f6a97e8bbe94331c9f063e6003608d43abfcac13428f44d8cc3e"
+        },
+        {
+          "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+          "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+        }
+      ],
+      "limitations": "Final requirement-by-configuration and Gate acceptance still need reconciliation.",
+      "whole_project_requirement_PASS_asserted": false,
+      "formal_acceptance_source": "See explicit historical decisions; no new acceptance granted by this audit"
+    }
+  ],
+  "current_requirement_scope_amendment": "decisions/REQ-RNG-03-POWER-SCOPE-AMENDMENT-20261113.json"
+}

@@ -80,7 +80,7 @@ Cases include noise-bearing single/multiple targets, clutter, close targets, low
 
 ## Known limitations and open items
 
-- REQ-RNG-03 remains FAIL: 4/8 mandatory cases against an unchanged 8/8 requirement.
+- REQ-RNG-03 retains its historical final-record FAIL4/8. A later engineer amendment limits current acceptance to Power output; the revised quantitative criterion and evidence disposition remain pending.
 - Fixed-Point statistical performance qualification remains OPEN.
 - Approved S03 Pfa/Pd studies apply to separately defined Python floating-point populations, not this full FPGA IP chain.
 - The 1,000-CPI Pd study retains per-CPI summaries and hashes, not complete original IQ and full Power arrays.
@@ -115,3 +115,5 @@ Read [the engineering development history](engineering/ENGINEERING-DEVELOPMENT-H
 The later [37-page PDF recovery](engineering/audit/PDF-CONVERSATION-RECOVERY.md) adds fuller mission and interruption history, source-page references, and the recovered stationary-target screenshot. Printed/extracted messages remain distinguished from original verbatim archive records.
 
 Current stepwise review: [S03 approval and S04 carryovers](engineering/audit/S03-S04-STEPWISE-REVIEW.md). This records prior evidence, not a new test execution or automatic stage advancement.
+
+Current requirement amendment: [REQ-RNG-03 Power-only scope](engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md), explicitly directed by the engineer. This changes the measurement point without changing stable processing code or rewriting historical results.

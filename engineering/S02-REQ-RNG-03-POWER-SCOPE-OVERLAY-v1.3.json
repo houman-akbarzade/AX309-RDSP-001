@@ -1,0 +1,56 @@
+{
+  "schema_version": "limited-requirement-overlay-v1",
+  "version": "v1.3-REQ-RNG-03-POWER-SCOPE",
+  "project_id": "AX309-RDSP-001",
+  "status": "ENGINEER_APPROVED_SCOPE_ONLY",
+  "base_matrix": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+  "base_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+  "authority_decision": "decisions/REQ-RNG-03-POWER-SCOPE-AMENDMENT-20261113.json",
+  "authority_decision_sha256": "7704dc927e754b1511b8d758e95f899a8ecf3cb0e57f4fcc963e2927cc0b8780",
+  "normative_scope_document": "engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md",
+  "normative_scope_sha256": "3db280c9b6fb21204bf2df9e447704c40449af3edec3bb412865d9c9af7d0b8b",
+  "affected_requirement_ids": [
+    "REQ-RNG-03"
+  ],
+  "unchanged_other_requirement_ids": [
+    "REQ-IO-01",
+    "REQ-LFM-01",
+    "REQ-SNR-01",
+    "REQ-RNG-01",
+    "REQ-MF-01",
+    "REQ-RNG-02",
+    "REQ-MTI-01",
+    "REQ-DOP-01",
+    "REQ-CFAR-01",
+    "REQ-CFAR-02",
+    "REQ-PD-01",
+    "REQ-SCR-01",
+    "REQ-DET-01",
+    "REQ-MATCH-01",
+    "REQ-POWER-01",
+    "REQ-LIST-01",
+    "REQ-OBS-01",
+    "REQ-UART-01",
+    "REQ-RES-01",
+    "REQ-TIME-01",
+    "REQ-EVID-01"
+  ],
+  "changes": {
+    "measurement_point": "Power output after FFT, before CFAR/Grouping",
+    "verification_product": "Power-map/range-profile separability",
+    "not_acceptance_conditions_of_this_requirement": [
+      "Separate CFAR components",
+      "Separate final cluster/target records"
+    ],
+    "quantitative_resolved_definition": "PENDING_ENGINEER_APPROVAL",
+    "result_status": "OPEN_REVISED_ACCEPTANCE_CRITERION_PENDING"
+  },
+  "historical_outcome": {
+    "criterion": "Final-record two-target separation",
+    "pass_count": 4,
+    "mandatory_count": 8,
+    "status": "FAIL",
+    "source": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json"
+  },
+  "no_Gate_or_source_change": true
+}

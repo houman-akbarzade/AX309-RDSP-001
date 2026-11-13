@@ -1,6 +1,6 @@
 # FPGA Engineering Repository Compliance Audit
 
-Latest reconciled status: [CURRENT-PROJECT-STATUS.md](CURRENT-PROJECT-STATUS.md). Earlier sections below are historical audit checkpoints. The current 22-row scope assessment is REQUIREMENTS-CURRENT-AUDIT-v2.json.
+Latest reconciled status: [CURRENT-PROJECT-STATUS.md](CURRENT-PROJECT-STATUS.md). Earlier sections below are historical audit checkpoints. The current 22-row scope assessment is REQUIREMENTS-CURRENT-AUDIT-v3.json, including the explicit Power-only RNG03 amendment.
 
 Project: AX309-RDSP-001  
 Audit date: 2026-11-13  
@@ -153,3 +153,7 @@ The owner requests requirement-by-requirement stage review before advancing. S03
 ## S04 extractor compatibility finding
 
 The owner hypothesized that CFAR retained close targets but grouping merged them. Retained Power/mask inspection supports this for all four failed mandatory cases: both local maxima survive CFAR, while connected-component reduction keeps one record per region. Exact observations, shallow-valley limitations and a change-controlled candidate direction are recorded separately. EXP-AX309-019 is CANDIDATE only. No criterion, code, Gate or historical result was changed.
+
+## Explicit engineer amendment: REQ-RNG-03 Power only
+
+The owner formally changes the range-separability observation point to Power, excluding CFAR/Grouping record multiplicity from this requirement. A limited normative S02 v1.3 overlay and source-backed decision are recorded. S02–S04 impact recommendations preserve old signatures/results, update current carryover interpretation and keep separate output/statistical obligations intact. Proposed Power predicates have different archived-data outcomes (two-local-peak8/8 vs illustrative3dB2/8); no numerical acceptance rule or new PASS was silently approved.

@@ -1,0 +1,29 @@
+{
+  "workflow": "OWNER_REQUESTED_STEPWISE_STAGE_REVIEW",
+  "current_stage_review": "S04",
+  "does_not_reopen_closed_gate": true,
+  "S03_existing_approval": "CONFIRMED_IN_ORIGINAL_SCOPE",
+  "items": [
+    {
+      "order": 1,
+      "id": "REQ-RNG-03",
+      "state": "TESTED_FAIL_4_OF_8_RETAINED",
+      "next": "Discuss separability limitation and existing criterion; no automatic retest or requirement relaxation",
+      "review": "engineering/audit/S03-S04-STEPWISE-REVIEW.md"
+    },
+    {
+      "order": 2,
+      "id": "S04-C02-RISK-PERFORMANCE",
+      "state": "STATISTICAL_QUALIFICATION_OPEN",
+      "next": "If qualification is required now, identify numerical configuration/population and approve bounded protocol/execution; no study run by this review"
+    },
+    {
+      "order": 3,
+      "stage": "S05_and_later",
+      "state": "DEFERRED_UNTIL_OWNER_CONTINUES_STEPWISE_REVIEW",
+      "existing_proposal": "engineering/audit/AS-BUILT-DISPOSITION-PROPOSAL.json"
+    }
+  ],
+  "original_queue_preserved": "engineering/audit/ENGINEER-DECISIONS-QUEUE.json",
+  "no_new_engineering_acceptance_record": true
+}

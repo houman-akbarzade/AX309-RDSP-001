@@ -1,0 +1,186 @@
+{
+  "schema_version": "s04-carryover-review-v1",
+  "recorded_at_utc": "2026-11-13T15:59:06.128233+00:00",
+  "reviewed_repo_commit": "37d25afbaef2d2273063d36415a1050f1497de64",
+  "S03": {
+    "existing_decision": "GATE-S03-APPROVAL-001",
+    "approved_scope": "S03 Python floating-point functional reference validation and approved narrowly scoped statistical Pfa/Pd only",
+    "approved_artifact_checks": [
+      {
+        "path": "engineering/S02-C-CFAR-02-CONTRACT-APPROVED-v1.2.md",
+        "approved_sha256": "6e07ab218cd76f8358d56e3de0bbbc57dc62eff82b702222c0bb47f3b9ca1f3e",
+        "actual_sha256": "6e07ab218cd76f8358d56e3de0bbbc57dc62eff82b702222c0bb47f3b9ca1f3e",
+        "match": true
+      },
+      {
+        "path": "engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json",
+        "approved_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+        "actual_sha256": "23f07e63950c8bd4f3b04a805c37a46792b0068ae918b25d0713dd65a15c51a0",
+        "match": true
+      },
+      {
+        "path": "engineering/S03-C04-FINAL-Pfa-20000CPI-EmpiricalBernstein-v1.2.json",
+        "approved_sha256": "6dab2a8a6669b698a53e74f88105b61169c02f819ac72d3674a94d34aca9cc7f",
+        "actual_sha256": "6dab2a8a6669b698a53e74f88105b61169c02f819ac72d3674a94d34aca9cc7f",
+        "match": true
+      },
+      {
+        "path": "engineering/S03-FINAL-GATE-READINESS-v1.0.json",
+        "approved_sha256": "cd5c8ae4faf3208e3ba97c810515041e213d904d4e428226180cb1b11489116b",
+        "actual_sha256": "cd5c8ae4faf3208e3ba97c810515041e213d904d4e428226180cb1b11489116b",
+        "match": true
+      },
+      {
+        "path": "engineering/S03-FINAL-GATE-READINESS-v1.0.md",
+        "approved_sha256": "53c6840c98e5743c8432e0155329966256cba44d740c778b8f3483897f56b8fc",
+        "actual_sha256": "53c6840c98e5743c8432e0155329966256cba44d740c778b8f3483897f56b8fc",
+        "match": true
+      },
+      {
+        "path": "engineering/S03-Pd-MAIN-1000CPI-v1/RAW-CPI-records.jsonl",
+        "approved_sha256": "a676ee7f23065e9a72ce14121172805d80cc9a9358b79e9c960809433b70ae55",
+        "actual_sha256": "a676ee7f23065e9a72ce14121172805d80cc9a9358b79e9c960809433b70ae55",
+        "match": true
+      },
+      {
+        "path": "engineering/S03-Pd-MAIN-1000CPI-v1/RESULT.json",
+        "approved_sha256": "ee0caae031c1e3dd96264232f07d7a57db4745f2482ec72357df2ba85cbbb510",
+        "actual_sha256": "ee0caae031c1e3dd96264232f07d7a57db4745f2482ec72357df2ba85cbbb510",
+        "match": true
+      }
+    ],
+    "review_result": "EXISTING_SCOPED_APPROVAL_CONFIRMED",
+    "new_gate_decision": false
+  },
+  "S04": {
+    "existing_gate_disposition": "CLOSED_BY_ENGINEER_DISPOSITION_WITH_OPEN_ITEMS",
+    "carryovers": [
+      {
+        "id": "REQ-RNG-03",
+        "current_evidence_result": "CRITERION_NOT_MET",
+        "tested": true,
+        "summary": "4/8 mandatory; same pass/fail split in historical Float and selected-C Fixed",
+        "criterion": "Both targets separately matched in all eight mandatory 4/5-sample four-phase cases; existing numeric/oracle controls retained",
+        "case_table": [
+          {
+            "case_id": "RNG_D4_PHASE_000",
+            "range_separation_samples": 4,
+            "range_separation_m": 599.584916,
+            "relative_phase_deg": 0,
+            "float_matched_targets": 1,
+            "fixed_matched_targets": 1,
+            "archived_case_pass": false
+          },
+          {
+            "case_id": "RNG_D4_PHASE_090",
+            "range_separation_samples": 4,
+            "range_separation_m": 599.584916,
+            "relative_phase_deg": 90,
+            "float_matched_targets": 1,
+            "fixed_matched_targets": 1,
+            "archived_case_pass": false
+          },
+          {
+            "case_id": "RNG_D4_PHASE_180",
+            "range_separation_samples": 4,
+            "range_separation_m": 599.584916,
+            "relative_phase_deg": 180,
+            "float_matched_targets": 2,
+            "fixed_matched_targets": 2,
+            "archived_case_pass": true
+          },
+          {
+            "case_id": "RNG_D4_PHASE_270",
+            "range_separation_samples": 4,
+            "range_separation_m": 599.584916,
+            "relative_phase_deg": 270,
+            "float_matched_targets": 1,
+            "fixed_matched_targets": 1,
+            "archived_case_pass": false
+          },
+          {
+            "case_id": "RNG_D5_PHASE_000",
+            "range_separation_samples": 5,
+            "range_separation_m": 749.481145,
+            "relative_phase_deg": 0,
+            "float_matched_targets": 1,
+            "fixed_matched_targets": 1,
+            "archived_case_pass": false
+          },
+          {
+            "case_id": "RNG_D5_PHASE_090",
+            "range_separation_samples": 5,
+            "range_separation_m": 749.481145,
+            "relative_phase_deg": 90,
+            "float_matched_targets": 2,
+            "fixed_matched_targets": 2,
+            "archived_case_pass": true
+          },
+          {
+            "case_id": "RNG_D5_PHASE_180",
+            "range_separation_samples": 5,
+            "range_separation_m": 749.481145,
+            "relative_phase_deg": 180,
+            "float_matched_targets": 2,
+            "fixed_matched_targets": 2,
+            "archived_case_pass": true
+          },
+          {
+            "case_id": "RNG_D5_PHASE_270",
+            "range_separation_samples": 5,
+            "range_separation_m": 749.481145,
+            "relative_phase_deg": 270,
+            "float_matched_targets": 2,
+            "fixed_matched_targets": 2,
+            "archived_case_pass": true
+          }
+        ],
+        "later_lab_evidence": "Different development separability criterion also reports false at 599.584916m and true at1199.169832m; no approved eight-case replacement PASS found",
+        "disposition_change": false
+      },
+      {
+        "id": "S04-C02-RISK-PERFORMANCE",
+        "current_evidence_result": "EVIDENCE_INCOMPLETE",
+        "formal_fixed_statistical_qualification_found": false,
+        "previous_float_statistical_acceptance_transferred_to_fixed": false,
+        "C06_16_CPI_scope": "Bounded deterministic numerical qualification only",
+        "later_lab_statistics": "3 independent noise CPI and 3 target CPI, injected software Float Power into CFAR and actual CFAR mask into Grouping; not full raw-IQ fixed/IP-chain qualification",
+        "status": "OPEN_CARRIED_TO_FINAL_EVALUATION",
+        "disposition_change": false
+      }
+    ]
+  },
+  "interpretation": "RNG is tested-and-failed, statistical risk is unqualified. Old nested gate-blocking wording is superseded by the later engineer carryover decision; neither item currently reopens Gate-S04 automatically. Float also failing excludes an explanation based solely on fixed arithmetic, but does not establish detailed physical root cause.",
+  "references": [
+    {
+      "path": "decisions/GATE-S03-approved-baseline.json",
+      "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427"
+    },
+    {
+      "path": "decisions/S04-C08-S05-TRANSITION-2026-11-12.json",
+      "sha256": "2e6742a44e718d1b490022588d1b4e2c575defeb27338f7370b2549d32c4617d"
+    },
+    {
+      "path": "engineering/S04-OPEN-ITEMS-CARRYOVER-v1.0.json",
+      "sha256": "4a798e869a868f094d7bf94d80c8a5b8940c5b9f923f5fa391ad1d0c332ae74f"
+    },
+    {
+      "path": "engineering/s04_numeric/req_rng03_v1/REQ-RNG-03-RESULTS-v1.0.json",
+      "sha256": "757dfccf61ddd54f84bdbf82a58e7c36c8b9ea9daf9e0c03bbcd1771bef3f5a2"
+    },
+    {
+      "path": "engineering/evidence/auto_lab_v0.3/release-validation.json",
+      "sha256": "3b2b4c6714aef3098579427ff6c76de7620157f1071fac65d6b7ef1c0bcbf915"
+    },
+    {
+      "path": "engineering/AUTO-LAB-v0.3-REPORT.md",
+      "sha256": "68be74b0bd2173600dd380ffded1d07f0c548d5e22ea80904df09cd2fd3e5485"
+    },
+    {
+      "path": "engineering/IP-FLOAT-AND-FULL-CHAIN-EVALUATION-20261112.md",
+      "sha256": "bccf4743da21003bcb1917c92ae8b4ad65593d7b5b117afb3d843a8f618dbb0a"
+    }
+  ],
+  "execution": "Read/hash/archived-count comparison only; no new CPI, reference run, RTL simulation, statistical campaign or programming",
+  "frozen_criteria_changed": false
+}

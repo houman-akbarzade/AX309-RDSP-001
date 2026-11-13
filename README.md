@@ -113,3 +113,5 @@ The engineer authorized recovery of completed Stage Lab work. Read [the as-built
 Read [the engineering development history](engineering/ENGINEERING-DEVELOPMENT-HISTORY.md), [the mission/scope addendum](engineering/MISSION-EVOLUTION-LAB-ADDENDUM-20261113.md), and [the source-backed historical direction register](decisions/HISTORICAL-DEVELOPMENT-DIRECTIONS-20261113.json). They distinguish the owner’s proposals, execution authorizations, observed outcomes and formal acceptance. Original baselines and failed evidence remain intact. Dialogue recovery is partial and preserves explicit source gaps.
 
 The later [37-page PDF recovery](engineering/audit/PDF-CONVERSATION-RECOVERY.md) adds fuller mission and interruption history, source-page references, and the recovered stationary-target screenshot. Printed/extracted messages remain distinguished from original verbatim archive records.
+
+Current stepwise review: [S03 approval and S04 carryovers](engineering/audit/S03-S04-STEPWISE-REVIEW.md). This records prior evidence, not a new test execution or automatic stage advancement.

@@ -1,0 +1,66 @@
+{
+  "canonical": true,
+  "conversation_archive_row_count": 157,
+  "conversation_capture_quality_counts": {
+    "EXCERPT": 30,
+    "FULL": 57,
+    "SUMMARY": 6,
+    "verbatim": 49,
+    "excerpt": 15
+  },
+  "conversation_hash_sha256": "783613108a45917e4debd9e6e828225c120c2f36db7c4d521d84c35bf56e470b",
+  "created_at_utc": "2026-11-08T22:58:53.929258+00:00",
+  "eem_backfill": {
+    "approved": 0,
+    "cards": 16,
+    "index": "engineering/experiences/index.jsonl",
+    "index_sha256": "ddad1cb7b2a358bd85571e63fd8dc76cdfc2004f73b4d107cfbc2d5730e38c7a",
+    "report": "engineering/experiences/backfill-report.json",
+    "report_sha256": "16d4717beb712163eb226d58cd47ca90280580f9a0554a34a446a3a1e5d66fec",
+    "status": "COMPLETE_CANDIDATES_VALIDATED_NOT_PROMOTED",
+    "validated": 16
+  },
+  "event_count": 146,
+  "events_hash_sha256": "7d5a9e6ac9aa0c091810c14cadaff05e0ed2f5ac5b926fd0d3c5557fec1324a0",
+  "historical_timestamp_policy": "recorded_at_utc is capture time; historical_time_utc remains null when original platform time is unavailable.",
+  "last_event_id": "AX309-E0146",
+  "last_message_ref": "AX309-AUDIT-20261113-S04-REVIEW-agent",
+  "legacy_capture_policy": "Preserve EXCERPT and SUMMARY records as captured; do not reconstruct or upgrade them to FULL.",
+  "legacy_projection_generated": false,
+  "project_id": "AX309-RDSP-001",
+  "schema_version": "0.2.0",
+  "timestamps_warning": "Record capture times are not historical chat times",
+  "updated_at_utc": "2026-11-12T15:50:00.125245+00:00",
+  "dialogue_integrity_r2": {
+    "jsonl_parse": "PASS",
+    "identified_id_uniqueness": "PASS",
+    "hashes_present_valid": "PASS",
+    "records_without_identifier": 0,
+    "historical_completeness": "INCOMPLETE: preserve 30 excerpts and 6 summaries",
+    "current_turn": "Engineer message and exact prepared final stored; text and SHA readback PASS. Historical gaps remain."
+  },
+  "feasibility_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical incompleteness retained.",
+  "eem_current_register": {
+    "total": 17,
+    "states": {
+      "VALIDATED": 16,
+      "CANDIDATE": 1
+    },
+    "index_sha256": "6e8b6396340fdf5c3ba0a1f35483f6848c6170f43347cb7ba30a1b04b359e31e",
+    "new_candidate": "EXP-AX309-017",
+    "engineer_approval": null
+  },
+  "IP_evaluation_turn_capture": "Exact engineer request and prepared final stored and hashes verified; historical excerpts/summaries remain incomplete.",
+  "full_ip_integration": {
+    "source_commit": "b88c5b8",
+    "report": "engineering/FULL-IP-UART-GUI-INTEGRATION-20261112.md",
+    "current_requests_and_final": "VERBATIM_HASH_VERIFIED",
+    "physical_board": "PASS finite 9 CPI development set",
+    "historical_gates": "UNCHANGED",
+    "historical_dialogue_gaps": "PRESERVED_NOT_RECONSTRUCTED"
+  },
+  "audit_proposal_only": true,
+  "requires_engineer_approval": true,
+  "last_message_id": "AX309-AUDIT-20261113-S04-REVIEW-agent",
+  "history_completeness": "PARTIAL"
+}

@@ -145,3 +145,7 @@ Sixteen authentic Git-backed Lab messages were appended unchanged, with original
 ## Fuller PDF history recovery
 
 The user-designated Downloads PDF (37 pages; SHA-256 226a1fb950226b51c5e5921f698d47665febcfcb4c11f50887b247e5128d1443) was copied unchanged, text-extracted and visually checked at representative boundaries. Ten new/source-variant PDF excerpts were appended; 34 printed segments corroborate existing topic records. The original embedded image of the stationary-target question was recovered from page 34 and visually identifies MF output. Earlier missing-image descriptions are superseded by this recovery; the stopped response remains absent. Four additional historical direction records and eleven printed delivery-criterion mappings were added. No new engineering test, Gate approval or functional change occurred.
+
+## Stepwise S03–S04 review
+
+The owner requests requirement-by-requirement stage review before advancing. S03 existing scoped approval was confirmed with 7/7 pinned artifact hashes matching. The S04 eight-case archive still has four mandatory PASS and four FAIL; an independent read-only component inspection of the retained masks finds joined target-neighborhood components in every failed Float/Fixed case. No new signal-chain or statistical test ran. Later Lab evidence does not close either S04 carryover. See S03-S04-STEPWISE-REVIEW.md and its pinned JSON/diagnostic.

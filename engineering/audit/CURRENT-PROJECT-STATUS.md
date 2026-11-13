@@ -88,7 +88,7 @@ Other rows now link accepted reference tests and finite Lab results where availa
 
 ### Engineer decisions
 
-The concrete first decision remains AS-BUILT-DISPOSITION-PROPOSAL.json: recognize the existing FFT-IP laboratory configuration with its exact hashes and explicit limits alongside the historical selected-C baseline. It is not a request to rerun work.
+The engineer now requests stepwise review, currently S04. S03 scoped approval has been verified against all seven pinned hashes. The two S04 carryovers were re-examined and retained; see S03-S04-STEPWISE-REVIEW.md. This review order does not reopen the already closed Gate-S04. The FFT-IP as-built proposal remains available for the later architecture/configuration discussion; it is not a request to rerun work.
 
 Then review individual S05–S11 Gate packages with preserved carryovers. Any requirement waiver/change, new statistical/coverage test, reference replacement, merge or public publication needs its own applicable authorization. No such approval is invented here.
 

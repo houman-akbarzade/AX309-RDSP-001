@@ -46,7 +46,7 @@ The retained v0.3 report records 41 functional jobs, 40 distinct captures and 65
 
 Next, the owner requests paired range–Doppler/speed maps, common color scales and MATLAB comparisons. The recorded response reports 23 MATLAB CFAR/grouping reference cases and 37 paired maps. The following user report says the maps are blank. Commit 7bb6ef0 records replacement of unsupported nested SVG structures for Qt. The next user request asks for larger/zoomable figures; commit 6c86a2e adds the vector viewer.
 
-The copied question about a zero-speed target contains an unavailable image and a stopped response marker. No answer is invented, and it is not used as proof of a DSP defect.
+The copied question about a zero-speed target originally lacked its image. The later 37-page PDF supplies that image on page 34; its chart is explicitly the matched-filter output. The stopped historical answer remains absent. The image is retained as context, not proof of an MTI defect.
 
 ## Limits of this history
 
@@ -55,3 +55,7 @@ Sixteen original Lab dialogue records were recovered from Git-backed archive byt
 The engineer's proposals were consequential: they initiated the resource allocation study, IP experiment, Float comparison, full hardware integration, independent observability, automatic testing and usable reporting. Their effect is now traceable without relabeling an investigated option as an approved final architecture.
 
 REQ-RNG-03 remains FAIL 4/8 against required 8/8. Fixed-Point statistical performance remains OPEN. Future W5500, real-time transfer, complete external timing qualification and final numerical/gate disposition are not inferred from these exchanges.
+
+## Fuller PDF source recovery
+
+The later 37-page print supplies the full fourteen-section mission within the printed source, visible IP-evaluation progress, an engineer interruption/finish request, an alternate final probe report, and the missing stationary-question image. Ten PDF-derived records were added as excerpts; 34 printed topic segments corroborate existing records and one empty agent label remains empty. See engineering/audit/PDF-CONVERSATION-RECOVERY.md and the PDF direction supplement. Earlier incompleteness statements describe the first text-copy recovery; PDF coverage improves them without proving a complete platform export.

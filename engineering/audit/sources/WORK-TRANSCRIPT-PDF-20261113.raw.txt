@@ -1,0 +1,1106 @@
+You said:
+# AX309-RDSP-001 — Autonomous FPGA Radar Implementation,
+Hardware Validation & Desktop Application
+## 1. Your mission
+You are the lead implementation agent responsible for
+completing the existing AX309-RDSP-001 radar signal-processing
+project.
+‫همین‬ ‫از‬ ‫لطفا‬ ‫برقراره‬ ‫کامندر‬ ‫دسکتاپ‬ ‫ریموت‬ ‫طریق‬ ‫از‬ ‫من‬ ‫کامپیوتر‬ ‫به‬ ‫دسترسی‬
+‫بده‬ ‫انجام‬ ‫را‬ ‫کار‬ ‫طریق‬
+‫برقراره‬ ‫افزار‬ ‫سخت‬ ‫اتصاالت‬
+Your objective is to deliver a **working FPGA-based radar signal-
+processing demonstrator**, connected to a desktop application
+that generates realistic synthetic radar scenarios, transfers IQ
+samples to the AX309 hardware, receives the FPGA processing
+results, and displays them graphically.
+**Your primary priority is working implementation, not
+documentation or excessive analysis.**
+Work autonomously through implementation, integration,
+testing, debugging, and hardware validation. Do not stop after
+producing a plan, design review, or partial code.
+Continue making progress until the deliverable is operational or a
+genuine hardware, tool, or technical blocker prevents further
+work.
+## 2. Development environment and project baseline
+The development computer runs Linux and has been used for
+Xilinx ISE, ISim, XST, MAP, PAR, TRCE, and Bitstream generation.
+Project repository:
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 1/37/home/houman/AX309-RDSP-001
+Current baseline:
+- Branch: master
+- Latest reported commit: 9aee139
+- Previous baseline: a061671
+- FPGA: Xilinx Spartan-6 XC6SLX9
+- Board: AX309
+- UART: CP2102GM, nominally 115200 baud, 8N1
+- FPGA clock: 50 MHz, subject to verification against the actual
+board configuration
+First verify the repository, Git status, project files, existing
+evidence, installed tools, and connected hardware.
+Use the latest engineering decisions, requirements, ICDs, test
+vectors, manifests, and verified RTL as the authoritative project
+baseline.
+Do not assume that previously reported tests are sufficient.
+Perform one focused technical review, reproduce the critical tests,
+and identify only defects that could prevent implementation or
+invalidate the results.
+Do not restart the project from scratch.
+## 3. Engineering authority and autonomy
+You are authorized to make ordinary implementation decisions,
+including:
+- RTL architecture and module integration
+- State-machine design
+- Memory scheduling and buffering
+- Pipeline organization
+- Resource optimization
+- Desktop application architecture
+- Testbench implementation
+- Debugging and corrective modifications
+- Build and synthesis configuration
+- Development-time engineering trade-offs
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 2/37You should make these decisions without repeatedly requesting
+approval.
+However, do not silently modify mandatory radar requirements,
+reduce required processing functionality, fabricate verification
+results, or declare unresolved safety-critical or correctness issues
+accepted.
+Where an existing requirement is infeasible on the XC6SLX9,
+quantify the limitation and implement the best compliant solution
+possible. Escalate only decisions that require a genuine change to
+the approved requirements.
+Preserve all important previous engineering decisions and known
+unresolved issues.
+## 4. Primary deliverable: desktop radar application
+Create a locally executable Linux desktop application for this
+project.
+Prefer Python with PySide6 or another suitable mature GUI
+framework, unless an existing project implementation offers a
+better option.
+The application must have a convenient launcher and a clear,
+professional interface.
+When launched, it should display a selection of synthetic radar
+flight scenarios.
+### Scenario library
+Implement at least these scenarios:
+1. **Single aircraft:** one moving target with configurable range
+and radial velocity.
+2. **Two aircraft:** targets at different ranges and velocities.
+3. **Crossing trajectories:** two targets with intersecting
+displayed paths.
+4. **Multiple aircraft:** several targets with different amplitudes,
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 3/37ranges, and Doppler frequencies.
+5. **Weak target near a strong target:** evaluation of dynamic
+range and detection behavior.
+6. **Aircraft in clutter:** moving targets in the presence of
+stationary clutter and noise.
+7. **Closely spaced targets:** evaluation of range/Doppler
+resolution.
+8. **Low-SNR scenario:** detection performance near the
+configured CFAR threshold.
+Provide a few useful adjustable parameters, such as target range,
+radial velocity, target amplitude or RCS model, noise level, and
+scenario duration.
+Scenarios must use physically consistent radar signal models.
+Use the actual radar parameters and sampling constraints
+recorded in the project. Do not silently invent a different
+waveform or processing configuration.
+Where the existing CPI format cannot represent a requested
+scenario, adjust the scenario to the available measurement space
+or clearly identify the limitation.
+### Application workflow
+When the user selects a scenario and presses **Run**:
+1. Generate the synthetic radar IQ samples.
+2. Display the scenario's reference target information.
+3. Establish a valid UART session with the FPGA.
+4. Transfer the IQ data using the implemented protocol.
+5. Confirm successful reception and CPI integrity.
+6. Trigger the actual FPGA radar-processing pipeline.
+7. Retrieve the FPGA-generated results.
+8. Decode and display the detections.
+9. Compare the detections with the known scenario ground truth.
+10. Display relevant execution statistics and errors.
+### Required visualization
+Include:
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 4/37- Scenario selection panel
+- Target trajectory visualization
+- Range-Doppler map, when supported by available FPGA output
+- Detected targets table
+- Range and radial velocity estimates
+- Detection markers and target grouping
+- Comparison between ground truth and FPGA results
+- UART connection and FPGA status
+- Processing and transfer time
+- Clear PASS/FAIL/NOT VERIFIED indicators
+Distinguish between commanded trajectories and actual radar-
+observable quantities.
+For example, a single stationary monostatic radar cannot
+uniquely determine full two-dimensional aircraft trajectories from
+range and radial velocity alone. The application may display
+known simulated trajectories, but it must not misrepresent those
+trajectories as independently estimated by the FPGA.
+## 5. Critical rule: FPGA processing must be real
+The application must distinguish three operating modes:
+**Hardware Mode**
+Actual IQ data is transferred to the FPGA. The FPGA performs the
+implemented radar processing. Results are received from the
+FPGA and displayed.
+**Reference Mode**
+The desktop application runs the existing reference processing
+model for comparison and debugging.
+**Demo Mode**
+The application displays synthetic or prerecorded results without
+requiring hardware.
+These modes must be clearly identified in the user interface.
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 5/37Never present PC-generated detection results as if they came
+from the FPGA.
+The primary acceptance target is **Hardware Mode**.
+## 6. Complete the radar-processing chain
+Inspect the existing RTL and integrate the approved processing
+pipeline:
+Matched Filter → MTI2 → Doppler FFT32 → Power →
+CFAR → Grouping
+Reuse verified modules and existing test infrastructure wherever
+possible.
+Complete the necessary:
+- Dataflow control
+- Frame/CPI controller
+- Fixed-point interfaces
+- BRAM management
+- Module sequencing
+- Output record generation
+- UART result transmission
+- Error and completion signaling
+Respect the XC6SLX9 resource limits.
+The previously reported UART/IQ implementation uses
+approximately:
+- 2125 LUT
+- 1592 FF
+- 10 BRAM
+These numbers are for the communication and IQ subsystem
+only, not the complete radar.
+The previously reported CFAR/Grouping resource consumption
+must also be considered.
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 6/37**Do not add standalone resource estimates and assume the
+combined design fits.**
+Perform actual integrated synthesis, placement, routing, and
+timing analysis.
+If the design exceeds available resources, prioritize architecture-
+level optimization, BRAM reuse, time-multiplexed processing, and
+elimination of unnecessary duplication.
+Do not silently move mandatory FPGA processing stages to the
+PC.
+## 7. Hardware bring-up
+The AX309 board and its programming/communication interfaces
+are being connected to the development computer.
+You must actively inspect available USB, serial, and JTAG devices.
+Perform the following:
+1. Detect the connected AX309 and CP2102GM interfaces.
+2. Identify the actual serial device.
+3. Verify the board clock, reset, voltage levels, and pin
+assignments using trustworthy project or board documentation.
+4. Verify the UCF constraints.
+5. Generate the required FPGA programming file.
+6. Program the FPGA using the available Xilinx-compatible tools.
+7. Perform a basic UART communication test.
+8. Validate Session HELLO/OFFER/ACTIVATE/READY.
+9. Transfer a complete CPI.
+10. Read back and verify the IQ data.
+11. Execute the actual DSP processing.
+12. Retrieve and display the results.
+If JTAG or serial access fails, investigate permissions, drivers, cable
+connectivity, programming tools, and port configuration.
+Do not guess pin assignments.
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 7/37Do not perform irreversible firmware, flash, or hardware
+configuration changes without appropriate confirmation.
+Prefer volatile FPGA programming for initial tests.
+## 8. Verification strategy: practical and risk-based
+Avoid excessive test development.
+Use the smallest test set that provides convincing evidence for the
+operational requirements.
+Prioritize:
+- Correct UART communication
+- Session integrity
+- Complete IQ transfer
+- Correct memory contents
+- Correct DSP results
+- No silent data loss
+- Resource fit
+- Timing closure
+- Successful operation on the actual board
+Run existing regression tests after meaningful changes.
+Do not create large test matrices merely to increase test counts.
+A few well-designed end-to-end tests are more valuable than
+hundreds of tests that do not exercise the actual FPGA processing
+chain.
+Nevertheless, do not bypass essential correctness tests.
+For every major processing stage, compare representative FPGA
+outputs against the approved reference model using consistent
+fixed-point assumptions.
+For complete scenarios, evaluate detection performance against
+ground truth.
+Do not mark a test PASS unless it was executed and its expected
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 8/37results were verified.
+## 9. Engineering constraints and known issues
+Preserve the following project statuses unless new evidence
+supports a formal change:
+- REQ-RNG-03: FAIL / unresolved
+- REQ-LIST-01: approved logical capacity of 702 clusters, final
+acceptance open
+- Fixed-point statistical performance risk: OPEN
+- Seven intermediate DSP readback contracts: OPEN
+- Gate-S04: closed by engineer disposition with open items
+- UART Session/Epoch R1: laboratory implementation baseline
+Do not conceal these issues.
+However, do not allow unrelated open items to prevent useful
+development and hardware testing.
+## 10. Progress tracking
+Maintain three independent progress indicators:
+1. **Implementation progress**
+2. **Verification progress**
+3. **Engineering acceptance**
+Implementation progress must increase when actual, evidence-
+backed functionality is completed.
+Use the existing weighted work-package model as the starting
+point, but verify its consistency against the repository.
+Keep separate progress values for:
+- Overall project
+- Current engineering stage
+- Individual implementation packages
+Never increase progress merely because documentation was
+produced.
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 9/37Each progress update must reference actual source files, Git
+commits, and test evidence.
+Updating progress should be a lightweight part of completing
+work, not a separate major activity.
+## 11. Execution strategy
+Work in this order, while overlapping independent tasks when
+practical:
+**Phase A — Hardware bring-up**
+Get the existing UART/IQ design running on the actual AX309.
+**Phase B — Minimal working radar**
+Integrate the smallest complete radar-processing path that
+satisfies the approved signal-processing behavior.
+Demonstrate one target from IQ generation through actual FPGA
+processing to PC display.
+**Phase C — Desktop application**
+Create the application and connect it to the actual hardware.
+**Phase D — Scenario expansion**
+Implement the flight scenario library and graphical visualization.
+**Phase E — Final verification**
+Execute representative scenarios, resolve significant defects, and
+validate the final integrated FPGA design.
+Do not postpone the first real hardware test until the application
+is fully developed.
+Do not postpone the application until every optional RTL feature
+is complete.
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 10/37## 12. Final acceptance criteria
+The project is considered operationally delivered only when:
+- The desktop application launches successfully.
+- The AX309 hardware is detected and programmed.
+- UART communication works with the actual FPGA.
+- Full CPI IQ transfer succeeds.
+- The FPGA executes the required radar-processing chain.
+- The application receives genuine FPGA results.
+- At least one single-target and one multi-target scenario run
+successfully on hardware.
+- Results are compared with the reference model and scenario
+ground truth.
+- The integrated FPGA design fits the device.
+- Timing constraints are satisfied.
+- Reproducible source code, build instructions, and test evidence
+are committed to Git.
+All additional scenarios should be implemented and verified
+where feasible.
+If some acceptance criteria cannot be completed, report them
+explicitly as OPEN or BLOCKED.
+Do not claim full hardware completion based only on simulation,
+synthesis, or generated bitstreams.
+## 13. Deliverables
+Produce:
+- Working FPGA RTL project
+- Final programming Bitstream
+- Desktop application
+- Desktop launcher
+- Flight scenario generator
+- Hardware communication integration
+- Detection and visualization interface
+- Automated smoke tests
+- Final engineering verification report
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 11/37Worked for 2m 4s
+ChatGPT said:
+.‫است‬ ‫نشده‬ ‫عملیاتی‬ ‫هنوز‬ ‫پروژه‬ .‫شدم‬ ‫متصل‬ ‫کامندر‬ ‫دسکتاپ‬ ‫ریموت‬ ‫طریق‬ ‫از‬
+.‫شد‬ ‫تأیید‬ 9aee139 baseline ‫و‬ ‫مخزن‬
+.‫است‬ /dev/ttyUSB1 ‫روی‬ UART ‫شدند؛‬ ‫شناسایی‬ USB ‫رابط‬ ‫دو‬ ‫هر‬
+- Updated project progress
+- Clean Git commit history
+Keep the final report concise and focused on what actually works.
+## 14. Operating principle
+**Implementation first. Hardware evidence first. Deliver a
+working system.**
+You are expected to act as an autonomous engineering
+implementation agent.
+Make reasonable engineering decisions, correct problems, and
+continue.
+Do not spend excessive time writing proposals, repeating design
+reviews, or pursuing unnecessary perfection.
+Your mission is not to produce another design document.
+Your mission is to turn the existing AX309-RDSP-001 repository
+into a working, demonstrable FPGA radar signal-processing
+system with a desktop interface.
+Begin by inspecting the actual repository and connected
+hardware, then proceed directly to implementation and testing.
+‫برقراره‬ ‫افزار‬ ‫سخت‬ ‫به‬ ‫اتصاالت‬
+‫همین‬ ‫از‬ ‫لطفا‬ ‫برقراره‬ ‫کامندر‬ ‫ریموت‬ ‫دسکتاپ‬ ‫طریق‬ ‫از‬ ‫من‬ ‫کامپیوتر‬ ‫به‬ ‫دسترسی‬
+‫بده‬ ‫انجام‬ ‫را‬ ‫کار‬ ‫و‬ ‫شو‬ ‫وصل‬ ‫طریق‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 12/37PASS. ‫همگی‬ ‫شد؛‬ ‫اجرا‬ ‫‌افزار‬ ‫م‬‫نر‬ ‫ارتباطی‬ ‫آزمون‬ ۵۷
+.‫است‬ BLOCKED ‫لینوکس‬ ‫مجوزهای‬ ‫‌علت‬ ‫ه‬‫ب‬ UART ‫دسترسی‬
+.‫نشد‬ ‫پروگرام‬ FPGA ‫خورد؛‬ ‫شکست‬ iMPACT ‫با‬ JTAG ‫شناسایی‬
+‫نوبت‬ ‫این‬ ‫در‬ ‫نیز‬ ‫دسکتاپ‬ ‫برنامه‬ .‫نیست‬ ‫متصل‬ ‫آن‬ ‫به‬ ‫هنوز‬ DSP ‫کامل‬ ‫زنجیره‬ ‫دارد؛‬ IQ ‫بازخوانی‬ ‫و‬ ‫انتقال‬ ‫فعلی‬ ‫طرح‬
+.‫نشد‬ ‫ساخته‬
+‫کامل‬ ‫ثبت‬ .‫نیافت‬ ‫افزایش‬ ‫مهندسی‬ ‫پذیرش‬ ‫و‬ ‫پیشرفت‬ ‫درصد‬ .‫شد‬ ‫ثبت‬ c998e16 ‫نهایی‬ commit ‫با‬ ‫مخزن‬ ‫در‬ ‫شواهد‬
+.‫ماند‬ ‫باقی‬ BLOCKED ‫نیز‬ ‫گفتگو‬ ‫متن‬
+:‫کن‬ ‫اجرا‬ ‫‌تاپ‬ ‫پ‬‫ل‬ ‫ترمینال‬ ‫در‬ ،‫فعلی‬ ‫نشست‬ ‫در‬ UART ‫دسترسی‬ ‫بازکردن‬ ‫برای‬
+،‫آن‬ ‫از‬ ‫پس‬ .‫دارد‬ ‫نیاز‬ ‫تو‬ ‫محلی‬ ‫اجرای‬ ‫به‬ ‫بخش‬ ‫این‬ ‫است؛‬ ‫مسدود‬ ‫ابزار‬ ‫تنظیمات‬ ‫در‬ ‫‌صراحت‬ ‫ه‬‫ب‬ ‫کامندر‬ ‫طریق‬ ‫از‬ sudo ‫اجرای‬
+.‫است‬ ‫الزم‬ ‫همچنان‬ JTAG ‫کابل‬ ‫شناسایی‬ ‫مشکل‬ ‫رفع‬
+You said:
+Worked for 23m 2s
+ChatGPT said:
+.‫افتاد‬ ‫راه‬ ‫برد‬ ‫واقعی‬ ‫ارتباط‬ ‫و‬ ‫شد‬ ‫درست‬ ‫مجوز‬
+JTAG ‫و‬ ‫شناسایی‬ FPGA .‫شد‬ ‫پروگرام‬ ‫موقت‬ ‫‌صورت‬ ‫ه‬‫ب‬
+‫برد‬ ‫روی‬ IQ ‫بایت‬ ۱۶٬۸۹۶ ‫کامل‬ ‫بازخوانی‬ ‫و‬ ‫انتقال‬ PASS ‫را‬ ‫آزمون‬ ‫همین‬ ‫نیز‬ ‫دوهدف‬ ‫و‬ ‫‌هدف‬ ‫ک‬‫ت‬ ‫سناریوهای‬ ‫شد؛‬
+‫گذراندند‬.
+‫برنامه‬ AX309 Radar Lab ‫دارد‬ ‫دسکتاپ‬ ‫میانبر‬ ‫و‬ ‫است‬ ‫باز‬ ‫اکنون‬ ‫شد؛‬ ‫ساخته‬ ‫سناریو‬ ‫هشت‬ ‫با‬.
+‫کامل‬ ‫زنجیره‬ DSP ‫سه‬ ‫برای‬ ،‫‌سازی‬ ‫ه‬‫شبی‬ ‫در‬ CPI ‫کرد‬ ‫تطبیق‬ ‫ًا‬‫دقیق‬ ‫عددصحیح‬ ‫مدل‬ ‫با‬.
+‫بنابراین‬ .‫است‬ LUT ۵٬۷۲۰ ‫تراشه‬ ‫ظرفیت‬ ‫‌خواهد؛‬ ‫ی‬‫م‬ LUT ۱۱٬۵۰۷ ‫هنوز‬ ‫‌سازی‬ ‫ه‬‫بهین‬ ‫از‬ ‫پس‬ DSP ‫هسته‬ :‫فعلی‬ ‫مانع‬
+‫بازطراحی‬ ‫نیازمند‬ ‫ادامه‬ .‫است‬ ‫نشده‬ ‫تأیید‬ ‫هنوز‬ ‫برد‬ ‫روی‬ ‫واقعی‬ DSP ‫و‬ ‫‌کند‬ ‫ی‬‫م‬ ‫اجرا‬ ‫را‬ UART/IQ ‫فقط‬ ‫ًال‬‫فع‬ Hardware
+.‫است‬ ‫منابع‬ ‫مصرف‬
+.‫است‬ BLOCKED ‫همچنان‬ ‫پروژه‬ ‫کامل‬ ‫تحویل‬ .‫شد‬ ‫ثبت‬ abf9389 commit ‫در‬ ‫شواهد‬ ‫و‬ ‫کد‬
+You said:
+sudo setfacl -m u:houman:rw /dev/ttyUSB1
+‫دادم‬ ‫انجام‬
+‫کرد؟‬ ‫پیاده‬ ‫تراشه‬ ‫این‬ ‫روی‬ ‫را‬ ‫اینها‬ ‫نمیشه‬ ‫یعنی‬ ‫چی؟‬ ‫یعنی‬
+‫نظرت‬ ‫به‬ ‫کنیم‬ ‫چه‬
+‫همینطور‬ ‫و‬ ‫میشه‬ ‫باز‬ ‫جا‬ ‫چقدر‬ ‫کن‬ ‫بررسی‬ Pc ‫روی‬ ‫بیاریم‬ ‫را‬ ‫کالسترینگ‬ ‫اینه‬ ‫راه‬ ‫یک‬
+UART ‫سازی‬ ‫پیاده‬ ‫روی‬ ‫میتونی‬ ‫اگر‬ ‫خصوصا‬ ‫کنه‬ ‫آزاد‬ ‫را‬ ‫منابع‬ ‫که‬ ‫دیگه‬ ‫روشهای‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 13/37Worked for 8m 45s
+ChatGPT said:
+‫به‬ ‫کالسترینگ‬ ‫انتقال‬ .‫است‬ ‫نشده‬ ‫ثابت‬ ‫تراشه‬ ‫این‬ ‫روی‬ ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫بودن‬ ‫ناممکن‬ ‫اما‬ ،‫‌شود‬ ‫ی‬‫نم‬ ‫جا‬ ‫فعلی‬ ‫طرح‬ :‫بررسی‬ ‫نتیجه‬
+.‫نیست‬ ‫کافی‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ ‫ولی‬ ،‫‌کند‬ ‫ی‬‫م‬ ‫بزرگی‬ ‫کمک‬ PC
+.‫ندادم‬ ‫تغییر‬ ‫را‬ ‫برد‬ ‫روی‬ ‫‌شده‬ ‫م‬‫پروگرا‬ ‫طرح‬ ‫و‬ ‫اصلی‬ RTL ‫دادم؛‬ ‫انجام‬ ‫سنتز‬ ‫موقت‬ ‫‌های‬ ‫ه‬‫نسخ‬ ‫روی‬ ،‫موضوع‬ ‫‌شدن‬ ‫ن‬‫روش‬ ‫برای‬
+‫است؛‬ ۵٬۷۲۰ ‫ظرفیت‬ ‫از‬ ‫بیشتر‬ ‫هنوز‬ ۷٬۷۶۱ ،‫‌حال‬ ‫ن‬‫باای‬ .‫‌کند‬ ‫ی‬‫م‬ ‫آزاد‬ ‫را‬ ‫فعلی‬ ‫هسته‬ LUT ‫از‬ ٪۳۲٫۶ ‫حدود‬ Grouping ‫انتقال‬ ‫یعنی‬
+.‫نیستند‬ ‫عدد‬ ‫این‬ ‫در‬ ‫هم‬ IQ ‫حافظه‬ ‫و‬ UART
+.‫نکرد‬ ‫استفاده‬ BRAM ‫و‬ ‫کرد‬ ‫مصرف‬ ‫رجیستر‬ ۱٬۶۲۱ ‫و‬ FFT ‫مستقل‬ ‫سنتز‬ ‫در‬ ‫فعلی‬۵٬۶۵۲ LUT .‫است‬ FFT ‫بعدی‬ ‫اصلی‬ ‫مسئله‬
+‫‌ای‬ ‫ه‬‫نقط‬ ۳۲ ‫فقط‬ FFT« ‫بنابراین‬ .‫است‬ ‫شده‬ ‫ساخته‬ ‫‌زمان‬ ‫م‬‫ه‬ ‫نوشتن‬ ‫دو‬ ‫و‬ ‫خواندن‬ ‫مسیر‬ ‫چند‬ ،‫رجیسترها‬ ‫با‬ FFT ‫حافظه‬ ،‫کد‬ ‫در‬
+.‫نیست‬ ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫این‬ ‫‌بودن‬ ‫ک‬‫کوچ‬ ‫معنی‬ ‫به‬ »‫است‬
+‫نوشتن‬ ‫و‬ ‫محاسبه‬ ،‫ورودی‬ ‫دو‬ ‫خواندن‬ :‫است‬ ‫‌شده‬ ‫ی‬‫‌بند‬ ‫ن‬‫زما‬ ‫دسترسی‬ ‫و‬ BRAM ‫حافظه‬ ‫با‬ FFT ‫بازطراحی‬ ،‫من‬ ‫پیشنهادی‬ ‫راه‬
+،‫ضرایب‬ .‫بگیرند‬ ‫بیشتری‬ ‫زمانی‬ ‫اشتراک‬ ‫هم‬ ‫پروانه‬ ‫محاسبات‬ ،‫نیاز‬ ‫صورت‬ ‫در‬ ،‫سپس‬ .‫شود‬ ‫انجام‬ ‫سیکل‬ ‫چند‬ ‫در‬ ‫‌ها‬ ‫ی‬‫خروج‬
+‫این‬ ‫‌جویی‬ ‫ه‬‫صرف‬ ‫میزان‬ .‫است‬ ‫سیکل‬ ‫تعداد‬ ‫افزایش‬ ‫آن‬ ‫هزینه‬ ‫‌شوند؛‬ ‫ی‬‫م‬ ‫حفظ‬ ‫مصوب‬ ‫‌های‬ ‫ت‬‫شیف‬ ‫و‬ RNE ،‫داده‬ ‫عرض‬
+.‫است‬ ‫نشده‬ ‫‌گیری‬ ‫ه‬‫انداز‬ ‫هنوز‬ ‫بازطراحی‬
+:‫کردم‬ ‫بررسی‬ ‫نیز‬ UART ‫در‬
+‫ساده‬ ‫گیرنده‬ ‫و‬ ‫فرستنده‬ .‫ندارد‬ ‫عملکردی‬ ‫آزمون‬ ‫هنوز‬ ‫و‬ ‫شده‬ ‫سنتز‬ ‫فقط‬ ‫موقت‬ ‫نسخه‬ ‫شد؛‬ ‫آزاد‬ LUT ۱۱۳ ‫فعلی‬ ‫آزمایش‬ ‫در‬ ‫پس‬
+.‫است‬ ‫کنترل‬ ‫و‬ ‫‌بندی‬ ‫ه‬‫بست‬ ،‫نشست‬ ‫پروتکل‬ ‫به‬ ‫مربوط‬ ‫مصرف‬ ‫عمده‬ ‫بخش‬ ‫هستند؛‬ LUT ۱۲۴ ‫حدود‬ ‫ًا‬‫جمع‬ UART
+‫بشه‬ ‫آزاد‬ ‫منابع‬ ‫ارتباط‬ ‫حفظ‬ ‫ضمن‬ ‫تا‬ ‫کن‬ ‫دستکاری‬
+‫کن‬ ‫اعمال‬ ‫تایید‬ ‫از‬ ‫بعد‬ ‫چیه‬ ‫مسیر‬ ‫و‬ ‫نه‬ ‫یا‬ ‫هست‬ ‫شدنی‬ ‫بده‬ ‫گزارش‬ ‫اول‬
+‫بررسی‬ ‫مورد‬ DSP ‫هسته‬ LUT BRAM
+Grouping ‫با‬ ‫فعلی‬ ‫زنجیره‬ ۱۱٬۵۰۷ ۱۸
+Grouping ‫بدون‬ ‫آزمایشی‬ ‫نسخه‬ ۷٬۷۶۱ ۱۲
+‫آزادشده‬ ‫فضای‬ ۳٬۷۴۶ ۶
+UART/IQ ‫ارتباط‬ ‫نسخه‬ LUT
+‫فعلی‬ ‫نسخه‬ ۲٬۱۲۵
+Area ‫سنتز‬ ‫تنظیم‬ ‫با‬ ‫کد‬ ‫همان‬ ۲٬۰۶۴
+Area ‫تنظیم‬ ‫و‬ ‫محدودتر‬ ‫بایت‬ ‫‌گرهای‬ ‫ب‬‫انتخا‬ ‫با‬ ‫موقت‬ ‫نسخه‬ ۲٬۰۱۲
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 14/37.‫‌کنم‬ ‫ی‬‫م‬ ‫متمرکز‬ ‫بسته‬ ‫حافظه‬ ‫اشتراک‬ ‫و‬ ‫داخلی‬ ‫‌های‬ ‫ه‬‫شمارند‬ ،‫بایت‬ ‫‌گرهای‬ ‫ب‬‫انتخا‬ ‫روی‬ ‫را‬ ‫ارتباط‬ ‫‌سازی‬ ‫ه‬‫بهین‬ ،‫تأیید‬ ‫از‬ ‫پس‬
+‫تنظیم‬ ‫تغییر‬ ‫یا‬ ‫شمارنده‬ ‫چند‬ ‫حذف‬ .‫‌شوند‬ ‫ی‬‫م‬ ‫حفظ‬ ‫مجدد‬ ‫ارسال‬ ‫امکان‬ ‫و‬ ‫دریافت‬ ‫تأیید‬ ،‫نشست‬ ‫شناسه‬ ،‫توالی‬ ‫شماره‬ ،CRC
+.‫‌کند‬ ‫ی‬‫نم‬ ‫حل‬ ‫را‬ ‫اصلی‬ ‫مشکل‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ ‫سنتز‬
+:‫واقعی‬ ‫دموی‬ ‫به‬ ‫‌تر‬ ‫ع‬‫سری‬ ‫رسیدن‬ ‫برای‬ ‫پیشنهادی‬ ‫مسیر‬
+1. MF، MTI، FFT، Power ‫و‬ CFAR ‫روی‬ FPGA ‫بمانند؛‬ Grouping ‫روی‬ PC .‫شود‬ ‫اجرا‬ ‫اتصال‬ ‫قواعد‬ ‫همان‬
+‫شوند‬ ‫حفظ‬ ۷۰۲ ‫منطقی‬ ‫ظرفیت‬ ‫و‬ ‫قله‬ ‫انتخاب‬ ،‫‌همسایه‬ ‫ت‬‫هش‬.
+2. FFT .‫شود‬ ‫بازطراحی‬ ‫‌بندی‬ ‫ن‬‫زما‬ ‫و‬ ‫حافظه‬ ‫نظر‬ ‫از‬ ‫کند‬ ‫ایجاد‬ ‫را‬ ‫منابع‬ ‫اصلی‬ ‫کاهش‬ ‫باید‬ ‫بخش‬ ‫این‬.
+3. UART .‫شود‬ ‫بهینه‬ ‫پروتکل‬ ‫حفظ‬ ‫با‬ FPGA ‫به‬ ‫‌اعتماد‬ ‫ل‬‫قاب‬ ‫انتقال‬ ‫با‬ ‫را‬ ‫آشکارشده‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫توان‬ ‫و‬ ‫مختصات‬ PC
+.‫شود‬ ‫خوانده‬ ‫درخواست‬ ‫هنگام‬ ‫برد–داپلر‬ ‫کامل‬ ‫نقشه‬ ‫بدهد؛‬
+4. ‫سپس‬ ‫و‬ ‫سنتز‬ ‫ترکیبی‬ ‫طرح‬ ‫کل‬ MAP/PAR ‫و‬ timing ‫شدن‬ ‫جا‬ ‫اثبات‬ ،‫مستقل‬ ‫‌های‬ ‫ک‬‫بلو‬ ‫مصرف‬ ‫جمع‬ .‫شود‬ ‫اجرا‬
+‫نیست‬.
+‫مسیر‬ ‫و‬ ‫‌خواهد‬ ‫ی‬‫م‬ ‫را‬ Grouping ‫خود‬ ‫بازطراحی‬ ،FFT ‫بر‬ ‫عالوه‬ ‫اما‬ ،‫است‬ ‫بررسی‬ ‫قابل‬ ‫هم‬ FPGA ‫داخل‬ Grouping ‫‌داشتن‬ ‫ه‬‫نگ‬
+.‫‌کنم‬ ‫ی‬‫نم‬ ‫پیشنهاد‬ ‫ًال‬‫فع‬ ‫را‬ PC ‫به‬ CFAR ‫انتقال‬ ‫یا‬ FFT ‫‌کردن‬ ‫ک‬‫کوچ‬ ،‫عددی‬ ‫دقت‬ ‫کاهش‬ .‫است‬ ‫‌تری‬ ‫ن‬‫نامطمئ‬ ‫و‬ ‫‌تر‬ ‫ی‬‫طوالن‬
+‫هنوز‬ ‫اما‬ ،‫دارد‬ ‫عملی‬ ‫شانس‬ ‫مسیر‬ ‫این‬ .UART ‫‌سازی‬ ‫ه‬‫بهین‬ ‫و‬ FFT ‫بازطراحی‬ ‫با‬ ‫همراه‬ PC ‫به‬ Grouping ‫انتقال‬ :‫من‬ ‫پیشنهاد‬
+‫رسیدن‬ ،‫ظرفیت‬ ‫بر‬ ‫عالوه‬ ‫بنابراین‬ ‫است؛‬ ‫نانوثانیه‬ ۳۱٫۵ ‫حدود‬ ‫فعلی‬ ‫هسته‬ timing ‫برآورد‬ ‫حتی‬ .‫نیست‬ timing ‫و‬ fit ‫تضمین‬
+.‫شود‬ ‫حل‬ ‫باید‬ ‫هم‬ ‫مگاهرتز‬ ۵۰ ‫کالک‬ ‫به‬
+‫ارتباط‬ ‫و‬ ‫عددی‬ ‫محاسبات‬ ‫حفظ‬ ‫با‬ ،FPGA ‫روی‬ CFAR ‫تا‬ ‫مرحله‬ ‫پنج‬ ‫؛‬PC ‫روی‬ Grouping :‫‌کنی‬ ‫ی‬‫م‬ ‫تأیید‬ ‫را‬ ‫مسیر‬ ‫همین‬ ‫آیا‬
+‫‌اعتماد؟‬ ‫ل‬‫قاب‬
+You said:
+Worked for 1m 47s
+ChatGPT said:
+‫اما‬ .‫شود‬ ‫بررسی‬ FFT ‫کامل‬ ‫بازنویسی‬ ‫از‬ ‫پیش‬ ‫باید‬ ‫من‬ ‫‌نظر‬ ‫ه‬‫ب‬ ‫و‬ ‫دهد‬ ‫کاهش‬ ‫را‬ ‫منابع‬ ‫‌تواند‬ ‫ی‬‫م‬ FFT ‫آمادٔه‬ IP ‫از‬ ‫استفاده‬ ‫بله؛‬
+.‫‌کند‬ ‫ی‬‫م‬ ‫استفاده‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫از‬ ‫هم‬ ‫حاال‬ ‫همین‬ ‫فعلی‬ FFT ‫نیست؛‬ ‫‌ای‬ ‫ه‬‫تاز‬ ‫‌حل‬ ‫ه‬‫را‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ »‫داخلی‬ ‫های‬DSP ‫از‬ ‫«استفاده‬
+:‫‌دهد‬ ‫ی‬‫م‬ ‫نشان‬ ‫پروژه‬ ‫واقعی‬ ‫سنتز‬ ‫گزارش‬
+‫منابع‬ ‫داخلی‬ ‫های‬DSP ‫از‬ ‫استفاده‬ ‫یا‬ ‫داخلی‬ ‫های‬ IP ‫کمک‬ ‫به‬ FFT ‫سازی‬ ‫پیاده‬ ‫با‬ ‫آیا‬
+‫نه‬ ‫یا‬ ‫میشود‬ ‫آزاد‬ ‫بیشتری‬
+‫مورد‬ ‫فعلی‬ ‫مصرف‬
+FFT ۵٬۶۵۲ LUT ‫عدد‬ ۸ ‫و‬ DSP48A1
+‫رادار‬ DSP ‫هسته‬ ‫کل‬ ‫تراشه‬ DSP48A1 ۱۶ ‫از‬ ‫عدد‬ ۱۳
+FFT ‫در‬ ‫‌شده‬ ‫ه‬‫استفاد‬ BRAM ‫حافظه‬ ‫صفر‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 15/37‫محاسباتی‬ ‫مسیرهای‬ ‫و‬ ‫‌گرها‬ ‫ب‬‫انتخا‬ ،‫حافظه‬ ‫معماری‬ .‫باشند‬ ‫شده‬ ‫ساخته‬ LUT ‫با‬ ‫‌ها‬ ‫ب‬‫ضر‬ ‫که‬ ‫نیست‬ ‫این‬ ‫فقط‬ ‫مشکل‬ ‫پس‬
+.‫شوند‬ ‫کوچک‬ ‫باید‬ ‫هم‬ FFT
+:‫داریم‬ ‫گزینه‬ ‫دو‬
+Xilinx ‫مستندات‬ .‫‌شود‬ ‫ی‬‫م‬ ‫ساخته‬ FPGA ‫منابع‬ ‫با‬ ‫آن‬ IP ‫نیست؛‬ ‫تراشه‬ ‫داخل‬ ‫آماده‬ ‫سخِت‬ ‫بلوک‬ ‫یک‬ Spartan-6، FFT ‫در‬
+.‫‌کنند‬ ‫ی‬‫م‬ ‫معرفی‬ ‫‌اشتراکی‬ ‫ن‬‫زما‬ ‫محاسبات‬ ‫با‬ ‫هسته‬ ‫‌ترکردن‬ ‫ک‬‫کوچ‬ ‫برای‬ ‫ًا‬‫مشخص‬ ‫را‬ Radix-2 Lite ‫معماری‬
+‫بنابراین‬ .‫موجودند‬ ISE 14.7 ‫نصب‬ ‫در‬ 8.0 ‫و‬ 7.1 ‫‌های‬ ‫ه‬‫نسخ‬ FFT IP ‫و‬ CORE Generator :‫کردم‬ ‫بررسی‬ ‫نیز‬ ‫کامپیوترت‬ ‫روی‬
+.‫است‬ ‫بررسی‬ ‫قابل‬ ‫فعلی‬ ‫محیط‬ ‫در‬ ‫گزینه‬ ‫این‬
+‫مدل‬ ‫با‬ IP ‫خروجی‬ ‫‌کند‬ ‫ی‬‫نم‬ ‫تضمین‬ Convergent ‫گردکردن‬ ‫و‬ FFT32 ‫انتخاب‬ ‫صرف‬ .‫است‬ ‫عددی‬ ‫سازگاری‬ ،‫‌کننده‬ ‫ن‬‫تعیی‬ ‫نکته‬
+،‫مثال‬ ‫برای‬ .‫شوند‬ ‫مقایسه‬ ‫باید‬ ‫‌ها‬ ‫ت‬‫شیف‬ ‫و‬ ‫گردکردن‬ ‫محل‬ ،‫ضرایب‬ ،‫داخلی‬ ‫‌های‬ ‫ض‬‫عر‬ .‫باشد‬ ‫یکسان‬ ‫‌بایت‬ ‫ه‬‫‌ب‬ ‫ت‬‫بای‬ ‫ما‬ ‫مصوب‬
+.‫دارد‬ saturation ‫ما‬ ‫فعلی‬ ‫قرارداد‬ ‫‌که‬ ‫ی‬‫درحال‬ ،‫‌شود‬ ‫ی‬‫م‬ wrap ‫داده‬ overflow ‫هنگام‬ ‫‌گویند‬ ‫ی‬‫م‬ 7.1 ‫نسخه‬ ‫مستندات‬
+‫زمان‬ ،LUT/BRAM/DSP ‫مصرف‬ ‫بسنجیم؛‬ ‫‌مصرف‬ ‫م‬‫ک‬ ‫تنظیمات‬ ‫با‬ IP ‫بر‬ ‫مبتنی‬ FFT32 ‫یک‬ ‫ابتدا‬ :‫من‬ ‫‌شده‬ ‫ح‬‫اصال‬ ‫پیشنهاد‬
+،‫نبود‬ ‫سازگار‬ ‫اگر‬ ‫کنیم؛‬ ‫انتخاب‬ ‫را‬ ‫همان‬ ،‫بود‬ ‫کوچک‬ ‫و‬ ‫سازگار‬ ‫اگر‬ .‫کنیم‬ ‫مقایسه‬ ‫فعلی‬ ‫نسخه‬ ‫با‬ ‫را‬ ‫آن‬ ‫عددی‬ ‫تطبیق‬ ‫و‬ ‫پردازش‬
+.‫برویم‬ ‫محاسبات‬ ‫اشتراک‬ ‫و‬ BRAM ‫با‬ ‫اختصاصی‬ RTL ‫سراغ‬
+.‫‌ایم‬ ‫ه‬‫نکرد‬ ‫‌گیری‬ ‫ه‬‫انداز‬ ‫را‬ ‫طرح‬ ‫کل‬ ‫شدن‬ ‫جا‬ ‫یا‬ ‫‌جویی‬ ‫ه‬‫صرف‬ ‫مقدار‬ ‫هنوز‬ ‫ولی‬ ‫باشد؛‬ ‫بهتری‬ ‫گزینه‬ ‫‌تواند‬ ‫ی‬‫م‬ ‫آماده‬ IP ،‫بله‬ ‫بنابراین‬
+.‫نکردم‬ ‫اعمال‬ ‫اصلی‬ ‫طراحی‬ ‫در‬ ‫جدیدی‬ ‫تغییر‬ ‫یا‬ IP ‫هیچ‬ ‫ًال‬‫فع‬ ،‫‌ات‬ ‫ه‬‫خواست‬ ‫مطابق‬
+You said:
+Worked for 4m
+ChatGPT said:
+‫یک‬ ‫روی‬ ‫هم‬ ‫گزینه‬ ‫این‬ ‫برای‬ .‫است‬ ‫الزم‬ FFT ‫‌سازی‬ ‫ه‬‫بهین‬ ‫هم‬ ‫باز‬ ‫اما‬ ‫؛‬BRAM ‫آزادکردن‬ ‫در‬ ‫‌خصوص‬ ‫ه‬‫ب‬ ،‫‌کند‬ ‫ی‬‫م‬ ‫‌توجهی‬ ‫ل‬‫قاب‬ ‫کمک‬
+.‫دادم‬ ‫انجام‬ ‫سنتز‬ ‫موقت‬ ‫نسخه‬
+:‫‌شوند‬ ‫ی‬‫نم‬ ‫شامل‬ ‫را‬ IQ ‫ورودی‬ ‫حافظه‬ ‫و‬ UART ‫و‬ ‫‌اند‬ ‫ش‬‫پرداز‬ ‫هسته‬ ‫به‬ ‫مربوط‬ ‫زیر‬ ‫اعداد‬ ‫همه‬
+‫گزینه‬ ‫انتظار‬ ‫مورد‬ ‫اثر‬
+‫فعلی‬ RTL ‫در‬ DSP48A1 ‫از‬ ‫بیشتر‬ ‫استفاده‬ ‫است‬ ‫محدود‬ ‫‌مانده‬ ‫ی‬‫باق‬ DSP ‫ظرفیت‬ ‫؛‬LUT ‫از‬ ‫بخشی‬ ‫کاهش‬ ‫احتمال‬
+‫‌کند‬ ‫ی‬‫نم‬ ‫برطرف‬ ‫را‬ ‫حافظه‬ ‫مشکل‬ ‫و‬
+IP ‫معماری‬ ‫با‬ ‫آماده‬Radix-2 Lite Burst ‫حافظه‬ ‫و‬ BRAM ‫کمتر‬ ‫منابع‬ ،‫محاسبات‬ ‫زمانی‬ ‫اشتراک‬ ‫با‬ ‫بررسی؛‬ ‫برای‬ ‫‌تر‬ ‫ب‬‫مناس‬ ‫گزینه‬
+‫‌خواهد‬ ‫ی‬‫م‬ ‫بیشتری‬ ‫پردازش‬ ‫زمان‬ ‫و‬
+docs.amd.com
+docs.amd.com
+‫میتونه‬ ‫کمکی‬ ‫چه‬ ‫کنیم‬ ‫منتقل‬ ‫سی‬ ‫پی‬ ‫به‬ ‫هم‬ ‫را‬ CFAR ‫کالسترینگ‬ ‫بر‬ ‫عالوه‬ ‫اینکه‬
+‫بکنه‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 16/37‫تفاوت‬ ،‫اعداد‬ ‫این‬ .‫کرد‬ ‫آزاد‬ ‫دیگر‬ BRAM ۱۲ ‫و‬ LUT ۹۴۰ ‫سنتز‬ ‫این‬ ‫در‬ CFAR ‫انتقال‬ ،‫کالسترینگ‬ ‫فقط‬ ‫انتقال‬ ‫به‬ ‫نسبت‬ ،‫بنابراین‬
+‫کاهش‬ ‫آزمایش‬ ‫این‬ ‫نهایی‬ ‫نتیجه‬ ‫در‬ DSP ‫مصرف‬ .‫‌شوند‬ ‫ی‬‫نم‬ ‫محسوب‬ ‫ماژول‬ ‫یک‬ ‫مستقل‬ ‫هزینه‬ ‫هستند؛‬ ‫سنتزشده‬ ‫‌های‬ ‫ه‬‫نسخ‬
+.‫نیافت‬
+‫آن‬ ‫فعلی‬ ‫پرمصرف‬ ‫رجیستری‬ ‫حافظه‬ ‫و‬ ‫بدهیم‬ FFT ‫به‬ ‫را‬ ‫حافظه‬ ‫این‬ ‫از‬ ‫بخشی‬ ‫‌توانیم‬ ‫ی‬‫م‬ :‫دارد‬ ‫مهمی‬ ‫ارزش‬ BRAM ۱۲ ‫آزادشدن‬
+‫دو‬ ‫این‬ ‫انتقال‬ ‫پس‬ .‫ارتباط‬ ‫افزودن‬ ‫از‬ ‫پیش‬ ‫هم‬ ‫آن‬ ‫است؛‬ ‫بیشتر‬ ۵٬۷۲۰ ‫ظرفیت‬ ‫از‬ ‫هنوز‬ LUT ۶٬۸۲۱ ،‫‌حال‬ ‫ن‬‫باای‬ .‫کنیم‬ ‫کوچک‬ ‫را‬
+.‫نیست‬ ‫کافی‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ ،‫مرحله‬
+:‫‌شوند‬ ‫ی‬‫م‬ ‫چنین‬ ‫وظایف‬ ،‫تقسیم‬ ‫این‬ ‫در‬
+FPGA ‫و‬ ‫‌کند‬ ‫ی‬‫م‬ ‫تولید‬ ‫را‬ ‫واقعی‬ ‫برد–داپلر‬ ‫توان‬ ‫نقشه‬ PC ‫قواعد‬ .‫‌دهد‬ ‫ی‬‫م‬ ‫انجام‬ ‫داده‬ ‫همان‬ ‫روی‬ ‫را‬ ‫‌بندی‬ ‫ه‬‫گرو‬ ‫و‬ ‫آشکارسازی‬
+CFAR ‫و‬ Grouping .‫‌شود‬ ‫ی‬‫م‬ ‫عوض‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫اجرای‬ ‫محل‬ ‫فقط‬ ‫شوند؛‬ ‫حفظ‬ ‫ریاضی‬ ‫تغییر‬ ‫بدون‬ ‫‌توانند‬ ‫ی‬‫م‬
+‫را‬ ‫آشکارشده‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫فقط‬ ‫‌توان‬ ‫ی‬‫م‬ ،‫باشد‬ FPGA ‫داخل‬ CFAR ‫وقتی‬ .‫است‬ ‫بیشتر‬ ‫داده‬ ‫انتقال‬ ،‫انتخاب‬ ‫این‬ ‫اصلی‬ ‫هزینه‬
+.‫کنیم‬ ‫منتقل‬ ‫را‬ ‫آن‬ ‫موردنیاز‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫توان‬ ‫باید‬ ،‫باشد‬ PC ‫روی‬ CFAR ‫وقتی‬ .‫کرد‬ ‫ارسال‬
+:‫فعلی‬ ‫کامل‬ ‫نقشه‬ ‫ارسال‬ ‫برای‬
+۴٬۰۹۶ = ۳۲ × ۱۲۸ :‫‌ها‬ ‫ل‬‫سلو‬ ‫تعداد‬
+‫بیتی‬۴۶ ‫توان‬ ‫هر‬ ‫برای‬ ‫بایت‬ ۶ :‫افت‬ ‫بدون‬ ‫پیشنهادی‬ ‫قالب‬
+‫بایت‬ ۲۴٬۵۷۶ :‫داده‬ ‫حجم‬
+‫مجدد‬ ‫ارسال‬ ‫و‬ ACK ،‫‌ها‬ ‫ه‬‫بست‬ ‫سربار‬ ‫بدون‬ ،‫ثانیه‬ ۲٫۱۳ ‫حدود‬ :8N1 ‫و‬ baud ۱۱۵۲۰۰ ‫در‬ ‫ارسال‬ ‫زمان‬ ‫حداقل‬
+‫در‬ ‫برد–داپلر‬ ‫واقعی‬ ‫نمایش‬ ‫برای‬ ‫کامل‬ ‫نقشه‬ ،‫عوض‬ ‫در‬ .‫جداست‬ ‫ورودی‬ IQ ‫انتقال‬ ‫است؛‬ ‫نقشه‬ ‫خروجی‬ ‫برای‬ ‫فقط‬ ‫زمان‬ ‫این‬
+‫باید‬ ‫پذیرش‬ ‫مبنای‬ ‫مقادیر‬ ‫هرچند‬ ،‫‌شود‬ ‫ی‬‫م‬ ‫‌تر‬ ‫ن‬‫آسا‬ PC ‫روی‬ ‫نیز‬ CFAR ‫پارامترهای‬ ‫تغییر‬ .‫بود‬ ‫خواهد‬ ‫دسترس‬ ‫در‬ ‫هم‬ ‫برنامه‬
+.‫بمانند‬ ‫ثابت‬
+‫‌تری‬ ‫ک‬‫‌ریس‬ ‫م‬‫ک‬ ‫و‬ ‫منطقی‬ ‫گزینه‬ PC ‫به‬ ‫مرحله‬ ‫دو‬ ‫هر‬ ‫انتقال‬ ،AX309 ‫روی‬ ‫عملی‬ ‫دموی‬ ‫یک‬ ‫به‬ ‫رسیدن‬ ‫یعنی‬ ،‫تو‬ ‫فعلی‬ ‫هدف‬ ‫برای‬
+‫و‬ CFAR ‫سپس‬ ،FPGA ‫روی‬ MF → MTI → FFT → Power :‫صورت‬ ‫این‬ ‫در‬ ‫من‬ ‫پیشنهاد‬ .‫است‬ FPGA ‫ظرفیت‬ ‫نظر‬ ‫از‬
+.FFT ‫‌مصرف‬ ‫م‬‫ک‬ IP ‫بررسی‬ ‫با‬ ‫همراه‬ ‫؛‬PC ‫روی‬ Grouping
+‫به‬ ‫آشکارسازی‬ ‫وابستگی‬ ‫و‬ ‫‌تر‬ ‫م‬‫حجی‬ ‫خروجی‬ ،‫آن‬ ‫عیب‬ ‫است؛‬ FPGA ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫‌ترشدن‬ ‫ه‬‫ساد‬ ‫و‬ ‫بیشتر‬ ‫حافظه‬ ‫فضای‬ ،‫آن‬ ‫مزیت‬
+‫اصلی‬ ‫طراحی‬ ‫در‬ ‫تغییری‬ ‫بود؛‬ ‫آزمایشی‬ ‫سنتز‬ ‫فقط‬ ‫بررسی‬ ‫این‬ .‫شود‬ ‫اثبات‬ ‫باید‬ ‫هنوز‬ ‫طرح‬ ‫کل‬ timing ‫و‬ ‫شدن‬ ‫جا‬ .‫است‬ PC
+.‫نکردم‬ ‫اعمال‬
+‫پردازش‬ ‫تقسیم‬ LUT ‫روی‬ FPGA BRAM DSP48A1
+FPGA ‫روی‬ ‫زنجیره‬ ‫کل‬ ۱۱٬۵۰۷ ۱۸ ۱۳
+PC ‫روی‬ Grouping ‫فقط‬ ۷٬۷۶۱ ۱۲ ۱۳
+CFAR ‫و‬ Grouping ‫روی‬ PC ۶٬۸۲۱ ‫صفر‬ ۱۳
+FPGA PC
+Matched Filter، MTI، FFT ‫و‬ Power CFAR، Grouping، ‫نمایش‬ ‫و‬ ‫سناریو‬ ‫حقیقت‬ ‫با‬ ‫مقایسه‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 17/37You said:
+Worked for 26m 6s
+ChatGPT said:
+‫این‬ ‫برای‬ ‫هم‬ PC ‫به‬ Power ‫انتقال‬ .‫یافت‬ ‫کاهش‬ ٪۹۰٫۴ ‫حدود‬ FFT ‫بخش‬ LUT ‫مصرف‬ :‫داد‬ ‫خوبی‬ ‫نتیجه‬ ISE ‫در‬ IP ‫آزمایش‬
+.‫‌ماند‬ ‫ی‬‫نم‬ ‫برابر‬ ‫ًا‬‫دقیق‬ ‫انتقال‬ ‫حجم‬ ‫فقط‬ ‫است؛‬ ‫منطقی‬ ‫آزمایشی‬ ‫نمونه‬
+:‫کردم‬ ‫اجرا‬ MAP ‫مرحله‬ ‫تا‬ ‫همگی‬ ‫را‬ IP ‫تنظیم‬ ‫سه‬ ‫و‬ ‫قبلی‬ FFT ،‫منصفانه‬ ‫مقایسه‬ ‫برای‬
+‫‌اندازه‬ ‫م‬‫نی‬ ‫حافظه‬ ‫بلوک‬ ‫نیز‬ RAMB8 .‫است‬ FFT ‫همان‬ MAP ‫نتیجه‬ ،‫جدول‬ ‫در‬ ۵٬۵۸۹ ‫عدد‬ ‫بود؛‬ XST ‫به‬ ‫مربوط‬ ۵٬۶۵۲ ‫قبلی‬ ‫عدد‬
+.‫کیلوبیتی‬ ۱۸ ‫کامل‬ BRAM ‫یک‬ ‫نه‬ ،‫است‬
+‫گردکردن‬ ،‫بیت‬ ۱۶ ‫ضرایب‬ ،‫بیت‬ ۲۵ ‫خروجی‬/‫ورودی‬ :‫است‬ BRAM ‫با‬ Radix-2 Lite ،‫تست‬ ‫برای‬ ‫مناسب‬ ‫انتخاب‬
+‫آخرین‬ .‫گذراند‬ ‫را‬ MHz ۵۰ ‫در‬ ‫داخلی‬ timing ‫و‬ Place & Route ‫هسته‬ ‫این‬ .]0,1,0,1,1[ ‫‌های‬ ‫ت‬‫شیف‬ ‫و‬ Convergent
+‫هسته‬ ‫برای‬ ‫نتایج‬ ‫این‬ .‫کالک‬ ‫این‬ ‫در‬ ‫میکروثانیه‬ ۵٫۶۴ ‫یعنی‬ ‫رسید؛‬ ‫شروع‬ ‫از‬ ‫پس‬ ‫کالک‬ ۲۸۲ ،‫‌سازی‬ ‫ه‬‫شبی‬ ‫در‬ FFT ‫خروجی‬
+.‫است‬ ‫نشده‬ ‫تأیید‬ ‫برد‬ ‫روی‬ IP ‫اجرای‬ ‫یا‬ ‫رادار‬ ‫کل‬ fit ‫هنوز‬ ‫‌اند؛‬ ‫ل‬‫مستق‬
+:‫موجود‬ CPI ‫سه‬ ‫آزمون‬ ‫در‬ .‫شود‬ ‫تکلیف‬ ‫تعیین‬ ‫ًا‬‫صریح‬ ‫باید‬ ‫عددی‬ ‫اختالف‬ ‫یک‬
+.‫بود‬ ‫متفاوت‬ ‫قبلی‬ ‫مرجع‬ ‫با‬ ‫خروجی‬ ۴۱۵ ،‫مختلط‬ ‫خروجی‬ ۱۲٬۲۸۸ ‫از‬
+‫هم‬ ‫اون‬ ‫محاسبه‬ ‫داده‬ ‫نرخ‬ ‫چون‬ ‫کرد‬ ‫منتقل‬ ‫سی‬ ‫پی‬ ‫به‬ ‫میشه‬ ‫هم‬ ‫را‬ ‫توان‬ ‫حتی‬ ‫و‬
+‫داشت‬ ‫نخواهیم‬ ‫داده‬ ‫انتقال‬ ‫نرخ‬ ‫در‬ ‫تفاوتی‬ ‫و‬ ‫هست‬ ‫پایین‬
+‫مصرفی‬ ‫منابع‬ ‫چقدر‬ IP ‫سازی‬ ‫بهینه‬ ‫با‬ ‫ببین‬ ISE ‫روی‬ IP FFT ‫تنظیم‬ ‫با‬ ‫کن‬ ‫بررسی‬
+.‫میشود‬ ‫کمتر‬
+‫و‬ ‫بدیم‬ ‫نمیتونیم‬ ‫را‬ ‫ها‬ ‫داده‬ ‫ریل‬ ‫سرعت‬ ‫هنوز‬ ‫چون‬ ‫هست‬ ‫اولیه‬ ‫تست‬ ‫طرح‬ ‫یک‬ ‫این‬
+‫بگیریم‬
+‫اون‬ ‫از‬ ‫و‬ ‫بگیرم‬ ‫را‬ RJ45 ‫سوکت‬ ‫با‬ W5500 ‫ماژول‬ ‫میخوام‬ ‫تسست‬ ‫این‬ ‫از‬ ‫بعد‬
+‫هم‬ ‫و‬ ‫کنم‬ ‫منتقل‬ ‫را‬ ‫واقعی‬ ‫نرخ‬ ‫با‬ ‫ریل‬ ‫دیتای‬ ‫میتونم‬ ‫هم‬ ‫اینطوری‬ ‫کنیم‬ ‫استفاده‬
+‫برگردونیم‬ ‫را‬ CFAR ‫و‬ ‫توان‬ ‫بتونیم‬ ‫شاید‬ ‫میشه‬ ‫آزاد‬ ‫هم‬ UART ‫منابع‬
+FFT32 ‫‌سازی‬ ‫ه‬‫پیاد‬ LUT ‫رجیستر‬ DSP48A1 RAMB8
+RTL ‫قبلی‬ ۵٬۵۸۹ ۱٬۶۲۱ ۸ ‫صفر‬
+IP Radix-2 Lite ‫با‬ BRAM ۵۳۷ ۱٬۰۴۰ ۴ ۲
+IP Radix-2 Lite ‫‌شده‬ ‫ع‬‫توزی‬ ‫حافظه‬ ‫با‬ ۶۶۵ ۱٬۰۸۹ ۴ ‫صفر‬
+IP Radix-2 ‫با‬ ‫معمولی‬ BRAM ۱٬۰۴۳ ۱٬۴۴۴ ۶ ۴
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 18/37.‫بود‬ LSB ۱۶ ‫مؤلفه‬ ‫هر‬ ‫اختالف‬ ‫بیشترین‬
+.‫کرد‬ ‫تغییر‬ ‫نیز‬ ‫کالسترها‬ ‫تعداد‬ ‫کرد؛‬ ‫تغییر‬ CFAR ‫تصمیم‬ ۷ ‫و‬ ۲ ‫‌ترتیب‬ ‫ه‬‫ب‬ ،‫چندهدف‬ ‫و‬ ‫‌هدف‬ ‫ک‬‫ت‬ ‫سناریوهای‬ ‫در‬
+‫نیست؛‬ ‫آشکارسازی‬ ‫بر‬ ‫آن‬ ‫اثر‬ ‫‌گرفتن‬ ‫ه‬‫نادید‬ ‫مجوز‬ ‫عددی‬ ‫اختالف‬ ‫‌بودن‬ ‫ک‬‫کوچ‬ .‫است‬ FAIL ،‫قبلی‬ C02 ‫با‬ ‫‌بیت‬ ‫ه‬‫‌ب‬ ‫ت‬‫بی‬ ‫تطابق‬ ‫پس‬
+.‫است‬ ‫نشده‬ ‫اجرا‬ ‫هم‬ Pfa/Pd ‫جدید‬ ‫آماری‬ ‫آزمون‬
+:‫داریم‬ ‫فعلی‬ ‫قالب‬ ‫با‬ ،Power ‫انتقال‬ ‫درباره‬
+‫‌بودن‬ ‫ک‬‫نزدی‬ ‫از‬ ‫برداشتت‬ ‫است؛‬ ۴٫۲٪ ‫حدود‬ ‫فقط‬ ‫فعلی‬ ‫توان‬ ‫قالب‬ ‫به‬ ‫نسبت‬ ‫حجم‬ ‫افزایش‬ ،‫پیوسته‬ ‫‌بندی‬ ‫ه‬‫بست‬ ‫با‬ ‫بنابراین‬
+.‫است‬ ‫نشده‬ ‫پیاده‬ ‫هنوز‬ ‫انتقال‬ ‫قالب‬ ‫این‬ .‫است‬ ‫درست‬ ‫‌ها‬ ‫خ‬‫نر‬
+:‫اولیه‬ ‫تست‬ ‫برای‬ ‫پیشنهادی‬ ‫مسیر‬
+FPGA: MF → MTI → FFT IP
+PC: Power → CFAR → Grouping → ‫نمایش‬
+.‫نیست‬ ‫کاربرد‬ ‫‌شده‬ ‫ن‬‫تضمی‬ ‫نرخ‬ ،‫عدد‬ ‫این‬ ‫‌کنند؛‬ ‫ی‬‫م‬ ‫اعالم‬ ‫را‬ MHz ۸۰ ‫تا‬ SPI ‫سازنده‬ ‫مستندات‬ ،W5500 ‫درباره‬
+‫و‬ ‫ورودی‬ ‫خام‬ ‫داده‬ ‫مجموع‬ ،FFT ‫بایتی‬۷ ‫‌بندی‬ ‫ه‬‫بست‬ ‫و‬ ‫‌ثانیه‬ ‫ی‬‫میل‬ ۳۳ ‫هر‬ ‫در‬ CPI ‫یک‬ ،‫پروژه‬ ‫فعلی‬ ‫پارامتر‬ ‫با‬
+‫حالت‬ ‫آن‬ ‫است؛‬ ‫متفاوت‬ »‫جهت‬ ‫دو‬ ‫هر‬ ‫در‬ ‫خام‬ ‫انتقال‬ ‫و‬ ‫پیوسته‬ MSPS ۱« ‫با‬ ‫این‬ .‫‌شود‬ ‫ی‬‫م‬ ‫‌برثانیه‬ ‫ت‬‫مگابی‬ ۱۱ ‫حدود‬ ‫خروجی‬
+.‫کند‬ ‫عبور‬ SPI ‫خام‬ ‫ظرفیت‬ ‫از‬ ‫‌تواند‬ ‫ی‬‫م‬ ‫حتی‬
+‫و‬ ‫‌خواهند‬ ‫ی‬‫م‬ ‫منابع‬ CPI ‫مدیریت‬ ‫و‬ ‫بافرها‬ ،SPI/W5500 ‫کنترل‬ :‫‌کند‬ ‫ی‬‫نم‬ ‫آزاد‬ ‫را‬ ‫فعلی‬ ‫ارتباط‬ ‫منابع‬ ‫همه‬ ‫نیز‬ UART ‫جایگزینی‬
+‫را‬ LAN ‫نسخه‬ ‫در‬ CFAR ‫و‬ Power ‫بازگرداندن‬ ‫بررسی‬ ،FFT ‫منابع‬ ‫بزرگ‬ ‫کاهش‬ ،‫‌حال‬ ‫ن‬‫باای‬ .‫است‬ ‫الزم‬ ‫همچنان‬ IQ ‫حافظه‬
+.‫است‬ ‫کرده‬ ‫‌تر‬ ‫ه‬‫امیدوارکنند‬ ‫بسیار‬
+‫با‬ ‫را‬ FFT IP ،‫آزمایشی‬ ‫نسخه‬ ‫برای‬ ‫‌کنی‬ ‫ی‬‫م‬ ‫تأیید‬ ‫آیا‬ .‫نکردند‬ ‫تغییر‬ ‫قبلی‬ ‫مبنای‬ ‫و‬ ‫برد‬ ‫فعال‬ ‫طرح‬ ‫شدند؛‬ ‫ثبت‬ ‫شواهد‬ ‫و‬ ‫تنظیمات‬
+‫کنیم؟‬ ‫حفظ‬ ‫‌نخورده‬ ‫ت‬‫دس‬ ‫را‬ ‫قبلی‬ C02 ‫و‬ ‫دهیم‬ ‫قرار‬ ‫مبنا‬ ‫خودش‬ ‫متناظر‬ ‫عددی‬ ‫مرجع‬
+You said:
+CPI ‫هر‬ ‫خروجی‬ ‫پروتکل‬ ‫سربار‬ ‫بدون‬ ،‫داده‬ ‫حجم‬
+‫بایت‬ ۶ ‫سلول‬ ‫هر‬ ،‫بیتی‬۴۶ ‫توان‬ ‫بایت‬ ۲۴٬۵۷۶
+FFT ۷ ‫سلول‬ ‫هر‬ ،‫بیت‬ ۲۵+۲۵ ‫مختلط‬ ‫بایت‬ ‫بایت‬ ۲۸٬۶۷۲
+‫افت‬ ‫بدون‬ ،‫‌ها‬ ‫ت‬‫بی‬ ‫پیوسته‬ ‫‌بندی‬ ‫ه‬‫بست‬ ‫با‬ FFT ‫همان‬ ‫بایت‬ ۲۵٬۶۰۰
+cument System …
+‫میشود‬ ‫آزاد‬ ‫بسیار‬ FFT ‫منابع‬ ‫که‬ ‫االن‬
+‫نه‬ ‫یا‬ ‫را‬ ‫کالسترینگ‬ ‫حتی‬ ‫برگردوند‬ ‫را‬ CFAR ‫و‬ ‫پاور‬ ‫میتوان‬
+‫سازی‬ ‫پیاده‬ ‫مدل‬ ‫نه‬ ‫کنی‬ ‫مقایسه‬ ‫فلوت‬ ‫مدل‬ ‫با‬ ‫را‬ ‫اون‬ ‫باید‬ FFT ‫دقت‬ ‫درباره‬
+‫معیار‬ LSB ‫بیشترین‬ )‫شوند‬ ‫مقایسه‬ ‫فلوت‬ ‫مدل‬ ‫با‬ ‫باید‬ ‫دو‬ ‫(هر‬ ‫قبلی‬ ‫پوینت‬ ‫فیکس‬
+‫بوده‬ ‫چقدر‬ ‫اختالفات‬ RMSE ‫بگی‬ ‫باید‬ ‫نیست‬ ‫کافی‬
+‫فلوت‬ ‫مدل‬ ‫با‬ ‫مقایسه‬ ‫در‬ ‫سازی‬ ‫پیاده‬ ‫دو‬ ‫در‬ CFAR ‫صرفا‬ ‫نه‬ ‫و‬ ‫کالسترینگ‬ ‫اینکه‬ ‫و‬
+‫میکند‬ ‫تغییری‬ ‫چه‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 19/37‫بررسی‬ ‫این‬ ‫نتیجه‬ ‫با‬ ‫و‬ ‫هست‬ IP ‫از‬ ‫استفاده‬ ‫فعال‬ ‫پیشنهادم‬ ‫من‬ ‫کن‬ ‫بررسی‬ ‫را‬ ‫اینها‬
+‫میگرم‬ ‫را‬ ‫نهایی‬ ‫تصمیم‬
+ChatGPT said:
+‫مرجع‬ ‫با‬ ‫را‬ ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫دو‬ ‫هر‬ .‫نیست‬ ‫کافی‬ FFT ‫انتخاب‬ ‫برای‬ ‫قبلی‬ ‫‌پوینت‬ ‫س‬‫فیک‬ ‫نسخه‬ ‫با‬ LSB ‫اختالف‬ ‫‌گویی؛‬ ‫ی‬‫م‬ ‫درست‬
+‫‌های‬ ‫ه‬‫نسخ‬ ‫همچنین‬ .‫‌سنجم‬ ‫ی‬‫م‬ ‫را‬ ‫کالسترینگ‬ ‫نهایی‬ ‫خروجی‬ ‫تغییر‬ ‫و‬ ‫‌دهم‬ ‫ی‬‫م‬ ‫گزارش‬ ‫را‬ RMSE ،‫‌کنم‬ ‫ی‬‫م‬ ‫مقایسه‬ ‫یکسان‬ Float
+‫پایه‬ ‫بر‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫شدن‬ ‫جا‬ ‫پاسخ‬ ‫تا‬ ‫‌کنم‬ ‫ی‬‫م‬ ‫سنتز‬ ‫ترکیبی‬ ‫‌صورت‬ ‫ه‬‫ب‬ ‫را‬ Grouping ‫و‬ Power، CFAR ‫بازگشت‬ ‫و‬ FFT IP ‫با‬ ‫آزمایشی‬
+.‫‌دهم‬ ‫ی‬‫نم‬ ‫تغییر‬ ‫را‬ ‫اصلی‬ ‫مبنای‬ ‫و‬ ‫‌دارم‬ ‫ی‬‫م‬ ‫نگه‬ ‫آزمایش‬ ‫پیشنهادی‬ ‫گزینه‬ ‫‌عنوان‬ ‫ه‬‫ب‬ ‫را‬ IP ‫ًال‬‫فع‬ .‫نباشد‬ ‫‌ها‬ ‫ک‬‫بلو‬ ‫تخمینی‬ ‫جمع‬
+ChatGPT said:
+‫و‬ ‫زنجیره‬ ‫کل‬ ‫خروجی‬ ‫سپس‬ ‫یکسان؛‬ ‫ًال‬‫کام‬ MTI ‫ورودی‬ ‫با‬ FFT ‫خود‬ ‫دقت‬ ‫نخست‬ :‫‌دهم‬ ‫ی‬‫م‬ ‫انجام‬ ‫سطح‬ ‫دو‬ ‫در‬ ‫را‬ ‫مقایسه‬
+.‫ندهیم‬ ‫نسبت‬ FFT ‫به‬ ‫را‬ MTI ‫و‬ MF ‫خطای‬ ‫‌کند‬ ‫ی‬‫م‬ ‫کمک‬ ‫تفکیک‬ ‫این‬ .‫یکسان‬ IQ ‫روی‬ Float ‫پردازش‬ ‫به‬ ‫نسبت‬ ‫کالسترینگ‬
+‫و‬ ‫محدود‬ ‫‌صورت‬ ‫ه‬‫ب‬ ‫هم‬ ‫را‬ ‫پایین‬ SNR ‫و‬ ‫نزدیک‬ ‫اهداف‬ ،‫ضعیف‬ ‫هدف‬ ،‫کالتر‬ ‫شامل‬ ‫برنامه‬ ‫سناریوهای‬ ،‫قبلی‬ CPI ‫سه‬ ‫بر‬ ‫عالوه‬
+.‫بود‬ ‫نخواهند‬ Pfa/Pd ‫آماری‬ ‫پذیرش‬ ‫آزمون‬ ‫‌ها‬ ‫ن‬‫ای‬ ‫‌کنم؛‬ ‫ی‬‫م‬ ‫بررسی‬ ‫مشخص‬
+ChatGPT said:
+‫‌شوند؛‬ ‫ی‬‫م‬ ‫جا‬ ‫منابع‬ ‫نظر‬ ‫از‬ IQ ‫واقعی‬ ‫حافظه‬ ‫و‬ FFT IP، UART ‫همراه‬ CFAR ‫و‬ Power :‫شد‬ ‫مشخص‬ ‫ترکیبی‬ ‫ٔه‬‫نتیج‬ ‫اولین‬
+.‫است‬ ‫نشده‬ ‫بسته‬ MHz ۵۰ ‫در‬ ‫هنوز‬ ‫ترکیب‬ timing ‫البته‬ .‫است‬ ‫ظرفیت‬ ‫از‬ ‫بیش‬ ‫فعلی‬ Grouping ‫با‬ ‫نسخه‬
+‫را‬ RAM ‫استنتاج‬ ‫با‬ ‫آزمایشی‬ ‫نسخه‬ ‫یک‬ .‫‌اند‬ ‫ه‬‫شد‬ ‫پیاده‬ ‫‌گر‬ ‫ب‬‫انتخا‬ ‫و‬ ‫رجیستر‬ ‫زیادی‬ ‫تعداد‬ ‫با‬ ‫کوچک‬ ‫‌های‬ ‫ل‬‫جدو‬ ،Grouping ‫در‬
+.‫است‬ ‫شده‬ ‫مانع‬ ‫آن‬ ‫فعلی‬ RTL ‫فقط‬ ‫یا‬ ‫است‬ ‫عملی‬ FPGA ‫روی‬ ‫کالسترینگ‬ ‫ماندن‬ ‫شود‬ ‫معلوم‬ ‫تا‬ ‫‌کنم‬ ‫ی‬‫م‬ ‫بررسی‬ ‫هم‬
+ChatGPT said:
+‫خود‬ ‫مختلِط‬ RMSE ،‫نویز‬ ‫دارای‬ ‫سناریوی‬ ‫هشت‬ ‫روی‬ .‫دارد‬ ‫کمتری‬ ‫خطای‬ ‫مجموعه‬ ‫این‬ ‫در‬ FFT IP ‫داد‬ ‫نشان‬ Float ‫با‬ ‫مقایسه‬
+.‫رسید‬ IP ‫در‬ ⁵⁻۱۰×۲٫۰۴ ‫به‬ ‫قبلی‬ RTL ‫در‬ ⁵⁻۱۰×۳٫۱۷ ‫حدود‬ ‫از‬ FFT
+‫بردار‬ ‫دو‬ .‫بود‬ ‫یکسان‬ Float ‫با‬ ‫ًا‬‫دقیق‬ ‫مسیر‬ ‫دو‬ ‫هر‬ ‫در‬ ‫‌ها‬ ‫ه‬‫قل‬ ‫مختصات‬ ‫و‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫اعضای‬ ،‫کالسترها‬ ‫تعداد‬ ،‫سناریو‬ ‫هشت‬ ‫همین‬ ‫در‬
+‫مسیر‬ ‫سه‬ ‫هر‬ ‫نیز‬ ‫نزدیک‬ ‫اهداف‬ ‫سناریوی‬ ‫در‬ .‫‌آیند‬ ‫ی‬‫م‬ ‫گزارش‬ ‫در‬ ‫جداگانه‬ ‫و‬ ‫دارند‬ ‫کالسترینگ‬ ‫اختالف‬ ‫همچنان‬ ‫نویز‬ ‫بدون‬ ‫ِی‬‫قدیم‬
+.‫است‬ ‫نشده‬ ‫برطرف‬ FFT ‫تعویض‬ ‫با‬ ‫محدودیت‬ ‫این‬ ‫دادند؛‬ ‫تطبیق‬ ‫را‬ ‫هدف‬ ‫دو‬ ‫از‬ ‫یکی‬ ‫فقط‬
+ChatGPT said:
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 20/37You said:
+‫این‬ ‫ولی‬ ‫بودی‬ ‫نداده‬ ‫پاسخی‬ ‫هنوز‬ ‫واقع‬ ‫(در‬ ‫دادی‬ ‫قبلی‬ ‫درخواست‬ ‫به‬ ‫را‬ ‫پاسخ‬ ‫این‬
+)‫کردی‬ ‫را‬ ‫ها‬ ‫فکر‬
+FFT ‫انتخاب‬ ‫برای‬ ‫قبلی‬ ‫‌پوینت‬ ‫س‬‫فیک‬ ‫نسخه‬ ‫با‬ LSB ‫اختالف‬ ‫‌گویی؛‬ ‫ی‬‫م‬ ‫درست‬
+RMSE ،‫‌کنم‬ ‫ی‬‫م‬ ‫مقایسه‬ ‫یکسان‬ Float ‫مرجع‬ ‫با‬ ‫را‬ ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫دو‬ ‫هر‬ .‫نیست‬ ‫کافی‬
+‫همچنین‬ .‫‌سنجم‬ ‫ی‬‫م‬ ‫را‬ ‫کالسترینگ‬ ‫نهایی‬ ‫خروجی‬ ‫تغییر‬ ‫و‬ ‫‌دهم‬ ‫ی‬‫م‬ ‫گزارش‬ ‫را‬
+‫را‬ Grouping ‫و‬ Power، CFAR ‫بازگشت‬ ‫و‬ FFT IP ‫با‬ ‫آزمایشی‬ ‫‌های‬ ‫ه‬‫نسخ‬
+‫‌ها‬ ‫ک‬‫بلو‬ ‫تخمینی‬ ‫جمع‬ ‫پایه‬ ‫بر‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫شدن‬ ‫جا‬ ‫پاسخ‬ ‫تا‬ ‫‌کنم‬ ‫ی‬‫م‬ ‫سنتز‬ ‫ترکیبی‬ ‫‌صورت‬ ‫ه‬‫ب‬
+‫را‬ ‫اصلی‬ ‫مبنای‬ ‫و‬ ‫‌دارم‬ ‫ی‬‫م‬ ‫نگه‬ ‫آزمایش‬ ‫پیشنهادی‬ ‫گزینه‬ ‫‌عنوان‬ ‫ه‬‫ب‬ ‫را‬ IP ‫ًال‬‫فع‬ .‫نباشد‬
+.‫‌دهم‬ ‫ی‬‫نم‬ ‫تغییر‬
+⁩ Remote Desktop Commander⁨⁩ Used
+‫ًال‬‫کام‬ MTI ‫ورودی‬ ‫با‬ FFT ‫خود‬ ‫دقت‬ ‫نخست‬ :‫‌دهم‬ ‫ی‬‫م‬ ‫انجام‬ ‫سطح‬ ‫دو‬ ‫در‬ ‫را‬ ‫مقایسه‬
+IQ ‫روی‬ Float ‫پردازش‬ ‫به‬ ‫نسبت‬ ‫کالسترینگ‬ ‫و‬ ‫زنجیره‬ ‫کل‬ ‫خروجی‬ ‫سپس‬ ‫یکسان؛‬
+‫عالوه‬ .‫ندهیم‬ ‫نسبت‬ FFT ‫به‬ ‫را‬ MTI ‫و‬ MF ‫خطای‬ ‫‌کند‬ ‫ی‬‫م‬ ‫کمک‬ ‫تفکیک‬ ‫این‬ .‫یکسان‬
+‫و‬ ‫نزدیک‬ ‫اهداف‬ ،‫ضعیف‬ ‫هدف‬ ،‫کالتر‬ ‫شامل‬ ‫برنامه‬ ‫سناریوهای‬ ،‫قبلی‬ CPI ‫سه‬ ‫بر‬
+‫آزمون‬ ‫‌ها‬ ‫ن‬‫ای‬ ‫‌کنم؛‬ ‫ی‬‫م‬ ‫بررسی‬ ‫مشخص‬ ‫و‬ ‫محدود‬ ‫‌صورت‬ ‫ه‬‫ب‬ ‫هم‬ ‫را‬ ‫پایین‬ SNR
+.‫بود‬ ‫نخواهند‬ Pfa/Pd ‫آماری‬ ‫پذیرش‬
+⁩ Remote Desktop Commander⁨⁩ Used
+‫و‬ FFT IP، UART ‫همراه‬ CFAR ‫و‬ Power :‫شد‬ ‫مشخص‬ ‫ترکیبی‬ ‫ٔه‬‫نتیج‬ ‫اولین‬
+‫از‬ ‫بیش‬ ‫فعلی‬ Grouping ‫با‬ ‫نسخه‬ ‫‌شوند؛‬ ‫ی‬‫م‬ ‫جا‬ ‫منابع‬ ‫نظر‬ ‫از‬ IQ ‫واقعی‬ ‫حافظه‬
+.‫است‬ ‫نشده‬ ‫بسته‬ MHz ۵۰ ‫در‬ ‫هنوز‬ ‫ترکیب‬ timing ‫البته‬ .‫است‬ ‫ظرفیت‬
+‫پیاده‬ ‫‌گر‬ ‫ب‬‫انتخا‬ ‫و‬ ‫رجیستر‬ ‫زیادی‬ ‫تعداد‬ ‫با‬ ‫کوچک‬ ‫‌های‬ ‫ل‬‫جدو‬ ،Grouping ‫در‬
+‫شود‬ ‫معلوم‬ ‫تا‬ ‫‌کنم‬ ‫ی‬‫م‬ ‫بررسی‬ ‫هم‬ ‫را‬ RAM ‫استنتاج‬ ‫با‬ ‫آزمایشی‬ ‫نسخه‬ ‫یک‬ .‫‌اند‬ ‫ه‬‫شد‬
+.‫است‬ ‫شده‬ ‫مانع‬ ‫آن‬ ‫فعلی‬ RTL ‫فقط‬ ‫یا‬ ‫است‬ ‫عملی‬ FPGA ‫روی‬ ‫کالسترینگ‬ ‫ماندن‬
+⁩ Remote Desktop Commander⁨⁩ Used
+‫روی‬ .‫دارد‬ ‫کمتری‬ ‫خطای‬ ‫مجموعه‬ ‫این‬ ‫در‬ FFT IP ‫داد‬ ‫نشان‬ Float ‫با‬ ‫مقایسه‬
+RTL ‫در‬ ⁵⁻۱۰×۳٫۱۷ ‫حدود‬ ‫از‬ FFT ‫خود‬ ‫مختلِط‬ RMSE ،‫نویز‬ ‫دارای‬ ‫سناریوی‬ ‫هشت‬
+.‫رسید‬ IP ‫در‬ ⁵⁻۱۰×۲٫۰۴ ‫به‬ ‫قبلی‬
+‫هر‬ ‫در‬ ‫‌ها‬ ‫ه‬‫قل‬ ‫مختصات‬ ‫و‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫اعضای‬ ،‫کالسترها‬ ‫تعداد‬ ،‫سناریو‬ ‫هشت‬ ‫همین‬ ‫در‬
+‫اختالف‬ ‫همچنان‬ ‫نویز‬ ‫بدون‬ ‫ِی‬‫قدیم‬ ‫بردار‬ ‫دو‬ .‫بود‬ ‫یکسان‬ Float ‫با‬ ‫ًا‬‫دقیق‬ ‫مسیر‬ ‫دو‬
+‫هر‬ ‫نیز‬ ‫نزدیک‬ ‫اهداف‬ ‫سناریوی‬ ‫در‬ .‫‌آیند‬ ‫ی‬‫م‬ ‫گزارش‬ ‫در‬ ‫جداگانه‬ ‫و‬ ‫دارند‬ ‫کالسترینگ‬
+FFT ‫تعویض‬ ‫با‬ ‫محدودیت‬ ‫این‬ ‫دادند؛‬ ‫تطبیق‬ ‫را‬ ‫هدف‬ ‫دو‬ ‫از‬ ‫یکی‬ ‫فقط‬ ‫مسیر‬ ‫سه‬
+.‫است‬ ‫نشده‬ ‫برطرف‬
+Evaluating RTL Equivalence and Implementation Results
+‫تا‬ ‫زنجیره‬ ‫کل‬ :‫کرد‬ ‫تغییر‬ ‫نتیجه‬ ،Grouping ‫های‬RAM ‫‌سازی‬ ‫ه‬‫بهین‬ ‫از‬ ‫پس‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 21/37ChatGPT said:
+‫با‬ ‫نهایی‬ ‫نتیجه‬ ‫و‬ ‫شد‬ ‫رفع‬ ‫هم‬ hold ‫خطای‬ ۱۸ ‫آن‬ .‫شد‬ ‫تو‬ ‫به‬ ‫نهایی‬ ‫گزارش‬ ‫رسیدن‬ ‫مانع‬ ‫ارتباط‬ ‫قطع‬ ‫است؛‬ ‫شده‬ ‫تمام‬ ‫‌ها‬ ‫ی‬‫بررس‬
+.‫دارد‬ ‫تفاوت‬ ‫میانی‬ ‫پیام‬ ‫آخرین‬
+‫روی‬ ‫آزمایشی‬ ‫نسخه‬ ‫در‬ ،IQ ‫حافظه‬ ‫و‬ UART ‫همراه‬ ،‫کالسترینگ‬ ‫و‬ MF، MTI، FFT IP، Power، CFAR ‫شامل‬ ‫زنجیره‬ ‫کل‬
+:‫شد‬ ‫جا‬ ‫تراشه‬
+‫شدن‬ ‫جا‬ ‫برای‬ .‫شدند‬ ‫رفع‬ ‫مشترک‬ ‫کالک‬ ‫بافر‬ ‫به‬ ‫صحیح‬ ‫اتصال‬ ‫با‬ ‫بودند؛‬ RTL ‫و‬ IP ‫بین‬ ‫کالک‬ ‫اتصال‬ ‫نحوه‬ ‫از‬ hold ‫خطاهای‬
+.‫نکرد‬ ‫تغییر‬ ‫الگوریتم‬ ‫شدند؛‬ ‫محور‬RAM ‫آن‬ ‫‌های‬ ‫ه‬‫حافظ‬ ‫نیز‬ ‫کالسترینگ‬
+Float ‫با‬ FFT ‫دو‬ ‫هر‬ ‫مقایسه‬ ‫نتیجه‬
+:‫است‬ ‫‌شده‬ ‫ل‬‫نرما‬ ‫دامنه‬ ‫واحد‬ ‫در‬ RMSE .‫شد‬ ‫انجام‬ ‫مختلط‬ ‫خروجی‬ ۴۵٬۰۵۶ ‫و‬ CPI ۱۱ ‫روی‬ ‫آزمون‬
+‫و‬ ‫رسید‬ LUT ۴٬۷۲۵ ‫به‬ ‫آزمایشی‬ ‫ٔه‬‫نسخ‬ ‫در‬ ،IQ ‫حافظه‬ ‫و‬ UART ‫همراه‬ ،‫کالسترینگ‬
+‫‌های‬ ‫ن‬‫آزمو‬ .‫است‬ LUT ۵٬۷۲۰ ‫تراشه‬ ‫ظرفیت‬ .‫گذراند‬ ‫را‬ Place & Route ‫و‬ MAP
+.‫گذشتند‬ ‫هم‬ ،‫کالستر‬ ۷۰۲ ‫کامل‬ ‫خروجی‬ ‫جمله‬ ‫از‬ ،Grouping
+‫اما‬ ،‫است‬ ‫برقرار‬ MHz ۵۰ ‫در‬ setup :‫‌کنم‬ ‫ی‬‫نم‬ ‫اعالم‬ PASS ‫را‬ ‫کامل‬ timing ‫هنوز‬
+،‫منابع‬ ‫نظر‬ ‫از‬ ‫بنابراین‬ .‫هستم‬ ‫‌ها‬ ‫ن‬‫آ‬ ‫بررسی‬ ‫حال‬ ‫در‬ ‫که‬ ‫مانده‬ ‫باقی‬ hold ‫خطای‬ ۱۸
+.‫است‬ ‫شده‬ ‫ممکن‬ ‫اکنون‬ FPGA ‫همین‬ ‫روی‬ ‫مراحل‬ ‫همه‬ ‫ماندن‬
+Verifying RMSE normalization
+Connection interrupted. Waiting for the complete answer
+‫شدی‬ ‫متوقف‬ ‫و‬ ‫اومده‬ ‫پیش‬ ‫مشکلی‬ ‫ظاهرا‬ ‫بعد‬
+‫کن‬ ‫تمام‬ ‫نکردی‬ ‫اگر‬ ‫و‬ ‫بده‬ ‫گزارش‬ ‫کردی‬ ‫تمام‬ ‫ا‬ ‫کار‬ ‫اگر‬ ‫چرا‬
+‫مورد‬ ‫نهایی‬ ‫نتیجه‬
+LUT ۵٬۷۲۰ ‫از‬ ۴٬۷۲۲
+‫رجیستر‬ ۱۱٬۴۴۰ ‫از‬ ۳٬۵۰۴
+DSP ۱۶ ‫از‬ ۱۴
+‫حافظه‬ ۲۵ RAMB16 ۵ ‫و‬ RAMB8
+MAP ‫و‬ Place & Route PASS
+۵۰ MHz ‫در‬ hold ‫و‬ setup ‫خطاهای‬ ‫صفر‬
+‫زمانی‬ ‫حاشیه‬ ‫نانوثانیه‬ ۰٫۷۴۰
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 22/37.‫داد‬ ‫کاهش‬ ٪۹٫۹۴ ‫را‬ ‫مسیر‬ ‫کل‬ ‫خطای‬ ‫و‬ ٪۳۹٫۳ ‫را‬ FFT ‫خود‬ ‫خطای‬ IP ،‫‌شده‬ ‫ی‬‫بررس‬ ‫مجموعه‬ ‫در‬ ‫بنابراین‬
+‫کالسترینگ‬ ‫بر‬ ‫اثر‬
+‫و‬ ‫اندازه‬ ،‫قله‬ ‫مختصات‬ ،‫اعضا‬ ‫با‬ ‫کالستر‬ ۵۶ :‫بودند‬ ‫یکسان‬ Float ‫با‬ ‫ًا‬‫دقیق‬ ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫دو‬ ‫هر‬ ،‫نویز‬ ‫دارای‬ ‫سناریوی‬ ‫هشت‬ ‫در‬
+.‫برابر‬ ‫خوشه‬ ‫تعداد‬ ‫ًا‬‫صرف‬ ‫نه‬ ‫یکسان؛‬ ‫قله‬ ‫تساوی‬ ‫وضعیت‬
+:‫داشتند‬ ‫اختالف‬ ‫همچنان‬ ‫نویز‬ ‫بدون‬ ‫بردار‬ ‫دو‬
+‫پس‬ .‫‌کند‬ ‫ی‬‫م‬ ‫تولید‬ ‫خوشه‬ ۱۲ ‫نیز‬ ‫‌شده‬ ‫ه‬‫کوانتیز‬ IQ ‫با‬ ‫‌هدف‬ ‫ک‬‫ت‬ Float ‫ًال‬‫مث‬ ‫‌آید؛‬ ‫ی‬‫م‬ ‫ورودی‬ ‫‌کردن‬ ‫ه‬‫کوانتیز‬ ‫از‬ ‫اختالف‬ ‫این‬ ‫از‬ ‫بخشی‬
+.‫‌کنم‬ ‫ی‬‫نم‬ ‫تلقی‬ ‫کالسترینگ‬ ‫قطعی‬ ‫بهبود‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ ‫را‬ Float ‫به‬ IP ‫‌های‬ ‫ه‬‫خوش‬ ‫تعداد‬ ‫شدن‬ ‫‌تر‬ ‫ک‬‫نزدی‬
+‫این‬ .‫دادند‬ ‫تطبیق‬ ‫را‬ ‫سناریو‬ ‫آن‬ ‫هدف‬ ‫دو‬ ‫از‬ ‫یکی‬ ‫فقط‬ ‫مسیر‬ ‫سه‬ ‫هر‬ :‫است‬ ‫باقی‬ ‫هم‬ ‫نزدیک‬ ‫اهداف‬ ‫آشکارسازی‬ ‫محدودیت‬
+.‫‌شود‬ ‫ی‬‫نم‬ ‫محسوب‬ Pd/Pfa ‫آماری‬ ‫تأیید‬ ،‫بررسی‬
+‫دقت‬ ‫و‬ ‫منابع‬ ‫نتایج‬ .‫داریم‬ ‫نگه‬ FPGA ‫روی‬ ‫ًال‬‫فع‬ ‫را‬ ‫کالسترینگ‬ ‫و‬ Power، CFAR ‫و‬ ‫کنیم‬ ‫انتخاب‬ ‫را‬ FFT IP :‫من‬ ‫نهایی‬ ‫پیشنهاد‬
+.‫‌کنند‬ ‫ی‬‫م‬ ‫پشتیبانی‬ ‫انتخاب‬ ‫این‬ ‫از‬
+‫و‬ ‫نهایی‬ top ‫در‬ timing ‫و‬ ‫منابع‬ ‫مجدد‬ ‫بررسی‬ ،UART ‫به‬ ‫نتایج‬ ‫‌های‬ ‫ه‬‫بست‬ ‫و‬ ‫‌ها‬ ‫ن‬‫فرما‬ ‫کامل‬ ‫اتصال‬ ،‫است‬ ‫باقی‬ ‫هنوز‬ ‫آنچه‬
+‫مبنای‬ ‫و‬ ‫‌ام‬ ‫ه‬‫نکرد‬ ‫پروگرام‬ ‫آن‬ ‫با‬ ‫را‬ FPGA ‫هنوز‬ ‫داشت؛‬ ‫تشخیصی‬ ‫‌های‬ ‫ی‬‫خروج‬ ‫آزمایشی‬ ‫نسخه‬ .‫است‬ ‫برد‬ ‫روی‬ ‫آزمایش‬ ‫سپس‬
+.‫‌اند‬ ‫ه‬‫شد‬ ‫ثبت‬ f6c4284 commit ‫در‬ ‫بررسی‬ ‫شواهد‬ ‫و‬ ‫کد‬ .‫‌اند‬ ‫ه‬‫نکرد‬ ‫تغییر‬ ‫فعال‬ Bitstream ‫و‬ ‫اصلی‬
+You said:
+Worked for 20m 43s
+Float ‫با‬ ‫مقایسه‬ RTL ‫قبلی‬ FFT IP
+‫یکسان‬ MTI ‫ورودی‬ ‫با‬ ،FFT ‫خود‬ ۲٫۸۹۰×۱۰⁻⁵ ۱٫۷۵۵×۱۰⁻⁵
+FFT ‫خروجی‬ ‫تا‬ IQ ‫منبع‬ ‫از‬ ‫مسیر‬ ‫کل‬ ۵٫۲۷۱×۱۰⁻⁵ ۴٫۷۴۷×۱۰⁻⁵
+‫سناریو‬ Float RTL ‫قبلی‬ IP
+‫‌هدف‬ ‫ک‬‫ت‬ ۳ ۱۲ ۱۰
+‫دوهدف‬ ۱۴ ۱۸ ۱۳
+‫کن‬ ‫تمام‬ ‫را‬ ‫مانده‬ ‫باقی‬ ‫کار‬
+‫کن‬ ‫کاملتر‬ ‫را‬ GUI ‫افزار‬ ‫نرم‬ ‫روی‬ ‫نمایش‬ ‫های‬ ‫گزینه‬
+‫هستند‬ ‫چیزی‬ ‫چه‬ ‫کدام‬ ‫هر‬ ‫ها‬ ‫گزینه‬ ‫و‬ ‫هستند‬ ‫چی‬ ‫پنجره‬ ‫دو‬ ‫بده‬ ‫توضیح‬
+‫ببینیم‬ ‫را‬ ‫نتایج‬ ‫و‬ ‫بشه‬ ‫وصل‬ ‫افزار‬ ‫سخت‬ ‫به‬ ‫افزار‬ ‫نرم‬ ‫سیستم‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 23/37You said:
+Worked for 18m 23s
+ChatGPT said:
+‫است‬ ‫باز‬ ‫‌تاپ‬ ‫پ‬‫ل‬ ‫روی‬ ‫برنامه‬ .‫‌کند‬ ‫ی‬‫م‬ ‫دریافت‬ ‫را‬ FPGA ‫واقعی‬ ‫نتایج‬ ‫اکنون‬ GUI ‫و‬ ‫شد‬ ‫اجرا‬ AX309 ‫روی‬ ‫زنجیره‬ ‫کل‬ ‫شد؛‬ ‫انجام‬
+.‫هدف‬ ‫دو‬ ‫هر‬ ‫تطبیق‬ ‫و‬ ‫کالستر‬ ۹ :‫‌دهد‬ ‫ی‬‫م‬ ‫نشان‬ ‫را‬ ‫دوهدف‬ ‫سناریوی‬ ‫نتیجه‬ ‫و‬
+:‫نهایی‬ ‫آزمون‬
+۹ CPI ‫متوالی‬ ‫مقدار‬ ۳۶٬۸۶۴ ‫تمام‬ ‫شد؛‬ ‫اجرا‬ ‫مجدد‬ ‫پروگرام‬ ‫بدون‬ Power ‫برابر‬ ‫دقیق‬ ‫مرجع‬ ‫با‬ ‫کالسترها‬ ‫فیلدهای‬ ‫همه‬ ‫و‬
+‫بودند‬.
+۵٬۷۲۰ ‫از‬ ۵٬۰۱۹UART، ‫با‬ ‫کامل‬ ‫نسخه‬ LUT ۵۰ ‫در‬ ‫‌کند؛‬ ‫ی‬‫م‬ ‫مصرف‬ ۱۶ DSP ‫از‬ ۱۴ ‫و‬ MHz ‫خطای‬ setup ‫و‬ hold ‫صفر‬
+‫است‬.
+‫آزمون‬ ISim ‫شامل‬ RUN ‫‌شدن‬ ‫م‬‫گ‬ ،‫تکراری‬ ACK ‫اجرای‬ ‫و‬ CPI ‫گذشت‬ PC ‫ارتباطی‬ ‫آزمون‬ ۵۷ ‫همراه‬ ،‫بعدی‬.
+‫هستند؟‬ ‫چه‬ ‫اصلی‬ ‫نمای‬ ‫دو‬
+.‫‌زند‬ ‫ی‬‫نم‬ ‫تخمین‬ ‫را‬ ‫رهگیری‬ ‫مسیر‬ ‫یا‬ ‫زاویه‬ ‫طرح‬ ‫این‬ ‫در‬ FPGA ‫است؛‬ ‫سناریو‬ ‫ورودی‬ ‫معلوِم‬ ‫مسیر‬ :‫اهداف‬ ‫مسیر‬ ،‫چپ‬
+‫محور‬ .‫‌شوند‬ ‫ی‬‫م‬ ‫دریافت‬ ‫برد‬ ‫از‬ ‫ًا‬‫واقع‬ ‫کالستر‬ ‫‌های‬ ‫ه‬‫قل‬ ‫و‬ Power ‫نقشه‬ ،Hardware ‫حالت‬ ‫در‬ :‫پردازش‬ ‫نتیجه‬ ،‫راست‬
+.‫‌دهد‬ ‫ی‬‫م‬ ‫نشان‬ ‫را‬ ‫معلوم‬ ‫هدف‬ ‫سبز‬ ‫ضربدر‬ ‫و‬ ‫کالستر‬ ‫زرد‬ ‫حلقه‬ ‫است؛‬ ‫برد‬ ‫عمودی‬ ‫محور‬ ‫و‬ ‫شعاعی‬ ‫سرعت‬ ‫افقی‬
+‫برنامه‬ ‫‌های‬ ‫ه‬‫گزین‬
+‫بده‬ ‫ادامه‬
+‫گزینه‬ ‫کاربرد‬
+Scenario ‫سناریوها‬ ‫سایر‬ ‫و‬ ‫نزدیک‬ ‫اهداف‬ ،‫کالتر‬ ،‫چندهدف‬ ،‫‌هدف‬ ‫ک‬‫ت‬ ‫انتخاب‬
+Result source Hardware: ‫برد؛‬ Float reference: ‫اعشاری؛‬ ‫مرجع‬ Legacy fixed:
+‫قبلی؛‬ ‫مدل‬ Demo: ‫مصنوعی‬ ‫تصویر‬
+UART / Refresh ports ‫سریال‬ ‫درگاه‬ ‫فهرست‬ ‫‌کردن‬ ‫ه‬‫تاز‬ ‫و‬ ‫انتخاب‬
+Range / Velocity offset ‫اهداف‬ ‫شعاعی‬ ‫سرعت‬ ‫و‬ ‫برد‬ ‫‌جایی‬ ‫ه‬‫جاب‬
+Amplitude / Noise RMS / Seed ‫آن‬ ‫تکرارپذیری‬ ‫و‬ ‫نویز‬ ،‫دامنه‬ ‫تنظیم‬
+Truth path span ‫است‬ CPI ‫یک‬ ‫همچنان‬ Run ‫هر‬ ‫نمایشی؛‬ ‫مسیر‬ ‫مدت‬
+Run selected source ‫نتیجه‬ ‫دریافت‬ ‫و‬ DSP ‫اجرای‬ ،‫دقیق‬ ‫بازخوانی‬ ،IQ ‫ارسال‬
+Program FPGA · SRAM ‫‌کند‬ ‫ی‬‫نم‬ ‫تغییر‬ Flash ‫برد؛‬ ‫‌شدن‬ ‫ن‬‫روش‬ ‫از‬ ‫پس‬ ‫طرح‬ ‫بارگذاری‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 24/37.‫هستند‬ FPGA ‫خروجی‬ ‫کالسترها‬ ‫خود‬ ‫‌شوند؛‬ ‫ی‬‫م‬ ‫بازسازی‬ Power ‫واقعی‬ ‫نقشه‬ ‫از‬ PC ‫روی‬ ،‫نمایش‬ ‫برای‬ CFAR ‫‌های‬ ‫ل‬‫سلو‬
+‫نیز‬ ‫فارسی‬ ‫کامل‬ ‫توضیح‬ .‫‌دهد‬ ‫ی‬‫م‬ ‫نشان‬ ‫را‬ ‫برابر‬ ‫‌های‬ ‫ه‬‫قل‬ ‫وضعیت‬ ‫و‬ ‫خوشه‬ ‫اندازه‬ ،‫رکوردها‬ ‫همه‬ »All output clusters« ‫جدول‬
+.‫دارد‬ ‫قرار‬ »‫‌ها‬ ‫ه‬‫گزین‬ ‫و‬ ‫نماها‬ ‫«راهنمای‬ ‫تب‬ ‫در‬
+‫پروگرام‬ ،‫نشده‬ ‫قطع‬ ‫برد‬ ‫برق‬ ‫که‬ ‫زمانی‬ ‫تا‬ .‫بزن‬ ‫را‬ Run selected source ‫و‬ ‫کن‬ ‫انتخاب‬ ‫را‬ ‫سناریو‬ ،‫بعدی‬ ‫آزمایش‬ ‫برای‬ ‫اکنون‬
+.‫‌کشد‬ ‫ی‬‫م‬ ‫طول‬ ‫ثانیه‬ ۱۳ ‫حدود‬ ‫کامل‬ ‫بازخوانی‬ ‫و‬ ‫انتقال‬ ‫با‬ ‫اجرا‬ ‫هر‬ .‫نیست‬ ‫الزم‬ ‫مجدد‬
+.‫نیست‬ Pd/Pfa ‫آماری‬ ‫تأیید‬ ،‫موفقیت‬ ‫این‬ ‫است؛‬ ‫باقی‬ ‫همچنان‬ ‫نزدیک‬ ‫اهداف‬ ‫تفکیک‬ ‫محدودیت‬
+You said:
+‫گزینه‬ ‫کاربرد‬
+Result view ‫داپلر‬ ‫برش‬ ‫یا‬ ‫برد‬ ‫پروفایل‬ ،‫برد–داپلر‬ ‫نقشه‬
+Power scale / Display range ‫رنگ‬ ‫دامنه‬ ‫تنظیم‬ ‫و‬ dB ‫یا‬ ‫خطی‬ ‫نمایش‬
+Doppler slice ‫تنظیم‬ ‫را‬ ‫آن‬ ‫نیز‬ ‫جدول‬ ‫رکورد‬ ‫انتخاب‬ ‫داپلر؛‬ ‫برش‬ ‫برای‬ ‫برد‬ ‫سلول‬ ‫انتخاب‬
+‫‌کند‬ ‫ی‬‫م‬
+Cluster peaks / Known truth ‫معلوم‬ ‫اهداف‬ ‫موقعیت‬ ‫و‬ ‫خروجی‬ ‫‌های‬ ‫ه‬‫قل‬ ‫نمایش‬
+CFAR cells / Valid CUT region ‫آشکارسازی‬ ‫معتبر‬ ‫محدوده‬ ‫و‬ CFAR ‫‌های‬ ‫ل‬‫سلو‬ ‫نمایش‬
+Compare with Float64 ‫است‬ Power ‫به‬ ‫مربوط‬ GUI ‫داخل‬ RMSE ‫مستقل؛‬ ‫مرجع‬ ‫با‬ ‫مقایسه‬
+Save results CSV ‫و‬ JSON ‫در‬ ‫نتایج‬ ‫تمام‬ ‫ذخیره‬
+‫و‬ pc ‫برنامه‬ ‫در‬ ‫را‬ ‫تغییراتی‬ ‫سیگنال‬ ‫پردازش‬ ‫اصلی‬ ‫مسیر‬ ‫در‬ ‫تغییر‬ ‫بدون‬ ‫یک‬ ‫لطفا‬
+‫بگیریم‬ ‫تست‬ ‫بتونیم‬ ‫را‬ ‫حالت‬ ‫کهچند‬ ‫بده‬ ‫انجام‬ uart ‫ارسال‬ ‫و‬ ‫دریافت‬ ‫بخش‬ rtl ‫کد‬
+‫از‬ ‫ها‬ ‫ورودی‬ ‫خروجی‬ ‫اپ‬ ‫در‬ ‫شود‬ ‫دریافت‬ ‫منطیق‬ ‫فیلتر‬ ‫خروجی‬ ‫و‬ ‫ها‬ pri ‫ورودی‬
+‫پایتون‬ ‫و‬ ‫متلب‬ ‫پوینت‬ ‫فیکس‬ ‫و‬ ‫فلوت‬ ‫منطبق‬ ‫فیلتر‬ ‫از‬ ‫خروجی‬ ‫و‬ ‫افزار‬ ‫سخت‬
+‫ها‬ pri ‫اینحالت‬ ‫در‬ .‫شود‬ ‫مقایسه‬ ‫تا‬ ‫شود‬ ‫داده‬ ‫نمایش‬ ‫هم‬ ‫کنار‬ ‫در‬ )‫انتخاب‬ ‫(قابل‬
+.‫باشد‬ ‫تست‬ ‫برای‬ ‫مستقل‬ ‫یا‬ cpu ‫یک‬ ‫مربوط‬ ‫میتواند‬
+‫خروجی‬ ‫ان‬ ‫خروجی‬ ‫و‬ ‫باشد‬ ‫منطبق‬ ‫فیلتر‬ ‫خروجی‬ ‫افزار‬ ‫سخت‬ ‫به‬ ‫وردی‬ ‫دیگر‬ ‫حاال‬ ‫در‬
+‫شود‬ ‫تعبیه‬ ‫تستهایی‬ ‫باال‬ ‫مشابه‬ mti ‫فیلتر‬
+fft ‫خروجی‬ ‫و‬ ‫باشد‬ mti ‫فیلتر‬ ‫از‬ ‫بعد‬ cpi ‫یک‬ ‫یا‬ ‫خام‬ cpi ‫یک‬ ‫وروی‬ ‫سوم‬ ‫حالت‬ ‫در‬
+.‫شود‬ ‫مقایسه‬ ‫افزاری‬ ‫نرم‬ ‫قیکس‬ ‫و‬ ‫فلوت‬ ‫خروجی‬ ‫با‬ ‫باز‬ ‫شود‬ ‫دریافت‬
+‫را‬ ‫آالرم‬ ‫فالس‬ ‫و‬ ‫دتکشن‬ ‫احتمال‬ ‫حدودی‬ ‫تا‬ ‫میتوان‬ cfar ‫اعمال‬ ‫از‬ ‫قبل‬ ‫و‬ ‫اینجا‬ ‫در‬
+.‫کرد‬ ‫بررسی‬ ‫نیز‬
+‫خروجی‬ ‫و‬ ‫بدهیم‬ ‫افزار‬ ‫سخت‬ ‫به‬ ‫را‬ fft ‫از‬ ‫بعد‬ cpi ‫یا‬ ‫خام‬ cpi ‫ورودی‬ ‫دیگر‬ ‫حالت‬ ‫در‬
+‫همین‬ ‫نیز‬ ‫آخر‬ ‫حالت‬ ‫در‬ ‫و‬ ‫کنیم‬ ‫مقایسه‬ ‫افزاری‬ ‫نرم‬ ‫های‬ ‫خروجی‬ ‫با‬ ‫بگیریم‬ ‫را‬ cfar
+‫با‬ ‫کالسترینگ‬ ‫خروجی‬ ‫و‬ cfar ‫از‬ ‫بعد‬ cpi ‫یا‬ ‫خام‬ cpi ‫یک‬ ‫ورکدی‬ ‫کالسترینگ‬ ‫برای‬ ‫کار‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 25/37Worked for 7m 13s
+ChatGPT said:
+‫هر‬ ‫‌توان‬ ‫ی‬‫م‬ ‫است؛‬ ‫مفید‬ ‫بسیار‬ ‫‌ها‬ ‫ف‬‫اختال‬ ‫منشأ‬ ‫کردن‬ ‫پیدا‬ ‫برای‬ ‫کار‬ ‫این‬ .‫‌اند‬ ‫ی‬‫‌ساز‬ ‫ه‬‫پیاد‬ ‫قابل‬ ‫پیشنهادی‬ ‫‌های‬ ‫ت‬‫حال‬ ‫تمام‬ ،‫بله‬
+‫‌شده‬ ‫ن‬‫تضمی‬ ‫هنوز‬ ‫فعلی‬ Bitstream ‫در‬ ‫‌ها‬ ‫ت‬‫حال‬ ‫همه‬ ‫شدن‬ ‫جا‬ ‫اما‬ .‫کرد‬ ‫آزمایش‬ ‫زنجیره‬ ‫امتداد‬ ‫در‬ ‫هم‬ ‫و‬ ‫مستقل‬ ‫هم‬ ‫را‬ ‫بلوک‬
+.‫بود‬ ‫نخواهد‬ ‫کافی‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ UART ‫تغییر‬ ‫و‬ ‫نیست‬
+‫پشتیبانی‬ ‫قابل‬ ‫‌های‬ ‫ت‬‫حال‬
+:‫است‬ ‫الزم‬ ‫‌ها‬ ‫ن‬‫آزمو‬ ‫این‬ ‫درست‬ ‫تعریف‬ ‫برای‬ ‫شرط‬ ‫چند‬
+MF .‫است‬ ‫شدنی‬ ‫مستقل‬ ‫ًا‬‫حتم‬ ‫نیست‬ ‫الزم‬ CPI ‫طول‬ ،‫ضرایب‬ ‫بدهیم؛‬ ‫کامل‬ PRI ‫ًا‬‫دقیق‬ ‫باید‬ ‫‌ها‬ ‫ه‬‫لب‬ ‫صفرگذاری‬ ‫نحوه‬ ‫و‬
+‫باشند‬ ‫‌افزار‬ ‫ت‬‫سخ‬ ‫مطابق‬.
+MTI ‫دو‬ ‫حداقل‬ ‫به‬ PRI .‫دارد‬ ‫نیاز‬ ‫متوالی‬ ،‫فعلی‬ ‫قالب‬ ‫در‬ .‫باشد‬ ‫مشخص‬ ‫باید‬ ‫خروجی‬ ‫اولین‬ ‫اعتبار‬ ‫و‬ ‫اولیه‬ ‫وضعیت‬
+۳۳ PRI ‫از‬ ‫پس‬ MTI ‫‌شوند‬ ‫ی‬‫م‬ ‫تبدیل‬ ‫زمانی‬ ‫سطر‬ ۳۲ ‫به‬.
+FFT ‫از‬ ‫پس‬ ‫داده‬ ،‫آن‬ ‫مستقیم‬ ‫ورودی‬ ‫بنابراین‬ .‫است‬ ‫‌ای‬ ‫ه‬‫نقط‬ ۳۲ ‫فعلی‬ MTI ‫برد‬ ‫سلول‬ ‫هر‬ ‫برای‬ ‫زمانی‬ ‫نمونه‬ ۳۲ ‫با‬
+‫بود‬ ‫خواهد‬.
+‫مستقیم‬ ‫ورودی‬ CFAR ‫اصل‬ ‫در‬ Power ‫خروجی‬ ‫اگر‬ ‫است؛‬ FFT ‫بلوک‬ ،‫کنیم‬ ‫تزریق‬ Power ‫اجرا‬ ‫باید‬ ‫هم‬ ‫‌افزاری‬ ‫ت‬‫سخ‬
+‫مستقیم‬ ‫تزریق‬ ‫گزینه‬ ‫افزودن‬ .‫شود‬ Power، ‫مستقل‬ ‫ًال‬‫کام‬ ‫آزمون‬ CFAR ‫‌کند‬ ‫ی‬‫م‬ ‫ممکن‬ ‫هم‬ ‫را‬.
+‫ماسک‬ CFAR ‫الزم‬ ‫نیز‬ ‫آشکارشده‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫توان‬ ،‫آن‬ ‫توان‬ ‫و‬ ‫قله‬ ‫تعیین‬ ‫برای‬ .‫نیست‬ ‫کافی‬ ‫کالسترینگ‬ ‫برای‬ ‫‌تنهایی‬ ‫ه‬‫ب‬
+‫شوند‬ ‫بازسازی‬ ‫صحیح‬ ‫اسکن‬ ‫ترتیب‬ ‫در‬ ‫باید‬ ‫آشکارسازی‬ ‫فاقد‬ ‫‌های‬ ‫ل‬‫سلو‬ .‫است‬.
+‫است؟‬ ‫ممکن‬ ‫چگونه‬ ‫اصلی‬ ‫مسیر‬ ‫حفظ‬
+.‫شود‬ ‫مقایسه‬ ‫افزاری‬ ‫نرم‬ ‫های‬ ‫خروجی‬
+.‫نکن‬ ‫اعمال‬ ‫هنوز‬ ‫و‬ ‫کن‬ ‫بررسی‬ ‫را‬ ‫این‬ ‫شدن‬ ‫پیاده‬ ‫پذیری‬ ‫امکان‬
+‫آزمون‬ ‫حالت‬ ‫‌افزار‬ ‫ت‬‫سخ‬ ‫ورودی‬ ‫‌افزار‬ ‫ت‬‫سخ‬ ‫از‬ ‫دریافتی‬ ‫خروجی‬
+MF ‫منطبق‬ ‫فیلتر‬ CPI ‫یک‬ ‫های‬PRI ‫یا‬ ‫مستقل‬ PRI ‫یک‬ ‫ورودی‬ ‫بازخوانی‬ ‫همراه‬ ،MF ‫مختلط‬ ‫خروجی‬
+MTI ‫متوالی‬ ‫های‬PRI ‫برای‬ MF ‫خروجی‬ MTI ‫مختلط‬ ‫خروجی‬
+FFT CPI ‫از‬ ‫بعد‬ ‫داده‬ ‫یا‬ ،‫خام‬ MTI Power ‫محاسبه‬ ‫از‬ ‫پیش‬ FFT ‫مختلط‬ ‫خروجی‬
+CFAR CPI ‫مختلط‬ ‫خروجی‬ ‫یا‬ ،‫خام‬ FFT ‫و‬ CUT ‫توان‬ ،‫انتخاب‬ ‫صورت‬ ‫در‬ ‫آشکارسازی؛‬ ‫ماسک‬
+‫مرجع‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫مجموع‬
+‫کالسترینگ‬ CPI ‫خروجی‬ ‫یا‬ ،‫خام‬ CFAR ‫‌ها‬ ‫ل‬‫سلو‬ ‫توان‬ ‫همراه‬ ‫و‬ ‫سلول‬ ‫تعداد‬ ،‫توان‬ ،‫قله‬ ،‫خوشه‬ ‫رکوردهای‬ ‫تمام‬
+‫قله‬ ‫تساوی‬ ‫اطالعات‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 26/37‫رابط‬ ‫در‬ ‫تغییرات‬ .‫داشت‬ ‫نگه‬ ‫‌نخورده‬ ‫ت‬‫دس‬ ‫را‬ ‫کالسترینگ‬ ‫الگوریتم‬ ‫و‬ CFAR ‫قوانین‬ ،FFT IP ،‫عددی‬ ‫حساب‬ ،‫ضرایب‬ ‫‌توان‬ ‫ی‬‫م‬
+UART. ‫کنترل‬ ‫و‬ ‫انتقال‬ ‫بافر‬ ،‫میانی‬ ‫‌های‬ ‫ی‬‫خروج‬ ‫مشاهده‬ ،‫مرحله‬ ‫هر‬ ‫ورودی‬ ‫انتخاب‬ :‫بود‬ ‫خواهند‬ ‫آزمایش‬
+‫و‬ UART ‫‌های‬ ‫ل‬‫فای‬ ‫تغییر‬ ‫«فقط‬ ‫منظور‬ ‫اگر‬ ‫بنابراین‬ .‫ندارد‬ ‫وجود‬ FFT ‫یا‬ MF، MTI ‫تزریق‬ ‫برای‬ ‫عمومی‬ ‫پورت‬ ،‫فعلی‬ RTL ‫در‬ ‫ولی‬
+‫یا‬ wrapper ‫افزودن‬ .‫نیست‬ ‫عملی‬ ‫محدودیت‬ ‫این‬ ‫با‬ ‫‌ها‬ ‫ه‬‫خواست‬ ‫تمام‬ ،‫باشد‬ »‫‌ها‬ ‫ک‬‫بلو‬ ‫اتصال‬ ‫کنترلگر‬ ‫یا‬ ‫رابط‬ ‫در‬ ‫تغییر‬ ‫هیچ‬
+.‫دارد‬ ‫فرق‬ ‫پردازش‬ ‫الگوریتم‬ ‫تغییر‬ ‫با‬ ‫این‬ ‫است؛‬ ‫الزم‬ Test Top
+‫است‬ ‫تراشه‬ ‫منابع‬ ،‫اصلی‬ ‫محدودیت‬
+:‫فعلی‬ ‫طرح‬ ‫‌دهد‬ ‫ی‬‫م‬ ‫نشان‬ MAP ‫واقعی‬ ‫گزارش‬
+.‫‌کند‬ ‫ی‬‫م‬ ‫مصرف‬ ۵٬۷۲۰ LUT ‫از‬ ۵٬۰۱۹
+.‫است‬ ‫شده‬ ‫اشغال‬ ،٪۹۸ ‫حدود‬ ،‫اسالیس‬ ۱٬۴۳۰ ‫از‬ ۱٬۴۰۷
+.‫‌کند‬ ‫ی‬‫م‬ ‫مصرف‬ RAMB8 ۵ ‫‌عالوه‬ ‫ه‬‫ب‬ RAMB16 ۲۵ ‫و‬ DSP ۱۴
+timing ‫و‬ ‫حافظه‬ ،‫‌بندی‬ ‫ه‬‫بست‬ ‫نحوه‬ ‫نیست؛‬ ‫مدار‬ ‫نوع‬ ‫هر‬ ‫برای‬ ‫‌استفاده‬ ‫ل‬‫قاب‬ ‫و‬ ‫آزاد‬ ‫فضای‬ ‫معنی‬ ‫به‬ ‫‌نشده‬ ‫ه‬‫استفاد‬ LUT ۷۰۱ ‫پس‬
+.‫‌اند‬ ‫ه‬‫محدودکنند‬ ‫هم‬
+‫افزودن‬ .‫‌خواهد‬ ‫ی‬‫م‬ ‫خام‬ ‫داده‬ ‫کیلوبایت‬ ۲۵٫۶ ‫و‬ ۲۳٫۶ ،۲۳٫۲ ‫حدود‬ ‫‌ترتیب‬ ‫ه‬‫ب‬ FFT ‫و‬ MF، MTI ‫خروجی‬ ‫کامل‬ ‫ذخیره‬ ‫همچنین‬
+‫توقف‬ ‫یا‬ ‫بافر‬ ‫بدون‬ ‫نیز‬ UART ‫به‬ ‫‌ها‬ ‫ه‬‫نمون‬ ‫همه‬ ‫مستقیم‬ ‫ارسال‬ .‫نیست‬ ‫مناسب‬ ‫فعلی‬ ‫طرح‬ ‫به‬ ‫‌ها‬ ‫ه‬‫حافظ‬ ‫این‬ ‫‌زمان‬ ‫م‬‫ه‬
+.‫‌دهد‬ ‫ی‬‫م‬ ‫دست‬ ‫از‬ ‫داده‬ ،‫‌شده‬ ‫ل‬‫کنتر‬
+‫همان‬ ‫که‬ ‫باشیم‬ ‫داشته‬ ‫مرحله‬ ‫هر‬ ‫برای‬ ‫ساخت‬ ‫قابل‬ Bitstream ‫یک‬ ‫و‬ ‫شود‬ ‫حفظ‬ ‫فعلی‬ ‫عملیاتی‬Test Top :‫من‬ ‫پیشنهاد‬
+‫روش‬ ‫این‬ .‫کند‬ ‫بارگذاری‬ ‫را‬ ‫مربوط‬ ‫تست‬ ‫نسخه‬ ،‫انتخابی‬ ‫حالت‬ ‫اساس‬ ‫بر‬ GUI .‫کند‬ ‫استفاده‬ ‫را‬ ‫موجود‬ ‫محاسباتی‬ ‫‌های‬ ‫ل‬‫ماژو‬
+‫یک‬ .‫‌کنند‬ ‫ی‬‫نم‬ ‫مصرف‬ ‫منابع‬ ،‫آزمون‬ ‫هر‬ ‫غیرضروری‬ ‫‌های‬ ‫ک‬‫بلو‬ ‫و‬ ‫است‬ ‫‌تر‬ ‫ن‬‫مطمئ‬ »‫نکند‬ ‫تغییر‬ ‫اصلی‬ ‫«مسیر‬ ‫شرط‬ ‫برای‬
+‫خواهد‬ ‫وابسته‬ ‫جدید‬ Place & Route ‫و‬ ‫سنتز‬ ‫به‬ ‫آن‬ ‫تأیید‬ ‫اما‬ ،‫است‬ ‫بررسی‬ ‫قابل‬ ‫هم‬ ‫‌ها‬ ‫ت‬‫حال‬ ‫همه‬ ‫برای‬ ‫مشترک‬ Bitstream
+.‫بود‬
+PC ‫برنامه‬ ‫در‬ ‫مقایسه‬
+:‫بود‬ ‫خواهند‬ ‫هم‬ ‫کنار‬ ‫نمایش‬ ‫و‬ ‫انتخاب‬ ‫قابل‬ ‫منابع‬ ‫این‬ ،‫آزمون‬ ‫هر‬ ‫برای‬
+.1 .‫است‬ ‫شده‬ ‫دریافت‬ ‫ًا‬‫واقع‬ ‫که‬ ‫‌ای‬ ‫ه‬‫داد‬ ‫از‬ ‫اطمینان‬ ‫برای‬ ،FPGA ‫حافظه‬ ‫از‬ ‫‌شده‬ ‫ی‬‫بازخوان‬ ‫ورودی‬
+.2 .‫‌افزاری‬ ‫ت‬‫سخ‬ ‫مرحله‬ ‫واقعی‬ ‫خروجی‬
+.3 .Python Fixed-point ‫و‬ Python Float
+.4 .MATLAB Fixed-point ‫و‬ MATLAB Float
+‫اختالف‬ ،CFAR ‫برای‬ .‫است‬ ‫مناسب‬ ‫مختلط‬ ‫‌های‬ ‫ی‬‫خروج‬ ‫برای‬ RMSE/NRMSE ‫و‬ ‫اختالف‬ ‫نمودار‬ ،‫فاز‬ ،‫دامنه‬ ،I/Q ‫نمایش‬
+‫کامل‬ ‫مقایسه‬ .‫‌شود‬ ‫ی‬‫م‬ ‫گزارش‬ ‫قله‬ ‫تساوی‬ ‫و‬ ‫اندازه‬ ،‫توان‬ ،‫قله‬ ‫موقعیت‬ ،‫تعداد‬ ‫اختالف‬ ،‫کالسترینگ‬ ‫برای‬ ‫و‬ ‫‌ها‬ ‫ل‬‫سلو‬ ‫تصمیم‬
+‫قابل‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ ‫نهایی‬ ‫رکورد‬ ‫از‬ ‫دارد؛‬ ‫نیاز‬ ‫هم‬ ‫‌ها‬ ‫ب‬‫برچس‬ ‫تشخیصی‬ ‫خروجی‬ ‫به‬ ‫‌افزاری‬ ‫ت‬‫سخ‬ ‫خوشه‬ ‫در‬ ‫‌ها‬ ‫ل‬‫سلو‬ ‫عضویت‬
+.‫نیست‬ ‫استخراج‬
+‫مراحل‬ ‫خطای‬ ‫وگرنه‬ ‫؛‬Float ‫به‬ ‫نسبت‬ ‫زنجیره‬ ‫کل‬ ‫آزمون‬ ‫و‬ ‫یکسان‬ ‫ورودی‬ ‫با‬ ‫بلوک‬ ‫مستقل‬ ‫آزمون‬ :‫بمانند‬ ‫جدا‬ ‫باید‬ ‫مقایسه‬ ‫دو‬
+.‫‌شود‬ ‫ی‬‫م‬ ‫داده‬ ‫نسبت‬ ‫آزمون‬ ‫مورد‬ ‫بلوک‬ ‫به‬ ‫قبلی‬
+MATLAB R2024a ‫و‬Fixed-Point Designer ‫مدل‬ ‫فعلی‬ ‫مخزن‬ ‫در‬ ‫اما‬ .‫‌اند‬ ‫ب‬‫نص‬ ‫کردم؛‬ ‫بررسی‬ ‫دستگاه‬ ‫روی‬ ‫را‬ MATLAB
+‫مرجع‬ .‫شود‬ ‫اعتبارسنجی‬ ‫و‬ ‫ساخته‬ ‫باید‬ ‫و‬ ‫ندارد‬ ‫وجود‬ Fixed-point ‫به‬ ‫مربوط‬ FFT ‫رفتار‬ ‫باید‬ ‫نیز‬ IP ‫فعلی‬ ‫مدل‬ ‫کند؛‬ ‫بازسازی‬ ‫را‬
+FFT ‫برای‬ .‫نیست‬ ‫آن‬ ‫‌دقیق‬ ‫ت‬‫بی‬ ‫مرجع‬ ‫قدیمی‬ CFAR ‫یا‬ double ‫از‬ ‫ساده‬ ‫استفاده‬ ‫دارند؛‬ ‫بیت‬ ۷۲ ‫تا‬ ‫مقایسه‬ ‫محاسبات‬ ‫هم‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 27/37‫نیست‬ ‫دقیق‬ ‫مرجع‬ ‫جایگزین‬ int64 .
+CFAR ‫از‬ ‫پیش‬ Pfa ‫و‬ Pd ‫بررسی‬
+.‫کرد‬ ‫تهیه‬ Pd/Pfa ‫تجربی‬ ‫برآورد‬ ‫و‬ ROC ‫منحنی‬ ،PC ‫روی‬ ‫مشخص‬ ‫‌های‬ ‫ه‬‫آستان‬ ‫اعمال‬ ‫با‬ ‫‌توان‬ ‫ی‬‫م‬ FFT ‫خروجی‬ Power ‫از‬ ‫بله؛‬
+‫‌های‬ ‫ن‬‫آزمو‬ .‫‌کند‬ ‫ی‬‫نم‬ ‫تعیین‬ ‫را‬ ‫کاذب‬ ‫هشدار‬ ‫یا‬ ‫آشکارسازی‬ ‫احتمال‬ FFT ‫مشاهده‬ ‫صرف‬ ،‫تصمیم‬ ‫قاعده‬ ‫و‬ ‫آستانه‬ ‫تعریف‬ ‫بدون‬
+‫نباید‬ ‫را‬ CPI ‫یک‬ ‫‌بسته‬ ‫م‬‫ه‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫‌اند؛‬ ‫م‬‫الز‬ ‫مستقل‬ ‫اجرای‬ ‫کافی‬ ‫تعداد‬ ‫و‬ ‫معلوم‬ ‫حقیقت‬ ،‫‌نویز‬ ‫ه‬‫‌عالو‬ ‫ه‬‫‌ب‬ ‫ف‬‫هد‬ ‫و‬ ‫تنها‬ ‫ِز‬‫نوی‬
+.‫کرد‬ ‫فرض‬ ‫مستقل‬ ‫‌های‬ ‫ش‬‫آزمای‬
+I/Q، ‫مؤلفه‬ ‫هر‬ ‫برای‬ ‫بیت‬ ۳۲ ‫قالب‬ ‫با‬ FFT ‫نقشه‬ ‫یک‬ ‫دریافت‬ ‫فقط‬ ‫ًال‬‫مث‬ ‫بود؛‬ ‫خواهند‬ ‫آفالین‬ ‫‌های‬ ‫ن‬‫آزمو‬ ‫‌ها‬ ‫ن‬‫ای‬ ،‫فعلی‬ UART ‫با‬
+.‫دارد‬ ‫داده‬ ‫بایت‬ ۳۲٬۷۶۸
+‫و‬ CFAR ‫بعد‬ ‫و‬ ،FFT ‫و‬ MTI ‫سپس‬ ،MF ‫ابتدا‬ .‫است‬ ‫‌ای‬ ‫ه‬‫مرحل‬ ‫تست‬ ‫‌های‬ ‫ه‬‫نسخ‬ ‫با‬ ‫‌پذیری‬ ‫ن‬‫امکا‬ ‫تأیید‬ ،‫من‬ ‫پیشنهادی‬ ‫نتیجه‬
+‫منابع‬ ،‫فعلی‬ ‫ساختار‬ ‫فقط‬ ‫نکردم؛‬ ‫اعمال‬ Bitstream ‫یا‬ PC، RTL ‫کد‬ ‫در‬ ‫تغییری‬ ‫هیچ‬ ‫مرحله‬ ‫این‬ ‫در‬ .‫شوند‬ ‫تکمیل‬ ‫کالسترینگ‬
+.‫شدند‬ ‫بررسی‬ MATLAB ‫دسترسی‬ ‫و‬
+You said:
+Worked for 1h 9m 38s
+You said:
+‫خروجی‬ ‫وروی‬ ‫همنطور‬ ‫هم‬ power ‫برای‬
+ip fft ‫با‬ ‫منطبق‬ ‫مدل‬ ‫خروجی‬ ‫نیست‬ ‫الزم‬ fft ‫از‬ ‫بعد‬ ‫بخشهای‬ ‫تست‬ ‫برای‬ ‫همچنین‬
+‫از‬ ‫بعد‬ ‫خروجی‬ ‫تا‬ ‫کنیم‬ ‫تزریق‬ ‫را‬ ‫افزاری‬ ‫نرم‬ fft ‫از‬ ‫بعد‬ ‫خروجی‬ ‫باید‬ ‫بلکه‬ ‫کنیم‬ ‫تزریق‬ ‫را‬
+‫یا‬ cfar ‫انحراف‬ ‫صرفا‬ ‫تاثیر‬ ‫و‬ ‫شوند‬ ‫مقایسه‬ ‫انها‬ ‫نرموافزاری‬ ‫خروجی‬ ‫با‬ cfar ‫یا‬ ‫پاور‬
+.‫شود‬ ‫دیده‬ ‫شده‬ ‫سازس‬ ‫پیاده‬ ‫پاور‬
+‫بدی‬ ‫انجام‬ ‫را‬ ‫سازی‬ ‫پیاده‬ ‫کن‬ ‫سعی‬ ‫حال‬
+‫را‬ ‫جدید‬ ‫نسخه‬ ‫و‬ ‫شود‬ ‫حفظ‬ ‫قبلی‬ ‫پایدار‬ ‫نسخه‬ ‫یعنی‬ ‫مناسب‬ ‫سازی‬ ‫نسخه‬ ‫با‬
+‫بدهی‬ ‫توسعه‬
+‫نمیدی‬ ‫پاسخ‬ ‫شد‬ ‫چی‬
+‫نیست‬ ‫مشخص‬ ‫افقی‬ ‫و‬ ‫عمودی‬ ‫محورهای‬ ‫نام‬ ‫و‬ ‫واحد‬ ‫ها‬ ‫اختالف‬ ‫و‬ ‫موج‬ ‫شکل‬ ‫تب‬
+.‫است‬ ‫نامشخص‬ ‫هم‬ ‫مقدارش‬ ‫حتی‬ ‫نوعا‬ ‫افقی‬ ‫محور‬ ‫و‬
+‫کنیم‬ ‫یادانتخاب‬ ‫کنیم‬ ‫تعیین‬ ‫هم‬ ‫را‬ ‫هدف‬ ‫سرعت‬ ‫بتونیم‬ ‫خوبه‬ ‫سناریوها‬ ‫در‬
+‫در‬ ‫است‬ ‫خاص‬ ‫سلول‬ ‫یک‬ fft ‫یا‬ pri ‫یک‬ ‫سیگنال‬ ‫برای‬ ‫مناسب‬ ‫موج‬ ‫شکل‬ ‫تب‬
+‫باشد‬ ‫تعیین‬ ‫قابل‬ ‫سلول‬ ‫یا‬ pri ‫شماره‬ ‫باید‬ ‫اینصورت‬
+‫شود‬ ‫داده‬ ‫نشان‬ pri ‫شماره‬ ‫رنج‬ ‫یا‬ ‫سرعت‬ ‫رنج‬ ‫یا‬ ‫داپلر‬ ‫رنج‬ ‫باید‬ ‫ها‬ ‫تب‬ ‫از‬ ‫یکی‬ ‫در‬
+‫انتخابی‬ ‫ورودی‬ ‫یا‬ ‌ ‫ی‬‫خروج‬ ‫به‬ ‫بسته‬
+pri ‫شماره‬ ‫رنج‬ ‫میشه‬ mti ‫خروجی‬ ‫یا‬ fft ‫ورودی‬ ‫یا‬ ‫داپلر‬ ‫رنج‬ ‫میشه‬ fft ‫خروجی‬ ‫مثال‬
+‫نرم‬ ‫و‬ fpga ‫خروجی‬ ‫بین‬ ‫مقایسه‬ ‫امکان‬ ‫باید‬ ‫هم‬ ‫کالستر‬ ‫و‬ cfar ‫اکچوال‬ ‫پاور‬ ‫تب‬ ‫در‬
+‫باشه‬ ‫افزار‬
+‫نمیده‬ ‫نشون‬ ‫چیزی‬ all hardaew records ‫تب‬
+‫هست‬ ‫جیسون‬ ‫فایل‬ ‫یک‬ ‫اطالعات‬ ‫و‬ ‫نمیده‬ ‫نشون‬ ‫پسندی‬ ‫کاربر‬ ‫چیز‬ ... rmse ‫تب‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 28/37Worked for 21m 20s
+ChatGPT said:
+.‫‌دهد‬ ‫ی‬‫م‬ ‫نشان‬ ‫را‬ ‫برد‬ ‫واقعی‬ ‫نتیجه‬ ‫و‬ ‫است‬ ‫باز‬ ‫اکنون‬ Stage Lab v0.2.1 ‫نسخه‬ ‫شد؛‬ ‫انجام‬ ‫اصالحات‬
+‫ظاهرا‬
+‫کاذب‬ ‫هشدار‬ ‫و‬ ‫شناسایی‬ ‫احتمال‬ ‫و‬ ‫تریشلد‬ ‫تب‬ ‫همچنین‬
+‫که‬ ‫بشه‬ ‫داده‬ ‫نمایش‬ svg ‫یک‬ ‫باید‬ ‫نظرم‬ ‫با‬ ‫نیست‬ ‫جالب‬ ‫هم‬ ‫فارسی‬ ‫راهنمای‬ ‫تب‬
+‫بشه‬ ‫دیده‬ ‫شده‬ ‫سازی‬ ‫پیاده‬ ‫داخلی‬ ‫ساختار‬
+‫پوشه‬ ‫در‬ ax309_radar- architectrue.drawio ‫فایل‬ ‫میتونه‬ ‫الگو‬ ‫یک‬
+‫بشه‬ ‫اصالح‬ ‫طرح‬ ‫اخرین‬ ‫با‬ ‫متناسب‬ ‫باید‬ ‫البته‬ ‫باشه‬ ‫داکیومنتها‬
+‫یک‬ ‫و‬ ‫تزریق‬ ‫نقطه‬ ‫کجا‬ ‫از‬ ‫سیگنال‬ ‫تزریق‬ ‫یعنی‬ ‫انتخابی‬ ‫حالت‬ ‫با‬ ‫متناسب‬ ‫اینجا‬ ‫در‬
+‫گرفته‬ ‫کجا‬ ‫از‬ ‫اینکهدخروجی‬ ‫همچنین‬ ‫و‬ ‫بشه‬ ‫دادخ‬ ‫نشان‬ ... ‫و‬ cpi ‫یا‬ pri ‫برای‬ ‫نماد‬
+‫شده‬
+‫با‬ ‫متناسب‬ ‫و‬ ‫بشه‬ ‫طراحی‬ ‫متناسب‬ svg ‫یک‬ ‫مختلف‬ ‫سناریوهای‬ ‫برای‬ ‫همچنین‬
+‫بشه‬ ‫داده‬ ‫نشون‬ ‫انتخابی‬ ‫سناریوی‬ ‫اونجا‬ ‫در‬ ‫انتخابی‬ ‫سناریوی‬
+‫و‬ ‫دیگر‬ ‫چیز‬ ‫نه‬ ‫بشه‬ ‫انتخاب‬ 0.15 ‫مقدار‬ ‫یک‬ ‫و‬ ‫صفر‬ ‫مقدار‬ ‫میتونه‬ ‫فقط‬ rms ‫نویز‬
+‫نیست‬ ‫مشخص‬ ‫هم‬ ‫واخدش‬
+‫بخشها‬ ‫توضیحات‬ BNazanin ‫مثل‬ ‫فارسی‬ ‫مناسب‬ ‫فونت‬ ‫با‬ ‫فارسی‬ ‫راهنمای‬ ‫در‬
+... ‫و‬ ‫فایل‬ ‫فرمت‬ ‫یا‬ ‫چی‬ ‫یعنی‬ ‫ورودی‬ ‫انواع‬ ‫مثال‬ ‫ها‬ ‫گزینه‬ ‫و‬ ‫بشه‬ ‫اورده‬ ‫هم‬
+‫بخش‬ ‫‌شده‬ ‫م‬‫انجا‬ ‫تغییر‬
+‫اختالف‬ ‫و‬ ‫موج‬ ‫شکل‬ ‫با‬ ‫توان‬ ‫و‬ ‫رادیان‬ ‫حسب‬ ‫بر‬ ‫فاز‬ ،‫‌شده‬ ‫ل‬‫نرما‬ ‫دامنه‬ ‫شد؛‬ ‫مشخص‬ ‫محورها‬ ‫اعداد‬ ‫و‬ ‫واحد‬ ،‫نام‬
+²‫‌شده‬ ‫ل‬‫نرما‬ ‫دامنه‬ ‫واحد‬
+‫موج‬ ‫شکل‬ ‫سلولانتخاب‬ ‫یک‬ FFT ‫طیف‬ ‫یا‬ PRI ‫یک‬ ‫نمایش‬ ‫برد؛‬ ‫سلول‬ ‫و‬ ‫داپلر‬ ‫بین‬ ،PRI ‫شماره‬ ‫جداگانه‬ ‫انتخاب‬
+‫دوبعدی‬ ‫نقشه‬ ‫برد–سرعت‬ ‫یا‬ ‫برد–داپلر‬ :FFT ‫از‬ ‫بعد‬ ‫؛‬PRI–‫برد‬ :FFT ‫از‬ ‫قبل‬
+‫تصویری‬ ‫مقایسه‬ FPGA، ‫ماسک‬ ،‫توان‬ ‫شامل‬ ‫هم؛‬ ‫کنار‬ ،‫اختالف‬ ‫و‬ ‫انتخابی‬ ‫‌افزاری‬ ‫م‬‫نر‬ ‫مرجع‬ CFAR ‫‌های‬ ‫ه‬‫قل‬ ‫و‬
+‫کالسترها‬
+‫‌ها‬ ‫ه‬‫داد‬ ‫جدول‬ ‫خروجی‬ ‫و‬ ‫‌شوند‬ ‫ی‬‫م‬ ‫داده‬ ‫نمایش‬ ‫مرجع‬ ‫و‬ ‫کالستر‬ ‫رکوردهای‬ ‫همه‬ ‫‌شود؛‬ ‫ی‬‫م‬ ‫پر‬ ‫مراحل‬ ‫تمام‬ ‫در‬
+‫دارد‬ ‫توضیح‬ ‫خالی‬
+‫خطا‬ ‫گزارش‬ ‫در‬ ‫فقط‬ JSON ‫‌ها؛‬ ‫م‬‫تصمی‬ ‫اختالف‬ ‫و‬ ‫اختالف‬ ‫بیشینه‬ ،RMSE، NRMSE ‫خوانای‬ ‫جدول‬
+‫اختیاری‬ ‫جزئیات‬
+‫سناریو‬ ‫‌شود‬ ‫ی‬‫م‬ ‫داده‬ ‫نمایش‬ ‫سناریو‬ ‫با‬ ‫متناسب‬ SVG ‫است؛‬ ‫ویرایش‬ ‫قابل‬ ‫جدا‬ ‫هدف‬ ‫هر‬ ‫سرعت‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 29/37‫نویز‬ ‫‌شده‬ ‫ل‬‫نرما‬ ‫دامنه‬ ،Noise RMS ‫واحد‬ .‫است‬ ‫ورود‬ ‫قابل‬ 0.012345 ‫مثل‬ ‫دلخواه‬ ‫اعشاری‬ ‫مقدار‬ :‫شد‬ ‫اصالح‬ ‫هم‬ ‫نویز‬
+.‫نیست‬ ‫ولت‬ ‫است؛‬ ‫مختلط‬
+‫آشکارسازی‬ ،‫کالسترینگ‬ ‫و‬ CFAR ‫برای‬ .‫دارد‬ ‫‌افزار‬ ‫م‬‫نر‬ ‫و‬ FPGA ‫مقایسه‬ ‫جدول‬ ‫و‬ ‫نمودار‬Power ‫و‬ FFT ‫برای‬ ‫اکنون‬ ‫آستانه‬ ‫تب‬
+.‫نیستند‬ Pd/Pfa ‫آماری‬ ‫تأیید‬ ،‌ CPI‫تک‬ ‫نتایج‬ ‫این‬ .‫‌شود‬ ‫ی‬‫م‬ ‫گزارش‬ ‫هدف‬ ‫پنجره‬ ‫از‬ ‫خارج‬ ‫موارد‬ ‫و‬ ‫‌شده‬ ‫ف‬‫تعری‬ ‫‌های‬ ‫ف‬‫هد‬
+‫روی‬ ‫تازه‬ ‫آزمون‬ ‫یک‬ .‫گذشت‬ ‫خالی‬ ‫خروجی‬ ‫حالت‬ ‫و‬ ‫مرجع‬ ‫رکوردهای‬ ‫همراه‬ FPGA ‫کالستر‬ ۷۰۲ ،‫مرحله‬ ‫شش‬ ‫هر‬ ‫نمایش‬ ‫آزمون‬
+‫مرجع‬ ‫دو‬ ‫هر‬ ‫به‬ ‫نسبت‬ Power ‫خروجی‬ RMSE ‫شد؛‬ ‫انجام‬ 0.012345 ‫نویز‬ ‫و‬ 4.125 m/s ‫و‬ 1.234567− ‫‌های‬ ‫ت‬‫سرع‬ ‫با‬ ‫نیز‬ ‫برد‬
+.‫بود‬ ‫صفر‬ MATLAB ‫و‬ ‫پایتون‬ Fixed
+‫تعیین‬ ‫را‬ Range cell ‫و‬ ‫کن‬ ‫انتخاب‬ ‫را‬ View → Slow-time / spectrum at range cell ،‫سلول‬ ‫یک‬ FFT ‫دیدن‬ ‫برای‬
+.‫هستند‬ ‫‌ها‬ ‫ب‬‫ت‬ ‫باالی‬ ‫‌ها‬ ‫ل‬‫کنتر‬ ‫این‬ .‫کن‬ ‫انتخاب‬ ‫را‬ PRI index ‫و‬ Range profilePRI، ‫یک‬ ‫موج‬ ‫شکل‬ ‫برای‬ .‫کن‬
+.‫نکردند‬ ‫تغییر‬ ‫اصالحات‬ ‫این‬ ‫در‬ ‫پردازش‬ ‫اصلی‬ ‫مسیر‬ ‫و‬ RTL ‫‌اند؛‬ ‫ظ‬‫محفو‬ 0.2.0 ‫و‬ ‫پایدار‬ 0.1 ‫‌های‬ ‫ه‬‫نسخ‬
+You said:
+Worked for 52s
+ChatGPT said:
+.‫است‬ ‫داپلر‬ ‫فرکانس‬ ‫بین‬ ‫یک‬ ،‫نیست‬ PRI ‫دیگر‬ ‫ردیف‬ ،FFT ‫از‬ ‫بعد‬ ‫است؛‬ ‫درست‬ ‫برداشتت‬ ،‫بله‬
+:‫است‬ Range profile ‫روی‬ View ‫و‬ ‫‌گیری‬ ‫ی‬‫م‬ ‫را‬ FFT ‫خروجی‬ ‫وقتی‬
+.‫برد‬ ‫حسب‬ ‫بر‬ ،‫انتخابی‬ PRI ‫یک‬ ‫در‬ MTI ‫خروجی‬ :‫ورودی‬ ‫پنل‬
+.‫برد‬ ‫حسب‬ ‫بر‬ ،‫انتخابی‬ ‫داپلر‬ ‫بین‬ ‫یک‬ ‫در‬ FFT ‫خروجی‬ :‫خروجی‬ ‫پنل‬
+.‫برد‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫و‬ ‫داپلر‬ ‫بین‬ ‫همان‬ ‫برای‬ ‫مرجع‬ ‫و‬ FPGA ‫اختالف‬ :‫اختالف‬ ‫پنل‬
+»‫انتخابی‬ ‫داپلر‬ ‫در‬ ‫برد‬ ‫«پروفایل‬ ‫آن‬ ‫درست‬ ‫عنوان‬ ‫نیست؛‬ ‫دقیق‬ »PRI ‫یک‬ ‫موج‬ ‫«شکل‬ ‫به‬ FFT ‫خروجی‬ ‫نمودار‬ ‫نامیدن‬ ‫پس‬
+.‫است‬
+‫بخش‬ ‫‌شده‬ ‫م‬‫انجا‬ ‫تغییر‬
+‫فارسی‬ ‫راهنمای‬ ‫و‬ ‫تزریق‬ ‫جاری‬ ‫مسیر‬ SVG ‫همراه‬ ،‫‌ها‬ ‫ل‬‫فای‬ ‫قالب‬ ‫و‬ ‫‌ها‬ ‫ه‬‫گزین‬ ‫توضیح‬ ،B Nazanin ‫فونت‬
+‫برداشت‬
+‫سوال‬ ‫یک‬
+‫بر‬ ‫را‬ pri ‫یک‬ ‫موج‬ ‫شکل‬ ‫تب‬ ‫پس‬ ‫میگیرم‬ ‫دارم‬ ‫را‬ fft ‫استیج‬ ‫خروجی‬ ‫من‬ ‫وقتی‬
+‫رنج‬ ‫تو‬ ‫را‬ ‫داپلر‬ ‫فرکانسهای‬ ‫یا‬ ‫سطرها‬ ‫از‬ ‫یکی‬ ‫طییعتا‬ ،‫چیه‬ ‫میده‬ ‫نشون‬ ‫زنج‬ ‫حسب‬
+‫درسته‬ ‫بده‬ ‫نشون‬ ‫باید‬
+‫بده‬ ‫نشون‬ ‫چیزی‬ ‫نباید‬ ‫بشه‬ ‫انتخاب‬ ‫هدف‬ ‫با‬ ‫متناسب‬ ‫غیر‬ ‫داپلر‬ ‫فرکانس‬ ‫اگر‬ ‫یعنی‬
+‫کنه‬ ‫انتخاب‬ ‫را‬ ‫متناسب‬ ‫داپلر‬ ‫خودش‬ ‫اتومات‬ ‫رو‬ ‫مگر‬
+‫برای‬ ‫مناسبی‬ ‫دیتای‬ ‫عمال‬ ‫داپلر‬ ‫رنج‬ ‫تب‬ ‫پس‬ ‫میکنیم‬ ‫انتخاب‬ ‫را‬ mf ‫خروجی‬ ‫وقتی‬ ‫یا‬
+‫درسته‬ ‫باشه‬ ‫داشته‬ ‫نباید‬ ‫نمایش‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 30/37،‫نیست‬ ‫صفر‬ ‫ًا‬‫الزام‬ ‫نمودار‬ ‫اما‬ ‫‌شود؛‬ ‫ی‬‫نم‬ ‫دیده‬ ‫یا‬ ‫‌شود‬ ‫ی‬‫م‬ ‫ضعیف‬‫معموًال‬ ‫هدف‬ ‫قله‬ ،‫باشد‬ ‫دور‬ ‫هدف‬ ‫داپلر‬ ‫از‬ ‫انتخابی‬ ‫بین‬ ‫اگر‬
+‫چند‬ ‫بین‬ ‫آن‬ ‫انرژی‬ ،‫نباشد‬ ‫بین‬ ‫یک‬ ‫مرکز‬ ‫روی‬ ‫ًا‬‫دقیق‬ ‫هدف‬ ‫داپلر‬ ‫اگر‬ .‫بمانند‬ ‫باقی‬ ‫‌توانند‬ ‫ی‬‫م‬ FFT ‫طیفی‬ ‫نشت‬ ‫و‬ ‫کالتر‬ ،‫نویز‬ ‫چون‬
+.‫‌شود‬ ‫ی‬‫م‬ ‫پخش‬ ‫بین‬
+‫را‬ ‫برد‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫روی‬ ‫توان‬ ‫مجموع‬ ‫بیشترین‬ ‫دارای‬ ‫بین‬ ‫خودکار‬ ‫‌طور‬ ‫ه‬‫ب‬ ‫برنامه‬ ،FFT ‫خروجی‬ ‫دریافت‬ ‫از‬ ‫پس‬ ،‫فعلی‬ ‫نسخه‬ ‫در‬
+‫ًا‬‫لزوم‬ ‫و‬ ‫است‬ ‫ردیف‬ ‫‌ترین‬ ‫ی‬‫پرانرژ‬ ‫ِب‬‫انتخا‬ ‫این‬ .‫بدهی‬ ‫تغییر‬ ‫دستی‬ ‫را‬ Natural Doppler bin ‫‌توانی‬ ‫ی‬‫م‬ ‫سپس‬ .‫‌کند‬ ‫ی‬‫م‬ ‫انتخاب‬
+.‫شود‬ ‫غالب‬ ‫‌تر‬ ‫ی‬‫قو‬ ‫هدف‬ ‫یا‬ ‫کالتر‬ ‫است‬ ‫ممکن‬ ‫نیست؛‬ ‫هدف‬ ‫داپلر‬ ‫تشخیص‬
+–‫برد‬ ‫نه‬ ،‫است‬ PRI ‫برد–شماره‬ ‫آن‬ ‫مناسب‬ ‫دوبعدی‬ ‫نمایش‬ .‫ندارد‬ ‫داپلر‬ ‫هنوز‬ MF ‫خروجی‬ :‫‌گویی‬ ‫ی‬‫م‬ ‫درست‬ ‫هم‬ MF ‫درباره‬
+.‫داریم‬ ‫ردیف‬ ‫یک‬ ‫فقط‬ ‫نیز‬ ‫مستقل‬ PRI ‫یک‬ ‫برای‬ .‫داپلر‬
+‫که‬ FFT ‫آزمون‬ ‫در‬ ‫ًا‬‫مخصوص‬ ‫باشد؛‬ ‫پنل‬ ‫همان‬ ‫مرحله‬ ‫تابع‬ ‫باید‬ Doppler bin ‫یا‬ PRI ‫کنترل‬ ‫‌بودن‬ ‫ل‬‫فعا‬ ‫و‬ ‫پنل‬ ‫عنوان‬ ‫بنابراین‬
+.‫دارند‬ ‫متفاوت‬ ‫معنای‬ ‫دو‬ ‫خروجی‬ ‫و‬ ‫ورودی‬
+You said:
+‫انتخابی‬ ‫داده‬ ‫درست‬ ‫دوبعدی‬ ‫نمایش‬
+IQ ‫خروجی‬ ،‫خام‬ MF ‫خروجی‬ ‫یا‬ MTI PRI ‫برد–شماره‬
+Power ‫یا‬ FFT ‫خروجی‬ ‫برد–سرعت‬ ‫یا‬ ‫برد–داپلر‬
+CFAR ‫خروجی‬ ‫برد–داپلر‬ ‫روی‬ ‫آشکارسازی‬ ‫ماسک‬
+‫کالسترینگ‬ ‫خروجی‬ ‫برد–داپلر‬ ‫روی‬ ‫کالستر‬ ‫‌های‬ ‫ه‬‫قل‬
+‫بگو‬ ‫را‬ ‫نطرت‬ ‫میگم‬ ‫چیزی‬ ‫یک‬
+‫مود‬ ‫و‬ ‫حالت‬ ‫همه‬ ‫این‬ ‫بجای‬ ‫نیست‬ ‫بهتر‬
+‫کالسترینگ‬ ‫نهایی‬ ‫خروجی‬ ‫مقایسه‬ ‫و‬ ‫ورودی‬ ‫تزریق‬ ‫باشیم‬ ‫داشته‬ ‫حالت‬ ‫دو‬
+‫کامل‬ ‫تست‬ ‫حالت‬ ‫در‬ ‫اتوماتیک‬
+‫اتمام‬ ‫از‬ ‫پس‬ ‫و‬ ‫میده‬ ‫تغییر‬ ‫را‬ ‫خروجی‬ ‫گیری‬ ‫نمونه‬ ‫محل‬ ‫و‬ ‫را‬ ‫تزریق‬ ‫محل‬ ‫خودش‬
+‫این‬ ‫تو‬ ‫الزاما‬ ‫نه‬ ‫و‬ ‫مفهومی‬ ‫و‬ ‫کامل‬ ‫مقایسه‬ ‫یک‬ ‫متعدد‬ ‫های‬ ‫گیری‬ ‫نمونه‬ ‫در‬ ‫تست‬
+‫میکنه‬ ‫ایجاد‬ ‫ها‬ ‫تب‬
+‫مختلف‬ ‫های‬ ‫خروجی‬ ‫و‬ ‫ورودی‬ ‫در‬ ‫مختلف‬ ‫های‬ pri ‫در‬ ‫رنج‬ ‫دامنه‬
+‫مختلف‬ ‫خروجیهای‬ ‫در‬ pri ‫شماره‬ ‫یا‬ ‫سرعت‬ ‫یا‬ ‫داپلر‬ ‫پالس‬ ‫ماتریس‬
+‫پاور‬ ‫و‬ cfar ‫خروجی‬
+‫کالسترینگ‬ ‫خروجی‬
+... ‫و‬ ‫کاذب‬ ‫هشدار‬ ‫احتمال‬ ‫محاسبه‬
+‫تست‬ ‫و‬ ‫بده‬ ‫نشون‬ ‫را‬ ‫خصوصیات‬ ‫همه‬ ‫که‬ ‫سناریوهایی‬ ‫یا‬ ‫مختلف‬ ‫سناریوهای‬
+... ‫و‬ ‫سنجی‬ ‫سرعت‬ ‫تفکیک‬ ،‫سنجی‬ ‫فاصله‬ ‫تفکیک‬ ‫یعنی‬ ‫باشه‬ ‫جامع‬
+‫باشه‬ ‫اینطور‬ ‫چیه‬ ‫نظرت‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 31/37Worked for 1m 17s
+ChatGPT said:
+‫نقطه‬ ‫زیادی‬ ‫تعداد‬ ‫دستی‬ ‫انتخاب‬ ‫است؛‬ ‫رادار‬ ‫عملکرد‬ ‫مقایسه‬ ‫تو‬ ‫هدف‬ .‫است‬ ‫بهتر‬ ‫اصلی‬ ‫برنامه‬ ‫برای‬ ‫ساختار‬ ‫این‬ ‫نظرم‬ ‫به‬ ،‫بله‬
+.‫شود‬ ‫انجام‬ ‫آزمون‬ ‫سامانه‬ ‫داخل‬ ‫‌تواند‬ ‫ی‬‫م‬ ‫برداشت‬ ‫و‬ ‫تزریق‬
+:‫‌کنم‬ ‫ی‬‫م‬ ‫تعریف‬ ‫‌طور‬ ‫ن‬‫ای‬ ‫را‬ ‫اصلی‬ ‫حالت‬ ‫دو‬ ‫من‬
+‫را‬ ‫مورد‬ ‫همان‬ ‫بتوانیم‬ ‫اختالف‬ ‫شدن‬ ‫پیدا‬ ‫هنگام‬ ‫تا‬ ‫‌داریم‬ ‫ی‬‫م‬ ‫نگه‬ ‫پیشرفته‬ ‫‌یابی‬ ‫ب‬‫عی‬ ‫بخش‬ ‫در‬ ‫هم‬ ‫را‬ ‫فعلی‬ ‫‌ای‬ ‫ه‬‫مرحل‬ ‫‌های‬ ‫ل‬‫کنتر‬
+.‫کنیم‬ ‫بازتولید‬ ‫جدا‬
+:‫شود‬ ‫انجام‬ ‫جدا‬ ‫باید‬ ‫مقایسه‬ ‫نوع‬ ‫دو‬ ،‫خودکار‬ ‫آزمون‬ ‫در‬
+‫‌افزاری‬ ‫ت‬‫سخ‬ Power ‫وارد‬ ‫‌افزاری‬ ‫م‬‫نر‬ FFT ‫ًال‬‫مث‬ ‫شود؛‬ ‫تزریق‬ ‫قبل‬ ‫مرحله‬ ‫‌افزاری‬ ‫م‬‫نر‬ ‫مدل‬ ‫از‬ ‫ورودی‬ :‫بلوک‬ ‫مستقل‬ ‫خطای‬
+.‫خواستی‬ ‫ًال‬‫قب‬ ‫که‬ ‫است‬ ‫تفکیکی‬ ‫همان‬ ‫این‬ .‫شود‬
+Fixed ‫و‬ Float ‫زنجیره‬ ‫با‬ ‫کالسترینگ‬ ‫و‬ ‫مراحل‬ ‫خروجی‬ ‫و‬ ‫کند‬ ‫عبور‬ ‫‌افزاری‬ ‫ت‬‫سخ‬ ‫مسیر‬ ‫از‬ ‫خام‬ IQ :‫زنجیره‬ ‫تجمعی‬ ‫خطای‬
+.‫شود‬ ‫مقایسه‬
+.‫است‬ ‫گذاشته‬ ‫اثر‬ ‫نهایی‬ ‫کالستر‬ ‫و‬ ‫آشکارسازی‬ ‫روی‬ ‫آیا‬ ‫و‬ ‫شده‬ ‫شروع‬ ‫بلوک‬ ‫کدام‬ ‫از‬ ‫اختالف‬ ‫بگوید‬ ‫‌تواند‬ ‫ی‬‫م‬ ‫گزارش‬ ‫کار‬ ‫این‬ ‫با‬
+:‫‌ها‬ ‫ب‬‫ت‬ ‫نام‬ ‫ًا‬‫صرف‬ ‫نه‬ ،‫شود‬ ‫تنظیم‬ ‫مهندسی‬ ‫سؤال‬ ‫حول‬ ‫است‬ ‫بهتر‬ ‫گزارش‬
+‫حالت‬ ‫‌دهد‬ ‫ی‬‫م‬ ‫انجام‬ ‫کاربر‬ ‫که‬ ‫کاری‬ ‫برنامه‬ ‫خروجی‬
+‫نهایی‬ ‫مقایسه‬ ‫و‬ ‫سناریو‬ ‫اجرای‬ ‫و‬ ‫‌ها‬ ‫ف‬‫هد‬ ‫تنظیم‬ ،IQ ‫فایل‬ ‫یا‬ ‫سناریو‬ ‫انتخاب‬
+‫اجرا‬ ‫سپس‬ ،‫نویز‬
+‫‌افزاری؛‬ ‫م‬‫نر‬ ‫مراجع‬ ‫با‬ FPGA ‫کالسترهای‬ ‫مقایسه‬
+‫خطای‬ ‫و‬ ‫اضافی‬ ،‫گمشده‬ ،‫‌یافته‬ ‫ق‬‫تطبی‬ ‫‌های‬ ‫ف‬‫هد‬
+‫سرعت‬ ‫و‬ ‫برد‬
+‫خودکار‬ ‫جامع‬ ‫آزمون‬ ‫بررسی‬ ‫سطح‬ ‫و‬ ‫آزمون‬ ‫مجموعه‬ ‫انتخاب‬ ‫چند‬ ‫اجرای‬ ،‫برداشت‬ ‫و‬ ‫تزریق‬ ‫نقاط‬ ‫خودکار‬ ‫تغییر‬
+‫یکپارچه‬ ‫عددی‬ ‫و‬ ‫تصویری‬ ‫گزارش‬ ‫تهیه‬ ‫و‬ CPI
+‫سؤال‬ ‫مناسب‬ ‫نتیجه‬ ‫و‬ ‫نمودار‬
+‫کرده؟‬ ‫چه‬ ‫منطبق‬ ‫فیلتر‬ ‫پهنای‬ ،‫قله‬ ‫محل‬ ‫منتخب؛‬ ‫های‬PRI ‫برای‬ MF ‫از‬ ‫بعد‬ ‫و‬ ‫قبل‬ ‫برد‬ ‫پروفایل‬
+‫فرعی‬ ‫‌های‬ ‫ب‬‫لو‬ ‫و‬ ‫پاسخ‬
+MTI ‫کرده؟‬ ‫کم‬ ‫را‬ ‫کالتر‬ ‫‌قدر‬ ‫ه‬‫چ‬ ‫هدف‬ ‫پاسخ‬ ‫تغییر‬ ‫و‬ ‫ساکن‬ ‫مؤلفه‬ ‫کاهش‬ ،‫بعد‬ ‫و‬ ‫قبل‬ PRI–‫برد‬ ‫نقشه‬
+‫متحرک‬
+FFT ‫‌دهد؟‬ ‫ی‬‫م‬ ‫نشان‬ ‫درست‬ ‫را‬ ‫سرعت‬ ‫و‬ ‫برد‬ ‫‌ها‬ ‫ف‬‫هد‬ ‫محل‬ ‫از‬ ‫خودکار‬ ‫که‬ ‫‌هایی‬ ‫ش‬‫بر‬ ‫و‬ ‫سرعت‬/‫برد–داپلر‬ ‫نقشه‬
+‫واحدها‬ ‫و‬ ‫انتخابی‬ ‫بین‬ ‫همراه‬ ‫‌شوند؛‬ ‫ی‬‫م‬ ‫انتخاب‬
+Power ‫و‬ CFAR ‫‌اند؟‬ ‫ه‬‫کرد‬ ‫عمل‬ ‫درست‬ ‫ماسک‬ ،‫‌شده‬ ‫ی‬‫بررس‬ ‫‌های‬ ‫ل‬‫سلو‬ ‫در‬ CFAR ‫آستانه‬ ،‫توان‬ ‫نقشه‬
+‫‌ها‬ ‫م‬‫تصمی‬ ‫اختالف‬ ‫و‬ ‫آشکارسازی‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 32/37‫هر‬ ‫اگر‬ .‫هدف‬ ‫‌شده‬ ‫ف‬‫تعری‬ ‫سرعت‬ ‫نزدیک‬ ‫ًال‬‫مث‬ ‫‌کنیم؛‬ ‫ی‬‫م‬ ‫انتخاب‬ ‫مراجع‬ ‫و‬ FPGA ‫برای‬ ‫مشترک‬ ‫برش‬ ‫یک‬ ،‫بصری‬ ‫مقایسه‬ ‫برای‬
+.‫شود‬ ‫پنهان‬ ‫قله‬ ‫‌جایی‬ ‫ه‬‫جاب‬ ‫است‬ ‫ممکن‬ ،‫کند‬ ‫انتخاب‬ ‫را‬ ‫خودش‬ ‫بین‬ ‫‌ترین‬ ‫ی‬‫پرانرژ‬ ‫جدا‬ ‫مسیر‬
+،‫متغیر‬ ‫برد‬ ‫فاصله‬ ‫با‬ ‫هدف‬ ‫دو‬ ،‫منفرد‬ ‫هدف‬ :‫است‬ ‫بهتر‬ ‫مشخص‬ ‫سناریوهای‬ ‫از‬ ‫‌ای‬ ‫ه‬‫مجموع‬ ،‫شلوغ‬ ‫خیلی‬ ‫سناریوی‬ ‫یک‬ ‫‌جای‬ ‫ه‬‫ب‬
+‫برای‬ .‫هدف‬ ‫بدون‬ ‫ِز‬‫نوی‬ ‫و‬ ،FFT ‫بین‬ ‫دو‬ ‫بین‬ ‫داپلر‬ ،‫کالتر‬ ‫در‬ ‫هدف‬ ،‫قوی‬ ‫کنار‬ ‫ضعیف‬ ‫هدف‬ ،‫متغیر‬ ‫سرعت‬ ‫اختالف‬ ‫با‬ ‫هدف‬ ‫دو‬
+‫پیش‬ ‫از‬ ‫را‬ »‫شدند‬ ‫داده‬ ‫تشخیص‬ ‫جدا‬ ‫هدف‬ ‫«دو‬ ‫معیار‬ ‫و‬ ‫‌دهیم‬ ‫ی‬‫م‬ ‫تغییر‬ ‫‌پله‬ ‫ه‬‫پل‬ ‫را‬ ‫هدف‬ ‫دو‬ ‫فاصله‬ ،‫سرعت‬ ‫و‬ ‫برد‬ ‫تفکیک‬
+.‫نیست‬ ‫تفکیک‬ ‫معیار‬ ‫‌تنهایی‬ ‫ه‬‫ب‬ ‫‌ها‬ ‫ل‬‫سلو‬ ‫فاصله‬ ‫‌کنیم؛‬ ‫ی‬‫م‬ ‫مشخص‬
+‫نمونه‬ ،CPI ‫یک‬ ‫چندباره‬ ‫بازخوانی‬ .‫دارد‬ ‫نیاز‬ ‫متفاوت‬ ‫نویزهای‬ ‫با‬ ‫مستقل‬ CPI ‫چند‬ ‫به‬ ‫ولی‬ ،‫است‬ ‫شدنی‬ ‫هم‬ Pfa ‫و‬ Pd ‫محاسبه‬
+‫معیار‬ ‫و‬ ‫سرعت‬ ،‫برد‬ ،SNR ‫به‬ ‫نیز‬ Pd ‫شوند؛‬ ‫گزارش‬ ‫جدا‬ ‫باید‬ ‫اضافی‬ ‫کالستر‬ ‫نرخ‬ ‫و‬ CFAR ‫سلولی‬ Pfa .‫‌سازد‬ ‫ی‬‫نم‬ ‫جدید‬ ‫آماری‬
+.‫بیاید‬ ‫برآورد‬ ‫هر‬ ‫کنار‬ ‫باید‬ ‫اطمینان‬ ‫فاصله‬ ‫و‬ ‫آزمون‬ ‫تعداد‬ .‫است‬ ‫وابسته‬ ‫هدف‬ ‫تطبیق‬
+‫با‬ ‫آماری‬ ‫بررسی‬ ‫و‬ ،CPI ‫محدود‬ ‫تعداد‬ ‫با‬ ‫عملکرد‬ ‫سریع‬ ‫بررسی‬ :‫باشد‬ ‫داشته‬ ‫سطح‬ ‫دو‬ ‫خودکار‬ ‫آزمون‬ ‫که‬ ‫است‬ ‫این‬ ‫پیشنهادم‬
+‫را‬ Bitstream ‫هر‬ ‫‌های‬ ‫ن‬‫آزمو‬ ،‫زمان‬ ‫کاهش‬ ‫برای‬ ‫کرد؛‬ ‫اجرا‬ ‫‌توان‬ ‫ی‬‫م‬ ‫هم‬ ‫فعلی‬ UART ‫با‬ .‫مشخص‬ ‫آماری‬ ‫دقت‬ ‫و‬ ‫تکرار‬ ‫تعداد‬
+‫خواهد‬ ‫اختالف‬ ‫هر‬ ‫جزئیات‬ ‫بازکردن‬ ‫امکان‬ ‫و‬ ‫روشن‬ ‫‌بندی‬ ‫ع‬‫جم‬ ‫با‬ ‫مرور‬ ‫قابل‬ ‫گزارش‬ ‫یک‬ ،‫نتیجه‬ .‫‌دهیم‬ ‫ی‬‫م‬ ‫انجام‬ ‫هم‬ ‫سر‬ ‫پشت‬
+.‫بود‬
+You said:
+Worked for 25m 56s
+You said:
+‫سؤال‬ ‫مناسب‬ ‫نتیجه‬ ‫و‬ ‫نمودار‬
+‫کرده؟‬ ‫تغییری‬ ‫چه‬ ‫نهایی‬ ‫خروجی‬ ‫کالسترهای‬ ،‫گمشده‬ ‫‌های‬ ‫ف‬‫هد‬ ،‫سرعت‬ ‫و‬ ‫برد‬ ‫خطای‬ ،‫کالسترها‬ ‫تطبیق‬
+‫‌ها‬ ‫ف‬‫هد‬ ‫شکافت‬ ‫یا‬ ‫ادغام‬ ‫و‬ ‫اضافی‬
+‫است؟‬ ‫چقدر‬ ‫عددی‬ ‫دقت‬ RMSE ‫و‬ NRMSE ‫به‬ ‫نسبت‬ ‫مرحله‬ ‫هر‬ Float، ‫‌کردن‬ ‫ه‬‫کوانتیز‬ ‫خطای‬
+‫اشباع‬ ‫وضعیت‬ ‫و‬ ‫ورودی‬
+‫است‬ ‫نیاز‬ ‫ثابت‬ ‫تقریبا‬ ‫و‬ ‫سرعت‬ ‫با‬ ‫هدف‬ ‫یک‬ ‫هم‬ mti ‫تست‬ ‫برای‬
+‫کن‬ ‫پیاده‬ ‫خودت‬ ‫پیشنهادات‬ ‫به‬ ‫توجه‬ ‫با‬ ‫را‬ ‫اینه‬
+‫هدف‬ ‫دو‬ ‫مثال‬ ‫شود‬ ‫گزارش‬ ‫جداگانه‬ ‫خالصه‬ ‫و‬ ‫مشخص‬ ‫جمالت‬ ‫گزارش‬ ‫قسمت‬ ‫در‬
+‫خروجی‬ ‫با‬ ‫فالنجا‬ ‫خروجی‬ ‫و‬ ‫تزریق‬ ‫فالنجا‬ ‫از‬ ‫تست‬ ‫برای‬ .. ‫سرعتهای‬ ‫با‬ ... ‫فاصله‬ ‫با‬
+.‫است‬ ‫چنین‬ ‫نتیجه‬ ‫و‬ ‫شد‬ ‫مقایسه‬ ‫پوینت‬ ‫فیکس‬ ‫مرجع‬ ‫مدل‬ ‫معادل‬
+You said:
+‫بده‬ ‫ادامه‬
+‫بده‬ ‫ادامه‬
+‫بیار‬ ‫هم‬ ‫مناسب‬ ‫نمودار‬ ‫خالصه‬ ‫گزارش‬ ‫هر‬ ‫برای‬ ‫گزارش‬ ‫قسمت‬ ‫در‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 33/37Worked for 15m 58s
+ChatGPT said:
+.‫دارد‬ ‫هم‬ ‫کنار‬ ‫را‬ ‫آزمون‬ ‫همان‬ ‫مناسب‬ ‫نمودار‬ ‫و‬ ‫روشن‬ ‫خالصه‬ ‫اکنون‬ ‫آزمون‬ ‫هر‬ ‫گزارش‬ ‫شد؛‬ ‫انجام‬ ‫‌سازی‬ ‫ه‬‫پیاد‬
+:‫دارد‬ ‫اصلی‬ ‫حالت‬ ‫دو‬ ‫برنامه‬
+Fixed. ‫و‬ Float ‫مراجع‬ ‫با‬ ‫نهایی‬ ‫کالسترینگ‬ ‫مقایسه‬ ‫و‬ IQ ‫تزریق‬
+.‫زنجیره‬ ‫تجمعی‬ ‫خطای‬ ‫و‬ ‫‌ها‬ ‫ک‬‫بلو‬ ‫مستقل‬ ‫خطای‬ ‫جداگانه‬ ‫گزارش‬ ‫و‬ ‫برداشت‬ ‫و‬ ‫تزریق‬ ‫نقاط‬ ‫تغییر‬ ‫با‬ ‫خودکار‬ ‫جامع‬ ‫آزمون‬
+‫کالسترها‬ ‫‌های‬ ‫ه‬‫قل‬ ‫مقایسه‬ ‫و‬ CFAR ‫ماسک‬ ،‫سرعت‬ ‫طیف‬ ،MTI ‫بعد‬ ‫و‬ ‫قبل‬ ‫مقایسه‬ ،‫برد‬ ‫پروفایل‬ ‫شامل‬ ‫خالصه‬ ‫نمودارهای‬
+.‫‌شود‬ ‫ی‬‫م‬ ‫باز‬ ‫مورد‬ ‫همان‬ ‫لینک‬ ‫از‬ ‫کامل‬ ‫جزئیات‬ .‫هستند‬
+:‫صفر‬ ‫نویز‬ ‫با‬ MTI ‫آزمون‬ ‫واقعی‬ ‫نتیجه‬
+:‫گزارش‬ ‫متن‬ ‫نمونه‬ .‫بودند‬ ‫برابر‬ ‫ًال‬‫کام‬ Fixed ‫مرجع‬ ‫با‬ ‫سه‬ ‫هر‬
+.‫دارند‬ ‫نمودار‬ ‫نیز‬ ‫آماری‬ ‫مسیر‬ ‫مورد‬ ۱۲ ‫دارد؛‬ ‫وجود‬ ‫خالصه‬ ‫نمودار‬ ‫یک‬ ‫هر‬ ‫برای‬ .‫گذشت‬ Fixed ‫مقایسه‬ ۶۵ ‫با‬ ‫عملکردی‬ ‫مورد‬ ۴۱
+CPI ‫سه‬ ‫فقط‬ ‫فعلی‬ ‫آماری‬ ‫بررسی‬ .‫شد‬ ‫آزمایش‬ ‫برد‬ ‫روی‬ ‫هم‬ ‫فایل‬ ‫بازپخش‬ ‫و‬ Python/MATLAB ‫مرجع‬ ‫چهار‬ ‫هر‬ ‫با‬ ‫نهایی‬ ‫حالت‬
+.‫نیست‬ Pd/Pfa ‫تأیید‬ ‫و‬ ‫دارد‬ ‫گروه‬ ‫هر‬ ‫در‬
+Desktop ‫ارتباط‬ :‫است‬ ‫مانده‬ ‫باقی‬ ‫نسخه‬ ‫نهایی‬ ‫برچسب‬ ‫و‬ commit ‫ثبت‬ ‫تنها‬ .‫‌اند‬ ‫ظ‬‫محفو‬ RTL ‫و‬ ‫قبلی‬ ‫‌های‬ ‫ه‬‫نسخ‬
+‫نیز‬ ‫پروژه‬ ‫پرونده‬ ‫در‬ ‫نهایی‬ ‫پاسخ‬ ‫ثبت‬ ‫‌اند؛‬ ‫ه‬‫شد‬ ‫ذخیره‬ ‫آزمون‬ ‫شواهد‬ ‫و‬ ‫برنامه‬ ‫‌های‬ ‫ل‬‫فای‬ .‫نداد‬ ‫پاسخ‬ ‫کار‬ ‫این‬ ‫هنگام‬ Commander
+.) conversation_capture_status: BLOCKED ( ‫است‬ ‫مسدود‬ ‫ًال‬‫فع‬
+You said:
+‫هدف‬ ‫سرعت‬ FPGA ‫نتیجه‬
+0 m/s ‫صفر‬ ‫ًا‬‫دقیق‬ ‫خروجی‬
+0.05 m/s ‫تضعیف‬ dB 33.58 ‫حدود‬
+2.8125 m/s ‫دامنه‬ ‫افزایش‬ dB 0.915 ‫حدود‬
+‫با‬ FPGA ‫خروجی‬ .‫شد‬ ‫تزریق‬ MTI ‫به‬ MF ‫خروجی‬ ‫از‬ PRI ‫دو‬ ‫با‬ ،‫ثانیه‬ ‫بر‬ ‫متر‬ 0.05 ‫سرعت‬ ‫و‬ ‫متر‬ 9743.25 ‫برد‬ ‫با‬ ‫هدف‬
+.‫بود‬ dB 33.576 ‫دامنه‬ ‫تضعیف‬ ‫و‬ ‫صفر‬ RMSE ‫شد؛‬ ‫مقایسه‬ Python Fixed
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 34/37You said:
+Worked for 3m 45s
+ChatGPT said:
+:‫کردند‬ ‫تغییر‬ ‫کنارهم‬ ‫‌های‬ ‫ه‬‫نقش‬ ‫به‬ ‫گزارش‬ ‫شواهد‬ ‫شد؛‬ ‫انجام‬
+FFT: ‫‌شده؛‬ ‫ل‬‫نرما‬ ‫دامنه‬ ‫رنگی‬ ‫نمایش‬ ‫با‬ ،‫برد–سرعت‬ FPGA ‫هم‬ ‫کنار‬ ‫مرجع‬ ‫و‬.
+Power: ‫‌شده؛‬ ‫ل‬‫نرما‬ ‫توان‬ ‫رنگی‬ ‫نمایش‬ ‫با‬ ،‫برد–سرعت‬ FPGA ‫هم‬ ‫کنار‬ ‫مرجع‬ ‫و‬.
+CFAR: ‫و‬ ‫‌افزار‬ ‫ت‬‫سخ‬ ‫آشکارسازی؛‬ ‫ماسک‬ ‫ِل‬‫مستق‬ ‫نقشه‬ ‫دو‬ MATLAB.
+‫و‬ ‫‌افزار‬ ‫ت‬‫سخ‬ ‫کالستر؛‬ ‫‌های‬ ‫ه‬‫قل‬ ‫ِل‬‫مستق‬ ‫نقشه‬ ‫دو‬ :‫کالسترینگ‬ MATLAB.
+.‫نشود‬ ‫پنهان‬ ‫دامنه‬ ‫اختالف‬ ‫تا‬ ‫دارد‬ ‫واحد‬ ‫و‬ ‫نام‬ ‫دارای‬ ‫محورهای‬ ‫و‬ ‫رنگی‬ ‫راهنمای‬ ،‫مشترک‬ ‫رنگ‬ ‫مقیاس‬ ‫نقشه‬ ‫جفت‬ ‫هر‬
+‫‌های‬ ‫ی‬‫خروج‬ ‫شد؛‬ ‫اجرا‬ ‫کالسترینگ‬ ‫و‬ CFAR ‫مورد‬ ۲۳ ‫‌شده‬ ‫ت‬‫ثب‬ ‫‌های‬ ‫ی‬‫ورود‬ ‫روی‬ ‫ًا‬‫واقع‬ MATLAB ،‫قبلی‬ ‫‌های‬ ‫ش‬‫گزار‬ ‫تکمیل‬ ‫برای‬
+‫‌های‬ ‫ی‬‫خروج‬ ‫همان‬ ‫نشدند؛‬ ‫تولید‬ ‫دوباره‬ ‫برد‬ ‫‌های‬ ‫ه‬‫داد‬ .‫شد‬ ‫کنترل‬ ‫نقشه‬ ‫جفت‬ ۳۷ ‫ًا‬‫مجموع‬ .‫بودند‬ ‫برابر‬ ‫‌افزار‬ ‫ت‬‫سخ‬ ‫با‬ Fixed
+.‫شدند‬ ‫استفاده‬ ‫‌شده‬ ‫ت‬‫ثب‬ ‫واقعی‬
+You said:
+Worked for 1m 38s
+ChatGPT said:
+.‫‌شدند‬ ‫ی‬‫م‬ ‫دیده‬ ‫خالی‬ ‫نقشه‬ ‫دو‬ ‫هر‬ ‫دلیل‬ ‫همین‬ ‫به‬ ‫‌کرد؛‬ ‫ی‬‫نم‬ ‫پشتیبانی‬ ‫برنامه‬ Qt ‫نمایشگر‬ ‫که‬ ‫بود‬ ‫‌تو‬ ‫ر‬‫‌د‬ ‫و‬‫ت‬ SVG ،‫علت‬ .‫شد‬ ‫اصالح‬
+‫نشده‬ ‫حذف‬ ‫صفر‬ ‫سرعت‬ ‫دارای‬ ‫هدف‬ ‫چرا‬ ‫اینجا‬ ‫در‬
+‫بگو‬ ‫خالصه‬ ‫خیلی‬
+You stopped after 0s
+‫رو‬ ‫بهتره‬ power ‫و‬ fft ‫برای‬ ‫گزارش‬ ‫در‬ ‫شاهد‬ ‫عنوان‬ ‫به‬ ‫شده‬ ‫داده‬ ‫نمایش‬ ‫شکلهای‬
+‫اساس‬ ‫بر‬ ‫شده‬ ‫نرمالیزه‬ ‫پاور‬ ‫یا‬ ‫دامنه‬ ‫و‬ ‫باشه‬ ‫سرعت‬ ‫رنج‬ ‫یا‬ ‫باشه‬ ‫داپلر‬ ‫رنج‬ ‫صفحه‬
+‫با‬ ‫مقایسه‬ ‫رنگیبرای‬ ‫راهنمای‬ ‫یک‬ ‫همراه‬ ‫به‬ ‫بشه‬ ‫داده‬ ‫نشان‬ ‫صفحه‬ ‫این‬ ‫تو‬ ‫رنگ‬
+‫را‬ ‫رفرنس‬ ‫خروجی‬ ‫که‬ ‫باشه‬ ‫اون‬ ‫کنار‬ ‫در‬ ‫دیگه‬ ‫نمودار‬ ‫یک‬ ‫متلب‬ ‫یا‬ ‫پایتون‬ ‫رفرنس‬
+‫بده‬ ‫نشون‬
+‫خروجی‬ ‫یکی‬ ‫سختدافزار‬ ‫خروجی‬ ‫یکی‬ ‫بده‬ ‫نشون‬ ‫نمودار‬ ‫دو‬ cfar ‫برای‬ ‫همینطور‬
+‫متلب‬ ‫رفرنس‬ ‫مدل‬
+‫کالسترینگ‬ ‫برای‬ ‫همینطور‬ ‫و‬
+‫نمیشه‬ ‫داده‬ ‫نشان‬ ‫کال‬ ‫کالسترینگ‬ ‫و‬ cfar ‫و‬ ‫پاور‬ ‫و‬ fft ‫نمایشی‬ ‫های‬ ‫خروجی‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 35/37‫شد؛‬ ‫تأیید‬ ‫پنل‬ ‫دو‬ ‫هر‬ ‫نمایش‬ ‫و‬ ‫شد‬ ‫بررسی‬ Qt ‫خود‬ ‫با‬ ‫نقشه‬ ‫جفت‬ ۳۷ ‫هر‬ .‫شدند‬ ‫بازسازی‬ ‫‌ها‬ ‫ش‬‫گزار‬ ‫و‬ ‫اصالح‬ ‫‌ها‬ ‫ل‬‫شک‬ ‫ساختار‬
+.‫شد‬ ‫باز‬ ‫‌شده‬ ‫ح‬‫اصال‬ ‫گزارش‬ ‫با‬ ‫دوباره‬ ‫برنامه‬ .‫شد‬ ‫ذخیره‬ ‫نیز‬ ‫شاهد‬ ‫تصویر‬ ‫کالسترینگ‬ ‫و‬ FFT، Power، CFAR ‫برای‬
+.‫نکردند‬ ‫تغییر‬ ‫برد‬ ‫خروجی‬ ‫و‬ ‫پردازشی‬ ‫‌های‬ ‫ه‬‫داد‬
+You said:
+Worked for 1m 19s
+ChatGPT said:
+.‫شود‬ ‫باز‬ ‫بزرگ‬ ‫پنجره‬ ‫در‬ ‫تا‬ ‫کن‬ ‫کلیک‬ ‫شکل‬ ‫هر‬ ‫روی‬ .‫شد‬ ‫اضافه‬
+‫زوم‬ :‫ماوس‬ ‫چرخ‬
+‫شکل‬ ‫‌جایی‬ ‫ه‬‫جاب‬ :‫ماوس‬ ‫با‬ ‫کشیدن‬
+‫‌نمایی‬ ‫ک‬‫کوچ‬ ‫و‬ ‫‌نمایی‬ ‫گ‬‫بزر‬ :− ‫و‬ + ‫‌های‬ ‫ه‬‫دکم‬
+‫نمایش‬ ‫سریع‬ ‫تنظیم‬ :»%100« ‫و‬ »‫پنجره‬ ‫«اندازه‬
+.‫شد‬ ‫باز‬ ‫دوباره‬ ‫جدید‬ ‫قابلیت‬ ‫با‬ ‫برنامه‬ .‫ندارند‬ ‫وضوح‬ ‫افت‬ ‫زوم‬ ‫با‬ ‫و‬ ‫‌مانند‬ ‫ی‬‫م‬ ‫باقی‬ ‫برداری‬ ‫‌ها‬ ‫ل‬‫شک‬
+You said:
+Worked for 34s
+ChatGPT said:
+‫همین‬ ‫جداکردن‬ ‫سپس‬ ‫و‬ ‫حساب‬ ‫رسمی‬ ‫خروجی‬ ‫من‬ ‫پیشنهاد‬ ،‫طوالنی‬ ‫گفتگوی‬ ‫این‬ ‫از‬ ‫اتکا‬ ‫قابل‬ ‫و‬ ‫کامل‬ ‫نسخه‬ ‫گرفتن‬ ‫برای‬ .‫بله‬
+.‫است‬ ‫چت‬
+.‫شو‬ Settings → Data controls → Export data ‫وارد‬ ChatGPT ‫در‬ .۱
+.‫بزن‬ ‫را‬ Confirm export .۲
+۲۴ ‫دانلود‬ ‫لینک‬ ‫بکشد؛‬ ‫طول‬ ‫روز‬ ۷ ‫تا‬ ‫است‬ ‫ممکن‬ ‫آن‬ ‫‌شدن‬ ‫ه‬‫آماد‬ .‫‌آید‬ ‫ی‬‫م‬ ‫پیامک‬ ‫یا‬ ‫ایمیل‬ ‫طریق‬ ‫از‬ ZIP ‫فایل‬ ‫دانلود‬ ‫لینک‬ .۳
+OpenAI. ‫رسمی‬ ‫راهنمای‬ ‫طبق‬ .‫چت‬ ‫همین‬ ‫فقط‬ ‫نه‬ ،‫است‬ ‫حساب‬ ‫گفتگوهای‬ ‫سابقه‬ ‫شامل‬ ‫خروجی‬ ‫این‬ .‫دارد‬ ‫اعتبار‬ ‫ساعت‬
+‫‌دار‬ ‫ه‬‫شمار‬ JSON ‫فایل‬ ‫چند‬ ‫است‬ ‫ممکن‬ ‫بزرگ‬ ‫‌های‬ ‫ی‬‫خروج‬ ‫در‬ ‫کن؛‬ ‫پیدا‬ ‫را‬ conversations.json ‫فایل‬ ،ZIP ‫بازکردن‬ ‫از‬ ‫پس‬
+.‫باشد‬ ‫داشته‬ ‫وجود‬
+‫یا‬ Markdown ،‫خوانا‬ HTML ‫به‬ ‫و‬ ‫استخراج‬ ‫را‬ ‫چت‬ ‫همین‬ ‫‌توانم‬ ‫ی‬‫م‬ ‫بده؛‬ ‫اینجا‬ ‫را‬ ‫گفتگوها‬ ‫فایل‬ :‫گفتگو‬ ‫همین‬ ‫جداکردن‬ ‫برای‬
+.‫کنی‬ ‫ارسال‬ ‫را‬ ‫حساب‬ ‫اطالعات‬ ‫سایر‬ ‫نیست‬ ‫الزم‬ .‫کنم‬ ‫تبدیل‬ PDF
+‫داشتن‬ ‫زوم‬ ‫خاصیت‬ ‫یا‬ ‫یود‬ ‫بزرگتر‬ ‫شکلها‬ ‫کاش‬ ‫فثط‬ ‫خوبه‬
+‫بگیرم‬ ‫چت‬ ‫این‬ ‫گفتگوی‬ ‫کل‬ ‫از‬ ‫کامل‬ ‫خروجی‬ ‫یک‬ ‫میتونم‬ ‫چطور‬
+... ‫و‬ ‫فایل‬ ‫اکسپورت‬ ‫مصل‬ ‫چیزی‬ ‫یک‬
+nAI Help Center …
+help.openai.com
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 36/37‫بسیار‬ ‫‌های‬ ‫ت‬‫چ‬ ‫در‬ ‫اما‬ ‫کنی؛‬ ‫امتحان‬ ‫را‬ Ctrl+P → Save as PDF ‫مرورگر‬ ‫در‬ ‫‌توانی‬ ‫ی‬‫م‬ ‫هم‬ ‫مطالعه‬ ‫قابل‬ ‫ِع‬‫سری‬ ‫نسخه‬ ‫یک‬ ‫برای‬
+.‫ندانی‬ Export ‫مطمئن‬ ‫جایگزین‬ ‫را‬ ‫آن‬ ‫و‬ ‫کنی‬ ‫بررسی‬ ‫را‬ ‫صفحات‬ ‫‌بودن‬ ‫ل‬‫کام‬ ‫باید‬ ،‫طوالنی‬
+‫تمام‬ ‫‌بودن‬ ‫ل‬‫کام‬ ‫‌گیرد؛‬ ‫ی‬‫نم‬ ‫را‬ ‫چت‬ ‫کل‬ ‫رسمی‬ ‫خروجی‬ ‫جای‬ ،‫‌ایم‬ ‫ه‬‫کرد‬ ‫ثبت‬ ‫پروژه‬ ‫مخزن‬ ‫داخل‬ ‫که‬ ‫آرشیوی‬ :‫ما‬ ‫پروژه‬ ‫برای‬ ‫مهم‬ ‫نکته‬
+.‫است‬ ‫نشده‬ ‫تأیید‬ ‫آن‬ ‫تاریخی‬ ‫‌های‬ ‫م‬‫پیا‬
+11/13/26, 7:25 PM ‫‌سازی‬ ‫ه‬‫پیاد‬ ‫گزارش‬ FPGA
+https://chatgpt.com/g/g-p-6ad9fef0411c819193c502430edce553-trhy-rdr/c/6af5715c-2d54-83ed-ba93-b891bbc7719b 37/37

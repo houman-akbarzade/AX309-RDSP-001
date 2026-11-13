@@ -57,4 +57,8 @@ This addendum introduces no new waveform, coefficient, Q-format, threshold, algo
 
 Sixteen original Lab records were imported unchanged after text-hash and Git-source checks. Five additional early/tail records were preserved as excerpts from the user-supplied copies. FULL/verbatim metadata in an original archived message remains the original claim; the aggregate conversation is not declared complete.
 
-The stopped stationary-target question has no recovered answer and its image is unavailable. It is retained as an open dialogue gap, not converted into a new experiment, an inferred explanation or a defect finding.
+The stopped stationary-target question has no recovered historical answer. Its image has now been recovered from the later PDF page 34 and is explicitly the MF output; see the current source-based audit annotation. No historical answer or defect finding is fabricated.
+
+## Fuller printed mission supplement
+
+The 37-page PDF recovers mission sections 9–14 missing from the earlier text copy. It explicitly preserves open requirements, distinguishes implementation/verification/engineering acceptance, defines five execution phases and lists eleven final demonstrator-delivery criteria. These directions are registered in decisions/HISTORICAL-DEVELOPMENT-DIRECTIONS-PDF-SUPPLEMENT-20261113.json and mapped in engineering/audit/PDF-MISSION-DELIVERY-CRITERIA-TRACEABILITY.json. This supplement documents previously issued owner instructions; it creates no new Gate approval or numerical waiver.

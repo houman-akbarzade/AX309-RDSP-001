@@ -139,3 +139,7 @@ The next explicit engineering decision concerns recognition of the FFT-IP as-bui
 ## Historical dialogue and mission recovery
 
 Sixteen authentic Git-backed Lab messages were appended unchanged, with original content hashes verified; five additional user-export fragments were recorded as excerpts. Two authentic Lab events were appended unchanged. Thirteen source-backed engineering directions now connect the resource problem, PC-offload alternatives, FFT-IP study, GUI/UART delivery, Stage Lab, automated reports and display fixes. See the new mission addendum and engineering history. The user export is partial (287 lines, cut mid-sentence); no full-history claim is made. The reference manifest is not replaced; an updated proposal is prepared separately. Approved requirements and Gate states remain unchanged.
+
+## Fuller PDF history recovery
+
+The user-designated Downloads PDF (37 pages; SHA-256 226a1fb950226b51c5e5921f698d47665febcfcb4c11f50887b247e5128d1443) was copied unchanged, text-extracted and visually checked at representative boundaries. Ten new/source-variant PDF excerpts were appended; 34 printed segments corroborate existing topic records. The original embedded image of the stationary-target question was recovered from page 34 and visually identifies MF output. Earlier missing-image descriptions are superseded by this recovery; the stopped response remains absent. Four additional historical direction records and eleven printed delivery-criterion mappings were added. No new engineering test, Gate approval or functional change occurred.

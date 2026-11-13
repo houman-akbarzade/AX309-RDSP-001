@@ -1,0 +1,27 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S05-FINAL-FFT-IP-ARCHITECTURE-2026-11-14",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit instruction in current conversation",
+  "status": "APPROVED_ARCHITECTURAL_REPLACEMENT_S05_GATE_REVIEW_OPEN",
+  "decision": {
+    "replace_legacy_handwritten_FFT_DIT_with": "Xilinx FFT-IP as built in the laboratory full-chain implementation",
+    "FFT_IP_configuration": "Radix-2 Lite with BRAM; 25-bit input/output, 16-bit coefficients, convergent rounding, scale schedule [0,1,0,1,1] (adapter scale_sch=10'h144); verify generated core/configuration identity in final baseline",
+    "FPGA_chain": ["MF", "MTI", "FFT-IP", "Power", "CA-CFAR", "8-connected Grouping"],
+    "host_boundary": "IQ upload/readback and results through UART; GUI and scoring on PC",
+    "reference_model": "Use a versioned FFT-IP-corresponding bit-accurate model for numerical comparison and statistical assessment; retain original Float and C02 model/historical evidence separately. The older C02 bit-true equality is not an acceptance requirement for the newly selected IP.",
+    "supersedes": "The legacy DIT implementation choice and the no-architecture-C-change clause in earlier S05 design directions for this laboratory as-built configuration"
+  },
+  "scope_limits": [
+    "Architecture selection does not retroactively change historical numerical tests or their results.",
+    "S04 model-level statistical acceptance and S11 board acceptance are separate.",
+    "No UART ICD codes, exception policy, observability schema, final S05 Gate or later Gate is approved by this decision alone.",
+    "Actual IP generation parameters, wire protocol and reference identity must be pinned in the S05 as-built baseline."
+  ],
+  "evidence": [
+    "engineering/FFT-IP-TRIAL-REPORT-20261112.md",
+    "engineering/evidence/s10/full_ip_20261112/manifest.json",
+    "rtl/fft32_ip/fft32_ip_adapter.v",
+    "engineering/s04_numeric/FFT-IP-STATISTICAL-CAMPAIGN-v1.md"
+  ]
+}

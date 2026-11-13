@@ -1,0 +1,62 @@
+{
+  "schema_version": "eem-experience-v1",
+  "id": "EXP-AX309-018",
+  "title": "Separate immutable evidence history from current status projections",
+  "project": "AX309-RDSP-001",
+  "stage": "S12 documentation audit",
+  "category": "configuration-management",
+  "tags": [
+    "provenance",
+    "status-projection",
+    "manifest",
+    "historical-hash"
+  ],
+  "origin": "current_project_audit",
+  "state": "CANDIDATE",
+  "observed_problem": "A current status projection still reports S03 open while a later explicit decision approves S03; conversation manifest is one record behind its archive. Historical EEM/source hashes also differ from current files while matching pinned historical commits.",
+  "initial_faulty_assumption_or_design_decision": "Assuming every status projection and current path describes the newest approved state, or treating every current-path hash difference as damaged evidence.",
+  "observable_consequence": "A reviewer could incorrectly deny later completed work or invalidate authentic historical evidence.",
+  "assessed_root_cause": "Status projections and append-only evidence evolved at different commits; a current pathname is not an immutable artifact identity.",
+  "chosen_corrective_method": "Resolve the governing decision in time; verify path plus commit plus hash; propose separate status updates without rewriting historical evidence.",
+  "alternatives_and_negative_results": [
+    "Do not silently rewrite historical FAIL/OPEN statements",
+    "Do not replace evidence using an unpinned newer branch"
+  ],
+  "repeatable_validation": "Read git log for replay/stages.json, replay/manifest.json and conversations.jsonl; compare decision and archived bytes without execution.",
+  "generalizable_lesson": "Audit immutable artifact identities and decision chronology separately from convenience status projections.",
+  "applicability": "Repositories with append-only records and manually maintained manifests/status files",
+  "non_applicability": "Does not approve later code or waive missing tests; current mismatches still require individual investigation.",
+  "safety_contract_constraints": "No baseline, Gate, existing lesson or executable change; no automatic promotion.",
+  "author_role": "FPGA documentation auditor assisted by AI",
+  "reviewer_role": "Pending engineer review",
+  "recorded_at_utc": "2026-11-13T14:45:49.572777+00:00",
+  "time_provenance": "Current audit recording time",
+  "evidence": [
+    {
+      "path": "replay/stages.json",
+      "sha256": "d4169c44d3e58ea3fce624d22d5177b12ecb69884757209b2997f31e9e2f100b",
+      "git_commit": "d45d350803c418f86cfc4fbfa098a9140daeedf5"
+    },
+    {
+      "path": "replay/manifest.json",
+      "sha256": "6e1527731156e8a660c2e434bccf1a6200fc4d1564f1c88eb70345dbfc677077",
+      "git_commit": "d45d350803c418f86cfc4fbfa098a9140daeedf5"
+    },
+    {
+      "path": "replay/conversations.jsonl",
+      "sha256": "7a88f1ce93a2bea0726cd1c63231adf857291a77778316eb4bb39d8a2b258b04",
+      "git_commit": "d45d350803c418f86cfc4fbfa098a9140daeedf5"
+    },
+    {
+      "path": "decisions/GATE-S03-approved-baseline.json",
+      "sha256": "95319a82738c1bf508b1f417b8e0cc6a9de90de0f51a644d196234ba206f9427",
+      "git_commit": "d45d350803c418f86cfc4fbfa098a9140daeedf5"
+    }
+  ],
+  "prior_lesson_links": [
+    "EXP-AX309-012"
+  ],
+  "superseding_lesson_links": [],
+  "plugin_release_provenance": null,
+  "engineer_approval": null
+}

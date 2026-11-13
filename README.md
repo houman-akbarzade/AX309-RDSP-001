@@ -85,7 +85,7 @@ Cases include noise-bearing single/multiple targets, clutter, close targets, low
 - UART batch transfer is not real-time radar acquisition.
 - Automatic recovery of an interrupted hardware session using a new SID is not supported by the final integration report.
 - Full intermediate observability and maximum-capacity/no-drop acceptance need requirement-level review.
-- The Stage Lab branch uses distinct injection/readback configurations. Its evidence has not been merged into this stable snapshot.
+- Stage Lab uses distinct injection/readback configurations. Selected immutable evidence has now been copied into this preparation branch; active Lab code and images remain separate.
 - Final numerical-baseline reconciliation, separate stage-gate closure and public redistribution review remain open.
 
 ## Reproducibility
@@ -101,3 +101,7 @@ Read [decisions/](decisions/), the [lessons register](engineering/LESSONS-LEARNE
 ## Repository review status
 
 Documentation preparation is in progress. This branch has not been published and is **not yet READY_FOR_GITHUB_REVIEW**. The compliance report lists unfinished coverage and decisions. Public release requires the owner's approval and review of disclosure scope and vendor IP redistribution.
+
+## Existing-work recovery update
+
+The engineer authorized recovery of completed Stage Lab work. Read [the as-built review package](engineering/audit/EXISTING-WORK-RECOVERY-AND-AS-BUILT-REVIEW.md) for recovered S05–S11 evidence and the exact pending configuration decision. The audit independently checked 94 retained case archives and 184 exact Fixed-reference comparisons without executing project models or tests. These are finite archived-evidence results, not new engineering execution or automatic gate approval.

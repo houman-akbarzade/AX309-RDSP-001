@@ -129,3 +129,9 @@ SOFTWARE-TEST-SOURCE-REGISTER.json maps 321 test functions across 32 source file
 All 81 present text/content SHA-256 fields match exact stored text. Legacy labels are 30 EXCERPT, 57 FULL, six SUMMARY, and 18 verbatim. No label is promoted. Twenty decision files have a separate presence-only dialogue-reference register; semantic approval provenance remains to be adjudicated. manifest-v2.PROPOSED.json supersedes the first proposal for review by refreshing label counts and final ID as well as byte hashes/counts; neither proposal is installed.
 
 Checkpoint commit 76475cd contains only new audit measurements and inventories. Subsequent narrative/readme/candidate work is also documentation only. This checkpoint is not the final mission handover. No publication, merge, gate approval, engineering rerun or baseline change is authorized or performed.
+
+## Engineer-authorized existing-work recovery update
+
+The subsequent engineer instruction authorizes reuse/import of existing Lab evidence. The current continuation is documented in EXISTING-WORK-RECOVERY-AND-AS-BUILT-REVIEW.md; it supersedes earlier no-transfer descriptions for the preparation branch only. STAGE-LAB-EVIDENCE-IMPORT.json pins 1,470 imported files; 58 archived executable/build images remain reference-only. LAB-ARCHIVED-NUMERICAL-REVIEW.json supports 94 finite case archives and 184 exact comparisons against stored Fixed references. No project test/model was executed.
+
+The next explicit engineering decision concerns recognition of the FFT-IP as-built laboratory configuration alongside historical C02. S05–S11 approval records have not been invented. Current recovery dialogue is appended verbatim; this does not repair missing dialogue from the initial audit turn. The old canonical manifest remains unchanged pending reference-replacement approval; a fresh proposal is generated separately. No new engineering progress percentage is inferred.

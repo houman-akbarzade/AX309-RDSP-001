@@ -1,0 +1,300 @@
+{
+  "version": "0.3.0",
+  "kind": "automatic",
+  "status": "CANCELLED",
+  "configuration": {
+    "level": "quick",
+    "engine": "Python",
+    "port": "NO_UART_MUST_BE_OPENED"
+  },
+  "planned_jobs": 41,
+  "jobs": [],
+  "cases": {
+    "Two aircraft": {
+      "name": "Two aircraft",
+      "targets": [
+        {
+          "name": "A1",
+          "delay": 35,
+          "velocity": 2.8125,
+          "amplitude": 0.18,
+          "bearing": -0.25,
+          "tangential": 180.0
+        },
+        {
+          "name": "A2",
+          "delay": 80,
+          "velocity": -3.75,
+          "amplitude": 0.12,
+          "bearing": 0.25,
+          "tangential": 180.0
+        }
+      ],
+      "noise": 0.002,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "MTI mixed": {
+      "name": "MTI mixed",
+      "targets": [
+        {
+          "name": "Stationary",
+          "delay": 25,
+          "velocity": 0.0,
+          "amplitude": 0.12
+        },
+        {
+          "name": "Slow",
+          "delay": 65,
+          "velocity": 0.05,
+          "amplitude": 0.12
+        },
+        {
+          "name": "Moving",
+          "delay": 98,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "Aircraft in clutter": {
+      "name": "Aircraft in clutter",
+      "targets": [
+        {
+          "name": "A1",
+          "delay": 65,
+          "velocity": 2.8125,
+          "amplitude": 0.12,
+          "bearing": 0.0,
+          "tangential": 180.0
+        }
+      ],
+      "noise": 0.002,
+      "seed": 20261112,
+      "clutter": true
+    },
+    "Weak target near strong": {
+      "name": "Weak target near strong",
+      "targets": [
+        {
+          "name": "Strong",
+          "delay": 45,
+          "velocity": 2.8125,
+          "amplitude": 0.26,
+          "bearing": 0.0,
+          "tangential": 180.0
+        },
+        {
+          "name": "Weak",
+          "delay": 55,
+          "velocity": 3.75,
+          "amplitude": 0.026,
+          "bearing": 0.0,
+          "tangential": 180.0
+        }
+      ],
+      "noise": 0.002,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "MTI stationary": {
+      "name": "MTI stationary",
+      "targets": [
+        {
+          "name": "Stationary",
+          "delay": 40,
+          "velocity": 0.0,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "MTI near-stationary": {
+      "name": "MTI near-stationary",
+      "targets": [
+        {
+          "name": "Slow",
+          "delay": 65,
+          "velocity": 0.05,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "MTI moving": {
+      "name": "MTI moving",
+      "targets": [
+        {
+          "name": "Moving",
+          "delay": 95,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "Range separation 2 cells": {
+      "name": "Range separation 2 cells",
+      "targets": [
+        {
+          "name": "R1",
+          "delay": 45,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        },
+        {
+          "name": "R2",
+          "delay": 47,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "range_separation_cells": 2
+    },
+    "Range separation 4 cells": {
+      "name": "Range separation 4 cells",
+      "targets": [
+        {
+          "name": "R1",
+          "delay": 45,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        },
+        {
+          "name": "R2",
+          "delay": 49,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "range_separation_cells": 4
+    },
+    "Range separation 8 cells": {
+      "name": "Range separation 8 cells",
+      "targets": [
+        {
+          "name": "R1",
+          "delay": 45,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        },
+        {
+          "name": "R2",
+          "delay": 53,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "range_separation_cells": 8
+    },
+    "Velocity separation 1 bins": {
+      "name": "Velocity separation 1 bins",
+      "targets": [
+        {
+          "name": "V1",
+          "delay": 55,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        },
+        {
+          "name": "V2",
+          "delay": 55,
+          "velocity": 3.28125,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "velocity_separation_bins": 1
+    },
+    "Velocity separation 2 bins": {
+      "name": "Velocity separation 2 bins",
+      "targets": [
+        {
+          "name": "V1",
+          "delay": 55,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        },
+        {
+          "name": "V2",
+          "delay": 55,
+          "velocity": 3.75,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "velocity_separation_bins": 2
+    },
+    "Velocity separation 4 bins": {
+      "name": "Velocity separation 4 bins",
+      "targets": [
+        {
+          "name": "V1",
+          "delay": 55,
+          "velocity": 2.8125,
+          "amplitude": 0.12
+        },
+        {
+          "name": "V2",
+          "delay": 55,
+          "velocity": 4.6875,
+          "amplitude": 0.12
+        }
+      ],
+      "noise": 0.0,
+      "seed": 20261112,
+      "velocity_separation_bins": 4
+    },
+    "Off-bin Doppler": {
+      "name": "Off-bin Doppler",
+      "targets": [
+        {
+          "name": "Off-bin",
+          "delay": 55,
+          "velocity": 2.578125,
+          "amplitude": 0.15
+        }
+      ],
+      "noise": 0.002,
+      "seed": 20261112,
+      "clutter": false
+    },
+    "Low SNR": {
+      "name": "Low SNR",
+      "targets": [
+        {
+          "name": "A1",
+          "delay": 60,
+          "velocity": 2.8125,
+          "amplitude": 0.06,
+          "bearing": 0.0,
+          "tangential": 180.0
+        }
+      ],
+      "noise": 0.06,
+      "seed": 20261112,
+      "clutter": false
+    }
+  },
+  "started_at_utc": "2026-11-12T20:08:37Z",
+  "directory": "/home/houman/AX309-RDSP-001-stage-lab/engineering/evidence/auto_lab_v0.3/runs/20261112T200837-2ef78e",
+  "statistical_claim": "Development estimates only",
+  "elapsed_s": 0.0031164789979811758
+}

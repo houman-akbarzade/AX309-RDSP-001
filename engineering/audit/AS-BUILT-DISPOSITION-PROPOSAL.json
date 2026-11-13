@@ -1,0 +1,41 @@
+{
+  "proposal_id": "AX309-AS-BUILT-LAB-DISPOSITION-001",
+  "status": "PENDING_ENGINEER_DECISION",
+  "proposed_disposition": "RECOGNIZE_EXISTING_FFT_IP_LAB_AS_BUILT_CONFIGURATION",
+  "baseline_main_commit": "d45d350803c418f86cfc4fbfa098a9140daeedf5",
+  "source_lab_commit": "6c86a2e16b283d2cef82fd7be351b0b34ff95d74",
+  "evidence": [
+    {
+      "path": "engineering/evidence/s10/full_ip_20261112/manifest.json",
+      "sha256": "1800739eddec93d93eadb6b47c0300422d344c5753d159f678c2d3b139b8bdb3"
+    },
+    {
+      "path": "engineering/evidence/stage_lab_v0.2/manifest.json",
+      "sha256": "65036712be8011c7a60c8d12ce21dcc51ef6cea97c7c2715828238a33a3bfb93"
+    },
+    {
+      "path": "engineering/audit/LAB-ARCHIVED-NUMERICAL-REVIEW.json",
+      "sha256": "c1face0f69d55623cdc8be538c63a2a1c73ce27d49d6dd804fc79fec22a8a6b5"
+    },
+    {
+      "path": "engineering/audit/EXISTING-WORK-RECOVERY-AND-AS-BUILT-REVIEW.md",
+      "sha256": "8bf0e3f4b560e00debdb049f966776c3dd1708a58bb006c18bf2cad92c1c64bf"
+    }
+  ],
+  "scope": "Existing laboratory implementation/evidence; no new execution, no historical numeric-equivalence claim",
+  "preserved_open_items": [
+    "REQ-RNG-03 FAIL 4/8 vs 8/8",
+    "Fixed-Point statistical qualification OPEN",
+    "C02 versus IP numeric/overflow relationship",
+    "final ICD and full requirement-level qualification",
+    "external/unconstrained STA coverage"
+  ],
+  "exclusions": [
+    "Gate closure",
+    "approved baseline replacement",
+    "new tests or FPGA programming",
+    "merge or publication"
+  ],
+  "next_action_after_approval": "Prepare individual S05–S11 scoped gate disposition records for engineer review",
+  "engineer_approval": null
+}

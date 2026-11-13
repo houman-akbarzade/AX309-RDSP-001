@@ -1,0 +1,215 @@
+{
+  "quick_inline_summary_charts": 41,
+  "quick": {
+    "status": "COMPLETE",
+    "jobs": 41,
+    "fixed_comparisons": 65,
+    "unique_hardware_captures": 40,
+    "all_input_echo_and_output_hashes_verified": true
+  },
+  "statistics_inline_summary_charts": 12,
+  "statistics": {
+    "scope": "Independent seeded CPIs; CFAR receives quantized software Float Power after software Float FFT. Grouping receives actual hardware CFAR output. Not end-to-end raw-IQ Pd/Pfa qualification.",
+    "noise_CPIs": 3,
+    "target_CPIs": 3,
+    "cells_per_CPI": 2782,
+    "cell_Pfa": 0.0004792715073088905,
+    "cell_Pfa_95pct_CPI_Hoeffding": [
+      0,
+      0.7845795472069943
+    ],
+    "cell_CI_note": "Conservative independent-CPI bound; cells within a CPI are NOT treated as independent.",
+    "CPI_any_false_alarm_probability": 0.6666666666666666,
+    "CPI_any_false_alarm_95pct": [
+      0.09429932405024613,
+      0.9915962413403874
+    ],
+    "false_clusters_per_CPI": 1.3333333333333333,
+    "CFAR_Pd": 1.0,
+    "CFAR_Pd_95pct": [
+      0.29240177382128674,
+      1.0
+    ],
+    "Grouping_Pd": 1.0,
+    "Grouping_Pd_95pct": [
+      0.29240177382128674,
+      1.0
+    ],
+    "qualification": "Development estimate; finite CI and defined SNR/association conditions must accompany the number.",
+    "noise_RMS": 0.02,
+    "target_amplitude": 0.18,
+    "active_echo_SNR_dB": 19.084850188786497,
+    "observations": {
+      "noise": [
+        {
+          "false_alarm_cells": 0,
+          "valid_cells": 2782,
+          "any_false_alarm": false,
+          "clusters": 0,
+          "cfar_detected_targets": 0,
+          "defined_targets": 0,
+          "grouping_detected_targets": 0
+        },
+        {
+          "false_alarm_cells": 1,
+          "valid_cells": 2782,
+          "any_false_alarm": true,
+          "clusters": 1,
+          "cfar_detected_targets": 0,
+          "defined_targets": 0,
+          "grouping_detected_targets": 0
+        },
+        {
+          "false_alarm_cells": 3,
+          "valid_cells": 2782,
+          "any_false_alarm": true,
+          "clusters": 3,
+          "cfar_detected_targets": 0,
+          "defined_targets": 0,
+          "grouping_detected_targets": 0
+        }
+      ],
+      "target": [
+        {
+          "false_alarm_cells": null,
+          "valid_cells": 2782,
+          "any_false_alarm": null,
+          "clusters": 7,
+          "cfar_detected_targets": 1,
+          "defined_targets": 1,
+          "grouping_detected_targets": 1
+        },
+        {
+          "false_alarm_cells": null,
+          "valid_cells": 2782,
+          "any_false_alarm": null,
+          "clusters": 5,
+          "cfar_detected_targets": 1,
+          "defined_targets": 1,
+          "grouping_detected_targets": 1
+        },
+        {
+          "false_alarm_cells": null,
+          "valid_cells": 2782,
+          "any_false_alarm": null,
+          "clusters": 6,
+          "cfar_detected_targets": 1,
+          "defined_targets": 1,
+          "grouping_detected_targets": 1
+        }
+      ]
+    }
+  },
+  "normal": {
+    "terminal": "COMMIT",
+    "input_echo_verified": true,
+    "released": true,
+    "reference_engines": [
+      "Python Float",
+      "Python Fixed",
+      "MATLAB Float",
+      "MATLAB Fixed"
+    ]
+  },
+  "normal_file": {
+    "terminal": "COMMIT",
+    "input_echo_verified": true,
+    "released": true,
+    "reference_engines": [
+      "Python Float",
+      "Python Fixed"
+    ]
+  },
+  "MTI": {
+    "MTI moving": {
+      "target": "Moving",
+      "velocity_m_s": 2.8125,
+      "input_power": 3.6863920399919152,
+      "output_power": 4.551358098164201,
+      "gain_db": 0.9153948724557798,
+      "exact_zero_output": false,
+      "analytic_gain_db": 0.9153792844814148
+    },
+    "MTI near-stationary": {
+      "target": "Slow",
+      "velocity_m_s": 0.05,
+      "input_power": 3.6864402471110225,
+      "output_power": 0.0016180053353309631,
+      "gain_db": -33.57627249536573,
+      "exact_zero_output": false,
+      "analytic_gain_db": -33.57898648020866
+    },
+    "MTI stationary": {
+      "target": "Stationary",
+      "velocity_m_s": 0.0,
+      "input_power": 3.686451562680304,
+      "output_power": 0.0,
+      "gain_db": null,
+      "exact_zero_output": true,
+      "analytic_gain_db": null
+    }
+  },
+  "range_resolution": [
+    {
+      "separation_m": 299.792458,
+      "peaks": [],
+      "valley_depth_db": null,
+      "resolved": false,
+      "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+    },
+    {
+      "separation_m": 599.584916,
+      "peaks": [
+        46,
+        48
+      ],
+      "valley_depth_db": 0.03920506523974518,
+      "valley_exact_zero": false,
+      "resolved": false,
+      "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+    },
+    {
+      "separation_m": 1199.169832,
+      "peaks": [
+        45,
+        53
+      ],
+      "valley_depth_db": 6.8766630917063605,
+      "valley_exact_zero": false,
+      "resolved": true,
+      "criterion": "Two distinct local maxima, each within \u00b11 cell of true delay; intervening valley >=3 dB below weaker peak. Coherent equal-amplitude noise-free test, not a general resolution guarantee."
+    }
+  ],
+  "velocity_resolution": [
+    {
+      "separation_m_s": 0.46875,
+      "peaks": [],
+      "valley_depth_db": null,
+      "resolved": false,
+      "criterion": "Two distinct spectral local maxima within \u00b11 bin of truth; intervening valley >=3 dB. No Doppler wrap in these tests."
+    },
+    {
+      "separation_m_s": 0.9375,
+      "peaks": [
+        6,
+        8
+      ],
+      "valley_depth_db": null,
+      "valley_exact_zero": true,
+      "resolved": true,
+      "criterion": "Two distinct spectral local maxima within \u00b11 bin of truth; intervening valley >=3 dB. No Doppler wrap in these tests."
+    },
+    {
+      "separation_m_s": 1.875,
+      "peaks": [
+        6,
+        10
+      ],
+      "valley_depth_db": null,
+      "valley_exact_zero": true,
+      "resolved": true,
+      "criterion": "Two distinct spectral local maxima within \u00b11 bin of truth; intervening valley >=3 dB. No Doppler wrap in these tests."
+    }
+  ],
+  "UI": "PASS: two modes, scenario controls, report and case navigation, SVG rendering"
+}

@@ -1,0 +1,13 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S11-PFA-TIME-ACCEPTANCE-METHOD-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit current-conversation instruction",
+  "status": "APPROVED_LIMITED_METHOD_AMENDMENT",
+  "parent_decision": "decisions/GATE-S11-PHYSICAL-LAB-ACCEPTANCE-WITH-EXCEPTIONS-20261114.json",
+  "normative_amendment": "engineering/S02-S11-LAB-PFA-TIMING-LIMITED-AMENDMENT-20261114.md",
+  "pfa": "Retain 95% one-sided Empirical Bernstein confidence for frozen 20000-CPI fixed FFT-IP software model; remove any 95% inference claim from model to physical FPGA for S11 lab acceptance. Physical 20000 CPI not executed and cannot be called PASS. Development-time exception explicitly accepted.",
+  "timing": "Replace on-board cycle counter for selected saturated-resource lab image by RTL/IP simulation start-to-done cycle count plus separate measured host transfer/response and 50 MHz ISE STA. The cycle count is simulation-derived, not directly measured hardware. No real-time deadline accepted.",
+  "list": "No dedicated final-image end-to-end 702-record criterion found in REQ-LIST-01. Accept capacity and transport evidence in respective scoped configurations.",
+  "effect": "Clarifies S11 closure with exceptions; does not rewrite historic S02 v1.2 result or imply operational qualification."
+}

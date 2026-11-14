@@ -1,0 +1,38 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "GATE-S11-PHYSICAL-LAB-ACCEPTANCE-WITH-EXCEPTIONS-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit decisions in current conversation",
+  "status": "GATE_S11_CLOSED_WITH_ACCEPTED_ENGINEERING_EXCEPTIONS",
+  "selected_bitstream_sha256": "fa51f7d050ff52d3772777fd1b1829386ef3708ddbed43c9f7775232d57c1cfb",
+  "evidence": [
+    "engineering/S11-FINAL-REVIEW-AND-ENGINEER-DECISION-PACKAGE-20261114.md",
+    "engineering/S11-SHORTENED-HARDWARE-CAMPAIGN-AND-PAIRED-MODEL-20261114.md",
+    "engineering/evidence/s11/range_power_20261114/RESULT.json",
+    "engineering/evidence/s11/focused_recovery_20261114/RESULT.json",
+    "engineering/evidence/s11/repeatability_20261114/RESULT.json",
+    "engineering/evidence/s11/uart_fault_20261114/RESULT.json"
+  ],
+  "decisions": {
+    "timing": "Accept 50 MHz ISE routed timing evidence and observed UART transfer/result response for S11 due near-full FPGA resource use. No added cycle counter. ISE STA demonstrates constrained path closure, not measured total DSP CPI latency, cycle count, or counter rollover. REQ-TIME-01 original counter method is waived for this laboratory gate.",
+    "list": "REQ-LIST-01 requires no silent discard, explicit overflow, deterministic selection; exact 702-record integrated UART/PC trial is not independently specified. Accept separate physical Grouping 702/702, simulated backpressure, and finite full-chain UART cases in stated scope; do not claim 702 on final image end-to-end.",
+    "pfa": "Due to campaign time, accept equivalent fixed-point FFT-IP software model's 20000-CPI statistical PASS as the S11 laboratory Pfa qualification method, supported by exact paired output comparison on 1174 independent physical noise CPIs. Original physical 20000-CPI protocol is superseded for S11 by this explicit engineer exception; its physical PASS is NOT_DEMONSTRATED. Physical 1174-CPI EB upper 0.008370254 exceeds 0.0015; does not demonstrate physical acceptance."
+  },
+  "evidence_scope": {
+    "pd": "1000/1000 board detections in tested population, design target",
+    "pfa_model_eb_upper": 0.0014529047,
+    "pfa_limit": 0.0015,
+    "pfa_board_completed": 1174,
+    "pfa_board_planned": 20000,
+    "paired_all_cpi": 2174,
+    "range_cases": "8/8 final-image Power resolution and exact fixed-IP model maps"
+  },
+  "excluded": [
+    "Formal physical 20000-CPI REQ-CFAR-02 PASS",
+    "Deterministic equivalence for all admissible inputs",
+    "FPGA processing-cycle measurement and real-time throughput claim",
+    "702-record end-to-end final image UART/PC demonstration",
+    "S12 baseline and final delivery approval"
+  ],
+  "next_step": "S12 preparation and independent delivery review; no automatic S12 closure"
+}

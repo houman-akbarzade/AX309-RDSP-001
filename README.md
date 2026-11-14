@@ -1,126 +1,112 @@
 # AX309-RDSP-001
 
-Current engineering and acceptance status: [current project status](engineering/audit/CURRENT-PROJECT-STATUS.md). This separates completed laboratory work from formal Gate closure and outstanding requirements.
+An engineer-led, AI-assisted FPGA radar DSP laboratory project on the **ALINX AX309 / Xilinx Spartan-6 XC6SLX9-2FTG256C**, using **Xilinx ISE 14.7**. A host supplies synthetic complex IQ in batches; the FPGA processes it and returns Power maps and grouping records over USB-UART.
 
-A laboratory FPGA radar DSP project for the ALINX AX309 (Xilinx Spartan-6 XC6SLX9-2FTG256C), developed with Xilinx ISE 14.7. The host supplies synthetic complex IQ in batches. The FPGA processes the batch and returns Power-map and cluster results over USB-UART.
+## Current acceptance status
 
-This is a development and verification platform. The retained physical-board results do not establish operational radar acceptance, real-time acquisition, or general detection performance.
+**S01–S12 are closed within their explicitly approved laboratory scopes.** The latest engineering decisions are dated **14 November 2026**. S12 is an as-built laboratory handover with declared S11 acceptance amendments and limitations; it does not establish operational radar, environmental or production qualification.
+
+The current status is established by the [Gate decisions](decisions/), [S11 amended-criteria verdict](engineering/S11-AMENDED-CRITERIA-VERDICT-20261114.md) and [S12 handover](deliverables/S12-LAB-HANDOVER-20261114.md). Historical draft headers, `project.yaml`, Replay summaries and older audit/status reports may describe earlier OPEN states. Read them as dated evidence, not as overrides of later explicit decisions. Original failed results and superseded criteria are retained.
+
+| Stages | Accepted scope and decision |
+|---|---|
+| S01–S03 | Approved problem definition, requirements and scoped floating functional-reference evidence; individual approved-baseline records are in `decisions/`. |
+| S04 | [Final scoped acceptance](decisions/GATE-S04-FINAL-ACCEPTANCE-20261114.json): current Power-peak criterion and frozen FFT-IP model statistical campaigns; earlier carryovers resolved within the approved scope. |
+| S05–S07 | [Architecture/interfaces](decisions/GATE-S05-ARCHITECTURE-INTERFACES-APPROVED-20261114.json), [RTL/testbench](decisions/GATE-S06-RTL-TESTBENCH-APPROVED-20261114.json) and [finite simulation](decisions/GATE-S07-RTL-SIMULATION-APPROVED-20261114.json). |
+| S08–S10 | [Exact mapped configuration](decisions/GATE-S08-SYNTHESIS-MAP-APPROVED-20261114.json), [50 MHz routed timing with documented asynchronous boundaries](decisions/GATE-S09-ROUTED-TIMING-APPROVED-20261114.json) and [selected laboratory integration](decisions/GATE-S10-INTEGRATION-BITSTREAM-APPROVED-20261114.json). |
+| S11 | [Physical laboratory acceptance with explicit exceptions](decisions/GATE-S11-PHYSICAL-LAB-ACCEPTANCE-WITH-EXCEPTIONS-20261114.json), supplemented by the [amended-criteria PASS verdict](decisions/S11-AMENDED-CRITERIA-PASS-20261114.json). |
+| S12 | [Laboratory handover closed](decisions/GATE-S12-PRIVATE-LAB-HANDOVER-APPROVED-20261114.json), preserving S11 boundaries. The historical decision calls this a private handover; it is not a redistribution license. |
 
 ## Processing chain and platform
 
-IQ upload/readback → 16-tap complex matched filter → two-pulse MTI → 32-point Doppler FFT → linear Power → 2D CA-CFAR → eight-connected grouping → UART results/COMMIT/RELEASE.
+**IQ upload/readback → MF16 → two-pulse MTI → 32-point Doppler FFT-IP → linear Power → 2D CA-CFAR → eight-connected grouping → UART results / COMMIT / RELEASE.**
 
-The laboratory input is 33×128 complex signed Q1.15 samples (16,896 bytes); MTI yields 32 slow-time samples. The declared sampling rate is 1 MS/s. The waveform reference uses a 16 µs, 250 kHz LFM pulse. The hypothetical 10 GHz carrier is used for velocity conversion; it does not imply an RF transceiver on the board. No antenna/RF/ADC acquisition chain or FPGA tracking capability is claimed.
+- Input: **33 × 128** complex signed Q1.15 samples, **16,896 bytes**, pulse-major I/Q. MTI yields 32 slow-time samples; the Power map is **128 × 32 = 4,096 cells**.
+- Signal reference: 1 MS/s and a 16 µs / 250 kHz LFM pulse. The hypothetical 10 GHz carrier supports velocity conversion; no antenna/RF/ADC acquisition chain or FPGA tracking is implied.
+- CA-CFAR: 7 × 7 window with central 3 × 3 excluded, **40 training cells**, **2,782 valid CUTs**, strict greater-than comparison and frozen index/mask conventions.
+- The selected full-chain image exposes IQ readback, actual Power and final records. Intermediate outputs use **separate Stage Lab configurations**, not simultaneous readback of every stage in that image.
 
-The approved CA-CFAR geometry is 7×7 with the central 3×3 excluded: 40 training cells and 2,782 valid CUTs. The comparator is strict greater-than. Consult the normative contract for index and scaling conventions.
+Read the selected [as-built functional trace](engineering/S05-FFT-IP-AS-BUILT-TRACE-v1.0.md), [UART ICD](engineering/S05-UART-AS-BUILT-ICD-v1.0.md) and [S05 decision](decisions/GATE-S05-ARCHITECTURE-INTERFACES-APPROVED-20261114.json) together. Proposal headers in the first two predate approval. Older custom-FFT and UART designs remain historical alternatives.
 
-## Engineering method and authority
+## Engineering method
 
-Requirements, numerical models, RTL, tool reports and board evidence are versioned separately from engineer acceptance. AI assisted development, analysis and documentation. The engineer owns design decisions, evidence acceptance and stage gates. A software PASS, simulation PASS, routed design and physical capture are distinct evidence classes.
+The workflow connects requirements, numerical contracts, architecture alternatives, RTL, engineering-tool execution, evidence review and explicit engineer acceptance. AI assists analysis, model/RTL/testbench development, tool orchestration and documentation. The engineer directs choices and approves contracts, trade-offs and acceptance.
 
-S01–S03 have explicit approval records. S04 was closed by engineer disposition with open technical items. Later laboratory implementation does not imply automatic closure of S05–S11.
+Evaluation follows **functional behavior, timing and resource use**. Software results, RTL simulation, mapped/routed reports and physical captures are separate evidence classes. Numerical or architectural changes require corresponding reference and acceptance review.
 
-The repository contains historical status files and dated reports. Some project.yaml summaries and replay/stages.json entries predate later work. For the audit's reconciled view and unresolved discrepancies, read [the compliance report](engineering/audit/FPGA-ENGINEERING-COMPLIANCE.md). Historical records have not been rewritten.
+The [development history](engineering/ENGINEERING-DEVELOPMENT-HISTORY.md) documents the engineer's role in resource-allocation studies, proposing FFT-IP, requesting Float comparisons, hardware integration and independent stage observation. It is a dated retrospective; later decisions control current status. Dialogue recovery is partial, not a complete original conversation archive.
 
-## Requirements and architecture
+## Numerical configuration and architecture choice
 
-The approved [S02 v1.0 requirement matrix](engineering/S02-requirements-matrix-FINAL-PROPOSED-v1.0.json) is supplemented by approved v1.1 and the limited [C-CFAR-02 v1.2 contract](engineering/S02-C-CFAR-02-CONTRACT-APPROVED-v1.2.md). The [v1.2 matrix](engineering/S02-C-CFAR-02-requirements-matrix-APPROVED-v1.2.json) retains 22 requirement rows; later decision records must be read for scoped changes.
+Historical selected-C/C02 defines widths, binary points, RNE/saturation and shifts `[0,1,0,1,1]`. The selected image uses **Xilinx FFT v7.1 Radix-2 Lite / BRAM**, 32 points, signed 25-bit I/O and 16-bit phase factors. It is **not bit-exact to C02**; the original mismatch remains documented. Acceptance uses the reference corresponding to the selected IP configuration.
 
-The [S05 architecture](engineering/S05-RTL-ARCHITECTURE-v0.1.md), [UART ICD candidate](engineering/S05-UART-ICD-v1.0-ENGINEER-REVIEW.md) and later [full-IP integration report](engineering/FULL-IP-UART-GUI-INTEGRATION-20261112.md) document different points in development. A candidate ICD is not an approved contract merely because laboratory RTL exists.
+The [standalone FFT MAP comparison](engineering/FFT-IP-TRIAL-REPORT-20261112.md) recorded **5,589 → 537 LUT**, about **90.4% fewer LUT in that standalone comparison**, not a 90.4% reduction in the complete design. The [Float/IP evaluation](engineering/IP-FLOAT-AND-FULL-CHAIN-EVALUATION-20261112.md) assessed numerical and downstream effects separately. Using the same vendor FFT model in different host languages does not establish independent mathematical references.
 
-## Fixed-point design
+Requirements start with the 22-row S02 matrices and their approved amendments. Read the [Power-peak amendment](engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md), [as-built scope amendment](engineering/S01-S02-RANGE-MATRIX-LIST-OBS-AMENDMENT-v1.0.md) and [S11 limited-method amendment](engineering/S02-S11-LAB-PFA-TIMING-LIMITED-AMENDMENT-20261114.md) with the final decisions.
 
-The historical selected-C numerical design specifies widths, binary points, RNE/saturation and FFT stage shifts [0,1,0,1,1]. It has bounded deterministic qualification evidence.
+## Functional and physical evidence
 
-The later laboratory chain uses Xilinx FFT v7.1 Radix-2 Lite with a 32-point transform, 25-bit signed I/O and 16-bit phase factors. It is **not bit-exact to the custom C02 FFT**; overflow behavior also differs. The [FFT benchmark](rtl/experiments/fft_ip_20261112/README.md) preserves the equivalence failures. The [Float/IP evaluation](engineering/IP-FLOAT-AND-FULL-CHAIN-EVALUATION-20261112.md) explains measured numerical comparisons and limits. These measurements do not qualify general Fixed-Point Pd/Pfa.
+| Evidence | Recorded result | Scope |
+|---|---|---|
+| Current range-resolution criterion | **8/8** final-image board Power cases pass. | Approved noise-free two-peak population; historical **4/8** final-grouping-record result retained under the former criterion. |
+| Paired board/model replay | **2,174/2,174 CPI**: 1,000 target-present plus 1,174 completed noise CPI, exact Power/record comparisons. | Finite populations, not all-input equivalence. |
+| FFT-IP fixed-model Pfa | 20,000 independent noise CPI; one-sided 95% empirical-Bernstein upper **0.0014529047 ≤ 0.0015**. | Scoped model PASS and approved S11 laboratory substitute. |
+| Physical noise campaign | **1,174/20,000 CPI** completed; observed fraction about 0.000977322; EB upper **0.008370254**. | Does **not** demonstrate the original physical-protocol PASS or a 95% board Pfa guarantee. |
+| Physical target campaign | **1,000/1,000** detections; one-sided Clopper–Pearson lower about **0.99700875**. | Defined single-target population, not general radar Pd. |
+| Grouping capacity | **702/702** physical records in a separate Grouping image, plus backpressure simulation and finite full-chain transports. | Approved scoped REQ-LIST-01 evidence; no 702-record final-image UART-to-PC claim. |
+
+The [S11 review](engineering/S11-FINAL-REVIEW-AND-ENGINEER-DECISION-PACKAGE-20261114.md) retains original-method gaps. The later [amendment](engineering/S02-S11-LAB-PFA-TIMING-LIMITED-AMENDMENT-20261114.md) and [verdict](engineering/S11-AMENDED-CRITERIA-VERDICT-20261114.md) establish **PASS under approved laboratory methods** for REQ-CFAR-02, REQ-TIME-01 and REQ-LIST-01. They do not relabel unexecuted original tests as executed.
+
+The earlier nine-case board archive retains 36,864 Power cells and 56 records; it is distinct from the later campaigns. GUI CFAR overlays reconstructed on the PC from returned Power are **derived views**, not downloaded full-chain FPGA masks. Separate Stage Lab configurations provide direct stage-specific outputs.
+
+## Simulation, resources and timing
+
+Retained full-chain structural ISim covers two complete CPI, expected Power/record bytes, premature/duplicate RUN, lost ACKs and RELEASE/reuse, with **72,123 expected UART bytes**. Serial timing is accelerated. PC regression and Stage Lab tests are separate evidence; see [S07](engineering/S07-GATE-READINESS-20261114.md) and [Auto Lab](engineering/AUTO-LAB-v0.3-REPORT.md).
+
+The [selected build manifest](engineering/evidence/s10/full_ip_20261112/manifest.json) and accepted S08/S09 records give:
+
+| Resource / timing | Recorded value |
+|---|---:|
+| LUT | 5,019 / 5,720 (87.7%) |
+| Slice registers | 3,913 / 11,440 (34.2%) |
+| Occupied slices | 1,407 / 1,430 (98.4%) |
+| DSP48A1 | 14 / 16 (87.5%) |
+| RAMB16 / RAMB8 primitives | 25 / 5 |
+| Clock constraint | 20 ns (50 MHz) |
+| Internal minimum period | 19.402 ns |
+| Worst setup / hold slack | +0.598 ns / +0.306 ns |
+| Reported setup / hold errors | 0 / 0 |
+
+RAMB8 and RAMB16 differ in size and placement; do not add them as full BRAM-site counts. Fit does not promise spare capacity. [S09 constraint review](engineering/audit/S09-UNCONSTRAINED-PATH-DISPOSITION-20261114.md) classified clock-distribution entries and asynchronous UART/reset boundaries. Acceptance follows that interpretation, not a blanket zero-unconstrained claim.
+
+[ISim core cycle estimates](engineering/S11-RTL-IP-CYCLE-ESTIMATE-20261114.md): **744,045 cycles / 14.880900 ms** for zero input and **744,422 cycles / 14.888440 ms** for the selected two-target input at 50 MHz, with `out_ready=1`, excluding UART/host time. These are not physical cycle-counter measurements or a worst-case bound. The approved laboratory method avoids adding a counter to the near-full image.
+
+## Handover and reproducibility
+
+The [S12 handover](deliverables/S12-LAB-HANDOVER-20261114.md), [requirement disposition](deliverables/S12-REQUIREMENT-DISPOSITION-20261114.md) and [delivery manifest](deliverables/S12-DELIVERY-MANIFEST.json) identify configurations, archive hashes and limits. Stage Lab source is pinned at `6c86a2e`; selected bitstream SHA-256: `fa51f7d050ff52d3772777fd1b1829386ef3708ddbed43c9f7775232d57c1cfb`.
+
+Start with the exact experiment source/configuration and manifest, verify hashes and inspect dependencies. ISE/CoreGen, vendor IP licensing and local board configuration are required. Original software statistical logs retain summaries/input hashes; physical campaign archives retain fuller IQ/Power/journal data. Not every historical run has complete raw arrays. This README reconciliation did not rerun models, simulations, synthesis, programming or physical tests.
+
+The repository is currently public. Older claims that a preparation branch was unpublished describe historical snapshots. Public visibility and authorization of this documentation update do not themselves establish redistribution rights for every vendor-generated artifact; the historical S12 handover is not a public IP license.
 
 ## Source organization
 
 | Path | Purpose |
 |---|---|
-| s03_reference/ | Floating functional model and scoring |
-| engineering/s04_numeric/ | Fixed-point numerical contracts, models and archived results |
-| rtl/ | Arithmetic blocks, grouping, integration, UART, testbenches and build tools |
-| pc_link/ | Framing, host transport, session/ARQ, software fixtures and board interfaces |
-| desktop_app/ | Scenario generation, references and laboratory GUI |
-| tests/ | Historical software/unit verification sources |
-| engineering/evidence/ | Archived simulation, implementation, integration and board evidence |
-| decisions/ | Engineer decisions and scoped approvals |
-| engineering/experiences/ | Experience cards and review ledger |
-| replay/ | Historical dialogue/events, manifest and projections |
-| engineering/audit/ | New audit findings and derived proposals |
+| `s03_reference/` | Floating functional model and scoring |
+| `engineering/s04_numeric/` | Numerical contracts, fixed models and results |
+| `rtl/` | Processing, integration, UART, testbenches and tool scripts |
+| `pc_link/` / `desktop_app/` | Host protocol, scenario/reference tools and GUI |
+| `tests/` / `engineering/evidence/` | Software tests and retained tool/physical evidence |
+| `decisions/` | Engineer decisions and scoped approvals |
+| `engineering/experiences/` / `engineering/LESSONS-LEARNED.md` | Experience records and lessons |
+| `replay/` | Historical dialogue/events with capture-quality limits |
+| `engineering/audit/` / `deliverables/` | Dated audits, handover and manifests |
 
-## Verification and simulation evidence
+## Remaining boundaries
 
-The strategy combines analytical/Float references, fixed integer oracles, self-checking RTL simulation, XST/MAP/PAR/TRCE and physical journals. References using the same vendor FFT model are not independent mathematical implementations merely because they run in different languages.
-
-The retained full-IP ISim testbench checks expected serial bytes and terminal flags for two complete CPI, including premature/duplicate RUN, lost acknowledgements and RELEASE/reuse. The archived log reports 72,123 expected UART bytes. The testbench accelerates serial timing; this is not board electrical qualification. The 57-test PC regression is a separate software evidence class.
-
-## Synthesis and timing
-
-The [full-IP integration evidence manifest](engineering/evidence/s10/full_ip_20261112/manifest.json) records the final laboratory design:
-
-| Resource / result | Recorded value |
-|---|---:|
-| LUT | 5,019 / 5,720 |
-| FF | 3,913 / 11,440 |
-| DSP48A1 | 14 / 16 |
-| RAMB16 / RAMB8 primitives | 25 / 5 |
-| Clock constraint | 20 ns (50 MHz) |
-| Reported internal minimum period | 19.402 ns |
-| Reported setup / hold errors | 0 / 0 |
-
-RAMB8 and RAMB16 are different primitive sizes; do not add them as full BRAM-site counts. Timing applies to the archived build and applied constraints. It does not prove unconstrained paths, external interfaces or real-time CPI throughput. No new tools were run for this documentation audit.
-
-## Hardware validation
-
-The [nine-case board report](engineering/evidence/s11/full_ip_20261112/board-scenario-checks.json) and referenced journals retain 36,864 Power cells and 56 cluster records. The original comparison reported zero Power mismatches and exact record fields against the prior structural-IP/C05 oracle. Journals retain IQ verification, COMMIT and RELEASE. Programming was historically in SRAM; Flash was reported unchanged.
-
-Cases include noise-bearing single/multiple targets, clutter, close targets, low SNR and zero input. In the close-target case only one of two targets was associated. The GUI's CFAR display is reconstructed from returned Power on the PC; it is a derived view.
-
-## Known limitations and open items
-
-- REQ-RNG-03 retains its historical final-record FAIL4/8. A later engineer amendment limits current acceptance to Power output; the revised quantitative criterion and evidence disposition remain pending.
-- Fixed-Point statistical performance qualification remains OPEN.
-- Approved S03 Pfa/Pd studies apply to separately defined Python floating-point populations, not this full FPGA IP chain.
-- The 1,000-CPI Pd study retains per-CPI summaries and hashes, not complete original IQ and full Power arrays.
-- UART batch transfer is not real-time radar acquisition.
-- Automatic recovery of an interrupted hardware session using a new SID is not supported by the final integration report.
-- Full intermediate observability and maximum-capacity/no-drop acceptance need requirement-level review.
-- Stage Lab uses distinct injection/readback configurations. Selected immutable evidence has now been copied into this preparation branch; active Lab code and images remain separate.
-- Final numerical-baseline reconciliation, separate stage-gate closure and public redistribution review remain open.
-
-## Reproducibility
-
-Start from an exact commit and the evidence manifest for the experiment being studied. Check source/data hashes before interpreting results. Historical report commands may generate data, rebuild FPGA products, communicate with UART, or program hardware; review their effects and obtain the relevant authorization before execution.
-
-ISE/vendor IP dependencies and local board configuration are required for hardware reproduction. Source hashes alone do not recreate omitted raw arrays. The audit performed only file reads, hashes and calculations over retained records. It did not rerun models, engineering tests, synthesis or programming.
-
-## Decisions and lessons
-
-Read [decisions/](decisions/), the [lessons register](engineering/LESSONS-LEARNED.md) and [experience ledger](engineering/experiences/index.jsonl). Experience state and engineer approval are distinct. Historical failed statistical methods, FFT equivalence failures and resource/timing failures remain part of the engineering record.
-
-## Repository review status
-
-Documentation preparation is in progress. This branch has not been published and is **not yet READY_FOR_GITHUB_REVIEW**. The compliance report lists unfinished coverage and decisions. Public release requires the owner's approval and review of disclosure scope and vendor IP redistribution.
-
-## Existing-work recovery update
-
-The engineer authorized recovery of completed Stage Lab work. Read [the as-built review package](engineering/audit/EXISTING-WORK-RECOVERY-AND-AS-BUILT-REVIEW.md) for recovered S05–S11 evidence and the exact pending configuration decision. The audit independently checked 94 retained case archives and 184 exact Fixed-reference comparisons without executing project models or tests. These are finite archived-evidence results, not new engineering execution or automatic gate approval.
-
-## Engineering history and mission changes
-
-Read [the engineering development history](engineering/ENGINEERING-DEVELOPMENT-HISTORY.md), [the mission/scope addendum](engineering/MISSION-EVOLUTION-LAB-ADDENDUM-20261113.md), and [the source-backed historical direction register](decisions/HISTORICAL-DEVELOPMENT-DIRECTIONS-20261113.json). They distinguish the owner’s proposals, execution authorizations, observed outcomes and formal acceptance. Original baselines and failed evidence remain intact. Dialogue recovery is partial and preserves explicit source gaps.
-
-The later [37-page PDF recovery](engineering/audit/PDF-CONVERSATION-RECOVERY.md) adds fuller mission and interruption history, source-page references, and the recovered stationary-target screenshot. Printed/extracted messages remain distinguished from original verbatim archive records.
-
-Current stepwise review: [S03 approval and S04 carryovers](engineering/audit/S03-S04-STEPWISE-REVIEW.md). This records prior evidence, not a new test execution or automatic stage advancement.
-
-Current requirement amendment: [REQ-RNG-03 Power-only scope](engineering/S02-REQ-RNG-03-POWER-SCOPE-AMENDMENT-v1.3.md), explicitly directed by the engineer. This changes the measurement point without changing stable processing code or rewriting historical results.
-
-
-## Current S04 review update: approved Power peaks and statistical carryover (2026-11-13)
-
-The engineer approved two distinct Power peaks under the prior proposed noise-free criterion. Read-only archived-data reassessment gives **Float PASS8/8 and selected-C/C02 Fixed PASS8/8**, with no additional3dB valley condition. Current authority: decisions/REQ-RNG-03-POWER-PEAKS-ACCEPTANCE-20261113.json; normative limited amendment: engineering/S02-REQ-RNG-03-POWER-PEAKS-AMENDMENT-v1.4.md. Earlier pending statements above are historical snapshots superseded for this scoped item. Historical final-record FAIL4/8 remains unchanged. Final FFT-IP/board resolution is not inferred.
-
-Fixed-Point statistical performance remains **OPEN_NOT_STATISTICALLY_QUALIFIED**: no completed accepted qualifying campaign was located, and no statistical FAIL of Fixed-Point is established by that absence. See engineering/audit/S04-FIXED-POINT-STATISTICAL-QUALIFICATION-REVIEW-v1.0.md for the proposed bounded protocol. Current requirement review v4 and decision queue v4 apply. No code, model, test, historical result or Gate was changed; no new engineering campaign was run. Documentation progress does not imply engineering statistical completion.
+- Batch USB-UART operation is not continuous real-time acquisition. W5500, RF/ADC input and FPGA tracking are outside this implementation.
+- Fail-closed/manual reset or SRAM reload is the accepted recovery policy; automatic recovery across disconnect/power loss is not claimed. Flash was reported unchanged.
+- Full-chain and Stage Lab images are separate configurations; resource counts/observations cannot be combined into one simultaneous image.
+- General Pd/Pfa, all-input equivalence, hardware overflow telemetry, exhaustive faults, worst-case latency and operational/environmental qualification are not established by laboratory PASS results.
+- Historical FAILs, numerical differences, failed resource/timing attempts and incomplete dialogue provenance remain in the record. Later scoped acceptance does not erase them.

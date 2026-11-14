@@ -1,0 +1,44 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "GATE-S12-PRIVATE-LAB-HANDOVER-APPROVED-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit instruction to prepare and close S12 in current conversation",
+  "status": "GATE_S12_CLOSED_PRIVATE_LAB_HANDOVER_WITH_DECLARED_S11_EXCEPTIONS",
+  "scope": "Private as-built AX309 laboratory demonstrator handover; archival and reproducibility, not production/public release",
+  "source_commit": "6c86a2e",
+  "engineering_snapshot_commit": "fbe6b53",
+  "manifest": "deliverables/S12-DELIVERY-MANIFEST.json",
+  "manifest_sha256": "9c6a66dc466dd5b0794e9791d3eb0f90e641233b744ffd44abef75b279cc11dd",
+  "archives": [
+    {
+      "name": "source_6c86a2e.tar.gz",
+      "sha256": "8878014f1da9a354b0c0ab609ebbf6e187a80cd8dd0a5eded67231bccbf24556"
+    },
+    {
+      "name": "engineering_audit_fbe6b53.tar.gz",
+      "sha256": "de406cdaeba93db55c17aeecc1f8600d41033f9b4cee91ab7cfa15260ec4ce22"
+    },
+    {
+      "name": "physical_campaign_raw.tar.gz",
+      "sha256": "cf122a36f73897d66ce0b81f41849e12759d441a81dc97536b50364ea74c9399"
+    }
+  ],
+  "verification": [
+    "All three archive files opened and inventoried",
+    "55/55 frozen source hashes verified within source archive",
+    "Selected bitstream decompressed SHA256 equals fa51f7d050ff52d3772777fd1b1829386ef3708ddbed43c9f7775232d57c1cfb",
+    "Raw Pd/Pfa campaign files and paired replay ledger retained; interrupted Pfa CPI excluded from statistics"
+  ],
+  "accepted_exceptions": [
+    "S11 Pfa 95% EB model proxy accepted, physical 20000-CPI PASS not demonstrated",
+    "Cycle counts derived by ISim for two inputs, not physical board counter or worst case",
+    "702 record physical test belongs to separate Grouping configuration; no maximum-load final UART claim"
+  ],
+  "excluded": [
+    "public redistribution/merge into master",
+    "operational or environmental qualification",
+    "all-input formal RTL/model equivalence proof",
+    "new FPGA build or Flash programming"
+  ],
+  "next_step": "No additional Gate in this private laboratory handover; future public/production release requires separate configuration and rights review."
+}

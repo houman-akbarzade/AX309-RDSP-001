@@ -15,3 +15,7 @@ The historical 22-row audit `engineering/audit/REQUIREMENTS-CURRENT-AUDIT-v4.jso
 | REQ-TIME-01 | ISE STA, board host/UART timings, and separately reported RTL/IP simulation cycle count under approved S11 method. No physical cycle counter or realtime deadline. |
 
 The S11 laboratory Gate is closed with explicit exceptions, not with unqualified PASS of every historical method. The scoped amendments in `engineering/S02-S11-LAB-PFA-TIMING-LIMITED-AMENDMENT-20261114.md` and Gate records control the current interpretation. S12 acceptance covers only the stated private laboratory handover.
+
+## Current amended S11 verdict (supersedes the three descriptive rows above for Gate status)
+
+Per `decisions/S11-AMENDED-CRITERIA-PASS-20261114.json`, REQ-CFAR-02, REQ-TIME-01 and REQ-LIST-01 are **PASS under their approved S11 laboratory methods and declared evidence scopes**. The earlier row descriptions remain factual limitations of those PASS results. The old physical 20000-CPI test, on-board cycle count and 702-record final-image UART transfer are not retrospectively marked as executed. S12 private handover retains those boundaries.

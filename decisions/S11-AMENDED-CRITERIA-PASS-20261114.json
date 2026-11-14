@@ -1,0 +1,21 @@
+{
+  "project": "AX309-RDSP-001",
+  "decision_id": "S11-AMENDED-CRITERIA-PASS-20261114",
+  "date_local": "2026-11-14",
+  "authority": "Project system engineer, explicit instruction to mark acceptance against changed criteria in current conversation",
+  "status": "S11_AMENDED_LAB_CRITERIA_PASS_ALL_THREE_DISPOSITIONS",
+  "applies_to": "Selected lab bitstream fa51f7d050ff52d3772777fd1b1829386ef3708ddbed43c9f7775232d57c1cfb",
+  "normative_amendment": "engineering/S02-S11-LAB-PFA-TIMING-LIMITED-AMENDMENT-20261114.md",
+  "verdict": "engineering/S11-AMENDED-CRITERIA-VERDICT-20261114.md",
+  "requirements": {
+    "REQ-CFAR-02": "PASS under engineer-approved 20000-CPI fixed-IP software proxy plus bounded physical paired comparison; physical 20000-CPI PASS not demonstrated",
+    "REQ-TIME-01": "PASS under ISim RTL/IP start-to-done cycle measurement in two conditions, STA 50 MHz, and separate host timing; no on-board counter",
+    "REQ-LIST-01": "PASS in approved scoped capacity and transport evidence; no claimed 702-record final-image end-to-end test"
+  },
+  "gate_effect": "S11 and private-laboratory S12 remain closed and their current scoped acceptance verdict is PASS under amended methods, with disclosed limits; historical initial-method statuses remain unchanged",
+  "excluded": [
+    "universal model-board equivalence",
+    "95% statistical inference of physical-board Pfa",
+    "operational/public qualification"
+  ]
+}

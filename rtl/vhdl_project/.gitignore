@@ -1,0 +1,25 @@
+# Preserve editable sources, project, scripts, tests and source traceability.
+# Never commit generated ISE/ISim or GHDL build products.
+*
+!.gitignore
+!README.md
+!AX309_RadarDSP_VHDL.xise
+!create_project.tcl
+!finalize_project.py
+!translate_verilog_to_vhdl.py
+!translation_report.json
+!normalize_generated.py
+!fix_uart_byte_functions.py
+!compile_ise.py
+!verify_ghdl.py
+!src/
+!src/**
+!tb/
+!tb/**
+# Runtime and binary outputs even if nested under kept directories
+**/*.ngc
+**/*.ncd
+**/*.bit
+**/*.log
+**/*.pyc
+**/__pycache__/

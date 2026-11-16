@@ -110,3 +110,7 @@ The repository is currently public. Older claims that a preparation branch was u
 - Full-chain and Stage Lab images are separate configurations; resource counts/observations cannot be combined into one simultaneous image.
 - General Pd/Pfa, all-input equivalence, hardware overflow telemetry, exhaustive faults, worst-case latency and operational/environmental qualification are not established by laboratory PASS results.
 - Historical FAILs, numerical differences, failed resource/timing attempts and incomplete dialogue provenance remain in the record. Later scoped acceptance does not erase them.
+
+## ISE 14.7 graphical project
+
+The [Project Navigator project](rtl/ise_project/AX309_RadarDSP.xise) opens the accepted as-built RTL hierarchy with the Xilinx FFT-IP configuration, board UCF and simulation testbenches. See the [ISE project guide](rtl/ise_project/README.md) for the exact scope and regeneration instructions. Independent GUI XST/Translate/MAP checks passed, but generated IP netlist hashes and MAP resource counts differ from the previously approved command-line build; this is **not** automatic approval of a replacement bitstream.

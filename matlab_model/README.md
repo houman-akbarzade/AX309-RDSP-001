@@ -12,7 +12,7 @@ run_validation        % compares saved independent reference CPI outputs
 demo_ax309            % plots Float and Fixed range-Doppler power
 ```
 
-**Models:** `ax309_float.m` (entire S03 floating chain), `ax309_fixed.m` (integer MF/MTI/Power/CFAR/Grouping with actual FFT-IP v7.1 C-model), `ax309_grouping.m` (8-neighbor grouping), `ax309_generate_float.m` (optional MATLAB source generator), and `fft_vendor_bridge.py` (binary interface). `demo_ax309.m` visualizes the same saved input in both models. `run_validation.m` checks three replayable CPI fixtures.
+**Models:** `ax309_float.m` (entire S03 floating chain), `ax309_fixed.m` (integer MF/MTI/Power/CFAR/Grouping with actual FFT-IP v7.1 C-model), `ax309_grouping.m` (8-neighbor grouping), `ax309_generate_float.m` (optional MATLAB source generator), and `fft_vendor_bridge.py` (binary interface). `demo_ax309.m` visualizes the same saved input in both models **after converting stored Fixed-Point power to Float-equivalent linear units and using a shared dB color scale**. `run_validation.m` checks three replayable CPI fixtures.
 
 The MATLAB Fixed model performs the stages **inside MATLAB** except for the FFT, which invokes the **exact vendor Xilinx FFT v7.1 bit-accurate C-model** through the repository's validated `engineering/s04_numeric/fft_ip_fullchain_v1.py` wrapper. This distinction is essential: substituting `fft()`, MATLAB fixed-point `fi/fft`, or a generic radix-2 FFT would **not** reproduce that IP's rounding, scaling, or overflow semantics. The vendor library is not bundled and the bridge verifies its SHA-256 identity.
 
@@ -69,3 +69,9 @@ Use the **binary IQ archived from a specific board CPI** when performing a paire
 - Accepted S11 Pd/Pfa claims, amendments, scope restrictions and the older original-method gaps remain as recorded in `decisions/` and `engineering/`. Do not rerun a Monte Carlo test with different parameters and label it approved.
 
 MATLAB models are for reproducible learning, inspection, and paired verification. No changes to accepted RTL, bitstream or frozen campaign records are made by this addition.
+
+### Critical plotting normalization (reviewed 2026-11-16)
+
+The S04 Fixed-Point output field `power_codes` stores **integer** squared FFT codes and is **not the same physical scale** as S03 `F.power`. The FFT vendor schedule `[0,1,0,1,1]` has three binary right shifts (amplitude ×1/8), and MF/MTI codes retain 15 fractional bits. Therefore, for input gain `g`: `Pfixed_equiv = double(Q.power_codes) * (g*8/2^15)^2`. Use `10*log10(max(Pfixed_equiv,floor_power))` versus `10*log10(max(F.power,floor_power))`, and **the same color limits**. For the retained target fixture `g=1`, raw integer power is 72.247199 dB above equivalent Float-scale power purely due to scaling. The peak Float power is 36.979060 dB and normalized Fixed is 36.978917 dB, with power-map NMSE −91.163 dB. The earlier demo rendered `10log10(F.power+1)` and `10log10(Q.power_codes+1)` and thus displayed misleadingly different colors. That plotting-only error has been fixed; mathematical engine outputs and frozen evidence were not modified.
+
+The revised demo skips plotting when MATLAB runs in non-desktop batch mode, but still prints the validated numeric comparison. Open it in MATLAB Desktop for the shared-color plots.

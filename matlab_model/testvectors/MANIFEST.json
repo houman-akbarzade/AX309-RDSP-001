@@ -1,0 +1,160 @@
+{
+  "binary_layout": "C order, interleaved I/Q; Float files: f64; fixed I/Q: i16; outputs: i64, u64, u8; little endian",
+  "description": "Nonstatistical cross-language MATLAB regression inputs and reference outputs",
+  "files": {
+    "noise_cfar.u8": {
+      "sha256": "7a05cd5062b831408a6cc0d4bc2252ee74cbb807170cc6d0c67bc9fa4a16d3b3",
+      "size_bytes": 4096
+    },
+    "noise_fft.i64": {
+      "sha256": "5fc335a9179983e98cf2cc6cb139d3eff59f18ecd92b0377832a3b1217133ee8",
+      "size_bytes": 65536
+    },
+    "noise_float_iq.f64": {
+      "sha256": "b3ae37d34557b9ef154161e3f358933d44c38988613b5952f6aea86c7b75b8f0",
+      "size_bytes": 67584
+    },
+    "noise_float_power.f64": {
+      "sha256": "e2fd358dbcb8848c9570adf1e1230636c2f9bccd1f168722b7ae46aaa6bef7bd",
+      "size_bytes": 32768
+    },
+    "noise_iq.i16": {
+      "sha256": "dca273ed1d9b49dc5725d7906eb2c1dd88934487bbc4e38fc077c46e5144f5aa",
+      "size_bytes": 16896
+    },
+    "noise_mti.i64": {
+      "sha256": "73f178028c4f1b1eeb50164677781eeb99b26975248adb9d46f3ab90b0be54d1",
+      "size_bytes": 65536
+    },
+    "noise_power.u64": {
+      "sha256": "b73da1e31a02431df254766074f8972603e51dacb2a3757c0bbe56463acb5064",
+      "size_bytes": 32768
+    },
+    "noise_records.json": {
+      "sha256": "ea95e2775a992417cf7bef82bd5cd258dccbe8832397c54f382b07e993ed1d6b",
+      "size_bytes": 376
+    },
+    "target_cfar.u8": {
+      "sha256": "e437601868e0e01ca215363a06ee80df04cded5bc6f278313edcfe6a8a1293ce",
+      "size_bytes": 4096
+    },
+    "target_fft.i64": {
+      "sha256": "7d9417e8840be36c773eddb972acba95f56306458289ba2bf74fff264b07eded",
+      "size_bytes": 65536
+    },
+    "target_float_iq.f64": {
+      "sha256": "5c86fe34a1b0bea140a632ba8ce12d98de50048a1910b3cc51f359a619e9e4bf",
+      "size_bytes": 67584
+    },
+    "target_float_power.f64": {
+      "sha256": "4f0617124db745fbd90f7442d4faa7e7423b510f9d7e4ef421e50fc67228d624",
+      "size_bytes": 32768
+    },
+    "target_iq.i16": {
+      "sha256": "816527cc3fa1aa9a6acc15cdfa2a9250115914f632ae4f40ebf08c3e09e87dc9",
+      "size_bytes": 16896
+    },
+    "target_mti.i64": {
+      "sha256": "3ad7e61b40989f878c9e32a7490dc6900fde468b810fa075805d4f1434d4eb0d",
+      "size_bytes": 65536
+    },
+    "target_power.u64": {
+      "sha256": "bef6c3ae7356b606d608475774ababc78605c259e6c719e20cdcd99e2a3dc616",
+      "size_bytes": 32768
+    },
+    "target_records.json": {
+      "sha256": "f74f6b729b5e5e09babd84d3fbb50fcf14cfb32f4a4c6b0415c72be4ebeb89c8",
+      "size_bytes": 1484
+    },
+    "zero_cfar.u8": {
+      "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+      "size_bytes": 4096
+    },
+    "zero_fft.i64": {
+      "sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "size_bytes": 65536
+    },
+    "zero_float_iq.f64": {
+      "sha256": "2e1d1f24ad4c0336267e3f21f9e4083cfc299a1a41b208c12f42e166ce33f631",
+      "size_bytes": 67584
+    },
+    "zero_float_power.f64": {
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479",
+      "size_bytes": 32768
+    },
+    "zero_iq.i16": {
+      "sha256": "f57511198cd295e9187ab5e6153bd837c4ee91d0217ea593d6b767ca37fa74c2",
+      "size_bytes": 16896
+    },
+    "zero_mti.i64": {
+      "sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "size_bytes": 65536
+    },
+    "zero_power.u64": {
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479",
+      "size_bytes": 32768
+    },
+    "zero_records.json": {
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "size_bytes": 2
+    }
+  },
+  "generated": "2026-11-16",
+  "reference_results": {
+    "noise": {
+      "cfar_alarms": 2,
+      "clusters": 1
+    },
+    "target": {
+      "cfar_alarms": 14,
+      "clusters": 4
+    },
+    "zero": {
+      "cfar_alarms": 0,
+      "clusters": 0
+    }
+  },
+  "reference_source_sha256": {
+    "engineering/s04_numeric/fft_ip_fullchain_v1.py": "4b45de0ba866d104bac4994af290cc3f9e4ab5d6566c39dadb2014a033edd27b",
+    "engineering/s04_numeric/s04_c04_selected_C_stage_capture_v1.py": "c133970af93208329131edaddea474b2340ca2c090132c0df5d7b9da8e3e7397",
+    "engineering/s04_numeric/s04_c05_native_integer_v1.py": "98aeffe7610f0a6618ea84c8e03b1feaeb5c69620e70d3ea7daa7ab81af63117",
+    "s03_reference/model.py": "2b4e28c6afaebc5d5240cfc1c80d94bbcbca325b48937ed8a8855087bef85c1b"
+  },
+  "scenarios": [
+    {
+      "name": "zero",
+      "noise": false,
+      "shape": "33x128",
+      "target": false
+    },
+    {
+      "name": "target",
+      "python_numpy_seed_sequence": [
+        761113261,
+        0,
+        611
+      ],
+      "shape": "33x128",
+      "snr_db": 20,
+      "target": {
+        "complex_amplitude": 0.18,
+        "delay": 40,
+        "velocity_m_s": 1.875
+      }
+    },
+    {
+      "input_gain": 5,
+      "name": "noise",
+      "noise_sigma2": 1.0,
+      "python_numpy_seed_sequence": [
+        761113262,
+        0,
+        611
+      ],
+      "shape": "33x128",
+      "target": false
+    }
+  ],
+  "scope": "three replayable CPI fixtures; NOT a replacement for statistical S03/S04/S11 acceptance",
+  "vendor_library_sha256": "4a8f02f24f269bc947d5f0d3e89a73916f763b8491c7a0f4e68b4bee88a994a9"
+}
